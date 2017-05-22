@@ -29,6 +29,10 @@ The default flight mode does not self level the aircraft around the roll and the
 
 ## Mode details
 
+### ALTHOLD
+
+The altitude of the aircraft a the moment you activate this mode is fixed. 
+
 ### AIR MODE
 
 In the standard mixer / mode, when the roll, pitch and yaw gets calculated and saturates a motor, all motors
