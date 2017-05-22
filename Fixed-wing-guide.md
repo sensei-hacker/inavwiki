@@ -63,12 +63,6 @@ If they go reverse, change "Direction and rate" from +100 to -100
 If they exceed maximum wanted deflection reduce min/max  
 If control surfaces is not perfectly centered adjust servo midpoint. (This is after setting them up as close as possible mechanically )  
 
-Servo 2: Elevator
-
-Servo 3&4: Ailerons
-
-Servo 5: Rudder
-
 (Note: In the Servos tab servos are counted from 0-7 while in the Motors tab they run from 1-8.)
 
 At this point everything should do as expected.  
