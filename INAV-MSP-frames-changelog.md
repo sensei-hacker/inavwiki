@@ -9,6 +9,21 @@ Frame IDs:
 * MSP_RTH_AND_LAND_CONFIG, Frame ID _21_
 * MSP_SET_RTH_AND_LAND_CONFIG, Frame ID _22_
 
+| Length        | Setting                       | Notes                         |
+| -----         | -----                         | -----                         |
+| 2             | `nav_min_rth_distance`             |         |
+| 1             | `nav_rth_climb_first`             | _boolean_    |
+| 1             | `nav_rth_climb_ignore_emerg`             |  _boolean_       |
+| 1             | `nav_rth_tail_first`             | _boolean_         |
+| 1             | `nav_rth_allow_landing`             | _boolean_        |
+| 1             | `nav_rth_alt_mode`             | _dictionary_        |
+| 2             | `nav_rth_abort_threshold`             |         |
+| 2             | `nav_rth_altitude`             |         |
+| 2             | `nav_landing_speed`             |         |
+| 2             | `nav_land_slowdown_minalt`             |         |
+| 2             | `nav_land_slowdown_maxalt`             |         |
+| 2             | `nav_emerg_landing_speed`            |         |
+
 ## INAV 1.6 MSP API Version 1.24
 
 ### MSP_WP_MISSION_LOAD / MSP_WP_MISSION_SAVE
