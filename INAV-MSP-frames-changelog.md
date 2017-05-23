@@ -1,3 +1,14 @@
+## INAV 1.7.1 MSP API Version 1.26
+
+### MSP_RTH_AND_LAND_CONFIG / MSP_SET_RTH_AND_LAND_CONFIG
+
+Get and set Return-To-Home and Land options 
+
+Frame IDs:
+
+* MSP_RTH_AND_LAND_CONFIG, Frame ID _21_
+* MSP_SET_RTH_AND_LAND_CONFIG, Frame ID _22_
+
 ## INAV 1.6 MSP API Version 1.24
 
 ### MSP_WP_MISSION_LOAD / MSP_WP_MISSION_SAVE
