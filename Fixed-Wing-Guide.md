@@ -72,8 +72,7 @@ At this point everything should do as expected.
 ``set max_angle_inclination_rll = 600``    
 ``set max_angle_inclination_pit = 600``  
 
-* Stick arming is considered **unsafe** for fixed wing models. Use switch arming or [fixed_wing_auto_arm](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md). So type this and save in CLI:
-``set fixed_wing_auto_arm = ON`` 
+* Stick arming is considered **unsafe** for fixed wing models. It's suggested instead that you use an AUX switch for arming (eg switch SF on a Taranis) or [fixed_wing_auto_arm](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md). 
 
 * Increase small angle (so iNav will let you arm in any position) type this and save in CLI:
 ``set small_angle = 180`` 
