@@ -1,10 +1,10 @@
 # The Basics of Getting iNav Working on an Airplane
-<img src="https://cloud.githubusercontent.com/assets/16717155/26343189/d7ffbef4-3f92-11e7-8997-242fa990d50c.png"  align="right"/>
-
 
 Note: A limitation of iNav (and all other Cleanflight based firmware for that matter) is that it cannot be flown longer than 1 hour and 15 minutes. This is **resolved** from INAV version 1.6 with F3 boards and newer.
 
 ### Step 1: Getting Your Flight Controller Ready.
+
+<img src="https://cloud.githubusercontent.com/assets/16717155/26343189/d7ffbef4-3f92-11e7-8997-242fa990d50c.png"  align="right"/>
 
 * Flash the latest version of iNav.
 
@@ -14,7 +14,7 @@ Note: A limitation of iNav (and all other Cleanflight based firmware for that ma
 
 ### Step 2: Hooking Everything Up.
 
-* Servo and ESC/MOTOR. ( Keep in mind servos positive wire **should** go to an independent BEC instead of connecting to the flightcontroller itself. )
+* Servo and ESC/MOTOR. ( Keep in mind servos positive wire **should** go to an independent BEC instead of connecting to the flight controller itself. )
 
     * Airplane
         * Output 1 - Motor/ESC
