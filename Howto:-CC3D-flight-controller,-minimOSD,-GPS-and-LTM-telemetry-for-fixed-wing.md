@@ -53,6 +53,8 @@ First you need to download a precompiled firmware for the board [here](https://g
 - _inav_x.x.x_CC3D.hex_ 
 - _inav_x.x.x_CC3D_PPM1.hex_ (for  PPM input  on Pin 3 and RSSI_ADC  on Pin 8. See Board_CC3D document in /docs)
 
+You only can flash cc3d through FTDI and MainPort (USART1). Not usb, neither FlexiPort.
+
 Next, you can check [numerous guides](https://www.youtube.com/watch?v=eClp-YBeSms&t=0s) how to flash CC3D with third party firmware (Attention, you'll need a FTDI adapter for the purpose). Of course you need to specify the previously downloaded firmware for the flashing. 
 
 ## 4. Basic settings
