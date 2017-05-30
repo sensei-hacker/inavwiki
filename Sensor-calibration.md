@@ -55,6 +55,10 @@ If your magnetic declination readings are e.g. +3° 34' , the value entered in t
 
 Since iNav 1.2, on non-F1 targets, one can use an automatic declination setting, which is more than accurate enough for iNav. `set inav_auto_mag_decl = ON`.
 
+## Gyroscope calibration
+
+Gyroscope calibration, or rather bias recording, is performed on every startup. Model should be stationary while powering up. Under normal conditions there is no need for manual procedure that can be started via stick commands. 
+
 ## Backup and restore the settings
 
 To avoid going through full calibration after resetting the configuration new CLI settings are introduced to get and set accelerometer offsets and gains: **acczero_x**, **acczero_y**, **acczero_z**, **accgain_x**, **accgain_y**, **accgain_z**. The same applies to **magzero_x**, **magzero_y** and **magzero_z**.
