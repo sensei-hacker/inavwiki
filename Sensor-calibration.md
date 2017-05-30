@@ -1,9 +1,11 @@
-Accelerometer calibration is mandatory if inertial position estimation is used. Modern accelerometer sensors are accurate, but they require calibration if we want precise measurements. Sensors might be biased, gains on different axis might be different. Advanced 6-point calibration takes care of all irregularities sensor might have.
+Accelerometer calibration is mandatory if inertial position estimation is used. Modern accelerometer sensors are accurate, but they require calibration if we want precise measurements. Sensors might be biased, gains on different axis might be different. An advanced 6-point calibration takes care of all irregularities sensor might have.
 
 Use this video as guidance [LINK  YOUTUBE](https://www.youtube.com/watch?v=HxWSn_noNgg)
 
 ## Accelerometer calibration steps
-Please note that, unlike cleanflight, iNav does not do a level calibration in accelerometer calibration! See "Level calibration" below.
+INAV uses a 6 point accelerometer calibration and you may find this easier to do more accurately prior to installing the flight controller in your model as this procedure MUST be done referenced to the marked orientation on the board.
+See "calibration procedure" below.
+(Also please note this is  unlike the simple level calibration used in cleanflight)  
 ![](images/acc-calibration-positions.jpg)
 
 Note: If the flightcontroller is mounted in another angle or upside down, do the calibration steps with the flightcontroller pointing as shown in the pictures, not the quad (otherwise calibration won´t work).
