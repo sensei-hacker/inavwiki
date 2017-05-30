@@ -57,7 +57,10 @@ Since iNav 1.2, on non-F1 targets, one can use an automatic declination setting,
 
 ## Gyroscope calibration
 
-Gyroscope calibration, or rather bias recording, is performed on every startup. Model should be stationary while powering up. Under normal conditions there is no need for manual procedure that can be started via stick commands. 
+Gyroscope calibration, or rather bias recording, is performed on every startup. Model should be stationary while powering up. 
+With most craft connecting batteries while keeping the craft still can be difficult, simply ensure the craft is placed on the ground (or somewhere solid and still) for 5 seconds as soon as possible after powering up. Gyro auto calibration will only run when no motion is detected 
+  
+* Under normal conditions there is no need for a manual calibration procedure, but if required this can be performed via stick commands. 
 
 ## Backup and restore the settings
 
