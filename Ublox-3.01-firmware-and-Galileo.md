@@ -24,9 +24,9 @@ The FIS value indicates it is upgradable. In u-center:
 
 If your devices comes with 3.01 firmware, or you flash it, then to enable Galileo, you need to assign some channels for Galileo; typically steal from some channels from a GNSS that you are unlikely to use (maybe QZSS, BeiDou in Western Europe). Save this in the default configuration. BN-880 can use upto 3 GNSS (plus SBAS) simultaneously. In u-center:
 
-![](https://static.rcgroups.net/forums/attachments/6/1/2/8/7/5/a10080937-238-bn-880%20gnss.png)
 ![](https://static.rcgroups.net/forums/attachments/9/3/9/2/a10081487-180-Galileo_2.JPG)  
 ![](https://static.rcgroups.net/forums/attachments/9/3/9/2/a10081488-165-Galileo_1.JPG)
+  
 
 ````
 SVINFO: Channels 30
