@@ -82,6 +82,7 @@ Special waypoints are 0 and 255. 0 is the RTH (Home) position, 255 is the POSHOL
 | flag | uchar | 0xa5 = last, otherwise set to 0 |
 
 The values for the various parameters are given in the section “WayPoint / Action Attributes”
+Note that altitude is measured from the "home" location, not absolute above mean sea level.
 
 # MSP_NAV_STATUS
 
