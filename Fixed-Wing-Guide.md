@@ -4,15 +4,19 @@ Note: A limitation of iNav (and all other Cleanflight based firmware for that ma
 
 ### Step 1: Getting Your Flight Controller Ready.
 
-<img src="https://cloud.githubusercontent.com/assets/16717155/26343189/d7ffbef4-3f92-11e7-8997-242fa990d50c.png"  align="right"/>
-
-* Flash the latest version of iNav.
+* Flash the latest version of iNav using the [iNav Configurator](https://chrome.google.com/webstore/detail/inav-configurator/fmaidjmgkdkpafmbnmigkpdnpdhopgel)
 
 * Do an entire [sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration). Level should be the angle of the plane itself when flying straight. **Do not skip this step**.
 
 * Select a preset from the iNav presets tab that fits your aircraft the best, then press "Save & Reboot"
 
 ### Step 2: Hooking Everything Up.
+
+The image below shows the standard wiring for both a flying wing and for a normal fixed wing model with ailerons, elevator & rudder. You connect each servo to the corresponding PWM output on your flight controller.
+
+**Note:** If you are using iNav with a Mini Talon you'll need a [Custom Mix](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#v-tail-fixed-wing) so that the servos move correctly or if using a Skyhunter (Nano, Micro, Mini & full sized) then there is also a custom mix available [here](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#skyhunter-nano-no-rudder).
+
+<img src="https://cloud.githubusercontent.com/assets/16717155/26343189/d7ffbef4-3f92-11e7-8997-242fa990d50c.png"/>
 
 * Servo and ESC/MOTOR. ( Keep in mind servos positive wire **should** go to an independent BEC instead of connecting to the flight controller itself. )
 
@@ -30,17 +34,19 @@ Note: A limitation of iNav (and all other Cleanflight based firmware for that ma
         * Output 3 - Port Elevon
         * Output 4 - Starboard Elevon
 
-An example if using SpracingF3:. 
+An example if using SpracingF3:
+ 
 * If using GPS connect it to UART 2.
+* If using GPS setup UART2 for GPS at baud 57600 and enable GPS in configurations (if that doesn't work, try 115200).
 * If using Sbus connect it to UART 3 / or the uart which are dedicated for sbus on your board.
 * If using regular PPM connect it to IO 1 pin 1.
 * If using telemetry connect it with softserial. ( If using Smartport read [this](https://github.com/iNavFlight/inav/blob/master/docs/Board%20-%20Airbot%20F4%20and%20Flip32%20F4.md#frsky-smartport-using-softwareserial) )
 
 ### Step 3: Setting up Your Remote, Endpoints and Reversing of Servos.
 
-* Setup receiver/transmitter according to what you are using.
-* If using GPS setup UART2 for GPS at baud 57600 and enable GPS in configurations (if that doesn't work, try 115200).
-* Your transmitter should use **NO mixing at all** (so separate channels for Thr, Ail, Rud, Ele). Check that when moving the sticks, the right channels moves in the receiver window. Also everything should be centered at 1500us, and full stick movement should be 1000-2000us. Use subtrim and travel range on TX to set this up. 
+Your transmitter should use **NO mixing at all** (so separate channels for Thr, Ail, Rud, Ele). 
+
+Check that when moving the sticks, the right channels moves in the receiver window. Also everything should be centered at 1500us, and full stick movement should be 1000-2000us. Use sub trim and travel range on your TX to set this up. 
 
 The correct way is:
 
@@ -61,9 +67,9 @@ In the "Servos" Tab:
 * If they exceed maximum wanted deflection reduce min/max  
 * If control surfaces is not perfectly centered adjust servo midpoint. (This is after setting them up as close as possible mechanically )  
 
-(Note: In the Servos tab servos are counted from 0-7 while in the Motors tab they run from 1-8.)
+**Note:** In the Servos tab servos are counted from 0-7 while in the Motors tab they run from 1-8.
 
-At this point everything should do as expected.  
+At this point everything should work as expected.  
 
 1: When moving sticks on TX the control surfaces should move correctly, do an [High Five](https://www.youtube.com/watch?v=Gf74geZyKYk) test  
 2: When moving the airplane in the air in angle mode control surfaces should counter-act movement correctly. The controls surfaces needs to move the same way as the airplane is moved to counteract and stabilize the airplane. You may need to **temporarily** triple the amount on P-gain on Roll, Pitch and Yaw axis. (So its easy to see movement.)  
@@ -88,16 +94,20 @@ At this point everything should do as expected.
 * In iNav V1.7 the default RTL height is 10 metres (approx 32') which might be too low for flying sites with trees. You can change this to 70 metres (approx 230') by setting this value in the CLI tab and typing save afterwards:
 ``set nav_rth_altitude = 7000``
 
-* [Tune your PIFF controller](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing) ( iNav versions 1.6 & later )
+* Take a few minutes to read through how the different [Flight Modes](https://github.com/iNavFlight/inav/wiki/Flight-modes) affect the model in the air.
 
-* Read through the iNav CLI commands, especially ALL marked with " fw_ " This will give you hints how the modes for fixedwings works.  
+* Have `passthrough` mode configured so if it happens anything with gyro / accelerometer in the air you can use manual control. This includes if your flight controller resets during flight because of example an brownout.  
 
+* Read through the iNav [CLI commands](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md), especially ALL marked with "**fw_ **" This will give you hints how the modes for fixed wings work.  
 
 ### Step 5: Optional, but Recommended:
 
-* Have `passthrough` mode configured so if it happens anything with gyro / accelerometer in air you can go manual control, this includes example if your flight controller resets during flight because of example an brownout.  
+* [Tune your PIFF controller](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing) ( iNav versions 1.6 & later )
+
 * Use Airmode mode to get full stabilization and servo throw with no throttle applied.
+
 * [Setting up failsafe with return to home.](https://github.com/iNavFlight/inav/wiki/Failsafe#setting-up-failsafe-with-return-to-home)
+
 * If your compass is not 100% properly setup just disable it instead. **A calibrated compass can cause orientation drift during flight that may not show up in the configurator** (especially built-in ones on your FC). Really consider disabling it unless you need it. INAV uses GPS heading normally, Only on ground before GPS speed has been high enough or if error between GPS heading and compass heading exceed 60deg will it use compass heading
 
 ### Last Step, a Test Flight!:
@@ -107,7 +117,7 @@ At this point everything should do as expected.
     * Do the [High Five](https://youtu.be/Gf74geZyKYk) test in passthrough mode, verify everything is moving as expected.
     * Enable `Angle` / `Horizon` mode and verify the control surfaces moves correctly when moving aircraft by hand and by sticks on TX
 
-* Arm and launch your aircraft using prefered mode, example `Horizon`.
+* Arm and launch your aircraft using prefered mode, example `Pass Through` for the maiden flight launch.
     * If airplane is not flying leveled when in self leveling mode like `Horizon` you need to trim your [board aligment](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#board-orientation-and-level-calibration)
     * If airplane flies leveled, do an [Servo Autotrim](https://github.com/iNavFlight/inav/wiki/Modes#servo-autotrim)
     * Tune your PIFF values, either manually or with [AUTOTUNE](https://github.com/iNavFlight/inav/wiki/Modes#autotune) 
