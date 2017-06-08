@@ -31,11 +31,13 @@ Note to change magnetic declination manually on F3 or newer board you have to tu
 
 ## NEO-M8N PixHawk GPS Unit
 
-<img src="https://img2.banggood.com/thumb/large/upload/2015/09/SKU287158/SKU287158-1.jpg" align="right"> A readily available GPS unit is the "NEO-M8N" unit that is available from eBay, Amazon, Banggood & so on... 
+A readily available GPS unit is the "NEO-M8N" unit that is available from eBay, Amazon, Banggood & so on... 
 
 They are cheap and because they use the Russian satellite network called GLONASS, obtaining a GPS fix is quicker and you can be flying around with anywhere between 9 to 20 satellites.
 
 Also as a bonus with such units they have a magnetometer (a compass) on the underside of the board too! 
+
+<img src="https://img2.banggood.com/thumb/large/upload/2015/09/SKU287158/SKU287158-1.jpg">
 
 An important note is that on top of the protective shell there is an arrow, this needs to point towards the front of your model.
 
