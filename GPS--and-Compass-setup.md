@@ -2,8 +2,8 @@ iNav supports Ublox, DJI NAZA, NMEA, multiwii's i2c-nav board and MultiWiiCopter
 
 Tested and confirming working protocols are Ublox and DJI NAZA
 
-
 Recommended GPS are M8N versions (e.g. [Ublox NEO-M8N APM version (Galileo compatible)](http://www.banggood.com/Mini-Ublox-M8N-GPS-Module-NEO-M8N-GPS-for-APM-2_52_62_8-CC3D-SP-Racing-F3-Naze32-Flip32-PX4-p-1035454.html) and [Beitian BN-880](http://www.banggood.com/UBLOX-NEO-M8N-BN-880-Flight-Control-GPS-Module-Dual-Module-Compass-p-971082.html?p=ZL241728738232015106) )
+
 Older versions as M6N and M7N also work, but the new M8N is far superior. Most GPS modules have a built in magnetometer (compass), but there are also some available without e.g. [Beitian BN-180](http://www.banggood.com/Beitian-BN-180-Flight-Control-GPS-Module-Dule-Module-without-Compass-p-1040322.html?p=ZL241728738232015106). 
 
 With default settings iNav will configure the GPS automatically, **there is no need for configuring it manually** using software like u-center. Nevertheless you have to configure your FC with iNav to receive the GPS signals.
@@ -28,6 +28,43 @@ Otherwise just use the internal FC magnetometer, but keep aware of magnetic inte
 
 
 Note to change magnetic declination manually on F3 or newer board you have to turn off automatic function. `set inav_auto_mag_decl = OFF`.
+
+## NEO-M8N PixHawk GPS Unit
+
+<img src="https://img2.banggood.com/thumb/large/upload/2015/09/SKU287158/SKU287158-1.jpg" align="right"> A readily available GPS unit is the "NEO-M8N" unit that is available from eBay, Amazon, Banggood & so on... 
+
+They are cheap and because they use the Russian satellite network called GLONASS, obtaining a GPS fix is quicker and you can be flying around with anywhere between 9 to 20 satellites.
+
+Also as a bonus with such units they have a magnetometer (a compass) on the underside of the board too! 
+
+An important note is that on top of the protective shell there is an arrow, this needs to point towards the front of your model.
+
+When it comes to connecting this unit to your flight controller, the image below will be a massive help to you. This image shows the colour coding / output connections and you will need to connect these appropriately to your flight controller.
+
+**Important**: 
+You need to switch the Rx and Tx wires around. So you connect your GPS Tx wire (yellow) to your desired Rx pin and the GPS Rx wire (White) to your Tx pin on your flight controller.
+
+A video showing you how to do this for a Omnibus F4 V2 board is in [this video on YouTube](https://www.youtube.com/watch?v=nQCQXuqQSd8)
+
+Once you have connected the GPS to your flight control board
+
+- Open the iNav Configurator 
+- Enable GPS on your desired UART port
+- Set the the baud rate to 115200
+- Press "Save & Reboot"
+- Then go to the "Configuration" tab in the iNav Configurator 
+- Enable GPS
+- Set the "Protocol" to UBLOX
+- Set the "Ground Assistance Type" to "Auto Detect"
+- Press "Save & Reboot"
+
+You can confirm the GPS unit is working by going to the GPS tab in the iNav Configurator and if it is working you will see the "Total Messages" count on the left incrementing in numbers.
+
+If it is the first time you have connected the GPS unit, then it can take several minutes for a GPS fix to be obtained. This is perfectly normal. 
+
+**Note:** For the GPS unit to work & pick up satellites it needs an unobstructed view to the sky (so if using indoors, don't expect any satellites to be picked up!)
+
+![GPS Neo-M8N](https://dl.dropboxusercontent.com/u/12816733/neo-m8n-GPS-connections.jpg)
 
 
 ## Getting started with DJI NAZA GPS
