@@ -1,13 +1,12 @@
 ![](http://static.rcgroups.net/forums/attachments/6/1/0/3/7/6/a9088858-102-inav.png)
 
-Wiki is available in other languages: [Русский](https://github.com/iNavFlight/ru_wiki/wiki)
+INAV is a fork of cleanflight with focus upon GPS features for both airplanes & multirotors.
 
-INAV is a fork of cleanflight with focus on GPS features.
-It currently supports position hold, RTH with predefined climb height, [[waypoints|iNavFlight Missions]] and follow-me. Both with airplanes & multirotors.
+iNav currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features. 
 
-INAV have some settings that are different than stock cleanflight, and simply restoring settings from older cleanflight won't work.
+iNav has many settings that are different than cleanflight, and simply restoring settings from older cleanflight won't work.
 
-**It is ABSOLUTELY mandatory to read these pages:**
+**As such it is ABSOLUTELY mandatory to read these pages:**
 
 - [Getting started with iNav](https://github.com/iNavFlight/inav/wiki/Getting-started-with-iNav)
 
@@ -17,4 +16,8 @@ INAV have some settings that are different than stock cleanflight, and simply re
 
 - [Fixed wing guide](https://github.com/iNavFlight/inav/wiki/Fixed-wing-guide) if you're going to use it in a fixed wing.
 
-- [Supported boards](Supported-boards)
+- Many flight controller boards are supported. See the [Supported boards](Supported-boards) page.
+
+You can download the iNav configurator for free [here](https://chrome.google.com/webstore/detail/inav-configurator/fmaidjmgkdkpafmbnmigkpdnpdhopgel).
+
+This Wiki is available in other languages: [Русский](https://github.com/iNavFlight/ru_wiki/wiki)
