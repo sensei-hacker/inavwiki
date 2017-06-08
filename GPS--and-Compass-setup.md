@@ -43,6 +43,8 @@ An important note is that on top of the protective shell there is an arrow, this
 
 When it comes to connecting this unit to your flight controller, the image below will be a massive help to you. This image shows the colour coding / output connections and you will need to connect these appropriately to your flight controller.
 
+![GPS Neo-M8N](https://dl.dropboxusercontent.com/u/12816733/neo-m8n-GPS-connections.jpg)
+
 **Important**: 
 You need to switch the Rx and Tx wires around. So you connect your GPS Tx wire (yellow) to your desired Rx pin and the GPS Rx wire (White) to your Tx pin on your flight controller.
 
@@ -65,8 +67,6 @@ You can confirm the GPS unit is working by going to the GPS tab in the iNav Conf
 If it is the first time you have connected the GPS unit, then it can take several minutes for a GPS fix to be obtained. This is perfectly normal. 
 
 **Note:** For the GPS unit to work & pick up satellites it needs an unobstructed view to the sky (so if using indoors, don't expect any satellites to be picked up!)
-
-![GPS Neo-M8N](https://dl.dropboxusercontent.com/u/12816733/neo-m8n-GPS-connections.jpg)
 
 
 ## Getting started with DJI NAZA GPS
