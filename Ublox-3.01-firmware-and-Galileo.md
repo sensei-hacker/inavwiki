@@ -26,7 +26,8 @@ If your devices comes with 3.01 firmware, or you flash it, then to enable Galile
 
 ![](https://static.rcgroups.net/forums/attachments/9/3/9/2/a10081487-180-Galileo_2.JPG)  
 ![](https://static.rcgroups.net/forums/attachments/9/3/9/2/a10081488-165-Galileo_1.JPG)
-  
+
+Using the UBLOX SVINFO command (either u-center or ublox-cli) will show if you have any Galileo satellites, which have an ID in the range E1-E36. Below, E11, E12 and E24 are Galileo satellites contributing to the overall GPS fix solution.  
 
 ````
 SVINFO: Channels 30
