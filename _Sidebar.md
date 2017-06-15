@@ -6,7 +6,7 @@
  - [Multirotor guide](/iNavFlight/inav/wiki/Multirotor-guide)
  - [Fixed-Wing Guide](/iNavFlight/inav/wiki/Fixed-wing-guide)
  - [YouTube video guides](/iNavFlight/inav/wiki/YouTube-video-guides)
- - [Failsafe](/iNavFlight/inav/wiki/Failsafe)
+ - [Setting up Failsafe for RTH](/iNavFlight/inav/wiki/Failsafe)
 
 # Sensors Setup & Calibration
 
