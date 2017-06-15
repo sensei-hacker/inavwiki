@@ -6,7 +6,7 @@ The goal is to configure both your flight controller and radio receiver so that 
 
 For failsafe to work optimally iNav needs to know it's in a failsafe event and not just doing regular RTH. This is necessary for example to correctly handle loss of GPS while returning to home.
 
-This assumes you have regular GPS modes like `RTH` working already.
+This assumes you have regular GPS modes like `RTH` working **already**.
 
 ## Configuration of receiver
 
