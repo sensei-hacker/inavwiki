@@ -37,6 +37,8 @@ With default iNav settings iNav will configure ublox GPS for you, no need to use
 
 Also be aware that some of our flight controllers can cause interference with the GPS causing low satellites or even no satellites at all, keep GPS as far as possible away and think of either shield your GPS or flight controller and other equipment that can cause interference.
 
+You can learn how to setup your GPS unit for use with iNav on [on this page](https://github.com/iNavFlight/inav/wiki/GPS--and-Compass-setup).
+
 ## Notes / Common issues
 
 * Old version of iNav configurator, verify that your on the latest version see [link](https://chrome.google.com/webstore/detail/inav-configurator/fmaidjmgkdkpafmbnmigkpdnpdhopgel). If it has failed to update, simple uninstall configurator and install it again.
