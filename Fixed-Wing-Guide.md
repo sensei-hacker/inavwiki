@@ -94,6 +94,8 @@ At this point everything should work as expected.
 * In iNav V1.7 the default RTL height is 10 metres (approx 32') which might be too low for flying sites with trees. You can change this to 70 metres (approx 230') by setting this value in the CLI tab and typing save afterwards:
 ``set nav_rth_altitude = 7000``
 
+* If you intend to glide for more than 10 seconds, in iNav 1.6 & 1.7 it's suggested that you also set this value, so that the model doesn't "failsafe" by itself when using zero throttle during a glide: ``set failsafe_throttle_low_delay = 0``
+
 * Take a few minutes to read through how the different [Flight Modes](https://github.com/iNavFlight/inav/wiki/Flight-modes) affect the model in the air.
 
 * Have `passthrough` mode configured so if it happens anything with gyro / accelerometer in the air you can use manual control. This includes if your flight controller resets during flight because of example an brownout.  
