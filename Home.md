@@ -1,10 +1,12 @@
 ![](http://static.rcgroups.net/forums/attachments/6/1/0/3/7/6/a9088858-102-inav.png)
 
-INAV is a fork of cleanflight with focus upon GPS features for both airplanes & multirotors.
+INAV is a fork of cleanflight with a heavy focus upon GPS features for both airplanes & multirotor models.
 
-iNav currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features. 
+iNav is being **actively being developed** and currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features. 
 
-iNav has many settings that are different than cleanflight, and simply restoring settings from older cleanflight won't work.
+A wide variety of inexpensive flight controller boards are supported. While Naze32 & CC3D flight control boards are supported with limited features, F3 & F4 flight control boards are **strongly suggested** to gain access to the full features of iNav & extended flight time abilities.
+
+iNav has many settings that are different than cleanflight, so while the configurator may look familiar to you, simply restoring settings from an older version of cleanflight won't work & the calibration process is very, very different.
 
 **As such it is ABSOLUTELY mandatory to read these pages:**
 
@@ -14,7 +16,7 @@ iNav has many settings that are different than cleanflight, and simply restoring
 
 - [Multirotor guide](https://github.com/iNavFlight/inav/wiki/Multirotor-guide) if you're going to use it in a multirotor.
 
-- [Fixed wing guide](https://github.com/iNavFlight/inav/wiki/Fixed-wing-guide) if you're going to use it in a fixed wing.
+- [Fixed wing guide](https://github.com/iNavFlight/inav/wiki/Fixed-wing-guide) if you're going to use it in a fixed wing model.
 
 - Many flight controller boards are supported. See the [Supported boards](Supported-boards) page.
 
