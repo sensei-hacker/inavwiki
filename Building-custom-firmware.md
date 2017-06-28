@@ -10,6 +10,10 @@ This guide attempts to explain the steps necessary to make simple, configuration
 
 You need a working development environment. There is [build environment documentation](https://github.com/iNavFlight/inav/tree/master/docs/development) for the major platforms (Linux, MacOS, Windows). This documentation tends to quickly become obsolete as compiler versions evolve (as will this page:). In particular, using contemporary compiler version (e.g. as of June 2017, `arm-none-eabi-gcc` 6.3.\*) is recommended, as a contemporary compiler  will most likely match that being used by iNav developers. For example, the [Building in Ubuntu](https://github.com/iNavFlight/inav/blob/master/docs/development/Building%20in%20Ubuntu.md) document is completely out of date; a modern Linux distribution (Ubuntu or Fedora current release) will provide a contemporary (good) compiler without having to use 3rd party repositories. Arch Linux may provide the opposite problem, its (June 2017) offering `arm-none-eabi-gcc` 7.1.\* creates larger hex files than the 6.3 series, and downgrading may be recommended. If in doubt, please ask on the [RC Groups thread](https://www.rcgroups.com/forums/showthread.php?2495732-Cleanflight-iNav-%28navigation-rewrite%29-project) for advice.
 
+## Virtual Machine Environment
+
+A step by step guide to creating a virtual machine as an Inav build environment is described in the wiki  [[Making a new Virtualbox to make your own INAV]]. While the instructions are slanted towards Windows and Virtualbox, they are applicable to any OS and virtualisation engine.
+
 # Target Specific Files
 
 ## Overview
