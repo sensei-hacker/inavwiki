@@ -197,7 +197,7 @@ The sensor hardware failure indication is backwards compatible with versions pri
 
 The LTM_X_counter value is incremented each transmission and rolls over (modulo 256). It is intended to enable consumers to estimate packet loss.
 
-Air Speed was added for 1.7.2. It is only provided where `PITOT` was defined at compile time and a pitot sensor is detected.
+Air Speed was added for 1.7.2. It is only provided where `PITOT` was defined at compile time and a pitot sensor is detected. It is somewhat strange that the extant S frame field was not used.
 
 ## Tuning Frame (T)
 
