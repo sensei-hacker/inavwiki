@@ -184,10 +184,10 @@ The payload is 6 bytes.
 | Data | Usage |
 | ---- | ---- |
 | HDOP | uint16 HDOP * 100 |
-| hw status | 1 byte |
-| LTM_X_counter | 1 byte |
-| Disarm Reason | 1 byte |
-| Air Speed | 1 byte m/s | 
+| hw status | uint8 |
+| LTM_X_counter | uint8 |
+| Disarm Reason | uint8 |
+| (unused) | 1 byte | 
 
 Note that hw status (hardware sensor status) is iNav 1.5 and later. If the value is non-zero, then a sensor has failed. 
 A complementary update has been made to MSP_STATUS (https://github.com/iNavFlight/inav/wiki/INAV-MSP-frames-changelog).
@@ -196,8 +196,6 @@ Thus, on disarming, the sensor status may be evinced from the MSP_STATUS/sensor 
 The sensor hardware failure indication is backwards compatible with versions prior to 1.5 (and other Multiwii / Cleanflight derivatives).
 
 The LTM_X_counter value is incremented each transmission and rolls over (modulo 256). It is intended to enable consumers to estimate packet loss.
-
-Air Speed was added for 1.7.2. It is only provided where `PITOT` was defined at compile time and a pitot sensor is detected. It is somewhat strange that the extant S frame field was not used.
 
 ## Tuning Frame (T)
 
