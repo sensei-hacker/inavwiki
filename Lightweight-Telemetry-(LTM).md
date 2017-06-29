@@ -187,7 +187,7 @@ The payload is 6 bytes.
 | hw status | 1 byte |
 | LTM_X_counter | 1 byte |
 | Disarm Reason | 1 byte |
-| Air Speed | 1 bytes m/s | 
+| Air Speed | 1 byte m/s | 
 
 Note that hw status (hardware sensor status) is iNav 1.5 and later. If the value is non-zero, then a sensor has failed. 
 A complementary update has been made to MSP_STATUS (https://github.com/iNavFlight/inav/wiki/INAV-MSP-frames-changelog).
