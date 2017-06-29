@@ -1,6 +1,7 @@
 # Link to YouTube video guides.
 
 * [Painless360 iNav playlist](http://www.youtube.com/playlist?list=PLYsWjANuAm4qdXEGFSeUhOZ10-H8YTSnH)
+* [Setting up & Using iNav 2017 by Matthew Ogborne](https://youtu.be/1DCCjPbHl_I?list=PLgoM4-umzSqd0clW-e_A12yKiOpV--3a2)
 * [RTNO INAV playlist (Flying Wings) ](https://www.youtube.com/playlist?list=PLgoM4-umzSqfGSJnSjoNoIz5IHoRtwzaj)
 * [Backup and restoring](https://www.youtube.com/watch?v=M5haTMW239E&feature=youtu.be)
 * [How to use presets](https://www.youtube.com/watch?v=tOXe_VHxVLg)
