@@ -1,6 +1,6 @@
 # Overview
 
-LTM was defined by "KipK" for the Ghetto Station antenna tracking project and originally implemented in Taulabs and Baseflight. It was adopted by iNav due to its excellent characteristics for low data rate / high update date telemetry.
+LTM was defined by "KipK" for the Ghetto Station antenna tracking project and originally implemented in Taulabs and Baseflight. It was adopted by iNav due to its excellent characteristics for low data rate / high update rate telemetry.
 
 Since its introduction to iNav, a number of extension have been added; these are documented below, in addition to the original frames.
 
@@ -12,7 +12,7 @@ The LTM protocol starts with "$T", followed by a function byte, the payload and 
 
 LTM telemetry can be read by [Ghettostation](https://github.com/KipK/Ghettostation),  [LTM Telemetry OLED ](https://github.com/sppnk/LTM-Telemetry-OLED) , [EZGUI](http://ez-gui.com/) , [MwpTools](https://github.com/stronnag/mwptools) and others.
 
-LTM can provide good telemetry down to 2400 (5Hz attitude updates). Due to restrictions in iNav 1.2 and earlier, 9600 is the lowest baud rate supported, which gives 10Hz attitude and 5Hz GPS data.
+LTM can provide good telemetry down to 2400 (5Hz attitude updates). Due to restrictions in iNav 1.2 and earlier, 9600 is the lowest baud rate supported, which gives 10Hz attitude and 5Hz GPS data. More recently (iNav 1.7.0), LTM is available from 1200 baud and higher; the data transmission frequency is automatically determined from the baud rate, but can be overridden by the user where the baud rate can support the required update frequency. See the  [iNav Telemetry documentation](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md#lighttelemetry-ltm) for CLI settings.
 
 The function consists of a single ASCII character, described below. Data is binary, little endian. The checksum is an XOR of the payload bytes.
 
