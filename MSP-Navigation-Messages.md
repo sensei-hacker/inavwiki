@@ -86,7 +86,7 @@ Note that altitude is measured from the "home" location, not absolute above mean
 
 # MSP_NAV_STATUS
 
-The following data are returned by a MSP_NAV_STATUS message. The texts are those defined by Wingui; multiwii and iNav support this message. Almost the same data is returned by the [iNav LTM NFRAME] (https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)#navigation-frame-n)
+The following data are returned by a MSP_NAV_STATUS message. The texts are those defined by Wingui; multiwii and iNav support this message. Almost the same data is returned by the [iNav LTM NFRAME](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)#navigation-frame-n)
 
 <table>
 <thead>
@@ -265,3 +265,7 @@ If you have a 3DR radio with the MW/MSP specific firmware, the follow data are s
 # Implementations
 
 The MSP NAV message set is implemented by mwptools (Linux), ezgui (Android) and WinGUI (MS Windows).
+
+# XML Mission Files
+
+mwptools, ezgui (and WinGUI) share an XML mission file format. A [reverse engineered definition (XSD)](https://github.com/stronnag/mwptools/blob/master/samples/mw-mission.xsd) can be found in the mwp samples  directory.
