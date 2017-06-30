@@ -67,6 +67,8 @@ The payload is 7 bytes
 | Airspeed | uchar, m/s |
 | Status | uchar |
 
+Airspeed (vice GPS ground speed in the G-frame) requires iNav 1.7.2 or later, with `PITOT` defined at build time, and a detected pitot sensor.  
+
 The status byte is used as
 
 | Bit | Usage |
