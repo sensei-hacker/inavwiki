@@ -71,7 +71,7 @@ Device with **SlotID** that was assigned to it during discovery phase must respo
 
 | Byte | Originator | Description |
 |------|------------|-------------|
-| 0    | Master     | Value of (0x40 + SlotID)  |
+| 0    | Master     | Value of (0x80 + SlotID)  |
 | 1-16 | Master     | Data packet (16 bytes)    |
 | 17   | Master     | CRC1 (over bytes 0-16)    |
 | 18   | Slave      | Acknowledgement flag (1 = received correctly) |
