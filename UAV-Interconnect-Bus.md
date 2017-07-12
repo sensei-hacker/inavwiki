@@ -47,11 +47,12 @@ CRC is calculated by the data originator and verified by the master.
 |------|------------|-------------|
 | 0    | Master     | Value of (0x00 + SlotID)  |
 | 1    | Master     | DevID of requested device |
-| 2    | Slave      | Poll interval (high byte) |
-| 3    | Slave      | Poll interval (low byte)  |
-| 4    | Slave      | Device flags (high byte)  |
-| 5    | Slave      | Device flags (low byte)   |
-| 6    | Slave      | CRC (over bytes 0-5)      |
+| 2    | Master     | CRC1 (over bytes 0-1)     |
+| 3    | Slave      | Poll interval (high byte) |
+| 4    | Slave      | Poll interval (low byte)  |
+| 5    | Slave      | Device flags (high byte)  |
+| 6    | Slave      | Device flags (low byte)   |
+| 7    | Slave      | CRC2 (over bytes 0-6)     |
 
 During discovery phase master sends *IDENTIFY* commands for each supported **DevID**. 
 Device with corresponding **DevID** must respond with desired poll interval (in milliseconds) and flag field.
@@ -62,8 +63,9 @@ Also, device which has detected it's **DevID** must remember the **SlotID** of t
 | Byte | Originator | Description |
 |------|------------|-------------|
 | 0    | Master     | Value of (0x40 + SlotID)  |
-| 1-16 | Slave      | Data packet (16 bytes)    |
-| 17   | Slave      | CRC (over bytes 0-16)     |
+| 1    | Master     | CRC1 (over byte 0)        |
+| 2-17 | Slave      | Data packet (16 bytes)    |
+| 18   | Slave      | CRC2 (over bytes 0-17)    |
 
 Device with **SlotID** that was assigned to it during discovery phase must respond to this command with a 16-byte data packet.
 
