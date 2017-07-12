@@ -25,6 +25,15 @@ Each slave device on a bus has a unique **DevID** which defines device functiona
 
 During discovery phase on the bus each device is assigned a **SlotID** which it must use for communicating with the master. **DevID** is only used during discovery phase.
 
+## Device capabilities
+
+During discovery each device must report capability flags (16-bit field, see IDENTIFY command).
+
+| Flag mask | Name       | Description |
+|-----------|------------|-------------|
+| 0x01      | HAS_READ   | Indicates that device supports READ command and should be polled periodically |
+| 0x02      | HAS_WRITE  | Indicates that device supports WRITE command and can accept data |
+
 ## Transactions on a bus
 
 Everything on a bus is coordinated by a master device (flight controller) and all transactions are organised in **slots**. There are at most 64 slots possible on a single bus.
