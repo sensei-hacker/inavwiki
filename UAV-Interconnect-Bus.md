@@ -17,7 +17,11 @@ Advantages: low price, low wire count
 
 ### Data format on the wire
 
-From data format point of view it's plain asynchronous serial with following parameters: 128000,8,n,1
+From data format point of view it's plain asynchronous serial with following parameters: 
+```
+115200,8,n,1
+```
+**FIXME: Chose a baud rate that has high reliability across multiple MCUs **
 
 ## Device addressing
 
