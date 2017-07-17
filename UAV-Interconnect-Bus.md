@@ -65,7 +65,11 @@ CRC is calculated by the data originator and verified by the master.
 | 4    | Slave      | Poll interval (low byte)  |
 | 5    | Slave      | Device flags (high byte)  |
 | 6    | Slave      | Device flags (low byte)   |
-| 7    | Slave      | CRC2 (over bytes 0-6)     |
+| 7    | Slave      | Device parameters [0]     |
+| 8    | Slave      | Device parameters [1]     |
+| 9    | Slave      | Device parameters [2]     |
+| 10   | Slave      | Device parameters [3]     |
+| 11   | Slave      | CRC2 (over bytes 0-10)    |
 
 During discovery phase master sends *IDENTIFY* commands for each supported **DevID**. 
 Device with corresponding **DevID** must respond with desired poll interval (in milliseconds) and flag field.
