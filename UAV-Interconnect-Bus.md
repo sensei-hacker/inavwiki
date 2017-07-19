@@ -97,3 +97,40 @@ Device with **SlotID** that was assigned to it during discovery phase must respo
 | 19   | Slave      | CRC2 (over bytes 0-17)    |
 
 Device with **SlotID** that was assigned to it during discovery phase must accept the data, verify the CRC and acknowledge it.
+
+## Devices
+
+It's recommended that each device use first byte of 16-byte READ payload as flag field with following values:
+
+| Bit | Mask | Description |
+|-----|------|-------------|
+| 0   | 0x01 | UIB_DATA_VALID - indicates data validity  |
+| 1   | 0x02 | UIB_DATA_NEW - indicates that data is actually new (relative to previous READ)  |
+
+### Device ID = 0x12 : Rangefinder
+
+Flag UIB_DATA_VALID will indicate that reading is valid (surface is in range and measurement is correct)
+
+Recommended payload format:
+
+```
+typedef struct __attribute__((packed)) {
+    uint8_t flags;
+    uint16_t distanceCm;
+} rangefinderData_t;
+```
+
+### Device ID = 0x80 : RC Receiver
+
+Flag UIB_DATA_VALID will indicate that receiver has a valid link to transmitter. This is an **inverse** of FAILSAFE flag in common digital receivers.
+
+Recommended payload format:
+
+```
+typedef struct __attribute__((packed)) {
+    uint8_t  flags;
+    uint8_t  rssi;
+    uint16_t sticks[4];     // Values in range [1000;2000] - raw stick values to pass to rcData[]
+    uint8_t  aux[6];        // Values in range [0;255] correspond to [1000;2000] range of rcData[]
+} rcReceiverData_t;
+```
