@@ -1,5 +1,25 @@
 ## INAV 1.7.1 MSP API Version 1.26
 
+### MSP_FW_CONFIG / MSP_SET_FW_CONFIG
+
+Get and set Fixed Wing options 
+
+Frame IDs:
+
+* MSP_FW_CONFIG, Frame ID _23_
+* MSP_SET_FW_CONFIG, Frame ID _24_
+
+| Length        | Setting                       | Notes                         |
+| -----         | -----                         | -----                         |
+| 2 | `nav_fw_cruise_thr` | |
+| 2 | `nav_fw_min_thr` | |
+| 2 | `nav_fw_max_thr` | |
+| 1 | `nav_fw_bank_angle` | |
+| 1 | `nav_fw_climb_angle` | |
+| 1 | `nav_fw_dive_angle` | |
+| 1 | `nav_fw_pitch2thr` | |
+| 2 | `nav_fw_loiter_radius` | |
+
 ### MSP_RTH_AND_LAND_CONFIG / MSP_SET_RTH_AND_LAND_CONFIG
 
 Get and set Return-To-Home and Land options 
