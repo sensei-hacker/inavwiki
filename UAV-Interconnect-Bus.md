@@ -130,7 +130,10 @@ Recommended payload format:
 typedef struct __attribute__((packed)) {
     uint8_t  flags;
     uint8_t  rssi;
-    uint16_t sticks[4];     // Values in range [1000;2000] - raw stick values to pass to rcData[]
-    uint8_t  aux[6];        // Values in range [0;255] correspond to [1000;2000] range of rcData[]
+    uint16_t sticks[4];
+    uint8_t  aux[6];
 } rcReceiverData_t;
 ```
+
+Values of `sticks[]` array should hold raw channel value in [1000;2000] range.
+Values of `aux[]` array should be in range [0;255] and will correspond to [1000;2000] values of AUX channel respectively.
