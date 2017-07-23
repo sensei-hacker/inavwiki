@@ -178,16 +178,16 @@ smix 6 6 8 -100 0 0 100         # servo 6 takes RC AUX 1 (camera yaw)
 smix 7 7 9 -100 0 0 100         # servo 7 takes RC AUX 2 (drop bomb :-))
 ```
 
-## Skyhunter Nano (no rudder)
+## Skyhunter Nano (no rudder) - 1.7.2 onwards
 
 ```
 mixer CUSTOMAIRPLANE
 mmix reset
 mmix 0 1.000 0.000 0.000 0.000
 smix reset
-smix 0 3 0 -100 0 0 100 
-smix 1 4 0 -100 0 0 100 
-smix 2 2 1 -100 0 0 100 
+smix 0 3 0 -100 0
+smix 1 4 0 -100 0
+smix 2 2 1 -100 0
 ```
 
 # Setups that were never implemented in Baseflight, Cleanflight or any of it's derivatives
