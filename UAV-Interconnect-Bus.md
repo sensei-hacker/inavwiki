@@ -75,6 +75,8 @@ During discovery phase master sends *IDENTIFY* commands for each supported **Dev
 Device with corresponding **DevID** must respond with desired poll interval (in milliseconds) and flag field.
 Also, device which has detected it's **DevID** must remember the **SlotID** of the transaction - this will be the **SlotID** assigned to the device.
 
+Device parameters field (4 bytes) is device-specific and may be used to pass extended capabilities or non-standard flags to the host driver.
+
 ### READ (0x40)
 
 | Byte | Originator | Description |
