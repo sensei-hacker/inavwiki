@@ -106,6 +106,12 @@ It's recommended that each device use first byte of 16-byte READ payload as flag
 |-----|------|-------------|
 | 0   | 0x01 | UIB_DATA_VALID - indicates data validity  |
 | 1   | 0x02 | UIB_DATA_NEW - indicates that data is actually new (relative to previous READ)  |
+| 2   | 0x04 | Unused, must be zero |
+| 3   | 0x08 | Unused, must be zero |
+| 4   | 0x10 | Unused, must be zero |
+| 5   | 0x20 | Unused, must be zero |
+| 6   | 0x40 | Unused, must be zero |
+| 7   | 0x80 | Unused, must be zero |
 
 ### Device ID = 0x12 : Rangefinder
 
