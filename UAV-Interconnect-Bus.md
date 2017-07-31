@@ -7,7 +7,7 @@ It's compatible with all existing controllers that have a spare UART and designe
 
 This option is taken from automotive applications and uses CAN bus transceivers (MCP2551 or SN65HVD232) to convert between twisted pair and UART. A special converter is required between each device and a bus. While this option is more expensive it's also very reliable.
 
-Advantages: high reliability, long wires possible
+Advantages: high reliability, long wires possible.
 
 ### Option 2: Shared wire
 
@@ -22,6 +22,10 @@ From data format point of view it's plain asynchronous serial with following par
 115200,8,n,1
 ```
 **FIXME: Chose a baud rate that has high reliability across multiple MCUs **
+
+### Notes
+
+Both differential signalling and shared wire connection options are verified to work.
 
 ## Device addressing
 
