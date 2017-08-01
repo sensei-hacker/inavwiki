@@ -14,7 +14,39 @@ If you want to use the external magnetometer (built in in your GPS) and you have
   * When using DJI NAZA gps this is not true, DJI NAZA sends compass over serial and does not use the I2C bus)
   * On MPU9250 board internal magnetometer is an AK8963, most GPS pucks are HMC5883L. So no need to remove hardware, only choose which one to use with cli command `mag_hardware`
 
-Otherwise just use the internal FC magnetometer, but keep aware of magnetic interference (not recommended).
+If  you elect to use the internal FC magnetometer you are highly likely to have poor results due to magnetic interference (not recommended).
+
+## Setting up the compass alignment
+
+Before attempting any navigation modes, you should verify that the compass alignment is correct (Configurator or CLI `set align_mag`)
+* Perform any tests away of sources of magnetic interference. Domestic applicances or even audio speakers can cause erroneous affects.
+* Use an analogue compass in preference to a digital (mobile phone) compass. The compass in your phone is likely to be a similar chip to that on your aircraft, and is as susceptible to errors of interference and calibration
+* Alternatively, if you know the orientation of surrounding landmarks (e.g. my house is pretty much N/S), then you can do  static tests against land orientation.
+
+Check your machine at cardinal points (North, East, South, West). Degree perfect alignment is not necessary (and probably not measurable), but you should aim for +/- 5° of known magnetic direction.
+
+* If the values are incorrect by a multiple of 90°, then the numeric alignment needs to be changed
+* If the values are just randomly wrong across the cardinal points, then FLIP is probably wrong (as well).
+
+## Initial flight tests
+
+Once  you're content that the static configuration of the compass is correct, it's time to go flying. There is still no guarantee that the machine will not generate interference, so it's advisable to do some controlled testing before attempting more advanced navigation modes:
+
+* In a clear space (no trees!) attempt a simple line of slight POSHOLD. If the craft fails to hold (toilet bowling, or ever increasing circles (in range and speed)), be prepared to disengage PH and take manual control.
+
+To confirm magnetic interference, blackbox logging is most useful:
+
+* Fly at a reasonable speed (> 5m/s) in straight lines, as close as possible to a 90° crossing paths, or a square / rectangular pattern.
+
+* The blackbox can be analysed to compare the course over the ground (from GPS) with the compass readings.
+
+* If you need help doing this, post the log in the iNav RC Groups forum and ask for help. There are a number of users familiar with this type of analysis who will assist.
+
+* It is necessary to fly at a reasonable speed in order to get useful GPS data. Just hovering is not useful as the GPS cannot detect direction without movement.
+
+* If you use mwp as a ground station with telemetry, then mwp logs can also provide useful analysis, but blackbox is preferred, as there is more data and it is also possible to analyse throttle affects.
+
+Only when you're content that the compass reads correctly for all throttle settings and directions should you progress to more advanced navigation feature (way points, return to home). The majority of navigation failures are due to poorly performing compasses. 
 
 ## Getting started with Ublox GPS
 - Physically connect your GPS to your FC using UART or softserial. Connect RX from GPS to TX on FC, TX from GPS to RX on FC
