@@ -190,6 +190,21 @@ smix 1 4 0 -100 0
 smix 2 2 1 -100 0
 ```
 
+## Nano Talon with 2 Servos for the V-Tail
+Note: See [this video](https://www.youtube.com/watch?v=IOApkFPGKtc) for the placement & orientation of the extra servo to form a V-Tail with rudder.
+```
+# mixer
+mixer CUSTOMAIRPLANE
+mmix reset
+mmix 0 1.0 0.0 0.0 0.0         # motor
+smix reset 
+smix 0 2 0 -100 0 0 100         # servo 2 takes Stabilised ROLL (PWM 3)
+smix 1 3 1 -85 0 0 100          # servo 3 takes Stabilised PITCH (PWM 4)
+smix 2 4 1 85 0 0 100         # servo 4 takes Stabilised -PITCH (PWM 5)
+smix 3 3 2 -75 0 0 100         # servo 3 takes Stabilised YAW (PWM 4)
+smix 4 4 2 -75 0 0 100         # servo 4 takes Stabilised YAW (PWM 5)
+```
+
 # Setups that were never implemented in Baseflight, Cleanflight or any of it's derivatives
 
 # Disabled setups
