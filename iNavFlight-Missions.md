@@ -43,11 +43,13 @@ In addition to mission planning and logger, mwp also supports the replay of blac
 
 There is a [RC Groups support forum](http://www.rcgroups.com/forums/showthread.php?t=2633708)
 
+## Mobile Flight (IOS / iphone).
+
+Mobile Flight: Configuration and ground control app for iNav (and Betaflight) on iPhone http://www.rcgroups.com/forums/showthread.php?t=2601895&highlight=ios. 
+
 ## Potential solutions for other platforms
 
 mwp can be run in a virtual machine on MS Windows and OSX / macOS, using virtualisation tools such as VirtualBox and Parallels. 
-
-Mobile Flight: Configuration and ground control app for Cleanflight on iPhone http://www.rcgroups.com/forums/showthread.php?t=2601895&highlight=ios appears to have some support for iNav for GPS logging at least. This application is in an early stage of development.
 
 WinGUI is a Windows program developed for Multiwii-nav. It is currently somewhat abandoned, but would be a viable basis for developing a Windows program for iNav navigation (or better, supporting both Multiwii and iNav, as do the other tools described here). Should anyone wish to rescue this fine application, the source code (GPL v3) may be found at https://code.google.com/archive/p/mw-wingui/.
 
