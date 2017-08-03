@@ -22,7 +22,7 @@ The default flight mode is [`RATE`](/iNavFlight/inav/wiki/Modes#default-flight-m
 |  [`NAV ALTHOLD`](/iNavFlight/inav/wiki/Navigation-modes#althold---altitude-hold) | Used to hold altitude. recommend to use in combination with `angle` mode or `nav poshold` |
 |  [`TURN ASSIST`](/iNavFlight/inav/wiki/Modes#turn-assist)  | Makes copter do Yaw turns on parallel to the ground plane regardless of tilt. |
 |  [`AIR MODE`](/iNavFlight/inav/wiki/Modes#air-mode) | Keeps PID controller active at zero throttle |
-|  [`SURFACE`](/iNavFlight/inav/wiki/Modes#surface) | Used to follow terrain, needs SONAR. Not implemented properly and should not be used. |
+|  [`SURFACE`](/iNavFlight/inav/wiki/Modes#surface) | Used to follow terrain, needs a rangefinder ( example sonar ). Not implemented properly and should not be used. |
 |  [`HEADING HOLD`](/iNavFlight/inav/wiki/Modes#heading-hold) | Holds current heading using yaw rotation (rudder). Can be used with and without compass. |
 |  [`HEADFREE`](/iNavFlight/inav/wiki/Modes#headfree) | Head Free - When enabled yaw has no effect on pitch/roll inputs |
 |  [`HEADADJ`](/iNavFlight/inav/wiki/Modes#headadj) | Heading Adjust - Sets a new yaw origin for HEADFREE mode |
