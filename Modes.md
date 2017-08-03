@@ -105,7 +105,7 @@ Airplane launch assistant
 This flight mode is intended to provide assistance for launching the fixed-wing UAVs. Launch detection works by monitoring airplane acceleration - once it breaches the threshold for a certain amount of time launch sequence is started.
 
 
-The entire time `NAV LAUNCH` mode it will try and stabilize plane, it will target zero roll, zero yaw and predefined climb angle. The I-gain of the PID regulator is also disabled to prevent I-gain growing during launch until motor is started. When succesful launch is detected it waits for preconfigured amount of time before starting motor.
+The entire time `NAV LAUNCH` mode it will try and stabilize plane, it will target zero roll, zero yaw and predefined climb angle. The I-gain of the PIFF regulator is also disabled to prevent I-gain growing during launch until motor is started. When succesful launch is detected it waits for preconfigured amount of time before starting motor.
 
 `NAV LAUNCH` is automatically aborted after 5 seconds or by any pilot input on PITCH/ROLL stick. When it has aborted it goes to whichever selected mode, which can be Angle, Rate, Horizon, RTH or a waypoint mission (if no other mode is selected it will go to Rate mode).
 
@@ -121,7 +121,9 @@ Sequence for launching airplane using `NAV LAUNCH` mode looks like this:
 1. Put throttle stick to desired throttle value to be set **after** launch is finished.
 1. Throw the airplane.  It must be thrown leveled, or thrown by slinging it by wingtip.
 1. Motors will start at pre-configured `nav_fw_launch_thr` (default 1700) after `nav_fw_launch_motor_delay` (500ms)
-1. Launch sequence will finish when pilot switch off the NAV LAUNCH mode or move the sticks.
+1. Launch sequence will finish when pilot switch off the NAV LAUNCH mode or move the sticks.  
+
+If it won't detect launch it's possible that you need to lower your threshold. Look at the CLI variables.
 
 ### PASSTHRU
 Direct servo control in fixed-wing.
