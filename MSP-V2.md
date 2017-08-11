@@ -8,15 +8,15 @@ This page describes MSPV2 (MultiWii Serial Protocol Version 2) to be introduced 
 
 The reasons for introducing a incrementally improved version of MSP include:
 
-* Limited message IDs. MSP v1 proved 255 message IDs; between iNav and BetaFlight (CleanFlight), this space is almost exhausted.
-* Limited message size. MSP v1 is limited to 255 byte message payloads. This is already a problem and can only get worst. Attempts to address this limitation in MSP v1 (the JUMBO frame extension) are a 'band-aid' and still suffer from the next restriction.
+* Limited message IDs. MSP v1 provided 255 message IDs; between iNav and BetaFlight (CleanFlight), this space is almost exhausted.
+* Limited message size. MSP v1 is limited to 255 byte message payloads. This is already a problem and can only get worse. Attempts to address this limitation in MSP v1 (the JUMBO frame extension) are a 'band-aid' and still suffer from the next restriction.
 * Inadequate checksumming. MSP v1 uses a simple XOR checksum. This is vulnerable to simple communications errors (transposed bits) and is somewhat weak.
 
 MSP V2 addresses these shortcomings:
 
-* 16bit message space. 65535 message IDs. For backwards compatibility, message IDs 0-255 map onto the analagous MSP v1 messages.
+* 16bit message space. 65535 message IDs. For backwards compatibility, message IDs 0-255 map onto the analogous MSP v1 messages.
 * 16bit payload.
-* crc8_dvb_s2 checksum algoritm. This is a single byte algorithm that is much more robust than the XOR checksum in MSP v1.
+* crc8_dvb_s2 checksum algorithm. This is a single byte algorithm that is much more robust than the XOR checksum in MSP v1.
 
 ## MSP V2 Message structure
 
@@ -34,7 +34,7 @@ MSP V2 addresses these shortcomings:
 ## V2 in V1 Encapsulation
 
 It is possible to encapsulate V2 messages in a V1 message in a way that is transparent to the consumer. This is implemented by setting the V1 function id to 255 and creating a payload of a V2 message without the first three header bytes.
-Thus a V1 consumer would see a not understood message rather than a communications error. This is not encouraged; rather it is prefeered that MSP consumers should implement V2. 
+Thus a V1 consumer would see a not understood message rather than a communications error. This is not encouraged; rather it is preferred that MSP consumers should implement V2. 
 
 ![V2 in V1](https://user-images.githubusercontent.com/11059099/29072728-4605dbfa-7c8c-11e7-996a-8106670cca9e.png)
  
