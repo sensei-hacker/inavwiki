@@ -1,0 +1,119 @@
+# Multiwii Serial Protocol Version 2
+
+## Overview
+
+This page describes MSPV2 (MultiWii Serial Protocol Version 2) to be introduced in iNav 2.0. MSP is the remote messaging protocol used by iNav and other flight controllers such as MultiWii, CleanFlight and BetaFlight.
+
+## Rationale
+
+The reasons for introducing a incrementally improved version of MSP include:
+
+* Limited message IDs. MSP v1 proved 255 message IDs; between iNav and BetaFlight (CleanFlight), this space is almost exhausted.
+* Limited message size. MSP v1 is limited to 255 byte message payloads. This is already a problem and can only get worst. Attempts to address this limitation in MSP v1 (the JUMBO frame extension) are a 'band-aid' and still suffer from the next restriction.
+* Inadequate checksumming. MSP v1 uses a simple XOR checksum. This is vulnerable to simple communications errors (transposed bits) and is somewhat weak.
+
+MSP V2 addresses these shortcomings:
+
+* 16bit message space. 65535 message IDs. For backwards compatibility, message IDs 0-255 map onto the analagous MSP v1 messages.
+* 16bit payload.
+* crc8_dvb_s2 checksum algoritm. This is a single byte algorithm that is much more robust than the XOR checksum in MSP v1.
+
+## MSP V2 Message structure
+
+| Offset | Usage | Comment |
+| ---- | ---- | ---- |
+| 0 | $ | Same lead-in as V1 |
+| 1 | X | 'X' in place of v1 'M' |
+| 2 | direction indictor | As V1, relative to the FC, <, > or ! (error response) |
+| 3 | flag | uint8, flag, usage to be defined (set to zero) |
+| 4 | function | uint16. 0 - 255 same function as V1 for backwards compatibility |
+| 6 | payload size | uint16 |
+| 8 | payload | n (up to 65535 bytes) payload | 
+| n+8 | checksum |  uint8, (n= payload size), crc8_dvb_s2 checksum |
+
+## V2 in V1 Encapsulation
+
+It is possible to encapsulate V2 messages in a V1 message in a way that is transparent to the consumer. This is implemented by setting the V1 function id to 255 and creating a payload of a V2 message without the first three header bytes.
+Thus a V1 consumer would see a not understood message rather than a communications error. This is not encouraged; rather it is prefeered that MSP consumers should implement V2. 
+
+![V2 in V1](https://user-images.githubusercontent.com/11059099/29072728-4605dbfa-7c8c-11e7-996a-8106670cca9e.png)
+ 
+## Sample Message
+
+### MSP_IDENT
+
+As MSP V2 (function id: 100, payload size: 0)
+
+````
+"$X<\x00d\x00\x00\x00\x8F"
+24 58 3c 00 64 00 00 00 8f 
+````
+### Embedded example
+
+For a mythical V2 "Hello World" message with function id 0x4242 (note: this function id is not implemented in iNav), as MSPV2 (hex bytes), 18 byte payload, flag set to 0xa5:
+
+````
+24 58 3e a5 42 42 12 00 48 65 6c 6c 6f 20 66 6c 79 69 6e 67 20 77 6f 72 6c 64 82 
+````
+
+And embedded in a V1 message (hex bytes):
+
+````
+24 4d 3e 18 ff a5 42 42 12 00 48 65 6c 6c 6f 20 66 6c 79 69 6e 67 20 77 6f 72 6c 64 82 e1 
+````
+The V2 capable CGS **mwp** reports this as:
+````
+2017-08-11T19:50:12+0100 MSP_CMDS_HELLO_WORLD frame (18): flag=0xa5 "Hello flying world"
+````
+Note: This message function in NOT implemented in the FC. It is just a test case in mwp.
+
+## crc_dvb_s2 example
+
+The checksum should be initialised to zero. The following 'C' code snippet shows the iNav implementation.
+````
+uint8_t crc8_dvb_s2(uint8_t crc, unsigned char a)
+{
+    crc ^= a;
+    for (int ii = 0; ii < 8; ++ii) {
+        if (crc & 0x80) {
+            crc = (crc << 1) ^ 0xD5;
+        } else {
+            crc = crc << 1;
+        }
+    }
+    return crc;
+}
+````
+And **pseudo-code** usage:
+````
+int len; // payload size
+uint8_t *msg = calloc(1,len+9); // allocation for message
+msg[0] = '$';
+...
+// complete message content
+uint8_t ck2 = 0; // initialise CRC
+for(int i = 3; i < len+8; i++)
+    crc8_dvb_s2(ck2, msg[i]); // loop over summable data
+msg[len+8] = ck2;
+````
+
+## MSP v1 JUMBO Messages
+
+As the MSP v1 JUMBO messages is not obviously documented elsewhere:
+
+* This is a MSP v1 `$M ... ` message
+* Set the function code as normal (0-255)
+* Set the payload size to 255 
+* set the real real payload size as the first two bytes of the payload
+* Then the real payload
+* Then a MSP V1 XOR checksum as normal
+
+One could embed a MSP V2 message within a MSP V1 JUMBO frame, but this is not likely to be well supported by consumers. If you need V2, please use it natively. 
+
+# MSP V2 Message Catalogue
+
+At the time of writing, no MSP V2 messages have been defined (0x4242 is a joke, not a land grab). It is hoped that a message catalogue can be cooperatively developed by FC authors to avoid the non-interoperable fragmentation in MSP V1. 
+
+| Function ID | Usage | FCs implemntating | Documentation Link |
+| ---- | ---- | ---- | ---- |
+|   0-254   | Legacy     | iNav, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
