@@ -20,16 +20,18 @@ MSP V2 addresses these shortcomings:
 
 ## MSP V2 Message structure
 
-| Offset | Usage | Comment |
-| ---- | ---- | ---- |
-| 0 | $ | Same lead-in as V1 |
-| 1 | X | 'X' in place of v1 'M' |
-| 2 | direction indictor | As V1, relative to the FC, <, > or ! (error response) |
-| 3 | flag | uint8, flag, usage to be defined (set to zero) |
-| 4 | function | uint16. 0 - 255 is the same function as V1 for backwards compatibility |
-| 6 | payload size | uint16 |
-| 8 | payload | n (up to 65535 bytes) payload | 
-| n+8 | checksum |  uint8, (n= payload size), crc8_dvb_s2 checksum |
+| Offset | Usage | CRC |Comment |
+| ---- | ---- | ---- | --- |
+| 0 | $ |  | Same lead-in as V1 |
+| 1 | X |  | 'X' in place of v1 'M' |
+| 2 | direction indictor |  | As V1, relative to the FC, <, > or ! (error response) |
+| 3 | flag | ✔  | uint8, flag, usage to be defined (set to zero) |
+| 4 | function | ✔  |uint16. 0 - 255 is the same function as V1 for backwards compatibility |
+| 6 | payload size | ✔  |uint16 |
+| 8 | payload |  ✔ | n (up to 65535 bytes) payload | 
+| n+8 | checksum |  | uint8, (n= payload size), crc8_dvb_s2 checksum |
+
+The fields marked with a ✔ are included in the checksum calculation.
 
 ## V2 in V1 Encapsulation
 
@@ -65,7 +67,7 @@ The V2 capable CGS **mwp** reports this as:
 ````
 2017-08-11T19:50:12+0100 MSP_CMDS_HELLO_WORLD frame (18): flag=0xa5 "Hello flying world"
 ````
-Note: This message function in NOT implemented in the FC. It is just a test case in mwp.
+Note: This message function is NOT implemented in the FC. It is just a (temporary) test case in mwp.
 
 ## crc_dvb_s2 example
 
