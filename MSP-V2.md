@@ -9,14 +9,14 @@ This page describes MSPV2 (MultiWii Serial Protocol Version 2) to be introduced 
 The reasons for introducing a incrementally improved version of MSP include:
 
 * Limited message IDs. MSP v1 provided 255 message IDs; between iNav and BetaFlight (CleanFlight), this space is almost exhausted.
-* Limited message size. MSP v1 is limited to 255 byte message payloads. This is already a problem and can only get worse. Attempts to address this limitation in MSP v1 (the JUMBO frame extension) are a 'band-aid' and still suffer from the next restriction.
-* Inadequate checksumming. MSP v1 uses a simple XOR checksum. This is vulnerable to simple communications errors (transposed bits) and is somewhat weak.
+* Limited message size. MSP v1 is limited to 255 byte message payloads. This is already a problem and can only get worse. The extant attempt to address this limitation in MSP v1 (the JUMBO frame extension) is a 'band-aid' and still suffers from the next restriction.
+* Weak check-summing. MSP v1 uses a simple XOR checksum. This is vulnerable to simple communications errors (transposed bits). It can fail to detect common transmission corruptions.
 
 MSP V2 addresses these shortcomings:
 
 * 16bit message space. 65535 message IDs. For backwards compatibility, message IDs 0-255 map onto the analogous MSP v1 messages.
 * 16bit payload.
-* crc8_dvb_s2 checksum algorithm. This is a single byte algorithm that is much more robust than the XOR checksum in MSP v1.
+* crc8_dvb_s2 checksum algorithm. This is a single byte CRC algorithm that is much more robust than the XOR checksum in MSP v1.
 
 ## MSP V2 Message structure
 
@@ -114,7 +114,7 @@ One could embed a MSP V2 message within a MSP V1 JUMBO frame, but this is not li
 
 # MSP V2 Message Catalogue
 
-At the time of writing, no MSP V2 messages have been defined (0x4242 is a joke, not a land grab). It is hoped that a message catalogue can be cooperatively developed by FC authors to avoid the non-interoperable fragmentation in MSP V1. 
+At the time of writing, no MSP V2 messages have been defined (0x4242 is a joke, not a land grab). It is hoped that a message catalogue can be cooperatively developed by FC authors to avoid the current fragmentation in MSP V1. 
 
 | Function ID | Usage | FCs implemntating | Documentation Link |
 | ---- | ---- | ---- | ---- |
