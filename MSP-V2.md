@@ -116,7 +116,12 @@ One could embed a MSP V2 message within a MSP V1 JUMBO frame, but this is not li
 
 At the time of writing, no MSP V2 messages have been defined (0x4242 is a joke, not a land grab). It is hoped that a message catalogue can be cooperatively developed by FC authors to avoid the current fragmentation in MSP V1. 
 
+Suggested approach is to allocate blocks of MSPv2 messages to certain firmwares - use high nibble of Function ID as firmware family identifier. This will allow up to 4096 firmware-specific messages.
+
 | Function ID | Usage | Supports flags | FCs implemntating | Documentation Link |
 | ----- | ---------- | ---- | ---- | ---- |
 | 0x0000-0x00FE | Legacy     |  ✘   | iNav, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
 | 0x1000-0x1FFF | INAV-specific     |  ✘   | iNav    |      |
+| 0xF000-0xFFFF | PG access    |  ✔   | N/A    |      |
+
+*) PG access is to directly access configuration data (parameter groups). Exact operation (Read/Write) is defined by flags. Exact specification of parameter group access is to be defined.
