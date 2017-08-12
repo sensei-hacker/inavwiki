@@ -119,4 +119,4 @@ At the time of writing, no MSP V2 messages have been defined (0x4242 is a joke, 
 | Function ID | Usage | Supports flags | FCs implemntating | Documentation Link |
 | ----- | ---------- | ---- | ---- | ---- |
 | 0x0000-0x00FE | Legacy     |  ✘   | iNav, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
-| 0x1000-0x1FFF | INAV     |  ✘   | iNav-specific MSP messages    |      |
+| 0x1000-0x1FFF | INAV-specific     |  ✘   | iNav    |      |
