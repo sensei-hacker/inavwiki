@@ -124,4 +124,4 @@ Suggested approach is to allocate blocks of MSPv2 messages to certain firmwares 
 | 0x1000-0x1FFF | INAV-specific     |  ✘   | iNav    |      |
 | 0xF000-0xFFFF | PG access    |  ✔   | N/A    |      |
 
-*) PG access is to directly access configuration data (parameter groups). Exact operation (Read/Write) is defined by flags. Exact specification of parameter group access is to be defined.
+*) PG access is to directly access configuration data (parameter groups). Parameter group ID (PGN) is defined by lower 12 bits of Function ID. Parameter group version and exact operation (Read/Write) is defined by flags field. Exact specification of parameter group access is yet to be defined.
