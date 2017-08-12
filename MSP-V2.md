@@ -116,6 +116,7 @@ One could embed a MSP V2 message within a MSP V1 JUMBO frame, but this is not li
 
 At the time of writing, no MSP V2 messages have been defined (0x4242 is a joke, not a land grab). It is hoped that a message catalogue can be cooperatively developed by FC authors to avoid the current fragmentation in MSP V1. 
 
-| Function ID | Usage | FCs implemntating | Documentation Link |
-| ---- | ---- | ---- | ---- |
-|   0-254   | Legacy     | iNav, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
+| Function ID | Usage | Supports flags | FCs implemntating | Documentation Link |
+| ----- | ---------- | ---- | ---- | ---- |
+| 0x0000-0x00FE | Legacy     |  ✘   | iNav, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
+| 0x1000-0x1FFF | INAV     |  ✘   | iNav-specific MSP messages    |      |
