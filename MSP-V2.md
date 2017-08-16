@@ -122,6 +122,3 @@ Suggested approach is to allocate blocks of MSPv2 messages to certain firmwares 
 | ----- | ---------- | ---- | ---- | ---- |
 | 0x0000-0x00FE | Legacy     |  ✘   | iNav, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
 | 0x1000-0x1FFF | INAV-specific     |  ✘   | iNav    |      |
-| 0xF000-0xFFFF | PG access    |  ✔   | N/A    |      |
-
-*) PG access is to directly access configuration data (parameter groups). Parameter group ID (PGN) is defined by lower 12 bits of Function ID. Parameter group version and exact operation (Read/Write) is defined by flags field. Exact specification of parameter group access is yet to be defined.
