@@ -117,13 +117,15 @@ Sequence for launching airplane using `NAV LAUNCH` mode looks like this:
 
 1. Set switch to `NAV LAUNCH` mode prior to arming (note that it won't actually enable until arming)
 1. ARM the plane. Motor should start spinning at min_throttle (if `MOTOR_STOP` is active, motor won't spin)
-1. Verify that motor don't respond to throttle stick motion. Don't touch the right stick!
+1. Verify that motor don't respond to throttle stick motion. Don't touch the pitch/roll stick!
 1. Put throttle stick to desired throttle value to be set **after** launch is finished.
 1. Throw the airplane.  It must be thrown leveled, or thrown by slinging it by wingtip.
 1. Motors will start at pre-configured `nav_fw_launch_thr` (default 1700) after `nav_fw_launch_motor_delay` (500ms)
 1. Launch sequence will finish when pilot switch off the NAV LAUNCH mode or move the sticks.  
 
 If it won't detect launch it's possible that you need to lower your threshold. Look at the CLI variables.
+
+CAUTION: Motors will spin if you unset `NAV LAUNCH` mode after arming.
 
 ### PASSTHRU
 Direct servo control in fixed-wing.
