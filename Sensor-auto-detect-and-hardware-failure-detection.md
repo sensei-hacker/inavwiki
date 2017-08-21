@@ -5,13 +5,13 @@ When it finds a sensor it will change the parameter to the one found, example `B
 
 Reason for switching from `AUTO` to the detected sensor is to make the hardware failure detection work properly.
 
-Default value after an new firmware flash is `AUTO`, this will cause the firmware to look for sensors on first boot, and set the found sensors.
+Default value after a new firmware flash is `AUTO`, this will cause the firmware to look for sensors on first boot, and set the found sensors.
 
-If you connect a magnetometer after first boot it will not autodetect it, then you will have to either spesify `mag_hardware` manually, or do a new `mag_hardware = AUTO` to try and auto detect mag. ( This also applies if you already have an external mag connected, but dont have it powered up on first boot )
+If you connect a magnetometer after first boot it will not auto-detect it, then you will have to either specify `mag_hardware` manually, or do a new `mag_hardware = AUTO` to try and auto detect mag. ( This also applies if you already have an external mag connected, but don't have it powered up on first boot )
 
 # Hardware failure detection
 
-Since version 1.5 INAV features hardware failure detection. At run time all sensors - GPS, BARO, MAG, ACC, GYRO, SONAR are periobically checked by a diagnostic system. There are 4 cases for each sensor:
+Since version 1.5 INAV features hardware failure detection. At run time all sensors - GPS, BARO, MAG, ACC, GYRO, SONAR are periodically checked by a diagnostic system. There are 4 cases for each sensor:
 
 **Case #1**: If sensor is not configured (`*_hardware` setting set to `NONE` or in case of GPS feature is not enabled) it's not monitored by diagnostic system, reported as `NOT AVAILABLE` and is not considered as a hardware failure.
 
@@ -25,4 +25,4 @@ If sensor is configured it's checked periodically and it's status is reported to
 
 If any of the sensors is in `NOT DETECTED` or `NOT HEALTHY` state - the board will not ARM and `FAIL` will be indicated for `Hardware health` pre-arming check in the Configurator.
 
-Hardware detection failure does not work while in flight. Only detection working is if iNav looses position data, and it does not have knowlegde of where it is anymore, example loosing GPS lock. This will cause the machine to exit GPS modes, and if its during failsafe RTH it will emergency land.
+Hardware detection failure does not work while in flight. Only detection working is if iNav looses position data, and it does not have knowledge of where it is anymore, example loosing GPS lock. This will cause the machine to exit GPS modes, and if its during fail-safe RTH it will emergency land.
