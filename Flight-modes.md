@@ -12,7 +12,7 @@ The default flight mode is [`RATE`](/iNavFlight/inav/wiki/Modes#default-flight-m
 |  [`NAV POSHOLD`](/iNavFlight/inav/wiki/Navigation-modes#poshold---horizontal-position-hold) | Used to hold position in 2d space with GPS. Combine with ALTHOLD to get 3d position lock |
 |  [`NAV RTH`](/iNavFlight/inav/wiki/Navigation-modes#rth---return-to-home) | Used for Return-to-home. Does not need any other mode selected. |
 |  [`NAV WP`](/iNavFlight/inav/wiki/Navigation-modes#wp---autonomous-waypoint-mission) | Used to fly WAYPOINT mission. Does not need any other mode selected. |
-|  [`PASSTHRU`](/iNavFlight/inav/wiki/Modes#passthru) | Used with fixedwings to control everything manually. ( Direct servo control ) |
+|  [`PASSTHRU`](/iNavFlight/inav/wiki/Modes#passthru) | Used with fixed-wings to control everything manually. ( Direct servo control ) |
 
 `Flight modes that alter behavior in combination with one of the above`
 
@@ -45,4 +45,4 @@ The default flight mode is [`RATE`](/iNavFlight/inav/wiki/Modes#default-flight-m
 |  [`FLAPERON`](/iNavFlight/inav/wiki/Modes#flaperon) | Used to activate flaperons on fixed-wing aircraft. |
 |  [`NAV LAUNCH`](/iNavFlight/inav/wiki/Modes#nav-launch) | Used to detect and automatic launch fixed-wing aircraft. |
 |  [`SERVO AUTOTRIM`](/iNavFlight/inav/wiki/Modes#servo-autotrim) | Used to trim midpoint for servos to maintain straight flight |
-|  [`AUTOTUNE`](/iNavFlight/inav/wiki/Modes#autotune) | Automaticle tune fixed-wing PIFF gains. |
+|  [`AUTOTUNE`](/iNavFlight/inav/wiki/Modes#autotune) | Automatically tune fixed-wing PIFF gains. |
