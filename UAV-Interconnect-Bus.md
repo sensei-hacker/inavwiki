@@ -140,10 +140,11 @@ Recommended payload format:
 
 ```
 typedef struct __attribute__((packed)) {
-    uint8_t  flags;
+    uint8_t  flags;         // UIB_DATA_VALID (0x01) - link ok, UIB_DATA_NEW (0x02) - new data
     uint8_t  rssi;
-    uint16_t sticks[4];
-    uint8_t  aux[6];
+    uint8_t  sticks[4];     // Values in range [0;255], center = 127
+    uint8_t  aux[8];        // Analog AUX channels - values in range [0;255], center = 127
+    uint16_t reserved;      // Reserved for future use
 } rcReceiverData_t;
 ```
 
