@@ -26,8 +26,8 @@ MSP V2 addresses these shortcomings:
 | 1 | X |  | 'X' in place of v1 'M' |
 | 2 | direction indictor |  | As V1, relative to the FC, <, > or ! (error response) |
 | 3 | flag | ✔  | uint8, flag, usage to be defined (set to zero) |
-| 4 | function | ✔  |uint16. 0 - 255 is the same function as V1 for backwards compatibility |
-| 6 | payload size | ✔  |uint16 |
+| 4 | function | ✔  |uint16 (little endian). 0 - 255 is the same function as V1 for backwards compatibility |
+| 6 | payload size | ✔  |uint16 (little endian) |
 | 8 | payload |  ✔ | n (up to 65535 bytes) payload | 
 | n+8 | checksum |  | uint8, (n= payload size), crc8_dvb_s2 checksum |
 
