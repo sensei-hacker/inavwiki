@@ -35,7 +35,7 @@ Set receiver to send out `NO PULSES` on a failsafe event.
 
 Go to `Failsafe` tab, and enable `RTH` as Stage 2 failsafe.
 
-For fixedwing set 'failsafe_throttle_low_delay = 0' or else it will disarm fixedwing in air when Failsafe triggers  and you have had low throttle for the default time period.
+For fixedwing set `failsafe_throttle_low_delay = 0` or else it will disarm fixedwing in air when Failsafe triggers  and you have had low throttle for the default time period.
 
 The behavior of `RTH` can also be configured.
 
