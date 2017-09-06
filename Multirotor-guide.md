@@ -1,7 +1,7 @@
 ## 0. Setup hardware
 Balance props and motors, install FC on a vibration-damping mount if possible.
 
-### Step 1, getting your flight controller ready.
+## 1. Getting your flight controller ready.
 
 * Flash newest iNav
 * Do the advanced 6-point [sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration).
