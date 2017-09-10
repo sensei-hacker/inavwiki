@@ -96,6 +96,26 @@ At this point everything should work as expected.
 
 * If you intend to glide for more than 10 seconds, in iNav 1.6 & 1.7 it's suggested that you also set this value, so that the model doesn't "failsafe" by itself when using zero throttle during a glide: ``set failsafe_throttle_low_delay = 0``
 
+* Do not activate ``set disarm_kill_switch`` or your plane will drop out of the air.
+
+* Use ``feature MOTOR_STOP`` for more safety. Motor will not spin if just armed.
+
+* Use ``set tpa_rate`` and ``set tpa_breakpoint`` to optimise your PIFF for higher speeds. Good value to start is 40% at your cruise throttle position as breakpoint.
+
+* Servo speed limits the control rate of your FC. You can lower ``set gyro_hardware_lpf`` to 20
+
+* Adjust ``set roll_rate`` and ``set pitch_rate`` to the flight characteristics of your plane. For a race wing values like ``set roll_rate = 360`` and ``set pitch_rate = 180`` are a good starting point.
+
+* Set your [RTH mode](https://github.com/iNavFlight/inav/wiki/Navigation-modes#rth-altitude-control-modes) to your liking
+
+* Increase ``set nav_fw_bank_angle`` for tighter turns.
+
+* Setup `failsafe` mode. If you select your receiver to go to RTH mode in modes tab, it will not control throttle if throttle is zero.
+
+* Setup the right failsafe action. For most users it is advised to use ``set failsafe_procedure = RTH``.
+
+* To make altitude hold smoother you can adjust ``set nav_fw_pos_z_p`` and ``set nav_fw_pos_z_i``. Good values to start are 30/10.
+
 * Take a few minutes to read through how the different [Flight Modes](https://github.com/iNavFlight/inav/wiki/Flight-modes) affect the model in the air.
 
 * Have `passthrough` mode configured so if it happens anything with gyro / accelerometer in the air you can use manual control. This includes if your flight controller resets during flight because of example an brownout.  
