@@ -64,16 +64,17 @@ CRC is calculated by the data originator and verified by the master.
 |------|------------|-------------|
 | 0    | Master     | Value of (0x00 + SlotID)  |
 | 1    | Master     | DevID of requested device |
-| 2    | Master     | CRC1 (over bytes 0-1)     |
-| 3    | Slave      | Poll interval (high byte) |
-| 4    | Slave      | Poll interval (low byte)  |
-| 5    | Slave      | Device flags (high byte)  |
-| 6    | Slave      | Device flags (low byte)   |
-| 7    | Slave      | Device parameters [0]     |
-| 8    | Slave      | Device parameters [1]     |
-| 9    | Slave      | Device parameters [2]     |
-| 10   | Slave      | Device parameters [3]     |
-| 11   | Slave      | CRC2 (over bytes 0-10)    |
+| 2    | Master     | UIB Protocol version (0x00) |
+| 3    | Master     | CRC1 (over bytes 0-1)     |
+| 4    | Slave      | Poll interval (high byte) |
+| 5    | Slave      | Poll interval (low byte)  |
+| 6    | Slave      | Device flags (high byte)  |
+| 7    | Slave      | Device flags (low byte)   |
+| 8    | Slave      | Device parameters [0]     |
+| 9    | Slave      | Device parameters [1]     |
+| 10   | Slave      | Device parameters [2]     |
+| 11   | Slave      | Device parameters [3]     |
+| 12   | Slave      | CRC2 (over bytes 0-10)    |
 
 During discovery phase master sends *IDENTIFY* commands for each supported **DevID**. 
 Device with corresponding **DevID** must respond with desired poll interval (in milliseconds) and flag field.
