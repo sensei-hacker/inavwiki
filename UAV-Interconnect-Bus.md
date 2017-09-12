@@ -76,9 +76,10 @@ CRC is calculated by the data originator and verified by the master.
 | 11   | Slave      | Device parameters [3]     |
 | 12   | Slave      | CRC2 (over bytes 0-10)    |
 
-During discovery phase master sends *IDENTIFY* commands for each supported **DevID**. 
+During discovery phase master sends *IDENTIFY* commands for each supported **DevID**.
 Device with corresponding **DevID** must respond with desired poll interval (in milliseconds) and flag field.
-Also, device which has detected it's **DevID** must remember the **SlotID** of the transaction - this will be the **SlotID** assigned to the device.
+Master will send it's protocol version in *IDENTIFY* request. Slave device should respond only if it's able to talk this protocol version.
+Also, device which has detected it's **DevID** must remember the **SlotID** of the transaction - this will be the **SlotID** assigned to the device; it should also remember the protocol version it should be using to communicate.
 
 Device parameters field (4 bytes) is device-specific and may be used to pass extended capabilities or non-standard flags to the host driver.
 
