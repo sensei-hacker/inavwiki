@@ -63,9 +63,9 @@ CRC is calculated by the data originator and verified by the master.
 | 0x00 | 000xxxx | IDENTIFY   | Performs device identification and slot assignment |
 | 0x20 | 001xxxx | NOTIFY     | Notifies a device about assigned (or re-assigned) slot |
 | 0x40 | 010xxxx | READ       | Performs a read transaction from a slot |
-| 0x60 | 011xxxx | reserved   | Not used |
-| 0x80 | 100xxxx | WRITE      | Performs a write transaction on the bus |
-| 0xA0 | 101xxxx | WRITE_NACK | Performs a write transaction on the bus without acknowledgement |
+| 0x60 | 011xxxx | WRITE      | Performs a write transaction on the bus |
+| 0x80 | 100xxxx | reserved   | Not used |
+| 0xA0 | 101xxxx | reserved   | Not used |
 | 0xC0 | 110xxxx | reserved   | Not used |
 | 0xE0 | 111xxxx | reserved   | Not used |
 
@@ -116,19 +116,7 @@ Used to assign a slot to a device. Device shouldn't respond, but only keep recor
 
 Device with **SlotID** that was assigned to it during discovery phase must respond to this command with a 16-byte data packet.
 
-### WRITE (0x80)
-
-| Byte | Originator | Description |
-|------|------------|-------------|
-| 0    | Master     | Value of (0x80 + SlotID)  |
-| 1-16 | Master     | Data packet (16 bytes)    |
-| 17   | Master     | CRC1 (over bytes 0-16)    |
-| 18   | Slave      | Acknowledgement flag (1 = received correctly) |
-| 19   | Slave      | CRC2 (over bytes 0-17)    |
-
-Device with **SlotID** that was assigned to it during discovery phase must accept the data, verify the CRC and acknowledge it.
-
-### WRITE NACK (0xA0)
+### WRITE (0x60)
 
 | Byte | Originator | Description |
 |------|------------|-------------|
