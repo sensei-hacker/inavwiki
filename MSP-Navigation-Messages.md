@@ -28,6 +28,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 1. Leg speed is an iNav extension
 2. Not used by iNav
 3. Once SET_HEAD is invoked, it remains active until cleared by a P1 value of -1.
+4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For iNav, the mission will continue if LAND is not set, and valid waypoints follow.
 
 ## Uploading
 
