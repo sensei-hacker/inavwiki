@@ -19,7 +19,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | 1 | WAYPOINT      | speed [1] | | | ✔ | ✔ | ✔ | ✔ |
 | 2 | POSHOLD_UNLIM |          | | | ✔ | ✔ | ✔ | ✔ |
 | 3 | POSHOLD TIME  | Seconds | | | ✔ | ✔ | ✔ |    |
-| 4 | RTH           | Land | | |    |    | ✔ [2] | ✔ |
+| 4 | RTH [4]       | Land | | |    |    | ✔ [2] | ✔ |
 | 5 | SET POI       |          | | | ✔ | ✔ | | |
 | 6 | JUMP          | WP#      | Repeat (-1 = forever) | | | | |  |
 | 7 | SET HEAD [3]  | Heading  | | | | | | |
