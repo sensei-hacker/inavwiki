@@ -44,9 +44,9 @@ During discovery each device must report capability flags (16-bit field, see IDE
 
 ## Transactions on a bus
 
-Everything on a bus is coordinated by a master device (flight controller) and all transactions are organised in **slots**. There are at most 64 slots possible on a single bus.
+Everything on a bus is coordinated by a master device (flight controller) and all transactions are organised in **slots**. There are at most 32 slots (active devices) possible on a single bus.
 
-Master begins transaction with one byte. Highest two bits indicate a **command**, while lower 6 bits indicate a **SlotID**. The rest of transaction depends on which command is being executed.
+Master begins transaction with one byte. Highest 3 bits indicate a **command**, while lower 5 bits indicate a **SlotID**. The rest of transaction depends on which command is being executed.
 
 A 2ms guard interval is mandatory between transactions and is used by all devices to reset internal state. First byte after guard interval is assumed to be a command from master device.
 
