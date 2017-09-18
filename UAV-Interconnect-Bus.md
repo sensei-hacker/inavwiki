@@ -65,7 +65,7 @@ CRC is calculated by the data originator and verified by the master.
 | 0x20 | 001xxxx | NOTIFY     | Notifies a device about assigned (or re-assigned) slot |
 | 0x40 | 010xxxx | READ       | Performs a read transaction from a slot |
 | 0x60 | 011xxxx | WRITE      | Performs a write transaction on the bus |
-| 0x80 | 100xxxx | reserved   | Not used |
+| 0x80 | 100xxxx | READ_VAR   | Variable-length read transaction |
 | 0xA0 | 101xxxx | reserved   | Not used |
 | 0xC0 | 110xxxx | reserved   | Not used |
 | 0xE0 | 111xxxx | reserved   | Not used |
