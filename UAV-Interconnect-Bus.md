@@ -37,10 +37,11 @@ During discovery phase on the bus each device is assigned a **SlotID** which it 
 
 During discovery each device must report capability flags (16-bit field, see IDENTIFY command).
 
-| Flag mask | Name       | Description |
-|-----------|------------|-------------|
-| 0x01      | HAS_READ   | Indicates that device supports READ command and should be polled periodically |
-| 0x02      | HAS_WRITE  | Indicates that device supports WRITE command and can accept data |
+| Flag mask | Name         | Description |
+|-----------|--------------|-------------|
+| 0x01      | HAS_READ     | Indicates that device supports READ command and should be polled periodically |
+| 0x02      | HAS_WRITE    | Indicates that device supports WRITE command and can accept data |
+| 0x03      | HAS_READ_VAR | Indicates that device supports variable-length READ command |
 
 ## Transactions on a bus
 
@@ -125,6 +126,20 @@ Device with **SlotID** that was assigned to it during discovery phase must respo
 | 17   | Master     | CRC1 (over bytes 0-16)    |
 
 Device with **SlotID** that was assigned to it during discovery phase must silently accept the data. No acknowledgement it done by the device. Together with **NOTIFY** this command brings a possibility to have several devices on the same DevID/SlotID.
+
+### READ_VAR (0x80)
+
+| Byte | Originator | Description |
+|------|------------|-------------|
+| 0    | Master     | Value of (0x40 + SlotID)  |
+| 1    | Master     | CRC1 (over byte 0)        |
+| 2    | Slave      | Data payload length (may be zero) |
+| 3... | Slave      | Data packet (up to 16 bytes)    |
+| last | Slave      | CRC2 (from start of packet)    |
+
+Device with **SlotID** that was assigned to it during discovery phase must respond to this command with a variable-length data packet. If device has nothing to send it should respond with zero payload length.
+
+Usage of READ_VAR is recommended if there is a possibility that device may not have any data available or if expected payload length is 14 bytes or shorter (to prevent wasting bus bandwidth for sending unused data)
 
 ## Devices
 
