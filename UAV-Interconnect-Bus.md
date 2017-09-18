@@ -115,7 +115,7 @@ Used to assign a slot to a device. Device shouldn't respond, but only keep recor
 | 3... | Slave      | Data packet (up to 32 bytes)    |
 | last | Slave      | CRC2 (from start of packet)    |
 
-Device with **SlotID** that was assigned to it during discovery phase must respond to this command with a variable-length data packet. If device has nothing to send it should respond with zero payload length.
+Device with **SlotID** that was assigned to it during discovery phase must respond to this command with a variable-length data packet. If device has no new data available it should respond with zero payload length.
 
 ### WRITE (0x60)
 
@@ -130,7 +130,7 @@ Device with **SlotID** that was assigned to it during discovery phase must silen
 
 ## Devices
 
-It's recommended that each device use first byte of 16-byte READ payload as flag field with following values:
+It's recommended that each device use first byte of READ payload as flag field with following values:
 
 | Bit | Mask | Description |
 |-----|------|-------------|
