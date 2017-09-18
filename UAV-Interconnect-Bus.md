@@ -169,6 +169,43 @@ typedef struct __attribute__((packed)) {
 } rangefinderData_t;
 ```
 
+### Device ID = 0x13 : GPS sensor
+
+Flag UIB_DATA_VALID will indicate that reading is valid, UIB_DATA_NEW - that data is fresh
+
+Recommended payload format:
+
+```
+typedef struct __attribute__((packed)) {
+    uint8_t fix_and_sat;
+    int32_t longitude;
+    int32_t latitude;
+    int32_t altitude_msl;
+} gpsPayloadPosition_t;
+
+typedef struct __attribute__((packed)) {
+    int16_t vel_north;
+    int16_t vel_east;
+    int16_t vel_down;
+    int16_t speed_2d;
+    int16_t heading_2d;
+    uint8_t hdop;
+} gpsPayloadVelocity_t;
+
+typedef union {
+    gpsPayloadPosition_t    pos;
+    gpsPayloadVelocity_t    vel;
+} gpsPayload_t;
+
+typedef struct __attribute__((packed)) {
+    uint8_t         flags;
+    uint8_t         sequence;
+    gpsPayload_t    payload;
+} gpsDataPacket_t;
+```
+
+GPS device should interleave POS and VEL payloads. Receiving a payload with UIB_DATA_NEW means that it's a totally new data. Receiving payload without UIB_DATA_NEW flag means that there was no GPS update since previous read.
+
 ### Device ID = 0x80 : RC Receiver
 
 Flag UIB_DATA_VALID will indicate that receiver has a valid link to transmitter. This is an **inverse** of FAILSAFE flag in common digital receivers.
@@ -185,5 +222,4 @@ typedef struct __attribute__((packed)) {
 } rcReceiverData_t;
 ```
 
-Values of `sticks[]` array should hold raw channel value in [1000;2000] range.
-Values of `aux[]` array should be in range [0;255] and will correspond to [1000;2000] values of AUX channel respectively.
+Values of `sticks[]` and `aux[]` array should be in range [0;255] and will correspond to [1000;2000] values.
