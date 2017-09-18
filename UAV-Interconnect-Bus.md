@@ -41,7 +41,6 @@ During discovery each device must report capability flags (16-bit field, see IDE
 |-----------|--------------|-------------|
 | 0x01      | HAS_READ     | Indicates that device supports READ command and should be polled periodically |
 | 0x02      | HAS_WRITE    | Indicates that device supports WRITE command and can accept data |
-| 0x03      | HAS_READ_VAR | Indicates that device supports variable-length READ command |
 
 ## Transactions on a bus
 
@@ -65,7 +64,7 @@ CRC is calculated by the data originator and verified by the master.
 | 0x20 | 001xxxx | NOTIFY     | Notifies a device about assigned (or re-assigned) slot |
 | 0x40 | 010xxxx | READ       | Performs a read transaction from a slot |
 | 0x60 | 011xxxx | WRITE      | Performs a write transaction on the bus |
-| 0x80 | 100xxxx | READ_VAR   | Variable-length read transaction |
+| 0x80 | 100xxxx | reserved   | Not used |
 | 0xA0 | 101xxxx | reserved   | Not used |
 | 0xC0 | 110xxxx | reserved   | Not used |
 | 0xE0 | 111xxxx | reserved   | Not used |
@@ -112,34 +111,22 @@ Used to assign a slot to a device. Device shouldn't respond, but only keep recor
 |------|------------|-------------|
 | 0    | Master     | Value of (0x40 + SlotID)  |
 | 1    | Master     | CRC1 (over byte 0)        |
-| 2-17 | Slave      | Data packet (16 bytes)    |
-| 18   | Slave      | CRC2 (over bytes 0-17)    |
+| 2    | Slave      | Data payload length (may be zero) |
+| 3... | Slave      | Data packet (up to 32 bytes)    |
+| last | Slave      | CRC2 (from start of packet)    |
 
-Device with **SlotID** that was assigned to it during discovery phase must respond to this command with a 16-byte data packet.
+Device with **SlotID** that was assigned to it during discovery phase must respond to this command with a variable-length data packet. If device has nothing to send it should respond with zero payload length.
 
 ### WRITE (0x60)
 
 | Byte | Originator | Description |
 |------|------------|-------------|
 | 0    | Master     | Value of (0x80 + SlotID)  |
-| 1-16 | Master     | Data packet (16 bytes)    |
-| 17   | Master     | CRC1 (over bytes 0-16)    |
-
-Device with **SlotID** that was assigned to it during discovery phase must silently accept the data. No acknowledgement it done by the device. Together with **NOTIFY** this command brings a possibility to have several devices on the same DevID/SlotID.
-
-### READ_VAR (0x80)
-
-| Byte | Originator | Description |
-|------|------------|-------------|
-| 0    | Master     | Value of (0x40 + SlotID)  |
-| 1    | Master     | CRC1 (over byte 0)        |
-| 2    | Slave      | Data payload length (may be zero) |
-| 3... | Slave      | Data packet (up to 16 bytes)    |
+| 1    | Slave      | Data payload length (may be zero) |
+| 2... | Master     | Data packet (up to 32 bytes)    |
 | last | Slave      | CRC2 (from start of packet)    |
 
-Device with **SlotID** that was assigned to it during discovery phase must respond to this command with a variable-length data packet. If device has nothing to send it should respond with zero payload length.
-
-Usage of READ_VAR is recommended if there is a possibility that device may not have any data available or if expected payload length is 14 bytes or shorter (to prevent wasting bus bandwidth for sending unused data)
+Device with **SlotID** that was assigned to it during discovery phase must silently accept the data. No acknowledgement it done by the device. Together with **NOTIFY** this command brings a possibility to have several devices on the same DevID/SlotID.
 
 ## Devices
 
@@ -148,7 +135,7 @@ It's recommended that each device use first byte of 16-byte READ payload as flag
 | Bit | Mask | Description |
 |-----|------|-------------|
 | 0   | 0x01 | UIB_DATA_VALID - indicates data validity  |
-| 1   | 0x02 | UIB_DATA_NEW - indicates that data is actually new (relative to previous READ)  |
+| 1   | 0x02 | Unused, must be zero |
 | 2   | 0x04 | Unused, must be zero |
 | 3   | 0x08 | Unused, must be zero |
 | 4   | 0x10 | Unused, must be zero |
@@ -177,34 +164,19 @@ Recommended payload format:
 
 ```
 typedef struct __attribute__((packed)) {
-    uint8_t fix_and_sat;
+    uint8_t fix_type;
+    uint8_t sat_count
+    uint8_t hdop;
     int32_t longitude;
     int32_t latitude;
     int32_t altitude_msl;
-} gpsPayloadPosition_t;
-
-typedef struct __attribute__((packed)) {
     int16_t vel_north;
     int16_t vel_east;
     int16_t vel_down;
     int16_t speed_2d;
     int16_t heading_2d;
-    uint8_t hdop;
-} gpsPayloadVelocity_t;
-
-typedef union {
-    gpsPayloadPosition_t    pos;
-    gpsPayloadVelocity_t    vel;
-} gpsPayload_t;
-
-typedef struct __attribute__((packed)) {
-    uint8_t         flags;
-    uint8_t         sequence;
-    gpsPayload_t    payload;
 } gpsDataPacket_t;
 ```
-
-GPS device should interleave POS and VEL payloads. Receiving a payload with UIB_DATA_NEW means that it's a totally new data. Receiving payload without UIB_DATA_NEW flag means that there was no GPS update since previous read.
 
 ### Device ID = 0x80 : RC Receiver
 
@@ -214,7 +186,7 @@ Recommended payload format:
 
 ```
 typedef struct __attribute__((packed)) {
-    uint8_t  flags;         // UIB_DATA_VALID (0x01) - link ok, UIB_DATA_NEW (0x02) - new data
+    uint8_t  flags;         // UIB_DATA_VALID (0x01) - link ok
     uint8_t  rssi;
     uint8_t  sticks[4];     // Values in range [0;255], center = 127
     uint8_t  aux[8];        // Analog AUX channels - values in range [0;255], center = 127
