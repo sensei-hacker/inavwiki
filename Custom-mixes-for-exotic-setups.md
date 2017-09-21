@@ -133,10 +133,10 @@ mmix 0 1.0 1.0 0.0 0.0 # left motor
 mmix 1 1.0 -1.0 0.0 0.0 # right motor
 
 smix reset
-smix 0 4 2 100 0 0 100 # Servo 4 for left motor pitch change
-smix 1 4 1 100 0 0 100 # Servo 4 for left motor pitch change
-smix 2 5 2 -100 0 0 100 # Servo 5 for right motor pitch change
-smix 3 5 1 100 0 0 100 # Servo 5 for right motor pitch change
+smix 0 4 2 100 0 # Servo 4 for left motor pitch change
+smix 1 4 1 100 0 # Servo 4 for left motor pitch change
+smix 2 5 2 -100 0 # Servo 5 for right motor pitch change
+smix 3 5 1 100 0 # Servo 5 for right motor pitch change
 ```
 
 ## Dualcopter
@@ -150,8 +150,8 @@ mmix 0 1.0 0.0 0.0 -1.0  # Left
 mmix 1 1.0 0.0 0.0 1.0   # Right
 
 smix reset
-smix 0 4 1 100 0 0 100
-smix 1 5 0  100 0 0 100
+smix 0 4 1 100 0
+smix 1 5 0  100 0
 ```
 
 ## V-Tail Fixed Wing
@@ -165,17 +165,17 @@ mmix reset
 mmix 0 1.0 0.0 0.0 0.0         # motor
 
 smix reset
-smix 0 2 0 -100 0 0 100         # servo 2 takes Stabilised ROLL
-smix 1 3 0 -100 0 0 100         # servo 3 takes Stabilised ROLL
+smix 0 2 0 -100 0         # servo 2 takes Stabilised ROLL
+smix 1 3 0 -100 0         # servo 3 takes Stabilised ROLL
 
-smix 2 4 1 100 0 0 100          # servo 4 takes Stabilised PITCH
-smix 3 5 1 -100 0 0 100         # servo 5 takes Stabilised -PITCH
+smix 2 4 1 100 0          # servo 4 takes Stabilised PITCH
+smix 3 5 1 -100 0         # servo 5 takes Stabilised -PITCH
 
-smix 4 4 2 -100 0 0 100         # servo 4 takes Stabilised YAW
-smix 5 5 2 -100 0 0 100         # servo 5 takes Stabilised YAW
+smix 4 4 2 -100 0         # servo 4 takes Stabilised YAW
+smix 5 5 2 -100 0         # servo 5 takes Stabilised YAW
 
-smix 6 6 8 -100 0 0 100         # servo 6 takes RC AUX 1 (camera yaw)
-smix 7 7 9 -100 0 0 100         # servo 7 takes RC AUX 2 (drop bomb :-))
+smix 6 6 8 -100 0         # servo 6 takes RC AUX 1 (camera yaw)
+smix 7 7 9 -100 0         # servo 7 takes RC AUX 2 (drop bomb :-))
 ```
 
 ## Skyhunter Nano (no rudder) - 1.7.2 onwards
@@ -198,11 +198,11 @@ mixer CUSTOMAIRPLANE
 mmix reset
 mmix 0 1.0 0.0 0.0 0.0         # motor
 smix reset 
-smix 0 2 0 -100 0 0 100         # servo 2 takes Stabilised ROLL (PWM 3)
-smix 1 3 1 -85 0 0 100          # servo 3 takes Stabilised PITCH (PWM 4)
-smix 2 4 1 85 0 0 100         # servo 4 takes Stabilised -PITCH (PWM 5)
-smix 3 3 2 -75 0 0 100         # servo 3 takes Stabilised YAW (PWM 4)
-smix 4 4 2 -75 0 0 100         # servo 4 takes Stabilised YAW (PWM 5)
+smix 0 2 0 -100 0         # servo 2 takes Stabilised ROLL (PWM 3)
+smix 1 3 1 -85 0          # servo 3 takes Stabilised PITCH (PWM 4)
+smix 2 4 1 85 0         # servo 4 takes Stabilised -PITCH (PWM 5)
+smix 3 3 2 -75 0         # servo 3 takes Stabilised YAW (PWM 4)
+smix 4 4 2 -75 0         # servo 4 takes Stabilised YAW (PWM 5)
 ```
 
 # Setups that were never implemented in Baseflight, Cleanflight or any of it's derivatives
@@ -233,12 +233,12 @@ mixer CUSTOMAIRPLANE
 mmix reset
 
 smix reset
-smix 0 3 2 100 0 0 100 
-smix 1 3 1 100 0 0 100 
-smix 2 4 2 100 0 0 100 
-smix 3 4 1 100 0 0 100 
-smix 4 5 2 100 0 0 100 
-smix 5 5 0 100 0 0 100 
-smix 6 6 2 100 0 0 100 
-smix 7 6 0 100 0 0 100 
+smix 0 3 2 100 0 
+smix 1 3 1 100 0 
+smix 2 4 2 100 0 
+smix 3 4 1 100 0 
+smix 4 5 2 100 0 
+smix 5 5 0 100 0 
+smix 6 6 2 100 0
+smix 7 6 0 100 0 
 ```
