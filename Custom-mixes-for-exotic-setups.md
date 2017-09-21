@@ -151,7 +151,7 @@ mmix 1 1.0 0.0 0.0 1.0   # Right
 
 smix reset
 smix 0 4 1 100 0
-smix 1 5 0  100 0
+smix 1 5 0 100 0
 ```
 
 ## V-Tail Fixed Wing
