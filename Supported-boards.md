@@ -52,10 +52,12 @@ These boards work with INAV but might be not well tested.
 | F4BY                      | F4         | F4BY                      | All  | All     | All            | All       | All                            | SERIAL, SD           |
 | OpenPilot REVO            | F4         | REVO, REVO_OPBL           | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
 | BeeRotor F4               | F4         | BEEROTORF4                | All  | All     | All            | All       | All                            | SERIAL, SD           |
+| RMRC Seriously DODO       | F3         | RMDO                      | All  | All     | All            | All       | All                            | SERIAL               |
+| SPRacing F3 EVO           | F3         | SPRACINGF3EVO             | All  | All     | All            | All       | All                            | SERIAL, SD           |
 
 ### Not recommended for new setups
 
-These boards will work with INAV but are either end-of-life, limited on features, rare or hard to get from a reliable source.
+These boards will work with INAV but are either end-of-life, limited on features, rare or hard to get from a reliable source. In particular, F1 boards will not be supported post 1.7.3
 
 | Board name                | CPU Family | Target name(s)            | GPS  | Compass | Barometer      | Telemetry | RX                             | Blackbox             |
 |---------------------------|:----------:|:-------------------------:|:----:|:-------:|:--------------:|:---------:|:------------------------------:|:--------------------:|
