@@ -31,8 +31,8 @@ These boards are well tested with INAV and are known to be of good quality and r
 | Board name                | CPU Family | Target name(s)            | GPS  | Compass | Barometer      | Telemetry | RX                             | Blackbox             |
 |---------------------------|:----------:|:-------------------------:|:----:|:-------:|:--------------:|:---------:|:------------------------------:|:--------------------:|
 | SPRacing F3               | F3         | SPRACINGF3                | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
-| RMRC Seriously DODO       | F3         | RMDO                      | All  | All     | All            | All       | All                            | SERIAL               |
-| SPRacing F3 EVO           | F3         | SPRACINGF3EVO             | All  | All     | All            | All       | All                            | SERIAL, SD           |
+| MATEK F405-AIO      | F4         | MATEKF405                      | All  | All     | All            | All       | All                            | SD, SERIAL               |
+| MATEK F405-OSD           | F4         | MATEKF405OSD (post 1.7.3)  | All  | All (soft-I2C) | All (soft-I2C)  | All       | All                            | SD, SERIAL           |
 
 
 ### Other supported boards
