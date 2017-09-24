@@ -1,3 +1,5 @@
+**This Wiki page needs updating in regards to renamed CLI variables.**
+
 This page will list and explain all the different navigational flight modes of iNav:
 
 - [NAV ALTHOLD - Altitude hold](#althold---altitude-hold)
