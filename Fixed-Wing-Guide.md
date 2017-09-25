@@ -96,6 +96,28 @@ At this point everything should work as expected.
 
 * If you intend to glide for more than 10 seconds, in iNav 1.6 & 1.7 it's suggested that you also set this value, so that the model doesn't "failsafe" by itself when using zero throttle during a glide: ``set failsafe_throttle_low_delay = 0``
 
+* Setup `failsafe` mode. If you select your receiver to go to RTH mode in modes tab, it will not control throttle if throttle is zero.
+
+* Setup the right failsafe action. For most users it is advised to use ``set failsafe_procedure = RTH``.
+
+* Take a few minutes to read through how the different [Flight Modes](https://github.com/iNavFlight/inav/wiki/Flight-modes) affect the model in the air.
+
+* Have `passthrough` mode configured so if it happens anything with gyro / accelerometer in the air you can use manual control. This includes if your flight controller resets during flight because of example an brownout.  
+
+* Read through the iNav [CLI commands](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md), especially ALL marked with "**fw_ **" This will give you hints how the modes for fixed wings work.  
+
+### Step 5: Optional, but Recommended:
+
+* [Tune your PIFF controller](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing) ( iNav versions 1.6 & later )
+
+* To make altitude hold smoother you can adjust ``set nav_fw_pos_z_p`` and ``set nav_fw_pos_z_i``. Good values to start are 30/10.
+
+* Use Airmode mode to get full stabilization and servo throw with no throttle applied.
+
+* [Setting up failsafe with return to home.](https://github.com/iNavFlight/inav/wiki/Failsafe#setting-up-failsafe-with-return-to-home)
+
+* If your compass is not 100% properly setup just disable it instead. **A calibrated compass can cause orientation drift during flight that may not show up in the configurator** (especially built-in ones on your FC). Really consider disabling it unless you need it. INAV uses GPS heading normally, Only on ground before GPS speed has been high enough or if error between GPS heading and compass heading exceed 60deg will it use compass heading
+
 * Do not activate ``set disarm_kill_switch`` or your plane will drop out of the air.
 
 * Use ``feature MOTOR_STOP`` for more safety. Motor will not spin if just armed.
@@ -109,28 +131,6 @@ At this point everything should work as expected.
 * Set your [RTH mode](https://github.com/iNavFlight/inav/wiki/Navigation-modes#rth-altitude-control-modes) to your liking
 
 * Increase ``set nav_fw_bank_angle`` for tighter turns.
-
-* Setup `failsafe` mode. If you select your receiver to go to RTH mode in modes tab, it will not control throttle if throttle is zero.
-
-* Setup the right failsafe action. For most users it is advised to use ``set failsafe_procedure = RTH``.
-
-* To make altitude hold smoother you can adjust ``set nav_fw_pos_z_p`` and ``set nav_fw_pos_z_i``. Good values to start are 30/10.
-
-* Take a few minutes to read through how the different [Flight Modes](https://github.com/iNavFlight/inav/wiki/Flight-modes) affect the model in the air.
-
-* Have `passthrough` mode configured so if it happens anything with gyro / accelerometer in the air you can use manual control. This includes if your flight controller resets during flight because of example an brownout.  
-
-* Read through the iNav [CLI commands](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md), especially ALL marked with "**fw_ **" This will give you hints how the modes for fixed wings work.  
-
-### Step 5: Optional, but Recommended:
-
-* [Tune your PIFF controller](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing) ( iNav versions 1.6 & later )
-
-* Use Airmode mode to get full stabilization and servo throw with no throttle applied.
-
-* [Setting up failsafe with return to home.](https://github.com/iNavFlight/inav/wiki/Failsafe#setting-up-failsafe-with-return-to-home)
-
-* If your compass is not 100% properly setup just disable it instead. **A calibrated compass can cause orientation drift during flight that may not show up in the configurator** (especially built-in ones on your FC). Really consider disabling it unless you need it. INAV uses GPS heading normally, Only on ground before GPS speed has been high enough or if error between GPS heading and compass heading exceed 60deg will it use compass heading
 
 ### Last Step, a Test Flight!:
 
