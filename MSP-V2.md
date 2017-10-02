@@ -2,7 +2,10 @@
 
 ## Overview
 
-This page describes MSPV2 (MultiWii Serial Protocol Version 2) to be introduced in iNav 2.0. MSP is the remote messaging protocol used by iNav and other flight controllers such as MultiWii, CleanFlight and BetaFlight.
+This page describes MSPV2 (MultiWii Serial Protocol Version 2). MSP is the remote messaging protocol used by iNav and other flight controllers such as MultiWii, CleanFlight and BetaFlight.
+
+MSPV2 was introduced in iNav 1.73 for legacy commands, and is fully implemented (16bit commands) after 1.73 (i.e. 1.74 development branch and successors). An MSP API version of 2 or greater indicates MSPV2 support. 
+
 
 ## Rationale
 
