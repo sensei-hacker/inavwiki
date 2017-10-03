@@ -22,7 +22,7 @@ Now add example 10 P-gain and 15 I-gain to Roll, Pitch and Yaw axis.
 **3: Go out and fly in acro mode.**
 
 * If airplane drifts to one side or up and down add I-gain to the axis it drifts in.
-* If you want more stabiliation against wind try and add more P-gain.
+* If you want more stabilization against wind try and add more P-gain.
 
 **4: Want to calm your airplane down? Now is the time to reduce rates to fit your needs.**
 
@@ -30,9 +30,9 @@ Now add example 10 P-gain and 15 I-gain to Roll, Pitch and Yaw axis.
 
 **5: Tune Angle / Horizon mode**
 
-* Enter `Angle` mode, if aircraft doesnt fly straight and level you need to trim you board aligment.
-* If your unhappy with amount of maximum bank angle / pitch angle, adjust them in CLI, max_angle_inclination_rll and max_angle_inclination_pit. ( Be aware of you want the same amount of maximum angle for poshold / althold you will also need to increase theyr values in [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md))
-* If you unhappy with the strenght of the Angle mode, example it yerks itself to quick up to level, adjust P-gain of the level controller.
+* Enter `Angle` mode, if aircraft doesn't fly straight and level, you need to trim you board alignment.
+* If you are unhappy with the value of maximum bank angle / pitch angle, adjust them in CLI, max_angle_inclination_rll and max_angle_inclination_pit. (Be aware of you want the same amount of maximum angle for poshold / althold you will also need to increase their values in [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md))
+* If you are unhappy with the strength of the Angle mode, example it yerks itself to quick up to level, adjust P-gain of the level controller.
 
 ### Other tuning tips:
 
