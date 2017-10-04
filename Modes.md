@@ -42,7 +42,7 @@ any lower, you essentially get half the power (half of your PID gain).
 If your inputs would asked for more than 100% difference between the high and low motors, the low motors
 would get clipped, breaking the symmetry of the motor balance by unevenly reducing the gain.
 Airmode will enable full PID correction during zero throttle and give you ability for nice zero throttle
-gliding and actobatics. But also the cornering / turns will be much tighter now as there is always maximum
+gliding and aerobatics. But also the cornering / turns will be much tighter now as there is always maximum
 possible correction performed. Airmode can also be enabled to work at all times by always putting it on the
 same switch like your arm switch or you can enable/disable it in air. Additional things and benefits: Airmode
 will additionally fully enable Iterm at zero throttle. Note that there is still some protection on the ground
@@ -62,7 +62,7 @@ If you're recording to an onboard flash chip, you probably want to disable Black
 
 A log header will always be recorded at arming time, even if logging is paused. You can freely pause and resume logging while in flight.
 
-See [`BLACKBOX`](/iNavFlight/inav/blob/master/docs/Blackbox.md) for more infomation
+See [`BLACKBOX`](/iNavFlight/inav/blob/master/docs/Blackbox.md) for more information
 
 ### FAILSAFE
 
@@ -105,7 +105,7 @@ Airplane launch assistant
 This flight mode is intended to provide assistance for launching the fixed-wing UAVs. Launch detection works by monitoring airplane acceleration - once it breaches the threshold for a certain amount of time launch sequence is started.
 
 
-The entire time `NAV LAUNCH` mode it will try and stabilize plane, it will target zero roll, zero yaw and predefined climb angle. The I-gain of the PIFF regulator is also disabled to prevent I-gain growing during launch until motor is started. When succesful launch is detected it waits for preconfigured amount of time before starting motor.
+The entire time `NAV LAUNCH` mode it will try and stabilize plane, it will target zero roll, zero yaw and predefined climb angle. The I-gain of the PIFF regulator is also disabled to prevent I-gain growing during launch until motor is started. When successful launch is detected it waits for preconfigured amount of time before starting motor.
 
 `NAV LAUNCH` is automatically aborted after 5 seconds or by any pilot input on PITCH/ROLL stick. When it has aborted it goes to whichever selected mode, which can be Angle, Rate, Horizon, RTH or a waypoint mission (if no other mode is selected it will go to Rate mode).
 
@@ -130,7 +130,7 @@ CAUTION: Motors will spin if you unset `NAV LAUNCH` mode after arming.
 ### PASSTHRU
 Direct servo control in fixed-wing.
 
-In this mode there is no stabiliation.
+In this mode there is no stabilization.
 
 What FC does in PASSTHRU mode is: Motor mixing, Servo Mixing, Expo settings. Also Failsafe is still active so it wont overwrite that function.  
 
@@ -184,7 +184,7 @@ In ANGLE mode it also makes yaw turns smoother and completely pirouette-less. Th
 
 From INAV 1.7 turn assist will work one planes, copy paste from pull request:
 
-This extends TURN_ASSIST flight mode on airplanes - when doing a turn on an airplane it will calcualte required yaw and pitch rate to keep airplane pointed at horizon.
+This extends TURN_ASSIST flight mode on airplanes - when doing a turn on an airplane it will calculate required yaw and pitch rate to keep airplane pointed at horizon.
 
 TAS (from airspeed sensor) will be used for calculation if available - otherwise code will use cruise airspeed defined by fw_reference_airspeed.
 
