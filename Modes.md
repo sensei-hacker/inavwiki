@@ -108,8 +108,8 @@ This flight mode is intended to provide assistance for launching the fixed-wing 
 The entire time `NAV LAUNCH` mode it will try and stabilize plane, it will target zero roll, zero yaw and predefined climb angle. The I-gain of the PIFF regulator is also disabled to prevent I-gain growing during launch until motor is started. When successful launch is detected it waits for preconfigured amount of time before starting motor.
 
 `NAV LAUNCH` is automatically aborted after 5 seconds or by any pilot input on PITCH/ROLL stick. When it has aborted it goes to whichever selected mode, which can be Angle, Rate, Horizon, RTH or a waypoint mission (if no other mode is selected it will go to Rate mode).
-
-The `NAV LAUNCH` mode cannot be activated again in flight while armed. So its safe to keep it activated. 
+ 
+It's safe to keep it activated the `NAV LAUNCH` mode during flight after the launch has being completed. Keep in mind that if you accidentally disarm while flying you need to disable `NAV LAUNCH` mode to being able to control the model again.
 
 See iNav CLI for all available adjustable parameters, they start with `nav_fw_launch_`
 
