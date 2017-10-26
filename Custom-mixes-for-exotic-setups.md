@@ -205,6 +205,18 @@ smix 3 3 2 -75 0         # servo 3 takes Stabilised YAW (PWM 4)
 smix 4 4 2 -75 0         # servo 4 takes Stabilised YAW (PWM 5)
 ```
 
+## AVIOS BUSHMULE – Notably separate FLAPS (instead of flapperons). Uses single aileron control with Y cable
+```
+# servo mix
+smix reset
+smix 0 2 1  100 0     # servo 2 takes Stabilised PITCH  (PWM 3)
+smix 1 3 0  100 0     # servo 3 takes Stabilised ROLL   (PWM 4)
+smix 2 4 14 100 0     # servo 4 takes FLAPS             (PWM 5)
+smix 3 5 2  100 0     # servo 5 takes Stabilised YAW    (PWM 6)
+# servo – also consider manipulating of servo midpoint for correct flaps operation:
+servo 4 1000 2000 2000 -100 -1 
+
+```
 # Setups that were never implemented in Baseflight, Cleanflight or any of it's derivatives
 
 # Disabled setups
