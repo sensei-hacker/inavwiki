@@ -199,6 +199,20 @@ The sensor hardware failure indication is backwards compatible with versions pri
 
 The LTM_X_counter value is incremented each transmission and rolls over (modulo 256). It is intended to enable consumers to estimate packet loss.
 
+# iNav CLI Support
+
+LTM is transmit only, and can work at any supported baud rate. It was designed to operate over 2400 baud and does not benefit from higher rates. It is thus usable on soft serial.
+
+A CLI variable `ltm_update_rate` may be used to configure the update rate and hence band-width used by LTM, with the following enumerations:
+
+* NORMAL: Legacy rate, currently 303 bytes/second (requires 4800 bps)
+* MEDIUM: 164 bytes/second (requires 2400 bps)
+* SLOW: 105 bytes/second (requires 1200 bps)
+
+For many telemetry devices, there is direction correlation between the air-speed of the radio link and range; thus a lower value may facilitate longer range links.
+
+# Other 
+
 ## Tuning Frame (T)
 
 The payload is 12 bytes. This frame is not transmitted by iNav telemetry.
