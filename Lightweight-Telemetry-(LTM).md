@@ -201,7 +201,7 @@ The LTM_X_counter value is incremented each transmission and rolls over (modulo 
 
 # iNav CLI Support
 
-LTM is transmit only, and can work at any supported baud rate. It was designed to operate over 2400 baud and does not benefit from higher rates. It is thus usable on soft serial.
+LTM is transmit only, and can work at any supported baud rate. It was designed to operate over 2400 baud and does not benefit from (much) higher rates. It is thus usable on soft serial. The extra frames introduced by iNav means that 4800 baud is required for the highest update rate.
 
 A CLI variable `ltm_update_rate` may be used to configure the update rate and hence band-width used by LTM, with the following enumerations:
 
