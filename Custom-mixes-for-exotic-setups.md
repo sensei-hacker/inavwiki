@@ -218,6 +218,7 @@ servo 4 1000 2000 2000 -100 -1
 
 ```
 ## Twin Motor - Differential thrust and FLAPERONS
+```
 # mixer
 mixer CUSTOMAIRPLANE
 mmix reset
@@ -235,7 +236,7 @@ smix reverse 4 14 r #or if it works based on servo orientation
 
 # servo
 servo 5 1000 2000 1500 -100 -1 #My rudder was reversed, again you may not need this rule
-...
+```
 
 # Setups that were never implemented in Baseflight, Cleanflight or any of it's derivatives
 
