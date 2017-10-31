@@ -226,10 +226,10 @@ mmix 0  1.000  0.000  0.000  0.300 #Left motor
 mmix 1  1.000  0.000  0.000 -0.300 #Right motor
 
 # servo mix
-smix 0 3 0 100 0 #PWM 4
-smix 1 4 0 100 0 #PWM 5
-smix 2 5 2 100 0 #PWM 6
-smix 3 2 1 100 0 #PWM 3
+smix 0 3 0 100 0 #servo 3 takes Stabilised ROLL (PWM 4)
+smix 1 4 0 100 0 #servo 4 takes Stabilised ROLL (PWM 5)
+smix 2 5 2 100 0 #servo 5 takes Stabilised YAW (PWM 6)
+smix 3 2 1 100 0 #servo 2 takes Stabilised PITCH (PWM 3)
 smix 4 4 14 100 0 #Setup flaps on aileron pins PWM 4/5
 smix reverse 3 14 r #Reverse the Flaps on PWM 4/5, skip this if you want spoilerons 
 smix reverse 4 14 r #or if it works based on servo orientation
