@@ -2,7 +2,10 @@ iNav supports Ublox, DJI NAZA, NMEA, multiwii's i2c-nav board and MultiWiiCopter
 
 Tested and confirming working protocols are Ublox and DJI NAZA
 
-Recommended GPS are M8N versions (e.g. [Ublox NEO-M8N APM version (Galileo compatible)](http://www.banggood.com/Mini-Ublox-M8N-GPS-Module-NEO-M8N-GPS-for-APM-2_52_62_8-CC3D-SP-Racing-F3-Naze32-Flip32-PX4-p-1035454.html) and [Beitian BN-880](http://www.banggood.com/UBLOX-NEO-M8N-BN-880-Flight-Control-GPS-Module-Dual-Module-Compass-p-971082.html?p=ZL241728738232015106) )
+Recommended GPS are M8N versions. Modules known to work reasonably well:
+* [INAV GPS/Compass M8N Optimised for Sirius AIRHero32 F1/F3](http://www.multiwiicopter.com/products/inav-gps-compass-m8n-optimised) - pre-wired for MultiWiiCopter's AIR3 FC
+* [Ublox NEO-M8N APM version (Galileo compatible)](http://www.banggood.com/Mini-Ublox-M8N-GPS-Module-NEO-M8N-GPS-for-APM-2_52_62_8-CC3D-SP-Racing-F3-Naze32-Flip32-PX4-p-1035454.html)
+* [Beitian BN-880](http://www.banggood.com/UBLOX-NEO-M8N-BN-880-Flight-Control-GPS-Module-Dual-Module-Compass-p-971082.html?p=ZL241728738232015106)
 
 Older versions as M6N and M7N also work, but the new M8N is far superior. Most GPS modules have a built in magnetometer (compass), but there are also some available without e.g. [Beitian BN-180](http://www.banggood.com/Beitian-BN-180-Flight-Control-GPS-Module-Dule-Module-without-Compass-p-1040322.html?p=ZL241728738232015106). 
 
