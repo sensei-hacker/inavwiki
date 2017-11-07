@@ -117,7 +117,7 @@ One could embed a MSP V2 message within a MSP V1 JUMBO frame, but this is not li
 
 # MSP V2 Message Catalogue
 
-At the time of writing, no MSP V2 messages have been defined (0x4242 is a joke, not a land grab). It is hoped that a message catalogue can be cooperatively developed by FC authors to avoid the current fragmentation in MSP V1. 
+For iNav 1.8.0, MSP V2 messages have been defined (0x4242 is a joke, not a land grab). It is hoped that a message catalogue can be cooperatively developed by FC authors to avoid the current fragmentation in MSP V1. 
 
 Suggested approach is to allocate blocks of MSPv2 messages to certain firmwares - use high nibble of Function ID as firmware family identifier. This will allow up to 4096 firmware-specific messages.
 
