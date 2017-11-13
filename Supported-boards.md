@@ -24,6 +24,8 @@ Also these boards are tested by INAV development team and usually flown on daily
 | [Airbot OMNIBUS AIO F4](http://shop.myairbot.com/index.php/flight-control/cleanflight-baseflight/omnibusf4v2.html)| F4         | OMNIBUSF4, OMNIBUSF4PRO   | All  | All     | All            | All       | All                            | SERIAL, SD, SPIFLASH |
 | [Airbot F4 / Flip F4](http://shop.myairbot.com/index.php/flight-control/apm/airbotf4v1.html)                      | F4         | AIRBOTF4                  | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
 
+Note: In the above and following tables, the sensor columns indicates firmware support for the sensor category; it does not necessarily mean there is an on-board sensor.
+
 ### Recommended boards
 
 These boards are well tested with INAV and are known to be of good quality and reliability.
