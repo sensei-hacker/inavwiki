@@ -126,12 +126,11 @@ For Fixedwing it will try and loiter in circle defined by the `nav_fw_loiter_rad
 
 Please note that you have to use this with **ALTHOLD** to get a full 3D position hold!  
   
-POSHOLD = 2D position hold  
-POSHOLD + ALTHOLD = 3D position hold  
-POSHOLD + ALTHOLD + MAG = 3D position hold and magnetic heading lock  
-POSHOLD + ALTHOLD + Heading Lock = 3D position hold and heading lock  
+POSHOLD = 2D position hold
+POSHOLD + ALTHOLD = 3D position hold
+POSHOLD + ALTHOLD + HEADING HOLD = 3D position hold and heading lock
 (ANGLE mode is automatically selected in all of the above.)
-    
+
 Hints for safe operation:    
 - Try yawing 180 deg in PH - will instantly reveal incorrect mag operation (e.g. wrong align_mag, interference, loose cables, ...)
 - Always check POSHOLD working correctly, before you use RTH or start a WP mission.
