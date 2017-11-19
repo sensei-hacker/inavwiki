@@ -23,3 +23,15 @@ iNav has many settings that are different than cleanflight, so while the configu
 You can download the iNav configurator for free [here](https://chrome.google.com/webstore/detail/inav-configurator/fmaidjmgkdkpafmbnmigkpdnpdhopgel).
 
 This Wiki is available in other languages: [Русский](https://github.com/iNavFlight/ru_wiki/wiki)
+
+## Searching the wiki
+
+The wiki can be search via Google (as least) as follows:
+
+* In the search bar enter `site:github.com/iNavFlight/inav/wiki TOPIC` (where TOPIC is your search item), e.g.
+* `site:github.com/iNavFlight/inav/wiki 3DR` for information on using 3DR radios with iNav
+* `site:github.com/iNavFlight/inav/wiki mission planner` for information about iNav capable mission planners
+
+The wider project (issues, pull requests) can be searched by omitting the `wiki` term, e.g.:
+
+* `site:github.com/iNavFlight/inav softserial` 
