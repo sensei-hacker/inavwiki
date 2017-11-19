@@ -62,6 +62,7 @@ In order to transfer missions from the GCS to the flight controller, and to moni
 * WiFi (ESP8266)
 * HC-12 (433Mhz, similar to 3DR)
 * Openlrs/Openlrsng devices (such orangerx 433 tx/rx combo)
+* LoRA (868 / 433 Mhz options)
  
 ## Bluetooth
 
@@ -100,6 +101,10 @@ For telemetry data, it offers a bi-directional channel, and Frsky, S.Port (both 
 Openlrsng can be combined with bluetooth devices at GCS, so you could connect to the model in flight with your phone, tablet or PC. In this case, depending on the protocol used or the complexity of your transmitter or the software in your android device, there are many options, like seeing the data on the LCD screen of the transmitter(er9x, LUA scripts for Taranis..), using of an antenna tracker, practicing a 'follow-me' performance...
 
 A great number of compatible openlrsng devices can be found, from Hobbyking (UHF/LRS orangerx) to ebay and other suppliers.
+
+## LoRA
+
+LoRA provides the capability for low power / long range telemetry using similar arrangements as for 3DR and HC-12, with the possibility of extended range. A description of a working setup and albeit short range comparison with 3DR/HC-12 is in the [mwptools wiki](https://github.com/stronnag/mwptools/wiki/Using-LoRa-for-iNav-Telemetryhttps://github.com/stronnag/mwptools/wiki/Using-LoRa-for-iNav-Telemetry) or as a [PDF]( https://raw.githubusercontent.com/wiki/stronnag/mwptools/data/Using-LoRa-for-iNav-Telemetry.pdf).
 
 ## Other solutions
 
