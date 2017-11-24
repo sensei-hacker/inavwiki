@@ -144,7 +144,7 @@ RTH will attempt to bring copter/plane to launch position. Launch position is de
 With default settings RTH will land immediately if you are close than 5 meters from launch position. If further away it will make sure to have at least 10 meters of altitude, then start going home at 3m/s, and land. It will disarm itself if so configured, otherwise you will have to manually disarm once on the ground.
 
 
-There are many different modes for Altitude, see [further down on this page](https://github.com/iNavFlight/inav/wiki/7.-Navigation-modes#rth-altitude-control-modes)
+There are many different modes for Altitude, see [further down on this page](https://github.com/iNavFlight/inav/wiki/Navigation-modes#rth-altitude-control-modes)
 
 Activated by **RTH** flight mode.
 
