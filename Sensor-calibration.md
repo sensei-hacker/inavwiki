@@ -16,7 +16,7 @@ See "calibration procedure" below.
 
 ![](images/acc-calibration-positions.jpg)
 
-**Note:** If the flight controller is mounted in another angle or upside down, do the calibration steps with the flight controller pointing as shown in the pictures, not in the quad for fixed wing model, otherwise calibration won´t work.
+**Note:** If the flight controller is mounted in another angle or upside down, do the calibration steps with the flight controller pointing as shown in the pictures, not based on the orientation of the quad or fixed wing model itself, otherwise calibration won´t work.
 
 0. Connect the model to the "Configurator" software, select the "Setup" tab.
 
