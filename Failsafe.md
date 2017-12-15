@@ -58,3 +58,23 @@ Now, verify that failsafe works while in flight:
 Note: If you are using a fixedwing without a magnetometer enabled you will need to run with the airplane before turning off the transmitter to test failsafe. This is because GPS speed needs to be above a certain threshold to acquire a valid heading. Without a valid heading failsafe will not initiated.
 
 Note: To regain control after a failsafe event, you must move the roll/pitch sticks more than `failsafe_stick_threshold` in order to regain control.
+
+INAV offers additional failsafe safety features
+
+failsafe_min_distance and the action you wisk to invoke (failsafe_min_distance_procedure)
+
+failsafe_throttle_low_delay
+
+Time throttle level must have been closed  to Auto disarm 
+The first setting could avoid injury as it will prevent the possibility of the craft blasting off to it's RTH height within you chosen safety distance of the set home point.It could also work against you if a failsafe event occurred while flying close in with a setting of (just land) and you were flying from a very small safe landing area. 
+All options are available to best suite your needs.
+
+The second setting could just ruin your day with a mid air disarm but conversely save you from personal injury if it is forgotten to disarm the craft
+( not using motor stop also goes a long way to making the craft safer as the spinning propellers are a visible sign the craft is armed and dangerous)
+
+Further reading and settable parameters are available here :-
+https://github.com/iNavFlight/inav/blob/master/docs/Failsafe.md#failsafe_throttle
+
+And here :-
+https://github.com/iNavFlight/inav/blob/master/docs/Cli.md
+
