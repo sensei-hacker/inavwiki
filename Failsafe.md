@@ -61,7 +61,7 @@ Note: To regain control after a failsafe event, you must move the roll/pitch sti
 
 **INAV offers additional failsafe safety features**
 
-**failsafe_min_distance** and the action you wish to invoke (failsafe_min_distance_procedure)
+**failsafe_min_distance** and the action you wish to invoke (_failsafe_min_distance_procedure_)
 
 ****failsafe_throttle_low_delay****
 
