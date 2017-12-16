@@ -63,9 +63,8 @@ Note: To regain control after a failsafe event, you must move the roll/pitch sti
 
 **failsafe_min_distance** and the action you wish to invoke (_failsafe_min_distance_procedure_)
 
-****failsafe_throttle_low_delay****
+****failsafe_throttle_low_delay**** (Time throttle level must have been closed  to Auto disarm)
 
-Time throttle level must have been closed  to Auto disarm 
 The first setting could avoid injury as it will prevent the possibility of the craft blasting off to it's RTH height within you chosen safety distance of the set home point.It could also work against you if a failsafe event occurred while flying close in with a setting of (just land) and you were flying from a very small safe landing area. 
 All options are available to best suite your needs.
 
