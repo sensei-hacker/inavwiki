@@ -14,7 +14,7 @@ A video guide of these steps is available here: [https://www.youtube.com/watch?v
 
 See "calibration procedure" below.
 
-[url=https://postimg.org/image/u4xo8e3jv/][img width=180 height=98]https://s9.postimg.org/u4xo8e3jv/i_NAV_Giro_Calibration_Diagram.jpg[/img][/url]
+[url=https://s9.postimg.org/u4xo8e3jv/i_NAV_Giro_Calibration_Diagram.jpg[/img][/url]
 
 **Note:** If the flight controller is mounted in another angle or upside down, do the calibration steps with the flight controller pointing as shown in the pictures, not based on the orientation of the quad or fixed wing model itself, otherwise calibration won´t work.
 
