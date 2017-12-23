@@ -12,7 +12,7 @@ You may find this easier to do more accurately prior to installing the flight co
 
 A video guide of these steps is available here: [https://www.youtube.com/watch?v=HxWSn_noNgg](https://www.youtube.com/watch?v=HxWSn_noNgg)
 
-See "calibration procedure" below.
+See "calibration procedure" below:
 
 <a href="http://tinypic.com?ref=2h3zplg" target="_blank"><img src="http://i64.tinypic.com/2h3zplg.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
 
