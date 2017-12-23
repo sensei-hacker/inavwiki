@@ -14,7 +14,7 @@ A video guide of these steps is available here: [https://www.youtube.com/watch?v
 
 See "calibration procedure" below.
 
-[IMG]http://i64.tinypic.com/2h3zplg.jpg[/IMG]
+<a href="http://tinypic.com?ref=2h3zplg" target="_blank"><img src="http://i64.tinypic.com/2h3zplg.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
 
 **Note:** If the flight controller is mounted in another angle or upside down, do the calibration steps with the flight controller pointing as shown in the pictures, not based on the orientation of the quad or fixed wing model itself, otherwise calibration won´t work.
 
