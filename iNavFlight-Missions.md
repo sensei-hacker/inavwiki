@@ -11,9 +11,9 @@ The MSP (MultiWii Serial Protocol) messages defining mission navigation are [doc
 
 # Ground Control Stations
 
-Currently there are two GCS applications widely used for iNav mission management, [ezgui](http://ez-gui.com/) (Android) and [mwp](https://github.com/stronnag/mwptools) (Linux). In future, other options may become available, particularly as the MAVLink protocol becomes supported by iNav. However, MAVLink based tools will only provide monitoring.
+Currently there are a number of GCS applications widely used for iNav mission management, including [ezgui](http://ez-gui.com/) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://github.com/stronnag/mwptools) (Linux). In future, other options may become available, particularly as the MAVLink protocol becomes supported by iNav. However, MAVLink based tools will only provide monitoring.
 
-**ezgui** and **mwp** both support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. ezgui also provides a FC configuration capability. 
+**ezgui** and **mwp** (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. ezgui also provides a FC configuration capability. 
 
 ## EZGui (Android)
 
@@ -37,7 +37,7 @@ Log files can be opened in PC software Mission Planner.
 
 ## mwp (Linux)
 
-mwp can be downloaded from [Github](<https://github.com/stronnag/mwptools>). mwp is open source (GPL 2). It is available only as a source distribution and it is necessary to compile and install the application. Build instructions and dependencies are provided for Ubuntu and Fedora. Arch Linux users can install mwp from the AUR ([Arch User Repository](https://aur.archlinux.org/packages/mwptools-git/)). 
+mwp can be downloaded from [Github](<https://github.com/stronnag/mwptools>). mwp is open source (GPL 3). It is available only as a source distribution and it is necessary to compile and install the application. Build instructions and dependencies are provided for Ubuntu and Fedora. Arch Linux users can install mwp from the AUR ([Arch User Repository](https://aur.archlinux.org/packages/mwptools-git/)). 
 
 In addition to mission planning and logger, mwp also supports the replay of blackbox logs against a geospatial background (requires [blackbox-tools](https://github.com/cleanflight/blackbox-tools)). mwp also includes numerous poorly documented scripts for mission and blackbox analysis, as well as an overly comprehensive user guide.
 
@@ -72,7 +72,7 @@ Bluetooth is the easiest solution to get working with minimal effort. A cheap HC
 
 ## 3DR
 
-3DR radios operate in the regionally unlicensed 433MHz and 900MHz bands. They are widely available from online retailers. Detailed documentation is available at from [Ardupilot.org](http://ardupilot.org/copter/docs/common-3dr-radio-advanced-configuration-and-technical-information.html). The standard 3DR firmware is designed for the MAVLink protocol; there is a fork of the firmware available for the MSP (Multiwii Serial Protocol) used by iNav https://github.com/stronnag/SiK-MSP.
+3DR radios operate in the regionally unlicensed 433MHz and 900MHz bands. They are widely available from online retailers. Detailed documentation is available at from [Ardupilot.org](http://ardupilot.org/copter/docs/common-3dr-radio-advanced-configuration-and-technical-information.html). The standard 3DR firmware is designed for the MAVLink protocol. While there is a fork of the firmware available for the MSP (Multiwii Serial Protocol), it does not support recent advances in iNav (MSPv2, LTM); and the current recommendation is just to use the standard firmware with MAVLink options disabled.
 
 3DR is a medium range technology, up to at least 1km. Range is somewhat dependent on baud rate and is [well documented](http://ardupilot.org/copter/docs/common-3dr-radio-advanced-configuration-and-technical-information.html)
 
@@ -112,7 +112,7 @@ Other solutions include Dragonlink. Contributions to the wiki solicited!
 
 # Telemetry Protocols
 
-Data is transferred between the GCS and the FC using a "Telemetry Protocol". Currently, iNav offers two protocols (MSP and LTM), both of which are supported by ezgui and mwp. In the future, a minimal implementation of MAVLink will be offered (mwp already supports this MAVLink subset), this will allow other tools to be used, such as the cross-platform [QGroundControl](http://qgroundcontrol.org/). The MAVLink implementation currently proposed will only support push telemetry (i.e. mission monitoring, not mission planning).
+Data is transferred between the GCS and the FC using a "Telemetry Protocol". Currently, iNav offers two protocols (MSP and LTM), both of which are supported by ezgui and mwp. There is also a minimal implementation of MAVLink (mwp already supports this MAVLink subset), this will allow other tools to be used, such as the cross-platform [QGroundControl](http://qgroundcontrol.org/). The MAVLink implementation only supports push telemetry (i.e. mission monitoring, not mission planning).
 
 ## MSP - MultiWii Serial Protocol
 
@@ -124,17 +124,17 @@ ezgui and mwp can mitigate this performance hit by using MSP for configuration, 
 
 LTM is a 'push' telemetry protocol; that is the FC sends data unsolicited to the GCS. This avoids the 'half-duplex' time penalty of MSP on 3DR radios. Unlike MSP, LTM only provides flight data, thus if you need the GCS to select a vehicle icon based on the multirotor type (QUADX, TRI etc), offer additional functions based in the FC firmware version or upload waypoints, then it is necessary to share the serial port on the FC between MSP and LTM; MSP is used when unarmed and LTM when armed. Both ezgui and mwp handle the switch-over automatically.
 
-You can find documentation / specification for the LTM implementation in Inav in the [mwp documentation](https://raw.githubusercontent.com/stronnag/mwptools/master/docs/ltm-definition.txt). 
+You can find documentation / specification for the LTM implementation in Inav in the [iNav Wiki](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)). 
 
-LTM will operate effectively over low data rate links. Currently the iNav implementation pushes c. 300 bytes /sec, so in theory a 4800 over the air rate would suffice. There is a proposal in the comments for [PR 184](https://github.com/iNavFlight/inav/pull/184) that would provide a 'slow' mode down to 2400 baud (pushing approximately 170 byes/sec). Please note that iNav serial ports currently have a minimum speed of 9600 baud, so are more than adequate for LTM, even on soft serial.
+LTM will operate effectively over low data rate links. Currently the iNav implementation pushes c. 300 bytes /sec in its fastest rate, so 4800 baud over the air rate would suffice. iNav provides a configuration options for 'medium' and 'slow' LTM rates, further reducing the required baud rate, which may in turn increase range for some radio options.
 
 LTM is supported by ezgui, mwp and ([for OSD, ltm-osd-simple](https://github.com/digitalentity/ltm-osd-simple))
 
-## MAVLink (integration pending. [PR#186](https://github.com/iNavFlight/inav/pull/186))
+## MAVLink 
 
-[MAVLink](http://qgroundcontrol.org/mavlink/start) is a full-feature, highly capable protocol used by PX4, PIXHAWK, APM and Parrot AR.Drone platforms (inter alia). The proposed implementation for iNav is 'push telemetry' only, so it can only be used for flight monitoring, not mission planning.
+[MAVLink](http://qgroundcontrol.org/mavlink/start) is a full-feature, highly capable protocol used by PX4, PIXHAWK, APM and Parrot AR.Drone platforms (inter alia). The implementation for iNav is 'push telemetry' only, so it can only be used for flight monitoring, not mission planning.
 
-The initial implementation proposed for iNav is supported by ezgui, Droid Planner 2, mwp and QGroundControl. Probably some of the Android apks for Mavlink will work with this telemetry protocol. Tower (Droid Planner 3) currently doesn't work.
+The initial implementation in iNav is supported by ezgui, Droid Planner 2, mwp and QGroundControl. Probably some of the Android apks for Mavlink will work with this telemetry protocol. Tower (Droid Planner 3) currently doesn't work (is this still true?)
 
 # Configuring the Flight Controller
 ## Ports & port sharing
@@ -223,7 +223,7 @@ WP mode is only disengaged under the following circumstances:
 3DR radios are sold either as a pair of air station  / ground station or individually. Functionally, the air / ground radios are identical, the air side having a tty/serial connection and the ground side having a USB interface for connecting to a computer. For ezgui (and mwp), it is easier to use a Bluetooth bridge. This bridge is also recommended for mwp, as it avoids any potential RF interference from the USB cable and allows the more flexible placement of the ground antenna. In order to use the 3DR / BT bridge, it is necessary to have 'air side' devices at both ends of the link. It is then necessary to 'back-to-back' the ground 3DR and the BT device [example field setup](http://www.rcgroups.com/forums/showthread.php?t=2495732&page=65) and provide power. A voltage regulator and an old lipo works really well. The [HR-12](https://quadmeup.com/diy-wireless-telemetry-link-for-uav/) description provides the canonical connection diagram, a 5V regulator or BEC may be used.
 
 ### Firmware
-The 3DR radios will ship with a version of the [Sik Firmware](https://github.com/Dronecode/SiK). This firmware is optimised for MAVLink (it understands MAVLink framing, reports RSSI to a MAVLink GCS). There is a fork (of an older version) that provides similar capabilities (understands MSP framing, reports RSSI to a MSP GCS (ezgui, mwp) for [MSP](https://github.com/stronnag/SiK-MSP).
+The 3DR radios will ship with a version of the [Sik Firmware](https://github.com/Dronecode/SiK). This firmware is optimised for MAVLink (it understands MAVLink framing, reports RSSI to a MAVLink GCS). There is a fork (of an older version) that provides similar capabilities (understands MSP framing, reports RSSI to a MSP GCS (ezgui, mwp) for [MSP](https://github.com/stronnag/SiK-MSP); however its use is no longer recommended as it does not understand MSPv2 or LTM, so it somewhat pointless.
 
 ### Configuration
 
@@ -238,6 +238,10 @@ or both MSP framing and MSP radio status reporting:
 ````
 ATS6 = 2
 ````  
+* Otherwise (recommended), just turn message based framing off:
+````
+ATS6 = 0
+````  
 * You will get better range at lower speeds, it is also good practice to set the air speed and the ground speed to close rates, in order to minimise the probability of serial overruns. Here we set air speed to 24000 baud and ground speed to 19200 baud. Actually, as the data rate is low (and fits within the device buffers, this is not so important; an air speed of 24000 baud and a ground speed of 115200 works as well.
 ````
 ATS1 = 19
@@ -249,7 +253,7 @@ These settings are more than adequate for both MSP and LTM.
 ````
 ATS15 = 33
 ````
-* However, if you intend to also use LTM, set this to highest permitted value (131) to maximise throughput:
+* However, if you intend to also use LTM, set this to highest permitted value (131) to maximise throughput, or experiment with intermediate values `ATS15 = 66`:
 ````
 ATS15 = 131
 ````
