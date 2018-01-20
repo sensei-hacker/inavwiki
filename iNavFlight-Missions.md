@@ -7,21 +7,23 @@ iNav supports autonomous flight using waypoints. In order to use this capability
 
 This wiki topic describes the software currently available and some of the telemetry options. Please also see the [wiki page on more general navigation mode options](https://github.com/iNavFlight/inav/wiki/8.-Navigation-modes#wp---autonomous-waypoint-mission).
 
-The MSP (MultiWii Serial Protocol) messages defining mission navigation are [documented](https://docs.google.com/document/d/16ZfS_qwc-rJeA7N5Tx0DA6wtgxl6HdGgaz-jE3lHBWs). This message set is supported by the **ezgui** and **mwp** ground stations.
+The MSP (MultiWii Serial Protocol) messages defining mission navigation are [documented](https://docs.google.com/document/d/16ZfS_qwc-rJeA7N5Tx0DA6wtgxl6HdGgaz-jE3lHBWs). This message set is supported by the ~~ezgui~~ [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and **mwp** ground stations.
 
 # Ground Control Stations
 
-Currently there are a number of GCS applications widely used for iNav mission management, including [ezgui](http://ez-gui.com/) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://github.com/stronnag/mwptools) (Linux). In future, other options may become available, particularly as the MAVLink protocol becomes supported by iNav. However, MAVLink based tools will only provide monitoring.
+Currently there are a number of GCS applications widely used for iNav mission management, including ~~[ezgui](http://ez-gui.com/)~~ [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://github.com/stronnag/mwptools) (Linux). In future, other options may become available, particularly as the MAVLink protocol becomes supported by iNav. However, MAVLink based tools will only provide monitoring.
 
-**ezgui** and **mwp** (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. ezgui also provides a FC configuration capability. 
+[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) ~~ezgui~~ and **mwp** (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. ~~ezgui also provides a FC configuration capability.~~
 
-## EZGui (Android)
+~~## EZGui (Android)~~
+~~ezgui can be downloaded from the [Google Play store](https://play.google.com/store/apps/details?id=com.ezio.multiwii&hl=en_GB). There is a free version and a (very reasonably priced) paid-for version with additional functionality. The application is not open source.~~
+~~A basic tutorial for EZ-GUI and iNav mission setup is available [here](https://quadmeup.com/inav-cleanflight-learned-how-to-do-missions/).~~
+~~There is a [RC Groups support forum](http://www.rcgroups.com/forums/showthread.php?t=2511917)~~
 
-ezgui can be downloaded from the [Google Play store](https://play.google.com/store/apps/details?id=com.ezio.multiwii&hl=en_GB). There is a free version and a (very reasonably priced) paid-for version with additional functionality. The application is not open source. 
+EZ-GUI is no longer maintained. Please use [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) instead.
 
-A basic tutorial for EZ-GUI and iNav mission setup is available [here](https://quadmeup.com/inav-cleanflight-learned-how-to-do-missions/).
-
-There is a [RC Groups support forum](http://www.rcgroups.com/forums/showthread.php?t=2511917)
+## [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android)
+[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) can be downloaded from Google Play Store. There is a free version which limits number of waypoints to 5 and (very reasonably priced) paid-for version with additional functionality. The application is not open source. For questions and help EZ-GUI thread can be used: [RC Groups support forum](http://www.rcgroups.com/forums/showthread.php?t=2511917).
 
 ## Droid Planner 2 (Android)
 
