@@ -43,7 +43,7 @@ To confirm magnetic interference, blackbox logging is most useful:
 
 * The blackbox can be analysed to compare the course over the ground (from GPS) with the compass readings.
 
-* If you need help doing this, post the log in the iNav RC Groups forum and ask for help. There are a number of users familiar with this type of analysis who will assist.
+* If you need help doing this, post the log in the iNav RC Groups forum (or Slack channel) and ask for help. There are a number of users familiar with this type of analysis who will assist.
 
 * It is necessary to fly at a reasonable speed in order to get useful GPS data. Just hovering is not useful as the GPS cannot detect direction without movement.
 
