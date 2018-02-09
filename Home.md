@@ -18,6 +18,8 @@ iNav has many settings that are different than cleanflight, so while the configu
 
 - [Fixed wing guide](https://github.com/iNavFlight/inav/wiki/Fixed-wing-guide) if you're going to use it in a fixed wing model.
 
+- [YouTube videos](https://github.com/iNavFlight/inav/wiki/YouTube-video-guides)
+
 - Many flight controller boards are supported. See the [Supported boards](Supported-boards) page.
 
 You can download the iNav configurator for free [here](https://chrome.google.com/webstore/detail/inav-configurator/fmaidjmgkdkpafmbnmigkpdnpdhopgel).
