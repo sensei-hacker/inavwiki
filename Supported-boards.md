@@ -33,7 +33,7 @@ These boards are well tested with INAV and are known to be of good quality and r
 | Board name                | CPU Family | Target name(s)            | GPS  | Compass | Barometer      | Telemetry | RX                             | Blackbox             |
 |---------------------------|:----------:|:-------------------------:|:----:|:-------:|:--------------:|:---------:|:------------------------------:|:--------------------:|
 | SPRacing F3               | F3         | SPRACINGF3                | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
-
+| Matek F405 STD       | F4         | MATEKF405                | All  | All     | All            | All       | All                            | SERIAL, SD     |
 
 ### Other supported boards
 
