@@ -28,7 +28,7 @@ Before attempting any navigation modes, you should verify that the compass align
 * Use an analogue compass in preference to a digital (mobile phone) compass. The compass in your phone is likely to be a similar chip to that on your aircraft, and is as susceptible to errors of interference and calibration
 * Alternatively, if you know the orientation of surrounding landmarks (e.g. my house is pretty much N/S), then you can do  static tests against land orientation.
 
-Check your machine at cardinal points (North, East, South, West). Degree perfect alignment is not necessary (and probably not measurable), but you should aim for +/- 5° of known magnetic direction.
+Check your machine at cardinal points (North (0°), East (90°), South (180°), West (270°)). Degree perfect alignment is not necessary (and probably not measurable), but you should aim for +/- 5° of known magnetic direction.
 
 * If the values are incorrect by a multiple of 90°, then the numeric alignment needs to be changed
 * If the values are just randomly wrong across the cardinal points, then FLIP is probably wrong (as well).
