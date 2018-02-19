@@ -11,7 +11,9 @@ Older versions as M6N and M7N also work, but the new M8N is far superior. Most G
 
 With default settings iNav will configure the GPS automatically, **there is no need for configuring it manually** using software like u-center. Nevertheless you have to configure your FC with iNav to receive the GPS signals.
 
-It is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo. 
+For iNav before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites. 
+
+With iNav 1.9 and later, Galileo can be enabled with the CLI setting `set gps_ublox_use_galileo = ON` (the default is off).
 
 If you want to use the external magnetometer (built in in your GPS) and you have a FC with the same magnetometer (HMC5883L is very common), you have to disable it physically on your FC: remove chip from board or cut a trace. You can't use two identical chips/magnetometers on the same I2C bus. 
   * When using DJI NAZA gps this is not true, DJI NAZA sends compass over serial and does not use the I2C bus)
