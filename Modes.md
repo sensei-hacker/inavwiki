@@ -117,8 +117,7 @@ Sequence for launching airplane using `NAV LAUNCH` mode looks like this:
 
 1. Set switch to `NAV LAUNCH` mode prior to arming (note that it won't actually enable until arming)
 1. ARM the plane. Motor should start spinning at min_throttle (if `MOTOR_STOP` is active, motor won't spin)
-1. Verify that motor don't respond to throttle stick motion. Don't touch the pitch/roll stick!
-1. Put throttle stick to desired throttle value to be set **after** launch is finished.
+1. Put throttle stick to desired throttle value to be set **after** launch is finished. Motor should start spinning with  `nav_fw_launch_idle_thr`. Default is 1000 so it will respect `MOTOR_STOP` if active. Verify that motor don't respond to throttle stick motion.  Don't touch the pitch/roll stick!
 1. Throw the airplane.  It must be thrown leveled, or thrown by slinging it by wingtip.
 1. Motors will start at pre-configured `nav_fw_launch_thr` (default 1700) after `nav_fw_launch_motor_delay` (500ms)
 1. Launch sequence will finish when pilot switch off the NAV LAUNCH mode or move the sticks.  
@@ -126,6 +125,11 @@ Sequence for launching airplane using `NAV LAUNCH` mode looks like this:
 If it won't detect launch it's possible that you need to lower your threshold. Look at the CLI variables.
 
 CAUTION: Motors will spin if you unset `NAV LAUNCH` mode after arming.
+
+From version 1.9 `NAV LAUNCH` can be permanently enabled via the configurator or the CLI using `feature FW_LAUNCH` in this case `NAV LAUNCH` doesn't need to be enabled via a transmitter switch prior to arming.
+If you want to launch the plane manually just move pitch/roll stick and you have back throttle control.
+If you inadvertedly disarm mid-air before raising the throttle again (you should lower the throttle to arm again) move pitch/roll stick and you will have throttle control back.
+  
 
 ### PASSTHRU
 Direct servo control in fixed-wing.
