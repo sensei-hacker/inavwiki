@@ -56,6 +56,7 @@ These boards work with INAV but might be not well tested.
 | SPRacing F3 EVO           | F3         | SPRACINGF3EVO             | All  | All     | All            | All       | All                            | SERIAL, SD           |
 | MATEK F405-AIO      | F4         | MATEKF405                      | All  | All     | All            | All       | All                            | SD, SERIAL               |
 | MATEK F405-OSD           | F4         | MATEKF405OSD (post 1.7.3)  | All  | All (soft-I2C) | All (soft-I2C)  | All       | All                            | SD, SERIAL           |
+| YuPiF4 by RcNet           | F4         | YUPIF4                    | All  | All     | All            | All       | All                            | SERIAL, SD           |
 
 ### Not recommended for new setups
 
@@ -67,4 +68,3 @@ These boards will work with INAV but are either end-of-life, limited on features
 | OpenPilot CC3D            | F1         | CC3D, CC3D_PPM1           | UBLOX | HMC5883 | BMP085, BMP280 | LTM       | PWM, PPM, SBUS, IBUS, SPEKTRUM | no                   |
 | AfroFlight NAZE32         | F1         | NAZE                      | UBLOX | HMC5883 | MS5611, BMP280 | LTM, FRSKY | PWM, PPM, SBUS, IBUS, SPEKTRUM | SERIAL, SPIFLASH     |
 | ANYFC                     | F4         | ANYFC                     | All  | All     | All            | All       | All                            | SERIAL               |
-| YuPiF4 by RcNet           | F4         | YUPIF4                    | All  | All     | All            | All       | All                            | SERIAL, SD           |
