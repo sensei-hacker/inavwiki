@@ -88,13 +88,15 @@ At this point everything should work as expected.
 * If you wish for your fixed wing model to loiter instead of attempting a landing after RTL mode is selected & the model returning home, you can set the model to loiter by typing this and saving in CLI:
 ``set nav_rth_allow_landing = OFF``
 
-* In iNav V1.7 when the RTL mode is enabled, the model will climb and then return home. If you set this value below, the model will **turn and then climb** on it's way back to the home position:
-``set nav_rth_climb_first = OFF``
+* In iNav V1.7 when the RTL mode is enabled, the model will climb FIRST then return home. If you set this value below, the model will **turn and then climb** on it's way back to the home position:
+``set nav_rth_climb_first = OFF`` 
+(Generally the default would be more useful than possibly turning back into any scenery that caused the RTH)
 
 * In iNav V1.7 the default RTL height is 10 metres (approx 32') which might be too low for flying sites with trees. You can change this to 70 metres (approx 230') by setting this value in the CLI tab and typing save afterwards:
 ``set nav_rth_altitude = 7000``
 
-* If you intend to glide for more than 10 seconds, in iNav 1.6 & 1.7 it's suggested that you also set this value, so that the model doesn't "failsafe" by itself when using zero throttle during a glide: ``set failsafe_throttle_low_delay = 0``
+* If you intend to glide for more than 10 seconds, in iNav 1.6 & 1.7 it's suggested that you also set this value, so that the model doesn't "failsafe" by itself when using zero throttle during a glide: ``set failsafe_throttle_low_delay = 0`` 
+(This will only stop the low throttle "timed" safety Guard Failsafe and an RC Loss could still result in a DISARM when at low throttle) Stay current with latest iNAV FS options. 
 
 * Setup `failsafe` mode. If you select your receiver to go to RTH mode in modes tab, it will not control throttle if throttle is zero.
 
