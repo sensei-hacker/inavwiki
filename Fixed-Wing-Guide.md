@@ -104,7 +104,7 @@ At this point everything should work as expected.
 
 * Take a few minutes to read through how the different [Flight Modes](https://github.com/iNavFlight/inav/wiki/Flight-modes) affect the model in the air.
 
-* Have `passthrough` mode configured so if it happens anything with gyro / accelerometer in the air you can use manual control. This includes if your flight controller resets during flight because of example an brownout.  
+* Have `manual` mode configured so if it happens anything with gyro / accelerometer in the air you can use manual control. This includes if your flight controller resets during flight because of example an brownout.  
 
 * Read through the iNav [CLI commands](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md), especially ALL marked with "**fw_ **" This will give you hints how the modes for fixed wings work.  
 
@@ -138,10 +138,10 @@ At this point everything should work as expected.
 
 * Double check following again:
     * 3d model in configurator moves correctly when moving airplane by hand. And that the aircraft is showing leveled when your holding the aircraft leveled in air.
-    * Do the [High Five](https://youtu.be/Gf74geZyKYk) test in passthrough mode, verify everything is moving as expected.
+    * Do the [High Five](https://youtu.be/Gf74geZyKYk) test in manual mode, verify everything is moving as expected.
     * Enable `Angle` / `Horizon` mode and verify the control surfaces moves correctly when moving aircraft by hand and by sticks on TX
 
-* Arm and launch your aircraft using prefered mode, example `Pass Through` for the maiden flight launch.
+* Arm and launch your aircraft using prefered mode, example `manual` for the maiden flight launch.
     * If airplane is not flying leveled when in self leveling mode like `Horizon` you need to trim your [board aligment](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#board-orientation-and-level-calibration)
     * If airplane flies leveled, do an [Servo Autotrim](https://github.com/iNavFlight/inav/wiki/Modes#servo-autotrim)
     * Tune your PIFF values, either manually or with [AUTOTUNE](https://github.com/iNavFlight/inav/wiki/Modes#autotune) 
@@ -155,7 +155,7 @@ At this point everything should work as expected.
 
 ### Optional / Guides related to Fixed Wing:
 
-* Using a seperate BEC for servos to prevent the FC from restarting due to brownouts or interferences of the servos. [Example](http://www.rcgroups.com/forums/showpost.php?p=34254665&postcount=4006) INAV will not be able to function after an brownout, Pilot must switch into Passthrough mode and fly manually and land the airplane.
+* Using a seperate BEC for servos to prevent the FC from restarting due to brownouts or interferences of the servos. [Example](http://www.rcgroups.com/forums/showpost.php?p=34254665&postcount=4006) INAV will not be able to function after an brownout, Pilot must switch into manual mode and fly manually and land the airplane.
 
 * [Using a minimosd](https://github.com/iNavFlight/inav/wiki/Howto:-CC3D-flight-controller,-minimOSD-and-GPS-for-fixed-wing#osd-setup)
 
