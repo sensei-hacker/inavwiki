@@ -120,8 +120,6 @@ At this point everything should work as expected.
 
 * If your compass is not 100% properly setup just disable it instead. **A calibrated compass can cause orientation drift during flight that may not show up in the configurator** (especially built-in ones on your FC). Really consider disabling it unless you need it. INAV uses GPS heading normally, Only on ground before GPS speed has been high enough or if error between GPS heading and compass heading exceed 60deg will it use compass heading
 
-* Do not activate ``set disarm_kill_switch`` or your plane will drop out of the air.
-
 * Use ``feature MOTOR_STOP`` for more safety. Motor will not spin if just armed.
 
 * Use ``set tpa_rate`` and ``set tpa_breakpoint`` to optimise your PIFF for higher speeds. Good value to start is 40% at your cruise throttle position as breakpoint.
