@@ -127,7 +127,7 @@ If it won't detect launch it's possible that you need to lower your threshold. L
 CAUTION: Motors will spin if you unset `NAV LAUNCH` mode after arming.
 
 From version 1.9 `NAV LAUNCH` can be permanently enabled via the configurator or the CLI using `feature FW_LAUNCH` in this case `NAV LAUNCH` doesn't need to be enabled via a transmitter switch prior to arming.
-If you want to launch the plane manually just move pitch/roll stick and you have back throttle control.
+If you want to launch the plane manually just move pitch/roll stick after you have armed the plane and you have back throttle control.
 If you inadvertedly disarm mid-air before raising the throttle again (you should lower the throttle to arm again) move pitch/roll stick and you will have throttle control back.
   
 
