@@ -104,6 +104,7 @@ Airplane launch assistant
 
 This flight mode is intended to provide assistance for launching the fixed-wing UAVs. Launch detection works by monitoring airplane acceleration - once it breaches the threshold for a certain amount of time launch sequence is started.
 
+Gliders have different needs than motorized planes.  See below for note on glider launch setup.
 
 The entire time `NAV LAUNCH` mode it will try and stabilize plane, it will target zero roll, zero yaw and predefined climb angle. The I-gain of the PIFF regulator is also disabled to prevent I-gain growing during launch until motor is started. When successful launch is detected it waits for preconfigured amount of time before starting motor.
 
@@ -130,6 +131,20 @@ From version 1.9 `NAV LAUNCH` can be permanently enabled via the configurator or
 If you want to launch the plane manually just move pitch/roll stick after you have armed the plane and you have back throttle control.
 If you inadvertedly disarm mid-air before raising the throttle again (you should lower the throttle to arm again) move pitch/roll stick and you will have throttle control back.
   
+
+**GLIDER / SLOPER SETUP**
+
+For obtaining launch assistance for hand-thrown gliders, it's is a bit tricky.  One possible solution is to setup the throttle as in input for switching modes.  At lowest throttle setting, disarm and enter passthru.  Just above minimal throttle, turn on Nav Launch, then just above that, Arm.  
+
+This will allow the FC to reset the launch sequence and be ready for toss.  
+
+Setup launch parameters appropriately:
+
+nav_fw_launch_climb_angle = XXX (Climb angle for launch sequence (degrees), is also restrained by global max_angle_inclination_pit)
+nav_fw_launch_velocity = XXX 300? (Forward velocity threshold for swing-launch detection [cm/s])
+
+.  For stabilized control: at mid throttle enable Angle mode, then at top end of throttle, enable Horizon.
+
 
 ### PASSTHRU
 Direct servo control in fixed-wing.
