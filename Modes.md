@@ -148,7 +148,7 @@ Setup launch parameters appropriately:
 
 (Forward velocity threshold for swing-launch detection [cm/s])
 
-.  For stabilized control: at mid throttle enable Angle mode, then at top end of throttle, enable Horizon.
+One option is to add Horizon mode at very top end of throttle, to enable acro flying with ability to drop back to angle mode for emergency recovery.
 
 
 ### PASSTHRU
