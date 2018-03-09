@@ -141,8 +141,11 @@ This will allow the FC to reset the launch sequence and be ready for toss.
 Setup launch parameters appropriately:
 
 `nav_fw_launch_climb_angle = XXX`
+
 (Climb angle for launch sequence (degrees), is also restrained by global max_angle_inclination_pit)
+
 `nav_fw_launch_velocity = XXX 300?` 
+
 (Forward velocity threshold for swing-launch detection [cm/s])
 
 .  For stabilized control: at mid throttle enable Angle mode, then at top end of throttle, enable Horizon.
