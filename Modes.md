@@ -140,7 +140,7 @@ This will allow the FC to reset the launch sequence and be ready for toss with A
 
 Setup launch parameters appropriately:
 
-`nav_fw_launch_climb_angle = XXX`
+`nav_fw_launch_climb_angle = XX 45?`
 
 (Climb angle for launch sequence (degrees), is also restrained by global max_angle_inclination_pit)
 
