@@ -134,9 +134,9 @@ If you inadvertedly disarm mid-air before raising the throttle again (you should
 
 **GLIDER / SLOPER SETUP**
 
-For obtaining launch assistance for hand-thrown gliders, it's is a bit tricky.  One possible solution is to setup the throttle as in input for switching modes.  At lowest throttle setting, disarm and enter passthru.  Just above minimal throttle, turn on Nav Launch, then just above that, Arm.  
+For obtaining launch assistance for hand-thrown gliders, it's is a bit tricky.  One possible solution is to setup the throttle as in input for switching modes.  At lowest throttle setting, disarm and enter passthru.  Just above minimal throttle, turn on Nav Launch, then just above that, Arm and activate Angle - all simultaneously "on" for launch.  
 
-This will allow the FC to reset the launch sequence and be ready for toss.  
+This will allow the FC to reset the launch sequence and be ready for toss with Angle activated after launch. 
 
 Setup launch parameters appropriately:
 
