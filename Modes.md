@@ -142,6 +142,9 @@ Setup launch parameters appropriately:
 
 `nav_fw_launch_climb_angle = XX 45?`
 
+'set nav_fw_launch_thr = 1700'
+**this command for a glider can be problematic.  Not obvious, since motorized craft change PID values for throttle based on 'set tpa_rate = XXX' and 'set tpa_breakpoint = XXXX'  (adjust accordingly).  Can cause unexplained behavior at launch.  For some gliders - have PIDs reduced for toss is beneficial (DLG launch may be fastest speed the glider travels)
+
 (Climb angle for launch sequence (degrees), is also restrained by global max_angle_inclination_pit)
 
 `nav_fw_launch_velocity = XXX 300?` 
