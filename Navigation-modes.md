@@ -139,7 +139,7 @@ Hints for safe operation:
 
 
 ## RTH - Return to home
-RTH will attempt to bring copter/plane to launch position. Launch position is defined as a point where aircraft was ARMed. RTH Will control both position and altitude. You will have to manually control altitude if your aircraft does not have an altitude sensor (barometer). In the case of fixed wing, altitude comes from the GPS, so you dont need a barometer in your FC (CC3D for example).
+RTH will attempt to bring copter/plane to launch position. Launch position is defined as a point where aircraft was ARMed. RTH Will control both position and altitude. You will have to manually control altitude if your aircraft does not have an altitude sensor (barometer). 
 
 With default settings RTH will land immediately if you are close than 5 meters from launch position. If further away it will make sure to have at least 10 meters of altitude, then start going home at 3m/s, and land. It will disarm itself if so configured, otherwise you will have to manually disarm once on the ground.
 
