@@ -146,7 +146,7 @@ Setup launch parameters appropriately:
 
 `set nav_fw_launch_thr = 1700`
 
-**this command for a glider can be problematic.  Not obvious, since motorized craft change PID values for throttle based on `set tpa_rate = XXX` and `set tpa_breakpoint = XXXX`  (adjust accordingly).  Can cause unexplained behavior at launch.  For some gliders - having PID gains reduced for toss is beneficial (DLG launch may be fastest speed the glider travels)
+^^this command for a glider can be problematic.  Not obvious, since Airplanes change PID values for throttle based on `set tpa_rate = XXX` and `set tpa_breakpoint = XXXX`  (adjust accordingly).  Also, not well documented but PIDs are boosted at low throttles by 1.5X!!  Can cause unexplained behavior at launch.  For some gliders - having PID gains reduced for toss is beneficial (DLG launch may be fastest speed the glider travels)
 
 `nav_fw_launch_velocity = XXX 300?` 
 
