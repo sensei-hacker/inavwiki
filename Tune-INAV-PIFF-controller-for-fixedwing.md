@@ -2,10 +2,7 @@
 
 Link to [inavflight article](http://inavflight.com/news/pages/2017/02/14/PIFF-controller.html)
 
-###  Method 1.
-
-Tune for maximum performance.  
-Have the FF-gain do most of the work steering the airplane, leaving only P and I controller to fight turbulence and drift.  
+The FF-gain should do most of the work steering the airplane, leaving only P and I controller to fight turbulence and drift.  
 
 **1: Figure out the maximum rates your airplane can do, both for rolling, loops and yaw turn**
 
@@ -14,10 +11,12 @@ Have the FF-gain do most of the work steering the airplane, leaving only P and I
 * Note down the maximum rates, typical 360deg/s on roll, 100deg/s on pitch and 60deg/s yaw.  
 Enter these values as your rates in configurator.  
 
-**2: Zero out P and I gain on Roll, Pitch and YAW controller. Increase FF-gain(D-gain) untill you get 90% of full servo throw when having sticks at full throw.**
+**2: Zero out P and I gain on Roll, Pitch and YAW controller. Increase FF-gain (D column in the PID tuning tab) until you get 90% of full servo throw when having sticks at full throw when in `ACRO` mode (no flight mode enabled).**
 
-* This is so the FF-gain does most of the work turning the airplane, but leaving some for the P and I gain to work with.  
-Now add example 10 P-gain and 15 I-gain to Roll, Pitch and Yaw axis.
+* This is so the FF-gain does most of the work turning the airplane, but leaving some for the P and I gain to work with.
+* For this step it is convenient to have the two modes `MANUAL` (called `PASSTHROUGH` mode up to version 1.8.1) and `ACRO` available on a switch to be able to switch easily between the two to compare the throws.
+
+Now set a little P and I gain as a starting point for example 10 P-gain and 15 I-gain to Roll, Pitch and Yaw axis.
 
 **3: Go out and fly in acro mode.**
 
