@@ -15,7 +15,7 @@ Index:
 - [LEDLOW](#ledlow)
 - [NAV LAUNCH](#nav-launch)
 - [OSD SW](#osd-sw)
-- [PASSTHRU](#passthru)
+- [MANUAL](#manual) (called PASSTHROUGH mode up to version 1.8.1)
 - [SERVO AUTOTRIM](#servo-autotrim)
 - [SURFACE](#surface)
 - [TELEMETRY](#telemetry)
@@ -155,12 +155,12 @@ Setup launch parameters appropriately:
 One option is to add Horizon mode at very top end of throttle, to enable acro flying with ability to drop back to angle mode for emergency recovery.
 
 
-### PASSTHRU
+### MANUAL
 Direct servo control in fixed-wing.
 
 In this mode there is no stabilization.
 
-What FC does in PASSTHRU mode is: Motor mixing, Servo Mixing, Expo settings. Also Failsafe is still active so it wont overwrite that function.  
+What FC does in PASSTHRU mode is: Motor mixing, Servo Mixing, Expo settings, Throws limiting (see the `manual_*_rate` settings). Note that Failsafe is still active in this mode and can override the controls.
 
 ### SERVO AUTOTRIM
 In flight adjustment of servo midpoint for straight flight
