@@ -12,7 +12,7 @@ The default flight mode is [`RATE`](/iNavFlight/inav/wiki/Modes#default-flight-m
 |  [`NAV POSHOLD`](/iNavFlight/inav/wiki/Navigation-modes#poshold---horizontal-position-hold) | Used to hold position in 2d space with GPS. Combine with ALTHOLD to get 3d position lock |
 |  [`NAV RTH`](/iNavFlight/inav/wiki/Navigation-modes#rth---return-to-home) | Used for Return-to-home. Does not need any other mode selected. |
 |  [`NAV WP`](/iNavFlight/inav/wiki/Navigation-modes#wp---autonomous-waypoint-mission) | Used to fly WAYPOINT mission. Does not need any other mode selected. |
-|  [`PASSTHRU`](/iNavFlight/inav/wiki/Modes#passthru) | Used with fixed-wings to control everything manually. ( Direct servo control ) |
+|  [`MANUAL`](/iNavFlight/inav/wiki/Modes#manual) | Used with fixed-wings to control everything manually. ( Direct servo control ). Was called `PASSTHROUGH` mode up to version 1.8.1 |
 
 `Flight modes that alter behavior in combination with one of the above`
 
