@@ -156,7 +156,7 @@ One option is to add Horizon mode at very top end of throttle, to enable acro fl
 
 
 ### MANUAL
-Direct servo control in fixed-wing.
+Direct servo control in fixed-wing. This mode was called PASSTHROUGH mode up to version 1.8.1.
 
 In this mode there is no stabilization.
 
