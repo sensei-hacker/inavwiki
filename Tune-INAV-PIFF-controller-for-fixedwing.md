@@ -9,7 +9,7 @@ Have the FF-gain do most of the work steering the airplane, leaving only P and I
 
 **1: Figure out the maximum rates your airplane can do, both for rolling, loops and yaw turn**
 
-* Fly in passthrough mode, have some way of recording the flight, blackbox, video camera or both. Do hard roll, hard loops and one 360deg yaw turn. ( Use full stick on all )
+* Fly in `MANUAL` mode (called `PASSTHROUGH` mode up to version 1.8.1) with the `manual_roll_rate`, `manual_pitch_rate` and `manual_yaw_rate` settings set to 100%, have some way of recording the flight, blackbox, video camera or both. Do hard roll, hard loops and one 360deg yaw turn. ( Use full stick on all )
 
 * Note down the maximum rates, typical 360deg/s on roll, 100deg/s on pitch and 60deg/s yaw.  
 Enter these values as your rates in configurator.  
