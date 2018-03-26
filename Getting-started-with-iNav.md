@@ -51,6 +51,8 @@ If you are using your FC onboard mag, try to place the the FC as far away as pos
 
 * Barometer is held at 0 meter until first arm, this is to ensure that it starts at 0 meter instead of 10 meters because of temperatur drift. ( This is why raising your flightcontroller while connected to configurator it shows increasing altitude but then is dragged to 0 meter )
 
+* Always load OSD fonts when starting using a new board from the configurator OSD tab to avoid artifacts on the video feed.
+
 **Checklist if you're having issue with something:**
 
 1. Try and look through the wiki regarding the issue you have. You can also search the Wiki.
