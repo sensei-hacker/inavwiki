@@ -1,3 +1,38 @@
+## MSP API Version 2.2
+
+Since `mixerMode` is no longer used, legacy MSP frames will return always **mixer mode** *3 (QuadX)* and attempt to set mixer mode via MSP will be ignored. This affects following MSP frames:
+
+1. MSP_IDENT
+1. MSP_MIXER
+1. MSP_BF_CONFIG
+1. MSP_SET_MIXER
+1. MSP_SET_BF_CONFIG 
+
+### WIP: MSP2_INAV_MIXER / MSP2_INAV_SET_MIXER
+
+New MSP frames used to setup mixer properties.
+
+Frame IDs:
+
+* MSP2_INAV_MIXER, Frame ID _0x2010_
+* MSP2_INAV_SET_MIXER, Frame ID _0x2011_
+
+| Length        | Setting                       | Notes                         |
+| -----         | -----                         | -----                         |
+| 1 | `yaw_motor_direction` | |
+| 2 | `yaw_jump_prevention_limit` | |
+| 1 | `platform_type` | |
+| 1 | `has_flaps` | |
+
+## INAV 1.9 MSP Version 2.1
+
+### MSP2_COMMON_MOTOR_MIXER / MSP2_COMMON_SET_MOTOR_MIXER
+
+Frame IDs:
+
+* MMSP2_COMMON_MOTOR_MIXER, Frame ID _0x1005_
+* MSP2_COMMON_SET_MOTOR_MIXER, Frame ID _0x1006_
+
 ## INAV 1.7.1 MSP API Version 1.26
 
 ### MSP_FW_CONFIG / MSP_SET_FW_CONFIG
