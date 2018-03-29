@@ -1,7 +1,5 @@
 # The Basics of Getting iNav Working on an Airplane
 
-Note: A limitation of iNav (and all other Cleanflight based firmware for that matter) is that it cannot be flown longer than 1 hour and 15 minutes. This is **resolved** from INAV version 1.6 with F3 boards and newer.
-
 ### Step 1: Getting Your Flight Controller Ready.
 
 * Flash the latest version of iNav using the [iNav Configurator](https://chrome.google.com/webstore/detail/inav-configurator/fmaidjmgkdkpafmbnmigkpdnpdhopgel)
