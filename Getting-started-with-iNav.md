@@ -1,7 +1,7 @@
 ### Getting started
 
 ## Where to download?!
-Install the latest chrome app [iNav Configurator](https://chrome.google.com/webstore/detail/inav-configurator/fmaidjmgkdkpafmbnmigkpdnpdhopgel) and use to download and flash firmware. 
+Install the latest version of [iNav Configurator](https://github.com/iNavFlight/inav-configurator/releases) and use to download and flash firmware. Note that the Chrome app is no longer supported by Google.
 
 Be aware on first boot after a reflash or clean erase INAV tries to auto detect MAG, BARO and SPEED (Pitot-tube).  If none are detected it will indicate this with red icons on the sensor bar.  It will also fail on `Hardware health` on the Pre-arming checks. To fix reboot and its fine.
 
