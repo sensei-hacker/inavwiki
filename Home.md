@@ -4,7 +4,7 @@ INAV is a fork of cleanflight with a heavy focus upon GPS features for both airp
 
 iNav is **being actively developed** and currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features. 
 
-A wide variety of inexpensive flight controller boards are supported. While Naze32 & CC3D flight control boards are supported* with limited features, F3 & F4 flight control boards are **strongly suggested** to gain access to the full features of iNav & extended flight time abilities.
+A wide variety of inexpensive flight controller boards are supported. While Naze32 & CC3D flight control boards are still work (*) with limited features, F3 & F4 flight control boards are **strongly suggested** to gain access to the full features of iNav & extended flight time abilities.
 
 *F1 Flight controllers like Naze32 and CC3D is not supported anymore, previously released firmwares do still work of course. Latest release for F1 boards is INAV 1.7.3
 
