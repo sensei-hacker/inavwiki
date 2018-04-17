@@ -7,6 +7,7 @@
  - [Fixed-Wing Guide](/iNavFlight/inav/wiki/Fixed-wing-guide)
  - [YouTube video guides](/iNavFlight/inav/wiki/YouTube-video-guides)
  - [Setting up Failsafe for RTH](/iNavFlight/inav/wiki/Failsafe)
+ - [Arming is disabled / WPs don't execute] (/iNavFlight/inav/wiki/%22Something%22-is-disabled----Reasons)
 
 # Sensors Setup & Calibration
 
