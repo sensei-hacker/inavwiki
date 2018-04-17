@@ -26,7 +26,7 @@ iNav will refuse to arm for the following reasons:
 | `OSD` | The OSD menu is active |
 | `ROLL/PITCH` | Roll and/or pitch is not centred |
 | `AUTOTRIM` | Servo autotrim is engaged |
-| `OOM ` | The FC has run out of memory |
+| `OOM ` | The FC is out of memory |
 
 
 ### Navigation Unsafe reasons
