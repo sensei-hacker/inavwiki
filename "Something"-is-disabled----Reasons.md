@@ -6,24 +6,28 @@ iNav may fail to perform some action as expected, typically arming or engaging w
 
 iNav will refuse to arm for the following reasons:
 
-| Reason  (enum) | Explanation |
+| Reason  (CLI Mnemonic) | Explanation |
 | ------ | ----------- |
-|  `FAILSAFE_SYSTEM` | The RX is not recognised as providing a valid signal |
-| `NOT_LEVEL` | The vehicle is not level as defined by the CLI `small_angle` setting |
-| `SENSORS_CALIBRATING` | The pre-arm sensor calibration has not completed |
-| `SYSTEM_OVERLOADED` | The CPU load is excessive. May be caused by too an aggressive loop time setting. |
-| `NAVIGATION_UNSAFE` | Where the CLI setting `nav_extra_arming_safety = ON` is used, this may caused reasons shown in the [table below](#navigation-unsafe-reasons) |
-| `COMPASS_NOT_CALIBRATED` | The compass is not calibrated. Perform the calibration procedure |
-| `ACCELEROMETER_NOT_CALIBRATED` | The accelerometer is not calibrated. Perform the 6 point calibration procedure |
-| `ARM_SWITCH` | The arm switch was engaged as the FC booted |
-| `HARDWARE_FAILURE` | A required hardware device has failed / is not recognised (e.g. GPS, Compass, Baro) |
-| `BOXFAILSAFE` | A failsafe switch is engaged |
-| `BOXKILLSWITCH` | A kill switch is engaged |
-| `RC_LINK` | The RC link is not detected (RX not detected) |
-| `THROTTLE` | The throttle setting is not a minimum |
+| `FS` | The RX is not recognised as providing a valid signal |
+| `ANGLE` | The vehicle is not level as defined by the CLI `small_angle` setting |
+| `CAL` | The pre-arm sensor calibration has not completed |
+| `OVRLD` | The CPU load is excessive. May be caused by too an aggressive loop time setting. |
+| `NAV` | Where the CLI setting `nav_extra_arming_safety = ON` is used, this may caused reasons shown in the [table below](#navigation-unsafe-reasons) |
+| `COMPASS` | The compass is not calibrated. Perform the calibration procedure |
+| `ACC` | The accelerometer is not calibrated. Perform the 6 point calibration procedure |
+| `ARMSW` | The arm switch was engaged as the FC booted |
+| `HWFAIL` | A required hardware device has failed / is not recognised (e.g. GPS, Compass, Baro) |
+| `BOXFS` | A failsafe switch is engaged |
+| `KILLSW` | A kill switch is engaged |
+| `RX` | The RC link is not detected (RX not detected) |
+| `THR` | The throttle setting is not a minimum |
 | `CLI` | The CLI is active |
-| `CMS_MENU` | The CMS menu is active |
-| `OSD_MENU` | The OSD menu is active |
+| `CMS` | The CMS menu is active |
+| `OSD` | The OSD menu is active |
+| `ROLL/PITCH` | Roll and/or pitch is not centred |
+| `AUTOTRIM` | Servo autotrim is engaged |
+| `OOM ` | The FC has run out of memory |
+
 
 ### Navigation Unsafe reasons
 
