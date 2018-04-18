@@ -70,4 +70,5 @@ Diagnosing arming failure and WP execution failure often requires the use of a t
 	Arming disabled flags: NAV HWFAIL RX CLI
 	```
 * A ground station may provide diagnostics, for example [mwp](https://github.com/stronnag/mwptools) provides an 'Arming Disabled' alert icon with 'popover' description / explanation, mission upload validation checks and 'first WP distance' exceeded warnings.
+* Video explanation via https://quadmeup.com/troubleshooting-inav-why-inav-is-not-arming/
 * **Your favourite diagnostic tool / technique goes here**
