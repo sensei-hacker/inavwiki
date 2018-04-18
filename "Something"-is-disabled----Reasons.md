@@ -31,16 +31,13 @@ iNav will refuse to arm for the following reasons:
 
 ### Navigation Unsafe reasons
 
+Requires that a navigation mode (which includes failsafe RTH) is configured
+
 | Navigation Unsafe |
 | ------------------ |
 | The GPS has insufficient satellites |
 | A navigation switch is engaged (e.g.PH, WP, RTH) |
-
-## Waypoints will not execute
-
-The pilot *thinks* that they have loaded a waypoint mission, but the mission will not execute when the assigned switch is engaged.
-
-* No mission is actually loaded into the FC. Note that waypints have to be in volatile memory (that is cleared on powercycle), not in EEPROM. If waypoints have been saved to EEPROM it is necessary to restore the WPs to volatile memory before the mission can be executed. 
+| First WP distance exceeded |
 
 * The first waypoint is beyond the distance defined by the CLI setting `nav_wp_safe_distance`. The default is 100m (10000cm, as the value is entered in cm).
 
@@ -49,6 +46,16 @@ The pilot *thinks* that they have loaded a waypoint mission, but the mission wil
 	nav_wp_safe_distance = 10000
 	Allowed range: 0 - 65000
 	``` 
+
+## Waypoints will not execute
+
+The pilot *thinks* that they have loaded a waypoint mission, but the mission will not execute when the assigned switch is engaged.
+
+* No mission is actually loaded into the FC. Note that waypints have to be in volatile memory (that is cleared on powercycle), not in EEPROM. If waypoints have been saved to EEPROM it is necessary to restore the WPs to volatile memory before the mission can be executed.
+
+* The Fixed Wing aircraft is in `MANUAL` / `PASSTHROUGH` mode.
+
+* The craft is currently executing RTH
 
 ## Diagnostics
 
