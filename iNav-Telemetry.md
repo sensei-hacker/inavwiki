@@ -33,7 +33,7 @@ The latter mode is preferred for use with CGS like mwp or EZ-GUI; the CGS can ta
 
 * Lightweight Telemetry (LTM). LTM, as its name implies, is a light-weight protocol that has been enhanced for iNav specific attributes by the iNav developers. Its attraction is its ability to send useful flight data at high rates over slow data links, for example 10Hz update of attitude is possible at 4800 baud, and 5Hz at 2400 baud. LTM is supported by [Ghettostation](https://github.com/KipK/Ghettostation),  [LTM Telemetry OLED ](https://github.com/sppnk/LTM-Telemetry-OLED) , [EZGUI](http://ez-gui.com/) , [MwpTools](https://github.com/stronnag/mwptools), [LTM OSD](https://github.com/digitalentity/ltm-osd-simple), [Scarab OSD](https://github.com/ShikOfTheRa/scarab-osd) and possibly others. For more detail, see the [wiki LTM entry](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM))
 
-* Mavlink. Mavlink is the telemetry protocol (and configuration protocol) of APM and other FCs. It has limited support in iNav and requires more bandwidth than the svelte LTM. It does however allow the use of other CGS and OSD.
+* Mavlink. Mavlink is the telemetry protocol (and configuration protocol) of APM and other FCs. It has limited support in iNav and requires more bandwidth than the svelte LTM. It does however allow the use of other CGS and OSD. Mavlink one way telemetry is supported by [Droid Planner 2 (Android)](https://github.com/DroidPlanner/Tower/releases/download/Droidplanner_v2.8.6_RC2/Droidplanner_v2.8.6_RC2.apk)
 
 * TX protocols. A number of TX devices (FrSky, Hott, IBUS, Smartport) can also receive telemetry. 
 
