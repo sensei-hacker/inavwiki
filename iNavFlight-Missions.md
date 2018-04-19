@@ -27,7 +27,7 @@ EZ-GUI is no longer maintained. Please use [Mission Planner for INAV](https://pl
 
 ## Droid Planner 2 (Android)
 
-Droid Planner 2 can also be downloaded from the [Google Play store](https://play.google.com/store/apps/details?id=org.droidplanner&hl=en_GB). It is free and released under GNU Public License v3.
+Droid Planner 2 can also be downloaded from the [GitHub](https://github.com/DroidPlanner/Tower/releases/download/Droidplanner_v2.8.6_RC2/Droidplanner_v2.8.6_RC2.apk). It is free and released under GNU Public License v3.
 
 Droid Planner only supports iNav's one-way mavlink protocol. The following telemetry data is displayed:
 
