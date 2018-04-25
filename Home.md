@@ -24,7 +24,7 @@ iNav has many settings that are different than cleanflight, so while the configu
 
 - Many flight controller boards are supported. See the [Supported boards](Supported-boards) page.
 
-You can download the iNav configurator for free [here](https://chrome.google.com/webstore/detail/inav-configurator/fmaidjmgkdkpafmbnmigkpdnpdhopgel).
+All configurator is done through [INAV Configurator](https://github.com/iNavFlight/inav-configurator/releases).
 
 This Wiki is available in other languages: [Русский](https://github.com/iNavFlight/ru_wiki/wiki)
 
