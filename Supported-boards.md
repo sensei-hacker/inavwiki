@@ -1,6 +1,6 @@
 ### Boards based on F1 CPUs
 
-These boards are not recommended for new setups. They are very limited in memory and don't support many features of the INAV. In general F1 boards are limited to only UBLOX GPS protocol, don't have BLHeli Passthrough, don't have LEDSTRIP, only support a few telemetries (LTM and maybe FrSky) etc.
+These boards are not recommended for new setups. They are very limited in memory and don't support many features of the INAV. In general F1 boards are limited to only UBLOX GPS protocol, don't have BLHeli Passthrough, don't have LEDSTRIP, only support a few telemetries (LTM and maybe FrSky) etc and do not receive firmware updates.
 
 ### Boards based on F3/F4/F7 CPUs
 
