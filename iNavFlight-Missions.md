@@ -7,13 +7,13 @@ iNav supports autonomous flight using waypoints. In order to use this capability
 
 This wiki topic describes the software currently available and some of the telemetry options. Please also see the [wiki page on more general navigation mode options](https://github.com/iNavFlight/inav/wiki/8.-Navigation-modes#wp---autonomous-waypoint-mission).
 
-The MSP (MultiWii Serial Protocol) messages defining mission navigation are [documented](https://docs.google.com/document/d/16ZfS_qwc-rJeA7N5Tx0DA6wtgxl6HdGgaz-jE3lHBWs). This message set is supported by the ~~ezgui~~ [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and **mwp** ground stations.
+The MSP (MultiWii Serial Protocol) messages defining mission navigation are [documented](https://docs.google.com/document/d/16ZfS_qwc-rJeA7N5Tx0DA6wtgxl6HdGgaz-jE3lHBWs). This message set is supported by the  [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://github.com/stronnag/mwptools) ground stations.
 
 # Ground Control Stations
 
 Currently there are a number of GCS applications widely used for iNav mission management, including  [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://github.com/stronnag/mwptools) (Linux). In future, other options may become available, particularly as the MAVLink protocol becomes supported by iNav. However, MAVLink based tools will only provide monitoring.
 
-[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and **mwp** (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. 
+[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://github.com/stronnag/mwptools) (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. 
 
 Note: Earlier versions of this article recommended ezgui for use on Android. ezgui is no longer maintained and Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) is the recommended Android application.
 
@@ -34,9 +34,9 @@ Log files can be opened in PC software Mission Planner.
 
 ## [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD)
 
-mwp can be downloaded from [Github](https://github.com/stronnag/mwptools). mwp is open source (GPL 3). It is available only as a source distribution and it is necessary to compile and install the application. Build instructions and dependencies are provided for Ubuntu and Fedora. Arch Linux users can install mwp from the AUR ([Arch User Repository](https://aur.archlinux.org/packages/mwptools-git/)). 
+[mwp](https://github.com/stronnag/mwptools) can be downloaded from [Github](https://github.com/stronnag/mwptools). [mwp](https://github.com/stronnag/mwptools) is open source (GPL 3). It is available only as a source distribution and it is necessary to compile and install the application. Build instructions and dependencies are provided for Ubuntu and Fedora. Arch Linux users can install [mwp](https://github.com/stronnag/mwptools) from the AUR ([Arch User Repository](https://aur.archlinux.org/packages/mwptools-git/)). 
 
-In addition to mission planning and logger, mwp also supports the replay of blackbox logs against a geospatial background (requires [blackbox-tools](https://github.com/cleanflight/blackbox-tools)). mwp also includes numerous poorly documented scripts for mission and blackbox analysis, as well as an overly comprehensive user guide.
+In addition to mission planning and logger, [mwp](https://github.com/stronnag/mwptools) also supports the replay of blackbox logs against a geospatial background (requires [blackbox-tools](https://github.com/cleanflight/blackbox-tools)). [mwp](https://github.com/stronnag/mwptools) also includes numerous poorly documented scripts for mission and blackbox analysis, as well as an overly comprehensive user guide.
 
 There is a [RC Groups support forum](http://www.rcgroups.com/forums/showthread.php?t=2633708)
 
@@ -50,7 +50,7 @@ Since version 1.9.2, the iNav configurator provides rudimentary mission planning
 
 ## Potential solutions for other platforms
 
-mwp can be run in a virtual machine on MS Windows and OSX / macOS, using virtualisation tools such as VirtualBox and Parallels. 
+[mwp](https://github.com/stronnag/mwptools) can be run in a virtual machine on MS Windows and OSX / macOS, using virtualisation tools such as VirtualBox and Parallels. 
 
 WinGUI is a Windows program developed for Multiwii-nav. It is currently somewhat abandoned, but would be a viable basis for developing a Windows program for iNav navigation (or better, supporting both Multiwii and iNav, as do the other tools described here). Should anyone wish to rescue this fine application, the source code (GPL v3) may be found at https://code.google.com/archive/p/mw-wingui/.
 
@@ -83,15 +83,15 @@ Advanced configuration for 3DR [is detailed at the end of this wiki page](https:
 
 ESP8266 is a small WiFi to serial bridge. It can be used to transport the serial data link over WiFi. It offers reasonable range (c. 300m) and convenience. The author has seen no evidence of interference between ESP8266 devices and 2.4GHz RC links.
 
-Advanced configuration for ESP8266 is [detailed at the end of this wiki page](https://github.com/iNavFlight/inav/wiki/iNavFlight-Missions#esp8266-1), some preliminary data can be found in [this RC Groups post](http://www.rcgroups.com/forums/showpost.php?p=35007195&postcount=6645). That post demonstrates excellent coverage out to 150m using mwp, ESP07 and ESP01 modules and the standard vendor firmware. The ESP07 module works well with an external antenna.
+Advanced configuration for ESP8266 is [detailed at the end of this wiki page](https://github.com/iNavFlight/inav/wiki/iNavFlight-Missions#esp8266-1), some preliminary data can be found in [this RC Groups post](http://www.rcgroups.com/forums/showpost.php?p=35007195&postcount=6645). That post demonstrates excellent coverage out to 150m using [mwp](https://github.com/stronnag/mwptools), ESP07 and ESP01 modules and the standard vendor firmware. The ESP07 module works well with an external antenna.
 
 There is an ezgui [howto](http://ez-gui.com/manual/multiwii-clearflight-wifi-to-ezi-gui-how-to/) on ESP8266 devices.
 
-Another, highly detailed how-to for ESP8266 and Cleanflight/Baseflight/INAV is available [here](https://quadmeup.com/wifi-telemetry-for-cleanflight-with-ez-gui-and-esp8266/). This reports very poor results, possibly due to the native WiFi capability in the phone hosting ezgui (vice the laptop adaptor for the mwp test).
+Another, highly detailed how-to for ESP8266 and Cleanflight/Baseflight/INAV is available [here](https://quadmeup.com/wifi-telemetry-for-cleanflight-with-ez-gui-and-esp8266/). This reports very poor results, possibly due to the native WiFi capability in the phone hosting ezgui (vice the laptop adaptor for the [mwp](https://github.com/stronnag/mwptools) test).
 
 ## HC-12
 
-HC-12 is a comparable radio technology to 3DR with similar range and performance characteristics. Its configuration and usage with iNav is well documented https://quadmeup.com/diy-wireless-telemetry-link-for-uav/ and https://quadmeup.com/hc-12-433mhz-wireless-serial-communication-module-configuration/. The configuration documented would work equally well in ezgui and mwp. These small radios work really well with good range in FU3 mode / 9600 baud (and very cheap). 
+HC-12 is a comparable radio technology to 3DR with similar range and performance characteristics. Its configuration and usage with iNav is well documented https://quadmeup.com/diy-wireless-telemetry-link-for-uav/ and https://quadmeup.com/hc-12-433mhz-wireless-serial-communication-module-configuration/. The configuration documented would work equally well in ezgui and [mwp](https://github.com/stronnag/mwptools). These small radios work really well with good range in FU3 mode / 9600 baud (and very cheap). 
 
 ## Openlrsng
 
@@ -113,29 +113,29 @@ Other solutions include Dragonlink. Contributions to the wiki solicited!
 
 # Telemetry Protocols
 
-Data is transferred between the GCS and the FC using a "Telemetry Protocol". Currently, iNav offers two protocols (MSP and LTM), both of which are supported by ezgui and mwp. There is also a minimal implementation of MAVLink (mwp already supports this MAVLink subset), this will allow other tools to be used, such as the cross-platform [QGroundControl](http://qgroundcontrol.org/). The MAVLink implementation only supports push telemetry (i.e. mission monitoring, not mission planning).
+Data is transferred between the GCS and the FC using a "Telemetry Protocol". Currently, iNav offers two protocols (MSP and LTM), both of which are supported by ezgui and [mwp](https://github.com/stronnag/mwptools). There is also a minimal implementation of MAVLink ([mwp](https://github.com/stronnag/mwptools) already supports this MAVLink subset), this will allow other tools to be used, such as the cross-platform [QGroundControl](http://qgroundcontrol.org/). The MAVLink implementation only supports push telemetry (i.e. mission monitoring, not mission planning).
 
 ## MSP - MultiWii Serial Protocol
 
-MSP is the 'native' messaging protocol for iNav. It is well supported by the configurator, ezgui, mwp and many OSDs. It is all you need to upload missions and monitor flights. Its one disadvantage for mission monitoring is that it is a polled protocol, that is the GCS has to request data and the FC responds. This is not really an issue for some data links such as BT and WiFi, but the half-duplex nature of 3DR, where there is significant time cost in switching between receive and transmit modes, significantly limits the performance for mission monitoring.
+MSP is the 'native' messaging protocol for iNav. It is well supported by the configurator, ezgui, [mwp](https://github.com/stronnag/mwptools) and many OSDs. It is all you need to upload missions and monitor flights. Its one disadvantage for mission monitoring is that it is a polled protocol, that is the GCS has to request data and the FC responds. This is not really an issue for some data links such as BT and WiFi, but the half-duplex nature of 3DR, where there is significant time cost in switching between receive and transmit modes, significantly limits the performance for mission monitoring.
 
-mwp (and possibly other ground stations) can mitigate this performance hit by using MSP for configuration, mission upload / verification and monitoring prior to arming, and when configured in the FC, switching to LTM for mission monitoring when armed. This switch-over is automatic and transparent to the user.
+[mwp](https://github.com/stronnag/mwptools) (and possibly other ground stations) can mitigate this performance hit by using MSP for configuration, mission upload / verification and monitoring prior to arming, and when configured in the FC, switching to LTM for mission monitoring when armed. This switch-over is automatic and transparent to the user.
 
 ## LTM - Light Telemetry
 
-LTM is a 'push' telemetry protocol; that is the FC sends data unsolicited to the GCS. This avoids the 'half-duplex' time penalty of MSP on 3DR radios. Unlike MSP, LTM only provides flight data, thus if you need the GCS to select a vehicle icon based on the multirotor type (QUADX, TRI etc), offer additional functions based in the FC firmware version or upload waypoints, then it is necessary to share the serial port on the FC between MSP and LTM; MSP is used when unarmed and LTM when armed. Both ezgui and mwp handle the switch-over automatically.
+LTM is a 'push' telemetry protocol; that is the FC sends data unsolicited to the GCS. This avoids the 'half-duplex' time penalty of MSP on 3DR radios. Unlike MSP, LTM only provides flight data, thus if you need the GCS to select a vehicle icon based on the multirotor type (QUADX, TRI etc), offer additional functions based in the FC firmware version or upload waypoints, then it is necessary to share the serial port on the FC between MSP and LTM; MSP is used when unarmed and LTM when armed. Both ezgui and [mwp](https://github.com/stronnag/mwptools) handle the switch-over automatically.
 
 You can find documentation / specification for the LTM implementation in Inav in the [iNav Wiki](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)). 
 
 LTM will operate effectively over low data rate links. Currently the iNav implementation pushes c. 300 bytes /sec in its fastest rate, so 4800 baud over the air rate would suffice. iNav provides a configuration options for 'medium' and 'slow' LTM rates, further reducing the required baud rate, which may in turn increase range for some radio options.
 
-LTM is supported by ezgui, mwp and ([for OSD, ltm-osd-simple](https://github.com/digitalentity/ltm-osd-simple))
+LTM is supported by ezgui, [mwp](https://github.com/stronnag/mwptools) and ([for OSD, ltm-osd-simple](https://github.com/digitalentity/ltm-osd-simple))
 
 ## MAVLink 
 
 [MAVLink](http://qgroundcontrol.org/mavlink/start) is a full-feature, highly capable protocol used by PX4, PIXHAWK, APM and Parrot AR.Drone platforms (inter alia). The implementation for iNav is 'push telemetry' only, so it can only be used for flight monitoring, not mission planning.
 
-The initial implementation in iNav is supported by ezgui, Droid Planner 2, mwp and QGroundControl. Probably some of the Android apks for Mavlink will work with this telemetry protocol. Tower (Droid Planner 3) currently doesn't work (is this still true?)
+The initial implementation in iNav is supported by ezgui, Droid Planner 2, [mwp](https://github.com/stronnag/mwptools) and QGroundControl. Probably some of the Android apks for Mavlink will work with this telemetry protocol. Tower (Droid Planner 3) currently doesn't work (is this still true?)
 
 # Configuring the Flight Controller
 ## Ports & port sharing
@@ -183,9 +183,9 @@ The following MW-NAV / MSP functions are **not** yet implemented:
 * Set Heading
 * Land
 
-ezgui and mwp support iNav WP navigation; they both use the mission definition originally implemented in WinGui, thus mission definitions are interchangeable between these application (and mw-nav if you limit the mission features to the common subset).
+ezgui and [mwp](https://github.com/stronnag/mwptools) support iNav WP navigation; they both use the mission definition originally implemented in WinGui, thus mission definitions are interchangeable between these application (and mw-nav if you limit the mission features to the common subset).
 
-ezgui and mwp both provide interactive WP editing on a geospatial background and mission upload to / download from the multicopter. At least for mwp (to be confirmed for ezgui), the mission upload process also downloads the mission and compares the two. **You should not attempt to fly a mission unless it has validated**.
+ezgui and [mwp](https://github.com/stronnag/mwptools) both provide interactive WP editing on a geospatial background and mission upload to / download from the multicopter. At least for [mwp](https://github.com/stronnag/mwptools) (to be confirmed for ezgui), the mission upload process also downloads the mission and compares the two. **You should not attempt to fly a mission unless it has validated**.
 
 On F1 baords (Naze, Flip32), you can defined 30 waypoints, for F3 and better FCs, 60 waypints can be defined.
 
@@ -221,10 +221,10 @@ WP mode is only disengaged under the following circumstances:
 # Advanced configuration
 ## 3DR
 ### Hardware
-3DR radios are sold either as a pair of air station  / ground station or individually. Functionally, the air / ground radios are identical, the air side having a tty/serial connection and the ground side having a USB interface for connecting to a computer. For ezgui (and mwp), it is easier to use a Bluetooth bridge. This bridge is also recommended for mwp, as it avoids any potential RF interference from the USB cable and allows the more flexible placement of the ground antenna. In order to use the 3DR / BT bridge, it is necessary to have 'air side' devices at both ends of the link. It is then necessary to 'back-to-back' the ground 3DR and the BT device [example field setup](http://www.rcgroups.com/forums/showthread.php?t=2495732&page=65) and provide power. A voltage regulator and an old lipo works really well. The [HR-12](https://quadmeup.com/diy-wireless-telemetry-link-for-uav/) description provides the canonical connection diagram, a 5V regulator or BEC may be used.
+3DR radios are sold either as a pair of air station  / ground station or individually. Functionally, the air / ground radios are identical, the air side having a tty/serial connection and the ground side having a USB interface for connecting to a computer. For ezgui (and [mwp](https://github.com/stronnag/mwptools)), it is easier to use a Bluetooth bridge. This bridge is also recommended for [mwp](https://github.com/stronnag/mwptools), as it avoids any potential RF interference from the USB cable and allows the more flexible placement of the ground antenna. In order to use the 3DR / BT bridge, it is necessary to have 'air side' devices at both ends of the link. It is then necessary to 'back-to-back' the ground 3DR and the BT device [example field setup](http://www.rcgroups.com/forums/showthread.php?t=2495732&page=65) and provide power. A voltage regulator and an old lipo works really well. The [HR-12](https://quadmeup.com/diy-wireless-telemetry-link-for-uav/) description provides the canonical connection diagram, a 5V regulator or BEC may be used.
 
 ### Firmware
-The 3DR radios will ship with a version of the [Sik Firmware](https://github.com/Dronecode/SiK). This firmware is optimised for MAVLink (it understands MAVLink framing, reports RSSI to a MAVLink GCS). There is a fork (of an older version) that provides similar capabilities (understands MSP framing, reports RSSI to a MSP GCS (ezgui, mwp) for [MSP](https://github.com/stronnag/SiK-MSP); however its use is no longer recommended as it does not understand MSPv2 or LTM, so it somewhat pointless.
+The 3DR radios will ship with a version of the [Sik Firmware](https://github.com/Dronecode/SiK). This firmware is optimised for MAVLink (it understands MAVLink framing, reports RSSI to a MAVLink GCS). There is a fork (of an older version) that provides similar capabilities (understands MSP framing, reports RSSI to a MSP GCS (ezgui, [mwp](https://github.com/stronnag/mwptools)) for [MSP](https://github.com/stronnag/SiK-MSP); however its use is no longer recommended as it does not understand MSPv2 or LTM, so it somewhat pointless.
 
 ### Configuration
 
@@ -285,13 +285,13 @@ KERNEL=="ttyUSB*", ATTRS{serial}=="A8005McD", SYMLINK+="3dr"
 ## ESP8266
 
 ### Firmware
-The ESP8266 devices will usually ship with [vendor firmware](http://bbs.espressif.com/). Follow the link to SDKs, find the latest ESP8266_NONOS_SDK version. There is a Windows specfic flashing tool, or you can use the [portable tool](https://github.com/themadinventor/esptool/). This firmware is recommended for mwp, as you can use it as a transparent UDP / serial bridge (but you can also use the [3rd party firmware](https://github.com/jeelabs/esp-link/releases) TCP bridge).
+The ESP8266 devices will usually ship with [vendor firmware](http://bbs.espressif.com/). Follow the link to SDKs, find the latest ESP8266_NONOS_SDK version. There is a Windows specfic flashing tool, or you can use the [portable tool](https://github.com/themadinventor/esptool/). This firmware is recommended for [mwp](https://github.com/stronnag/mwptools), as you can use it as a transparent UDP / serial bridge (but you can also use the [3rd party firmware](https://github.com/jeelabs/esp-link/releases) TCP bridge).
 
-For ezgui it is recommended to use [3rd party firmware](https://github.com/jeelabs/esp-link/releases) that provides a a transparent TCP / serial bridge. This firmware may also be used in mwp.
+For ezgui it is recommended to use [3rd party firmware](https://github.com/jeelabs/esp-link/releases) that provides a a transparent TCP / serial bridge. This firmware may also be used in [mwp](https://github.com/stronnag/mwptools).
 
 ### Configuration
 
-Configuration of the 3rd party TCP bridge is described in the ezgui [howto](http://ez-gui.com/manual/multiwii-clearflight-wifi-to-ezi-gui-how-to/). For mwp, this device would be defined as:
+Configuration of the 3rd party TCP bridge is described in the ezgui [howto](http://ez-gui.com/manual/multiwii-clearflight-wifi-to-ezi-gui-how-to/). For [mwp](https://github.com/stronnag/mwptools), this device would be defined as:
 ````
 tcp://host:port
 ````
@@ -311,7 +311,7 @@ AT+SAVETRANSLINK=1,"192.168.100.101",14014,"UDP",14014
 AT+UART_DEF=57600,8,1,0,0
 AT+RFPOWER=60
 ````
-Then in mwp, define the connection as (where esp-air is the host name of the air platform device):
+Then in [mwp](https://github.com/stronnag/mwptools), define the connection as (where esp-air is the host name of the air platform device):
 ````
 udp://:14014/esp-air:14014
 ````
