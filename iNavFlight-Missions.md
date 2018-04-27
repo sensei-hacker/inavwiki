@@ -11,19 +11,14 @@ The MSP (MultiWii Serial Protocol) messages defining mission navigation are [doc
 
 # Ground Control Stations
 
-Currently there are a number of GCS applications widely used for iNav mission management, including ~~[ezgui](http://ez-gui.com/)~~ [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://github.com/stronnag/mwptools) (Linux). In future, other options may become available, particularly as the MAVLink protocol becomes supported by iNav. However, MAVLink based tools will only provide monitoring.
+Currently there are a number of GCS applications widely used for iNav mission management, including  [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://github.com/stronnag/mwptools) (Linux). In future, other options may become available, particularly as the MAVLink protocol becomes supported by iNav. However, MAVLink based tools will only provide monitoring.
 
-[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) ~~ezgui~~ and **mwp** (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. ~~ezgui also provides a FC configuration capability.~~
+[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and **mwp** (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. 
 
-~~## EZGui (Android)~~
-~~ezgui can be downloaded from the [Google Play store](https://play.google.com/store/apps/details?id=com.ezio.multiwii&hl=en_GB). There is a free version and a (very reasonably priced) paid-for version with additional functionality. The application is not open source.~~
-~~A basic tutorial for EZ-GUI and iNav mission setup is available [here](https://quadmeup.com/inav-cleanflight-learned-how-to-do-missions/).~~
-~~There is a [RC Groups support forum](http://www.rcgroups.com/forums/showthread.php?t=2511917)~~
-
-EZ-GUI is no longer maintained. Please use [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) instead.
+Note: Earlier versions of this article recommended ezgui for use on Android. ezgui is no longer maintained and Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) is the recommended Android application.
 
 ## [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android)
-[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) can be downloaded from Google Play Store. There is a free version which limits number of waypoints to 5 and (very reasonably priced) paid-for version with additional functionality. The application is not open source. For questions and help EZ-GUI thread can be used: [RC Groups support forum](http://www.rcgroups.com/forums/showthread.php?t=2511917).
+[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) can be downloaded from Google Play Store. There is a free version which limits number of waypoints to 5 and (very reasonably priced) paid-for version with additional functionality. The application is not open source. For questions and help the RCG "Mission Planner for INAV" thread can be used: [RC Groups support forum](https://www.rcgroups.com/forums/showthread.php?3030784-Mission-Planner-for-INAV-%28Android%29).
 
 ## Droid Planner 2 (Android)
 
@@ -37,9 +32,9 @@ A broken connection recovers once restored after any amount of time.
 The flight track remains on screen even when data link is broken -> lost model recovery.
 Log files can be opened in PC software Mission Planner.
 
-## mwp (Linux)
+## [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD)
 
-mwp can be downloaded from [Github](<https://github.com/stronnag/mwptools>). mwp is open source (GPL 3). It is available only as a source distribution and it is necessary to compile and install the application. Build instructions and dependencies are provided for Ubuntu and Fedora. Arch Linux users can install mwp from the AUR ([Arch User Repository](https://aur.archlinux.org/packages/mwptools-git/)). 
+mwp can be downloaded from [Github](https://github.com/stronnag/mwptools). mwp is open source (GPL 3). It is available only as a source distribution and it is necessary to compile and install the application. Build instructions and dependencies are provided for Ubuntu and Fedora. Arch Linux users can install mwp from the AUR ([Arch User Repository](https://aur.archlinux.org/packages/mwptools-git/)). 
 
 In addition to mission planning and logger, mwp also supports the replay of blackbox logs against a geospatial background (requires [blackbox-tools](https://github.com/cleanflight/blackbox-tools)). mwp also includes numerous poorly documented scripts for mission and blackbox analysis, as well as an overly comprehensive user guide.
 
@@ -48,6 +43,10 @@ There is a [RC Groups support forum](http://www.rcgroups.com/forums/showthread.p
 ## Mobile Flight (IOS / iphone).
 
 Mobile Flight: Configuration and ground control app for iNav (and Betaflight) on iPhone http://www.rcgroups.com/forums/showthread.php?t=2601895&highlight=ios. 
+
+## iNav Configurator
+
+Since version 1.9.2, the iNav configurator provides rudimentary mission planning capabilities. As it has no ability to local store files, missions must the saved to EEPROM if it is necessary to store the mission for transport. In the field, eeprom-stored missions can be restored using [stick commands](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md). 
 
 ## Potential solutions for other platforms
 
@@ -120,7 +119,7 @@ Data is transferred between the GCS and the FC using a "Telemetry Protocol". Cur
 
 MSP is the 'native' messaging protocol for iNav. It is well supported by the configurator, ezgui, mwp and many OSDs. It is all you need to upload missions and monitor flights. Its one disadvantage for mission monitoring is that it is a polled protocol, that is the GCS has to request data and the FC responds. This is not really an issue for some data links such as BT and WiFi, but the half-duplex nature of 3DR, where there is significant time cost in switching between receive and transmit modes, significantly limits the performance for mission monitoring.
 
-ezgui and mwp can mitigate this performance hit by using MSP for configuration, mission upload / verification and monitoring prior to arming, and when configured in the FC, switching to LTM for mission monitoring when armed. This switch-over is automatic and transparent to the user.
+mwp (and possibly other ground stations) can mitigate this performance hit by using MSP for configuration, mission upload / verification and monitoring prior to arming, and when configured in the FC, switching to LTM for mission monitoring when armed. This switch-over is automatic and transparent to the user.
 
 ## LTM - Light Telemetry
 
