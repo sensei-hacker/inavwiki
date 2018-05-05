@@ -124,6 +124,6 @@ Suggested approach is to allocate blocks of MSPv2 messages to certain firmwares 
 | Function ID | Usage | Supports flags | FCs implemntating | Documentation Link |
 | ----- | ---------- | ---- | ---- | ---- |
 | 0x0000-0x00FE | Legacy     |  ✘   | iNav, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
-| 0x1000-0x1FFF | Common messages   |  ✘   | iNav    |      |
+| 0x1000-0x1EFF | Common messages   |  ✘   | iNav    |      |
+| 0x1F00-0x1FFF | Sensors connected via MSP  |  ✘   | iNav    |      |
 | 0x2000-0x2FFF | INAV-specific     |  ✘   | iNav    |      |
-| 0xFF00-0xFFFF | Sensors connected via MSP  |  ✘   | iNav    |      |
