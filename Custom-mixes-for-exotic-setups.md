@@ -1,3 +1,5 @@
+# This page applies only to INAV versions older than 2.0
+
 iNav removed native support for various exotic and not often used frames on STM32F1 targets. This includes CC3D, Naze32 and Flip32. The reason for this is simple: limited flash size and very few people using them while in many cases they can be implemented using custom mixers.
 
 Removed mixer presets can not be selected in Configurator: on save it will be reverted to generic QuadX.
