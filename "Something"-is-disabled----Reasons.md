@@ -80,4 +80,4 @@ Diagnosing arming failure and WP execution failure often requires the use of a t
 
 ## Postscript
 
-For reason 'NAV', you may of course `set nav_extra_arming_safety = OFF`; however there is a clue is in the name.
+For 'Navigation is unsafe', you may, of course `set nav_extra_arming_safety = OFF`; however there is a clue is in the name.
