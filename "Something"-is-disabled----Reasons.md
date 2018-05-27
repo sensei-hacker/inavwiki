@@ -59,7 +59,7 @@ The pilot *thinks* that they have loaded a waypoint mission, but the mission wil
 
 ## RTH fails to engage
 
-* The GPS signal is degraded (eph / ephv exceed, CLI setting `inav_max_eph_epv`)
+* The GPS signal is degraded (eph / epv exceed, CLI setting `inav_max_eph_epv`)
 
 ## Diagnostics
 
