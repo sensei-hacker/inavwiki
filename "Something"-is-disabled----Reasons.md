@@ -12,7 +12,7 @@ iNav will refuse to arm for the following reasons:
 | `ANGLE` | The vehicle is not level as defined by the CLI `small_angle` setting |
 | `CAL` | The pre-arm sensor calibration has not completed |
 | `OVRLD` | The CPU load is excessive. May be caused by too an aggressive loop time setting. |
-| `NAV` | Where the CLI setting `nav_extra_arming_safety = ON` is used, this may caused reasons shown in the [table below](#navigation-unsafe-reasons) |
+| `NAV` | Where the CLI setting `nav_extra_arming_safety = ON` is used, this may be caused by reasons shown in the [table below](#navigation-unsafe-reasons) |
 | `COMPASS` | The compass is not calibrated. Perform the calibration procedure |
 | `ACC` | The accelerometer is not calibrated. Perform the 6 point calibration procedure |
 | `ARMSW` | The arm switch was engaged as the FC booted |
@@ -57,11 +57,16 @@ The pilot *thinks* that they have loaded a waypoint mission, but the mission wil
 
 * The craft is currently executing RTH
 
+## RTH fails to engage
+
+* The GPS signal is degraded (eph / ephv exceed, CLI setting `inav_max_eph_epv`)
+
 ## Diagnostics
 
 Diagnosing arming failure and WP execution failure often requires the use of a tool external the FC, the following may help:
 
 * The iNav configurator displays reasons for arming failure
+* A blackbox log provides post event diagnostics
 * The iNav CLI (available from a terminal, the configurator and many ground-stations) displays arming disabled reasons:
 
 	```
