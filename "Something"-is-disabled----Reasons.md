@@ -77,3 +77,7 @@ Diagnosing arming failure and WP execution failure often requires the use of a t
 * A ground station may provide diagnostics, for example [mwp](https://github.com/stronnag/mwptools) provides an 'Arming Disabled' alert icon with 'popover' description / explanation, mission upload validation checks and 'first WP distance' exceeded warnings.
 * Video explanation via https://quadmeup.com/troubleshooting-inav-why-inav-is-not-arming/
 * **Your favourite diagnostic tool / technique goes here**
+
+## Postscript
+
+For reason 'NAV', you may of course `set nav_extra_arming_safety = OFF`; however there is a clue is in the name.
