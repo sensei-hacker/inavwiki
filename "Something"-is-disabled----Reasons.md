@@ -63,7 +63,7 @@ The pilot *thinks* that they have loaded a waypoint mission, but the mission wil
 
 ## Diagnostics
 
-Diagnosing arming failure and WP execution failure often requires the use of a tool external the FC, the following may help:
+Diagnosing arming failure and WP execution failure often requires the use of a tool external to the FC; the following may help:
 
 * The iNav configurator displays reasons for arming failure
 * A blackbox log provides post event diagnostics
