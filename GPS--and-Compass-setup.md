@@ -100,7 +100,7 @@ Once you have connected the GPS to your flight control board
 - Set the "Protocol" to UBLOX
 - Set the "Ground Assistance Type" to "Auto Detect"
 - Press "Save & Reboot"
-
+- set CW270FLIP
 You can confirm the GPS unit is working by going to the GPS tab in the iNav Configurator and if it is working you will see the "Total Messages" count on the left incrementing in numbers.
 
 If it is the first time you have connected the GPS unit, then it can take several minutes for a GPS fix to be obtained. This is perfectly normal. 
