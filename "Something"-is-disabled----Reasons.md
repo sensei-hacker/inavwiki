@@ -38,6 +38,7 @@ Requires that a navigation mode (which includes failsafe RTH) is configured
 | The GPS has insufficient satellites |
 | A navigation switch is engaged (e.g.PH, WP, RTH) |
 | First WP distance exceeded |
+| Satellite quality is unacceptable: EPH/EPV > 10m (note the limit in the CLI `inav_max_eph_epv` is in cm, default 1000) |
 
 * The first waypoint is beyond the distance defined by the CLI setting `nav_wp_safe_distance`. The default is 100m (10000cm, as the value is entered in cm).
 
