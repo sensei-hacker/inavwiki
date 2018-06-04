@@ -75,7 +75,7 @@ The status byte is used as
 | ---- | ---- |
 | 0 | armed |
 | 1 | failsafe |
-| 2 - 6 | status, as (shifted value): |
+| 2 - 7 | status, as (shifted value): |
 | |  Manual (0) |
 | | Rate (1) |
 | | Angle (2) |
