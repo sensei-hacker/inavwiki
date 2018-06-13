@@ -1,6 +1,6 @@
 ## MSP API Version 2.3
 
-### MSP2_INAV_MIXER / MSP2_INAV_SET_MIXER
+### MSP2_INAV_MC_BRAKING / MSP2_INAV_SET_MC_BRAKING
 
 New MSP frames used to setup mixer properties.
 
