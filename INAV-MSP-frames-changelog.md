@@ -1,3 +1,26 @@
+## MSP API Version 2.3
+
+### MSP2_INAV_MIXER / MSP2_INAV_SET_MIXER
+
+New MSP frames used to setup mixer properties.
+
+Frame IDs:
+
+* MSP2_INAV_MC_BRAKING, Frame ID _0x200B_
+* MSP2_INAV_SET_MC_BRAKING, Frame ID _0x200C_
+
+| Length        | Setting                       | Notes                         |
+| -----         | -----                         | -----                         |
+| 2 | `nav_mc_braking_speed_threshold` | |
+| 2 | `nav_mc_braking_disengage_speed` | |
+| 2 | `nav_mc_braking_timeout` | |
+| 1 | `nav_mc_braking_boost_factor` | |
+| 2 | `nav_mc_braking_boost_timeout` | |
+| 2 | `nav_mc_braking_boost_speed_threshold` | |
+| 2 | `nav_mc_braking_boost_disengage_speed` | |
+| 1 | `nav_mc_braking_bank_angle` | |
+
+
 ## MSP API Version 2.2
 
 Since `mixerMode` is no longer used, legacy MSP frames will return always **mixer mode** *3 (QuadX)* and attempt to set mixer mode via MSP will be ignored. This affects following MSP frames:
@@ -8,7 +31,7 @@ Since `mixerMode` is no longer used, legacy MSP frames will return always **mixe
 1. MSP_SET_MIXER
 1. MSP_SET_BF_CONFIG 
 
-### WIP: MSP2_INAV_MIXER / MSP2_INAV_SET_MIXER
+### MSP2_INAV_MIXER / MSP2_INAV_SET_MIXER
 
 New MSP frames used to setup mixer properties.
 
