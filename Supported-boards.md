@@ -34,6 +34,7 @@ These boards are well tested with INAV and are known to be of good quality and r
 |---------------------------|:----------:|:-------------------------:|:----:|:-------:|:--------------:|:---------:|:------------------------------:|:--------------------:|
 | SPRacing F3               | F3         | SPRACINGF3                | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
 | Matek F405 STD       | F4         | MATEKF405                | All  | All     | All            | All       | All                            | SERIAL, SD     |
+| YuPiF4 by RcNet           | F4         | YUPIF4                    | All  | All     | All            | All       | All                            | SERIAL, SD           |
 
 ### Other supported boards
 
@@ -56,7 +57,6 @@ These boards work with INAV but might be not well tested.
 | SPRacing F3 EVO           | F3         | SPRACINGF3EVO             | All  | All     | All            | All       | All                            | SERIAL, SD           |
 | MATEK F405-AIO      | F4         | MATEKF405                      | All  | All     | All            | All       | All                            | SD, SERIAL               |
 | MATEK F405-OSD           | F4         | MATEKF405OSD (post 1.7.3)  | All  | All (soft-I2C) | All (soft-I2C)  | All       | All                            | SD, SERIAL           |
-| YuPiF4 by RcNet           | F4         | YUPIF4                    | All  | All     | All            | All       | All                            | SERIAL, SD           |
 
 ### Not recommended for new setups
 
