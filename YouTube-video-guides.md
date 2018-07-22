@@ -11,3 +11,6 @@
 * [INAV Troubleshooting: why INAV is not arming](https://www.youtube.com/watch?v=7MAdgGkBkXs)
 * [INAV Troubleshooting: magnetometer is not working](https://www.youtube.com/watch?v=-zaIE-s8aHQ)
 * [INAV Troubleshooting: not getting full servo throw on flying wing](https://www.youtube.com/watch?v=o2RwTeBbvos)
+* [INAV Troubleshooting: toilet bowling instead of Position Hold](https://www.youtube.com/watch?v=FlEm0-pXNf0)
+* [How to use Autotune](https://youtu.be/UOGfC3pvbWM)
+* [How to use servo autotrim](https://www.youtube.com/watch?v=XW1esQp_RvU)
