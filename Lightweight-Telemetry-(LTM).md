@@ -148,6 +148,8 @@ where:
 | 10 | Landed |
 | 11 | Settling before landing |
 | 12 | Start descent |
+| 13 | Hover above home (iNav only) |
+| 14 | Emergency landing (iNav only) |
 | 15 | Critical GPS failure (yes 15, you never want to see this) |
 
 Note that these values were defined by Multiwii-nav and not all are applicable to iNav.
