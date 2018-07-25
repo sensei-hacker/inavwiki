@@ -122,7 +122,9 @@ Start Land <br/>
 Land in Progress <br/>
 Landed <br/>
 Settling before land <br/>
-Start descent </td>
+Start descent <br/>
+Hover above home <br/>
+Emergency Landing </td>
 </tr>
 <tr class="odd">
 <td>action</td>
