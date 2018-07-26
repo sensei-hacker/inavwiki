@@ -84,7 +84,7 @@ At this point everything should work as expected.
 ``set small_angle = 180`` 
 
 * If you wish for your fixed wing model to loiter instead of attempting a landing after RTH mode is selected & the model returning home, you can set the model to loiter by typing this and saving in CLI:
-``set nav_rth_allow_landing = OFF``
+``set nav_rth_allow_landing = NEVER``
 
 * In iNav when the RTH mode is enabled, the model will climb FIRST then return home. If you set this value below, the model will **turn and then climb** on it's way back to the home position:
 ``set nav_rth_climb_first = OFF`` 
