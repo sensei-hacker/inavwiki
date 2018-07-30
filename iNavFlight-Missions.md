@@ -7,6 +7,14 @@ iNav supports autonomous flight using waypoints. In order to use this capability
 
 This wiki topic describes the software currently available and some of the telemetry options. Please also see the [wiki page on more general navigation mode options](https://github.com/iNavFlight/inav/wiki/8.-Navigation-modes#wp---autonomous-waypoint-mission).
 
+Before you get started on a waypoint mission, you need to know what the expectation is. Namely, the constraints of what is needed in order for the waypoint to be loaded in the FC and the FC to allow you to ARM without a message of "Navigation Is Unsafe". If you get this message after loading your mission, one of the following is the cause:
+* You configured WP/PH/RTH or Failsafe RTH and you don't have a good accuracy GPS fix
+* You try to arm into RTH/PH/WP
+* You have waypoint mission in memory and your first waypoint is too far from your current position
+* HODP is too low
+
+The default distance for the first waypoint is configured with the 'nav_wp_safe_distance' value (default of 10000cm, ~ 300 feet).
+
 The MSP (MultiWii Serial Protocol) messages defining mission navigation are [documented](https://docs.google.com/document/d/16ZfS_qwc-rJeA7N5Tx0DA6wtgxl6HdGgaz-jE3lHBWs). This message set is supported by the  [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://github.com/stronnag/mwptools) ground stations.
 
 # Ground Control Stations
