@@ -11,7 +11,7 @@ The FF-gain should do most of the work steering the airplane, leaving only P and
 * Note down the maximum rates, typical 360deg/s on roll, 100deg/s on pitch and 60deg/s yaw.  
 Enter these values as your rates in configurator.  
 
-**2: Zero out P and I gain on Roll, Pitch and YAW controller. Increase FF-gain (D column in the PID tuning tab) until you get 90% of full servo throw when having sticks at full throw when in `ACRO` mode (no flight mode enabled).**
+**2: Zero out P and I gain on Roll, Pitch and YAW controller and set `tpa_rate` to 0. Increase FF-gain (D column in the PID tuning tab) until you get 90% of full servo throw when having sticks at full throw when in `ACRO` mode (no flight mode enabled) compared to manual mode.**
 
 * This is so the FF-gain does most of the work turning the airplane, but leaving some for the P and I gain to work with.
 * For this step it is convenient to have the two modes `MANUAL` (called `PASSTHROUGH` mode up to version 1.8.1) and `ACRO` available on a switch to be able to switch easily between the two to compare the throws.
