@@ -3,7 +3,8 @@
 This page will list and explain all the different navigational flight modes of iNav:
 
 - [NAV ALTHOLD - Altitude hold](#althold---altitude-hold)
-- [NAV POSHOLD - Horizontal position hold](#poshold---horizontal-position-hold)
+- [NAV POSHOLD - Horizontal position hold](#nav-poshold---horizontal-position-hold)
+- [NAV CRUISE - Fixed Wing Heading Hold](#nav-cruise---fixed-wing-heading-hold)
 - [NAV RTH - Return to home](#rth---return-to-home)
 - [NAV WP - Autonomous waypoint mission](#wp---autonomous-waypoint-mission)
 - [GCS_NAV - Ground control station](#gcs_nav---ground-control-station)
@@ -136,7 +137,9 @@ Hints for safe operation:
 - Always check POSHOLD working correctly, before you use RTH or start a WP mission.
 
 
+## NAV CRUISE - Fixed Wing Heading Hold
 
+When enabled the machine will try to maintain the current heading and compensate for any external disturbances (2D CRUISE). User can adjust the flight direction directly with ROLL stick or with the YAW stick ( `nav_fw_cruise_yaw_rate` set the yawing rate at full stick deflection ). The latter will offer a smoother way to adjust the flight direction. If the mode is enabled in conjunction with NAV ALTHOLD also the current altitude will be maintained (3D CRUISE). Altitude can be adjusted, as usual, via the pitch stick. In both modes ANGLE mode is active and the plane will stay leveled.
 
 ## RTH - Return to home
 RTH will attempt to bring copter/plane to launch position. Launch position is defined as a point where aircraft was ARMed. RTH Will control both position and altitude. You will have to manually control altitude if your aircraft does not have an altitude sensor (barometer). 
