@@ -9,7 +9,8 @@ The default flight mode is [`RATE`](/iNavFlight/inav/wiki/Modes#default-flight-m
 |  ------ | ------ |
 |  [`ANGLE`](/iNavFlight/inav/wiki/Modes#angle) | Stabilized mode with self leveling and restricted banking angles |
 |  [`HORIZON`](/iNavFlight/inav/wiki/Modes#horizon)  | Stabilized mode with self leveling but without restricted banking angles |
-|  [`NAV POSHOLD`](/iNavFlight/inav/wiki/Navigation-modes#poshold---horizontal-position-hold) | Used to hold position in 2d space with GPS. Combine with ALTHOLD to get 3d position lock |
+|  [`NAV POSHOLD`](/iNavFlight/inav/wiki/Navigation-modes#poshold---horizontal-position-hold) | Used to hold position in 3D space with GPS. With INAV < 2.0.0 combine with ALTHOLD to get 3D position lock |
+|  [`NAV CRUISE`](/iNavFlight/inav/wiki/Navigation-modes#navcruise) | Used on Fixed Wing aircrafts to keep current heading. Combine with ALTHOLD to get 3D CRUISE|
 |  [`NAV RTH`](/iNavFlight/inav/wiki/Navigation-modes#rth---return-to-home) | Used for Return-to-home. Does not need any other mode selected. |
 |  [`NAV WP`](/iNavFlight/inav/wiki/Navigation-modes#wp---autonomous-waypoint-mission) | Used to fly WAYPOINT mission. Does not need any other mode selected. |
 |  [`MANUAL`](/iNavFlight/inav/wiki/Modes#manual) | Used with fixed-wings to control everything manually. ( Direct servo control ). Was called `PASSTHROUGH` mode up to version 1.8.1 |
