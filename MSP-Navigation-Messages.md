@@ -12,7 +12,7 @@ This document should match the iNav 1.2 (and later) and Multiwii 2.4 flight cont
 
 # WayPoint / Action Attributes
 
-Each  waypoint has a type and takes a number of parameters, as below. These are used in the MSP_WP message. The final column indicated if the message is implemented for iNav 1.2.
+Each  waypoint has a type and takes a number of parameters, as below. These are used in the MSP_WP message. The final column indicated if the message is implemented for iNav 1.2 (and later).
 
 | Value | Enum | P1 | P2 | P3 | Lat | Lon | Alt | iNav |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
