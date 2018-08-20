@@ -58,6 +58,16 @@ Since version 1.9.2, the iNav configurator provides rudimentary mission planning
 
 ## Potential solutions for other platforms
 
+[impload](https://github.com/stronnag/impload) is a cross-platform command line application to upload / download /save / restore missions in a number of formats to an iNav flight controller. Supported formats include:
+
+* MW XML mission files (as used by [mwp](https://github.com/stronnag/mwptools), ezgui, mission planner for inav)
+* apmplanner / qgroundcontrol mission files
+* GPX files (tracks, routes, waypoints)
+* KML, KMZ files
+* Plain, simple CSV files
+
+Please see [impload's wiki user guide](https://github.com/stronnag/impload/wiki/impload-User-Guide) for more information and CSV format
+
 [mwp](https://github.com/stronnag/mwptools) can be run in a virtual machine on MS Windows and OSX / macOS, using virtualisation tools such as VirtualBox and Parallels. 
 
 WinGUI is a Windows program developed for Multiwii-nav. It is currently somewhat abandoned, but would be a viable basis for developing a Windows program for iNav navigation (or better, supporting both Multiwii and iNav, as do the other tools described here). Should anyone wish to rescue this fine application, the source code (GPL v3) may be found at https://code.google.com/archive/p/mw-wingui/.
