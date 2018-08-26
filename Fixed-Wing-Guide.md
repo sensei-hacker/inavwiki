@@ -59,7 +59,7 @@ Next is checking that your servo moves as expected:
 1. The servo movement does not exceed wanted maximum deflection of control surfaces. [Guide on setting up linkages](http://www.modelairplanenews.com/total-control-the-right-way-to-set-up-servos/)
 1. The servo midpoint has control surfaces perfectly at center.
 
-**Note:** Check the following in Manual mode (formerly passthrough mode). In the other modes you won't see full deflection on the bench.  
+**Note:** Check the following in Manual mode (formerly passthrough mode). In the other modes you won't see full deflection on the bench. If you don't know how to set up Manual mode, see https://www.youtube.com/watch?v=oJTPuEUZOAE
 
 In the "Servos" Tab:  
 
