@@ -190,13 +190,15 @@ Autotune will monitor behavior of the airplane when you fly it and adjust P, I a
 
 How to use:
 
-Fly in ANGLE mode. Enable AUTOTUNE mode. Do hard maneuvers on each axis separately. For roll - bank hard left/hard right. For pitch - fast climb, steep dive. Initially you probably will notice very soft response - make sure your flying field is big enough for slow turns.
+Take off. Any manual flight mode will do, ACRO is the best option. Enable AUTOTUNE mode. Do hard maneuvers on each axis separately. For roll - bank hard left/hard right. For pitch - fast climb, steep dive. Initially you probably will notice very soft response - make sure your flying field is big enough for slow turns.
 
 The more maneuvers you will do - the better results AUTOTUNE will be able to reach.
 
 AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse - PIFF gains won't be changed.
 
 Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
+
+[How to use Autotune video](https://youtu.be/UOGfC3pvbWM)
 
 ### TURN ASSIST
 
