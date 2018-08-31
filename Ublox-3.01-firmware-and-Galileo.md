@@ -22,7 +22,21 @@ The FIS value indicates it is upgradable. In u-center:
 
 ![](https://static.rcgroups.net/forums/attachments/6/1/2/8/7/5/a10080926-121-BN-880.png)
 
-If your devices comes with 3.01 firmware, or you flash it, then to enable Galileo, you need to assign some channels for Galileo; typically steal from some channels from a GNSS that you are unlikely to use (maybe QZSS, BeiDou in Western Europe). Save this in the default configuration. BN-880 can use upto 3 GNSS (plus SBAS) simultaneously. In u-center:
+## Device Status
+
+Devices manufactured in 2018 and later are likely to be firmware 3.01 or later as purchased. This is certainly the case for the popular (and well suited to iNav) Beitian BN-880.
+
+## iNav Configuration
+
+For iNav 1.9.0 and later, it is not necessary to manually configure the GPS in u-center; it can be enabled using the iNav CLI:
+```
+set gps_ublox_use_galileo = ON
+```
+This setting implements the manual settings below.
+
+## Manual Configuration (GPS device)
+
+For older firmware (prior to 1.9.0), if your devices comes with 3.01 firmware, or you flash it, then to enable Galileo, you need to assign some channels for Galileo; typically steal from some channels from a GNSS that you are unlikely to use (maybe QZSS, BeiDou in Western Europe). Save this in the default configuration. BN-880 can use upto 3 GNSS (plus SBAS) simultaneously. In u-center:
 
 ![](https://static.rcgroups.net/forums/attachments/9/3/9/2/a10081487-180-Galileo_2.JPG)  
 ![](https://static.rcgroups.net/forums/attachments/9/3/9/2/a10081488-165-Galileo_1.JPG)
