@@ -189,7 +189,7 @@ A diagram to indicate flight modes relation to navigation modes and illustrate s
 
 # RTH Altitude control modes
 
-RTH sequence can control altitude in several different ways, controlled by **nav_rth_alt_mode** and **nav_rth_altitude** parameters.
+RTH sequence can control altitude in several different ways, controlled by **nav_rth_alt_mode** and **nav_rth_altitude** (the altitude in centimeters) parameters.
 
 Default setting is NAV_RTH_AT_LEAST_ALT - climb to preconfigured altitude if below, stay at current altitude if above.
 
