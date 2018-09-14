@@ -132,6 +132,8 @@ At this point everything should work as expected.
 
 * Increase ``set nav_fw_bank_angle`` for tighter turns.
 
+* ``set inav_reset_home = FIRST_ARM`` Unless you want your home position to be reset during mid air re-armings.
+
 ### Last Step, a Test Flight!:
 
 * Double check following again:
