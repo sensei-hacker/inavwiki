@@ -53,9 +53,7 @@ For iNav 1.6 and later, the I-frame interval is set dynamically at 1/32, 1/64, 1
 For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the I-frame interval, meaning c. 1/32 actual logging rate.
 
 
-### Explanation of all paramaeters
-
-Just a line of text.
+### Explanation of all the parameters
 
 |  Name of field in txt file 	|  Name in Blackbox Log Viewer 	|  Explanation 	|  . 	|  ..            |
 |:--------------------------:	|:----------------------------:	|:------------:	|:---:	|:----------:|
