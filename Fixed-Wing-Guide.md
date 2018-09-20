@@ -126,7 +126,7 @@ At this point everything should work as expected.
 
 * Servo speed limits the control rate of your FC. You can lower ``set gyro_hardware_lpf`` to 20
 
-* Adjust ``set roll_rate`` and ``set pitch_rate`` to the flight characteristics of your plane. For a race wing values like ``set roll_rate = 360`` and ``set pitch_rate = 180`` are a good starting point.
+* Adjust ``set roll_rate`` and ``set pitch_rate`` to the flight characteristics of your plane. For a race wing values like ``set roll_rate = 36`` and ``set pitch_rate = 18`` are a good starting point.
 
 * Set your [RTH mode](https://github.com/iNavFlight/inav/wiki/Navigation-modes#rth-altitude-control-modes) to your liking
 
