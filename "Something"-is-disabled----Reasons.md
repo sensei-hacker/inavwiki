@@ -27,7 +27,7 @@ iNav will refuse to arm for the following reasons:
 | `ROLL/PITCH` | Roll and/or pitch is not centred |
 | `AUTOTRIM` | Servo autotrim is engaged |
 | `OOM ` | The FC is out of memory |
-
+| `SETTINGFAIL` | A CLI setting is out of range. The erroneous setting should be indicated in a CLI `dump`. If you can't then reset the offending setting, reflash with full chip erase and reapplying settings from scratch may help.|
 
 ### Navigation Unsafe reasons
 
