@@ -139,7 +139,7 @@ Hints for safe operation:
 
 ## NAV CRUISE - Fixed Wing Heading Hold
 
-When enabled the machine will try to maintain the current heading and compensate for any external disturbances (2D CRUISE). User can adjust the flight direction directly with ROLL stick or with the YAW stick ( `nav_fw_cruise_yaw_rate` set the yawing rate at full stick deflection ). The latter will offer a smoother way to adjust the flight direction. If the mode is enabled in conjunction with NAV ALTHOLD also the current altitude will be maintained (3D CRUISE). Altitude can be adjusted, as usual, via the pitch stick. In both modes ANGLE mode is active and the plane will stay leveled.
+When enabled the machine will try to maintain the current heading and compensate for any external disturbances (2D CRUISE). User can adjust the flight direction directly with ROLL stick or with the YAW stick ( `nav_fw_cruise_yaw_rate` set the yawing rate at full stick deflection ). The latter will offer a smoother way to adjust the flight direction. If the mode is enabled in conjunction with NAV ALTHOLD also the current altitude will be maintained (3D CRUISE). Altitude can be adjusted, as usual, via the pitch stick. Both 2D/3D CRUISE modes forces ANGLE mode to be active so the plane will auto level.
 
 ## RTH - Return to home
 RTH will attempt to bring copter/plane to launch position. Launch position is defined as a point where aircraft was ARMed. RTH Will control both position and altitude. You will have to manually control altitude if your aircraft does not have an altitude sensor (barometer). 
