@@ -1,21 +1,21 @@
 # List of all flight modes in iNav
 
 
-The default flight mode is [`RATE`](/iNavFlight/inav/wiki/Modes#default-flight-mode--no-mode-selected-) (also sometimes called ACRO), this is activated when none of the `actual flight modes` are turned on.
+The default flight mode is [`RATE`](/iNavFlight/inav/wiki/Modes#default-flight-mode--no-mode-selected-) (also sometimes called ACRO), this is activated when none of the `actual flight modes` are turned on. This provides stabilisation without self-levelling. 
 
 `Actual flight modes`
 
 |  Mode name | Description |
 |  ------ | ------ |
-|  [`ANGLE`](/iNavFlight/inav/wiki/Modes#angle) | Stabilized mode with self leveling and restricted banking angles |
-|  [`HORIZON`](/iNavFlight/inav/wiki/Modes#horizon)  | Stabilized mode with self leveling but without restricted banking angles |
+|  [`ANGLE`](/iNavFlight/inav/wiki/Modes#angle) | Stabilized mode with self levelling and restricted banking angles |
+|  [`HORIZON`](/iNavFlight/inav/wiki/Modes#horizon)  | Stabilized mode with self levelling but without restricted banking angles |
 |  [`NAV POSHOLD`](/iNavFlight/inav/wiki/Navigation-modes#poshold---horizontal-position-hold) | Used to hold position in 3D space with GPS. With INAV < 2.0.0 combine with ALTHOLD to get 3D position lock |
-|  [`NAV CRUISE`](/iNavFlight/inav/wiki/Navigation-modes#navcruise) | Used on Fixed Wing aircrafts to keep current heading. Combine with ALTHOLD to get 3D CRUISE|
+|  [`NAV CRUISE`](/iNavFlight/inav/wiki/Navigation-modes#navcruise) | Used on Fixed Wing aircraft to keep current heading. Combine with ALTHOLD to get 3D CRUISE|
 |  [`NAV RTH`](/iNavFlight/inav/wiki/Navigation-modes#rth---return-to-home) | Used for Return-to-home. Does not need any other mode selected. |
 |  [`NAV WP`](/iNavFlight/inav/wiki/Navigation-modes#wp---autonomous-waypoint-mission) | Used to fly WAYPOINT mission. Does not need any other mode selected. |
 |  [`MANUAL`](/iNavFlight/inav/wiki/Modes#manual) | Used with fixed-wings to control everything manually. ( Direct servo control ). Was called `PASSTHROUGH` mode up to version 1.8.1 |
 
-`Flight modes that alter behavior in combination with one of the above`
+`Flight modes that alter behaviour in combination with one of the above`
 
 
 |  Mode name | Description |
@@ -40,7 +40,7 @@ The default flight mode is [`RATE`](/iNavFlight/inav/wiki/Modes#default-flight-m
 |  [`OSD SW`](/iNavFlight/inav/wiki/Modes#osd-sw) | Turns on and off OSD overlay |
 |  [`TELEMETRY`](/iNavFlight/inav/wiki/Modes#telemetry) | Normally telemetry is always enabled, using this mode allows you to turn telemetry on and off at will |
 |  [`BLACKBOX`](/iNavFlight/inav/blob/master/docs/Blackbox.md) | Normally blackbox is logging as soon as you arm, using this mode blackbox will only log flight data when the mode is active. ) |
-|  [`FAILSAFE`](/iNavFlight/inav/wiki/Modes#failsafe) | Used to manually initate FAILSAFE |
+|  [`FAILSAFE`](/iNavFlight/inav/wiki/Modes#failsafe) | Used to manually initiate FAILSAFE |
 |  [`HOME RESET`](/iNavFlight/inav/wiki/Navigation-modes) | Used to set a new home position at the current aircraft position. |
 |  [`GCS NAV`](/iNavFlight/inav/wiki/Navigation-modes) | Used to allow ground station to control aircraft to do stuff like `Follow me` |
 |  [`FLAPERON`](/iNavFlight/inav/wiki/Modes#flaperon) | Used to activate flaperons on fixed-wing aircraft. |
