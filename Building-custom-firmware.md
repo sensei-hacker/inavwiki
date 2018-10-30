@@ -10,6 +10,8 @@ This guide attempts to explain the steps necessary to make simple, configuration
 
 You need a working development environment. There is [build environment documentation](https://github.com/iNavFlight/inav/tree/master/docs/development) for the major platforms (Linux, MacOS, Windows). This documentation tends to quickly become obsolete as compiler versions evolve (as will this page:). In particular, using contemporary compiler version (e.g. as of June 2017, `arm-none-eabi-gcc` 6.3.\*) is recommended, as a contemporary compiler  will most likely match that being used by iNav developers. For example, the [Building in Ubuntu](https://github.com/iNavFlight/inav/blob/master/docs/development/Building%20in%20Ubuntu.md) document is completely out of date; a modern Linux distribution (Ubuntu or Fedora current release) will provide a contemporary (good) compiler without having to use 3rd party repositories. Arch Linux may provide the opposite problem, its (June 2017) offering `arm-none-eabi-gcc` 7.1.\* creates larger hex files than the 6.3 series, and downgrading may be recommended. If in doubt, please ask on the [RC Groups thread](https://www.rcgroups.com/forums/showthread.php?2495732-Cleanflight-iNav-%28navigation-rewrite%29-project) for advice.
 
+Note that the above version numbers are going to be completely obsolete as you read this article.
+
 ## Virtual Machine Environment
 
 A step by step guide to creating a virtual machine as an Inav build environment is described in the wiki  [[Making a new Virtualbox to make your own INAV]]. While the instructions are slanted towards Windows and Virtualbox, they are applicable to any OS and virtualisation engine.
@@ -93,6 +95,14 @@ e.g. in the NAZE target specific directory:
 ## Worked Example
 
 This example will consider enabling the BMP085 / BMP180 barometer on the NAZE (for example to use a GY-652 [BMP180 / HMC5983] I2C baro and compass module on an acro Naze or Flip32).
+
+### Use a separate branch
+
+```
+$ git checkout -b my_super_special_branch
+```
+
+This will isolate your work from the base repo and allow making a pull request if you decide to contribute your changes back to the project.
 
 ### target.h
 
@@ -182,11 +192,15 @@ arm-none-eabi-objcopy -O ihex --set-start 0x8000000 obj/main/inav_NAZE.elf obj/i
 ````
 ## Caveats
 
-This solves the original problem (how to build a NAZE target with BMP085/BMP180). However, if one wants to update the source tree (e.g.)
+This solves the original problem (how to build a NAZE target with BMP085/BMP180). 
+
+You can now commit the changes to your branch, otherwise if one wants to update the source tree (e.g.)
 ````
 git pull
 ````
 git will complain that there are uncommitted changes and won't perform the update. There are a number of solutions, some beyond the scope of this simple guide, however the easiest are:
+
+* Commit to your private branch as above; or
 * `$ git reset --hard` before pulling ; or
-* Stash away the original files and restore them before pulling.
+* Stash away the original files and restore them after pulling.
 
