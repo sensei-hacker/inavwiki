@@ -171,7 +171,7 @@ So its not an flight mode itself, and needs to be combined with other flightmode
 
 In order to let the GCS have full control over the aircraft the following modes must be activated: `NAV POSHOLD` `NAV ALTHOLD` `MAG` TOGETHER with `GCS_NAV`
 
-This can be combined in whichever way you want to permit example manuall yawing or altitude controll.
+This can be combined in whichever way you want to permit example manual yawing or altitude control.
 
 Keep in mind that if `NAV POSHOLD` is not combined with this mode you must combine `ANGLE` as the other modes are best combined with `ANGLE` mode.
 
