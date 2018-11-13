@@ -35,7 +35,7 @@ Requires that a navigation mode (which includes failsafe RTH) is configured
 
 | Navigation Unsafe |
 | ------------------ |
-| The GPS has insufficient satellites |
+| The GPS has insufficient satellites (this is checked even if you disable GPS, but have a NAV mode defined) |
 | A navigation switch is engaged (e.g.PH, WP, RTH) |
 | First WP distance exceeded |
 | Satellite quality is unacceptable: EPH/EPV > 10m (note the limit in the CLI `inav_max_eph_epv` is in cm, default 1000) |
