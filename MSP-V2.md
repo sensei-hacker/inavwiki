@@ -98,7 +98,7 @@ msg[0] = '$';
 // complete message content
 uint8_t ck2 = 0; // initialise CRC
 for(int i = 3; i < len+8; i++)
-    crc8_dvb_s2(ck2, msg[i]); // loop over summable data
+    ck2=crc8_dvb_s2(ck2, msg[i]); // loop over summable data
 msg[len+8] = ck2;
 ````
 
