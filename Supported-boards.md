@@ -1,6 +1,6 @@
 ### Boards based on F1 CPUs
 
-These boards are not recommended for new setups. They are very limited in memory and don't support many features of the INAV. In general F1 boards are limited to only UBLOX GPS protocol, don't have BLHeli Passthrough, don't have LEDSTRIP, only support a few telemetries (LTM and maybe FrSky) etc and do not receive firmware updates.
+Boards based on STM32F1 CPUs are no longer supported by latest INAV version
 
 ### Boards based on F3/F4/F7 CPUs
 
@@ -32,9 +32,10 @@ These boards are well tested with INAV and are known to be of good quality and r
 
 | Board name                | CPU Family | Target name(s)            | GPS  | Compass | Barometer      | Telemetry | RX                             | Blackbox             |
 |---------------------------|:----------:|:-------------------------:|:----:|:-------:|:--------------:|:---------:|:------------------------------:|:--------------------:|
-| SPRacing F3               | F3         | SPRACINGF3                | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
-| Matek F405 STD       | F4         | MATEKF405                | All  | All     | All            | All       | All                            | SERIAL, SD     |
+| [Matek F405 STD](https://inavflight.com/shop/p/MATEKF405STD)       | F4         | MATEKF405                | All  | All     | All            | All       | All                            | SERIAL, SD     |
 | YuPiF4 by RcNet           | F4         | YUPIF4                    | All  | All     | All            | All       | All                            | SERIAL, SD           |
+| [Matek F405 WING](https://inavflight.com/shop/p/MATEKF405WING)       | F4         | MATEKF405                | All  | All     | All            | All       | All                            | SERIAL, SD     |
+| [Matek F722-STD](https://inavflight.com/shop/p/MATEKF722STD)       | F4         | MATEKF722               | All  | All     | All            | All       | All                            | SERIAL, SD     |
 
 ### Other supported boards
 
