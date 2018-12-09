@@ -5,7 +5,7 @@ complexity of output options available in iNav, it can be difficult
 for an aircraft builder to determine if a particular board / target
 will meet their needs.
 
-Paweł Spychalski as published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU)
+Paweł Spychalski has published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU)
 explaining why resource allocation is not supported by iNav.
 
 In order to offer some guidance, the following list is machine
