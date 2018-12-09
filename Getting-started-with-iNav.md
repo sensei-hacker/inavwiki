@@ -17,7 +17,7 @@ Go through the index on the right side to find useful information.
 ## GPS
 iNav supports  Ublox, DJI NAZA, NMEA, multiwii's i2c-nav board and MultiWiiCopter's i2c-gps modules
 
-Tested and recommend GPS are M8N versions ( example [Ublox NEO-M8N](http://m.banggood.com/Ublox-NEO-M8N-Flight-Controller-GPS-with-Protective-Shell-for-PIX-PX4-Pixhawk-p-1005394.html?AID=12202217&PID=3836173&SID=ikzicawnsk0004o402ecu&source=affiliate&utm_source=Banggood_CJ&utm_medium=commission_junction&utm_campaign=OpenPilot&utm_content=sandy) and [Beitian BN-880](http://m.banggood.com/UBLOX-NEO-M8N-BN-880-Flight-Control-GPS-Module-Dual-Module-Compass-p-971082.html) )
+Tested and recommend GPS are M8N versions ( example [Ublox NEO-M8N](https://inavflight.com/shop/s/bg/1005394) and [Beitian BN-880](https://inavflight.com/shop/p/BN880) )
 But both M6N and M7N should work.
 
 With default iNav settings iNav will configure ublox GPS for you, no need to use software like u-center.
