@@ -6,7 +6,7 @@ for an aircraft builder to determine if a particular board / target
 will meet their needs.
 
 Paweł Spychalski as published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU)
-explaining why resouce allocation is not supported by iNav.
+explaining why resource allocation is not supported by iNav.
 
 In order to offer some guidance, the following list is machine
 generated from the files under `inav/source/main/target` in order to
@@ -26,7 +26,7 @@ interpretation is offered:
 
 *List generated 2018-12-09 from the iNav development branch by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in master or prior releases.* **E&OE.**
 
-Note: Due to the fact that there is no reliable, consistent means to get from the timer definition in `target.c` to human readable output names, the script cowardly refuses to parse more than 8 outputs. You are strongly advised to check the boaord documentation as to the suitability of any particular board.
+Note: Due to the fact that there is no reliable, consistent means to get from the timer definition in `target.c` to human readable output names, the script cowardly refuses to parse more than 8 outputs. You are strongly advised to check the board documentation as to the suitability of any particular board.
 ## Board: AIRBOTF4
 
 ### Target: AIRBOTF4
