@@ -153,14 +153,13 @@ Activated by **RTH** flight mode.
 
 
 ## WP - Autonomous waypoint mission
-Autonomous waypoints are used to let the quad/plane autonomous fly a predefined mission. The mission is defined with waypoints, which have the information about latitude, longitude, height and speed between the waypoints. GUIs such as EZ-GUI and mwp can be used to set the waypoints and upload the mission. Cleanflight or iNav configurator are still not capable of creating waypoint missions.  
-Uploaded missions are saved in the FC until a reboot or a new uploaded mission erases the old one.  
+Autonomous waypoints are used to let the quad/plane autonomous fly a predefined mission. The mission is defined with waypoints, which have the information about latitude, longitude, height and speed between the waypoints. GUIs such as EZ-GUI, Mission Planner for iNav, Mobile Flight and [mwp](https://github.com/stronnag/mwptools) can be used to set the waypoints and upload the mission as well as store missions locally for reuse (exgui, mp4iNav, mwp at least). The iNav configurator has limited capability to create waypoint missions. Uploaded missions are saved in the FC until a reboot or a new uploaded mission erases the old one. Missions may also be saved to EEPROM, which survives reboot.
   
 Once the waypoint mode is activated (NAV WP has to be set previously in the mode tabs to a specific switch/value), the quad/plane will start to fly the waypoint mission based upon the waypoints in numerical order. Waypoint missions can be restarted by switching NAV WP off/on, interruption during the mission is also possible with switching NAV WP off. 
 
 Currently up to 30 waypoints can be set on F1 boards, and 60 on F3 and better.
 
-This mode is a work in progress, it does however work well. There is an additional [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
+There is an additional [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
 
 // TODO: Explain better.
 // TODO: explain what happens when you are in WP mode and GPS fails.
