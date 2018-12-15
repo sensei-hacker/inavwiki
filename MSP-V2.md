@@ -6,8 +6,13 @@ This page describes MSPV2 (MultiWii Serial Protocol Version 2). MSP is the remot
 
 MSPV2 was introduced in iNav 1.73 for legacy commands, and is fully implemented (16bit commands) after 1.73 (i.e. 1.74 development branch and successors). An MSP API version of 2 or greater indicates MSPV2 support. 
 
+## MSP Protocol
 
-## Rationale
+MSP is a request-response protocol. MSP defines the side sending the request as "MSP Master" role and the side generating a response as "MSP Slave" role.
+
+A specific device may function as both "MSP Master" and "MSP Slave" or implement only one role, depending on requirements. Generally, a Groundstation software is an "MSP Master" and FC is an "MSP Slave", however in some use-cases FC may be required to function as "MSP Master".
+
+## Rationale to create MSP V2
 
 The reasons for introducing a incrementally improved version of MSP include:
 
@@ -27,7 +32,7 @@ MSP V2 addresses these shortcomings:
 | ---- | ---- | ---- | --- |
 | 0 | $ |  | Same lead-in as V1 |
 | 1 | X |  | 'X' in place of v1 'M' |
-| 2 | direction indictor |  | As V1, relative to the FC, <, > or ! (error response) |
+| 2 | role |  | '<' - MSP Master / request, '>' - MSP Slave / successful response, '!' - MSP Slave / error response |
 | 3 | flag | ✔  | uint8, flag, usage to be defined (set to zero) |
 | 4 | function | ✔  |uint16 (little endian). 0 - 255 is the same function as V1 for backwards compatibility |
 | 6 | payload size | ✔  |uint16 (little endian) payload size in bytes |
