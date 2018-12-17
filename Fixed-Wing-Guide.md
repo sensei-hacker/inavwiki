@@ -1,5 +1,15 @@
 # The Basics of Getting iNav Working on an Airplane
 
+### Flight controllers designed for fixed wing
+
+Any flight controller can be used for fixed wing builds, however flight controllers specifically designed for this purpose will make the build simpler and require less additional components. For example, using a flight controller designed for multi rotors on a fixed wing setup usually requires an additional 5V regulator or a BEC for powering the servos, while flight controllers designed for planes will provide an independent 5V line to feed the servos.
+
+Some of the most popular flight controllers for fixed wing are:
+
+- [Matek F405-WING](https://inavflight.com/shop/s/bg/1292190)
+- [Matek F411-WING](https://inavflight.com/shop/s/bg/1323063)
+- [FuriousFPV F-35](https://inavflight.com/shop/s/bg/1278861)
+
 ### Step 1: Getting Your Flight Controller Ready.
 
 * Flash the latest version of iNav using the [iNav Configurator](https://chrome.google.com/webstore/detail/inav-configurator/fmaidjmgkdkpafmbnmigkpdnpdhopgel)
