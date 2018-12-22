@@ -10,7 +10,7 @@ MSPV2 was introduced in iNav 1.73 for legacy commands, and is fully implemented 
 
 MSP is a request-response protocol. MSP defines the side sending the request as "MSP Master" role and the side generating a response as "MSP Slave" role.
 
-A specific device may function as both "MSP Master" and "MSP Slave" or implement only one role, depending on requirements. Generally, a Groundstation software is an "MSP Master" and FC is an "MSP Slave", however in some use-cases FC may be required to function as "MSP Master".
+A specific device may function as both "MSP Master" and "MSP Slave" or implement only one role, depending on requirements. Generally, a Groundstation software is an "MSP Master" and FC is an "MSP Slave", however in some use-cases a FC or any other device may be required to act as an "MSP Master" and "MSP Slave" concurrently.
 
 ## Rationale to create MSP V2
 
@@ -28,11 +28,11 @@ MSP V2 addresses these shortcomings:
 
 ## MSP V2 Message structure
 
-| Offset | Usage | CRC |Comment |
+| Offset | Usage | CRC | Comment |
 | ---- | ---- | ---- | --- |
 | 0 | $ |  | Same lead-in as V1 |
 | 1 | X |  | 'X' in place of v1 'M' |
-| 2 | role |  | '<' - MSP Master / request, '>' - MSP Slave / successful response, '!' - MSP Slave / error response |
+| 2 | type |  | '<' / '>' / '!' see [Message Types](Message-Types) |
 | 3 | flag | ✔  | uint8, flag, usage to be defined (set to zero) |
 | 4 | function | ✔  |uint16 (little endian). 0 - 255 is the same function as V1 for backwards compatibility |
 | 6 | payload size | ✔  |uint16 (little endian) payload size in bytes |
@@ -41,7 +41,15 @@ MSP V2 addresses these shortcomings:
 
 The fields marked with a ✔ are included in the checksum calculation.
 
-## V2 in V1 Encapsulation
+## Message Types
+
+| Identifier | Type | Can be sent by | Must be processed by | Comment |
+| - | - | - | - | - |
+| '<' | Request | Master | Slave | |
+| '>' | Response | Slave | Master | Only sent in response to a request |
+| '!' | Error | Master, Slave | Master, Slave | Response to receipt of data that cannot be processed (corrupt checksum, unknown function, message type that cannot be processed) |
+
+## Encapsulation over V1
 
 It is possible to encapsulate V2 messages in a V1 message in a way that is transparent to the consumer. This is implemented by setting the V1 function id to 255 and creating a payload of a V2 message without the first three header bytes.
 Thus a V1 consumer would see a not understood message rather than a communications error. This is not encouraged; rather it is preferred that MSP consumers should implement V2. 
