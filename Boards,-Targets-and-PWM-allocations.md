@@ -1,19 +1,16 @@
 # INav Boards, Targets and PWM allocations
 
-As iNav does not support dynamic resource allocation, due to the
-complexity of output options available in iNav, it can be difficult
-for an aircraft builder to determine if a particular board / target
-will meet their needs.
+Due to the complexity of output options available in iNav, dynamic resource allocation is not available.
+It can be difficult for an aircraft builder to determine if a particular board / target will meet their needs.
 
-Paweł Spychalski has published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU)
+Paweł Spychalski as published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU)
 explaining why resource allocation is not supported by iNav.
 
 In order to offer some guidance, the following list is machine
-generated from the files under `inav/source/main/target` in order to
+generated from the files under `inav/source/main/target` to
 provide a list of the options offered by supported boards.
 
-The usage is taken directly from the source code, the following
-interpretation is offered:
+The usage is taken directly from the source code, the following interpretation is offered:
 
 | Symbol | Interpretation |
 | ------ | -------------- |
@@ -24,7 +21,7 @@ interpretation is offered:
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-*List generated 2018-12-09 from the iNav development branch by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in master or prior releases.* **E&OE.**
+*List generated 2019-01-09 from the iNav development branch by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in master or prior releases.* **E&OE.**
 
 Note: Due to the fact that there is no reliable, consistent means to get from the timer definition in `target.c` to human readable output names, the script cowardly refuses to parse more than 8 outputs. You are strongly advised to check the board documentation as to the suitability of any particular board.
 ## Board: AIRBOTF4
@@ -169,6 +166,8 @@ Note: Due to the fact that there is no reliable, consistent means to get from th
 
 ## Board: ASGARD32F4
 
+Board is DSHOT enabled.
+
 ### Target: ASGARD32F4
 
 | PWM | Usage |
@@ -179,6 +178,8 @@ Note: Due to the fact that there is no reliable, consistent means to get from th
 | 4 | MC_MOTOR |
 
 ## Board: ASGARD32F7
+
+Board is DSHOT enabled.
 
 ### Target: ASGARD32F7
 
@@ -351,6 +352,19 @@ Board is DSHOT enabled.
 | 7 | MC_MOTOR, FW_SERVO |
 | 8 | MC_MOTOR, FW_SERVO |
 
+## Board: DALRCF722DUAL
+
+### Target: DALRCF722DUAL
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_MOTOR |
+| 6 | MC_MOTOR, FW_SERVO |
+
 ## Board: F4BY
 
 ### Target: F4BY
@@ -443,6 +457,36 @@ Board is DSHOT enabled.
 ## Board: FISHDRONEF4
 
 ### Target: FISHDRONEF4
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+
+## Board: FOXEERF405
+
+Board is DSHOT enabled.
+
+### Target: FOXEERF405
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+
+## Board: FOXEERF722DUAL
+
+Board is DSHOT enabled.
+
+### Target: FOXEERF722DUAL
 
 | PWM | Usage |
 | --- | ----- |
@@ -693,6 +737,8 @@ Board is DSHOT enabled.
 
 ## Board: MATEKF722
 
+Board is DSHOT enabled.
+
 ### Target: MATEKF722
 
 | PWM | Usage |
@@ -718,6 +764,8 @@ Board is DSHOT enabled.
 | 7 | MC_SERVO, FW_SERVO |
 
 ## Board: MATEKF722SE
+
+Board is DSHOT enabled.
 
 ### Target: MATEKF722SE
 
@@ -761,6 +809,8 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, FW_SERVO |
 
 ## Board: OMNIBUSF4
+
+Board is DSHOT enabled.
 
 ### Target: DYSF4PRO
 
