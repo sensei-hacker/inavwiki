@@ -14,22 +14,17 @@ You have two options on how to configure receiver.
 
 ### Option one
 
-Set receiver to send out `NO PULSES` on a failsafe event.
+Set receiver to send out `NO PULSES` or `HOLD` on a failsafe event. This is perfectly fine for FrSky Radios.
 
 ### Option two
 
 1. In `Modes` tab select a switch for "Failsafe"
 
-1. Set your switches and sticks of your radio to the following conditions:
+2. Set your switches and sticks of your radio to the following on link loss:
 
-    -  `Throttle: approx. 0% (no throttle)`
-    -  `Aileron: 50% (no input, stick center)`
-    -  `Rudder: 50% (no input, stick center)`
-    -  `Elevator: 50% (no input, stick center)`
     -  `Failsafe mode: activated`
-    -  `Arm switch: Disarmed (If you use stick arming you can skip this)`
 
-1. Configure failsafe on your receiver to the above conditions on link loss (consult manual for your receiver on how to do it)
+The above is fine on FlySky radio.
 
 ## Configuration of iNav
 
