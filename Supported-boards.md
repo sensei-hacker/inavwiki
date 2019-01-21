@@ -40,20 +40,7 @@ These boards are well tested with INAV and are known to be of good quality and r
 | [Matek F722 WING](https://inavflight.com/shop/p/MATEKF722WING)       | F7         | MATEKF722SE                | All  | All     | All            | All       | All                            | SERIAL, SD     |
 | [Matek F722-SE](https://inavflight.com/shop/p/MATEKF722SE)       | F7         | MATEKF722SE               | All  | All     | All            | All       | All                            | SERIAL, SD     |
 | [Matek F722-STD](https://inavflight.com/shop/p/MATEKF722STD)       | F7         | MATEKF722               | All  | All     | All            | All       | All                            | SERIAL, SD     |
-
-### Other supported boards
-
-These boards work with INAV but might be not well tested.
-
-| Board name                | CPU Family | Target name(s)            | GPS  | Compass | Barometer      | Telemetry | RX                             | Blackbox             |
-|---------------------------|:----------:|:-------------------------:|:----:|:-------:|:--------------:|:---------:|:------------------------------:|:--------------------:|
-| Taulabs Sparky 2          | F4         | SPARKY2, SPARKY2_OPBL     | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
-| Taulabs QUANTON           | F4         | QUANTON                   | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
-| BlueJay F4                | F4         | BLUEJAYF4                 | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
-| F4BY                      | F4         | F4BY                      | All  | All     | All            | All       | All                            | SERIAL, SD           |
-| OpenPilot REVO            | F4         | REVO, REVO_OPBL           | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
-| BeeRotor F4               | F4         | BEEROTORF4                | All  | All     | All            | All       | All                            | SERIAL, SD           |
-| YuPiF4 by RcNet           | F4         | YUPIF4                    | All  | All     | All            | All       | All                            | SERIAL, SD           |
+| [Matek F722-MINI](https://inavflight.com/shop/p/MATEKF722MINI)       | F7         | MATEKF722SE               | All  | All     | All            | All       | All                            | SPIFLASH    |
 
 ### Not recommended for new setups
 
@@ -61,7 +48,7 @@ These boards will work with INAV but are either end-of-life, limited on features
 
 | Board name                | CPU Family | Target name(s)            | GPS  | Compass | Barometer      | Telemetry | RX                             | Blackbox             |
 |---------------------------|:----------:|:-------------------------:|:----:|:-------:|:--------------:|:---------:|:------------------------------:|:--------------------:|
-| [PARIS Sirius™ AIR3](http://www.multiwiicopter.com/products/inav-air3-fixed-wing)                 | F3         | AIRHEROF3, AIRHEROF3_QUAD | All  | All     | All            | All       | All                            | SERIAL               |
+| [PARIS Sirius™ AIR3]        | F3         | AIRHEROF3, AIRHEROF3_QUAD | All  | All     | All            | All       | All                            | SERIAL               |
 | [Airbot OMNIBUS AIO F3](http://shop.myairbot.com/index.php/flight-control/cleanflight-baseflight/omnibusv11.html) | F3         | OMNIBUS                   | All  | All     | All            | All       | All                            | SERIAL, SD           |
 | TBS Colibri Race          | F3         | COLIBRI_RACE              | All  | All     | All            | All       | All                            | SERIAL               |
 | FURY F3                   | F3         | FURYF3, FURYF3_SPIFLASH   | All  | All     | All            | All       | All                            | SERIAL, SD, SPIFLASH |
