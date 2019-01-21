@@ -50,9 +50,8 @@ These boards work with INAV but might be not well tested.
 | F4BY                      | F4         | F4BY                      | All  | All     | All            | All       | All                            | SERIAL, SD           |
 | OpenPilot REVO            | F4         | REVO, REVO_OPBL           | All  | All     | All            | All       | All                            | SERIAL, SPIFLASH     |
 | BeeRotor F4               | F4         | BEEROTORF4                | All  | All     | All            | All       | All                            | SERIAL, SD           |
-| MATEK F405-AIO      | F4         | MATEKF405                      | All  | All     | All            | All       | All                            | SD, SERIAL               |
-| MATEK F405-OSD           | F4         | MATEKF405OSD (post 1.7.3)  | All  | All (soft-I2C) | All (soft-I2C)  | All       | All                            | SD, SERIAL           |
 | YuPiF4 by RcNet           | F4         | YUPIF4                    | All  | All     | All            | All       | All                            | SERIAL, SD           |
+
 ### Not recommended for new setups
 
 These boards will work with INAV but are either end-of-life, limited on features, rare or hard to get from a reliable source. In particular, F1 boards will not be supported post 1.7.3
