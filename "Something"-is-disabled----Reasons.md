@@ -6,28 +6,30 @@ iNav may fail to perform some action as expected, typically arming or engaging w
 
 iNav will refuse to arm for the following reasons:
 
-| Reason  (CLI Mnemonic) | Explanation |
-| ------ | ----------- |
-| `FS` | The RX is not recognised as providing a valid signal |
-| `ANGLE` | The vehicle is not level as defined by the CLI `small_angle` setting |
-| `CAL` | The pre-arm sensor calibration has not completed |
-| `OVRLD` | The CPU load is excessive. May be caused by too an aggressive loop time setting. |
-| `NAV` | Where the CLI setting `nav_extra_arming_safety = ON` is used, this may be caused by reasons shown in the [table below](#navigation-unsafe-reasons) |
-| `COMPASS` | The compass is not calibrated. Perform the calibration procedure |
-| `ACC` | The accelerometer is not calibrated. Perform the 6 point calibration procedure |
-| `ARMSW` | The arm switch was engaged as the FC booted |
-| `HWFAIL` | A required hardware device has failed / is not recognised (e.g. GPS, Compass, Baro) |
-| `BOXFS` | A failsafe switch is engaged |
-| `KILLSW` | A kill switch is engaged |
-| `RX` | The RC link is not detected (RX not detected) |
-| `THR` | The throttle setting is not a minimum |
-| `CLI` | The CLI is active |
-| `CMS` | The CMS menu is active |
-| `OSD` | The OSD menu is active |
-| `ROLL/PITCH` | Roll and/or pitch is not centred |
-| `AUTOTRIM` | Servo autotrim is engaged |
-| `OOM ` | The FC is out of memory |
-| `SETTINGFAIL` | A CLI setting is out of range. The erroneous setting should be indicated in a CLI `dump`. If you can't then reset the offending setting, reflash with full chip erase and reapplying settings from scratch may help.|
+| Reason  (CLI Mnemonic) | Bit Mask (Hex) | Explanation |
+| ------ | ----- | ----------- |
+| `FS` | `00000080` | The RX is not recognised as providing a valid signal |
+| `ANGLE` | `00000100` |  The vehicle is not level as defined by the CLI `small_angle` setting |
+| `CAL` |  `00000200` | The pre-arm sensor calibration has not completed |
+| `OVRLD` |  `00000400` | The CPU load is excessive. May be caused by too an aggressive loop time setting. |
+| `NAV` | `00000800` | Where the CLI setting `nav_extra_arming_safety = ON` is used, this may be caused by reasons shown in the [table below](#navigation-unsafe-reasons) |
+| `COMPASS` | `00001000` | The compass is not calibrated. Perform the calibration procedure |
+| `ACC` | `00002000` | The accelerometer is not calibrated. Perform the 6 point calibration procedure |
+| `ARMSW` | `00004000` | The arm switch was engaged as the FC booted |
+| `HWFAIL` | `00008000`| A required hardware device has failed / is not recognised (e.g. GPS, Compass, Baro) |
+| `BOXFS` | `00010000` | A failsafe switch is engaged |
+| `KILLSW` | `00020000` | A kill switch is engaged |
+| `RX` | `00040000` | The RC link is not detected (RX not detected) |
+| `THR` | `00080000` | The throttle setting is not a minimum |
+| `CLI` | `00100000` | The CLI is active |
+| `CMS` | `00200000` | The CMS menu is active |
+| `OSD` | `00400000` | The OSD menu is active |
+| `ROLL/PITCH` | `00800000` | Roll and/or pitch is not centred |
+| `AUTOTRIM` | `01000000` | Servo autotrim is engaged |
+| `OOM ` | `02000000` | The FC is out of memory |
+| `SETTINGFAIL` | `04000000` | A CLI setting is out of range. The erroneous setting should be indicated in a CLI `dump`. If you can't then reset the offending setting, reflash with full chip erase and reapplying settings from scratch may help.|
+
+Note: On older processors, just the bitmask is shown, which can be decoded by the numeric values in the table. The values are correct for iNav 2.1 as of 2019-01-22.
 
 ### Navigation Unsafe reasons
 
