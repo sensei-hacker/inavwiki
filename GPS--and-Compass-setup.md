@@ -23,6 +23,23 @@ If you want to use the external magnetometer (built in in your GPS) and you have
 
 If  you elect to use the internal FC magnetometer you are highly likely to have poor results due to magnetic interference (not recommended).
 
+Just to avoid the mistake many people do while installing a GPS unit: _(thanks to quadmeup.com for the images)_
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="https://quadmeup.com/wp-content/uploads/2016/03/beitian-bn-880-antenna-1024x666.jpg" width="300"></td>
+      <td>This side has to point towards the sky</a></td>
+    </tr>
+    <tr>
+      <td><img src="https://quadmeup.com/wp-content/uploads/2016/03/beitian-bn-880-top.jpg" width="300"></td>
+      <td>This side has to point towards the ground</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
 ## Setting up the compass alignment
 
 Before attempting any navigation modes, you should verify that the compass alignment is correct (Configurator or CLI `set align_mag`)
@@ -81,10 +98,6 @@ Also as a bonus with such units they have a magnetometer (a compass) on the unde
 <img src="https://img2.banggood.com/thumb/large/upload/2015/09/SKU287158/SKU287158-1.jpg">
 
 An important note is that on top of the protective shell there is an arrow, this needs to point towards the front of your model.
-
-When it comes to connecting this unit to your flight controller, the image below will be a massive help to you. This image shows the colour coding / output connections and you will need to connect these appropriately to your flight controller.
-
-![GPS Neo-M8N](https://dl.dropboxusercontent.com/u/12816733/neo-m8n-GPS-connections.jpg)
 
 **Important**: 
 You need to switch the Rx and Tx wires around. So you connect your GPS Tx wire (yellow) to your desired Rx pin and the GPS Rx wire (White) to your Tx pin on your flight controller.
