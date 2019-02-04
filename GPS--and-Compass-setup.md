@@ -6,7 +6,7 @@ Recommended GPS are M8N versions.
 
 Modules known to work reasonably well:
 * [Beitian BN-880](https://inavflight.com/shop/p/BN880)
-* [Ublox NEO-M8N APM version (Galileo compatible)](https://inavflight.com/shop/s/bg/1035454)
+* [Ublox NEO-M8N APM version](https://inavflight.com/shop/s/bg/1035454)
 
 Older versions as M6N and M7N also work, but the new M8N is far superior. 
 Most GPS modules have a built in magnetometer (compass), but there are also some available without e.g. [Beitian BN-180](https://inavflight.com/shop/p/BN180) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
@@ -23,7 +23,9 @@ If you want to use the external magnetometer (built in in your GPS) and you have
 
 If  you elect to use the internal FC magnetometer you are highly likely to have poor results due to magnetic interference (not recommended).
 
-Just to avoid the mistake many people do while installing a GPS unit: _(thanks to quadmeup.com for the images)_
+## Installing the GPS unit
+
+Just to avoid the mistake many people do while installing a GPS unit (aka pointing the antenna towards the ground): _(thanks to quadmeup.com for the images)_
 
 <table>
   <tbody>
