@@ -89,7 +89,7 @@ Only when you're content that the compass reads correctly for all throttle setti
 
 Note to change magnetic declination manually on F3 or newer board you have to turn off automatic function. `set inav_auto_mag_decl = OFF`.
 
-## NEO-M8N PixHawk GPS Unit
+## NEO-M8N PixHawk GPS Unit / MN-880
 
 A readily available GPS unit is the "NEO-M8N" unit that is available from eBay, Amazon, Banggood & so on... 
 
@@ -98,8 +98,9 @@ They are cheap and because they use the Russian satellite network called GLONASS
 Also as a bonus with such units they have a magnetometer (a compass) on the underside of the board too! 
 
 <img src="https://img2.banggood.com/thumb/large/upload/2015/09/SKU287158/SKU287158-1.jpg">
+<img src="https://quadmeup.com/wp-content/uploads/2016/03/beitian-bn-880-top.jpg">
 
-An important note is that on top of the protective shell there is an arrow, this needs to point towards the front of your model.
+An important note is that on top of the protective shell of the MN-M8N there is an arrow, this needs to point towards the front of your model. The BN-880 plug needs to point down and to the rear of your model. It is also recommended to [encase](https://www.thingiverse.com/search?q=bn-880&dwh=665c615230c1cbf) the BN-880 as it is quite fragile.
 
 **Important**: 
 You need to switch the Rx and Tx wires around. So you connect your GPS Tx wire (yellow) to your desired Rx pin and the GPS Rx wire (White) to your Tx pin on your flight controller.
@@ -114,9 +115,9 @@ Once you have connected the GPS to your flight control board
 - Press "Save & Reboot"
 - Then go to the "Configuration" tab in the iNav Configurator 
 - Enable GPS
-- Set the "Protocol" to UBLOX
+- Set the "Protocol" to UBLOX7
 - Set the "Ground Assistance Type" to "Auto Detect"
-- set CW270FLIP
+- set CW270FLIP for the M8N and CW0FLIP for newer models of the BN-880 
 - Press "Set & Reboot"
  You can confirm the GPS unit is working by going to the GPS tab in the iNav Configurator and if it is working you will see the "Total Messages" count on the left incrementing in numbers.
 
