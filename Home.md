@@ -1,5 +1,15 @@
 ![](http://static.rcgroups.net/forums/attachments/6/1/0/3/7/6/a9088858-102-inav.png)
 
+<table>
+  <tbody>
+    <tr>
+      <td><a href="https://inavflight.com/shop/u/bg"><img src="https://lh3.googleusercontent.com/TiHXyUiZ2COk7OmceBgo1qeRN2APAjWL5qUydGc-U3LqkJb3n13EhYEJ8Dpz_IACNHU" width="55"></a></td>
+      <td><a href="https://inavflight.com/shop/u/bg">Support us on Banggood</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
 INAV is a fork of cleanflight with a heavy focus upon GPS features for both airplanes & multirotor models.
 
 iNav is **being actively developed** and currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features. 
