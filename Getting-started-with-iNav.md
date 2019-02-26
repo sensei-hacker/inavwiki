@@ -53,6 +53,8 @@ If you are using your FC onboard mag, try to place the the FC as far away as pos
 
 * When installing or upgrading INAV on a board with OSD, always load one OSD font from the configurator OSD tab. INAV uses its own OSD fonts and usually every release adds new characters or icons.
 
+* Do not use Serial RX over a software serial. It cannot reliably handle SBUS or IBUS for instance. 
+
 **Checklist if you're having issue with something:**
 
 1. Try and look through the wiki regarding the issue you have. You can also search the Wiki.
