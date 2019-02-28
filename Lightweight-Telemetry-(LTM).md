@@ -96,8 +96,12 @@ The status byte is used as
 | | Fly by wire B (17) |
 | | Cruise (18) |
 | | Unknown (19) |
+| | Launch (20*) |
+| | Autotune (21*) |
 
 As a general purpose protocol, not all status can be mapped to iNav modes.
+
+(*) indicates iNav extension, post 2019-02-28
 
 ## Origin Frame (O)
 
