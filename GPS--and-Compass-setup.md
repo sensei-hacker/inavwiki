@@ -106,7 +106,8 @@ An important note is that on top of the protective shell of the MN-M8N there is 
 You need to switch the Rx and Tx wires around. So you connect your GPS Tx wire (yellow) to your desired Rx pin and the GPS Rx wire (White) to your Tx pin on your flight controller.
 
 A video showing you how to do this for a Omnibus F4 V2 board is in [this video on YouTube](https://www.youtube.com/watch?v=nQCQXuqQSd8)
-The Matek F405-ctr online documentation connects the GPS to a 5V pin under the board. On USB power, GPS and Mag won't be powered. If you want lock on the bench, you can instead connect the BN-880 power to the 3V3 pin near the 4V5 pin.
+
+The Matek F405-ctr online documentation connects the GPS to a 5V pin under the board so on USB only the GPS and Mag won't be powered. If you want GPS lock on the bench, you can instead connect the BN-880 power to the 3V3 pin.
 
 Once you have connected the GPS to your flight control board
 
