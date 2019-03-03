@@ -8,9 +8,14 @@ If none of the above work, verify in your goggles or CLI "status" command the ca
 # UAV shakes
 1. Verify that frame & motors are solidly bolted together 
 2. lower P on Roll and Pitch from configurator, adjustments or stick control
+3. drop PID to 1,1,1 for Pitch and Roll and do a PID tuning from scrartch https://youtu.be/4sjXJ5HoU_c or https://youtu.be/ehyXLsvaEhw
 
-# POS HOLD moves
-1. redo MAG calibration
+# POS HOLD moves...
+1. ...in circles, redo MAG calibration
+2. ...in line ?
 
-# ALT HOLD moves
-??
+# Transition to ALT HOLD is bad
+1. Get your UAV in a stable hover in ACRO or ANGLE mode, find the amount of throttle required (openTX/Output throttle number at the top). Dial this number in configurator/Advanced Tuning tab/Hover Throttle
+
+# RTH lands too far from home
+1. in the CLI, lower "nav_min_rth_distance" to the desired accuracy
