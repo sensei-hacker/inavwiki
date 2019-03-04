@@ -6,7 +6,7 @@
 If none of the above work, verify in your goggles or CLI "status" command the cause. Hardware malfunction might be the cause.
 
 # UAV shakes
-1. Verify that frame & motors are solidly bolted together 
+1. Verify that frame & motors are solidly bolted together, on an H-frame double up the bottom plate.
 2. lower P on Roll and Pitch from configurator, adjustments or stick control
 3. drop PID to 1,1,1 for Pitch and Roll and do a PID tuning from scrartch https://youtu.be/4sjXJ5HoU_c or https://youtu.be/ehyXLsvaEhw
 
