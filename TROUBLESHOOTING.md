@@ -14,4 +14,4 @@ If none of the above work, verify in your goggles or CLI "status" command the ca
 1. ...in circles, redo MAG calibration
 
 # Transition to ALT HOLD is bad
-1. Get your UAV in a stable hover in ACRO or ANGLE mode, find the amount of throttle required (openTX/Output throttle number at the top). Dial this number in configurator/Advanced Tuning tab/Hover Throttle
+1. Get your UAV in a stable hover in ACRO or ANGLE mode, find the amount of throttle required (openTX>Output>Throttle number at the top). Dial this number in configurator>Advanced Tuning tab>Hover Throttle
