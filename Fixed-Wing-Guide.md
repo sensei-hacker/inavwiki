@@ -6,7 +6,7 @@ Any flight controller can be used for fixed wing builds, however flight controll
 
 Some of the most popular flight controllers for fixed wing are:
 
-- [Matek F405-WING](https://inavflight.com/shop/s/bg/1292190)
+- [Matek F405-WING](https://inavflight.com/shop/s/bg/1292190) (target F405SE)
 - [Matek F411-WING](https://inavflight.com/shop/s/bg/1323063)
 - [FuriousFPV F-35](https://inavflight.com/shop/s/bg/1278861)
 
