@@ -119,7 +119,7 @@ Once you have connected the GPS to your flight control board
 - Enable GPS
 - Set the "Protocol" to UBLOX7
 - Set the "Ground Assistance Type" to "Auto Detect"
-- set CW270FLIP 
+- set MAG Alignment to CW270FLIP
 - Press "Set & Reboot"
  You can confirm the GPS unit is working by going to the GPS tab in the iNav Configurator and if it is working you will see the "Total Messages" count on the left incrementing in numbers.
 
