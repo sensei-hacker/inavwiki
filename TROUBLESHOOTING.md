@@ -10,7 +10,7 @@ If none of the above work, verify in your goggles or CLI "status" command the ca
 2. lower P on Roll and Pitch from configurator, adjustments or stick control
 3. drop PID to 1,1,1 for Pitch and Roll and do a PID tuning from scrartch https://youtu.be/4sjXJ5HoU_c or https://youtu.be/ehyXLsvaEhw
 
-# POS HOLD moves in circles (toilet bowling) or runs awayyyyy
+# POS HOLD moves in circles or runs away
 1. SETTINGS: go inside configuration and verify that your MAG alignment is [set properly](https://github.com/iNavFlight/inav/wiki/GPS--and-Compass-setup)
 2. CALIBRATION: redo MAG calibration
 3. TEST MAG INSULATION: on the bench, add headings to OSD then props off, connect battery, motor tabs rev up your motors and see in your goggles if the headings changes. If it changes you have bad insulation so move the mag away from your quad's electricals or apply copper tape between mag and main power lines. If you want to test this with flight condition current, fly your quad outside in ACRO, doing punch-through with no yaw movement.
