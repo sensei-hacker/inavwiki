@@ -11,8 +11,10 @@ If none of the above work, verify in your goggles or CLI "status" command the ca
 3. drop PID to 1,1,1 for Pitch and Roll and do a PID tuning from scrartch https://youtu.be/4sjXJ5HoU_c or https://youtu.be/ehyXLsvaEhw
 
 # POS HOLD moves in circles (toilet bowling) or runs awayyyyy
-1. TEST MAG INSULATION: on the bench, add headings to OSD then props off, connect battery, motor tabs rev up your motors and see in your goggles if the headings changes. If it changes you have bad insulation so move the mag away from your quad's electricals or apply copper tape between mag and main power lines.
+1. SETTINGS: go inside configuration and verify that your MAG alignment is [set properly](https://github.com/iNavFlight/inav/wiki/GPS--and-Compass-setup)
 2. CALIBRATION: redo MAG calibration
+3. TEST MAG INSULATION: on the bench, add headings to OSD then props off, connect battery, motor tabs rev up your motors and see in your goggles if the headings changes. If it changes you have bad insulation so move the mag away from your quad's electricals or apply copper tape between mag and main power lines.
+
 
 # Transition to ALT HOLD is bad
 1. Get your UAV in a stable hover in ACRO or ANGLE mode, find the amount of throttle required (openTX>Output>Throttle number at the top). Dial this number in configurator>Advanced Tuning tab>Hover Throttle
