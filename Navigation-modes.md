@@ -131,7 +131,7 @@ POSHOLD = 2D position hold
 
 POSHOLD + ALTHOLD = 3D position hold
 
-POSHOLD + ALTHOLD + HEADING HOLD = 3D position hold and heading lock (heading lock has no effect on the wing in 
+POSHOLD + ALTHOLD + HEADING HOLD = 3D position hold and heading lock (at moment heading lock has no effect on the wing in 
 congiunction with poshold)
 
 (ANGLE mode is automatically selected in all of the above.)
