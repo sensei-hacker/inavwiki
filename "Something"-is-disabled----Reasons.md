@@ -10,7 +10,7 @@ iNav will refuse to arm for the following reasons:
 | ------ | ----- | ----------- |
 | `FS` | `00000080` | The RX is not recognised as providing a valid signal |
 | `ANGLE` | `00000100` |  The vehicle is not level as defined by the CLI `small_angle` setting |
-| `CAL` |  `00000200` | The pre-arm sensor calibration has not completed |
+| `CAL` |  `00000200` | The pre-arm sensor calibration has not completed. The barometer is somewhat susceptible to lengthy calibration, which may be mitigated by the CLI setting `baro_cal_tolerance`, e.g. `set baro_cal_tolerance = 500` (find a suitable value by experimentation). |
 | `OVRLD` |  `00000400` | The CPU load is excessive. May be caused by too an aggressive loop time setting. |
 | `NAV` | `00000800` | Where the CLI setting `nav_extra_arming_safety = ON` is used, this may be caused by reasons shown in the [table below](#navigation-unsafe-reasons) |
 | `COMPASS` | `00001000` | The compass is not calibrated. Perform the calibration procedure |
