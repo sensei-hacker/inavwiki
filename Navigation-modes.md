@@ -119,7 +119,7 @@ iNAV’s parameters for fixed wing:
   
   
   
-## NAV POSHOLD - Horizontal position hold
+## NAV POSHOLD - position hold
 
 For multirotor it will hold 3D position, throttle is automatic (AH).
 You can use your roll and pitch stick to move around. The position hold will be resumed when you center the roll/pitch stick again. You can also enable HEADING HOLD at the same time to lock the heading.     
