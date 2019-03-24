@@ -18,12 +18,12 @@ For safety reasons, iNAV’s navigation modes can be activated only if
 This applies to enabling the navigation modes in the Configurator as well as at the flying field.   
 (For bench tests without(!) propellers you may change “set nav_extra_arming_safety = ON” to “OFF” in CLI.)  
 
-- Flightmodes are self contained. For example: with RTH and WP (Waypoints) it's not neccesary to enable angle, althold or mag, it enables what it needs. Keep in mind that POSHOLD is also self contained and enables what it need, but that does not include ALTHOLD. Read more below in POSHOLD section.  
+- Flightmodes are self contained. For example: with RTH and WP (Waypoints) it's not neccesary to enable angle, althold or mag, it enables what it needs. Read more below in POSHOLD section.  
 
 |           | POSHOLD   | WAYPOINT  | RTH       | ALTHOLD   |
 | ----      | ----      | ----      | ----      | ----      |
 | ANGLE     | X         | X         | X         |           |
-| ALTHOLD   |           | X         | X         |           |
+| ALTHOLD   | X         | X         | X         |           |
 | MAG       |           | X         | X         |           |
 | BARO      |           | X         | X         | X         |
 
@@ -120,26 +120,15 @@ iNAV’s parameters for fixed wing:
   
   
 ## NAV POSHOLD - Horizontal position hold
-For multirotor it will hold horizontal (2D) position, throttle still controls up and down movements (z-axis).
-You can use your roll and pitch stick to move around. The position hold will be resumed when you center the roll/pitch stick again.      
 
-For Fixedwing it will try and loiter in circle defined by the `nav_fw_loiter_radius` variable.
+For multirotor it will hold 3D position, throttle is automatic (AH).
+You can use your roll and pitch stick to move around. The position hold will be resumed when you center the roll/pitch stick again. You can also enable HEADING HOLD at the same time to lock the heading.     
 
-Please note that you have to use this with **ALTHOLD** to get a full 3D position hold!  
-  
-POSHOLD = 2D position hold
-
-POSHOLD + ALTHOLD = 3D position hold
-
-POSHOLD + ALTHOLD + HEADING HOLD = 3D position hold and heading lock (at moment heading lock has no effect on the wing in 
-congiunction with poshold)
-
-(ANGLE mode is automatically selected in all of the above.)
+For Fixedwing it will loiter in circles which radius is defined by the `nav_fw_loiter_radius` variable. The throttle is automatic. The altitude is controlled with the pitch stick (AH).
 
 Hints for safe operation:    
 - Try yawing 180 deg in PH - will instantly reveal incorrect mag operation (e.g. wrong align_mag, interference, loose cables, ...)
 - Always check POSHOLD working correctly, before you use RTH or start a WP mission.
-
 
 
 ## NAV CRUISE - Fixed Wing Heading Hold
