@@ -1,4 +1,5 @@
 ![](https://i.imgur.com/HDakZPo.jpg)
+
 You want to extend the lifetime of your micro USB and look cool on the field? Whip up your phone and setup your FC via bluetooth, this guide is for you.
 # Equipment
 * Flight Controller with a 3V3 pin and one free UART. 
