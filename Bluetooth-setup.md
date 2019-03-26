@@ -1,5 +1,5 @@
 ![](https://i.imgur.com/HDakZPo.jpg)
-To extend your USB lifetime or to be cool on the field, you may want to whip up your phone and connect via bluetooth to your Flight Controller. This guide is for you.
+You want to extend the lifetime of your micro USB and look cool on the field? Whip up your phone and setup your FC via bluetooth, this guide is for you.
 # Equipment
 * Flight Controller with a 3V3 pin and one free UART. 
 * (https://www.amazon.com/gp/product/B07BRM9752/ref=oh_aui_search_asin_title?ie=UTF8&psc=1)[Bluetooth chips, 2 pieces for $8] this module is great because it's already setup optimally, baudrate at 115200 and needs no FTDI to send AT code at.
