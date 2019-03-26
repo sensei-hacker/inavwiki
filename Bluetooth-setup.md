@@ -12,4 +12,5 @@ The manual for this module is [here](https://fccid.io/2AM2YJDY-08/User-Manual/Us
 5. Connect GND to any ground on your FC
 6. In iNav configurator set the UART to MSP, baudrate 115200
 Save and reboot.
+
 Now you can connect to your flight controller with the excellent Speedybee app.
