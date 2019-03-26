@@ -1,4 +1,4 @@
-![](https://images-na.ssl-images-amazon.com/images/I/71D9in9pJZL._SL1398_.jpg)
+![](https://i.imgur.com/HDakZPo.jpg)
 To extend your USB lifetime or to be cool on the field, you may want to whip up your phone and connect via bluetooth to your Flight Controller. This guide is for you.
 # Equipment
 * Flight Controller with a 3V3 pin and one free UART. 
