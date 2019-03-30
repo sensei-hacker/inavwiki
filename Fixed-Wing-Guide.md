@@ -86,7 +86,7 @@ At this point everything should work as expected.
 
 ### Step 4, Replace Default Values
 
-* Type this and save in CLI:  
+* Type this and save in CLI to set the max roll and pitch angle in `ANGLE` mode to 60°:  
 ``set max_angle_inclination_rll = 600``    
 ``set max_angle_inclination_pit = 600``  
 
