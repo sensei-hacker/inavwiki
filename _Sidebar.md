@@ -7,10 +7,8 @@
  - [Fixed-Wing Guide](/iNavFlight/inav/wiki/Fixed-wing-guide)
  - [YouTube video guides](/iNavFlight/inav/wiki/YouTube-video-guides)
  - [Setting up Failsafe for RTH](/iNavFlight/inav/wiki/Failsafe)
+ - [Tested & Suggested Hardware](/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products)
  - [Arming is disabled / WPs don't execute](/iNavFlight/inav/wiki/%22Something%22-is-disabled----Reasons)
-
-# Sensors Setup & Calibration
-
  - [Sensor auto detection and Hardware Failure detection](/iNavFlight/inav/wiki/Sensor-auto-detect-and-hardware-failure-detection)
  - [Sensor calibration](/iNavFlight/inav/wiki/Sensor-calibration)
  - [GPS and Compass setup](/iNavFlight/inav/wiki/GPS--and-Compass-setup)
