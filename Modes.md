@@ -3,9 +3,11 @@ Index:
 - [AIR MODE](#air-mode)
 - [ANGLE](#angle)
 - [ARM](#arm)
+- [AUTOTUNE](#autotune)
 - [BEEPER](#BEEPER)
 - [BLACKBOX](#blackbox)
 - [CAMSTAB](#CAMSTAB)
+- [CRUISE](#CRUISE)
 - [FAILSAFE](#failsafe)
 - [FLAPERON](#flaperon)
 - [HEADADJ](#headadj)
@@ -13,14 +15,13 @@ Index:
 - [HEADING HOLD](#heading-hold)
 - [HORIZON](#horizon)
 - [LEDLOW](#ledlow)
+- [MANUAL](#manual) (called PASSTHROUGH mode up to version 1.8.1)
 - [NAV LAUNCH](#nav-launch)
 - [OSD SW](#osd-sw)
-- [MANUAL](#manual) (called PASSTHROUGH mode up to version 1.8.1)
 - [SERVO AUTOTRIM](#servo-autotrim)
 - [SURFACE](#surface)
 - [TELEMETRY](#telemetry)
 - [TURN ASSIST](#turn-assist)
-- [AUTOTUNE](#autotune)
 
 ## Default flight mode ( No mode selected )
 
@@ -28,10 +29,6 @@ The default flight mode does not self level the aircraft around the roll and the
 
 
 ## Mode details
-
-### ALTHOLD
-
-The altitude of the aircraft a the moment you activate this mode is fixed. 
 
 ### AIR MODE
 
@@ -56,6 +53,34 @@ of flips and rolls what again opens the ability to have higher I gains for some.
 In this auto-leveled mode the roll and pitch channels control the angle between the relevant axis and the vertical, achieving leveled flight just by leaving the sticks centered.
 Maximum banking angle is limited by `max_angle_inclination_rll` and `max_angle_inclination_pit`
 
+### ALTHOLD
+
+The altitude of the aircraft a the moment you activate this mode is fixed. 
+
+### AUTOTUNE
+
+For detailed description go to https://github.com/iNavFlight/inav/blob/development/docs/Autotune%20-%20fixedwing.md
+
+AUTOTUNE will attempt to tune roll and pitch P, I and FF gains on a fixed-wing airplane.
+
+Autotune will monitor behavior of the airplane when you fly it and adjust P, I and FF gains to reach optimal performance.
+
+How to use:
+
+Take off. Any manual flight mode will do, ACRO is the best option. Enable AUTOTUNE mode. Do hard maneuvers on each axis separately. For roll - bank hard left/hard right. For pitch - fast climb, steep dive. Initially you probably will notice very soft response - make sure your flying field is big enough for slow turns.
+
+The more maneuvers you will do - the better results AUTOTUNE will be able to reach.
+
+AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse - PIFF gains won't be changed.
+
+Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
+
+[How to use Autotune video](https://youtu.be/UOGfC3pvbWM)
+
+### BEEPER
+
+Make the beeper connected to the FC beep (lost model finder).
+
 ### BLACKBOX
 
 If you're recording to an onboard flash chip, you probably want to disable Blackbox recording when not required in order to save storage space. To do this, you can add a Blackbox flight mode to one of your AUX channels on the Configurator's modes tab. Once you've added a mode, Blackbox will only log flight data when the mode is active.
@@ -63,6 +88,14 @@ If you're recording to an onboard flash chip, you probably want to disable Black
 A log header will always be recorded at arming time, even if logging is paused. You can freely pause and resume logging while in flight.
 
 See [`BLACKBOX`](/iNavFlight/inav/blob/master/docs/Blackbox.md) for more information
+
+### CAMSTAB
+
+Enables the servo gimbal
+
+### CRUISE
+
+This mode can only be used on fixed wing. When enabled the plane/wing will follow a straight path. The roll and yaw sticks can be used to change direction. When using the roll stick the FC will go back to angle mode until released. The yaw stick can be used to set the desired heading instead. The max yaw rate that can be achieved with the yaw stick can be adjusted with the `nav_fw_cruise_yaw_rate` setting.
 
 ### FAILSAFE
 
@@ -99,6 +132,18 @@ Heading hold only uses yaw control (rudder) so it won't work on a flying wing wh
 
 This hybrid mode works exactly like the previous ANGLE mode with centered roll and pitch sticks (thus enabling auto-leveled flight), then gradually behaves more and more like the default RATE mode as the sticks are moved away from the center position. Which means it has no limitation on banking angle and can do flips.
 
+### LEDLOW
+
+Turns off the RGB LEDs
+
+### MANUAL
+
+Direct servo control in fixed-wing. This mode was called PASSTHROUGH mode up to version 1.8.1.
+
+In this mode there is no stabilization.
+
+What FC does in PASSTHRU mode is: Motor mixing, Servo Mixing, Expo settings, Throws limiting (see the `manual_*_rate` settings). Note that Failsafe is still active in this mode and can override the controls.
+
 ### NAV LAUNCH
 Airplane launch assistant
 
@@ -130,7 +175,6 @@ CAUTION: Motors will spin if you unset `NAV LAUNCH` mode after arming.
 From version 1.9 `NAV LAUNCH` can be permanently enabled via the configurator or the CLI using `feature FW_LAUNCH` in this case `NAV LAUNCH` doesn't need to be enabled via a transmitter switch prior to arming.
 If you want to launch the plane manually just move pitch/roll stick after you have armed the plane and you have back throttle control.
 If you inadvertedly disarm mid-air before raising the throttle again (you should lower the throttle to arm again) move pitch/roll stick and you will have throttle control back.
-  
 
 **GLIDER / SLOPER SETUP**
 
@@ -154,13 +198,9 @@ Setup launch parameters appropriately:
 
 One option is to add Horizon mode at very top end of throttle, to enable acro flying with ability to drop back to angle mode for emergency recovery.
 
+### OSD SW
 
-### MANUAL
-Direct servo control in fixed-wing. This mode was called PASSTHROUGH mode up to version 1.8.1.
-
-In this mode there is no stabilization.
-
-What FC does in PASSTHRU mode is: Motor mixing, Servo Mixing, Expo settings, Throws limiting (see the `manual_*_rate` settings). Note that Failsafe is still active in this mode and can override the controls.
+Disables the OSD
 
 ### SERVO AUTOTRIM
 In flight adjustment of servo midpoint for straight flight
@@ -180,25 +220,9 @@ You may want to inspect your new midpoints after landing, if the servo offset is
 
 This is not to be confused with tuning your aircraft for leveled flight in `ANGLE` mode, to do this you need to adjust your board alignment so straight flight for that aircraft is show the board being level ( 0 pitch and 0 roll ).
 
-### AUTOTUNE
+### SURFACE
 
-For detailed description go to https://github.com/iNavFlight/inav/blob/development/docs/Autotune%20-%20fixedwing.md
-
-AUTOTUNE will attempt to tune roll and pitch P, I and FF gains on a fixed-wing airplane.
-
-Autotune will monitor behavior of the airplane when you fly it and adjust P, I and FF gains to reach optimal performance.
-
-How to use:
-
-Take off. Any manual flight mode will do, ACRO is the best option. Enable AUTOTUNE mode. Do hard maneuvers on each axis separately. For roll - bank hard left/hard right. For pitch - fast climb, steep dive. Initially you probably will notice very soft response - make sure your flying field is big enough for slow turns.
-
-The more maneuvers you will do - the better results AUTOTUNE will be able to reach.
-
-AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse - PIFF gains won't be changed.
-
-Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
-
-[How to use Autotune video](https://youtu.be/UOGfC3pvbWM)
+Enable terrain following when you have a rangefinder enabled
 
 ### TURN ASSIST
 
