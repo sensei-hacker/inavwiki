@@ -112,7 +112,7 @@ At this point everything should work as expected.
 
 * Setup the right failsafe action. For most users it is advised to use ``set failsafe_procedure = RTH``.
 
-* Take a few minutes to read through how the different [Flight Modes](https://github.com/iNavFlight/inav/wiki/Flight-modes) affect the model in the air.
+* Take a few minutes to read through how the different [Flight Modes](https://github.com/iNavFlight/inav/wiki/Modes) affect the model in the air.
 
 * Have `manual` mode configured so if it happens anything with gyro / accelerometer in the air you can use manual control. This includes if your flight controller resets during flight because of example an brownout.  
 
