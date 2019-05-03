@@ -22,8 +22,6 @@ You are very welcome to ask for suggestions and tips in the chat!
 
 Buying from the following links will help in supporting more hardware, debugging and fixing bugs and expanding the functionalities of the flight controller. From every purchase you make, without any additional cost for you, a small commission will be given to INAV developers!
 
-**Special 8% off with INAV8%OFF coupon on the not already in PROMO parts!**
-
 If you are building a **plane**:
 
 https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Guide
