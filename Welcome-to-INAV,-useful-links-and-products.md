@@ -103,6 +103,6 @@ Foxeer Micro Falkor: https://inavflight.com/shop/s/bg/1375560
 
 Foxeer Arrow Micro Pro: https://inavflight.com/shop/s/bg/1248761
 
-
+Foxeer MIX: https://inavflight.com/shop/s/bg/1409853 (HD)
 
 _Thanks, and happy flying!_
