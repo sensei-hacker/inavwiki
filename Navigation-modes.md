@@ -3,7 +3,7 @@
 This page will list and explain all the different navigational flight modes of iNav:
 
 - [NAV ALTHOLD - Altitude hold](#althold---altitude-hold)
-- [NAV POSHOLD - Horizontal position hold](#nav-poshold---horizontal-position-hold)
+- [NAV POSHOLD - Horizontal position hold](#nav-poshold---Position-hold)
 - [NAV CRUISE - Fixed Wing Heading Hold](#nav-cruise---fixed-wing-heading-hold)
 - [NAV RTH - Return to home](#rth---return-to-home)
 - [NAV WP - Autonomous waypoint mission](#wp---autonomous-waypoint-mission)
@@ -119,7 +119,7 @@ iNAV’s parameters for fixed wing:
   
   
   
-## NAV POSHOLD - position hold
+## NAV POSHOLD - Position hold
 
 For multirotor it will hold 3D position, throttle is automatic (AH).
 You can use your roll and pitch stick to move around. The position hold will be resumed when you center the roll/pitch stick again. You can also enable HEADING HOLD at the same time to lock the heading.     
