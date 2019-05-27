@@ -1,4 +1,6 @@
-Index:
+**REFER TO THIS PAGE FOR NAVIGATION MODES:** [Navigation-modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes)
+
+# Non-navigation modes index:
 
 - [AIR MODE](#air-mode)
 - [ANGLE](#angle)
@@ -7,7 +9,6 @@ Index:
 - [BEEPER](#BEEPER)
 - [BLACKBOX](#blackbox)
 - [CAMSTAB](#CAMSTAB)
-- [CRUISE](#CRUISE)
 - [FAILSAFE](#failsafe)
 - [FLAPERON](#flaperon)
 - [HEADADJ](#headadj)
@@ -94,10 +95,6 @@ See [`BLACKBOX`](/iNavFlight/inav/blob/master/docs/Blackbox.md) for more informa
 ### CAMSTAB
 
 Enables the servo gimbal
-
-### CRUISE
-
-This mode can only be used on fixed wing. When enabled the plane/wing will follow a straight path. The roll and yaw sticks can be used to change direction. When using the roll stick the FC will go back to angle mode until released. The yaw stick can be used to set the desired heading instead. The max yaw rate that can be achieved with the yaw stick can be adjusted with the `nav_fw_cruise_yaw_rate` setting.
 
 ### FAILSAFE
 
