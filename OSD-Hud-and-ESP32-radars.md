@@ -78,6 +78,6 @@ If you have such a module fitted on your aicraft, few extra steps are required i
 
 * In the iNav Configurator, Ports tab, enable the MSP option for this UART, and set the speed to **115200**. You don't have to set anything else for the port, the ESP32 will then communicate with the flight controller using standard MSP/MSP2 messages.
 
-* In the CMS, OSD > Hud > Displayed items, set *Radar max aircraft* to 4
+* In the CMS, OSD > Hud > Displayed items, set **Radar max aircraft to 4**
 
-Please see this [Thread at RCGroups](https://www.rcgroups.com/forums/showthread.php?3304673-iNav-Radar-ESP32-LoRa-modems) for mode details about the ESP32 modules and the radar project.
+Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthread.php?3304673-iNav-Radar-ESP32-LoRa-modems) for mode details about the ESP32 modules and the radar project.
