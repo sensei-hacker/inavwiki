@@ -44,10 +44,9 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 All the settings are available from the CLI, defaults are :
 
-set osd_crosshairs_style = DEFAULTset osd_horizon_offset = 0
-
+set osd_crosshairs_style = DEFAULT
+set osd_horizon_offset = 0
 set osd_camera_uptilt = 0
-
 set osd_camera_fov_h = 135
 
 set osd_camera_fov_v = 85
@@ -67,6 +66,7 @@ set osd_hud_radar_range_min = 1
 set osd_hud_radar_range_max = 4000
 
 set osd_hud_radar_nearest = OFF
+
 
 ##  Accuracy and limitations
 
@@ -95,7 +95,8 @@ If you have such a module fitted on your aicraft, few extra steps are required i
 
 Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthread.php?3304673-iNav-Radar-ESP32-LoRa-modems) for mode details about the ESP32 modules and the radar project.
 
-##  Troubleshooting and details
+
+##  Troubleshooting
 
 **The ESP32 says "NoFC", it does not see the iNav flight controller**
 
