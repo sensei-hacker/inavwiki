@@ -41,7 +41,7 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 ## CLI commands
 
-All the settings are available from the CLI, defaults are :
+All the settings are available in the CLI, defaults are :
 ```
 set osd_crosshairs_style = DEFAULT
 set osd_horizon_offset = 0
