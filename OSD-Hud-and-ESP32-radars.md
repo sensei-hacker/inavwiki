@@ -32,7 +32,7 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 **Radar max aircraft** : Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing). The nearby aircrafts will appear as markers A, B, C, etc
 
-**Radar min range** : In meters, by default 1, radar aicrafts closer than this will not be displayed. This setting exists mostly to unclutter the OSD view during close range pursuits.
+**Radar min range** : In meters, by default 1, radar aircrafts closer than this will not be displayed. This setting exists mostly to unclutter the OSD view during close range pursuits.
 
 **Radar max range** : In meters, by default 4000, radar aircrafts further away than this will not be displayed. 
 
