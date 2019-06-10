@@ -109,7 +109,7 @@ Since position sharing is based on the MSP protocol, Betaflight should work (not
 
 **Conditions before display**
 
-The H marker and/or the A, B, C ... markers will appear on the OSD view only if the position of your aircraft is known. So it needs a valid GPS lock. The H-for-home marker will show only when the home point is recorded, so after the flight controller is armed. The home lock is not required to display nearby radar POIs.
+The H marker and/or the A, B, C ... markers will appear on the OSD view only if the position of your aircraft is known. So it needs a valid GPS lock. The home marker will show only when the home point is recorded, so after the flight controller is armed. The home lock is not required to display nearby radar POIs.
 
 **Some characters are missing in the OSD/Hud**
 
