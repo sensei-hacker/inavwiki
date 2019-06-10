@@ -84,13 +84,15 @@ Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthr
 
 ##  Troubleshooting and details
 
-* The ESP32 says "NoFC", it does not see the iNav flight controller
+*The ESP32 says "NoFC", it does not see the iNav flight controller*
 
 Check that all 4 wires 5V GND TX RX are connected
 Check that the port/UART the ESP32 is connected to is set with MSP enabled and speed is 115200 baud
 
-* Does it work with Betaflight ?
+*Does it work with Betaflight ?*
 
 Since position sharing is based on the MSP protocol, Betaflight should work (not heavily tested) as a GPS source, but it won't be able to display on his OSD the position of the other aircrafts since it does not have the Hud obviously. Said another way, an iNav aircraft can track a Betaflight aircraft, but the Betaflight cannot see the iNAv aircraft.
 
-* The H marker and/or the A, B, C ... markers will appear on the OSD view only if the position of your aircraft is known. So it needs a valid GPS lock. So obvious it requrie a GPS unit. The H-for-home marker will show only when the home point is recorded, so after the flight controller is armed. The home lock is not required to display nearby radar POIs.
+*Conditions before display*
+
+The H marker and/or the A, B, C ... markers will appear on the OSD view only if the position of your aircraft is known. So it needs a valid GPS lock. So obvious it requrie a GPS unit. The H-for-home marker will show only when the home point is recorded, so after the flight controller is armed. The home lock is not required to display nearby radar POIs.
