@@ -72,7 +72,7 @@ There's a long chain of inacuraccies conspiring to make the tracking not perfect
 
 ## ESP32 LoRa modem ("iNav Radar" project)
 
-If you have such a module fitted on your aicraft, few extra steps are required in order to display the remote aicrafts live on the Hud :
+If you have such a module fitted on your aicraft, few extra steps are required in order to display the remote aircrafts live on the Hud :
 
 * Wire the ESP32 module to a free UART on your flight controller, same as you would connect a GPS (+5V, GND, TX, RX). Using a Softserial port is not stable at the time of writing, and not recommended.
 
@@ -81,3 +81,16 @@ If you have such a module fitted on your aicraft, few extra steps are required i
 * In the CMS, OSD > Hud > Displayed items, set **Radar max aircraft to 4**
 
 Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthread.php?3304673-iNav-Radar-ESP32-LoRa-modems) for mode details about the ESP32 modules and the radar project.
+
+##  Troubleshooting and details
+
+* The ESP32 says "NoFC", it does not see the iNav flight controller
+
+> Check that all 4 wires 5V GND TX RX are connected
+> Check that the port/UART the ESP32 is connected to is set with MSP enabled and speed is 115200 baud
+
+* Does it work with Betaflight ?
+
+> Since position sharing is based on the MSP protocol, Betaflight should work (not heavily tested) as a GPS source, but it won't be able to display on his OSD the position of the other aircrafts since it does not have the Hud obviously. Said another way, an iNav aircraft can track a Betaflight aircraft, but the Betaflight cannot see the iNAv aircraft.
+
+* The H marker and/or the A, B, C ... markers will appear on the OSD view only if the position of your aircraft is known. So it needs a valid GPS lock. The H-for-home marker will show only when the home point is recorded, so after the flight controller is armed. Displayed nearby radar POIs does not require a home lock.
