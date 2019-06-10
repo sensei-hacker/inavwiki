@@ -41,9 +41,9 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 All the settings are available from the CLI, defaults are :
 
-set osd_crosshairs_style = DEFAULT
-set osd_horizon_offset = 0
-set osd_camera_uptilt = 0
+> set osd_crosshairs_style = DEFAULT
+> set osd_horizon_offset = 0
+> set osd_camera_uptilt = 0
 set osd_camera_fov_h = 135
 set osd_camera_fov_v = 85
 set osd_hud_margin_h = 3
