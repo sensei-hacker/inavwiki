@@ -101,8 +101,7 @@ Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthr
 
 **The ESP32 says "NoFC", it does not see the iNav flight controller**
 
-Check that all 4 wires 5V GND TX RX are connected
-Check that the port/UART the ESP32 is connected to is set with MSP enabled and speed is 115200 baud
+Check that all 4 wires 5V GND TX RX are connected, and check that the port/UART the ESP32 is connected to is set with MSP enabled and speed is 115200 baud.
 
 **Does it work with Betaflight ?**
 
