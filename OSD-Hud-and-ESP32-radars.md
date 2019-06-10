@@ -25,17 +25,17 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 **Displayed items >** : This sub menu will let you choose exactly what is displayed on the Hud :
 
-**Homing arrows** :To display little arrows around the crossair showing where the home point is.
+**Homing arrows** : To display little arrows around the crossair showing where the home point is.
 
 **Home point** : To display the home point as a "H" marker.
 
-**Radar max aircraft** To display up to 4 nearby aircrafts or POIs sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing).
+**Radar max aircraft** : Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing).
 
 **Radar min range** : In meters, by default 1, radar aicrafts closer than this will not be displayed. This setting exists mostly to unclutter the OSD view during close range pursuits.
 
 **Radar max range** : In meters, by default 4000, radar aicrafts further away than this will not be displayed. 
 
-**Radar detail nearest** Set to ON to display an extra bar of informations at the bottom of the hud area (Relative altitude in meters of feet, speed in m/s or f/s, and absolute heading in °), for the closest radar aicrafts.
+**Radar detail nearest** : To display an extra bar of informations at the bottom of the hud area (Relative altitude in meters of feet, speed in m/s or f/s, and absolute heading in °), for the closest radar aicrafts.
 
 ## CLI commands
 
