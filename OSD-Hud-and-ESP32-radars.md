@@ -15,16 +15,16 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 **Crosshair style** : Choose between 7 different types of crosshairs.
 
-**Horizon offset** : Can be adjusted between -2 and +2, this setting moves the whole OSD and AHI and side scrolls block vertically, it's highly recommended to leave it at 0.
-
 **Camera Uptilt** : Set the camera uptilt for the FPV camera. That's the angle in degres between the horizontal of the aircraft and the line of sight of the camera. For a multirotor it's often a positive value, usually between 5 and 30°. For a plane with the camera pointing down it should be a negative value, often between -5 and -10°.
 
 **Camera FOV horizontal + vertical** : The FOV for the FPV camera, the default values are ok for a 2.8mm lens. If your camera is a 2.5mm or 2.1mm, try to raise both the horizontal and vertical FOVs by 5 or 10° by steps. If the FOV is too far off, the tracking won't work well near the borders of the screen.
 
 **Hud Margin horizontal + vertical** : How far from the border of the screen the hud ends, so it does not overwrite the rest of your OSD datas.
 
+**Horizon offset** : Can be adjusted between -2 and +2, this setting moves the whole OSD and AHI and side scrolls block vertically, it's highly recommended to leave it at 0.
 
-**Displayed items >** : This sub menu will let you choose exactly what is displayed on the Hud :
+
+**Displayed items >** : This sub menu will let you select exactly what is displayed on the Hud :
 
 **Homing arrows** : To display little arrows around the crossair showing where the home point is.
 
