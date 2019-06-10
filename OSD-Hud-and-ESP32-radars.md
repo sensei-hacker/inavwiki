@@ -13,9 +13,9 @@ In order for the hud to display in "3D" where the POI is, it needs to know the a
 
 In the CMS/OSD menu, go to OSD > Hud >... 
 
-**Crosshair style** : ...
+**Crosshair style** : Choose between 7 different types of crosshairs.
 
-**Horizon offset** : Can be adjusted between -2 and +2, this setting moves the whole OSD and AHI and side scrolls block vertically, it's recommended to leave it at 0.
+**Horizon offset** : Can be adjusted between -2 and +2, this setting moves the whole OSD and AHI and side scrolls block vertically, it's highly recommended to leave it at 0.
 
 **Camera Uptilt** : Set the camera uptilt for the FPV camera. That's the angle in degres between the horizontal of the aircraft and the line of sight of the camera. For a multirotor it's often a positive value, usually between 5 and 30°. For a plane with the camera pointing down it should be a negative value, often between -5 and -10°.
 
@@ -35,7 +35,7 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 **Radar max range** : In meters, by default 4000, radar aicrafts further away than this will not be displayed. 
 
-**Radar detail nearest** : To display an extra bar of informations at the bottom of the hud area (Relative altitude in meters of feet, speed in m/s or f/s, and absolute heading in °), for the closest radar aicrafts.
+**Radar detail nearest** : To display an extra bar of informations at the bottom of the hud area (Relative altitude in meters of feet, speed in m/s or f/s, and absolute heading in °), for the closest radar aircraft found.
 
 ## CLI commands
 
@@ -61,9 +61,9 @@ There's a long chain of inacuraccies conspiring to make the tracking not perfect
 
 * The heading of your aircraft can be wrong by a significant margin during or right after a hard turn. The steadier the flight, the more accurate it is.
 
-* The artificial horizon drift issue does not help. Accurate positioning for the POI markers depends on the actual attitude and heading of the aircraft, any slight difference of few degres will mess up the accuracy.
+* The artificial horizon drift issue does not help. Accurate positioning for the POI markers depends on the actual attitude and heading of the aircraft, any slight difference of few degres will mess up the tracking.
 
-* OSD is character based, it's a 30x16 grid for PAL, and 30x13 for NTSC, it's not super accurate.
+* OSD is character based, it's a 30x16 grid for PAL, and 30x13 for NTSC, it's not super high-definition.
 
 * The crosshair is not perfectly centered in both horizontal and vertical dimensions because of an even numbers of columns and rows
 
