@@ -2,6 +2,7 @@
 
 The Hud is a feature that displays various points of interest (POI) on the OSD, live, by showing a marker where the location is on the screen. For now it's capable to display the home point, and nearby aicrafts as sent by an ESP32 LoRa modem. In the future it's planned to have it also display the next waypoints during a mission.
 
+
 ## Configuration
 
 The hud must be set from the CMS menu of the OSD or from the CLI in the Configurator.
@@ -23,6 +24,7 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 **Hud Margin horizontal + vertical** : How far from the border of the screen the hud ends, so it does not overwrite the rest of your OSD datas.
 
+
 **Displayed items >** : This sub menu will let you choose exactly what is displayed on the Hud :
 
 **Homing arrows** : To display little arrows around the crossair showing where the home point is.
@@ -37,13 +39,12 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 **Radar detail nearest** : To display an extra bar of informations at the bottom of the hud area (Relative altitude in meters of feet, speed in m/s or f/s, and absolute heading in °), for the closest radar aircraft found.
 
+
 ## CLI commands
 
 All the settings are available from the CLI, defaults are :
 
-set osd_crosshairs_style = DEFAULT
-
-set osd_horizon_offset = 0
+set osd_crosshairs_style = DEFAULTset osd_horizon_offset = 0
 
 set osd_camera_uptilt = 0
 
