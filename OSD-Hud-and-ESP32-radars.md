@@ -24,13 +24,13 @@ In the CMS/OSD menu, go to OSD > Hud >...
 **Horizon offset** : Can be adjusted between -2 and +2, this setting moves the whole OSD and AHI and side scrolls block vertically, it's highly recommended to leave it at 0.
 
 
-**Displayed items >** : This sub menu will let you select exactly what is displayed on the Hud :
+**Displayed items >** This sub menu will let you select exactly what is displayed on the Hud :
 
 **Homing arrows** : To display little arrows around the crossair showing where the home point is.
 
-**Home point** : To display the home point as a "H" marker.
+**Home point** : To display the home point as a "H" marker, or home icon, depends of the uploaded OSD Font.
 
-**Radar max aircraft** : Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing).
+**Radar max aircraft** : Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing). The nearby aircrafts will appear as markers A, B, C, etc
 
 **Radar min range** : In meters, by default 1, radar aicrafts closer than this will not be displayed. This setting exists mostly to unclutter the OSD view during close range pursuits.
 
