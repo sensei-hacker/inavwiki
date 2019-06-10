@@ -6,6 +6,7 @@ The Hud is a feature that displays various points of interest (POI) on the OSD, 
 ## Configuration
 
 The hud must be set from the CMS menu of the OSD or from the CLI in the Configurator.
+
 Right now the Configurator does not show the hud in the OSD panel.
 
 **Important! The Hud is a sub-set of the crosshair, it's designed this way since the crosshair is the origin/reference for anything hud-related. So make sure you have the crosshair enabled and display in the OSD tab of the Configurator. It is not recommended to have any of the map items displayed in your OSD, as this could cause massive overlaps on the screen**
