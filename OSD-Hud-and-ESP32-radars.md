@@ -34,7 +34,7 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 **Radar min range** : In meters, by default 1, radar aicrafts closer than this will not be displayed. This setting exists mostly to unclutter the OSD view during close range pursuits.
 
-**Radar max range** : In meters, by default 4000, radar aicrafts further away than this will not be displayed. 
+**Radar max range** : In meters, by default 4000, radar aircrafts further away than this will not be displayed. 
 
 **Radar detail nearest** : To display an extra bar of informations at the bottom of the hud area (Relative altitude in meters of feet, speed in m/s or f/s, and absolute heading in °), for the closest radar aircraft found.
 
