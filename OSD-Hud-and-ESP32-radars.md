@@ -87,7 +87,7 @@ If you have such a module fitted on your aicraft, extra steps are required in or
 
 Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthread.php?3304673-iNav-Radar-ESP32-LoRa-modems) for mode details about the ESP32 modules and the radar project.
 
-[This is a video demonstrating the hud for both home point and ESP32 radar tracking](https://www.youtube.com/watch?v=zzKkcd5_cY4).
+[This is a video demonstrating the hud for both home point and ESP32 radar tracking](https://youtu.be/zzKkcd5_cY4?t=27).
 
 
 ##  Troubleshooting
