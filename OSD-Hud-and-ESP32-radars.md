@@ -60,7 +60,7 @@ set osd_hud_radar_nearest = OFF
 
 ##  Accuracy and limitations
 
-There's a long chain of inacuraccies conspiring to make the tracking not perfectly aiming at the other aircrafts :
+There's a long chain of inacuraccies conspiring to make the tracking not perfectly accurate :
 
 * The heading of your aircraft can be wrong by a significant margin during or right after a hard turn. The steadier the flight, the more accurate it is.
 
