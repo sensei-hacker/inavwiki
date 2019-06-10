@@ -28,7 +28,7 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 **Homing arrows** : To display little arrows around the crossair showing where the home point is.
 
-**Home point** : To display the home point as a "H" marker, or home icon, depends of the uploaded OSD Font.
+**Home point** : To display the home point location.
 
 **Radar max aircraft** : Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing). The nearby aircrafts will appear as markers A, B, C, etc
 
@@ -88,6 +88,13 @@ If you have such a module fitted on your aicraft, extra steps are required in or
 Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthread.php?3304673-iNav-Radar-ESP32-LoRa-modems) for mode details about the ESP32 modules and the radar project.
 
 [This is a video demonstrating the hud for both home point and ESP32 radar tracking](https://youtu.be/zzKkcd5_cY4?t=27).
+
+
+## What's displayed exactly ?
+
+* If the marker is the home location, then the home icon is shown, it depends of the uploaded OSD font, it's usually a little house or the H letter. Below the marker is the distance, in meters/kilometers if the OSD is set to metric or UK, and in feet/miles if imperial
+
+* If the marker is a POI sent by the optional ESP32 LoRa Module, the markers are letters A, B, C etc, and below is also the distance, same as above. Additionally left and right of the marker will be display the link quality (4 bars  = 100% of packets received, 3 bars = 75%, 2 bars = 50%, 1 bar = 25%, X = link lost), and the relative heading of the other aicrafts : If you and the other aircraft are going in the exact same direction the relative heading arrow will point up. If your two aicrafts are going opposite directions then the arrow will point down.
 
 
 ##  Troubleshooting
