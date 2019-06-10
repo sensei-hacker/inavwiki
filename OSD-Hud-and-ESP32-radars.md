@@ -21,7 +21,7 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 **Hud Margin horizontal + vertical** : How far from the border of the screen the hud ends, so it does not overwrite the rest of your OSD datas.
 
-**Horizon offset** : Can be adjusted between -2 and +2, this setting moves the whole OSD and AHI and side scrolls block vertically, it's highly recommended to leave it at 0.
+**Horizon offset** : To vertically adjust, between -2 and +2, the whole OSD and AHI and scrolling bars, it's highly recommended to leave it at 0.
 
 
 **Displayed items >** This sub menu will let you select exactly what is displayed on the Hud :
