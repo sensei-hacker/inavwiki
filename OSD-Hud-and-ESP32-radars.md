@@ -105,4 +105,4 @@ The H marker and/or the A, B, C ... markers will appear on the OSD view only if 
 
 **Some characters are missing in the OSD/Hud**
 
-Upload a compatible OSD font with the Configurator
+Upload a compatible OSD font with the Configurator, OSD tab.
