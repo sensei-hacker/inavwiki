@@ -11,7 +11,7 @@ This page will list and explain all the different navigational flight modes of i
 
 
 For safety reasons, iNAV’s navigation modes can be activated only if  
-- ACC and MAG are [calibrated](https://github.com/iNavFlight/inav/wiki/4.-Sensor-calibration) properly,  
+- ACC and MAG are [calibrated](https://github.com/iNavFlight/inav/wiki/Sensor-calibration) properly,  
 - you have a valid 3D GPS fix,   
 - the FC is armed.  
 
