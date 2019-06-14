@@ -126,10 +126,11 @@ You can use your roll and pitch stick to move around. The position hold will be 
 
 For fixed wing it will loiter in circles which radius is defined by the `nav_fw_loiter_radius` variable. The throttle is automatic. The altitude is controlled with the pitch stick (AH).
 
-Hints for safe operation:    
-- Try yawing 180 deg in PH - will instantly reveal incorrect mag operation (e.g. wrong align_mag, interference, loose cables, ...)
-- Always check POSHOLD working correctly, before you use RTH or start a WP mission.
+Always check POSHOLD working correctly, before you use RTH or start a WP mission.
 
+Hints for safe operation:
+- Activate without props installed to check for reasonable operation.
+- When misconfigured, this mode can result in dramatic failure to hold position. Attitude (yaw & motion) inputs can/will result in rapid and unexpected motion.
 
 ## NAV CRUISE - Fixed Wing Heading Hold
 
