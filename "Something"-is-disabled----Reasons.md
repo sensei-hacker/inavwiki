@@ -28,8 +28,9 @@ iNav will refuse to arm for the following reasons:
 | `AUTOTRIM` | `01000000` | Servo autotrim is engaged |
 | `OOM ` | `02000000` | The FC is out of memory |
 | `SETTINGFAIL` | `04000000` | A CLI setting is out of range. The erroneous setting should be indicated in a CLI `dump`. If you can't then reset the offending setting, reflash with full chip erase and reapplying settings from scratch may help.|
+| `PWMOUT` | `08000000` | PWM output error | 
 
-Note: On older processors, just the bitmask is shown, which can be decoded by the numeric values in the table. The values are correct for iNav 2.1 as of 2019-01-22.
+Note: On older processors, just the bitmask is shown, which can be decoded by the numeric values in the table. The values are correct for iNav 2.2 as of 2019-06-16.
 
 ### Navigation Unsafe reasons
 
