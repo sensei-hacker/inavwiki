@@ -30,7 +30,12 @@ iNav will refuse to arm for the following reasons:
 | `SETTINGFAIL` | `04000000` | A CLI setting is out of range. The erroneous setting should be indicated in a CLI `dump`. If you can't then reset the offending setting, reflash with full chip erase and reapplying settings from scratch may help.|
 | `PWMOUT` | `08000000` | PWM output error. Motor or servo output initialisation failed. | 
 
-Note: On older processors, just the bitmask is shown, which can be decoded by the numeric values in the table. The values are correct for iNav 2.2 as of 2019-06-16.
+Note: On older processors, just the bitmask is shown, which can be decoded by the numeric values in the table. A numeric value may be a combination of conditions, for example:
+
+```
+0x184000 = 00100000 + 00080000 + 00004000 (CLI active, throttle not at minimum, arm engaged)
+```
+The values are correct for iNav 2.2 as of 2019-06-16.
 
 ### Navigation Unsafe reasons
 
