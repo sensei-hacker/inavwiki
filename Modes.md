@@ -78,8 +78,6 @@ AUTOTUNE will adjust gains constantly but it will take a snapshot of current gai
 
 Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
 
-[How to use Autotune video](https://youtu.be/UOGfC3pvbWM)
-
 ### BEEPER
 
 Make the beeper connected to the FC beep (lost model finder).
