@@ -65,6 +65,8 @@ There's a long chain of inacuraccies conspiring to make the tracking not perfect
 
 * The artificial horizon drift issue does not help. Accurate positioning for the POI markers depends on the actual attitude and heading of the aircraft, any slight difference of few degres will mess up the tracking.
 
+* The tracking is not taking into account the roll angle of the plane so it remains simple and fast, so it won't be accurate when the banking angle is too high.
+
 * OSD is character based, it's a 30x16 grid for PAL, and 30x13 for NTSC, it's not super high-definition.
 
 * The crosshair is not perfectly centered in both horizontal and vertical dimensions because of an even numbers of columns and rows
