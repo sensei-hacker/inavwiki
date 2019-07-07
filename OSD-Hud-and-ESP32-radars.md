@@ -7,32 +7,31 @@ The Hud is a feature that displays various points of interest (POI) on the OSD, 
 
 The hud must be set from the CMS menu of the OSD or from the CLI in the Configurator.
 
-**Important! The Hud is a sub-set of the crosshair, it's designed this way because the crosshair is the origin/reference for anything hud-related. So make sure you have the crosshair enabled and displayed in the OSD tab of the Configurator. It is not recommended to have any of the map or 2D-view items displayed in your OSD, as this could cause overlaps on the screen.**
+**Important! The Hud is a sub-set of the crosshair, it's designed this way because the crosshair is the origin/reference for anything hud-related. So make sure you have the crosshair enabled and displayed in the OSD tab of the Configurator. It is not recommended to have any of the legacy map or 2D-view items displayed in your OSD, as this could cause overlaps on the screen.**
 
 In order for the hud to display in "3D" where the POI is, it needs to know few things about your FPV camera :
 
 In the CMS/OSD menu, go to OSD > Hud >... 
 
-**Crosshair style** : Choose between 7 different types of crosshairs.
+**Crosshair style** : To choose between 7 different types of crosshairs.
 
 **Camera Uptilt** : Set the camera uptilt for the FPV camera. That's the angle in degres between the horizontal of the aircraft and the line of sight of the camera. For a multirotor with a camera usually pointing up it's a positive value, most often between 5 and 30°. For a plane with the camera pointing down it should be a negative value, often between -5 and -10°.
 
-**Camera FOV horizontal + vertical** : The FOV for the FPV camera, the default values are ok for a 2.8mm lens. If your camera is a 2.5mm or 2.1mm or lower focal, try to raise both the horizontal and vertical FOVs by 5 or 10° by steps (the lower the focal length, the higher the field of view). If the FOV is too far off, the tracking won't work well near the borders of the screen.
+**Camera FOV horizontal + vertical** : The FOV for the FPV camera, the default values are ok for a 2.8mm lens. If your camera is a 2.5mm or 2.1mm or lower focal, try to raise both the horizontal and vertical FOVs by 5 or 10° by steps (the smaller the focal length, the larger the field of view). If the FOV is too far off, the tracking won't work well near the borders of the screen.
 
 **Hud Margin horizontal + vertical** : How far from the border of the screen the hud ends, so it does not overwrite the rest of your OSD datas.
 
-**Horizon offset** : To vertically adjust, between -2 and +2, the whole OSD and AHI and scrolling bars, it's highly recommended to leave it at 0.
+**Horizon offset** : To vertically adjust, between -2 and +2, the whole OSD and AHI and scrolling bars, it's recommended to leave it at 0.
 
-
-**Displayed items >** This sub menu will let you select exactly what is displayed on the Hud :
+**Displayed items >** This sub menu will let you select what is displayed on the Hud :
 
 **Homing arrows** : To display little arrows around the crossair showing where the home point is.
 
-**Home point** : To display the home point location.
+**Home point** : To 3D-display the home point location.
 
 **Radar max aircraft** : Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing). The nearby aircrafts will appear as markers A, B, C, etc
 
-**Radar min range** : In meters, by default 1, radar aircrafts closer than this will not be displayed. This setting exists mostly to unclutter the OSD view during close range pursuits.
+**Radar min range** : In meters, by default 10 meters, radar aircrafts closer than this will not be displayed. This setting exists mostly to unclutter the OSD view during close range pursuits.
 
 **Radar max range** : In meters, by default 4000, radar aircrafts further away than this will not be displayed. 
 
@@ -53,7 +52,7 @@ set osd_hud_margin_v = 3
 set osd_hud_homing = OFF
 set osd_hud_homepoint = OFF
 set osd_hud_radar_disp = 0
-set osd_hud_radar_range_min = 1
+set osd_hud_radar_range_min = 10
 set osd_hud_radar_range_max = 4000
 set osd_hud_radar_nearest = 0
 ```
@@ -105,8 +104,10 @@ Check that all 4 wires 5V GND TX RX are connected, and check that the port/UART 
 
 * **Conditions before display**
 
-The H marker and/or the A, B, C ... markers will appear on the OSD view only if the position of your aircraft is known. So it needs a valid GPS lock. The home marker will show only when the home point is recorded, so once the flight controller is armed. The home lock is not required to display nearby radar POIs.
+The H marker and/or the A, B, C ... markers will appear on the OSD view only if the position and heading of your aircraft are known. So it needs a valid GPS lock. The home marker will show only when the home point is recorded, so once the flight controller is armed. The home lock is not required to display nearby radar POIs.
+
+Since the 3D markers will only show when the heading of the plane is known, on a flying wing with no compass (no magnetometer) the 3D markers will only appear when the plane is flying, so the GPS can compute the direction.
 
 * **Some characters are missing in the OSD/Hud**
 
-Upload a compatible OSD font with the Configurator, OSD tab.
+Upload a compatible OSD font with the latest version of the Configurator, from the OSD tab.
