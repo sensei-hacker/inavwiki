@@ -147,7 +147,7 @@ You can find documentation / specification for the LTM implementation in Inav in
 
 LTM will operate effectively over low data rate links. Currently the iNav implementation pushes c. 300 bytes /sec in its fastest rate, so 4800 baud over the air rate would suffice. iNav provides configuration options for 'medium' and 'slow' LTM rates, further reducing the required baud rate, which may in turn increase range for some radio solutions.
 
-LTM is supported by ezgui, [mwp](https://github.com/stronnag/mwptools) and ([for OSD, ltm-osd-simple](https://github.com/digitalentity/ltm-osd-simple))
+LTM is supported by ezgui, [mwp](https://github.com/stronnag/mwptools) and ([for OSD, ltm-osd-simple](https://github.com/digitalentity/ltm-osd-simple)). Also [LTM Oled](https://github.com/sppnk/LTM-Telemetry-OLED).
 
 ## MAVLink 
 
