@@ -66,6 +66,9 @@ Press "Calibrate Magnetometer" button.
 
 You have 30 seconds to hold the copter in the air and rotate it so that each side (front, back, left, right, top and bottom) points down towards the earth. However the algorithm is smart enough to calculate the proper calibration values even if you simply wave the copter in the air for 30 seconds after pressing "Calibrate Magnetometer" button.
 
+### Compass calibration using stick functions
+Calibrating Mag/Compass without the need to be connected to a computer can extremely convenient while out in the field. The [Controls.md](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md) wiki describes the various capabilities of adjusting the craft's controls using the TX sticks. As described in this document, calibrate the compass by moving the left stick up and to the right while at the same time, move the right stick down and to the center. The flight controller will sound two quick beeps indicating the start of the calibration. Move the craft as indicated in the paragraph above. After 30 seconds, the flight controller will sound a single beep indicating the completion of the process.
+
 ### Verifying that compass is calibrated properly
 
 0. Use the CLI to verify that **magzero_x**, **magzero_y** and **magzero_z** parameters are **NOT 0** any more. If they are, algorithm failed to converge, calibration failed and needs to be repeated.
@@ -79,6 +82,7 @@ The magnetic declination of your specific location can be found here: (magnetic-
 If your magnetic declination readings are e.g. +3° 34' , the value entered in the iNav configurator is 3.34 (_3,34 in some locales_). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
 
 Since iNav 1.2, on non-F1 targets, one can use an automatic declination setting, which is more than accurate enough for iNav. `set inav_auto_mag_decl = ON`.
+
 
 ## Gyroscope Calibration
 
