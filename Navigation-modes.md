@@ -1,5 +1,7 @@
 **This Wiki page needs updating in regards to renamed CLI variables.**
 
+_8/3/2019 updated ALTHOLD flight mode variables for MC (Multicopter)_
+
 This page will list and explain all the different navigational flight modes of iNav:
 
 - [NAV ALTHOLD - Altitude hold](#althold---altitude-hold)
@@ -52,7 +54,7 @@ Activate AIRMODE to keep the copter stable in fast descent - now you can do the 
 Climb rate in ALTHOLD mode:  
 "set nav_max_climb_rate = 500" and "set nav_manual_climb_rate = 200" define the maximum climb and decent rate in autonomous/manual flight modes.   
 The neutral position of the throttle stick to hold current altitude is defined by   
-- “set nav_use_midthr_for_althold=ON”: use mid position of throttle stick as neutral. 
+- “set nav_use_midthr_for_althold=ON”: use mid position of throttle stick as neutral. By default the mid position value is typically 1500us as set in the "Receiver" tab.
 - “set nav_use_midthr_for_althold =OFF”: use current stick position (i.e. when activating ALTHOLD) as neutral. [Yet, if "nav_use_midthr_for_althold=OFF”, and you enable ALTHOLD with throttle stick too low (like on the ground) iNAV will take “thr_mid” as a safe default for neutral. “thr_mid” is defined in the “Receiver” tab and should be set to hover throttle.]   
   
 In the moment you engage ALTHOLD, iNAV always sends “nav_mc_hover_thr” to the motors as the starting value of the altitude control loop. You should configure this to your copter's hover setting, if your copter doesn't hover close to the default value of 1500us. Otherwise your copter will begin ALTHOLD with a jump or drop.  
@@ -65,11 +67,12 @@ If ALTHOLD is activated at zero throttle iNAV will account for deadband and move
   
   
 PIDs for altitude hold:  
-- ALT P - defines how fast copter will attempt to compensate for altitude error (converts alt error to desired climb rate)  
-- ALT I - defines how fast copter will accelerate to reach desired climb rate  
-- VEL P - defines how much throttle copter will add to achieve desired acceleration  
-- VEL I - controls compensation for hover throttle (and vertical air movement, thermals). This can essentially be zero if hover throttle is precisely 1500us. Too much "VEL I" will lead to vertical oscillations, too low "VEL I" will cause drops or jumps when ALTHOLD is switched on.  
-- VEL D - acts as a dampener for VEL P and VEL I, will slower the response and reduce oscillations from too high VEL P and VEL I  
+The following values can be accessed using iNav OSD when configured for FPV from the "ALT MAG" screen within the "PIDS" section. Alternatively, the comparable variable, in parenthesis (), can be entered in the CLI of iNav Configurator.  
+- ALT P (nav_mc_pos_z_p) - defines how fast copter will attempt to compensate for altitude error (converts alt error to desired climb rate)  
+- ALT I (nav_auto_climb_rate) - defines how fast copter will accelerate to reach desired climb rate  
+- VEL P (nav_mc_vel_z_p) - defines how much throttle copter will add to achieve desired acceleration  
+- VEL I  (nav_mc_vel_z_i)- controls compensation for hover throttle (and vertical air movement, thermals). This can essentially be zero if hover throttle is precisely 1500us. Too much "VEL I" will lead to vertical oscillations, too low "VEL I" will cause drops or jumps when ALTHOLD is switched on.  
+- VEL D (nav_mc_vel_z_d)- acts as a dampener for VEL P and VEL I, will slower the response and reduce oscillations from too high VEL P and VEL I  
 
 Inability to maintain altitude can be caused by a number of reasons:  
 1. insufficient ALT_P and/or ALT_I  
@@ -78,25 +81,25 @@ Inability to maintain altitude can be caused by a number of reasons:
 4. Gaining altitude during fast flight is likely due to increased air pressure and that is treated as going down in altitude - try covering your baro with (more) foam.
 
 ALT+VEL PID Tuning  
-Let's make a small experiment: Make sure baro is well isolated. You may also want to reduce baro weight: "set iNAV_w_z_baro_p = 0.5" and "set nav_alt_p = 0" and try flying. This way the controller will attempt to keep zero climb rate without any reference to altitude. The quad should slowly drift either up or down. If it would be jumping up and down, your "nav_vel_*" gains are too high.  
-As a second step you can try zeroing out "nav_vel_p" and "nav_vel_i" and "set nav_vel_d = 100". Now the quad should be drifting up/down even slower. Raise "nav_vel_d" to the edge of oscillations.  
-Now raise "nav_vel_p" to the edge of oscillations. Now ALTHOLD should be almost perfect.  
-And finally "set nav_mc_hover_thr" slightly (50-100) higher/lower than your actual hover throttle and tune "nav_vel_i" until the quad is able to compensate.  
+Let's make a small experiment: Make sure baro is well isolated. You may also want to reduce baro weight: "set  inav_w_z_baro_p = 0.5" and "set nav_mc_pos_z_p = 0" and try flying. This way the controller will attempt to keep zero climb rate without any reference to altitude. The quad should slowly drift either up or down. If it would be jumping up and down, your "nav_mc_vel_z_*" gains are too high.  
+As a second step you can try zeroing out "nav_mc_vel_z_p" and "nav_mc_vel_z_i" and "set nav_mc_vel_z_d = 100". Now the quad should be drifting up/down even slower. Raise "nav_mc_vel_z_d" to the edge of oscillations.  
+Now raise "nav_mc_vel_z_p" to the edge of oscillations. Now ALTHOLD should be almost perfect.  
+And finally "set nav_mc_hover_thr" slightly (50-100) higher/lower than your actual hover throttle and tune "nav_mc_vel_z_i" until the quad is able to compensate.  
 Keep in mind that no tuning can fix bad baro isolation issue.    
   
-If quad is buzzing while ALTHOLD is activated try lowering "nav_vel_p" a bit.  
+If quad is buzzing while ALTHOLD is activated try lowering "nav_mc_vel_z_p" a bit.  
 
-What is the trick with "nav_vel_i"?   
-"nav_vel_i" is used to compensate for "nav_mc_hover_thr" (hover throttle) being set to a slightly incorrect value. You can't set hover throttle to an exact value, there is always influence from thermals, battery charge level etc. Too much "nav_vel_i" will lead to vertical oscillations, too low "nav_vel_i" will cause drops or jumps when ALTHOLD is enabled, very low "nav_vel_i" can result in total inability to maintain altitude.
+What is the trick with "nav_mc_vel_z_i"?   
+"nav_mc_vel_z_i" is used to compensate for "nav_mc_hover_thr" (hover throttle) being set to a slightly incorrect value. You can't set hover throttle to an exact value, there is always influence from thermals, battery charge level etc. Too much "nav_mc_vel_z_i" will lead to vertical oscillations, too low "nav_mc_vel_z_i" will cause drops or jumps when ALTHOLD is enabled, very low "nav_mc_vel_z_i" can result in total inability to maintain altitude.
   
-To deal with oscillations you can try lowering your "nav_alt_p", "nav_vel_p", "nav_max_climb_rate", and "nav_manual_climb_rate".    
+To deal with oscillations you can try lowering your "nav_mc_alt_p", "nav_mc_vel_p", "nav_auto_climb_rate", and "nav_manual_climb_rate".    
   
-Climb rate is calculated form the readings of the accelerometer, barometer and – if available – from GPS (“set inav_use_gps_velned = ON”). How strongly the averages of these noisy signals are taken into account in the estimation of altitude change by iNAV is controlled by  
+Climb rate is calculated from the readings of the accelerometer, barometer and – if available – from GPS (“set inav_use_gps_velned = ON”). How strongly the averages of these noisy signals are taken into account in the estimation of altitude change by iNAV is controlled by  
 - set inav_w_z_baro_p = 0.350  
 - set inav_w_z_gps_p = 0.200    
 for vertical position (z) and     
 - set inav_w_z_gps_v = 0.500    
-for vertical velocity. Too high “iNAV_w_z_baro_p” will make ALTHOLD nervous, and too low will make it drift so you risk running into the ground when cruising around. Using GPS readings for vertical velocity allows for a lower weight for baro to make ALTHOLD smoother without making it less accurate. 
+for vertical velocity. Too high “inav_w_z_baro_p” will make ALTHOLD nervous, and too low will make it drift so you risk running into the ground when cruising around. Using GPS readings for vertical velocity allows for a lower weight for baro to make ALTHOLD smoother without making it less accurate. 
   
 
 // TODO: explain remaining relevant settings
