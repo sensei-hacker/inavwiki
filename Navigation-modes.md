@@ -67,7 +67,7 @@ If ALTHOLD is activated at zero throttle iNAV will account for deadband and move
   
   
 PIDs for altitude hold:  
-The following values can be accessed using iNav OSD when configured for FPV from the "ALT MAG" screen within the "PIDS" section. Alternatively, the comparable variable, in parenthesis (), can be entered in the CLI of iNav Configurator.  
+_**The following values can be accessed using iNav OSD when configured for FPV from the "ALT MAG" screen within the "PIDS" section. Alternatively, the comparable variable, in parenthesis (), can be entered in the CLI of iNav Configurator.**_  
 - ALT P (nav_mc_pos_z_p) - defines how fast copter will attempt to compensate for altitude error (converts alt error to desired climb rate)  
 - ALT I (nav_auto_climb_rate) - defines how fast copter will accelerate to reach desired climb rate  
 - VEL P (nav_mc_vel_z_p) - defines how much throttle copter will add to achieve desired acceleration  
@@ -81,18 +81,18 @@ Inability to maintain altitude can be caused by a number of reasons:
 4. Gaining altitude during fast flight is likely due to increased air pressure and that is treated as going down in altitude - try covering your baro with (more) foam.
 
 ALT+VEL PID Tuning  
-Let's make a small experiment: Make sure baro is well isolated. You may also want to reduce baro weight: "set  inav_w_z_baro_p = 0.5" and "set ALT P(nav_mc_pos_z_p) = 0" and try flying. This way the controller will attempt to keep zero climb rate without any reference to altitude. The quad should slowly drift either up or down. If it would be jumping up and down, your "nav_mc_vel_z_*" gains are too high.  
+Let's make a small experiment: Make sure baro is well isolated. You may also want to reduce baro weight: "set  inav_w_z_baro_p = 0.5" and "set ALT P(nav_mc_pos_z_p) = 0" and try flying. This way the controller will attempt to keep zero climb rate without any reference to altitude. The quad should slowly drift either up or down. If it would be jumping up and down, your "VEL * (nav_mc_vel_z_*)" gains are too high.  
 As a second step you can try zeroing out "VEL P (nav_mc_vel_z_p)" and "VEL I (nav_mc_vel_z_i)" and "set VEL D (nav_mc_vel_z_d) = 100". Now the quad should be drifting up/down even slower. Raise "VEL D (nav_mc_vel_z_d)" to the edge of oscillations.  
 Now raise "VEL P (nav_mc_vel_z_p)" to the edge of oscillations. Now ALTHOLD should be almost perfect.  
 And finally "set nav_mc_hover_thr" slightly (50-100) higher/lower than your actual hover throttle and tune "VEL I (nav_mc_vel_z_i)" until the quad is able to compensate.  
 Keep in mind that no tuning can fix bad baro isolation issue.    
   
-If quad is buzzing while ALTHOLD is activated try lowering "nav_mc_vel_z_p" a bit.  
+If quad is buzzing while ALTHOLD is activated try lowering "VEL P (nav_mc_vel_z_p)" a bit.  
 
-What is the trick with "nav_mc_vel_z_i"?   
-"nav_mc_vel_z_i" is used to compensate for "nav_mc_hover_thr" (hover throttle) being set to a slightly incorrect value. You can't set hover throttle to an exact value, there is always influence from thermals, battery charge level etc. Too much "nav_mc_vel_z_i" will lead to vertical oscillations, too low "nav_mc_vel_z_i" will cause drops or jumps when ALTHOLD is enabled, very low "nav_mc_vel_z_i" can result in total inability to maintain altitude.
+What is the trick with "VEL I (nav_mc_vel_z_i)"?   
+"VEL I (nav_mc_vel_z_i)" is used to compensate for "nav_mc_hover_thr" (hover throttle) being set to a slightly incorrect value. You can't set hover throttle to an exact value, there is always influence from thermals, battery charge level etc. Too much "VEL I (nav_mc_vel_z_i)" will lead to vertical oscillations, too low "VEL I (nav_mc_vel_z_i)" will cause drops or jumps when ALTHOLD is enabled, very low "VEL I (nav_mc_vel_z_i)" can result in total inability to maintain altitude.
   
-To deal with oscillations you can try lowering your "nav_mc_alt_p", "nav_mc_vel_p", "ALT I (nav_auto_climb_rate)", and "nav_manual_climb_rate".    
+To deal with oscillations you can try lowering your "ALT P (nav_mc_alt_p)", "VEL P (nav_mc_vel_p)", "ALT I (nav_auto_climb_rate)", and "nav_manual_climb_rate".    
   
 Climb rate is calculated from the readings of the accelerometer, barometer and – if available – from GPS (“set inav_use_gps_velned = ON”). How strongly the averages of these noisy signals are taken into account in the estimation of altitude change by iNAV is controlled by  
 - set inav_w_z_baro_p = 0.350  
