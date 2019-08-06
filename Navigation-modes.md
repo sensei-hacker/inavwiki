@@ -81,10 +81,15 @@ Inability to maintain altitude can be caused by a number of reasons:
 4. Gaining altitude during fast flight is likely due to increased air pressure and that is treated as going down in altitude - try covering your baro with (more) foam.
 
 ALT+VEL PID Tuning  
-Let's make a small experiment: Make sure baro is well isolated. You may also want to reduce baro weight: "set  inav_w_z_baro_p = 0.5" and "set ALT P(nav_mc_pos_z_p) = 0" and try flying. This way the controller will attempt to keep zero climb rate without any reference to altitude. The quad should slowly drift either up or down. If it would be jumping up and down, your "VEL * (nav_mc_vel_z_*)" gains are too high.  
-As a second step you can try zeroing out "VEL P (nav_mc_vel_z_p)" and "VEL I (nav_mc_vel_z_i)" and "set VEL D (nav_mc_vel_z_d) = 100". Now the quad should be drifting up/down even slower. Raise "VEL D (nav_mc_vel_z_d)" to the edge of oscillations.  
-Now raise "VEL P (nav_mc_vel_z_p)" to the edge of oscillations. Now ALTHOLD should be almost perfect.  
-And finally "set nav_mc_hover_thr" slightly (50-100) higher/lower than your actual hover throttle and tune "VEL I (nav_mc_vel_z_i)" until the quad is able to compensate.  
+Let's make a small experiment: Make sure baro is well isolated. You may also want to reduce baro weight: 
+- "set  inav_w_z_baro_p = 0.5" and "set ALT P(nav_mc_pos_z_p) = 0" and try flying. This way the controller will attempt to keep zero climb rate without any reference to altitude. The quad should slowly drift either up or down. If it would be jumping up and down, your "VEL * (nav_mc_vel_z_*)" gains are too high.
+  
+- As a second step you can try zeroing out "VEL P (nav_mc_vel_z_p)" and "VEL I (nav_mc_vel_z_i)" and "set VEL D (nav_mc_vel_z_d) = 100". Now the quad should be drifting up/down even slower. Raise "VEL D (nav_mc_vel_z_d)" to the edge of oscillations.  
+
+- Now raise "VEL P (nav_mc_vel_z_p)" to the edge of oscillations. Now ALTHOLD should be almost perfect.  
+
+- And finally "set nav_mc_hover_thr" slightly (50-100) higher/lower than your actual hover throttle and tune "VEL I (nav_mc_vel_z_i)" until the quad is able to compensate.  
+
 Keep in mind that no tuning can fix bad baro isolation issue.    
   
 If quad is buzzing while ALTHOLD is activated try lowering "VEL P (nav_mc_vel_z_p)" a bit.  
