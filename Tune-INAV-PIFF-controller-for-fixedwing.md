@@ -15,6 +15,7 @@ Enter these values as your rates in configurator.
 
 * This is so the FF-gain does most of the work turning the airplane, but leaving some for the P and I gain to work with.
 * For this step it is convenient to have the two modes `MANUAL` (called `PASSTHROUGH` mode up to version 1.8.1) and `ACRO` available on a switch to be able to switch easily between the two to compare the throws.
+* The 90% deflection value can also be calculated by dividing 13950 by the maximum rate for the axis, e.g. 360deg/s maximum roll 13950/360=38.75 FF. For 80% deflection, divide 12400 by rate. 
 
 Now set a little P and I gain as a starting point for example 10 P-gain and 15 I-gain to Roll, Pitch and Yaw axis.
 
