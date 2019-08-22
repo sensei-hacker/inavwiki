@@ -217,6 +217,10 @@ A CLI variable `ltm_update_rate` may be used to configure the update rate and he
 
 For many telemetry devices, there is direction correlation between the air-speed of the radio link and range; thus a lower value may facilitate longer range links.
 
+# Sample Data
+
+A couple of data samples are available from the [mwptools](https://github.com/stronnag/mwptools) project. [Sample1](https://raw.githubusercontent.com/wiki/stronnag/mwptools/data/ltm_2015-11-08.tar.gz) and [Sample2](https://raw.githubusercontent.com/wiki/stronnag/mwptools/data/mwp_2015-12-12-LTM.tar.gz) include raw dumps, structured data logs and READMEs explaining usage. 
+
 # Other 
 
 ## Tuning Frame (T)
