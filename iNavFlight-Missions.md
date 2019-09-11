@@ -40,7 +40,7 @@ A broken connection recovers once restored after any amount of time.
 The flight track remains on screen even when data link is broken -> lost model recovery.
 Log files can be opened in PC software Mission Planner.
 
-## [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD)
+## [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows)
 
 [mwp](https://github.com/stronnag/mwptools) can be downloaded from [Github](https://github.com/stronnag/mwptools). [mwp](https://github.com/stronnag/mwptools) is open source (GPL 3). It is available only as a source distribution and it is necessary to compile and install the application. Build instructions and dependencies are provided for Ubuntu and Fedora. Arch Linux users can install [mwp](https://github.com/stronnag/mwptools) from the AUR ([Arch User Repository](https://aur.archlinux.org/packages/mwptools-git/)). 
 
@@ -48,19 +48,21 @@ In addition to mission planning and logger, [mwp](https://github.com/stronnag/mw
 
 There is a [RC Groups support forum](http://www.rcgroups.com/forums/showthread.php?t=2633708)
 
+Use on MS Windows requires Cygwin or WSL (or a virtual machine).
+
 ## Mobile Flight (IOS / iphone).
 
 Mobile Flight: Configuration and ground control app for iNav (and Betaflight) on iPhone http://www.rcgroups.com/forums/showthread.php?t=2601895&highlight=ios. 
 
 ## iNav Configurator
 
-Since version 1.9.2, the iNav configurator provides rudimentary mission planning capabilities. As it has no ability to local store files, missions must the saved to EEPROM if it is necessary to store the mission for transport. In the field, eeprom-stored missions can be restored using [stick commands](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md). 
+Since version 1.9.2, the iNav configurator provides rudimentary mission planning capabilities. Since 2.2 it can save and restore missions to the file system.
 
 ## Potential solutions for other platforms
 
 [impload](https://github.com/stronnag/impload) is a cross-platform command line application to upload / download /save / restore missions in a number of formats to an iNav flight controller. Supported formats include:
 
-* MW XML mission files (as used by [mwp](https://github.com/stronnag/mwptools), ezgui, mission planner for inav)
+* MW XML mission files (as used by [mwp](https://github.com/stronnag/mwptools), ezgui, mission planner for inav, iNav configurator)
 * apmplanner / qgroundcontrol mission files
 * GPX files (tracks, routes, waypoints)
 * KML, KMZ files
@@ -151,9 +153,9 @@ LTM is supported by ezgui, [mwp](https://github.com/stronnag/mwptools) and ([for
 
 ## MAVLink 
 
-[MAVLink](http://qgroundcontrol.org/mavlink/start) is a full-feature, highly capable protocol used by PX4, PIXHAWK, APM and Parrot AR.Drone platforms (inter alia). The implementation for iNav is 'push telemetry' only, so it can only be used for flight monitoring, not mission planning.
+[MAVLink](http://qgroundcontrol.org/mavlink/start) is a full-feature, highly capable protocol used by PX4, PIXHAWK, APM and Parrot AR.Drone platforms (inter alia). The implementation for iNav is 'push telemetry' only, it only be used for flight monitoring and should be able to accept missions (however finding a ground station that will cooperate may not be easy).
 
-The initial implementation in iNav is supported by ezgui, Droid Planner 2, [mwp](https://github.com/stronnag/mwptools) and QGroundControl. Probably some of the Android .apks for Mavlink will work with this telemetry protocol. Tower (Droid Planner 3) currently doesn't work (is this still true?).
+The initial implementation in iNav is supported by ezgui, Droid Planner 2, [mwp](https://github.com/stronnag/mwptools) and some older versions of QGroundControl (modern versions appear to require a more complex handshake). Probably some of the Android .apks for Mavlink will work with this telemetry protocol. Tower (Droid Planner 3) is reported as not working.
 
 # Configuring the Flight Controller
 ## Ports & port sharing
