@@ -1,5 +1,6 @@
 # Link to YouTube video guides.
 
+* [INAV Fixed Wing Tuning Guide](https://youtu.be/A45vc4OihgY)
 * [Painless360 iNav playlist](http://www.youtube.com/playlist?list=PLYsWjANuAm4qdXEGFSeUhOZ10-H8YTSnH)
 * [Setting up & Using iNav 2017 by Matthew Ogborne](https://youtu.be/1DCCjPbHl_I?list=PLgoM4-umzSqd0clW-e_A12yKiOpV--3a2)
 * [Backup and restoring](https://www.youtube.com/watch?v=M5haTMW239E&feature=youtu.be)
