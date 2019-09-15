@@ -14,7 +14,7 @@ Passthrough bypasses all this an moves servos directly.
 
 In other words, the only thing that will limit passthrough servo limits and rates set up in the Servos tab.
 
-# What is stabiliations, and how do you as pilot actual control airplane in an stabilisation mode?
+# What is stabilisation? And how do you as pilot actual control airplane in an stabilisation mode?
 
 In passthrough everything is easy, you move sticks on radio, the FC does some mixing according to which airplane/flying wing you have, and then you move the servos directly.
 
