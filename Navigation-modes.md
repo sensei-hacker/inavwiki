@@ -1,7 +1,5 @@
 **This Wiki page needs updating in regards to renamed CLI variables.**
 
-_8/3/2019 updated ALTHOLD flight mode variables for MC (Multicopter)_
-
 This page will list and explain all the different navigational flight modes of iNav:
 
 - [NAV ALTHOLD - Altitude hold](#althold---altitude-hold)
