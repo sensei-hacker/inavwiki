@@ -61,7 +61,7 @@ In the moment you engage ALTHOLD, iNAV always sends “nav_mc_hover_thr” to th
   
 Example: Let's assume "nav_mc_hover_thr” is already set correctly to your copter's hover throttle and “set nav_use_midthr_for_althold =OFF”. Let's say you have your throttle stick at 30%, and you enter ALTHOLD, your copter will maintain hover at this 30%. If throttle is increased up to 40% it will start to climb. (Even if your copter needs 60% throttle to actually climb up in normal flight without ALTHOLD.)
 
-It's MR
+It's important to note that when the battery is full, "nav_mc_hover_thr” could be a lower value than when the battery is weaker. With a weaker battery more throttle will be needed to maintain a hover. A practical way to establish an approximate valid value is to use the iNav OSD screen to test values real-time when in the field. Once an approximate "nav_mc_hover_thr” has been established, then adjust the PIDs as described in the "PIDs for altitude hold" below.
     
 "set alt_hold_deadband = 50": You have to change throttle command (e.g. move throttle stick) by at least this amount to make the copter climb or descend and change target altitude for ALTHOLD.  
 If ALTHOLD is activated at zero throttle iNAV will account for deadband and move the neutral "zero climb rate" position a little bit up to make sure you are able to descend.  
