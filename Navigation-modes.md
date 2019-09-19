@@ -74,6 +74,7 @@ _**The following values can be accessed using iNav OSD when configured for FPV f
 - VEL P (nav_mc_vel_z_p) - defines how much throttle copter will add to achieve desired acceleration  
 - VEL I  (nav_mc_vel_z_i)- controls compensation for hover throttle (and vertical air movement, thermals). This can essentially be zero if hover throttle is precisely 1500us. Too much "VEL I" will lead to vertical oscillations, too low "VEL I" will cause drops or jumps when ALTHOLD is switched on.  
 - VEL D (nav_mc_vel_z_d)- acts as a dampener for VEL P and VEL I, will slower the response and reduce oscillations from too high VEL P and VEL I  
+- If ALT P (nav_mc_pos_z_p) and ALT I (nav_auto_climb_rate) have been set to zero (0) during the PID adjustments, setting ALT P (nav_mc_pos_z_p) to a non-zero value (100?), will have the effect of changing the ALTHOLD altitude using the throttle. Once again, the easiest trial and error testing is done through the iNav OSD while in the field.
 
 Inability to maintain altitude can be caused by a number of reasons:  
 1. insufficient ALT_P and/or ALT_I  
