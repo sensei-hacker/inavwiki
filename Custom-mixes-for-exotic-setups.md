@@ -193,7 +193,7 @@ smix 2 2 1 -100 0
 ```
 
 ## Nano Talon with 2 Servos for the V-Tail
-Note: See [this video](https://www.youtube.com/watch?v=IOApkFPGKtc) for the placement & orientation of the extra servo to form a V-Tail with rudder.
+Note: See [this video](https://www.youtube.com/watch?v=IOApkFPGKtc) for the placement & orientation of the extra servo to form a V-Tail with rudder. (Hey, please do not link to a 20 minute video something that should take all of 5 seconds to explain. At least include a timestamp so we don't need to watch the whole thing)
 ```
 # mixer
 mixer CUSTOMAIRPLANE
