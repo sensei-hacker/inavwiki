@@ -221,9 +221,9 @@ If the multirotor is below nav_rth_altitude it will enter position hold and clim
 ## Predefined altitude linear descent (AT_LEAST_LINEAR_DESCENT)
 nav_rth_alt_mode = AT_LEAST_LINEAR_DESCENT
 
-nav_rth_altitude defines exact RTH altitude above launch point, but the aircraft will descend in a way that it'll reach the nav_rth_altitude altitude only when it reaches the home point. It's useful so aircraft can save energy by doing a easy descend on it's way back home.
+`nav_rth_altitude` defines exact RTH altitude above launch point. Aircraft will descend in a way that it'll reach the `nav_rth_altitude` altitude only when it reaches the home point. So aircraft can save energy by doing an easy descend on it's way back home.
 
-If the aircraft is below nav_rth_altitude it will climb to desired altitude prior to flying back home. If the machine is above the desired altitude, it will turn and fly home and descend on the way (on a linear straight line).
+If the aircraft is below `nav_rth_altitude` it will climb to desired altitude prior to flying back home. If the machine is above the desired altitude, it will turn and fly home, and descend on the way (on a linear straight line).
 
 ![](https://i.imgur.com/CPgKb4w.png)
 
