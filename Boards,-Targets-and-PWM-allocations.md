@@ -21,9 +21,24 @@ The usage is taken directly from the source code, the following interpretation i
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-*List generated 2019-06-19 from the iNav development branch / master 2.2.0 by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in master or prior releases.* **E&OE.**
+*List generated 2019-11-08 from the iNav development branch by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in master or prior releases.* **E&OE.**
 
 Note: Due to the fact that there is no reliable, consistent means to get from the timer definition in `target.c` to human readable output names, the script cowardly refuses to parse more than 8 outputs. You are strongly advised to check the board documentation as to the suitability of any particular board.
+## Board: AIKONF4
+
+Board is not DSHOT enabled.
+
+### Target: AIKONF4
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, MC_SERVO, FW_MOTOR |
+| 6 | MC_MOTOR, MC_SERVO, FW_MOTOR |
+
 ## Board: AIRBOTF4
 
 Board is DSHOT enabled.
@@ -42,6 +57,8 @@ Board is DSHOT enabled.
 | 8 | PWM, FW_SERVO |
 
 ## Board: AIRHEROF3
+
+Board is not DSHOT enabled.
 
 ### Target: AIRHEROF3
 
@@ -65,6 +82,8 @@ Board is DSHOT enabled.
 
 ## Board: ALIENFLIGHTF3
 
+Board is not DSHOT enabled.
+
 ### Target: ALIENFLIGHTF3
 
 | PWM | Usage |
@@ -79,6 +98,8 @@ Board is DSHOT enabled.
 | 8 | MC_MOTOR, FW_SERVO, ANY |
 
 ## Board: ALIENFLIGHTF4
+
+Board is not DSHOT enabled.
 
 ### Target: ALIENFLIGHTF4
 
@@ -95,6 +116,8 @@ Board is DSHOT enabled.
 
 ## Board: ALIENFLIGHTNGF7
 
+Board is not DSHOT enabled.
+
 ### Target: ALIENFLIGHTNGF7
 
 | PWM | Usage |
@@ -110,6 +133,8 @@ Board is DSHOT enabled.
 
 ## Board: ANYFC
 
+Board is not DSHOT enabled.
+
 ### Target: ANYFC
 
 | PWM | Usage |
@@ -124,6 +149,8 @@ Board is DSHOT enabled.
 | 8 | MC_MOTOR, FW_SERVO |
 
 ## Board: ANYFCF7
+
+Board is not DSHOT enabled.
 
 ### Target: ANYFCF7
 
@@ -152,6 +179,8 @@ Board is DSHOT enabled.
 | 8 | MC_MOTOR, FW_MOTOR |
 
 ## Board: ANYFCM7
+
+Board is not DSHOT enabled.
 
 ### Target: ANYFCM7
 
@@ -194,6 +223,8 @@ Board is DSHOT enabled.
 
 ## Board: BEEROTORF4
 
+Board is not DSHOT enabled.
+
 ### Target: BEEROTORF4
 
 | PWM | Usage |
@@ -208,6 +239,8 @@ Board is DSHOT enabled.
 | 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
 ## Board: BETAFLIGHTF3
+
+Board is not DSHOT enabled.
 
 ### Target: BETAFLIGHTF3
 
@@ -224,6 +257,8 @@ Board is DSHOT enabled.
 
 ## Board: BETAFLIGHTF4
 
+Board is not DSHOT enabled.
+
 ### Target: BETAFLIGHTF4
 
 | PWM | Usage |
@@ -234,6 +269,8 @@ Board is DSHOT enabled.
 | 4 | MC_MOTOR, FW_SERVO |
 
 ## Board: BLUEJAYF4
+
+Board is not DSHOT enabled.
 
 ### Target: BLUEJAYF4
 
@@ -248,6 +285,8 @@ Board is DSHOT enabled.
 
 ## Board: CHEBUZZF3
 
+Board is not DSHOT enabled.
+
 ### Target: CHEBUZZF3
 
 | PWM | Usage |
@@ -260,6 +299,8 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, FW_SERVO |
 
 ## Board: CLRACINGF4AIR
+
+Board is not DSHOT enabled.
 
 ### Target: CLRACINGF4AIR
 
@@ -295,6 +336,8 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, FW_SERVO |
 
 ## Board: COLIBRI
+
+Board is not DSHOT enabled.
 
 ### Target: COLIBRI
 
@@ -341,6 +384,8 @@ Board is DSHOT enabled.
 
 ## Board: DALRCF405
 
+Board is not DSHOT enabled.
+
 ### Target: DALRCF405
 
 | PWM | Usage |
@@ -356,6 +401,8 @@ Board is DSHOT enabled.
 
 ## Board: DALRCF722DUAL
 
+Board is not DSHOT enabled.
+
 ### Target: DALRCF722DUAL
 
 | PWM | Usage |
@@ -368,6 +415,8 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, FW_SERVO |
 
 ## Board: F4BY
+
+Board is not DSHOT enabled.
 
 ### Target: F4BY
 
@@ -384,6 +433,8 @@ Board is DSHOT enabled.
 
 ## Board: FALCORE
 
+Board is not DSHOT enabled.
+
 ### Target: FALCORE
 
 | PWM | Usage |
@@ -396,6 +447,8 @@ Board is DSHOT enabled.
 | 6 | MC_SERVO |
 
 ## Board: FF_F35_LIGHTNING
+
+Board is not DSHOT enabled.
 
 ### Target: FF_F35_LIGHTNING
 
@@ -421,16 +474,20 @@ Board is DSHOT enabled.
 
 ## Board: FF_FORTINIF4
 
+Board is not DSHOT enabled.
+
 ### Target: FF_FORTINIF4
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_SERVO |
 
 ## Board: FF_PIKOF4
+
+Board is not DSHOT enabled.
 
 ### Target: FF_PIKOF4
 
@@ -484,6 +541,8 @@ Board is DSHOT enabled.
 
 ## Board: FISHDRONEF4
 
+Board is not DSHOT enabled.
+
 ### Target: FISHDRONEF4
 
 | PWM | Usage |
@@ -527,6 +586,8 @@ Board is DSHOT enabled.
 
 ## Board: FRSKYF3
 
+Board is not DSHOT enabled.
+
 ### Target: FRSKYF3
 
 | PWM | Usage |
@@ -542,6 +603,8 @@ Board is DSHOT enabled.
 
 ## Board: FRSKYF4
 
+Board is not DSHOT enabled.
+
 ### Target: FRSKYF4
 
 | PWM | Usage |
@@ -554,6 +617,8 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, FW_SERVO |
 
 ## Board: FURYF3
+
+Board is not DSHOT enabled.
 
 ### Target: FURYF3
 
@@ -599,7 +664,39 @@ Board is DSHOT enabled.
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_MOTOR |
 
+## Board: IFLIGHTF4_TWING
+
+Board is not DSHOT enabled.
+
+### Target: IFLIGHTF4_TWING
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+
+## Board: IFLIGHTF7_TWING
+
+Board is DSHOT enabled.
+
+### Target: IFLIGHTF7_TWING
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_MOTOR |
+| 6 | MC_MOTOR, FW_MOTOR |
+| 7 | MC_MOTOR, FW_SERVO |
+| 8 | MC_MOTOR, FW_SERVO |
+
 ## Board: KAKUTEF4
+
+Board is not DSHOT enabled.
 
 ### Target: KAKUTEF4
 
@@ -622,6 +719,8 @@ Board is DSHOT enabled.
 | 4 | MC_MOTOR, FW_SERVO |
 
 ## Board: KAKUTEF7
+
+Board is DSHOT enabled.
 
 ### Target: KAKUTEF7
 
@@ -647,6 +746,8 @@ Board is DSHOT enabled.
 
 ## Board: KFC32F3_INAV
 
+Board is not DSHOT enabled.
+
 ### Target: KFC32F3_INAV
 
 | PWM | Usage |
@@ -662,6 +763,8 @@ Board is DSHOT enabled.
 
 ## Board: KISSFC
 
+Board is not DSHOT enabled.
+
 ### Target: KISSFC
 
 | PWM | Usage |
@@ -674,6 +777,8 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, FW_SERVO |
 
 ## Board: KROOZX
+
+Board is not DSHOT enabled.
 
 ### Target: KROOZX
 
@@ -689,6 +794,8 @@ Board is DSHOT enabled.
 | 8 | MC_MOTOR |
 
 ## Board: LUX_RACE
+
+Board is not DSHOT enabled.
 
 ### Target: LUX_RACE
 
@@ -812,6 +919,21 @@ Board is DSHOT enabled.
 | 6 | MC_SERVO, FW_SERVO |
 | 7 | MC_SERVO, FW_SERVO |
 
+## Board: MATEKF411SE
+
+Board is DSHOT enabled.
+
+### Target: MATEKF411SE
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_SERVO, FW_SERVO |
+
 ## Board: MATEKF722
 
 Board is DSHOT enabled.
@@ -870,7 +992,26 @@ Board is DSHOT enabled.
 | 7 | MC_SERVO, FW_MOTOR |
 | 8 | MC_SERVO, FW_MOTOR |
 
+## Board: MATEKF765
+
+Board is DSHOT enabled.
+
+### Target: MATEKF765
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_SERVO, FW_SERVO |
+| 8 | MC_SERVO, FW_SERVO |
+
 ## Board: MOTOLAB
+
+Board is not DSHOT enabled.
 
 ### Target: MOTOLAB
 
@@ -887,6 +1028,8 @@ Board is DSHOT enabled.
 
 ## Board: NOX
 
+Board is not DSHOT enabled.
+
 ### Target: NOX
 
 | PWM | Usage |
@@ -897,6 +1040,8 @@ Board is DSHOT enabled.
 | 4 | MC_MOTOR, FW_SERVO |
 
 ## Board: OMNIBUS
+
+Board is not DSHOT enabled.
 
 ### Target: OMNIBUS
 
@@ -1014,6 +1159,8 @@ Board is DSHOT enabled.
 
 ## Board: OMNIBUSF7
 
+Board is not DSHOT enabled.
+
 ### Target: OMNIBUSF7
 
 | PWM | Usage |
@@ -1049,6 +1196,8 @@ Board is DSHOT enabled.
 
 ## Board: PIKOBLX
 
+Board is not DSHOT enabled.
+
 ### Target: PIKOBLX
 
 | PWM | Usage |
@@ -1062,6 +1211,8 @@ Board is DSHOT enabled.
 
 ## Board: PIXRACER
 
+Board is not DSHOT enabled.
+
 ### Target: PIXRACER
 
 | PWM | Usage |
@@ -1074,6 +1225,8 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, FW_MOTOR |
 
 ## Board: QUARKVISION
+
+Board is not DSHOT enabled.
 
 ### Target: QUARKVISION
 
@@ -1090,6 +1243,8 @@ Board is DSHOT enabled.
 
 ## Board: RADIX
 
+Board is not DSHOT enabled.
+
 ### Target: RADIX
 
 | PWM | Usage |
@@ -1102,6 +1257,8 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR |
 
 ## Board: RCEXPLORERF3
+
+Board is not DSHOT enabled.
 
 ### Target: RCEXPLORERF3
 
@@ -1132,6 +1289,8 @@ Board is DSHOT enabled.
 
 ## Board: RMDO
 
+Board is not DSHOT enabled.
+
 ### Target: RMDO
 
 | PWM | Usage |
@@ -1146,6 +1305,8 @@ Board is DSHOT enabled.
 | 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
 ## Board: SPARKY
+
+Board is not DSHOT enabled.
 
 ### Target: SPARKY
 
@@ -1162,6 +1323,8 @@ Board is DSHOT enabled.
 
 ## Board: SPARKY2
 
+Board is not DSHOT enabled.
+
 ### Target: SPARKY2
 
 | PWM | Usage |
@@ -1174,6 +1337,8 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
 ## Board: SPEEDYBEEF4
+
+Board is not DSHOT enabled.
 
 ### Target: SPEEDYBEEF4
 
@@ -1189,6 +1354,8 @@ Board is DSHOT enabled.
 
 ## Board: SPRACINGF3
 
+Board is not DSHOT enabled.
+
 ### Target: SPRACINGF3
 
 | PWM | Usage |
@@ -1203,6 +1370,8 @@ Board is DSHOT enabled.
 | 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
 ## Board: SPRACINGF3EVO
+
+Board is not DSHOT enabled.
 
 ### Target: SPRACINGF3EVO
 
@@ -1232,6 +1401,8 @@ Board is DSHOT enabled.
 
 ## Board: SPRACINGF3MINI
 
+Board is not DSHOT enabled.
+
 ### Target: SPRACINGF3MINI
 
 | PWM | Usage |
@@ -1247,6 +1418,8 @@ Board is DSHOT enabled.
 
 ## Board: SPRACINGF3NEO
 
+Board is not DSHOT enabled.
+
 ### Target: SPRACINGF3NEO
 
 | PWM | Usage |
@@ -1259,6 +1432,8 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, FW_MOTOR |
 
 ## Board: SPRACINGF4EVO
+
+Board is not DSHOT enabled.
 
 ### Target: SPRACINGF4EVO
 
@@ -1291,6 +1466,8 @@ Board is DSHOT enabled.
 | 8 | MC_MOTOR |
 
 ## Board: YUPIF4
+
+Board is not DSHOT enabled.
 
 ### Target: YUPIF4
 
@@ -1327,6 +1504,8 @@ Board is DSHOT enabled.
 
 ## Board: YUPIF7
 
+Board is DSHOT enabled.
+
 ### Target: YUPIF7
 
 | PWM | Usage |
@@ -1337,4 +1516,3 @@ Board is DSHOT enabled.
 | 4 | MC_MOTOR, FW_SERVO |
 | 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
 | 6 | MC_MOTOR, MC_SERVO, FW_SERVO, LED |
-
