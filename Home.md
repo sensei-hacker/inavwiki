@@ -4,7 +4,7 @@
   <tbody>
     <tr>
       <td><a href="https://inavflight.com/shop/u/bg"><img src="https://lh3.googleusercontent.com/TiHXyUiZ2COk7OmceBgo1qeRN2APAjWL5qUydGc-U3LqkJb3n13EhYEJ8Dpz_IACNHU" width="55"></a></td>
-      <td><a href="https://inavflight.com/shop/u/bg">Support us on Banggood</a></td>
+      <td><a href="https://inavflight.com/shop/u/bg"><b>Support us on Banggood<b></a></td>
     </tr>
   </tbody>
 </table>
@@ -14,9 +14,9 @@ iNAV is a fork of cleanflight with a heavy focus upon GPS features for both airp
 
 iNav is **being actively developed** and currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features. 
 
-A wide variety of inexpensive flight controller boards are supported. While Naze32 & CC3D flight control boards will still work (*) with limited features, F3 & F4 flight control boards are **strongly suggested** to gain access to the full features of iNav & extended flight time abilities.
+A wide variety of inexpensive flight controller boards are supported.  F4 & F7 flight control boards are **strongly suggested** to gain access to the full features of iNav.
 
-*F1 Flight controllers like Naze32 and CC3D are not supported anymore, previously released firmwares do still work of course. Latest release for F1 boards is INAV 1.7.3
+Latest release for F1 boards is INAV 1.7.3
 
 iNav has many settings that are different than cleanflight, so while the configurator may look familiar to you, simply restoring settings from an older version of cleanflight won't work & the calibration process is very, very different.
 
