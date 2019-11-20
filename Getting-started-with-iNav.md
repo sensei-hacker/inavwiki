@@ -55,8 +55,8 @@ If you are using your FC onboard mag, try to place the the FC as far away as pos
 * Do not use Serial RX over a software serial. It cannot reliably handle SBUS or IBUS for instance. 
 
 **Checklist if you're having an issue with something:**
-
-1. Try and look through the wiki regarding the issue you have. You can also search the Wiki.
-1. Read the first post at [rcgroups Cleanflight iNav thread](http://www.rcgroups.com/forums/showthread.php?t=2495732). Also read the last 5 pages in the thread to see if someone else has already mentioned it. Also try and search in the thread.
-1. Explain your issue, include CLI dump and blackbox log if you have a logger. Mention what you have tried, and also if it's working as intended in stock Cleanflight / Earlier versions of iNav
-1. [Template for asking for help](http://www.rcgroups.com/forums/showpost.php?p=35637535&postcount=7930)
+1. Join our Telegram group following this (link)[https://t.me/INAVFlight]
+2. Try and look through the wiki regarding the issue you have. You can also search the Wiki.
+3. Read the first post at [rcgroups Cleanflight iNav thread](http://www.rcgroups.com/forums/showthread.php?t=2495732). Also read the last 5 pages in the thread to see if someone else has already mentioned it. Also try and search in the thread.
+4. Explain your issue, include CLI dump and blackbox log if you have a logger. Mention what you have tried, and also if it's working as intended in stock Cleanflight / Earlier versions of iNav
+5. [Template for asking for help](http://www.rcgroups.com/forums/showpost.php?p=35637535&postcount=7930)
