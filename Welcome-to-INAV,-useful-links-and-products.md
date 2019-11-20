@@ -124,5 +124,9 @@ Foxeer Micro Falkor: https://inavflight.com/shop/s/bg/1375560
 
 Foxeer Arrow Micro Pro: https://inavflight.com/shop/s/bg/1248761
 
+**VTX**
+
+Eachine ATX03S: https://inavflight.com/shop/s/bg/1427187 (perfect for compact builds!)
+
 
 _Thanks, and happy flying!_
