@@ -70,6 +70,8 @@ Beitian BN220 GPS: https://inavflight.com/shop/p/BN220
 
 Beitian BN180 GPS: https://inavflight.com/shop/p/BN180
 
+Beitian BN880Q GPS+COMPASS: https://inavflight.com/shop/s/bg/1450469 (compact and improved BN880)
+
 Beitian BN880 GPS+COMPASS: https://inavflight.com/shop/p/BN880
 
 BD GPS NEO-M8N https://inavflight.com/shop/s/ae/32509281424
@@ -89,6 +91,10 @@ Runcam Split 2 Mini: https://inavflight.com/shop/s/bg/1344675 (HD)
 
 Runcam Micro Swift 2: https://inavflight.com/shop/s/bg/1179743
 
+Foxeer Nano/Mini/Standard Predator 4: https://inavflight.com/shop/s/bg/1558735
+
+Foxeer Micro/Standard Falkor 2: https://inavflight.com/shop/s/bg/1544328
+
 RunCam Eagle 2 Pro: https://inavflight.com/shop/s/bg/1209504
 
 RunCam Micro Eagle: https://inavflight.com/shop/s/bg/1259121 
@@ -101,6 +107,5 @@ Foxeer Micro Falkor: https://inavflight.com/shop/s/bg/1375560
 
 Foxeer Arrow Micro Pro: https://inavflight.com/shop/s/bg/1248761
 
-Foxeer MIX: https://inavflight.com/shop/s/bg/1409853 (HD)
 
 _Thanks, and happy flying!_
