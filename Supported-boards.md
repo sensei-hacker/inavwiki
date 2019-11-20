@@ -24,9 +24,8 @@ These boards are well tested with INAV and are known to be of good quality and r
 | [Matek F722-SE](https://inavflight.com/shop/p/MATEKF722SE)       | F7         | MATEKF722SE               | All  | All     | All            | All       | All                            | SERIAL, SD     |
 | [Matek F722-STD](https://inavflight.com/shop/p/MATEKF722STD)       | F7         | MATEKF722               | All  | All     | All            | All       | All                            | SERIAL, SD     |
 | [Matek F722-MINI](https://inavflight.com/shop/p/MATEKF722MINI)       | F7         | MATEKF722SE               | All  | All     | All            | All       | All                            | SPIFLASH    |
-| [COPPERYU YUPIFC](https://www.drone-fpv-racer.com/en/flight-controller-yupif7-copperyu-2928.html)       | F7         | YUPIF7               | All  | All     | All            | All       | All                            | SPIFLASH    |
 
-
+It's possible to find more supported and tested boards [here](https://github.com/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products)
 ### Boards documentation
 
 See the [docs](https://github.com/iNavFlight/inav/tree/master/docs) folder for additional information regards to many targets in INAV, to example help in finding pinout and features. _Feel free to help improve the docs._
