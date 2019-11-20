@@ -60,15 +60,7 @@ Zeta Science C1 Chaser: https://inavflight.com/shop/s/bg/1102080
 
 **Selection of suggested and tested components:**
 
-**Transmitters:**
-
-FrSky Taranis X9D Plus:  https://inavflight.com/shop/s/bg/1121799
-
-FrSky Q X7: https://inavflight.com/shop/s/bg/1196246
-
-FlySky FS-i6X: https://inavflight.com/shop/s/bg/1090406 
-
-**GPS Units:**
+**GPS Modules:**
 
 Beitian BN220 GPS: https://inavflight.com/shop/p/BN220
 
@@ -84,6 +76,27 @@ Matek M8Q+ COMPASS https://inavflight.com/shop/s/bg/1337288
 
 Matek M8Q https://inavflight.com/shop/s/bg/1337287
 
+**Transmitters:**
+
+FrSky Taranis X9D Plus:  https://inavflight.com/shop/s/bg/1121799
+
+FrSky Q X7: https://inavflight.com/shop/s/bg/1196246
+
+FlySky FS-i6X: https://inavflight.com/shop/s/bg/1090406 
+
+**Transmitters Module:**
+
+FrSky R9:  https://inavflight.com/shop/s/bg/1466439
+
+**Receivers:**
+
+FrSky R9 MM: https://inavflight.com/shop/s/bg/1340129
+
+FrSky R9 Slim: https://inavflight.com/shop/s/bg/1297084
+
+FrSky XSR : https://inavflight.com/shop/s/bg/1461126
+
+FrSky R-XSR : https://inavflight.com/shop/s/bg/1186057
 
 **Motors:**
 
