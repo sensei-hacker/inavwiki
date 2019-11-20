@@ -34,6 +34,11 @@ Matek F405-WING: https://inavflight.com/shop/p/MATEKF405WING
 
 Matek F722-WING: https://inavflight.com/shop/p/MATEKF722WING
 
+Mamba F405 Stack: https://inavflight.com/shop/s/bg/1345001
+Mamba F722 Stack: https://inavflight.com/shop/s/bg/1490805
+
+iFlight SucceX-E F4 Stack: https://inavflight.com/shop/s/bg/1553340
+
 Suggested models to start with:
 
 Zeta Science Wing Wing Z84: https://inavflight.com/shop/s/bg/988834
