@@ -46,15 +46,13 @@ ARWing 900: https://inavflight.com/shop/s/bg/1175537
 
 Zeta Science C1 Chaser: https://inavflight.com/shop/s/bg/1102080
 
-Suggested flight controllers if you are building a **copter**:
+### Suggested flight controllers if you are building a **copter**:
 
-Matek F405-CTR: https://inavflight.com/shop/p/MATEKF405CTR
-
-Matek F722-STD: https://inavflight.com/shop/p/MATEKF722STD
-
-Matek F722-SE: https://inavflight.com/shop/p/MATEKF722SE
-
-Matek F722-Mini https://inavflight.com/shop/p/MATEKF722MINI
+* [Matek F405-CTR](https://inavflight.com/shop/p/MATEKF405CTR)
+* [Matek F722-STD](https://inavflight.com/shop/p/MATEKF722STD)
+* [Matek F722-SE](https://inavflight.com/shop/p/MATEKF722SE)
+* [Matek F722-Mini](https://inavflight.com/shop/p/MATEKF722MINI)
+* [Holybro Kakute F7](https://inavflight.com/shop/s/bg/1315723)
 
 **Selection of suggested and tested components:**
 
