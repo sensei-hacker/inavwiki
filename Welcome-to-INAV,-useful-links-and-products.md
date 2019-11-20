@@ -26,19 +26,13 @@ If you are building a **plane**:
 
 https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Guide
 
-Suggested flight controllers:
+**Suggested flight controllers:**
 
 Matek F411-WING: https://inavflight.com/shop/p/MATEKF411WING
 
 Matek F405-WING: https://inavflight.com/shop/p/MATEKF405WING
 
 Matek F722-WING: https://inavflight.com/shop/p/MATEKF722WING
-
-Mamba F405 Stack: https://inavflight.com/shop/s/bg/1345001
-
-Mamba F722 Stack: https://inavflight.com/shop/s/bg/1490805
-
-iFlight SucceX-E F4 Stack: https://inavflight.com/shop/s/bg/1553340
 
 
 **Suggested models to start with:**
@@ -60,6 +54,9 @@ Zeta Science C1 Chaser: https://inavflight.com/shop/s/bg/1102080
 * [Matek F722-SE](https://inavflight.com/shop/p/MATEKF722SE)
 * [Matek F722-Mini](https://inavflight.com/shop/p/MATEKF722MINI)
 * [Holybro Kakute F7](https://inavflight.com/shop/s/bg/1315723)
+* [Mamba F405 Stack](https://inavflight.com/shop/s/bg/1345001)
+* [Mamba F722 Stack](https://inavflight.com/shop/s/bg/1490805)
+* [iFlight SucceX-E F4 Stack](https://inavflight.com/shop/s/bg/1553340)
 
 **Selection of suggested and tested components:**
 
