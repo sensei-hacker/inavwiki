@@ -7,7 +7,7 @@ This page will list and explain all the different navigational flight modes of i
 - [NAV CRUISE - Fixed Wing Heading Hold](#nav-cruise---fixed-wing-heading-hold)
 - [NAV RTH - Return to home](#rth---return-to-home)
 - [NAV WP - Autonomous waypoint mission](#wp---autonomous-waypoint-mission)
-- [GCS_NAV - Ground control station](#gcs_nav---ground-control-station)
+- [GCS NAV - Ground control station](#gcs_nav---ground-control-station)
 
 
 For safety reasons, iNAV’s navigation modes can be activated only if  
@@ -112,7 +112,7 @@ for vertical velocity. Too high “inav_w_z_baro_p” will make ALTHOLD nervous,
 ### b) Using ALTHOLD with an airplane (fixed wing, fw):  
 As for multicopters, iNAV is not intended to use ALTHOLD controller in anything but ANGLE mode.  
 iNAV controls pitch angle and throttle. It assumes that altitude is held (roughly) when pitch angle is zero. If plane has to climb, iNAV will also increase throttle. If plane has to dive, iNAV will reduce throttle and glide. The strength of this mixing is controlled by “nav_fw_pitch2thr”.  
-Set board alignment in such a way that your plane is flying level both in "PASSTHROUGH" and in "ANGLE", when you don't touch the sticks.   
+Set board alignment in such a way that your plane is flying level both in "MANUAL" and in "ANGLE", when you don't touch the sticks.   
 
 iNAV’s parameters for fixed wing:  
 - set nav_fw_cruise_thr = 1400  # cruise throttle  
