@@ -3,26 +3,32 @@
 # Non-navigation modes index:
 
 - [AIR MODE](#air-mode)
-- [ANGLE](#angle)
 - [ARM](#arm)
-- [AUTOTUNE](#autotune)
-- [BEEPER](#BEEPER)
-- [BLACKBOX](#blackbox)
-- [CAMSTAB](#CAMSTAB)
-- [FAILSAFE](#failsafe)
-- [FLAPERON](#flaperon)
-- [HEADADJ](#headadj)
-- [HEADFREE](#headfree)
-- [HEADING HOLD](#heading-hold)
+- [ANGLE](#angle)
 - [HORIZON](#horizon)
-- [LEDLOW](#ledlow)
+- [TURN ASSIST](#turn-assist)
+- [HEADING HOLD](#heading-hold)
+- [HEADFREE](#headfree)
+- [HEADADJ](#headadj)
+- FPV ANGLE MIX
+- [CAMSTAB](#CAMSTAB)
+- [SURFACE](#surface)
+- LOITER CHANGE
 - [MANUAL](#manual) (called PASSTHROUGH mode up to version 1.8.1)
 - [NAV LAUNCH](#nav-launch)
-- [OSD SW](#osd-sw)
 - [SERVO AUTOTRIM](#servo-autotrim)
-- [SURFACE](#surface)
+- [AUTOTUNE](#autotune)
+- [BEEPER](#BEEPER)
+- [OSD SW](#osd-sw)
+- [BLACKBOX](#blackbox)
+- KILLSWITCH
+- [FAILSAFE](#failsafe)
+- CAMERA CONTROL #
+- OSD ALT #
+- [FLAPERON](#flaperon)
+- [LEDLOW](#ledlow)
 - [TELEMETRY](#telemetry)
-- [TURN ASSIST](#turn-assist)
+
 
 ## Default flight mode ( No mode selected )
 
