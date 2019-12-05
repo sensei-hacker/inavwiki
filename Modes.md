@@ -27,7 +27,6 @@
 - OSD ALT #
 - [FLAPERON](#flaperon)
 - [LEDLOW](#ledlow)
-- [TELEMETRY](#telemetry)
 
 
 ## Default flight mode ( No mode selected )
