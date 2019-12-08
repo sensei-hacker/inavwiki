@@ -15,3 +15,4 @@
 * [INAV Troubleshooting: toilet bowling instead of Position Hold](https://www.youtube.com/watch?v=FlEm0-pXNf0)
 * [How to use Autotune](https://youtu.be/UOGfC3pvbWM)
 * [How to use servo autotrim](https://www.youtube.com/watch?v=XW1esQp_RvU)
+* [The most common iNav mistakes](https://youtu.be/fVJYodLimD8)
