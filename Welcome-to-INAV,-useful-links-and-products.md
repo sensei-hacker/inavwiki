@@ -28,24 +28,30 @@ https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Guide
 
 **Suggested flight controllers:**
 
-Matek F411-WING: https://inavflight.com/shop/p/MATEKF411WING
+Matek F765-WING: https://inavflight.com/shop/s/bg/1557661
 
 Matek F405-WING: https://inavflight.com/shop/p/MATEKF405WING
 
 Matek F722-WING: https://inavflight.com/shop/p/MATEKF722WING
+
+Matek F411-WSE:  https://inavflight.com/shop/s/bg/1546243
+
+Matek F411-WING: https://inavflight.com/shop/p/MATEKF411WING
 
 
 **Suggested models to start with:**
 
 Zeta Science Wing Wing Z84: https://inavflight.com/shop/s/bg/988834
 
-Reptile S800: https://inavflight.com/shop/s/bg/1184901
-
 Sonicmodell F1: https://inavflight.com/shop/s/bg/1181349
 
 ARWing 900: https://inavflight.com/shop/s/bg/1175537
 
 Zeta Science C1 Chaser: https://inavflight.com/shop/s/bg/1102080
+
+ZOHD Dart: https://inavflight.com/shop/s/bg/1201965
+
+Sonicmodell Skyhunter: https://inavflight.com/shop/s/bg/1448837
 
 ### Suggested flight controllers if you are building a **copter**:
 
@@ -64,6 +70,8 @@ Zeta Science C1 Chaser: https://inavflight.com/shop/s/bg/1102080
 
 Beitian BN220 GPS: https://inavflight.com/shop/p/BN220
 
+Beitian BN220T GPS: https://inavflight.com/shop/s/bg/1446169
+
 Beitian BN180 GPS: https://inavflight.com/shop/p/BN180
 
 Beitian BN880Q GPS+COMPASS: https://inavflight.com/shop/s/bg/1450469 (compact and improved BN880)
@@ -77,6 +85,7 @@ Matek M8Q+ COMPASS https://inavflight.com/shop/s/bg/1337288
 Matek M8Q https://inavflight.com/shop/s/bg/1337287
 
 **Transmitters:**
+FrSky Taranis X9D Plus 2019: https://inavflight.com/shop/s/bg/1537808
 
 FrSky Taranis X9D Plus:  https://inavflight.com/shop/s/bg/1121799
 
@@ -104,8 +113,6 @@ EMAX motors:  https://inavflight.com/shop/s/bg/1307136
 
 **FPV Cameras:**
 
-Runcam Split 2 Mini: https://inavflight.com/shop/s/bg/1344675 (HD)
-
 Runcam Micro Swift 2: https://inavflight.com/shop/s/bg/1179743
 
 Foxeer Nano/Mini/Standard Predator 4: https://inavflight.com/shop/s/bg/1558735
@@ -118,15 +125,12 @@ RunCam Micro Eagle: https://inavflight.com/shop/s/bg/1259121
 
 Runcam Micro Sparrow 2: https://inavflight.com/shop/s/bg/1271733
 
-Foxeer Falkor: https://inavflight.com/shop/s/bg/1331565
-
-Foxeer Micro Falkor: https://inavflight.com/shop/s/bg/1375560
-
 Foxeer Arrow Micro Pro: https://inavflight.com/shop/s/bg/1248761
 
 **VTX**
 
 Eachine ATX03S: https://inavflight.com/shop/s/bg/1427187 (perfect for compact builds!)
 
+AKK X2 Ultimate: https://inavflight.com/shop/s/bg/1388013
 
 _Thanks, and happy flying!_
