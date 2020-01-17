@@ -131,6 +131,29 @@ LoRA provides the capability for low power / long range telemetry using similar 
 
 Other solutions include Dragonlink. Contributions to the wiki solicited!
 
+DRAGONLINK INSTRUCTIONS:
+Setup your dragonlink per this.. http://www.dragonlinkrc.com/instructions/v3equipment/v3completesystem/
+
+I did not enable mavlink decoding and set everything to 57600 baud. So basically I am using the DL "Radio Modem" feature and no flow control. I also use a USB connection from DL TX to Win 10 PC running iNAV.
+
+I setup DL 1W RX UEXP3 (middle one) to:
+
+Pin 3: Serial In
+Pin 4: Serial Out
+Pin 5: Vector Telemetry (NOTE I DO NOT HAVE THIS WIRE PHYSICALLY CONNECTED TO THE F722)
+Pin 6: SBUS
+
+I do not recommend using the "wireless" option, it induced significant lag on initial connection. So just set iNAV to the right port and baud (57600) and hit connect. It takes just slightly longer than a direct USB connection.
+
+This is being connected to a Matek F722-WING using hardware UART1 MSP at 57600 baud on latest stable iNAV as of 01/15/2020.
+
+I verified CLI commands work however it causes a reboot of FC and connection breaks.
+
+I also did a DL TX power off test and it reconnected without an issue when left disconnected for ~30s.
+
+No test flights have been performed yet.
+
+
 # Telemetry Protocols
 
 Data is transferred between the GCS and the FC using a "Telemetry Protocol". Currently, iNav offers two protocols (MSP and LTM), both of which are supported by ezgui and [mwp](https://github.com/stronnag/mwptools). There is also a minimal implementation of MAVLink ([mwp](https://github.com/stronnag/mwptools) already supports this MAVLink subset), this will allow other tools to be used, such as the cross-platform [QGroundControl](http://qgroundcontrol.org/). The MAVLink implementation only supports push telemetry (i.e. mission monitoring, not mission planning).
