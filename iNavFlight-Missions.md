@@ -146,7 +146,7 @@ Pin 5: SBUS
 
 Note: The 1W DL RX needs at least 5V, the 4v5 pad of my F722-WING did not have the mustard to power the DL RX so i just ran a male-male servo jumper from PWM rail of DL RX to PWM rail of F722-WING. Pins 1,4,6 of the UEXP3 connector were not physically connected. DO NOT POWER THE RX FROM MORE THAN ONE LOCATION!
 
-I do not recommend using the "wireless" option, it induced significant lag on initial connection. So just set iNAV to the right port and baud (57600) and hit connect. It takes just slightly longer than a direct USB connection.
+I do not recommend using the "wireless" option in iNAV Configurator, it induced significant lag on initial connection. So just set iNAV to the right port and baud (57600) and hit connect. It takes just slightly longer than a direct USB connection.
 
 This is being connected to a Matek F722-WING using hardware UART1 MSP2 at 57600 baud on latest stable iNAV as of 01/15/2020.
 
