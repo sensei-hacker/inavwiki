@@ -132,18 +132,19 @@ LoRA provides the capability for low power / long range telemetry using similar 
 Other solutions include Dragonlink. Contributions to the wiki solicited!
 
 DRAGONLINK INSTRUCTIONS:
+
 Setup your dragonlink per this.. http://www.dragonlinkrc.com/instructions/v3equipment/v3completesystem/
 
 I did not enable mavlink decoding and set everything to 57600 baud. So basically I am using the DL "Radio Modem" feature and no flow control. I also use a USB connection from DL TX to Win 10 PC running iNAV.
 
 I setup DL 1W RX UEXP3 (middle one) to:
 
-Pin 3: Serial In
-Pin 4: Serial Out
-Pin 5: Vector Telemetry (NOTE I DO NOT HAVE THIS WIRE PHYSICALLY CONNECTED TO THE F722)
-Pin 6: SBUS
+Pin 2: Serial In
+Pin 3: Serial Out
+Pin 4: Vector Telemetry (NOTE I DO NOT HAVE THIS WIRE PHYSICALLY CONNECTED TO THE F722)
+Pin 5: SBUS
 
-Note: The 1W DL RX needs at least 5V, the 4v5 pad of my F722-WING did not have the mustard to power the DL RX so i just ran a male-male servo jumper from PWM rail of DL RX to PWM rail of F722-WING.
+Note: The 1W DL RX needs at least 5V, the 4v5 pad of my F722-WING did not have the mustard to power the DL RX so i just ran a male-male servo jumper from PWM rail of DL RX to PWM rail of F722-WING. Pins 1,4,6 of the UEXP3 connector were not physically connected. DO NOT POWER THE RX FROM MORE THAN ONE LOCATION!
 
 I do not recommend using the "wireless" option, it induced significant lag on initial connection. So just set iNAV to the right port and baud (57600) and hit connect. It takes just slightly longer than a direct USB connection.
 
