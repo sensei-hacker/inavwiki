@@ -268,8 +268,8 @@ If you have a 3DR radio with the MW/MSP specific firmware, the follow data are s
 
 # Implementations
 
-The MSP NAV message set is implemented by mwptools (Linux), ezgui (Android) and WinGUI (MS Windows).
+The MSP NAV message set is implemented by mwptools (Linux), ezgui / mission planner for iNav (Android), WinGUI (MS Windows) and the iNav Configurator.
 
 # XML Mission Files
 
-mwptools, ezgui (and WinGUI) share an XML mission file format. A [reverse engineered definition (XSD)](https://github.com/stronnag/mwptools/blob/master/samples/mw-mission.xsd) can be found in the mwp samples  directory.
+mwptools, ezgui / mp4i, iNav Configurator (and WinGUI) share an XML mission file format. A [reverse engineered definition (XSD)](https://github.com/stronnag/mwptools/blob/master/samples/mw-mission.xsd) can be found in the mwp samples  directory.
