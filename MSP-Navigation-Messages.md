@@ -25,7 +25,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | 7 | SET HEAD [3]  | Heading  | | | | | | |
 | 8 | LAND | | | | ✔ | ✔ | ✔ | |
 
-1. Leg speed is an iNav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2).
+1. Leg speed is an iNav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
 2. Not used by iNav
 3. Once SET_HEAD is invoked, it remains active until cleared by a P1 value of -1.
 4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For iNav, the mission will continue if LAND is not set, and valid waypoints follow.
