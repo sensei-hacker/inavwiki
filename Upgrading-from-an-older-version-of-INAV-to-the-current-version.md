@@ -77,7 +77,7 @@ There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD
 ## Flash the lastest INAV firmware to your board
 Now it's time to flash the lastest INAV firmware to your flight controller board.
 * On INAV Configurator, go to the "Firmware Flasher" tab
-* Select the proper TARGET
+* Select the proper TARGET of the flight controller board
 * Make sure that the "Full Erase" option is ENABLED
 * Click Load Firmware (Online), and then click "Flash Firmware"
 * Wait for the completion of the process
@@ -87,7 +87,7 @@ Now it's time to flash the lastest INAV firmware to your flight controller board
 * Go to the CLI tab
 * Copy all the settings text from your text file and paste on the CLI input text box, then press ENTER.
 * Wait for all the settings to be typed on the output text box.
-* If no errors occurred, Flight controller should the settings and reboot by itself.
+* If no errors occurred, Flight controller should save the settings and reboot by itself.
 
 ## Upload your preferred font to the OSD chip
 The font file changes between versions! So you need to update the font stored on the OSD chip in order to OSD works properly.
