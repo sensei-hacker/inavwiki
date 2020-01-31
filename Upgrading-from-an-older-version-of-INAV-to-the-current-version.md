@@ -6,7 +6,7 @@ This page is intended to make it easy for you to upgrade your INAV older version
 
 In general, all comes to the following steps:
 * Get the lastest configurator.
-* Get a diff all from your board
+* Get a `diff all` from your board
 * Determine the current version and the TARGET of INAV flashed to your flight controller board.
 * Check which values has changed over the newer versions, and adjust as necessary
 * Flash the lastest INAV firmware to your board
@@ -21,7 +21,7 @@ Download and install the lastest [configurator](https://github.com/iNavFlight/in
 
 1. Open the configurator program.
 2. Connect the flight controller board to the USB port on PC, then click connect button on the configurator.
-3. Go to the CLI tab and type `diff all'. It should return a big text with all your settings. Save this text on the notepad.
+3. Go to the CLI tab and type `diff all`. It should return a big text with all your settings. Save this text on the notepad.
 
 
 ## Determine your current INAV firmware version and target
