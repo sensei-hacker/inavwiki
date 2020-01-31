@@ -41,19 +41,10 @@ Take note of the TARGET which is just after the `INAV/` and VERSION number which
 
 Now it's time to change your settings file so it becomes compatible with the lastest INAV firmware. Follow your specific version instructions.
 
-### From 2.3.X to 2.4.0
+### From 2.2.X or 2.3.X to 2.4.0
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 
-### From 2.2.X to 2.4.0
-* Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
-
-### From 2.1.X to 2.4.0
-* Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
-* If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
-
-Arming with sticks command is not supported anymore, so if you were using sticks commands for arming, after flashing and pasting the settings, add an arming switch in the Modes tab in the configurator.
-
-### From 2.0.X to 2.4.0
+### From 2.0.X ot 2.1.X to 2.4.0
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 
@@ -64,6 +55,47 @@ Arming with sticks command is not supported anymore, so if you were using sticks
 * If you armed with via sticks, add an arming switch in the Modes tab in the configurator.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
+
+There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD framework and new calibration scales for accelerometer and magnetometer. For that reason, you'll need to set this up again and the previous settings will not work. So, after flashing firmware and pasting the adjusted settings, don't forget to:
+
+* Go to the Mixer tab and load and apply your desired mixer.
+* Calibrate the accelerometer following the steps in the dedicated tab. Only first two steps need to be made in the right order.
+* Calibration of the magnetometer should be done at the field. The magnetic field indoors can be distorted and led to a bad calibration.
+* Restore manually your OSD layout using the screenshot and upload the font you like using the dedicated button.
+* Carefully check all the configuration and check on the bench without installed propellers if everything looks good. In particular, check if the model preview behaves correctly when you are moving your model and check surfaces movements for an airplane.
+* Arming with sticks command is not supported anymore, so if you were using sticks commands for arming add an arming switch in the Modes tab in the configurator.
+
+### From 1.7.X or 1.8.x to 2.4.0
+* Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
+* If you armed with via sticks, add an arming switch in the Modes tab in the configurator.
+* If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
+* Delete all lines starting with: mixer acczero accgain magzero osd.
+* Find `vbat_scale`, `vbat_max_cell_voltage`, `vbat_warning_cell_voltage` and `vbat_min_cell_voltage` values on your settings, and multiply their values by 10.
+
+There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD framework and new calibration scales for accelerometer and magnetometer. For that reason, you'll need to set this up again and the previous settings will not work. So, after flashing firmware and pasting the adjusted settings, don't forget to:
+
+* Go to the Mixer tab and load and apply your desired mixer.
+* Calibrate the accelerometer following the steps in the dedicated tab. Only first two steps need to be made in the right order.
+* Calibration of the magnetometer should be done at the field. The magnetic field indoors can be distorted and led to a bad calibration.
+* Restore manually your OSD layout using the screenshot and upload the font you like using the dedicated button.
+* Carefully check all the configuration and check on the bench without installed propellers if everything looks good. In particular, check if the model preview behaves correctly when you are moving your model and check surfaces movements for an airplane.
+* Arming with sticks command is not supported anymore, so if you were using sticks commands for arming add an arming switch in the Modes tab in the configurator.
+
+### From 1.6.x to 2.4.0
+* Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
+* If you armed with via sticks, add an arming switch in the Modes tab in the configurator.
+* If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
+* Delete all lines starting with: mixer acczero accgain magzero osd.
+* Find `vbat_scale`, `vbat_max_cell_voltage`, `vbat_warning_cell_voltage` and `vbat_min_cell_voltage` values on your settings, and multiply their values by 10.
+* Find `mag_hold_rate_limit` and replace by `heading_hold_rate_limit` (renamed parameter)
+* Find `nav_max_speed` and replace by `nav_auto_speed` (renamed parameter)
+* Find `nav_max_climb_rate` and replace by `nav_auto_climb_rate` (renamed parameter)
+* Remove `nav_fw_roll2pitch` parameter (obsolete)
+* Find all lines starting with `servo`, and remove the fifth and the sixth arguments of the parameter. 
+
+Example: `servo 3 1070 1950 1500 90 90 -80 -1`
+
+Will become: `servo 3 1070 1950 1500 -80 -1`
 
 There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD framework and new calibration scales for accelerometer and magnetometer. For that reason, you'll need to set this up again and the previous settings will not work. So, after flashing firmware and pasting the adjusted settings, don't forget to:
 
