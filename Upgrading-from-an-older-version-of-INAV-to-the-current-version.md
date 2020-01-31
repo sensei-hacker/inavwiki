@@ -11,7 +11,7 @@ In general, all comes to the following steps:
 * Check which values has changed over the newer versions, and adjust as necessary
 * Flash the lastest INAV firmware to your board
 * Paste the adjusted settings on the CLI
-* Upload your favourite font to the OSD chip
+* Upload your preferred font to the OSD chip
 
 ## Get the lastest configurator
 
@@ -90,7 +90,7 @@ Now it's time to flash the lastest INAV firmware to your flight controller board
 * Wait for all the settings to be typed on the output text box.
 * If no errors occurred, Flight controller should the settings and reboot by itself.
 
-## Upload your favourite font to the OSD chip
+## Upload your preferred font to the OSD chip
 The font file changes between versions! So you need to update the font stored on the OSD chip in order to OSD works properly.
 * Go to the OSD Tab on the Configurator
 * In the bottom right corner, there's a "Font" button. Click it.
