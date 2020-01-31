@@ -49,13 +49,15 @@ Now it's time to change your settings file so it becomes compatible with the las
 
 ### From 2.1.X to 2.4.0
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
-* If you armed with via sticks, add an arming switch in the Modes tab in the configurator.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
+
+Arming with sticks command is not supported anymore, so after flashing and pasting the settings, add an arming switch in the Modes tab in the configurator.
 
 ### From 2.0.X to 2.4.0
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
-* If you armed with via sticks, add an arming switch in the Modes tab in the configurator.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
+
+Arming with sticks command is not supported anymore, so after flashing and pasting the settings, add an arming switch in the Modes tab in the configurator.
 
 ### From 1.9.x to 2.4.0
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
@@ -70,6 +72,8 @@ There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD
 * Calibration of the magnetometer should be done at the field. The magnetic field indoors can be distorted and led to a bad calibration.
 * Restore manually your OSD layout using the screenshot and upload the font you like using the dedicated button.
 * Carefully check all the configuration and check on the bench without installed propellers if everything looks good. In particular, check if the model preview behaves correctly when you are moving your model and check surfaces movements for an airplane.
+
+Arming with sticks command is not supported anymore, so after flashing and pasting the settings, add an arming switch in the Modes tab in the configurator.
 
 ## Flash the lastest INAV firmware to your board
 Now it's time to flash the lastest INAV firmware to your flight controller board.
