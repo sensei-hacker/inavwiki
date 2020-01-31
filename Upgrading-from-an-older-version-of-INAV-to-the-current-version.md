@@ -44,7 +44,7 @@ Now it's time to change your settings file so it becomes compatible with the las
 ### From 2.2.X or 2.3.X to 2.4.0
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 
-### From 2.0.X ot 2.1.X to 2.4.0
+### From 2.0.X or 2.1.X to 2.4.0
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 
