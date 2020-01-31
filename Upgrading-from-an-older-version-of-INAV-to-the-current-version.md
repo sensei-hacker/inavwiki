@@ -106,6 +106,10 @@ There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD
 * Carefully check all the configuration and check on the bench without installed propellers if everything looks good. In particular, check if the model preview behaves correctly when you are moving your model and check surfaces movements for an airplane.
 * Arming with sticks command is not supported anymore, so if you were using sticks commands for arming add an arming switch in the Modes tab in the configurator.
 
+### From 1.5.x or earlier versions
+
+You version is A LOT out of date. We really recommend you to set everything up from scratch. Your current settings will not be useful. But don't worry, INAV became much easier to set up since this version.
+
 ## Flash the lastest INAV firmware to your board
 Now it's time to flash the lastest INAV firmware to your flight controller board.
 * On INAV Configurator, go to the "Firmware Flasher" tab
