@@ -108,7 +108,7 @@ There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD
 
 ### From 1.5.x or earlier versions
 
-You version is A LOT out of date. We really recommend you to set everything up from scratch. Your current settings will not be useful. But don't worry, INAV became much easier to set up since this version.
+Your version is A LOT out of date. We really recommend you to set everything up from scratch. Your current settings will not be useful. But don't worry, INAV became much easier to set up since this version.
 
 ## Flash the lastest INAV firmware to your board
 Now it's time to flash the lastest INAV firmware to your flight controller board.
