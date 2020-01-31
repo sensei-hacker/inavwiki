@@ -52,7 +52,6 @@ Arming with sticks command is not supported anymore, so if you were using sticks
 
 ### From 1.9.x to 2.4.0
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
-* If you armed with via sticks, add an arming switch in the Modes tab in the configurator.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
 
@@ -67,7 +66,6 @@ There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD
 
 ### From 1.7.X or 1.8.x to 2.4.0
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
-* If you armed with via sticks, add an arming switch in the Modes tab in the configurator.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
 * Find `vbat_scale`, `vbat_max_cell_voltage`, `vbat_warning_cell_voltage` and `vbat_min_cell_voltage` values on your settings, and multiply their values by 10.
@@ -83,7 +81,6 @@ There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD
 
 ### From 1.6.x to 2.4.0
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
-* If you armed with via sticks, add an arming switch in the Modes tab in the configurator.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
 * Find `vbat_scale`, `vbat_max_cell_voltage`, `vbat_warning_cell_voltage` and `vbat_min_cell_voltage` values on your settings, and multiply their values by 10.
