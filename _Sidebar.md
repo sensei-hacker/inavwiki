@@ -31,6 +31,7 @@
  - [MSP Navigation Messages](/iNavFlight/inav/wiki/MSP-Navigation-Messages)
  - [PID Attenuation and scaling](/iNavFlight/inav/wiki/PID-Attenuation-and-scaling)
  - [Tune INAV PIFF controller for fixedwing](/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing)
+ - [Pixel OSD FAQs](https://github.com/iNavFlight/inav/wiki/Pixel-OSD-FAQs)
  - [TROUBLESHOOTING](/iNavFlight/inav/wiki/TROUBLESHOOTING)
 
 # For Developers
