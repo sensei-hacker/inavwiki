@@ -4,7 +4,12 @@ This page is intended to make it easy for you to upgrade your INAV older version
 
 **The current version of INAV is 2.4** (as the time this document was been last updated).
 
-INAV version numbers has a pattern: First number is the Major version, second number is the minor version and the third number is the revision number. To determine the version, only the first two numbers matters, the last number only deals with bugs and don't change functionality.
+> Note that INAV version numbers has a pattern: There are three numbers separated by dots (2.4.0).
+> - The first number is the major version. This number changes only when BIG changes are made on INAV.
+> - The second number is the minor version. This number changes only when SMALL changes are made on INAV.
+> - The third number is the revision number. This number changes only when some bug is fixed on INAV and no new functionality is added.
+> 
+> To determine the version, only the first two numbers are important.
 
 In general, all comes to the following steps:
 * Get the lastest configurator.
@@ -118,7 +123,6 @@ There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD
 
 * Carefully check all the configuration and check on the bench without installed propellers if everything looks good. In particular, check if the model preview behaves correctly when you are moving your model and check surfaces movements for an airplane.
 * Arming with sticks command is not supported anymore, so if you were using sticks commands for arming add an arming switch in the Modes tab in the configurator.
-
 
 ## Enjoy the lastest INAV version!
 
