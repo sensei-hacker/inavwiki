@@ -2,7 +2,9 @@
 
 This page is intended to make it easy for you to upgrade your INAV older version to the current INAV version. The process is straightforward as long as you follow the instructions detailed here.
 
-**The current version of INAV is 2.4.0** (as the time this document was been last updated).
+**The current version of INAV is 2.4** (as the time this document was been last updated).
+
+INAV version numbers has a pattern: First number is the Major version, second number is the minor version and the third number is the revision number. To determine the version, only the first two numbers matters, the last number only deals with bugs and don't change functionality.
 
 In general, all comes to the following steps:
 * Get the lastest configurator.
@@ -13,16 +15,18 @@ In general, all comes to the following steps:
 * Paste the adjusted settings on the CLI
 * Upload your preferred font to the OSD chip
 
-## Get the lastest configurator
+> Note: Flight Controllers with F1 chip will only work up to version 1.7.3.
 
-Download and install the lastest [configurator](https://github.com/iNavFlight/inav-configurator/releases)
+## Get the lastest INAV configurator
 
-## Get all your current settings
+Download and install the lastest configurator on the [INAV Configurator Releases page](https://github.com/iNavFlight/inav-configurator/releases).
+
+## Get all current settings from your flight controller board
 
 1. Open the configurator program.
 2. Connect the flight controller board to the USB port on PC, then click connect button on the configurator.
-3. Go to the CLI tab and type `diff all`. It should return a big text with all your settings. Save this text on the notepad.
-
+3. Go to the CLI tab and type `diff all`. It should return a big text with all your settings. 
+4. Save this text on your favorite text editor (like notepad).
 
 ## Determine your current INAV firmware version and target
 
@@ -35,51 +39,33 @@ On your settings file, just in the beginning, you should have something like thi
 ```
 
 Take note of the TARGET which is just after the `INAV/` and VERSION number which is just after the target
-(In this case, TARGET is MATEKF405 and VERSION is 2.2.1)
+(In this case, TARGET is **MATEKF405** and VERSION is **2.2.1**)
 
 ## Check which values has changed over the newer versions, and adjust as necessary
 
 Now it's time to change your settings file so it becomes compatible with the lastest INAV firmware. Follow your specific version instructions.
 
-### From 2.2.X or 2.3.X to 2.4.0
+### From 2.2 or 2.3 to 2.4
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 
-### From 2.0.X or 2.1.X to 2.4.0
+### From 2.0 or 2.1 to 2.4
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 
 Arming with sticks command is not supported anymore, so if you were using sticks commands for arming, after flashing and pasting the settings, add an arming switch in the Modes tab in the configurator.
 
-### From 1.9.x to 2.4.0
+### From 1.9 to 2.4
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
 
-There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD framework and new calibration scales for accelerometer and magnetometer. For that reason, you'll need to set this up again and the previous settings will not work. So, after flashing firmware and pasting the adjusted settings, don't forget to:
-
-* Go to the Mixer tab and load and apply your desired mixer.
-* Calibrate the accelerometer following the steps in the dedicated tab. Only first two steps need to be made in the right order.
-* Calibration of the magnetometer should be done at the field. The magnetic field indoors can be distorted and led to a bad calibration.
-* Restore manually your OSD layout using the screenshot and upload the font you like using the dedicated button.
-* Carefully check all the configuration and check on the bench without installed propellers if everything looks good. In particular, check if the model preview behaves correctly when you are moving your model and check surfaces movements for an airplane.
-* Arming with sticks command is not supported anymore, so if you were using sticks commands for arming add an arming switch in the Modes tab in the configurator.
-
-### From 1.7.X or 1.8.x to 2.4.0
+### From 1.7 or 1.8 to 2.4
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
 * Find `vbat_scale`, `vbat_max_cell_voltage`, `vbat_warning_cell_voltage` and `vbat_min_cell_voltage` values on your settings, and multiply their values by 10.
 
-There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD framework and new calibration scales for accelerometer and magnetometer. For that reason, you'll need to set this up again and the previous settings will not work. So, after flashing firmware and pasting the adjusted settings, don't forget to:
-
-* Go to the Mixer tab and load and apply your desired mixer.
-* Calibrate the accelerometer following the steps in the dedicated tab. Only first two steps need to be made in the right order.
-* Calibration of the magnetometer should be done at the field. The magnetic field indoors can be distorted and led to a bad calibration.
-* Restore manually your OSD layout using the screenshot and upload the font you like using the dedicated button.
-* Carefully check all the configuration and check on the bench without installed propellers if everything looks good. In particular, check if the model preview behaves correctly when you are moving your model and check surfaces movements for an airplane.
-* Arming with sticks command is not supported anymore, so if you were using sticks commands for arming add an arming switch in the Modes tab in the configurator.
-
-### From 1.6.x to 2.4.0
+### From 1.6 to 2.4
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
@@ -94,16 +80,7 @@ Example: `servo 3 1070 1950 1500 90 90 -80 -1`
 
 Will become: `servo 3 1070 1950 1500 -80 -1`
 
-There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD framework and new calibration scales for accelerometer and magnetometer. For that reason, you'll need to set this up again and the previous settings will not work. So, after flashing firmware and pasting the adjusted settings, don't forget to:
-
-* Go to the Mixer tab and load and apply your desired mixer.
-* Calibrate the accelerometer following the steps in the dedicated tab. Only first two steps need to be made in the right order.
-* Calibration of the magnetometer should be done at the field. The magnetic field indoors can be distorted and led to a bad calibration.
-* Restore manually your OSD layout using the screenshot and upload the font you like using the dedicated button.
-* Carefully check all the configuration and check on the bench without installed propellers if everything looks good. In particular, check if the model preview behaves correctly when you are moving your model and check surfaces movements for an airplane.
-* Arming with sticks command is not supported anymore, so if you were using sticks commands for arming add an arming switch in the Modes tab in the configurator.
-
-### From 1.5.x or earlier versions
+### From 1.5 or earlier versions
 
 Your version is A LOT out of date. We really recommend you to set everything up from scratch. Your current settings will not be useful. But don't worry, INAV became much easier to set up since this version.
 
@@ -129,8 +106,24 @@ The font file changes between versions! So you need to update the font stored on
 * Select the font that best pleases you, and then click "Upload" button.
 * Wait for the process to complete. Flight Controller will reboot automatically.
 
+## If you are upgrading from version 1
+There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD framework and new calibration scales for accelerometer and magnetometer. For that reason, you'll need to set this up again and the previous settings will not work.
+
+* Go to the Mixer tab and load and apply your desired mixer.
+* Calibrate the accelerometer following the steps in the dedicated tab. Only first two steps need to be made in the right order.
+* Calibration of the magnetometer should be done at the field. The magnetic field indoors can be distorted and led to a bad calibration.
+* Restore manually your OSD layout using the screenshot and upload the font you like using the dedicated button.
+
+## Check if everything is working as it should
+
+* Carefully check all the configuration and check on the bench without installed propellers if everything looks good. In particular, check if the model preview behaves correctly when you are moving your model and check surfaces movements for an airplane.
+* Arming with sticks command is not supported anymore, so if you were using sticks commands for arming add an arming switch in the Modes tab in the configurator.
+
 
 ## Enjoy the lastest INAV version!
 
 If you done everything right, now your aircraft should be flying ok.
+
+INAV adds lots of new features at every new version! This guide helped you to make your aircraft fly with the newer version as it was flying before, but now it's time learn all the new tricks that INAV can do! You can check the Release Notes of every version since your previous one to be aware of that.
+
 Enjoy!
