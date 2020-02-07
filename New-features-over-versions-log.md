@@ -2,6 +2,20 @@ This document is intended to show the most relevant new features of each version
 
 Every released version of INAV brings some changes on funcionality that is already working, bug fixes and new funcionalities. This document will focus only on the major changes and will not go deep on smaller ones. To check a detailed list of changes for each version, check the release notes on that version release download page.
 
+## New on version 1.5
+**OSD support** - Targets with onboard OSD now work properly.
+
+## New on version 1.6
+* **New PIFF controller for fixed-wing aircraft** - Introducing new Proportional + Integral + Feed Forward controller for airplanes. It's more suitable for airplanes due to the nature of control they are using. It also puts less stress on servos.
+* **RTH sanity checking** - RTH sanity checking feature will notice if distance to home is increasing during RTH and once amount of increase exceeds a certain threshold defined by nav_rth_abort_threshold CLI parameter instead of continuing RTH machine will enter emergency landing, self-level and go down safely. Default threshold is set to 500m which is safe enough for both multirotor machines and airplanes.
+
+## New on version 1.7
+* **Turn assistant** - INAV will automatically do a coordinated balanced turn with ailerons, elevator and rudder.
+* **Airplane Autotune mode** - Uses changes in flight attitude input by the pilot to learn the tuning values for roll, pitch and yaw tuning.
+
+## New on versions 1.8 to 1.9
+* Lots of small improvements on things what already existed, but fewer new features.
+
 ## New on version 2.0
 * **New mixer and mixer GUI** - There are no predefined mixers on the firmware side. Mixers now are fully configurable.
 * **Added NAV CRUISE flight mode for fixed wing** - When enabled the machine will try to maintain the current heading and compensate for any external disturbances.
