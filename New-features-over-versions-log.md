@@ -2,6 +2,25 @@ This document is intended to show the most relevant new features of each version
 
 Every released version of INAV brings some changes on funcionality that is already working, bug fixes and new funcionalities. This document will focus only on the major changes and will not go deep on smaller ones. To check a detailed list of changes for each version, check the release notes on that version release download page.
 
+## New on version 2.0
+* **Drop support for STM32F1 Flight Controller boards***
+* **New mixer and mixer GUI** - There are no predefined mixers on the firmware side. Mixers now are fully configurable.
+* **Added NAV CRUISE flight mode for fixed wing** - When enabled the machine will try to maintain the current heading and compensate for any external disturbances.
+* **OSD improvements** - Now it is possible to have three OSD layouts and switch between them via an RC channel. Furthermore new two modes have been added: map and radar.
+* **Full VTX control via Smart Audio / TRAMP** - User can now select VTX settings from the configurator or via the OSD CMS. 
+* **Wind Estimation for Fixed Wing**
+
+## New on version 2.1
+* **DSHOT Support** - A digital protocol, like what DSHOT is, can substain a certain amount of noise with no performance degradation and allows a very smooth motor output.
+* **Multirotor braking mode**
+* **PINIO support**
+
+## New on version 2.2
+* **Logic Conditions** - It's a new function framework that allows to activate and deactivate specific servo mixer rules.
+* **Cellular telemetry via text messages** - Uses a SimCom SIM800 series cellular module to provide telemetry via text messages.
+* **Support for INAV Radar** - Introduces the support for Radar ESP32 boards. They can be used to share information (including position) between multiple machines.
+* **Added option to continue mission out of radio range**
+
 ## New on version 2.3
 * **ESC Telemetry** - It's a feature of DSHOT ESCs to send some data back to the flight controller - voltage, current, temperature, motor RPM.
 * **Dynamic Filters** - Port of Betaflight dynamic filtering.
