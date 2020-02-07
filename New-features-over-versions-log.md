@@ -3,7 +3,7 @@ This document is intended to show the most relevant new features of each version
 Every released version of INAV brings some changes on funcionality that is already working, bug fixes and new funcionalities. This document will focus only on the major changes and will not go deep on smaller ones. To check a detailed list of changes for each version, check the release notes on that version release download page.
 
 ## New on version 1.5
-**OSD support** - Targets with onboard OSD now work properly.
+* **OSD support** - Targets with onboard OSD now work properly.
 
 ## New on version 1.6
 * **New PIFF controller for fixed-wing aircraft** - Introducing new Proportional + Integral + Feed Forward controller for airplanes. It's more suitable for airplanes due to the nature of control they are using. It also puts less stress on servos.
