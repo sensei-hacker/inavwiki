@@ -19,6 +19,7 @@
  - [iNav Navigation Modes](/iNavFlight/inav/wiki/Navigation-modes)
  - [iNav Missions / Waypoint flying](/iNavFlight/inav/wiki/iNavFlight-Missions)
  - [iNav CLI variables](/iNavFlight/inav/wiki/iNav-CLI-variables)
+ - [Upgrading from an older version](/inav/wiki/Upgrading-from-an-older-version-of-INAV-to-the-current-version)
 
 # Additional Links
 
