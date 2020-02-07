@@ -3,7 +3,6 @@ This document is intended to show the most relevant new features of each version
 Every released version of INAV brings some changes on funcionality that is already working, bug fixes and new funcionalities. This document will focus only on the major changes and will not go deep on smaller ones. To check a detailed list of changes for each version, check the release notes on that version release download page.
 
 ## New on version 2.0
-* **Drop support for STM32F1 Flight Controller boards***
 * **New mixer and mixer GUI** - There are no predefined mixers on the firmware side. Mixers now are fully configurable.
 * **Added NAV CRUISE flight mode for fixed wing** - When enabled the machine will try to maintain the current heading and compensate for any external disturbances.
 * **OSD improvements** - Now it is possible to have three OSD layouts and switch between them via an RC channel. Furthermore new two modes have been added: map and radar.
