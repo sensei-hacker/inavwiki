@@ -6,17 +6,22 @@ Every released version of INAV brings some changes on funcionality that is alrea
 
 ## New on version 1.5
 * **OSD support** - Targets with onboard OSD now work properly.
+* [INAV 1.5 Release notes](/iNavFlight/inav/releases/tag/1.5.0)
 
 ## New on version 1.6
 * **New PIFF controller for fixed-wing aircraft** - Introducing new Proportional + Integral + Feed Forward controller for airplanes. It's more suitable for airplanes due to the nature of control they are using. It also puts less stress on servos.
 * **RTH sanity checking** - RTH sanity checking feature will notice if distance to home is increasing during RTH and once amount of increase exceeds a certain threshold defined by nav_rth_abort_threshold CLI parameter instead of continuing RTH machine will enter emergency landing, self-level and go down safely. Default threshold is set to 500m which is safe enough for both multirotor machines and airplanes.
+* [INAV 1.6 Release notes](/iNavFlight/inav/releases/tag/1.6.0)
 
 ## New on version 1.7
 * **Turn assistant** - INAV will automatically do a coordinated balanced turn with ailerons, elevator and rudder.
 * **Airplane Autotune mode** - Uses changes in flight attitude input by the pilot to learn the tuning values for roll, pitch and yaw tuning.
+* [INAV 1.7 Release notes](/iNavFlight/inav/releases/tag/1.7.0)
 
 ## New on versions 1.8 to 1.9
 * Lots of small improvements on things what already existed, but fewer new features.
+* [INAV 1.8 Release notes](/iNavFlight/inav/releases/tag/1.8.0)
+* [INAV 1.9 Release notes](/iNavFlight/inav/releases/tag/1.9.0)
 
 ## New on version 2.0
 * **New mixer and mixer GUI** - There are no predefined mixers on the firmware side. Mixers now are fully configurable.
@@ -24,23 +29,27 @@ Every released version of INAV brings some changes on funcionality that is alrea
 * **OSD improvements** - Now it is possible to have three OSD layouts and switch between them via a RC channel. Furthermore new two modes have been added: map and radar.
 * **Full VTX control via Smart Audio / TRAMP** - User can now select VTX settings from the configurator or via the OSD CMS. 
 * **Wind Estimation for Fixed Wing**
+* [INAV 2.0 Release notes](/iNavFlight/inav/wiki/2.0.0-Release-Notes)
 
 ## New on version 2.1
 * **DSHOT Support** - A digital protocol, like what DSHOT is, can substain a certain amount of noise with no performance degradation and allows a very smooth motor output.
 * **Multirotor braking mode**
 * **PINIO support**
+* [INAV 2.1 Release notes](/iNavFlight/inav/wiki/2.1.0-Release-Notes)
 
 ## New on version 2.2
 * **Logic Conditions** - It's a new function framework that allows to activate and deactivate specific servo mixer rules.
 * **Cellular telemetry via text messages** - Uses a SimCom SIM800 series cellular module to provide telemetry via text messages.
 * **Support for INAV Radar** - Introduces the support for Radar ESP32 boards. They can be used to share information (including position) between multiple machines.
 * **Added option to continue mission out of radio range**
+* [INAV 2.2 Release notes](/iNavFlight/inav/wiki/2.2.0-Release-Notes)
 
 ## New on version 2.3
 * **ESC Telemetry** - It's a feature of DSHOT ESCs to send some data back to the flight controller - voltage, current, temperature, motor RPM.
 * **Dynamic Filters** - Port of Betaflight dynamic filtering.
 * **Global Functions** - Global Functions (abbr. GF) are a mechanism allowing to override certain flight parameters (during flight). Global Functions are activated by Logic Conditions.
 * **Pixel based OSD** - INAV now supports pixel based OSDs and includes a driver for FrSky's OSD.
+* [INAV 2.3 Release notes](/iNavFlight/inav/wiki/2.3.0-Release-Notes)
 
 ## New on version 2.4
 
