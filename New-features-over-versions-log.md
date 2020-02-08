@@ -6,12 +6,12 @@ Every released version of INAV brings some changes on funcionality that is alrea
 
 ## New on version 1.5
 * **OSD support** - Targets with onboard OSD now work properly.
-* [INAV 1.5 Release notes](/iNavFlight/inav/releases/tag/1.5.0)
+* [INAV 1.5 Release notes](/iNavFlight/inav/releases/tag/1.5)
 
 ## New on version 1.6
 * **New PIFF controller for fixed-wing aircraft** - Introducing new Proportional + Integral + Feed Forward controller for airplanes. It's more suitable for airplanes due to the nature of control they are using. It also puts less stress on servos.
 * **RTH sanity checking** - RTH sanity checking feature will notice if distance to home is increasing during RTH and once amount of increase exceeds a certain threshold defined by nav_rth_abort_threshold CLI parameter instead of continuing RTH machine will enter emergency landing, self-level and go down safely. Default threshold is set to 500m which is safe enough for both multirotor machines and airplanes.
-* [INAV 1.6 Release notes](/iNavFlight/inav/releases/tag/1.6.0)
+* [INAV 1.6 Release notes](/iNavFlight/inav/releases/tag/1.6)
 
 ## New on version 1.7
 * **Turn assistant** - INAV will automatically do a coordinated balanced turn with ailerons, elevator and rudder.
@@ -20,7 +20,7 @@ Every released version of INAV brings some changes on funcionality that is alrea
 
 ## New on versions 1.8 to 1.9
 * Lots of small improvements on things what already existed, but fewer new features.
-* [INAV 1.8 Release notes](/iNavFlight/inav/releases/tag/1.8.0)
+* [INAV 1.8 Release notes](/iNavFlight/inav/releases/tag/1.8)
 * [INAV 1.9 Release notes](/iNavFlight/inav/releases/tag/1.9.0)
 
 ## New on version 2.0
