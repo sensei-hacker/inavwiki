@@ -62,16 +62,16 @@ A sensor flip is always to realise
 over the pitch axis. 
 For example:
 
-set mag_align_pitch = 1800 
-set mag_align_roll = 0
-set mag_align_yaw = 2700
-save
+`set mag_align_pitch = 1800` 
+`set mag_align_roll = 0`
+`set mag_align_yaw = 2700`
+`save`
 
 *For 30 Degree Backwards tilted GPS/Compass Module, reduce mag_align_roll about 300
 
 
-set mag_align_roll = -300
-save
+`set mag_align_roll = -300`
+`save`
 
 *Because Magnetometer with cw270° has its roll axis in relation to the Pitch Axis of the FC
 
