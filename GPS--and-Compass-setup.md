@@ -54,6 +54,22 @@ Check your machine at cardinal points (North (0°), East (90°), South (180°), 
 * If the values are incorrect by a multiple of 90°, then the numeric alignment needs to be changed
 * If the values are just randomly wrong across the cardinal points, then FLIP is probably wrong (as well).
 
+If external Compass module is mounted at 30 degrees
+For example at top of a Cam mount,
+Free alignment is possible by Cli commands.
+Cli setting Align_mag will then be ignored. For example cw270flip, so this value is to ADD manualy. 
+A sensor flip is always to realise
+over the pitch axis. 
+For example
+set mag_align_pitch = 1800 
+set mag_align_roll = 0
+set mag_align_yaw = 2700
+save
+
+For 30 Degree Backwards tilted GPS/Compass Module reduce Tilt about 300
+set mag_align_pitch = 1500
+save
+
 ## Initial flight tests
 
 Once  you're content that the static configuration of the compass is correct, it's time to go flying. There is still no guarantee that the machine will not generate interference, so it's advisable to do some controlled testing before attempting more advanced navigation modes:
