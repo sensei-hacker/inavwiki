@@ -46,6 +46,7 @@ The craft returns to the home location.
 The SET_POI type has a location which defines a point of interest (POI). The craft will fly the mission (until a SET_HEAD) with the nose pointing at the POI, which might be useful for aerial photography.
 
 In the image below, the craft will point its nose at the yellow POI (WP#1) for the duration of the mission (as there is no SET_HEAD -1).
+
 ![Set POI ](images/mission-set-poi.png)
 
 ### SET_HEAD (Multirotor only)
@@ -53,6 +54,7 @@ In the image below, the craft will point its nose at the yellow POI (WP#1) for t
 The SET_HEAD type sets the craft's heading (where is 'looks', not the direction of travel). This may be useful for useful for aerial photography. A value of `-1` causing the heading to be 'straight ahead', i.e. the direction of travel. Thus, SET_POI `-1` may used to cancel with a previous valid SET_HEAD or SET_POI.
 
 In the image below, the craft will fly normally ('nose first') to WP 3, it will the fly WP3 - WP5 with the nose pointing 300° (towards the top left of the image) to WP5; the subsequent SET_HEAD -1 will cause the craft to resume normal (nose first) behaviour, which continues to WP7. Here, the SET_POI means the craft will fly WP7 - WP9 with the nose pointing 120° (towards the lower right of the image). WP 10 resumes normal 'nose ahead' behaviour.
+
 ![SET_HEAD image](images/mission-set-head.png)
 
 ## Uploading
