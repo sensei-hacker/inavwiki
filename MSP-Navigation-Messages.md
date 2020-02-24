@@ -18,18 +18,36 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | 1 | WAYPOINT      | speed [1] | | | ✔ | ✔ | ✔ | ✔ |
 | 2 | POSHOLD_UNLIM |          | | | ✔ | ✔ | ✔ | [5] |
-| 3 | POSHOLD TIME  | Seconds | | | ✔ | ✔ | ✔ |    |
+| 3 | POSHOLD TIME  | Seconds | (speed [6],[1])| | ✔ | ✔ | ✔ | [6] |
 | 4 | RTH [4]       | Land | | |    |    | ✔ [2] | ✔ |
 | 5 | SET POI       |          | | | ✔ | ✔ | | |
-| 6 | JUMP          | WP#      | Repeat (-1 = forever) | | | | |  |
+| 6 | JUMP          | WP#      | Repeat (-1 = forever) | | | | | [6] |
 | 7 | SET HEAD [3]  | Heading  | | | | | | |
-| 8 | LAND | | | | ✔ | ✔ | ✔ | |
+| 8 | LAND | | | | ✔ | ✔ | ✔ | ?[6]? |
 
 1. Leg speed is an iNav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
 2. Not used by iNav
 3. Once SET_HEAD is invoked, it remains active until cleared by a P1 value of -1.
 4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For iNav, the mission will continue if LAND is not set, and valid waypoints follow.
 5. If the final entry in a mission is a WP, the iNav treats it as POSHOLD_UNLIM.
+6. Under development for iNav 2.5.
+
+## Modifier actions
+A number of the WP types (JUMP, SET_POI, SET_HEAD, RTH) act as modifiers to the current location (i.e. the previous WP), as follows:
+
+### JUMP
+JUMP facilitates adding loop to mission, the first parameter is the WP to jump to, which must be prior to the JUMP WP, and the second parameter is the number of times the JUMP is executed. A P2 value of `-1` means JUMP indefinitely (i.e. the pilot must eventually manually abort the mission and take control).
+
+### RTH
+The craft returns to the home location.
+
+### SET POI (Multirotor only)
+
+The SET_POI type has a location which defines a point of interest (POI). The craft will fly the mission (until a SET_HEAD) with the nose pointing at the POI, which might be useful for aerial photography.
+
+### SET_HEAD (Multirotor only)
+
+The SET_HEAD type sets the craft's heading (where is 'looks', not the direction of travel). This may be useful for useful for aerial photography. A value of `-1` causing the heading to be 'straight ahead', i.e. the direction of travel. Thus, SET_POI `-1` may used to cancel with a previous valid SET_HEAD or SET_POI.
 
 ## Uploading
 
