@@ -32,6 +32,7 @@ Every released version of INAV brings some changes on funcionality that is alrea
 * **OSD improvements** - Now it is possible to have three OSD layouts and switch between them via a RC channel. Furthermore new two modes have been added: map and radar.
 * **Full VTX control via Smart Audio / TRAMP** - User can now select VTX settings from the configurator or via the OSD CMS. 
 * **Wind Estimation for Fixed Wing**
+* **New SBUS atomic driver** - Fix a very important bug that may lead to a mid-air disarm, and also make INAV compatible with FrSky R9 SBUS implementation.
 * [INAV 2.0 Release notes](/iNavFlight/inav/wiki/2.0.0-Release-Notes)
 
 ## New on version 2.1
