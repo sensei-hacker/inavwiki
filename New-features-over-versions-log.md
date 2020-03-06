@@ -20,6 +20,9 @@ Every released version of INAV brings some changes on funcionality that is alrea
 
 ## New on versions 1.8 to 1.9
 * Lots of small improvements on things what already existed, but fewer new features.
+* Initial support for SmartAudio and IRC Tramp protocols
+* Some OSD improvements, new elements, new messages
+* MSP over SmartPort to allow transmitter to talk to INAV using LUA Scripts
 * [INAV 1.8 Release notes](/iNavFlight/inav/releases/tag/1.8)
 * [INAV 1.9 Release notes](/iNavFlight/inav/releases/tag/1.9.0)
 
@@ -57,7 +60,7 @@ Every released version of INAV brings some changes on funcionality that is alrea
 * **USB Mass Storage** - USB MSC (mass storage device class) SD card and internal flash access is enabled for F4 and F7 targets with suitable hardware. This means you can mount the FC (SD card / internal flash) as a host computer file system via USB to read BB logs (and delete them from a SD card).
 * **RTH Home Offset** - Allows INAV RTH and failsafe RTH to not return the launch point but in a nearby area allowing not to violate a protected space which might be active in some flying fields.
 * **Linear Climb and Dive on Waypoint Missions** - INAV will try to climb or dive to the next waypoint altitude in a linearly manner, so it'll reach the next waypoint altitude only when it's almost reaching the waypoint itself. This way aircraft will consume less energy to climb since it'll be a less steep climb or will save energy by trading altitude for speed for more time when diving.
-* **Support for DJI HD FPV** - NAV is now ready to embrace HD FPV with support for the DJI HD FPV system.
+* **Support for DJI HD FPV** - INAV is now ready to embrace HD FPV with support for the DJI HD FPV system.
 
 ## Enjoy the newer features!
 
