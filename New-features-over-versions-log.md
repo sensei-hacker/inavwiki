@@ -62,6 +62,7 @@ Every released version of INAV brings some changes on funcionality that is alrea
 * **RTH Home Offset** - Allows INAV RTH and failsafe RTH to not return the launch point but in a nearby area allowing not to violate a protected space which might be active in some flying fields.
 * **Linear Climb and Dive on Waypoint Missions** - INAV will try to climb or dive to the next waypoint altitude in a linearly manner, so it'll reach the next waypoint altitude only when it's almost reaching the waypoint itself. This way aircraft will consume less energy to climb since it'll be a less steep climb or will save energy by trading altitude for speed for more time when diving.
 * **Support for DJI HD FPV** - INAV is now ready to embrace HD FPV with support for the DJI HD FPV system.
+* [INAV 2.4 Release notes](/iNavFlight/inav/wiki/2.4.0-Release-Notes)
 
 ## Enjoy the newer features!
 
