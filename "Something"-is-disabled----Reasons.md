@@ -35,7 +35,7 @@ Note: On older processors, just the bitmask is shown, which can be decoded by th
 ```
 0x184000 = 00100000 + 00080000 + 00004000 (CLI active, throttle not at minimum, arm engaged)
 ```
-The values are correct for iNav 2.2 as of 2019-06-16.
+The values are correct for iNav 2.4 as of 2020-03.
 
 ### Navigation Unsafe reasons
 
@@ -47,6 +47,7 @@ Requires that a navigation mode (which includes failsafe RTH) is configured
 | A navigation switch is engaged (e.g.PH, WP, RTH) |
 | First WP distance exceeded |
 | Satellite quality is unacceptable: EPH/EPV > 10m (note the limit in the CLI `inav_max_eph_epv` is in cm, default 1000) |
+| The WP mission contains an invalid JUMP sequence | 
 
 * The first waypoint is beyond the distance defined by the CLI setting `nav_wp_safe_distance`. The default is 100m (10000cm, as the value is entered in cm).
 
