@@ -4,7 +4,7 @@ Position estimator is a vital component for navigation subsystem. It takes data 
 
 It is currently desined for multirotors.
 
-## Priciple of operation
+## Principle of operation
 
 The key sensor for INAV is an accelerometer. Measured acceleration is translated from body-fixed frame to local NEU coordinates and integrated to yield velocities in North, East and Up directions. Velocity is further integrated to produce coordinates.
 
