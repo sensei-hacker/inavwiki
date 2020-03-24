@@ -91,6 +91,7 @@ The mission is executed as:
 | PH09 - WP10 | 016° |  197m |  2437m |
 | WP10 - WP11 | 164° |   92m |  2529m |
 
+There is a video animation of the flight in [a short youtube video](https://youtu.be/MTA42WUOjUY)
 
 ## Modifier actions
 A number of the WP types (JUMP, SET_POI, SET_HEAD, RTH) act as modifiers to the current location (i.e. the previous WP), as follows:
