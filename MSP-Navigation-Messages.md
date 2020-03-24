@@ -60,7 +60,7 @@ Mission point 9 is POSHOLD_TIME. The vehicle will loiter for 45 seconds (`parame
 
 Mission point 11 is LAND. The vehicle will land (unconditionally, regardless of `nav_rth_allow_landing`) at the given location. The CLI setting `nav_disarm_on_landing` is honoured.
 
-There is a video animation of the flight in [a short youtube video](https://youtu.be/MTA42WUOjUY?autoplay=1). The mission is executed as:
+There is a video animation of the flight in [a short youtube video](https://youtu.be/MTA42WUOjUY). The mission is executed as:
 
 | WP / next wp | Course |  Dist |  Total |
 | ------------ | ------ | ----- | ------ |
