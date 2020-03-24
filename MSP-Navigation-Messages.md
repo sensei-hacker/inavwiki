@@ -8,7 +8,7 @@ Note that all binary values are little endian (MSP standard).
 
 # Implementation and versions
 
-This document should match the iNav 1.2 (and later) and Multiwii 2.4 flight controller firmware. The messages described are implemented in mwp (Linux / FreeBSD / Windows (Cygwin,WSL)) and ezgui (Android) ground station applications. mwp and ezgui support both iNav and Multiwii; WinGui is a Windows / Multiwii only mission planner that also supports this message set. The iNav configurator also supports the MSP standard for mission planning.
+This document should match the iNav 1.2 (and later) and Multiwii 2.4 flight controller firmware. The messages described are implemented in mwp (Linux / FreeBSD / Windows (Cygwin,WSL)) and ezgui (Android) ground station applications. mwp and ezgui support both iNav and Multiwii; WinGui is a Windows / Multiwii only mission planner that also supports this message set. The iNav configurator also supports (a subset of) the MSP standard for mission planning.
 
 # WayPoint / Action Attributes
 
@@ -18,19 +18,45 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | 1 | WAYPOINT      | speed [1] | | | ✔ | ✔ | ✔ | ✔ |
 | 2 | POSHOLD_UNLIM |          | | | ✔ | ✔ | ✔ | [5] |
-| 3 | POSHOLD TIME  | Seconds | (speed [6],[1])| | ✔ | ✔ | ✔ | [6] |
+| 3 | POSHOLD_TIME  | Seconds | (speed [6],[1])| | ✔ | ✔ | ✔ | [6] |
 | 4 | RTH [4]       | Land | | |    |    | ✔ [2] | ✔ |
-| 5 | SET POI       |          | | | ✔ | ✔ | | |
+| 5 | SET_POI       |          | | | ✔ | ✔ | | |
 | 6 | JUMP          | WP#      | Repeat (-1 = forever) | | | | | [6] |
-| 7 | SET HEAD [3]  | Heading  | | | | | | |
-| 8 | LAND | | | | ✔ | ✔ | ✔ | ?[6]? |
+| 7 | SET_HEAD [3]  | Heading  | | | | | | |
+| 8 | LAND | | | | ✔ | ✔ | ✔ | [6] |
 
 1. Leg speed is an iNav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
 2. Not used by iNav
 3. Once SET_HEAD is invoked, it remains active until cleared by a P1 value of -1.
 4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For iNav, the mission will continue if LAND is not set, and valid waypoints follow.
-5. If the final entry in a mission is a WP, the iNav treats it as POSHOLD_UNLIM.
-6. Under development for iNav 2.5.
+5. If the final entry in a mission is a WAYPOINT, the iNav treats it as POSHOLD_UNLIM.
+6. iNav 2.5 and later.
+
+## Annotated Example
+The following example, using the MW XML (ezgui, inav configurator, mwp) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types
+```
+<?xml version="1.0" encoding="utf-8"?>
+<mission>
+  <missionitem no="1" action="WAYPOINT" lat="54.353319318038153" lon="-4.5179273723848077" alt="35" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="2" action="WAYPOINT" lat="54.353572350395972" lon="-4.5193913118652516" alt="35" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="3" action="WAYPOINT" lat="54.354454163955907" lon="-4.5196617811150759" alt="50" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="4" action="WAYPOINT" lat="54.354657830207479" lon="-4.5186895986330455" alt="50" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="5" action="JUMP" lat="0" lon="0" alt="0" parameter1="2" parameter2="2" parameter3="0"></missionitem>
+  <missionitem no="6" action="WAYPOINT" lat="54.354668848061756" lon="-4.5176009696657218" alt="35" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="7" action="WAYPOINT" lat="54.354122567317191" lon="-4.5172673708680122" alt="35" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="8" action="JUMP" lat="0" lon="0" alt="0" parameter1="1" parameter2="1" parameter3="0"></missionitem>
+  <missionitem no="9" action="POSHOLD_TIME" lat="54.353138333126651" lon="-4.5190405596657968" alt="35" parameter1="45" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="10" action="WAYPOINT" lat="54.354847022143616" lon="-4.518210497615712" alt="35" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="11" action="LAND" lat="54.354052100964488" lon="-4.5178091504726012" alt="60" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+</mission>
+```
+Mission points 5 and 8 are JUMP; they have no location as they affect the current location (the previous WP) and cause an action. 
+* After WP 4 (JUMP at 5), the vehicle will proceed to WP 2 (`parameter1 = 2`); it will do this twice (`parameter2 = 2`). Then it will proceed to WP 6.
+* After WP 7 (JUMP at 8), the vehicle will proceed to WP 1 (`parameter1 = 1`); it will do this once (`parameter2 = 1`). Then it will proceed to WP 9.
+
+Mission point 9 is POSHOLD_TIME. The vehicle will loiter for 45 seconds (`parameter1 = 45`) at the WP9 location. A multi-rotor will hold a steady position, fixed wing will fly in a circle as defined by the CLI parameter `nav_fw_loiter_radius`.
+
+Mission point 10 is LAND. The vehicle will land (unconditionally, regardless of `nav_rth_allow_landing`) at the given location. The CLI setting `nav_disarm_on_landing` is honoured.
 
 ## Modifier actions
 A number of the WP types (JUMP, SET_POI, SET_HEAD, RTH) act as modifiers to the current location (i.e. the previous WP), as follows:
