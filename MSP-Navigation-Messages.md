@@ -60,7 +60,7 @@ Mission point 9 is POSHOLD_TIME. The vehicle will loiter for 45 seconds (`parame
 
 Mission point 11 is LAND. The vehicle will land (unconditionally, regardless of `nav_rth_allow_landing`) at the given location. The CLI setting `nav_disarm_on_landing` is honoured.
 
-The mission is executed as:
+There is a video animation of the flight in [a short youtube video](https://youtu.be/MTA42WUOjUY). The mission is executed as:
 
 | WP / next wp | Course |  Dist |  Total |
 | ------------ | ------ | ----- | ------ |
@@ -91,10 +91,8 @@ The mission is executed as:
 | PH09 - WP10 | 016° |  197m |  2437m |
 | WP10 - WP11 | 164° |   92m |  2529m |
 
-There is a video animation of the flight in [a short youtube video](https://youtu.be/MTA42WUOjUY)
-
 ## Modifier actions
-A number of the WP types (JUMP, SET_POI, SET_HEAD, RTH) act as modifiers to the current location (i.e. the previous WP), as follows:
+A number of the WP types (JUMP, SET_https://youtu.be/MTA42WUOjUYPOI, SET_HEAD, RTH) act as modifiers to the current location (i.e. the previous WP), as follows:
 
 ### JUMP
 JUMP facilitates adding loop to mission, the first parameter is the WP to jump to, which must be prior to the JUMP WP, and the second parameter is the number of times the JUMP is executed. A P2 value of `-1` means JUMP indefinitely (i.e. the pilot must eventually manually abort the mission and take control).
