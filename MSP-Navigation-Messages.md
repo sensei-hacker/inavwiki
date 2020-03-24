@@ -53,10 +53,43 @@ The following example, using the MW XML (ezgui, inav configurator, mwp) format, 
 Mission points 5 and 8 are JUMP; they have no location as they affect the current location (the previous WP) and cause an action. 
 * After WP 4 (JUMP at 5), the vehicle will proceed to WP 2 (`parameter1 = 2`); it will do this twice (`parameter2 = 2`). Then it will proceed to WP 6.
 * After WP 7 (JUMP at 8), the vehicle will proceed to WP 1 (`parameter1 = 1`); it will do this once (`parameter2 = 1`). Then it will proceed to WP 9.
+* The second JUMP (8) will cause the first jump (5) to be re-executed.
 
 Mission point 9 is POSHOLD_TIME. The vehicle will loiter for 45 seconds (`parameter1 = 45`) at the WP9 location. A multi-rotor will hold a steady position, fixed wing will fly in a circle as defined by the CLI parameter `nav_fw_loiter_radius`.
 
-Mission point 10 is LAND. The vehicle will land (unconditionally, regardless of `nav_rth_allow_landing`) at the given location. The CLI setting `nav_disarm_on_landing` is honoured.
+Mission point 11 is LAND. The vehicle will land (unconditionally, regardless of `nav_rth_allow_landing`) at the given location. The CLI setting `nav_disarm_on_landing` is honoured.
+
+The mission is executed as:
+
+| WP / next wp | Course |  Dist |  Total |
+| ------------ | ------ | ----- | ------ |
+| WP01 - WP02 | 287° |   99m |    99m |
+| WP02 - WP03 | 350° |  100m |   198m |
+| WP03 - WP04 | 070° |   67m |   265m |
+| WP04 (J05) WP02 | 201° |  129m |   394m |
+| WP02 - WP03 | 350° |  100m |   494m |
+| WP03 - WP04 | 070° |   67m |   561m |
+| WP04 (J05) WP02 | 201° |  129m |   690m |
+| WP02 - WP03 | 350° |  100m |   789m |
+| WP03 - WP04 | 070° |   67m |   856m |
+| WP04 - WP06 | 089° |   71m |   927m |
+| WP06 - WP07 | 160° |   64m |   991m |
+| WP07 (J08) WP01 | 206° |   99m |  1090m |
+| WP01 - WP02 | 287° |   99m |  1189m |
+| WP02 - WP03 | 350° |  100m |  1288m |
+| WP03 - WP04 | 070° |   67m |  1355m |
+| WP04 (J05) WP02 | 201° |  129m |  1484m |
+| WP02 - WP03 | 350° |  100m |  1584m |
+| WP03 - WP04 | 070° |   67m |  1651m |
+| WP04 (J05) WP02 | 201° |  129m |  1779m |
+| WP02 - WP03 | 350° |  100m |  1879m |
+| WP03 - WP04 | 070° |   67m |  1946m |
+| WP04 - WP06 | 089° |   71m |  2016m |
+| WP06 - WP07 | 160° |   64m |  2081m |
+| WP07 - PH09 | 226° |  159m |  2239m |
+| PH09 - WP10 | 016° |  197m |  2437m |
+| WP10 - WP11 | 164° |   92m |  2529m |
+
 
 ## Modifier actions
 A number of the WP types (JUMP, SET_POI, SET_HEAD, RTH) act as modifiers to the current location (i.e. the previous WP), as follows:
