@@ -34,6 +34,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 
 ## Annotated Example
 The following example, using the MW XML (ezgui, inav configurator, mwp) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types
+![Complex Mission](images/eg_complex_mission.png)
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <mission>
