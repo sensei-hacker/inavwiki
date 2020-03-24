@@ -33,7 +33,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 6. iNav 2.5 and later.
 
 ## Annotated Example
-The following example, using the MW XML (ezgui, inav configurator, mwp) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types
+The following example, using the MW XML (ezgui, inav configurator, mwp) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types:
 ![Complex Mission](images/eg_complex_mission.png)
 ```
 <?xml version="1.0" encoding="utf-8"?>
