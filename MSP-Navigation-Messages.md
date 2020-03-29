@@ -92,10 +92,10 @@ There is a video animation of the flight in [a short youtube video](https://yout
 | WP10 - WP11 | 164° |   92m |  2529m |
 
 ## Modifier actions
-A number of the WP types (JUMP, SET_https://youtu.be/MTA42WUOjUYPOI, SET_HEAD, RTH) act as modifiers to the current location (i.e. the previous WP), as follows:
+A number of the WP types (JUMP, SET_POI, SET_HEAD, RTH) act as modifiers to the current location (i.e. the previous WP), as follows:
 
 ### JUMP
-JUMP facilitates adding loop to mission, the first parameter is the WP to jump to, which must be prior to the JUMP WP, and the second parameter is the number of times the JUMP is executed. A P2 value of `-1` means JUMP indefinitely (i.e. the pilot must eventually manually abort the mission and take control).
+JUMP facilitates adding loop to mission, the first parameter is the WP to jump to, which must be prior to the JUMP WP, and the second parameter is the number of times the JUMP is executed. A parameter2 value of `-1` means JUMP indefinitely (i.e. the pilot must eventually manually abort the mission and take control).
 
 ### RTH
 The craft returns to the home location.
