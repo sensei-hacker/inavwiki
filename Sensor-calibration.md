@@ -2,7 +2,7 @@
 
 Modern accelerometer sensors are accurate, but they require calibration if we want precise measurements.  
 
-The sensors on your flight controller might be biased and gains on different axis might be different. iNav uses an advanced 6-point calibration to take care of all irregularities your flight controller sensors might have.
+The sensors on your flight controller might be biased and gains on different axes might be different. iNav uses an advanced 6-point calibration to take care of all irregularities your flight controller sensors might have.
 
 ## Accelerometer calibration steps
 
