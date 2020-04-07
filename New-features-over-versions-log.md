@@ -1,6 +1,7 @@
 ![](http://static.rcgroups.net/forums/attachments/6/1/0/3/7/6/a9088858-102-inav.png)
 
 This document is intended to show the most relevant new features of each version of INAV.
+It's also known as **INAV Version History**, or **INAV Changelog**.
 
 Every released version of INAV brings some changes on funcionality that is already working, bug fixes and new funcionalities. This document will focus only on the major changes and will not go deep on smaller ones. To check a detailed list of changes for each version, check the release notes on that version release download page.
 
