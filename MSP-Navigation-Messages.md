@@ -51,7 +51,7 @@ The following example, using the MW XML (ezgui, inav configurator, mwp) format, 
   <missionitem no="11" action="LAND" lat="54.354052100964488" lon="-4.5178091504726012" alt="60" parameter1="0" parameter2="0" parameter3="0"></missionitem>
 </mission>
 ```
-Mission points 5 and 8 are JUMP; they have no location as they affect the current location (the previous WP) and cause an action. 
+Mission points 5 and 8 are JUMP; they have no location as they affect the current location (the previous WP) and cause an action.
 * After WP 4 (JUMP at 5), the vehicle will proceed to WP 2 (`parameter1 = 2`); it will do this twice (`parameter2 = 2`). Then it will proceed to WP 6.
 * After WP 7 (JUMP at 8), the vehicle will proceed to WP 1 (`parameter1 = 1`); it will do this once (`parameter2 = 1`). Then it will proceed to WP 9.
 * The second JUMP (8) will cause the first jump (5) to be re-executed.
@@ -95,7 +95,25 @@ There is a video animation of the flight in [a short youtube video](https://yout
 A number of the WP types (JUMP, SET_POI, SET_HEAD, RTH) act as modifiers to the current location (i.e. the previous WP), as follows:
 
 ### JUMP
-JUMP facilitates adding loop to mission, the first parameter is the WP to jump to, which must be prior to the JUMP WP, and the second parameter is the number of times the JUMP is executed. A parameter2 value of `-1` means JUMP indefinitely (i.e. the pilot must eventually manually abort the mission and take control).
+JUMP facilitates adding loop to mission, the first parameter is the WP to jump to, and the second parameter is the number of times the JUMP is executed. A parameter2 value of `-1` means JUMP indefinitely (i.e. the pilot must eventually manually abort the mission and take control). For MultiWii, the jump target (parameter 1) must be prior to the jump WP, for inav, forward and backward jumps are permitted. In general, forward jumps are less useful and will usually need a backward jump to be useful.
+
+In the following example of a forward jump, WP #5 (POSHOLD_TIME) is visited exactly once.
+![Jump Forward](images/forward-jump-mission.png)
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<mission>
+  <missionitem no="1" action="WAYPOINT" lat="54.353504451478102" lon="-4.5171693008103739" alt="50" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="2" action="WAYPOINT" lat="54.353290963012334" lon="-4.5186271961455091" alt="50" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="3" action="WAYPOINT" lat="54.354462866400432" lon="-4.519133424449862" alt="50" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="4" action="JUMP" lat="0" lon="0" alt="0" parameter1="6" parameter2="2" parameter3="0"></missionitem>
+  <missionitem no="5" action="POSHOLD_TIME" lat="54.35511281066394" lon="-4.5180071708842604" alt="50" parameter1="30" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="6" action="WAYPOINT" lat="54.354418702382176" lon="-4.5170547858197763" alt="50" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="7" action="JUMP" lat="0" lon="0" alt="0" parameter1="1" parameter2="3" parameter3="0"></missionitem>
+  <missionitem no="8" action="WAYPOINT" lat="54.353913541022997" lon="-4.5182771029460111" alt="50" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+  <missionitem no="9" action="RTH" lat="0" lon="0" alt="0" parameter1="0" parameter2="0" parameter3="0"></missionitem>
+</mission>
+```
 
 ### RTH
 The craft returns to the home location.
@@ -247,7 +265,7 @@ Landing is in progress, check attitude if possible. </td>
 
 # MSP_NAV_CONFIG (MW)
 
-The following data are returned from a MSP_NAV_CONFIG message. Values are from multiwii config.h. Values may also be set by MSP_SET_NAV_CONFIG. 
+The following data are returned from a MSP_NAV_CONFIG message. Values are from multiwii config.h. Values may also be set by MSP_SET_NAV_CONFIG.
 
 <table>
 <thead>
