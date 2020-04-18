@@ -58,7 +58,13 @@ An example if using SpracingF3:
 * If using regular PPM connect it to IO 1 pin 1.
 * If using telemetry connect it with softserial. ( If using Smartport read [this](https://github.com/iNavFlight/inav/blob/master/docs/Board%20-%20Airbot%20F4%20and%20Flip32%20F4.md#frsky-smartport-using-softwareserial) )
 
-### Step 3: Setting up Your Remote, Endpoints and Reversing of Servos.
+### Step 3: Set up Your Receiver
+
+Go to the Configuration tab and select your "Receiver Mode" for the receiver you have.
+
+If you are using a serial based receiver (like SBUS), go to the ports tab and and turn on "Serial RX" for the port that you connected it to. Other receiver types like MSP require other port setups.
+
+### Step 4: Setting up Your Remote, Endpoints and Reversing of Servos.
 
 Your transmitter should use **NO mixing at all** (so separate channels for Thr, Ail, Rud, Ele). 
 
@@ -79,26 +85,24 @@ Next is checking that your servo moves as expected:
 
 **Note:** Check the following in Manual mode (formerly passthrough mode). In the other modes you won't see full deflection on the bench. If you don't know how to set up Manual mode, see https://www.youtube.com/watch?v=oJTPuEUZOAE
 
-In the "Servos" Tab:  
+In the "Output" Tab:  
 
-* If they go reverse, change "Direction and rate" from +100 to -100  
+* If they go reverse, turn on the "Reverse" switch.
 * If they exceed maximum wanted deflection reduce min/max  
 * If control surfaces is not perfectly centered adjust servo midpoint. (This is after setting them up as close as possible mechanically )  
 
-**Note:** In the Servos tab servos are counted from 0-7 while in the Motors tab they run from 1-8.
+**Note:** You can change the servo mapping in the mixer tab.
 
 At this point everything should work as expected.  
 
 1: When moving sticks on TX the control surfaces should move correctly, do an [High Five](https://www.youtube.com/watch?v=Gf74geZyKYk) test  
-2: When moving the airplane in the air in angle mode control surfaces should counter-act movement correctly. The controls surfaces needs to move the same way as the airplane is moved to counteract and stabilize the airplane. You may need to **temporarily** triple the amount on P-gain on Roll, Pitch and Yaw axis. (So its easy to see movement.)  
+2: When moving the airplane in the air in angle mode control surfaces should counter-act movement correctly. The controls surfaces needs to move the same way as the airplane is moved to counteract and stabilize the airplane. You may need to **temporarily** triple the amount on P-gain on Roll, Pitch and Yaw axis in the "PID tuning" tab. (So its easy to see movement.)  
 
-### Step 4, Replace Default Values
+### Step 5, Replace Default Values
 
 * Type this and save in CLI to set the max roll and pitch angle in `ANGLE` mode to 60°:  
 ``set max_angle_inclination_rll = 600``    
 ``set max_angle_inclination_pit = 600``  
-
-* Stick arming is considered **unsafe** for fixed wing models. It's suggested instead that you use an AUX switch for arming (eg switch SF on a Taranis) or [fixed_wing_auto_arm](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md). 
 
 * Increase small angle (so iNav will let you arm in any position) type this and save in CLI:
 ``set small_angle = 180`` 
@@ -126,7 +130,7 @@ At this point everything should work as expected.
 
 * Read through the iNav [CLI commands](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md), especially ALL marked with "**fw_ **" This will give you hints how the modes for fixed wings work.  
 
-### Step 5: Optional, but Recommended:
+### Step 6: Optional, but Recommended:
 
 * [Tune your PIFF controller](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing) ( iNav versions 1.6 & later )
 
