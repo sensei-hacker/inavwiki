@@ -1,16 +1,19 @@
 ## 0. Setup hardware
-Balance props and motors, install FC on a vibration-damping mount if possible.
+
+* Balance props and motors, install FC on a vibration-damping mount if possible. 
+* Ensure that your motors are mapped correctly because it is not possible to remap motors after installation: Verify that motors #4 and #2 are in the front left and right positions, and #3 and #1 in the rear left and right positions, respectively.
 
 ## 1. Getting your flight controller ready.
 
 * Download latest configurator from [here](https://github.com/iNavFlight/inav-configurator/releases)
 * Flash newest iNav with full chip erase option selected
 * Do the advanced 6-point [sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration)
-* Select your Mixer. Most common ones are already available as presets. For exotic setups, see [Custom mixes for exotic setups](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#setups-that-can-be-implemented-with-custom-mixer)
+* Select your Mixer. Most common ones are already available as presets. For exotic setups, see [Custom mixes for exotic setups](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#setups-that-can-be-implemented-with-custom-mixer); if you don't do this, you will not see any motors in the motors tab. 
 * Be sure the model moves on the configurator as it is moving on the bench. If not, adjust board alignment from the Configuration tab
-
+* If you have a magnetometer, you may need to attach a battery for magnetometer calibration. Rotate the quadcopter 360 degrees on all 3 axes.
 
 ## 2. Configure your TX
+
 No special mixers have to be applied on the TX. Just bypass all the channels as they are to the FC.
 Set trim on your TX to zero. Use subtrim to adjust your TX midpoints to be precisely 1500 when Roll/Pitch/Yaw sticks are centered. You can check the input values in the Receiver tab in iNav configurator. All values should be in the range 1000-2000uS.
 
