@@ -1,7 +1,6 @@
 ## 0. Setup hardware
 
 * Balance props and motors, install FC on a vibration-damping mount if possible. 
-* Ensure that your motors are mapped correctly because it is not possible to remap motors after installation: For example, for a Quad-X config, verify that motors #4 and #2 are in the front left and right positions, and #3 and #1 are in the rear left and right positions, respectively.
 
 ## 1. Getting your flight controller ready.
 
