@@ -36,7 +36,7 @@ These boards are powerful and in general support everything INAV is capable of. 
 
 ### Boards based on F3 CPUs
 
-Boards based on STM32F3 CPUs will be supported till INAV 2.1.0. So they are not recommended for new builds.
+Boards based on STM32F3 CPUs will be supported as far as possible (at least INAV 2.5); however they are not recommended for new builds, and new features will not be added.
 
 ### Boards based on F1 CPUs
 
