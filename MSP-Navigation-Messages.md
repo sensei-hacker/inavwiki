@@ -1,18 +1,16 @@
 # MultiWii NAV Protocol and Types
 
-This document describes a number of values and enumerations for for **MultiWii** MSP messages. As **iNav** implements a part of this specification it is documented in the iNav wiki.
-
-This information is provided in the hope it might be useful NO WARRANTY.
+This document describes a number of values and enumerations for for **MultiWii** MSP messages. As **inav** implements the majority of this specification it is documented in the inav wiki.
 
 Note that all binary values are little endian (MSP standard).
 
 # Implementation and versions
 
-This document should match the iNav 1.2 (and later) and Multiwii 2.4 flight controller firmware. The messages described are implemented in mwp (Linux / FreeBSD / Windows (Cygwin,WSL)) and ezgui (Android) ground station applications. mwp and ezgui support both iNav and Multiwii; WinGui is a Windows / Multiwii only mission planner that also supports this message set. The iNav configurator also supports (a subset of) the MSP standard for mission planning.
+This document should match the inav 1.2 (and later) and Multiwii 2.4 flight controller firmware. The messages described are implemented in [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows (Cygwin,WSL)) and ezgui (Android) ground station applications. mwp and ezgui support both iNav and Multiwii; WinGui is a Windows / Multiwii only mission planner that also supports this message set. The inav configurator also supports (a subset of) the MSP standard for mission planning.
 
 # WayPoint / Action Attributes
 
-Each  waypoint has a type and takes a number of parameters, as below. These are used in the MSP_WP message. The final column indicated if the message is implemented for iNav 1.2 (and later).
+Each  waypoint has a type and takes a number of parameters, as below. These are used in the MSP_WP message. The final column indicated if the message is implemented for inav 1.2 (and later).
 
 | Value | Enum | P1 | P2 | P3 | Lat | Lon | Alt | iNav |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -25,12 +23,12 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | 7 | SET_HEAD [3]  | Heading  | | | | | | |
 | 8 | LAND | | | | ✔ | ✔ | ✔ | [6] |
 
-1. Leg speed is an iNav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
-2. Not used by iNav
+1. Leg speed is an inav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
+2. Not used by inav
 3. Once SET_HEAD is invoked, it remains active until cleared by a P1 value of -1.
-4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For iNav, the mission will continue if LAND is not set, and valid waypoints follow.
-5. If the final entry in a mission is a WAYPOINT, the iNav treats it as POSHOLD_UNLIM.
-6. iNav 2.5 and later.
+4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For inav, the mission will continue if LAND is not set, and valid waypoints follow.
+5. If the final entry in a mission is a WAYPOINT, the inav treats it as POSHOLD_UNLIM.
+6. inav 2.5 and later.
 
 ## Annotated Example
 The following example, using the MW XML (ezgui, inav configurator, mwp) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types:
@@ -60,7 +58,7 @@ Mission point 9 is POSHOLD_TIME. The vehicle will loiter for 45 seconds (`parame
 
 Mission point 11 is LAND. The vehicle will land (unconditionally, regardless of `nav_rth_allow_landing`) at the given location. The CLI setting `nav_disarm_on_landing` is honoured.
 
-There is a video animation of the flight in [a short youtube video](https://youtu.be/MTA42WUOjUY). The mission is executed as:
+There is a video animation of the flight in [a short youtube video](https://youtu.be/MTA42WUOjUY) and a [more detailed video tutorial](https://www.youtube.com/watch?v=w6M-v4qM5Yg). The mission is executed as:
 
 | WP / next wp | Course |  Dist |  Total |
 | ------------ | ------ | ----- | ------ |
@@ -118,7 +116,7 @@ In the following example of a forward jump, WP #5 (POSHOLD_TIME) is visited exac
 ### RTH
 The craft returns to the home location.
 
-### SET POI (Multirotor only, not implemented in iNav)
+### SET POI (Multirotor only, multiwii, not yet implemented in inav)
 
 The SET_POI type has a location which defines a point of interest (POI). The craft will fly the mission (until a SET_HEAD) with the nose pointing at the POI, which might be useful for aerial photography.
 
@@ -126,7 +124,7 @@ In the image below, the craft will point its nose at the yellow POI (WP#1) for t
 
 ![Set POI ](images/mission-set-poi.png)
 
-### SET_HEAD (Multirotor only, not implemented in iNav)
+### SET_HEAD (Multirotor only, multiwii, not yet implemented in inav)
 
 The SET_HEAD type sets the craft's heading (where is 'looks', not the direction of travel). This may be useful for useful for aerial photography. A value of `-1` causing the heading to be 'straight ahead', i.e. the direction of travel. Thus, SET_POI `-1` may used to cancel with a previous valid SET_HEAD or SET_POI.
 
@@ -144,21 +142,9 @@ For safety, if no mission is defined, a single RTH action should be sent.
 
 1. your choice, really.
 
-In general, flag is 0, unless it's the last point in a mission, in which case it is set to 0xa5. When waypoints are uploaded, the values are also returned by the FC, thus enabling the application to verify that the mission has been uploaded correctly.
+In general, flag is 0, unless it's the last point in a mission, in which case it is set to 0xa5 (165). When waypoints are uploaded, the values are also returned by the FC, thus enabling the application to verify that the mission has been uploaded correctly.
 
-## FC Capabilities (MW only)
-
-Note that 32bit flight controllers (baseflight, cleanflight) use capability == 16 for a different purpose
-(CAP_CHANNEL_FORWARDING). It is advised to use other messages for checking for capabilities on non-MW platforms.
-
-| Capability | Value |
-| ---- | ---- |
-| BIND | 1 |
-| DYNBAL | 4 |
-| FLAP | 8 |
-| NAV | 16 |
-
-# Messages (Nav related)
+# Messages (Navigation related)
 
 | MNEMONIC | Value | Direction (relative to FC) |
 | -------- | ---- | ---- |
@@ -170,7 +156,7 @@ Note that 32bit flight controllers (baseflight, cleanflight) use capability == 1
 | MSP_SET_HEAD | 211 | In |
 | MSP_SET_WP | 209 | In (& out) |
 
-# MSP_WP / MSP_SET_WP
+## MSP_WP / MSP_SET_WP
 
 Special waypoints are 0 and 255. 0 is the RTH (Home) position, 255 is the POSHOLD position (lat, lon, alt).
 
@@ -189,9 +175,9 @@ Special waypoints are 0 and 255. 0 is the RTH (Home) position, 255 is the POSHOL
 The values for the various parameters are given in the section “WayPoint / Action Attributes”
 Note that altitude is measured from the "home" location, not absolute above mean sea level.
 
-# MSP_NAV_STATUS
+## MSP_NAV_STATUS
 
-The following data are returned by a MSP_NAV_STATUS message. The texts are those defined by Wingui; multiwii and iNav support this message. Almost the same data is returned by the [iNav LTM NFRAME](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)#navigation-frame-n)
+The following data are returned by a MSP_NAV_STATUS message. The usage texts are those defined by Wingui; multiwii and inav support this message. Almost the same data is returned by the [inav LTM NFRAME](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)#navigation-frame-n)
 
 <table>
 <thead>
@@ -263,7 +249,7 @@ Landing is in progress, check attitude if possible. </td>
 </tbody>
 </table>
 
-# MSP_NAV_CONFIG (MW)
+## MSP_NAV_CONFIG (MW)
 
 The following data are returned from a MSP_NAV_CONFIG message. Values are from multiwii config.h. Values may also be set by MSP_SET_NAV_CONFIG.
 
@@ -355,7 +341,7 @@ b1 : Baro takeover</td>
 </tbody>
 </table>
 
-# MSP_RADIO
+## MSP_RADIO
 
 If you have a 3DR radio with the MW/MSP specific firmware, the follow data are sent from the radio, unsolicited.
 
@@ -369,10 +355,22 @@ If you have a 3DR radio with the MW/MSP specific firmware, the follow data are s
 | noise | uchar | Local noise |
 | remnoise | uchar | Remote noise |
 
+## FC Capabilities (MW only)
+
+Note that 32bit flight controllers (baseflight, cleanflight) use capability == 16 for a different purpose
+(CAP_CHANNEL_FORWARDING). It is advised to use other messages for checking for capabilities on non-MW platforms.
+
+| Capability | Value |
+| ---- | ---- |
+| BIND | 1 |
+| DYNBAL | 4 |
+| FLAP | 8 |
+| NAV | 16 |
+
 # Implementations
 
-The MSP NAV message set is implemented by mwptools (Linux), ezgui / mission planner for iNav (Android), WinGUI (MS Windows) and the iNav Configurator.
+The MSP NAV message set is implemented by [mwptools](https://github.com/stronnag/mwptools) (Linux, Windows, FreeBSD), ezgui / mission planner for iNav (Android), WinGUI (MS Windows) and the inav Configurator.
 
 # XML Mission Files
 
-mwptools, ezgui / mp4i, iNav Configurator (and WinGUI) share an XML mission file format. A [reverse engineered definition (XSD)](https://github.com/stronnag/mwptools/blob/master/samples/mw-mission.xsd) can be found in the mwp samples  directory.
+[mwptools](https://github.com/stronnag/mwptools), ezgui / mp4i, inav Configurator (and WinGUI) share an XML mission file format. A [reverse engineered definition (XSD)](https://github.com/stronnag/mwptools/blob/master/samples/mw-mission.xsd) can be found in the [mwp](https://github.com/stronnag/mwptools) samples directory.
