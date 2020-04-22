@@ -6,7 +6,7 @@ Note that all binary values are little endian (MSP standard).
 
 # Implementation and versions
 
-This document should match the inav 1.2 (and later) and Multiwii 2.4 flight controller firmware. The messages described are implemented in [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows (Cygwin,WSL)) and ezgui (Android) ground station applications. mwp and ezgui support both iNav and Multiwii; WinGui is a Windows / Multiwii only mission planner that also supports this message set. The inav configurator also supports (a subset of) the MSP standard for mission planning.
+This document should match the inav 1.2 (and later) and Multiwii 2.4 flight controller firmware. The messages described are implemented in [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows (Cygwin,WSL)) and ezgui (Android) ground station applications. mwp and ezgui support both iNav and Multiwii; WinGui is a Windows / Multiwii only mission planner that also supports this message set. The [inav-configurator](https://github.com/iNavFlight/inav-configurator) also supports (a subset of) the MSP standard for mission planning.
 
 # WayPoint / Action Attributes
 
@@ -369,7 +369,7 @@ Note that 32bit flight controllers (baseflight, cleanflight) use capability == 1
 
 # Implementations
 
-The MSP NAV message set is implemented by [mwptools](https://github.com/stronnag/mwptools) (Linux, Windows, FreeBSD), ezgui / mission planner for iNav (Android), WinGUI (MS Windows) and the inav Configurator.
+The MSP NAV message set is implemented by [mwptools](https://github.com/stronnag/mwptools) (Linux, Windows, FreeBSD), ezgui / mission planner for iNav (Android), WinGUI (MS Windows) and the [inav-configurator](https://github.com/iNavFlight/inav-configurator).
 
 # XML Mission Files
 
