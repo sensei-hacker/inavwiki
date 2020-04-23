@@ -48,14 +48,19 @@ Requires that a navigation mode (which includes failsafe RTH) is configured
 | First WP distance exceeded |
 | Satellite quality is unacceptable: EPH/EPV > 10m (note the limit in the CLI `inav_max_eph_epv` is in cm, default 1000) |
 | The WP mission contains an invalid JUMP sequence | 
+| The first waypoint is beyond the distance defined by the CLI setting `nav_wp_safe_distance`. |
 
-* The first waypoint is beyond the distance defined by the CLI setting `nav_wp_safe_distance`. The default is 100m (10000cm, as the value is entered in cm).
+*  `nav_wp_safe_distance` : The default is 100m (10000cm, as the value is entered in cm), 0 disables this check.
 
 	```
 	# get nav_wp_safe_distance
 	nav_wp_safe_distance = 10000
 	Allowed range: 0 - 65000
 	``` 
+* Invalid JUMP.
+    - First item can't be JUMP (can't calculate 1st WP distance, impossible for backward jumps)
+    - Can't jump to immediately adjacent WPs (pointless)
+    - Can't jump beyond WP list (undefined behaviour)
 
 ## Waypoints will not execute
 
