@@ -1,14 +1,14 @@
-# MultiWii NAV Protocol and Types
+# MSP NAV Protocol and Types
 
-This document describes a number of values and enumerations for for **MultiWii** MSP messages. As **inav** implements the majority of this specification it is documented in the inav wiki.
+This document describes MSP navigation messages, their usage and implementation details. Both **inav** and **multiwii** implementations (which are largely the same) are documented in this article.
 
 Note that all binary values are little endian (MSP standard).
 
 # Implementation and versions
 
-This document should match the inav 1.2 (and later) and Multiwii 2.4 flight controller firmware. The messages described are implemented in [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows (Cygwin,WSL)) and ezgui (Android) ground station applications. mwp and ezgui support both iNav and Multiwii; WinGui is a Windows / Multiwii only mission planner that also supports this message set. The [inav-configurator](https://github.com/iNavFlight/inav-configurator) also supports (a subset of) the MSP standard for mission planning.
+This document should match the inav 1.2 (and later) and Multiwii 2.4 flight controller firmware. The messages described are implemented in [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows (Cygwin,WSL)) and ezgui (Android) ground station applications. mwp and ezgui support both iNav and Multiwii; WinGui is a Windows / Multiwii only mission planner that also supports this message set. The [inav-configurator](https://github.com/iNavFlight/inav-configurator) also supports (a subset of) the MSP navigation standard for mission planning.
 
-# WayPoint / Action Attributes
+# WayPoint and Action Attributes
 
 Each  waypoint has a type and takes a number of parameters, as below. These are used in the MSP_WP message. The final column indicated if the message is implemented for inav 1.2 (and later).
 
@@ -26,7 +26,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 1. Leg speed is an inav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
 2. Not used by inav
 3. Once SET_HEAD is invoked, it remains active until cleared by a P1 value of -1.
-4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For inav, the mission will continue if LAND is not set, and valid waypoints follow.
+4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For inav, the mission will continue if RTH-LAND is not set, and valid waypoints follow.
 5. If the final entry in a mission is a WAYPOINT, the inav treats it as POSHOLD_UNLIM.
 6. inav 2.5 and later.
 
@@ -58,7 +58,7 @@ Mission point 9 is POSHOLD_TIME. The vehicle will loiter for 45 seconds (`parame
 
 Mission point 11 is LAND. The vehicle will land (unconditionally, regardless of `nav_rth_allow_landing`) at the given location. The CLI setting `nav_disarm_on_landing` is honoured.
 
-There is a video animation of the flight in [a short youtube video](https://youtu.be/MTA42WUOjUY) and a [more detailed video tutorial](https://www.youtube.com/watch?v=w6M-v4qM5Yg). The mission is executed as:
+There is a video animation of the flight in [a short youtube video](https://youtu.be/MTA42WUOjUY) and a [more detailed youtube video tutorial](https://www.youtube.com/watch?v=w6M-v4qM5Yg). The mission is executed as:
 
 | WP / next wp | Course |  Dist |  Total |
 | ------------ | ------ | ----- | ------ |
