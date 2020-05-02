@@ -61,6 +61,7 @@ Requires that a navigation mode (which includes failsafe RTH) is configured
     - First item can't be JUMP (can't calculate 1st WP distance, impossible for backward jumps)
     - Can't jump to immediately adjacent WPs (pointless)
     - Can't jump beyond WP list (undefined behaviour)
+    - Can only jump to geo-referenced WPs (otherwise, undefined behaviour)
 
 ## Waypoints will not execute
 
