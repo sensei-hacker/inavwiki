@@ -56,7 +56,7 @@ Mobile Flight: Configuration and ground control app for iNav (and Betaflight) on
 
 ## iNav Configurator
 
-Since version 1.9.2, the iNav configurator provides rudimentary mission planning capabilities. Since 2.2 it can save and restore missions to the file system. Coupled with LuaTelemetry and an applicable radio such as the Taranis series using SmartPort, the iNav Configurator Mission Control is a good option that negates the need for a discrete telemetry radio system.
+Since version 1.9.2, the iNav configurator provides rudimentary mission planning capabilities. Since 2.2 it can save and restore missions to the file system.iNav coupled with LuaTelemetry and an applicable radio such as the Taranis series using SmartPort negates the need for a discrete telemetry radio system and sends all of the telemetry data directly to the LCD screen on the transmitter.
 
 ## Potential solutions for other platforms
 
