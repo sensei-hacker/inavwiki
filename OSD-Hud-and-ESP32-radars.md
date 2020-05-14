@@ -1,6 +1,10 @@
 ## The Hud
 
-The Hud is a feature that displays various points of interest (POI) on the OSD, live, by showing a marker where the location is on the screen. For now it's capable to display the home point, and nearby aircrafts as sent by an ESP32 LoRa modem. In the future it's planned to have it also display the next waypoints during a mission.
+The Hud is a feature that displays various points of interest (POI) on the OSD, live, by showing a marker where the location is on the screen. For now it's capable to display : 
+
+- The home point
+- Nearby aircrafts as sent by an ESP32 LoRa modem
+- Next waypoints during a mission.
 
 
 ## Configuration
