@@ -41,7 +41,7 @@ In the CMS/OSD menu, go to OSD > Hud >...
 
 **Radar detail nearest** : To display an extra bar of informations at the bottom of the hud area for the closest radar aircraft found, if closest than the set value, in meters. Shows : Relative altitude (meters or feet, with an up or down arrow to indicate if above or below), speed (in m/s or f/s), and absolute heading (in °, 0 is north, 90 is east, 180 is south, 270 is west). Set to 0 (zero) to disable.
 
-**Next waypoints** : How many waypoint are displayed, from 0 to 2. Set to 0 (zero) to disable. As sample, if set to 2, and you just passed the 3rd waypoint of the mission, you'll see markers for the 4th waypoint (marked "1") and the 5th waypoint (marked "2")
+**Next waypoints** : How many waypoint are displayed, from 0 to 2. Set to 0 (zero) to disable. As sample, if set to 2, and you just passed the 3rd waypoint of the mission, you'll see markers for the 4th waypoint (marked "1") and the 5th waypoint (marked "2") : Demo : https://www.youtube.com/watch?v=CqKNGY4pogU
 
 
 ## CLI commands
