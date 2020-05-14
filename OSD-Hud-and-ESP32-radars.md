@@ -42,7 +42,8 @@ In the CMS/OSD menu, go to OSD > Hud >...
 **Radar detail nearest** : To display an extra bar of informations at the bottom of the hud area for the closest radar aircraft found, if closest than the set value, in meters. Shows : Relative altitude (meters or feet, with an up or down arrow to indicate if above or below), speed (in m/s or f/s), and absolute heading (in °, 0 is north, 90 is east, 180 is south, 270 is west). Set to 0 (zero) to disable.
 
 **Next waypoints** : How many waypoint are displayed, from 0 to 3. Set to 0 (zero) to disable. As sample, if set to 2, and you just passed the 3rd waypoint of the mission, you'll see markers for the 4th waypoint (marked "1") and the 5th waypoint (marked "2")
-Demo : https://www.youtube.com/watch?v=CqKNGY4pogU
+
+[This is a video demonstrating the display of the waypoints live during an autonomous mission](https://www.youtube.com/watch?v=CqKNGY4pogU).
 
 
 ## CLI commands
@@ -105,7 +106,7 @@ Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthr
 
 * If the marker is a POI sent by the optional ESP32 LoRa Module, the markers are letters A, B, C etc, and below is also the distance, same as above. Additionally left and right of the marker will be displayed the link quality (4 bars  = 100% of packets received, 3 bars = 75%, 2 bars = 50%, 1 bar = 25%, X = link lost), and the relative heading of the other aicrafts : If you and the other aircraft are going in the exact same direction the relative heading arrow will point up. If your two aircrafts are going opposite directions then the arrow will point down.
 
-* If the marker is a mission waypoint (WP), the markers are numbers 1, 2, 3, with a specific icon before. Marker "1" means the point is the nxt WP in the mission (so the 6th if you've juste passed the 5th WP). Marker "2" will be the WP after that (so the 7th), and marker "3" wouyld show the 8th WP.
+* If the marker is a mission waypoint (WP), the markers are numbers 1, 2, 3, with an icon before. Marker "1" means the point is the next WP in the mission (so the 6th if you've juste passed the 5th WP). Marker "2" will be the WP after that (so the 7th), and marker "3" would show the 8th WP.
 
 
 ##  Troubleshooting
