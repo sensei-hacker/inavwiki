@@ -105,6 +105,8 @@ Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthr
 
 * If the marker is a POI sent by the optional ESP32 LoRa Module, the markers are letters A, B, C etc, and below is also the distance, same as above. Additionally left and right of the marker will be displayed the link quality (4 bars  = 100% of packets received, 3 bars = 75%, 2 bars = 50%, 1 bar = 25%, X = link lost), and the relative heading of the other aicrafts : If you and the other aircraft are going in the exact same direction the relative heading arrow will point up. If your two aircrafts are going opposite directions then the arrow will point down.
 
+* If the marker is a mission waypoint (WP), the markers are numbers 1, 2, 3, with a specific icon before. Marker "1" means the point is the nxt WP in the mission (so the 6th if you've juste passed the 5th WP). Marker "2" will be the WP after that (so the 7th), and marker "3" wouyld show the 8th WP.
+
 
 ##  Troubleshooting
 
