@@ -32,6 +32,8 @@ iNav has many settings that are different than cleanflight, so while the configu
 
 - [YouTube videos](https://github.com/iNavFlight/inav/wiki/YouTube-video-guides)
 
+- [INAV for BetaFlight users](https://github.com/iNavFlight/inav/wiki/INAV-for-BetaFlight-users)
+
 - Many flight controller boards are supported. See the [Supported boards](Supported-boards) page.
 
 All configuration is done through [INAV Configurator](https://github.com/iNavFlight/inav-configurator/releases).
