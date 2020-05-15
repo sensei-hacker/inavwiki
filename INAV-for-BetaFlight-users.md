@@ -21,7 +21,7 @@ If you know how to setup a BetaFlight multirotor aircraft, you already know most
 * INAV supports loop frequency up to 8khz, but flies just fine with 2kHz. There’s no real benefit to use such higher frequencies as it will only make the CPU more busy for others tasks.
 * DShot telemetry is supported, but not Bi-directional telemetry (it'll be supported soon).
 
-Most important settings you should take a look before first flight:
+### Most important settings you should take a look before first flight
 
 * `set throttle_idle =  5` # Set the minimal motor speed (in percent). The default is 15, which can be high for modern ESCs.
 * `set small_angle = 180` # Let aircraft arm in any angle
