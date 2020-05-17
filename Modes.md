@@ -142,9 +142,9 @@ Turns off the RGB LEDs
 
 Direct servo control in fixed-wing. This mode was called PASSTHROUGH mode up to version 1.8.1.
 
-In this mode there is no stabilization.
+In this mode there is no stabilization. Please note that MANUAL mode also overrides nav modes except RTH. To switch to a nav mode such as POSHOLD from MANUAL, MANUAL needs to be turned off first.
 
-What FC does in PASSTHRU mode is: Motor mixing, Servo Mixing, Expo settings, Throws limiting (see the `manual_*_rate` settings). Note that Failsafe is still active in this mode and can override the controls.
+What FC does in MANUAL mode is: Motor mixing, Servo Mixing, Expo settings, Throws limiting (see the `manual_*_rate` settings). Note that Failsafe is still active in this mode and can override the controls.
 
 ### NAV LAUNCH
 Airplane launch assistant
