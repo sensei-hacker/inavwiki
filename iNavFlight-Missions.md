@@ -63,7 +63,7 @@ Since version 1.9.2, the iNav configurator provides rudimentary mission planning
 [impload](https://github.com/stronnag/impload) is a cross-platform command line application to upload / download /save / restore missions in a number of formats to an iNav flight controller. Supported formats include:
 
 * MW XML mission files (as used by [mwp](https://github.com/stronnag/mwptools), ezgui, mission planner for inav, iNav configurator)
-* apmplanner / qgroundcontrol mission files
+* apmplanner / qgroundcontrol mission files (QGC WP 110 format)
 * GPX files (tracks, routes, waypoints)
 * KML, KMZ files
 * Plain, simple CSV files
