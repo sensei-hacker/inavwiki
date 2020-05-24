@@ -58,7 +58,7 @@ Mobile Flight: Configuration and ground control app for iNav (and Betaflight) on
 
 Since version 1.9.2, the iNav configurator provides rudimentary mission planning capabilities. Since 2.2 it can save and restore missions to the file system.iNav coupled with LuaTelemetry and an applicable radio such as the Taranis series using SmartPort negates the need for a discrete telemetry radio system and sends all of the telemetry data directly to the LCD screen on the transmitter.
 
-## Potential solutions for other platforms
+## Options for other platforms
 
 [impload](https://github.com/stronnag/impload) is a cross-platform command line application to upload / download /save / restore missions in a number of formats to an iNav flight controller. Supported formats include:
 
