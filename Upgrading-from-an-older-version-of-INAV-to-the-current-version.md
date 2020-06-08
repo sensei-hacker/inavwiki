@@ -2,9 +2,9 @@
 
 This page is intended to make it easy for you to upgrade your INAV older version to the current INAV version. The process is straightforward as long as you follow the instructions detailed here.
 
-**The current version of INAV is 2.4** (as the time this document was been last updated).
+**The current version of INAV is 2.5** (as the time this document was been last updated).
 
-> Note that INAV version numbers has a pattern: There are three numbers separated by dots (2.4.0).
+> Note that INAV version numbers has a pattern: There are three numbers separated by dots (2.5.0).
 > - The first number is the major version. This number changes only when BIG changes are made on INAV.
 > - The second number is the minor version. This number changes only when SMALL changes are made on INAV.
 > - The third number is the revision number. This number changes only when some bug is fixed on INAV and no new functionality is added.
@@ -12,20 +12,20 @@ This page is intended to make it easy for you to upgrade your INAV older version
 > To determine the version, only the first two numbers are important.
 
 In general, all comes to the following steps:
-* Get the lastest configurator.
+* Get the latest configurator.
 * Get the current settings from your board
 * Determine the current version and the TARGET of INAV firmware flashed to your flight controller board.
 * Check which values has changed over the newer versions, and adjust your settings as necessary
-* Flash the lastest INAV firmware to your board
+* Flash the latest INAV firmware to your board
 * Paste the adjusted settings on the CLI
 * Upload your preferred font to the OSD chip
 * Take additional upgrading actions if needed
 
 > Note: Flight controller boards with STM32**F1** chips (like NAZE32 or CC3D) will only work up to the 1.7.3 version.
 
-## Get the lastest INAV configurator
+## Get the latest INAV configurator
 
-Download and install the lastest configurator on the [INAV Configurator Releases page](https://github.com/iNavFlight/inav-configurator/releases).
+Download and install the latest configurator on the [INAV Configurator Releases page](https://github.com/iNavFlight/inav-configurator/releases).
 
 ## Get all the current settings from your flight controller board
 
@@ -49,29 +49,45 @@ Take note of the TARGET which is just after the `INAV/` and VERSION number which
 
 ## Check which values has changed over the newer versions, and adjust as necessary
 
-Now it's time to change your settings file so it becomes compatible with the lastest INAV firmware. Follow your specific version instructions.
+Now it's time to change your settings file so it becomes compatible with the latest INAV firmware. Follow your specific version instructions.
+### From 2.4 to 2.5
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* Replace `yaw_motor_direction` by `motor_direction_inverted` if present
+* Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
+* Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`
 
-### From 2.2 or 2.3 to 2.4
+### From 2.2 or 2.3 to 2.5
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* Replace `yaw_motor_direction` by `motor_direction_inverted` if present
+* Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
+* Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`
 
-### From 2.0 or 2.1 to 2.4
+### From 2.0 or 2.1 to 2.5
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* Replace `yaw_motor_direction` by `motor_direction_inverted` if present
+* Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 
-Arming with sticks command is not supported anymore, so if you were using sticks commands for arming, after flashing and pasting the settings, add an arming switch in the Modes tab in the configurator.
-
-### From 1.9 to 2.4
+### From 1.9 to 2.5
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* Replace `yaw_motor_direction` by `motor_direction_inverted` if present
+* Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 
-### From 1.7 or 1.8 to 2.4
+### From 1.7 or 1.8 to 2.5
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
 * Find `vbat_scale`, `vbat_max_cell_voltage`, `vbat_warning_cell_voltage` and `vbat_min_cell_voltage` values on your settings, and multiply their values by 10.
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* Replace `yaw_motor_direction` by `motor_direction_inverted` if present
+* Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 
-### From 1.6 to 2.4
+### From 1.6 to 2.5
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
@@ -80,6 +96,9 @@ Arming with sticks command is not supported anymore, so if you were using sticks
 * Find `nav_max_speed` and replace by `nav_auto_speed` (renamed parameter).
 * Find `nav_max_climb_rate` and replace by `nav_auto_climb_rate` (renamed parameter).
 * Remove `nav_fw_roll2pitch` parameter (obsolete).
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* Replace `yaw_motor_direction` by `motor_direction_inverted` if present
+* Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 * Find all lines starting with `servo`, and remove the fifth and the sixth arguments of the parameter. 
 
 Example: `servo 3 1070 1950 1500 90 90 -80 -1`
