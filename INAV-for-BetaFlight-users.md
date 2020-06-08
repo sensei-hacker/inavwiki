@@ -14,12 +14,12 @@ If you already know how to setup a BetaFlight multirotor aircraft, you already k
 
 Let's then review the differences:
 
-* Not all Flight Controller boards have a proper target for INAV. But the most common ones do.
+* Not all Flight Controller boards has a proper target for INAV. But the most common ones does.
 * After flashing, the first time you connect your FC board to INAV configurator, it'll ask you to load a preset. Do it, as it'll make things easier from now on.
 * The accelerometer and gyroscope calibration is mandatory on INAV, and it’s a 6-step process (different from BetaFlight, which is an optional single-step process). Follow screen instructions and you’ll be fine.
-* For a fully autonomous multirotor (with automatic navigation capabilities), Flight Controller board must have an onboard barometer sensor. INAV can't navigate without one (on a multirotor aircraft). 
-* Also, you have to cover the barometer sensor with a small piece of non-blocking foam, because the wind affects the sensor readings.
-* The GPS module must be fitted with a magnetometer sensor. GPS modules without mag do not allow INAV to navigate and will only be useful for log purposes.
+* For a fully autonomous multirotor (with automatic navigation capabilities like RTH and WP Missions), Flight Controller board must have an onboard barometer sensor. INAV can't navigate without one (on a multirotor aircraft). 
+* Also, you have to cover the barometer sensor with a small piece of non-blocking foam, because the wind affects the sensor readings. This is the most common cause of altitude holding problems.
+* The GPS module must be fitted with a magnetometer sensor. GPS modules without mag sensor do not allows INAV to navigate (on a multirotor aircraft) and will only be useful for log purposes .
 
 * GPS module must be mounted on a small mast pole to avoid magnetic interference from motors on the compass. 5 or 6 centimeters above motors should be fine.
 
@@ -28,10 +28,10 @@ Let's then review the differences:
 _FPV Quadcopter with GPS mast_
 
 
-* INAV does NOT have the resource remapping feature, which means that **you can't change the motors order**. Be careful to wire the motors signal wires on the correct order.
+* INAV does NOT has the resource remapping feature, which means that **you can't change the motors order**. Be careful to wire the motors signal wires on the correct order.
 * INAV supports DShot ESC protocol, but it doesn’t behave the same way as in BetaFlight. DShot 150 or 300 is more than enough for a reliable flight. Faster protocols will reduce the reliability, so avoid using them.
-* INAV supports loop frequencies up to 8khz, but flies just fine with 2kHz. There’s no real benefit to use such higher frequencies as it will only make the CPU more busy for others tasks.
-* DShot telemetry is supported, but not Bi-directional single-wire telemetry (it'll be supported soon).
+* INAV supports loop frequencies up to 8kHz, but flies just fine with 2kHz. There’s no real benefit to use such higher frequencies as it will only make the CPU more busy for others tasks.
+* DShot telemetry is supported, but not Bi-directional single-wire telemetry.
 
 ### Most important settings you should take a look before first flight
 
