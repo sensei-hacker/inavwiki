@@ -27,7 +27,7 @@ Every released version of INAV brings some changes on funcionality that is alrea
 * [INAV 1.8 Release notes](/iNavFlight/inav/releases/tag/1.8)
 * [INAV 1.9 Release notes](/iNavFlight/inav/releases/tag/1.9.0)
 
-## New on version 2.0 (Jun 2019)
+## New on version 2.0 (Aug 2018)
 * **New mixer and mixer GUI** - There are no predefined mixers on the firmware side. Mixers now are fully configurable.
 * **Added NAV CRUISE flight mode for fixed wing** - When enabled the machine will try to maintain the current heading and compensate for any external disturbances.
 * **OSD improvements** - Now it is possible to have three OSD layouts and switch between them via a RC channel. Furthermore new two modes have been added: map and radar.
@@ -36,7 +36,7 @@ Every released version of INAV brings some changes on funcionality that is alrea
 * **New SBUS atomic driver** - Fix a very important bug that may lead to a mid-air disarm, and also makes INAV compatible with FrSky R9 SBUS implementation.
 * [INAV 2.0 Release notes](/iNavFlight/inav/wiki/2.0.0-Release-Notes)
 
-## New on version 2.1 (Jun 2019)
+## New on version 2.1 (Feb 2019)
 * **DSHOT Support** - A digital protocol, like what DSHOT is, can substain a certain amount of noise with no performance degradation and allows a very smooth motor output.
 * **Multirotor braking mode**
 * **PINIO support**
