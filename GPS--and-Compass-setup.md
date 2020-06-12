@@ -62,9 +62,10 @@ Cli setting Align_mag must be set to
  `save`
  
 For example cw270flip, this value is to ADD manualy. 
+For free Alignment, all three axis need to set manualy. 
 A sensor flip is always to realise
 over the pitch axis. 
-For example:
+For example cw270flip:
 
 `set align_mag_pitch = 1800` 
 `set align_mag_roll = 0`
