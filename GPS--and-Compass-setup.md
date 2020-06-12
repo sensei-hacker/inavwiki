@@ -58,7 +58,7 @@ Check your machine at cardinal points (North (0°), East (90°), South (180°), 
 For example at top of a Cam mount,
 free alignment is possible by Cli commands.
 Cli setting Align_mag must be set to
- `Align_mag = custom`
+ `Align_mag = default`
  `save`
  
 For example cw270flip, this value is to ADD manualy. 
