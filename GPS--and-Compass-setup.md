@@ -57,7 +57,10 @@ Check your machine at cardinal points (North (0°), East (90°), South (180°), 
 *If external Compass module is mounted at 30 degree. 
 For example at top of a Cam mount,
 free alignment is possible by Cli commands.
-Cli setting Align_mag should be set to 'Align_mag = custom'. 
+Cli setting Align_mag must be set to
+ `Align_mag = custom`
+ `save`
+ 
 For example cw270flip, this value is to ADD manualy. 
 A sensor flip is always to realise
 over the pitch axis. 
