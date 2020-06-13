@@ -16,7 +16,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | 1 | WAYPOINT      | speed [1] | | | ✔ | ✔ | ✔ | ✔ |
 | 2 | POSHOLD_UNLIM |          | | | ✔ | ✔ | ✔ | [5] |
-| 3 | POSHOLD_TIME  | Seconds | (speed [6],[1])| | ✔ | ✔ | ✔ | inav 2.5+ |
+| 3 | POSHOLD_TIME  | Seconds | (speed [1])| | ✔ | ✔ | ✔ | inav 2.5+ |
 | 4 | RTH [4]       | Land | | |    |    | ✔ [2] | ✔ |
 | 5 | SET_POI [3]   |          | | | ✔ | ✔ | | inav 2.6+ |
 | 6 | JUMP          | WP#      | Repeat (-1 = forever) | | | | | inav 2.5+ |
