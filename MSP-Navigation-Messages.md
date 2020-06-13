@@ -16,19 +16,18 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | 1 | WAYPOINT      | speed [1] | | | ✔ | ✔ | ✔ | ✔ |
 | 2 | POSHOLD_UNLIM |          | | | ✔ | ✔ | ✔ | [5] |
-| 3 | POSHOLD_TIME  | Seconds | (speed [6],[1])| | ✔ | ✔ | ✔ | [6] |
+| 3 | POSHOLD_TIME  | Seconds | (speed [6],[1])| | ✔ | ✔ | ✔ | inav 2.5+ |
 | 4 | RTH [4]       | Land | | |    |    | ✔ [2] | ✔ |
-| 5 | SET_POI       |          | | | ✔ | ✔ | | |
-| 6 | JUMP          | WP#      | Repeat (-1 = forever) | | | | | [6] |
-| 7 | SET_HEAD [3]  | Heading  | | | | | | |
-| 8 | LAND | | | | ✔ | ✔ | ✔ | [6] |
+| 5 | SET_POI [3]   |          | | | ✔ | ✔ | | inav 2.6+ |
+| 6 | JUMP          | WP#      | Repeat (-1 = forever) | | | | | inav 2.5+ |
+| 7 | SET_HEAD [3]  | Heading  | | | | | | inav 2.6+ |
+| 8 | LAND | | | | ✔ | ✔ | ✔ | inav 2.5+ |
 
 1. Leg speed is an inav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
 2. Not used by inav
-3. Once SET_HEAD is invoked, it remains active until cleared by a P1 value of -1.
+3. Once SET_HEAD or SET_POI is invoked, it remains active until cleared by SET_HEAD with a P1 value of -1.
 4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For inav, the mission will continue if RTH-LAND is not set, and valid waypoints follow.
 5. If the final entry in a mission is a WAYPOINT, the inav treats it as POSHOLD_UNLIM.
-6. inav 2.5 and later.
 
 ## Annotated Example
 The following example, using the MW XML (ezgui, inav configurator, mwp) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types:
