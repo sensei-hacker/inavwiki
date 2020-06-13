@@ -16,12 +16,12 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | 1 | WAYPOINT      | speed [1] | | | ✔ | ✔ | ✔ | ✔ |
 | 2 | POSHOLD_UNLIM |          | | | ✔ | ✔ | ✔ | [5] |
-| 3 | POSHOLD_TIME  | Seconds | (speed [1])| | ✔ | ✔ | ✔ | inav 2.5+ |
+| 3 | POSHOLD_TIME  | Seconds | (speed [1])| | ✔ | ✔ | ✔ | ✔ 2.5 and later |
 | 4 | RTH [4]       | Land | | |    |    | ✔ [2] | ✔ |
-| 5 | SET_POI [3]   |          | | | ✔ | ✔ | | inav 2.6+ |
-| 6 | JUMP          | WP#      | Repeat (-1 = forever) | | | | | inav 2.5+ |
-| 7 | SET_HEAD [3]  | Heading  | | | | | | inav 2.6+ |
-| 8 | LAND | | | | ✔ | ✔ | ✔ | inav 2.5+ |
+| 5 | SET_POI [3]   |          | | | ✔ | ✔ | | ✔ 2.6 and later |
+| 6 | JUMP          | WP#      | Repeat (-1 = forever) | | | | | ✔ 2.5 and later |
+| 7 | SET_HEAD [3]  | Heading  | | | | | | ✔ 2.6 and later |
+| 8 | LAND | | | | ✔ | ✔ | ✔ | ✔ 2.5 and later |
 
 1. Leg speed is an inav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
 2. Not used by inav
