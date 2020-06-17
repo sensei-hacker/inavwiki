@@ -124,13 +124,13 @@ The craft returns to the home location.
 
 ### SET POI (Multirotor only, multiwii, inav 2.6 and later)
 
-The SET_POI type has a location which defines a point of interest (POI). The craft will fly the mission (until a SET_HEAD) with the nose pointing at the POI, which might be useful for aerial photography. Note that the craft does NOT fly to the POI.
+The `SET_POI` defines a location for a point of interest (POI). The craft will fly the mission (until a `SET_HEAD`) with the nose pointing at the POI, which might be useful for aerial photography. Note that the craft does NOT fly to the POI.
 
 In the following image:
 
 * WP2 and WP11 are coincident.
 * WP3 (yellow icon) defines the POI
-* WP12 (SET_HEAD -1) cancels the POI
+* WP12 (`SET_HEAD -1`) cancels the POI
 
 So the craft will fly normally from WP1 to WP2. The craft will then fly WP2 - WP11 with the "nose in" towards the POI (WP3).
 
@@ -146,7 +146,7 @@ In the following example (note that WP8 - WP9 is orientated 120°- 300°):
 
 The craft flies normally (nose first) to WP1.
 
-The craft flies WP1 = WP3 with the nose pointing 120° (i.e. at c. 90° relative to the track)
+The craft flies WP1 - WP3 with the nose pointing 120° (i.e. at c. 90° relative to the track)
 
 The craft flies WP3 - WP5 - WP6 with the nose pointing 300° (i.e. at c. 90° / 270° relative to the track).
 
