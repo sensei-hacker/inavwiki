@@ -150,8 +150,7 @@ The craft flies WP1 - WP3 with the nose pointing 120° (i.e. at c. 90° relative
 
 The craft flies WP3 - WP5 - WP6 with the nose pointing 300° (i.e. at c. 90° / 270° relative to the track).
 
-The craft then files normally (nose first) WP6 - WP8 - WP9 (where it lands). The `SET_HEAD` with 'P1` = `-1` at WP7 cancels the preceding SET_HEAD.
-
+The craft then files normally (nose first) WP6 - WP8 - WP9 (where it lands). The `SET_HEAD` with 'P1` = `-1` at WP7 cancels the preceding `SET_HEAD`.
 
 ![SET_HEAD image](images/mission-set-head.png)
 
