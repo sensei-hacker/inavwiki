@@ -14,7 +14,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 
 | Value | Enum | P1 | P2 | P3 | Lat | Lon | Alt | iNav |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| 1 | WAYPOINT      | speed [1] | | | ✔ | ✔ | ✔ | ✔ |
+| 1 | WAYPOINT      | speed [1] (exception [6]) | | | ✔ | ✔ | ✔ | ✔ |
 | 2 | POSHOLD_UNLIM |          | | | ✔ | ✔ | ✔ | [5] |
 | 3 | POSHOLD_TIME  | Seconds | (speed [1])| | ✔ | ✔ | ✔ | ✔ 2.5 and later |
 | 4 | RTH [4]       | Land | | |    |    | ✔ [2] | ✔ |
@@ -28,6 +28,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 3. Once SET_HEAD or SET_POI is invoked, it remains active until cleared by SET_HEAD with a P1 value of -1.
 4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For inav, the mission will continue if RTH-LAND is not set, and valid waypoints follow.
 5. If the final entry in a mission is a WAYPOINT, the inav treats it as POSHOLD_UNLIM.
+6. For inav's "follow-me" mode (WP#255, POSHOLD engaged), P1 may be used to send an orientation heading (0-359 degrees) .
 
 ## Annotated Example
 The following example, using the MW XML (ezgui, inav configurator, mwp) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types:
