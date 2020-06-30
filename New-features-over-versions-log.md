@@ -70,6 +70,7 @@ Every released version of INAV brings some changes on funcionality that is alrea
 * **New Matrix Filters for Multirotors** - It's a dynamic notch filter that detects noise frequencies on each individual axis (X, Y and Z), resulting in a much better noise handling.
 * **JUMP, HOLD and LAND Waypoint types** - Allows more complex missions to be performed.
 * **HUD POI Waypoints markers on OSD** - Shows the next waypoints in the hud
+* **VTX/CMS Unification** - Now CMS has one unified page for configuring VTX settings. No need to remember which protocol your VTX is talking (Tramp, S.Audio or other).
 * [INAV 2.5 Release notes](/iNavFlight/inav/wiki/2.5.0-Release-Notes)
 
 ## Enjoy the newer features!
