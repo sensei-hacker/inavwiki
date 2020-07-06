@@ -54,14 +54,14 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
-* Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`
+* Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`, `vtx_freq`
 
 ### From 2.2 or 2.3 to 2.5
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
-* Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`
+* Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`, `vtx_freq`
 
 ### From 2.0 or 2.1 to 2.5
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
@@ -69,6 +69,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
+* Remove this deprecated setting if present: `vtx_freq`
 
 ### From 1.9 to 2.5
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
@@ -77,6 +78,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
+* Remove this deprecated setting if present: `vtx_freq`
 
 ### From 1.7 or 1.8 to 2.5
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
@@ -86,6 +88,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
+* Remove this deprecated setting if present: `vtx_freq`
 
 ### From 1.6 to 2.5
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
@@ -95,7 +98,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * Find `mag_hold_rate_limit` and replace by `heading_hold_rate_limit` (renamed parameter).
 * Find `nav_max_speed` and replace by `nav_auto_speed` (renamed parameter).
 * Find `nav_max_climb_rate` and replace by `nav_auto_climb_rate` (renamed parameter).
-* Remove `nav_fw_roll2pitch` parameter (obsolete).
+* Remove this deprecated settinsg if present: `vtx_freq`, `nav_fw_roll2pitch`
 * `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
