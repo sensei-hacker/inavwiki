@@ -1,17 +1,8 @@
-# This page applies only to INAV versions older than 2.0
-
-iNav removed native support for various exotic and not often used frames on STM32F1 targets. This includes CC3D, Naze32 and Flip32. The reason for this is simple: limited flash size and very few people using them while in many cases they can be implemented using custom mixers.
-
-Removed mixer presets can not be selected in Configurator: on save it will be reverted to generic QuadX.
-
-# Setups that can be implemented with custom mixer
-
-Following setups can be configured with custom mixer on targets:
+This page documents custom mixer for exotic platforms. As this page was written prior to inav 2.0, you are advised to verify the `smix` syntax compared to your firmware version. It is also necessary to set the `platform_type` for your platform.
 
 ## Quadcopter + configuration [Motors on front, rear, left and right]
 
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 0.0 1.0 -1.0   # REAR
 mmix 1 1.0 -1.0 0.0 1.0   # RIGHT
@@ -22,7 +13,6 @@ mmix 3 1.0 0.0 -1.0 -1.0  # Front
 ## Hexa H6
 
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 -1.0 1.0 -1.0     # REAR_R
 mmix 1 1.0 -1.0 -1.0 1.0     # FRONT_R
@@ -37,7 +27,6 @@ mmix 5 1.0 0.0 0.0 0.0       # LEFT
 This configuration probably can be improved, similar to V-tail config
 
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 0.0 1.0 1.0          # REAR_R
 mmix 1 1.0 -1.0 -1.0 0.0        # FRONT_R
@@ -48,7 +37,6 @@ mmix 3 1.0 1.0 -1.0 -0.0        # FRONT_L
 ## Quadcopter V-tail
 
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 -0.58 0.58 1.0        # REAR_R
 mmix 1 1.0 -0.46 -0.39 -0.5      # FRONT_R
@@ -59,7 +47,6 @@ mmix 3 1.0 0.46 -0.39 0.5        # FRONT_L
 ## Hexa Y6
 
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 0.0 1.333333 1.0     # REAR
 mmix 1 1.0 -1.0 -0.666667 -1.0  # RIGHT
@@ -72,7 +59,6 @@ mmix 5 1.0 1.0 -0.666667 1.0   # UNDER_LEFT
 ## Quad Y4
 
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 0.0 1.0 -1.0     # REAR_TOP CW
 mmix 1 1.0 -1.0 -1.0 0.0    # FRONT_R CCW
@@ -83,7 +69,6 @@ mmix 3 1.0 1.0 -1.0 0.0     # FRONT_L CW
 ## Hexa P6
 
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 -0.866025 0.5 1.0        # REAR_R
 mmix 1 1.0 -0.866025 -0.5 -1.0      # FRONT_R
@@ -96,7 +81,6 @@ mmix 5 1.0 0.0 1.0 -1.0             # REAR
 ## Octa Flat P
 
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 0.707107 -0.707107 1.0       # FRONT_L
 mmix 1 1.0 -0.707107 -0.707107 1.0      # FRONT_R
@@ -111,7 +95,6 @@ mmix 7 1.0 1.0 0.0 -1.0                 # LEFT
 ## Octa Flat X
 
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 1.0 -0.414178 1.0        # MIDFRONT_L
 mmix 1 1.0 -0.414178 -1.0 1.0       # FRONT_R
@@ -129,7 +112,6 @@ mmix 7 1.0 1.0 0.414178 -1.0        # MIDREAR_L
 Mixer configuration below is reverse engineered from CF code.
 
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 1.0 0.0 0.0 # left motor
 mmix 1 1.0 -1.0 0.0 0.0 # right motor
@@ -146,7 +128,6 @@ smix 3 5 1 100 0 # Servo 5 for right motor pitch change
 ***Warning*** this is highly experimental, not documented, not tested in real life conditions and I'm pretty sure there are not more than few in the whole world!
 Mixer configuration below is reverse engineered from CF code.
 ```
-mixer CUSTOM
 mmix reset
 mmix 0 1.0 0.0 0.0 -1.0  # Left
 mmix 1 1.0 0.0 0.0 1.0   # Right
@@ -162,7 +143,6 @@ Tested in a Mini talon UAV.
 
 ```
 # mixer
-mixer CUSTOMAIRPLANE
 mmix reset
 mmix 0 1.0 0.0 0.0 0.0         # motor
 
@@ -183,7 +163,6 @@ smix 7 7 9 -100 0         # servo 7 takes RC AUX 2 (drop bomb :-))
 ## Skyhunter Nano (no rudder) - 1.7.2 onwards
 
 ```
-mixer CUSTOMAIRPLANE
 mmix reset
 mmix 0 1.000 0.000 0.000 0.000
 smix reset
@@ -196,7 +175,6 @@ smix 2 2 1 -100 0
 Note: See [this video](https://www.youtube.com/watch?v=IOApkFPGKtc) for the placement & orientation of the extra servo to form a V-Tail with rudder. (Hey, please do not link to a 20 minute video something that should take all of 5 seconds to explain. At least include a timestamp so we don't need to watch the whole thing)
 ```
 # mixer
-mixer CUSTOMAIRPLANE
 mmix reset
 mmix 0 1.0 0.0 0.0 0.0         # motor
 smix reset 
@@ -222,7 +200,6 @@ servo 4 1000 2000 2000 -100 -1
 ## Twin Motor - Differential thrust and FLAPERONS
 ```
 # mixer
-mixer CUSTOMAIRPLANE
 mmix reset
 mmix 0  1.000  0.000  0.000  0.300 #Left motor
 mmix 1  1.000  0.000  0.000 -0.300 #Right motor
@@ -242,11 +219,9 @@ smix reverse 4 14 r #or if it works based on servo orientation
 servo 5 1000 2000 1500 -100 -1 #My rudder was reversed, again you may not need this rule
 ```
 
-# Setups that were never implemented in Baseflight, Cleanflight or any of it's derivatives
+# Setups that were never implemented in Baseflight, Cleanflight or any of its derivatives
 
 # Disabled setups
-
-Those mixer settings while can be selected in Cleanflight, does nothing or does it wrong. Mostly because they were never really migrated from MultiWii. In some cases they can be configured with custom mixer and probably will work. In other cases, they are and never were operational. iNav in all cases makes them disabled.
 
 ## HELI 120 CCPM
 
@@ -266,7 +241,6 @@ Use feature ***SERVO_TILT*** instead.
 Mixer configuration below is reverse engineered from CF code. Mixer is capable of processing this setup, but servo output will not work due to BF/CF PWM output limitations. 
 
 ```
-mixer CUSTOMAIRPLANE
 mmix reset
 
 smix reset
