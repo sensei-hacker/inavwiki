@@ -215,19 +215,16 @@ Using a serial RX is more difficult, particularly for F1 devices. For F3 devices
 
 iNav currently supports a subset of the WP / Mission MSP
 ["specification"](https://docs.google.com/document/d/16ZfS_qwc-rJeA7N5Tx0DA6wtgxl6HdGgaz-jE3lHBWs). The
-following waypoint types are available (iNav 1.1).
+following waypoint types are available (iNav 1.1, or later as indicated).
 
 * Waypoint (leg speed addition)
 * Infinite position hold
 * RTH (auto land available from 1.2 RC1)
-
-The following MW-NAV / MSP functions are **not** yet implemented:
-
-* Timed Position Hold
-* Set POI
-* Jump
-* Set Heading
-* Land
+* Timed Position Hold (2.5+)
+* Set POI (2.6+)
+* Jump (2.5+)
+* Set Heading (2.6+)
+* Land (2.5+)
 
 ezgui and [mwp](https://github.com/stronnag/mwptools) support iNav WP navigation; they both use the mission definition originally implemented in WinGui, thus mission definitions are interchangeable between these applications (and mw-nav if you limit the mission features to the common subset).
 
