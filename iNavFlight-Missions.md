@@ -58,6 +58,9 @@ Mobile Flight: Configuration and ground control app for iNav (and Betaflight) on
 
 Since version 1.9.2, the iNav configurator provides rudimentary mission planning capabilities. Since 2.2 it can save and restore missions to the file system.iNav coupled with LuaTelemetry and an applicable radio such as the Taranis series using SmartPort negates the need for a discrete telemetry radio system and sends all of the telemetry data directly to the LCD screen on the transmitter.
 
+## [Telemetry Viewer (Android)](https://github.com/CrazyDude1994/android-taranis-smartport-telemetry)
+Telemetry viewer is an Android application which allows you to track your telemetry data and GPS location. It has a log recorder and log replay function which allows you to track down your drone location. It works by using bluetooth module in your TX (if your TX doesn't have BL module, you can always buy BL module and connect to your TX). R9M, CrossFire(both lite and standard editions), Mavlink and LTM are supported. In latest version you also can connect to your TX by USB cable. More info at [GitHub](https://github.com/CrazyDude1994/android-taranis-smartport-telemetry) Page
+
 ## Options for other platforms
 
 [impload](https://github.com/stronnag/impload) is a cross-platform command line application to upload / download /save / restore missions in a number of formats to an iNav flight controller. Supported formats include:
