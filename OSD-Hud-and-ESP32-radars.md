@@ -27,6 +27,8 @@ To choose between 7 different types of crosshairs.
 **CLI Value:**
 `set osd_crosshairs_style = DEFAULT`
 
+**Available Values:** `"DEFAULT", "AIRCRAFT", "TYPE3", "TYPE4", "TYPE5", "TYPE6", "TYPE7"`
+
 ### Camera Uptilt
 
 Set the camera uptilt for the FPV camera. That's the angle in degres between the horizontal of the aircraft and the line of sight of the camera. For a multirotor with a camera usually pointing up it's a positive value, most often between 5 and 30°. For a plane with the camera pointing down it should be a negative value, often between -5 and -10°.
