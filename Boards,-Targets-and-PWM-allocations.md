@@ -3,12 +3,9 @@
 Due to the complexity of output options available in iNav, dynamic resource allocation is not available.
 It can be difficult for an aircraft builder to determine if a particular board / target will meet their needs.
 
-Paweł Spychalski as published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU)
-explaining why resource allocation is not supported by iNav.
+Paweł Spychalski as published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU) explaining why resource allocation is not supported by iNav.
 
-In order to offer some guidance, the following list is machine
-generated from the files under `inav/source/main/target` to
-provide a list of the options offered by supported boards.
+In order to offer some guidance, the following list is machine generated from the files under `inav/source/main/target` to provide a list of the options offered by supported boards.
 
 The usage is taken directly from the source code, the following interpretation is offered:
 
@@ -21,9 +18,10 @@ The usage is taken directly from the source code, the following interpretation i
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-*List generated 2020-03-15 from the iNav development branch by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in master or prior releases.* **E&OE.**
+*List generated 2020-07-21 from the iNav 2.5.1 release branch by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in prior releases.* **E&OE.**
 
 Note: Due to the fact that there is no reliable, consistent means to get from the timer definition in `target.c` to human readable output names, the script cowardly refuses to parse more than 8 outputs. You are strongly advised to check the board documentation as to the suitability of any particular board.
+
 ## Board: AIKONF4
 
 Board is not DSHOT enabled.
@@ -55,6 +53,28 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
 | 7 | PWM, FW_SERVO |
 | 8 | PWM, FW_SERVO |
+
+## Board: AIRBOTF7
+
+Board is DSHOT enabled.
+
+### Target: AIRBOTF7
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR |
+| 2 | MC_MOTOR |
+| 3 | MC_MOTOR |
+| 4 | MC_MOTOR |
+
+### Target: OMNIBUSF7NANOV7
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR |
+| 2 | MC_MOTOR |
+| 3 | MC_MOTOR |
+| 4 | MC_MOTOR |
 
 ## Board: AIRHEROF3
 
@@ -401,7 +421,7 @@ Board is not DSHOT enabled.
 
 ## Board: DALRCF722DUAL
 
-Board is not DSHOT enabled.
+Board is DSHOT enabled.
 
 ### Target: DALRCF722DUAL
 
@@ -696,7 +716,7 @@ Board is DSHOT enabled.
 
 ## Board: KAKUTEF4
 
-Board is not DSHOT enabled.
+Board is DSHOT enabled.
 
 ### Target: KAKUTEF4
 
@@ -705,7 +725,7 @@ Board is not DSHOT enabled.
 | 1 | MC_MOTOR, FW_MOTOR |
 | 2 | MC_MOTOR, FW_MOTOR |
 | 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, MC_SERVO, FW_SERVO |
 | 5 | MC_MOTOR, FW_SERVO |
 | 6 | MC_MOTOR, FW_SERVO |
 
@@ -716,7 +736,7 @@ Board is not DSHOT enabled.
 | 1 | MC_MOTOR, FW_MOTOR |
 | 2 | MC_MOTOR, FW_MOTOR |
 | 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
 ## Board: KAKUTEF7
 
@@ -1207,7 +1227,7 @@ Board is DSHOT enabled.
 
 ## Board: OMNIBUSF7
 
-Board is not DSHOT enabled.
+Board is DSHOT enabled.
 
 ### Target: OMNIBUSF7
 
@@ -1386,9 +1406,33 @@ Board is not DSHOT enabled.
 
 ## Board: SPEEDYBEEF4
 
-Board is not DSHOT enabled.
+Board is DSHOT enabled.
 
 ### Target: SPEEDYBEEF4
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
+
+### Target: SPEEDYBEEF4_SFTSRL1
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
+
+### Target: SPEEDYBEEF4_SFTSRL2
 
 | PWM | Usage |
 | --- | ----- |
@@ -1564,3 +1608,16 @@ Board is DSHOT enabled.
 | 4 | MC_MOTOR, FW_SERVO |
 | 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
 | 6 | MC_MOTOR, MC_SERVO, FW_SERVO, LED |
+
+## Board: ZEEZF7
+
+Board is DSHOT enabled.
+
+### Target: ZEEZF7
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR |
+| 2 | MC_MOTOR |
+| 3 | MC_MOTOR |
+| 4 | MC_MOTOR |
