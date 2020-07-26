@@ -117,9 +117,11 @@ Represents position on or above earth with a latitude, longitude and height valu
 * The y axis points to the east side (tangent to parallels)
 * The z axis points up from the center of the earth
 
-This is a classical cartesian coordinate system where the 3 axes are orthogonal to each other.
+This is a classical cartesian coordinate system where the 3 axes are orthogonal to each other. 
 
 ![](https://upload.wikimedia.org/wikipedia/commons/7/73/ECEF_ENU_Longitude_Latitude_relationships.svg)
+
+The units for the NEU coordinate system are centimetres. 
 
 # Frames of reference
 
