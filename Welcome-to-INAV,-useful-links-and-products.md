@@ -133,4 +133,6 @@ Eachine ATX03S: https://inavflight.com/shop/s/bg/1427187 (perfect for compact bu
 
 AKK X2 Ultimate: https://inavflight.com/shop/s/bg/1388013
 
+RUSH TANK PLUS: https://inavflight.com/shop/s/bg/1558155
+
 _Thanks, and happy flying!_
