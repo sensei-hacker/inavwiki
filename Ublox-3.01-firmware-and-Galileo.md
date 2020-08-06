@@ -34,6 +34,8 @@ set gps_ublox_use_galileo = ON
 ```
 This setting implements the manual settings below.
 
+Note that if you do not enable Galileo in inav, then the default / user configured setting of the GPS device are used, so you can prefer other regional GNSS such as BeiDou.
+
 ## Manual Configuration (GPS device)
 
 For older firmware (prior to 1.9.0), if your devices comes with 3.01 firmware, or you flash it, then to enable Galileo, you need to assign some channels for Galileo; typically steal from some channels from a GNSS that you are unlikely to use (maybe QZSS, BeiDou in Western Europe). Save this in the default configuration. BN-880 can use upto 3 GNSS (plus SBAS) simultaneously. In u-center:
