@@ -26,7 +26,7 @@ Currently there are a number of GCS applications widely used for iNav mission ma
 Note: Earlier versions of this article recommended ezgui for use on Android. ezgui is no longer maintained and [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) is the recommended Android application.
 
 ## [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android)
-[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) can be downloaded from Google Play Store. There is a free version which limits number of waypoints to 5 and (very reasonably priced) paid-for version with additional functionality. The application is not open source. For questions and help the RCG "Mission Planner for INAV" thread can be used: [RC Groups support forum](https://www.rcgroups.com/forums/showthread.php?3030784-Mission-Planner-for-INAV-%28Android%29).
+[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) can be downloaded from Google Play Store. There is a free version which limits number of waypoints to 2 and (very reasonably priced) paid-for version with additional functionality. The application is not open source. For questions and help the RCG "Mission Planner for INAV" thread can be used: [RC Groups support forum](https://www.rcgroups.com/forums/showthread.php?3030784-Mission-Planner-for-INAV-%28Android%29).
 
 ## Droid Planner 2 (Android)
 
