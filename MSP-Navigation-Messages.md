@@ -183,7 +183,10 @@ In general, flag is 0, unless it's the last point in a mission, in which case it
 
 ## MSP_WP / MSP_SET_WP
 
-Special waypoints are 0 and 255. 0 is the RTH (Home) position, 255 is the POSHOLD position (lat, lon, alt).
+Special waypoints are 0 and 255. #0 returns the RTH (Home) position, #255 returns the current position. WP #255 may also be used to set the vehicle's desired location (i.e. "follow me") when the following modes are asserted:
+
+* NAV_POSHOLD
+* GCS_NAV
 
 | Name | Type | Usage |
 | ---- | ---- | ----- |
