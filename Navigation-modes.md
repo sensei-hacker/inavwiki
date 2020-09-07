@@ -19,11 +19,13 @@ This applies to enabling the navigation modes in the Configurator as well as at 
 (For bench tests without(!) propellers you may change “set nav_extra_arming_safety = ON” to “OFF” in CLI.)  
 
 - Flightmodes are self contained. For example: with RTH and WP (Waypoints) it's not necessary to enable angle, althold or mag, it enables what it needs. Read more below in POSHOLD section.  
+- On fixed wing aircraft, enabling CRUISE, RTH, WP or POSHOLD also enables TURN ASSIST. TURN ASSIST applies elevator and rudder input when the airplane is banked to obtain a coordinated turn. 
 
 |           | POSHOLD   | WAYPOINT  | RTH       | ALTHOLD   |
 | ----      | ----      | ----      | ----      | ----      |
 | ANGLE     | X         | X         | X         |           |
 | ALTHOLD   | X         | X         | X         |           |
+| TURN ASSIST | X         | X         | X         |           |
 | MAG       |           | X         | X         |           |
 | BARO      |           | X         | X         | X         |
 
