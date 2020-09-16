@@ -172,17 +172,17 @@ smix 2 2 1 -100 0
 ```
 
 ## Nano Talon with 2 Servos for the V-Tail
-Note: See [this video](https://www.youtube.com/watch?v=IOApkFPGKtc) for the placement & orientation of the extra servo to form a V-Tail with rudder. (Hey, please do not link to a 20 minute video something that should take all of 5 seconds to explain. At least include a timestamp so we don't need to watch the whole thing)
+Note: See [this video](https://www.youtube.com/watch?v=IOApkFPGKtc) for details on the V-Tail mod.
 ```
 # mixer
 mmix reset
 mmix 0 1.0 0.0 0.0 0.0         # motor
 smix reset 
 smix 0 2 0 -100 0         # servo 2 takes Stabilised ROLL (PWM 3)
-smix 1 3 1 -85 0          # servo 3 takes Stabilised PITCH (PWM 4)
-smix 2 4 1 85 0         # servo 4 takes Stabilised -PITCH (PWM 5)
-smix 3 3 2 -75 0         # servo 3 takes Stabilised YAW (PWM 4)
-smix 4 4 2 -75 0         # servo 4 takes Stabilised YAW (PWM 5)
+smix 1 3 1 -50 0          # servo 3 takes Stabilised PITCH (PWM 4)
+smix 2 4 1 50 0         # servo 4 takes Stabilised -PITCH (PWM 5)
+smix 3 3 2 50 0         # servo 3 takes Stabilised YAW (PWM 4)
+smix 4 4 2 50 0         # servo 4 takes Stabilised YAW (PWM 5)
 ```
 
 ## AVIOS BUSHMULE – Notably separate FLAPS (instead of flapperons). Uses single aileron control with Y cable
