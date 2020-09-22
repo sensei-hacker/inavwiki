@@ -54,7 +54,7 @@ Check your machine at cardinal points (North (0°), East (90°), South (180°), 
 * If the values are incorrect by a multiple of 90°, then the numeric alignment needs to be changed
 * If the values are just randomly wrong across the cardinal points, then FLIP is probably wrong (as well).
 
-*If external Compass module is mounted at 30 degree. 
+* If external Compass module is mounted at 30 degree. 
 For example at top of a Cam mount,
 free alignment is possible by Cli commands.
 Cli setting Align_mag must be set to
@@ -72,13 +72,13 @@ For example cw270flip:
     set align_mag_yaw = 2700
     save
 
-*For 30 Degree Backwards tilted GPS/Compass Module, reduce align_mag_roll about 300
+* For 30 Degree Backwards tilted GPS/Compass Module, reduce align_mag_roll about 300
 
 
     set align_mag_roll = -300
     save
 
-*Because Magnetometer with cw270° has its roll axis in relation to the Pitch Axis of the FC
+* Because Magnetometer with cw270° has its roll axis in relation to the Pitch Axis of the FC
 
 ## Initial flight tests
 
