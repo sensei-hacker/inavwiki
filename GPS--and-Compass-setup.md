@@ -67,16 +67,16 @@ A sensor flip is always to realise
 over the pitch axis. 
 For example cw270flip:
 
-`set align_mag_pitch = 1800` 
-`set align_mag_roll = 0`
-`set align_mag_yaw = 2700`
-`save`
+    set align_mag_pitch = 1800
+    set align_mag_roll = 0
+    set align_mag_yaw = 2700
+    save
 
 *For 30 Degree Backwards tilted GPS/Compass Module, reduce align_mag_roll about 300
 
 
-`set align_mag_roll = -300`
-`save`
+    set align_mag_roll = -300
+    save
 
 *Because Magnetometer with cw270° has its roll axis in relation to the Pitch Axis of the FC
 
@@ -162,13 +162,10 @@ F1 can support DJI if you compile your own build with unused features removed.
 - Activate GPS in the ports tab in cleanflight/iNav configurator and set it to 115 200 on correct UART
 - Type this in CLI
 
-`feature GPS`
-
-`set gps_provider = NAZA`
-
-`set mag_hardware = GPSMAG`
-
-`set align_mag = CW180FLIP`
+   feature GPS
+   set gps_provider = NAZA
+   set mag_hardware = GPSMAG
+   set align_mag = CW180FLIP
 
 Default DJI GPS puck pointing forward is set with CW180FLIP, but can be changed with CW0FLIP, CW90FLIP, CW180FLIP or CW270FLIP
 
