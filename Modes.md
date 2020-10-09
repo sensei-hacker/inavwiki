@@ -67,7 +67,7 @@ The altitude of the aircraft a the moment you activate this mode is fixed.
 
 **AUTOTUNE is only available for fixed wing**
 
-For detailed description go to https://github.com/iNavFlight/inav/blob/development/docs/Autotune%20-%20fixedwing.md
+For detailed description go to https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing
 
 AUTOTUNE will attempt to tune roll and pitch P, I and FF gains on a fixed-wing airplane.
 
