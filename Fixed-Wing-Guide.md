@@ -10,7 +10,6 @@ Some of the most popular flight controllers for fixed wing are:
 - [Matek F722-WING](https://inavflight.com/shop/s/bg/1408793)
 - [Matek F411-WING](https://inavflight.com/shop/s/bg/1323063)
 - [FuriousFPV F-35](https://inavflight.com/shop/s/bg/1278861)
-- [Matek F411-WING](https://inavflight.com/shop/s/bg/1323063)
 
 ### Suggested GPS Units
 
