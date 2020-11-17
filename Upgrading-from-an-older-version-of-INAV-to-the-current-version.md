@@ -2,9 +2,9 @@
 
 This page is intended to make it easy for you to upgrade your INAV older version to the current INAV version. The process is straightforward as long as you follow the instructions detailed here.
 
-**The current version of INAV is 2.5** (as the time this document was been last updated).
+**The current version of INAV is 2.6** (as the time this document was been last updated).
 
-> Note that INAV version numbers has a pattern: There are three numbers separated by dots (2.5.0).
+> Note that INAV version numbers has a pattern: There are three numbers separated by dots (2.6.0).
 > - The first number is the major version. This number changes only when BIG changes are made on INAV.
 > - The second number is the minor version. This number changes only when SMALL changes are made on INAV.
 > - The third number is the revision number. This number changes only when some bug is fixed on INAV and no new functionality is added.
@@ -13,30 +13,31 @@ This page is intended to make it easy for you to upgrade your INAV older version
 
 In general, all comes to the following steps:
 * Get the latest configurator.
-* Get the current settings from your board
+* Get the current settings from your flight controller board
 * Determine the current version and the TARGET of INAV firmware flashed to your flight controller board.
 * Check which values has changed over the newer versions, and adjust your settings as necessary
-* Flash the latest INAV firmware to your board
-* Paste the adjusted settings on the CLI
+* Flash the latest INAV firmware on your flight controller board
+* Paste the adjusted settings on the Command Line Interface (CLI)
 * Upload your preferred font to the OSD chip
-* Take additional upgrading actions if needed
+* Take additional upgrading actions (if needed)
 
 > Note: Flight controller boards with STM32**F1** chips (like NAZE32 or CC3D) will only work up to the 1.7.3 version.
+> Note: Flight controller boards with STM32**F3** chips (like SPRACINGF3 or OMNIBUS) will only work up to the 2.6.0 version.
 
 ## Get the latest INAV configurator
 
-Download and install the latest configurator on the [INAV Configurator Releases page](https://github.com/iNavFlight/inav-configurator/releases).
+Download and install (on your computer) the latest configurator at the [INAV Configurator Releases page](https://github.com/iNavFlight/inav-configurator/releases).
 
 ## Get all the current settings from your flight controller board
 
-1. Open the configurator program.
+1. Open the configurator program on your computer.
 2. Connect the flight controller board to the USB port on PC, then click connect button on the configurator.
 3. Go to the CLI tab and type `diff all`. It should return a big text with all your settings. 
-4. Save this text on your favorite text editor (like notepad).
+4. Copy this text and paste it on your favorite text editor (like Notepad), then save it as a backup.
 
 ## Determine your current INAV firmware version and target
 
-On your settings file, just on the beginning, you should have something like this:
+On your settings file, just at the beginning, you should have something like this:
 
 ```
 # version
@@ -50,28 +51,36 @@ Take note of the TARGET which is just after the `INAV/` and VERSION number which
 ## Check which values has changed over the newer versions, and adjust as necessary
 
 Now it's time to change your settings file so it becomes compatible with the latest INAV firmware. Follow your specific version instructions.
-### From 2.4 to 2.5
+
+### From 2.5 to 2.6
+* If you are using Home Offset feature (lines with `nav_rth_home_offset_`), then you should remove this lines and use the `safehome` function instead.
+* If you are using Override Motor Stop feature (`nav_overrides_motor_stop` setting), you need to change the value of this setting by one of the new possible values, which are `OFF`, `AUTO_ONLY` or `ALL_NAV`.
+* Remove this deprecated settings if present: `gyro_notch1_hz`, `gyro_notch2_hz`, `gyro_notch1_cutoff`, `gyro_notch2_cutoff`, `use_dterm_fir_filter`, `dterm_setpoint_weight`, `dterm_notch_hz`, `dterm_notch_cutoff`, `mc_iterm_relax_type`
+
+### From 2.4 to 2.6
 * `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
-* Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`, `vtx_freq`
+* Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`, `vtx_freq`, `gyro_notch1_hz`, `gyro_notch2_hz`, `gyro_notch1_cutoff`, `gyro_notch2_cutoff`, `use_dterm_fir_filter`, `dterm_setpoint_weight`, `dterm_notch_hz`, `dterm_notch_cutoff`, `mc_iterm_relax_type`
+* If you are using Home Offset feature (lines with `nav_rth_home_offset_`), then you should remove this lines and use the `safehome` function instead.
+* If you are using Override Motor Stop feature (`nav_overrides_motor_stop` setting), you need to change the value of this setting by one of the new possible values, which are `OFF`, `AUTO_ONLY` or `ALL_NAV`.
 
-### From 2.2 or 2.3 to 2.5
+### From 2.2 or 2.3 to 2.6
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
-* Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`, `vtx_freq`
+* Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`, `vtx_freq`, `gyro_notch1_hz`, `gyro_notch2_hz`, `gyro_notch1_cutoff`, `gyro_notch2_cutoff`, `use_dterm_fir_filter`, `dterm_setpoint_weight`, `dterm_notch_hz`, `dterm_notch_cutoff`, `mc_iterm_relax_type`
 
-### From 2.0 or 2.1 to 2.5
+### From 2.0 or 2.1 to 2.6
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
-* Remove this deprecated setting if present: `vtx_freq`
+* Remove this deprecated setting if present: `vtx_freq`, `gyro_notch1_hz`, `gyro_notch2_hz`, `gyro_notch1_cutoff`, `gyro_notch2_cutoff`, `use_dterm_fir_filter`, `dterm_setpoint_weight`, `dterm_notch_hz`, `dterm_notch_cutoff`, `mc_iterm_relax_type`
 
-### From 1.9 to 2.5
+### From 1.9 to 2.6
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
@@ -80,7 +89,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 * Remove this deprecated setting if present: `vtx_freq`
 
-### From 1.7 or 1.8 to 2.5
+### From 1.7 or 1.8 to 2.6
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
@@ -90,7 +99,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 * Remove this deprecated setting if present: `vtx_freq`
 
-### From 1.6 to 2.5
+### From 1.6 to 2.6
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
@@ -123,7 +132,7 @@ Now it's time to flash the lastest INAV firmware to your flight controller board
 ## Paste the adjusted settings on the CLI
 * Click the "Connect" button on INAV configurator.
 * Go to the CLI tab.
-* Copy all the settings text from your text file and paste on the CLI input text box, then press ENTER.
+* Copy all the settings text from your adjusted text file and paste on the CLI input text box, then press ENTER.
 * Wait for all the settings to be typed on the output text box.
 * If no errors occurred, Flight controller should save the settings and reboot by itself.
 
@@ -133,6 +142,10 @@ The font file changes between versions! That's why you need to update the font s
 * In the bottom right corner, there's a "Font" button. Click it.
 * Select the font that best pleases you, and then click "Upload" button.
 * Wait for the process to complete. Flight Controller will reboot automatically.
+
+## If you are upgrading from version 2.5 or earlier
+* If you have a compass, it has to be recalibrated!
+* Do not migrate Multirotor PID and filter settings from previous releases of INAV. Use Multirotor default preset (3"-7") instead and make required changes on top of that
 
 ## If you are upgrading from version 1
 There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD framework and new calibration scales for accelerometer and magnetometer. For that reason, you'll need to set this up again and the previous settings will not work.
