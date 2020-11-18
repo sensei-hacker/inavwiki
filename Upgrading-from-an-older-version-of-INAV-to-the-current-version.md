@@ -21,8 +21,7 @@ In general, all comes to the following steps:
 * Upload your preferred font to the OSD chip
 * Take additional upgrading actions (if needed)
 
-> Note: Flight controller boards with STM32**F1** chips (like NAZE32 or CC3D) will only work up to the 1.7.3 version.
-> Note: Flight controller boards with STM32**F3** chips (like SPRACINGF3 or OMNIBUS) will only work up to the 2.6.0 version.
+**Note about F1 and F3 microcontrollers**: Flight controller boards with STM32**F1** chips (like NAZE32 or CC3D) will only work up to the 1.7.3 version. Flight controller boards with STM32**F3** chips (like SPRACINGF3 or OMNIBUS) will only work up to the 2.6.0 version. We do recommend that you use a F4, F7 or H7 based Flight Controller board for new setups.
 
 ## Get the latest INAV configurator
 
