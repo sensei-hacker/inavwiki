@@ -73,6 +73,15 @@ Every released version of INAV brings some changes on funcionality that is alrea
 * **VTX/CMS Unification** - Now CMS has one unified page for configuring VTX settings. No need to remember which protocol your VTX is talking (Tramp, S.Audio or other).
 * [INAV 2.5 Release notes](/iNavFlight/inav/wiki/2.5.0-Release-Notes)
 
+## New on version 2.6 (Dec 2020)
+* **New Unicorn Filter** - A Kalman Filter implementation that allow multirotor aircraft to fly smoother
+* **Safehomes** - A feature that allows aircraft to return to a previously defined "safe" home point instead of returning to the automatically defined home point. It's useful to fly at fields with strict rules about airspace use.
+* **SET_HEAD and SET_POI new Waypoint types** - Allows to program missions where a Multirotor can "look" to a specific point of interest or heading.
+* **Multirotor now can navigate without a barometer** - It'll using the altitude informed by the GPS instead. Now you can use a baroless FC!
+* **New FrSky F.Port2 and Spektrum SRXL2 Receiver Protocols support**
+* **Baro, GPS, Pitot and Compass sensors over MSP support**
+* [INAV 2.6 Release notes](/iNavFlight/inav/wiki/2.6.0-Release-Notes)
+
 ## Enjoy the newer features!
 
 If you have an older version of INAV on your aircraft, upgrade now and enjoy the newer features! We have a guide to help you to do that. [Check it out now](/iNavFlight/inav/wiki/Upgrading-from-an-older-version-of-INAV-to-the-current-version)!
