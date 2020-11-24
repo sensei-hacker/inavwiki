@@ -29,7 +29,7 @@ This applies to enabling the navigation modes in the Configurator as well as at 
 | MAG       |           | X         | X         |           |
 | BARO      |           | X         | X         | X         |
 
-**BE AWARE ON A FIXED WING THAT AUTO THROTTLE WILL CEASE AND THE MOTOR WILL STOP IN ALL NAV MODES EXCEPT NAV RTH AND NAV WP IF THE THROTTLE IS REDUCED BELOW THE MIN_CHECK SETTING.**
+**Prior to version 2.6 on a fixed wing the motor will stop in all Nav modes except Nav RTH and Nav WP if the throttle is reduced below the Min_Check setting. From version 2.6 this behaviour is controlled using the nav_overrides_motor_stop setting which by default keeps the motor running in all Nav modes.**
   
 - There is a companion [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
 
