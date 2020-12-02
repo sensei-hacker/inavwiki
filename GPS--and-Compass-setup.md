@@ -80,6 +80,9 @@ For example cw270flip:
 
 * Because Magnetometer with cw270° has its roll axis in relation to the Pitch Axis of the FC
 
+Enhanced Eplaination in #6232
+[How to Align and Check if your readings are Correct ](https://github.com/iNavFlight/inav/issues/6232#issuecomment-727636397)
+
 ## Initial flight tests
 
 Once  you're content that the static configuration of the compass is correct, it's time to go flying. There is still no guarantee that the machine will not generate interference, so it's advisable to do some controlled testing before attempting more advanced navigation modes:
