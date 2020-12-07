@@ -11,7 +11,7 @@ Before you get started on a waypoint mission, you need to know what the expectat
 * You configured WP/PH/RTH or Failsafe RTH and you don't have a good GPS fix accuracy
 * You try to arm into RTH/PH/WP
 * You have waypoints mission in memory and your first waypoint is too far from your current position
-* HODP is too low
+* HODP is too high
 
 The default distance for the first waypoint is configured with the 'nav_wp_safe_distance' value (default of 10000cm, ~ 300 feet).
 
