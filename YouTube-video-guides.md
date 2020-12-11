@@ -16,3 +16,5 @@
 * [How to use Autotune](https://youtu.be/UOGfC3pvbWM)
 * [How to use servo autotrim](https://www.youtube.com/watch?v=XW1esQp_RvU)
 * [The most common iNav mistakes](https://youtu.be/fVJYodLimD8)
+* [INAV setup for tracked vehicles](https://youtu.be/9194OzsHOFc)
+* [Betaflight to INAV migration in 22 minutes](https://youtu.be/1hhsqyXeKew)
