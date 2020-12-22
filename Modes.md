@@ -209,12 +209,12 @@ In flight adjustment of servo midpoint for straight flight
 
 The purpose of this mode is to set new midpoints for `SERVO_ELEVATOR`, `SERVO_FLAPERON_1`, `SERVO_FLAPERON_2` and `SERVO_RUDDER`.
 
-This is so when switching into passthrough mode the plane will fly straight, its also to help the PIFF controller know where the plane is expected to fly straight.
+This is so when switching into manual mode the plane will fly straight, its also to help the PIFF controller know where the plane is expected to fly straight.
 
 How to use:
 
 1. This is intended to use in air. 
-2. Fly straight, choose what mode that suites you best. (`passthrough`, `angle` or `acro`)
+2. Fly straight, choose what mode that suites you best. (`manual`, `angle` or `acro`)
 3. Enable `SERVO AUTOTRIM` mode, and keep flying straight for 2 seconds. After 2 seconds it will set new midpoints based on average servo position during those 2 seconds.
 4. If you're are NOT happy with new midpoints disable `SERVO AUTOTRIM` mode and it will revert back to old settings. If you want to keep new midpoints keep `SERVO AUTOTRIM` turned on, land aircraft and disarm. New midpoints will be saved.
 
