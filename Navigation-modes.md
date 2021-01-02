@@ -124,7 +124,6 @@ iNAV’s parameters for fixed wing:
 - set nav_fw_climb_angle = 20  
 - set nav_fw_dive_angle = 15  
 - set nav_fw_pitch2thr = 10  # pitch to throttle  
-- set nav_fw_roll2pitch = 75  # roll to pitch  
 - set nav_fw_loiter_radius = 5000  
   
   
