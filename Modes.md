@@ -207,7 +207,7 @@ Disables the OSD
 ### SERVO AUTOTRIM
 In flight adjustment of servo midpoint for straight flight
 
-The purpose of this mode is to set new midpoints for `SERVO_ELEVATOR`, `SERVO_FLAPERON_1`, `SERVO_FLAPERON_2` and `SERVO_RUDDER`.
+The purpose of this mode is to set new midpoints for servos 2 to 5. Makes sure you assign these servo numbers to your control surfaces or they will not be trimmed. If you have another servo (e.g. a servo gimbal) assigned to to servos 2 to 5, then this servo _will_ be trimmed.
 
 This is so when switching into manual mode the plane will fly straight, its also to help the PIFF controller know where the plane is expected to fly straight.
 
