@@ -26,113 +26,61 @@ If you are building a **plane**:
 
 https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Guide
 
-**Suggested flight controllers:**
+## Recommended hardware
 
-Matek F765-WING: https://inavflight.com/shop/s/bg/1557661
-
-Matek F405-WING: https://inavflight.com/shop/p/MATEKF405WING
-
-Matek F722-WING: https://inavflight.com/shop/p/MATEKF722WING
-
-Matek F411-WSE:  https://inavflight.com/shop/s/bg/1546243
-
-Matek F411-WING: https://inavflight.com/shop/p/MATEKF411WING
-
-
-**Suggested models to start with:**
-
-Zeta Science Wing Wing Z84: https://inavflight.com/shop/s/bg/988834
-
-Sonicmodell F1: https://inavflight.com/shop/s/bg/1181349
-
-ARWing 900: https://inavflight.com/shop/s/bg/1175537
-
-Zeta Science C1 Chaser: https://inavflight.com/shop/s/bg/1102080
-
-ZOHD Dart: https://inavflight.com/shop/s/bg/1201965
-
-Sonicmodell Skyhunter: https://inavflight.com/shop/s/bg/1448837
-
-### Suggested flight controllers if you are building a **copter**:
-
-* [Matek F405-CTR](https://inavflight.com/shop/p/MATEKF405CTR)
-* [Matek F722-STD](https://inavflight.com/shop/p/MATEKF722STD)
+### Flight controllers
 * [Matek F722-SE](https://inavflight.com/shop/p/MATEKF722SE)
-* [Matek F722-Mini](https://inavflight.com/shop/p/MATEKF722MINI)
+* [Matel F722-WPS](https://inavflight.com/shop/s/bg/1778068)
+* [Matek F411-WSE](https://inavflight.com/shop/s/bg/1546243)
+* [Matek F765-WING](https://inavflight.com/shop/s/bg/1557661)
+* [Matek F722-MiniSE](https://inavflight.com/shop/s/bg/1707404)
 * [Holybro Kakute F7](https://inavflight.com/shop/s/bg/1315723)
-* [Mamba F405 Stack](https://inavflight.com/shop/s/bg/1345001)
-* [Mamba F722 Stack](https://inavflight.com/shop/s/bg/1490805)
 * [iFlight SucceX-E F4 Stack](https://inavflight.com/shop/s/bg/1553340)
 
-**Selection of suggested and tested components:**
+### Airplane models
+* [AR Wing Pro](https://inavflight.com/shop/s/bg/1756841)
+* [AtomRC Dolphin](https://inavflight.com/shop/s/bg/1758430)
+* [C1 Chaser](https://inavflight.com/shop/s/bg/1102080)
+* [SonicModell Binary](https://inavflight.com/shop/s/bg/1473014)
+* [Volantex Ranger 2000](https://inavflight.com/shop/s/bg/1151700)
+* [Mini AR Wing](https://inavflight.com/shop/s/bg/1341528)
 
-**GPS Modules:**
+### Radios
+* [Radiomaster TX16S](https://inavflight.com/shop/s/bg/1746075)
+* [Jumper T18 Pro](https://inavflight.com/shop/s/bg/1680526)
+* [FrSky Q X7](https://inavflight.com/shop/s/bg/1196246)
+* [FlySky FS-i6X](https://inavflight.com/shop/s/bg/1090406) 
 
-Beitian BN220 GPS: https://inavflight.com/shop/p/BN220
+### Long range radio systems
+* [Radiomaster TX16S + TBS Crossfire Starter Set](https://inavflight.com/shop/s/bg/1735618)
+* [ImmersionsRC Ghost](https://inavflight.com/shop/s/bg/1722555)
+* [SIYI FM30](https://inavflight.com/shop/s/bg/1776430)
+* [FrSky R9M 2019 + R9MX](https://inavflight.com/shop/s/bg/1707906)
 
-Beitian BN220T GPS: https://inavflight.com/shop/s/bg/1446169
+### GPS & Sensors
+* [Beitian BN180 GPS](https://inavflight.com/shop/p/BN180)
+* [Beitian BN880Q GPS+COMPASS](https://inavflight.com/shop/s/bg/1450469)
+* [Beitian BN880 GPS+COMPASS ](https://inavflight.com/shop/p/BN880)
+* [Matek M8Q-5883](https://inavflight.com/shop/s/bg/1337288)
+* [Matek Lidar+OpFlow board](https://inavflight.com/shop/s/bg/1604930)
+* [Matek Digital Airspeed Sensor](https://inavflight.com/shop/s/bg/1710131)
+* [Benewake TFmini Lidar](https://inavflight.com/shop/s/bg/1449740)
+* [VL53L0X Lidar](https://inavflight.com/shop/s/bg/1103114)
 
-Beitian BN180 GPS: https://inavflight.com/shop/p/BN180
+### FPV
+* [Foxeer T-Rex FPV camera](https://inavflight.com/shop/s/bg/1756536)
+* [RunCam Eagle 3 FPV camera](https://inavflight.com/shop/s/bg/1723926)
+* [Caddx Ratel 2 FPV camera](https://inavflight.com/shop/s/bg/1779714)
+* [Caddx Vista HD](https://inavflight.com/shop/s/bg/1625165)
+* [Rush Tank Ultimate](https://inavflight.com/shop/s/bg/1707214)
+* [Matek 1G3 video transmitter and receiver](https://inavflight.com/shop/s/bg/1745975)
+* [Eachine Cobra X FPV goggles](https://inavflight.com/shop/s/bg/1778518)
+* [Skyzone SKY04X FPV goggles](https://inavflight.com/shop/s/bg/1755006)
 
-Beitian BN880Q GPS+COMPASS: https://inavflight.com/shop/s/bg/1450469 (compact and improved BN880)
+### Other
+* [ViFly ShortSaver 2](https://inavflight.com/shop/s/bg/1788341)
+* [ViFly Finer buzzer](https://inavflight.com/shop/s/bg/1329066)
 
-Beitian BN880 GPS+COMPASS: https://inavflight.com/shop/p/BN880
-
-BD GPS NEO-M8N https://inavflight.com/shop/s/ae/32509281424
-
-Matek M8Q+ COMPASS https://inavflight.com/shop/s/bg/1337288
-
-Matek M8Q https://inavflight.com/shop/s/bg/1337287
-
-**Transmitters:**
-FrSky Taranis X9D Plus 2019: https://inavflight.com/shop/s/bg/1537808
-
-FrSky Taranis X9D Plus:  https://inavflight.com/shop/s/bg/1121799
-
-FrSky Q X7: https://inavflight.com/shop/s/bg/1196246
-
-FlySky FS-i6X: https://inavflight.com/shop/s/bg/1090406 
-
-**Transmitters Module:**
-
-FrSky R9:  https://inavflight.com/shop/s/bg/1466439
-
-**Receivers:**
-
-FrSky R9 MM: https://inavflight.com/shop/s/bg/1340129
-
-FrSky R9 Slim: https://inavflight.com/shop/s/bg/1297084
-
-FrSky XSR : https://inavflight.com/shop/s/bg/1461126
-
-FrSky R-XSR : https://inavflight.com/shop/s/bg/1186057
-
-**Motors:**
-
-EMAX motors:  https://inavflight.com/shop/s/bg/1307136
-
-**FPV Cameras:**
-
-Runcam Micro Swift 2: https://inavflight.com/shop/s/bg/1179743
-
-Foxeer Nano/Mini/Standard Predator 4: https://inavflight.com/shop/s/bg/1558735
-
-Foxeer Micro/Standard Falkor 2: https://inavflight.com/shop/s/bg/1544328
-
-RunCam Eagle 2 Pro: https://inavflight.com/shop/s/bg/1209504
-
-RunCam Micro Eagle: https://inavflight.com/shop/s/bg/1259121 
-
-Runcam Micro Sparrow 2: https://inavflight.com/shop/s/bg/1271733
-
-Foxeer Arrow Micro Pro: https://inavflight.com/shop/s/bg/1248761
-
-**VTX**
-
-Eachine ATX03S: https://inavflight.com/shop/s/bg/1427187 (perfect for compact builds!)
-
-AKK X2 Ultimate: https://inavflight.com/shop/s/bg/1388013
-
-RUSH TANK PLUS: https://inavflight.com/shop/s/bg/1558155
+You can get more suggestions following this [link](https://github.com/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products) too.
 
 _Thanks, and happy flying!_
