@@ -30,7 +30,7 @@ https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Guide
 
 ### Flight controllers
 * [Matek F722-SE](https://inavflight.com/shop/p/MATEKF722SE)
-* [Matel F722-WPS](https://inavflight.com/shop/s/bg/1778068)
+* [Matel F722-WPX](https://inavflight.com/shop/s/bg/1778068)
 * [Matek F411-WSE](https://inavflight.com/shop/s/bg/1546243)
 * [Matek F765-WING](https://inavflight.com/shop/s/bg/1557661)
 * [Matek F722-MiniSE](https://inavflight.com/shop/s/bg/1707404)
