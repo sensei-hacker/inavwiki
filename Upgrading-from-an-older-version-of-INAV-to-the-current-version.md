@@ -57,7 +57,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * Remove this deprecated settings if present: `gyro_notch1_hz`, `gyro_notch2_hz`, `gyro_notch1_cutoff`, `gyro_notch2_cutoff`, `use_dterm_fir_filter`, `dterm_setpoint_weight`, `dterm_notch_hz`, `dterm_notch_cutoff`, `mc_iterm_relax_type`
 
 ### From 2.4 to 2.6
-* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.vercel.app/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 * Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`, `vtx_freq`, `gyro_notch1_hz`, `gyro_notch2_hz`, `gyro_notch1_cutoff`, `gyro_notch2_cutoff`, `use_dterm_fir_filter`, `dterm_setpoint_weight`, `dterm_notch_hz`, `dterm_notch_cutoff`, `mc_iterm_relax_type`
@@ -66,7 +66,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 
 ### From 2.2 or 2.3 to 2.6
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
-* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.vercel.app/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 * Remove this deprecated settings if present: `dyn_notch_width_percent`, `dyn_notch_range`, `dyn_notch_q`, `dyn_notch_min_hz`, `rpm_dterm_filter_enabled`, `dterm_gyro_harmonic`, `rpm_dterm_min_hz`, `rpm_dterm_q`, `vtx_freq`, `gyro_notch1_hz`, `gyro_notch2_hz`, `gyro_notch1_cutoff`, `gyro_notch2_cutoff`, `use_dterm_fir_filter`, `dterm_setpoint_weight`, `dterm_notch_hz`, `dterm_notch_cutoff`, `mc_iterm_relax_type`
@@ -74,7 +74,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 ### From 2.0 or 2.1 to 2.6
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
-* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.vercel.app/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 * Remove this deprecated setting if present: `vtx_freq`, `gyro_notch1_hz`, `gyro_notch2_hz`, `gyro_notch1_cutoff`, `gyro_notch2_cutoff`, `use_dterm_fir_filter`, `dterm_setpoint_weight`, `dterm_notch_hz`, `dterm_notch_cutoff`, `mc_iterm_relax_type`
@@ -83,7 +83,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * Find `min_throttle` line, and replace it by `throttle_idle`, setting the percentage of the idle throttle. The default is 15.
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
-* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.vercel.app/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 * Remove this deprecated setting if present: `vtx_freq`
@@ -93,7 +93,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * If you are upgrading a multi rotor, POS XY PID I and D have now specific settings, respectively `nav_mc_pos_deceleration_time` and `nav_mc_pos_expo` . So if you don't use defaults, when restoring, move yours to the new settings.
 * Delete all lines starting with: mixer acczero accgain magzero osd.
 * Find `vbat_scale`, `vbat_max_cell_voltage`, `vbat_warning_cell_voltage` and `vbat_min_cell_voltage` values on your settings, and multiply their values by 10.
-* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.vercel.app/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 * Remove this deprecated setting if present: `vtx_freq`
@@ -107,7 +107,7 @@ Now it's time to change your settings file so it becomes compatible with the lat
 * Find `nav_max_speed` and replace by `nav_auto_speed` (renamed parameter).
 * Find `nav_max_climb_rate` and replace by `nav_auto_climb_rate` (renamed parameter).
 * Remove this deprecated settinsg if present: `vtx_freq`, `nav_fw_roll2pitch`
-* `aux` lines needs to be changed. Use [this tool](https://box2perm.now.sh/) to migrate your `aux` lines.
+* `aux` lines needs to be changed. Use [this tool](https://box2perm.vercel.app/) to migrate your `aux` lines.
 * Replace `yaw_motor_direction` by `motor_direction_inverted` if present
 * Replace `telemetry_uart_unidir` by `telemetry_halfduplex` if present
 * Find all lines starting with `servo`, and remove the fifth and the sixth arguments of the parameter. 
