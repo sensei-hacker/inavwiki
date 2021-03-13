@@ -31,7 +31,7 @@
 
 ## Default flight mode ( No mode selected )
 
-The default flight mode does not self level the aircraft around the roll and the pitch axes. That is, the aircraft does not level on its own if you center the pitch and roll sticks on the radio. Rather, they work just like the yaw axis: the rate of rotation of each axis is controlled directly by the related stick on the radio, and by leaving them centered the flight controller will just try to keep the aircraft in whatever orientation it's in. This default mode is called "Rate" mode, also sometime called "Acro" (from "acrobatic") and is active whenever no auto-leveled mode is enabled.
+The default flight mode does not self level the aircraft around the roll and the pitch axes. That is, the aircraft does not level on its own if you center the pitch and roll sticks on the radio. Rather, they work just like the yaw axis: the rate of rotation of each axis is controlled directly by the related stick on the radio, and by leaving them centered the flight controller will just try to keep the aircraft in whatever orientation it's in. This default mode is called "Acro" mode (from "acrobatic", shown in the OSD as `ACRO`). It is also sometimes called "rate" mode because the sticks control the rates of rotation of the aircraft around each of the three axes. "Acro" mode is active whenever auto-leveled mode is enabled.
 
 
 ## Mode details
