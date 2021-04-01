@@ -1,4 +1,4 @@
-Cleanflight CLI variables related to navigation features  
+iNAV CLI variables related to navigation features  
 
 All iNAV calculations are done in cm, cm/s and cm/s^2.  
   
