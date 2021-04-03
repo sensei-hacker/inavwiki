@@ -112,7 +112,7 @@ for vertical velocity. Too high “inav_w_z_baro_p” will make ALTHOLD nervous,
 // TODO: explain remaining relevant settings
   
 ### b) Using ALTHOLD with an airplane (fixed wing, fw):  
-As for multicopters, iNAV is not intended to use ALTHOLD controller in anything but ANGLE mode.  
+With Fixed Wing models, iNAV is not intended to use ALTHOLD controller in anything but ANGLE or CRUISE modes.  
 iNAV controls pitch angle and throttle. It assumes that altitude is held (roughly) when pitch angle is zero. If plane has to climb, iNAV will also increase throttle. If plane has to dive, iNAV will reduce throttle and glide. The strength of this mixing is controlled by “nav_fw_pitch2thr”.  
 Set board alignment in such a way that your plane is flying level both in "MANUAL" and in "ANGLE", when you don't touch the sticks.   
 
