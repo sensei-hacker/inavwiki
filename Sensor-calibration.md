@@ -10,11 +10,9 @@ Unlike the simple level calibration used in cleanflight & betaflight INAV uses a
 
 You may find this easier to do more accurately prior to installing the flight controller in your model and this procedure MUST be done referenced to the marked orientation on the board.
 
-A video guide of these steps is available here: [https://www.youtube.com/watch?v=HxWSn_noNgg](https://www.youtube.com/watch?v=HxWSn_noNgg)
-
 See "calibration procedure" below:
 
-<a href="http://tinypic.com?ref=2h3zplg" target="_blank"><img src="http://i64.tinypic.com/2h3zplg.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
+![](https://github.com/iNavFlight/inav/tree/master/docs/assets/images/Acc_Cal.png)
 
 **Note:** If the flight controller is mounted in another angle or upside down, do the calibration steps with the flight controller pointing as shown in the pictures, not based on the orientation of the quad or fixed wing model itself, otherwise calibration won´t work.
 
