@@ -12,7 +12,7 @@ You may find this easier to do more accurately prior to installing the flight co
 
 See "calibration procedure" below:
 
-![](https://github.com/iNavFlight/inav/tree/master/docs/assets/images/Acc_Cal.png)
+![](https://github.com/iNavFlight/inav/tree/master/docs/assets/images/AccCal.png)
 
 **Note:** If the flight controller is mounted in another angle or upside down, do the calibration steps with the flight controller pointing as shown in the pictures, not based on the orientation of the quad or fixed wing model itself, otherwise calibration won´t work.
 
