@@ -26,7 +26,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 1. Leg speed is an inav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
 2. Not used by inav
 3. Once SET_HEAD or SET_POI is invoked, it remains active until cleared by SET_HEAD with a P1 value of -1.
-4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For inav, the mission will continue if RTH-LAND is not set, and valid waypoints follow.
+4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For inav, prior to c. 2.6, the mission would continue if RTH-LAND is not set, and valid waypoints follow.
 5. If the final entry in a mission is a WAYPOINT, the inav treats it as POSHOLD_UNLIM.
 6. For inav's "follow-me" mode (WP#255, POSHOLD engaged), P1 may be used to send an orientation heading (0-359 degrees) .
 
