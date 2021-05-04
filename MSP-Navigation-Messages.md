@@ -21,7 +21,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | 5 | SET_POI [3]   |          | | | ✔ | ✔ | | ✔ 2.6 and later |
 | 6 | JUMP          | Target WP#      | No. of repeats (-1 = forever) | | | | | ✔ 2.5 and later |
 | 7 | SET_HEAD [3]  | Heading  (degrees) | | | | | | ✔ 2.6 and later |
-| 8 | LAND | Speed (cm/s) [1] | Elevation Offset (m) [8] | Altitude Mode [7] | ✔ | ✔ | ✔ | ✔ 2.5 and later |
+| 8 | LAND | Speed (cm/s) [1] | Elevation Adjustment (m) [8] | Altitude Mode [7] | ✔ | ✔ | ✔ | ✔ 2.5 and later |
 
 1. Leg speed is an inav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
 2. Not used by inav
@@ -30,7 +30,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 5. If the final entry in a mission is a WAYPOINT, the inav treats it as POSHOLD_UNLIM.
 6. For inav's "follow-me" mode (WP#255, POSHOLD engaged), P1 may be used to send an orientation heading (0-359 degrees).
 7. inav 3.0 and later, P3 defines the altitude mode. 0 (default, legacy) = Relative to Home, 1 = Absolute (AMSL). Ignored for releases prior to 3.0.
-8. inav 3.0 and later, P2 defines the ground elevation offset (in metres) between the assumed home location and the LAND WP. If set reasonably accurately, this should result in smoother / timely landings where the difference is greater than a few metres. Ignored for releases prior to 3.0.
+8. inav 3.0 and later, P2 defines the ground elevation (in metres) for the LAND WP. If the altitude mode is absolute, this is also absolute; for relative altitude, then it is the differencebetween the assumed home location and the LAND WP. Ignored for releases prior to 3.0.
 
 ## Geospatial Units 
 
