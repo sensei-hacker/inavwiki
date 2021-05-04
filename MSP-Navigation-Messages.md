@@ -30,7 +30,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 5. If the final entry in a mission is a WAYPOINT, the inav treats it as POSHOLD_UNLIM.
 6. For inav's "follow-me" mode (WP#255, POSHOLD engaged), P1 may be used to send an orientation heading (0-359 degrees).
 7. inav 3.0 and later, P3 defines the altitude mode. 0 (default, legacy) = Relative to Home, 1 = Absolute (AMSL). Ignored for releases prior to 3.0.
-8. inav 3.0 and later, P2 defines the ground elevation (in metres) for the LAND WP. If the altitude mode is absolute, this is also absolute; for relative altitude, then it is the differencebetween the assumed home location and the LAND WP. Ignored for releases prior to 3.0.
+8. inav 3.0 and later, P2 defines the ground elevation (in metres) for the LAND WP. If the altitude mode is absolute, this is also absolute; for relative altitude, then it is the difference between the assumed home location and the LAND WP. Ignored for releases prior to 3.0.
 
 ## Geospatial Units 
 
