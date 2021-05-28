@@ -27,6 +27,7 @@
 - OSD ALT #
 - [FLAPERON](#flaperon)
 - [LEDLOW](#ledlow)
+- [AUTOLEVEL](#autolevel)
 
 
 ## Default flight mode ( No mode selected )
@@ -137,6 +138,14 @@ This hybrid mode works exactly like the previous ANGLE mode with centered roll a
 ### LEDLOW
 
 Turns off the RGB LEDs
+
+### AUTOLEVEL
+
+**AUTOLEVEL is only available for fixed wing.**
+
+AUTOLEVEL will attempt to automatically tune the pitch offset (`fw_level_pitch_trim`) a fixed-wing airplane needs to not lose altitude when flying straight in ANGLE mode.
+
+The new value isn't saved to EEPROM, you have to save it manually using either the configurator or a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
 
 ### MANUAL
 
