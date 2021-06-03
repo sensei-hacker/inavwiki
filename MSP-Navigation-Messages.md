@@ -410,4 +410,4 @@ The MSP NAV message set is implemented by [mwptools](https://github.com/stronnag
 
 # XML Mission Files
 
-[mwptools](https://github.com/stronnag/mwptools), ezgui / mp4i, [inav-configurator](https://github.com/iNavFlight/inav-configurator) (and WinGUI) share a common, interoperable, XML mission file format. A [reverse engineered definition (XSD)](https://github.com/stronnag/mwptools/blob/master/samples/mw-mission.xsd) can be found in the [mwp](https://github.com/stronnag/mwptools) samples directory.
+[mwptools](https://github.com/stronnag/mwptools), ezgui / mp4i, [inav-configurator](https://github.com/iNavFlight/inav-configurator) (and WinGUI) share a common, interoperable, XML mission file format. A [reverse engineered definition (XSD)](https://github.com/stronnag/mwptools/blob/master/src/samples/mw-mission.xsd) can be found in the [mwp](https://github.com/stronnag/mwptools) samples directory.
