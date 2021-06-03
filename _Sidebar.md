@@ -23,7 +23,7 @@
  - [INAV Version History](/iNavFlight/inav/wiki/New-features-over-versions-log)
 
 # Additional Links
-
+ - [Antenna Tracking](https://github.com/iNavFlight/inav/wiki/AAT-Automatic-Antenna-Tracker)
  - [Beeping and flashing error codes meaning](/iNavFlight/inav/wiki/Blinkenlights)
  - [Custom mixes for exotic setups](/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups)
  - [GPS Failsafe and Glitch Protection](/iNavFlight/inav/wiki/GPS-Failsafe-and-Glitch-Protection)
