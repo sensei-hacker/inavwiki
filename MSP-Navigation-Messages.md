@@ -39,6 +39,14 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | Latitude, Longitude | Decimal degrees, WGS84 | Integer, WGS84 Degrees * 1E7 |
 | Altitude | Integer Metres | Centimetres |
 
+## FlyBy Home Waypoints
+
+From inav 3.1, "FlyBy Home" (FBH) waypoints are supported for WAYPOINT, POSHOLD_TIME and LAND. These WPs are designated by either (or both) of
+* The latitude and longitude is zero; or
+* The `flag` field is set to 0x48 (72d, 'H')
+
+FBH waypoints have no defined location until the mission is executed, when they assume the location of the **arming** home location (not affected by `safehome`). This is ephemeral and is reset on each arming. The location uploaded to the FC is irrelevant where `flag == 0x48`; in such cases a subsequent download from the FC will return the original WP latitude and longitude, not the home used for a particular instance. 
+
 ## Annotated Example
 The following example, using the MW XML (ezgui, inav configurator, mwp) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types:
 ![Complex Mission](images/eg_complex_mission.png)
@@ -176,7 +184,7 @@ For safety, if no mission is defined, a single RTH action should be sent.
 
 1. your choice, really.
 
-In general, flag is 0, unless it's the last point in a mission, in which case it is set to 0xa5 (165). When waypoints are uploaded, the values are also returned by the FC, thus enabling the application to verify that the mission has been uploaded correctly.
+In general, flag is 0, unless it's the last point in a mission, in which case it is set to 0xa5 (165) (or 0x48 (72) for FBH WP). When waypoints are uploaded, the values are also returned by the FC, thus enabling the application to verify that the mission has been uploaded correctly.
 
 # Messages (Navigation related)
 
@@ -207,7 +215,7 @@ Special waypoints are 0, 254, and 255. #0 returns the RTH (Home) position, #254 
 | p1 | int16 | varies according to action |
 | p2 | int16 | varies according to action |
 | p3 | int16 | varies according to action |
-| flag | uchar | 0xa5 = last, otherwise set to 0 |
+| flag | uchar | 0xa5 = last, otherwise set to 0 (or 0x48 (72) for FBH WP, inav 3.1+)|
 
 The values for the various parameters are given in the section “WayPoint / Action Attributes”
 Note that altitude is measured from the "home" location, not absolute above mean sea level.
