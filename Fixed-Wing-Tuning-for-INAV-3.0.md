@@ -18,9 +18,11 @@ This is a basic overview of the steps to perform autotune and auto board pitch a
 * Disarm
 * Save(stick command)
 
-When satisfied with performance, remove autolevel and autotune modes.  
+When satisfied with performance, remove autolevel and autotune modes. 
+
+Board pitch alignment can be checked in PID tab under the Mechanics internal tab. 
  
-Confirm in modes tab that your servo center positions are within a value of 1450 and 1550. IF outside this range, it is recommended to mechanically trim your control surfaces to 1500 usec. After a good servo center has been attained you can disable "continuous servo trim" 
+Confirm in outputs tab that your servo center positions are within a value of 1450 and 1550. If outside this range, it is recommended to mechanically trim your control surfaces to 1500. After a good servo center has been attained you can disable "continuous servo trim" 
   
   
 
