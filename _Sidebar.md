@@ -21,6 +21,7 @@
  - [iNav CLI variables](/iNavFlight/inav/wiki/iNav-CLI-variables)
  - [Upgrading from an older version](/iNavFlight/inav/wiki/Upgrading-from-an-older-version-of-INAV-to-the-current-version)
  - [INAV Version History](/iNavFlight/inav/wiki/New-features-over-versions-log)
+ - [Fixed Wing Tuning for INAV 3.0](/iNavFlight/inav/wiki/Fixed-Wing-Tuning-for-INAV-3.0)
 
 # Additional Links
  - [Antenna Tracking](https://github.com/iNavFlight/inav/wiki/AAT-Automatic-Antenna-Tracker)
