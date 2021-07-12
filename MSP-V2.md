@@ -105,13 +105,13 @@ uint8_t crc8_dvb_s2(uint8_t crc, unsigned char a)
 And **pseudo-code** usage:
 ````
 int len; // payload size
-uint8_t *msg = calloc(1,len+9); // allocation for message
+uint8_t *msg = calloc(1, len+9); // allocation for message
 msg[0] = '$';
 ...
 // complete message content
 uint8_t ck2 = 0; // initialise CRC
-for(int i = 3; i < len+8; i++)
-    ck2=crc8_dvb_s2(ck2, msg[i]); // loop over summable data
+for (int i = 3; i < len+8; i++)
+    ck2 = crc8_dvb_s2(ck2, msg[i]); // loop over summable data
 msg[len+8] = ck2;
 ````
 
