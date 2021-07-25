@@ -14,7 +14,7 @@ If you already know how to setup a BetaFlight multirotor aircraft, you already k
 
 Let's then review the differences:
 
-* Not all Flight Controller boards has a proper target for INAV. But the most common ones does.
+* Not all Flight Controller boards has a proper target for INAV. But the most common ones do.
 * After flashing, the first time you connect your FC board to INAV configurator, it'll ask you to load a preset. Do it, as it'll make things easier from now on.
 * The accelerometer and gyroscope calibration is mandatory on INAV, and it’s a 6-step process (different from BetaFlight, which is an optional single-step process). Follow screen instructions and you’ll be fine.
 * For a fully autonomous multirotor (with automatic navigation capabilities like RTH and WP Missions), Flight Controller board must have an onboard barometer sensor. INAV can't navigate without one (on a multirotor aircraft). 
