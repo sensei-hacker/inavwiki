@@ -2,7 +2,7 @@
 
 These boards come from companies that support INAV development. Buying one of these boards you make your small contribution for improving INAV as well. 
 
-Also these boards are tested by INAV development team and usually flown on daily basis.
+Also these boards are tested by INAV development team and usually flown on a daily basis.
 
 | Board name                | CPU Family | Target name(s)            | GPS  | Compass | Barometer      | Telemetry | RX                             | Blackbox             |
 |---------------------------|:----------:|:-------------------------:|:----:|:-------:|:--------------:|:---------:|:------------------------------:|:--------------------:|
