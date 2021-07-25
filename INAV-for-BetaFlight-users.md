@@ -19,7 +19,7 @@ Let's then review the differences:
 * The accelerometer and gyroscope calibration is mandatory on INAV, and it’s a 6-step process (different from BetaFlight, which is an optional single-step process). Follow screen instructions and you’ll be fine.
 * For a fully autonomous multirotor (with automatic navigation capabilities like RTH and WP Missions), Flight Controller board must have an onboard barometer sensor. INAV can't navigate without one (on a multirotor aircraft). 
 * Also, you have to cover the barometer sensor with a small piece of non-blocking foam, because the wind affects the sensor readings. This is the most common cause of altitude holding problems.
-* The GPS module must be fitted with a magnetometer sensor. GPS modules without mag sensor do not allows INAV to navigate (on a multirotor aircraft) and will only be useful for log purposes .
+* The GPS module must be fitted with a magnetometer sensor. GPS modules without a mag sensor do not allow INAV to navigate (on a multirotor aircraft) and will only be useful for loggin purposes.
 
 * GPS module must be mounted on a small mast pole to avoid magnetic interference from motors on the compass. 5 or 6 centimeters above motors should be fine.
 
