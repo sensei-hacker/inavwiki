@@ -156,7 +156,7 @@ RTH will attempt to bring copter/plane to launch position. Launch position is de
 With default settings RTH will land immediately if you are closer than 5 meters from launch position. If further away it will make sure to have at least 10 meters of altitude, then start going home at 3m/s, and land. It will disarm itself if so configured, otherwise you will have to manually disarm once on the ground.
 
 
-There are many different modes for Altitude, see [further down on this page](https://github.com/iNavFlight/inav/wiki/Navigation-modes#rth-altitude-control-modes)
+There are many different modes for Altitude, see the [RTH mode page](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home#rth-altitude-control-modes) for details.
 
 Activated by **RTH** flight mode.
 
@@ -194,55 +194,3 @@ right (roll/pitch) stick
 A diagram to indicate flight modes relation to navigation modes and illustrate sensor requirements:
 
 ![](images/nav_modes_diagram.jpg)
-
-# RTH Altitude control modes
-
-RTH sequence can control altitude in several different ways, controlled by **nav_rth_alt_mode** and **nav_rth_altitude** (the altitude in centimeters) parameters.
-
-Default setting is NAV_RTH_AT_LEAST_ALT - climb to preconfigured altitude if below, stay at current altitude if above.
-
-## Maintain current altitude (NAV_RTH_NO_ALT)
-nav_rth_alt_mode = CURRENT
-
-nav_rth_altitude is ignored
-
-![](images/NAV_RTH_NO_ALT.jpg)
-
-## Maintain current altitude + predefined safety margin (NAV_RTH_EXTRA_ALT)
-nav_rth_alt_mode = EXTRA
-
-nav_rth_altitude defines extra altitude margin
-
-![](images/NAX_RTH_EXTRA_ALT.jpg)
-
-## Predefined altitude (NAV_RTH_CONST_ALT)
-nav_rth_alt_mode = FIXED
-
-nav_rth_altitude defines exact RTH altitude above launch point.
-
-If the multirotor is below nav_rth_altitude it will enter position hold and climb to desired altitude prior to flying back home. If the machine is above the desired altitude, it will turn and fly home and descend on the way.
-
-![](images/NAV_RTH_CONST_ALT.jpg)
-
-## Predefined altitude linear descent (AT_LEAST_LINEAR_DESCENT)
-nav_rth_alt_mode = AT_LEAST_LINEAR_DESCENT
-
-`nav_rth_altitude` defines exact RTH altitude above launch point. Aircraft will descend in a way that it'll reach the `nav_rth_altitude` altitude only when it reaches the home point. So aircraft can save energy by doing an easy descend on it's way back home.
-
-If the aircraft is below `nav_rth_altitude` it will climb to desired altitude prior to flying back home. If the machine is above the desired altitude, it will turn and fly home, and descend on the way (on a linear straight line).
-
-![](https://i.imgur.com/CPgKb4w.png)
-
-## Maximum altitude since launch (NAV_RTH_MAX_ALT)
-nav_rth_alt_mode = MAX
-
-nav_rth_altitude is ignored
-
-![](images/NAV_RTH_MAX_ALT.jpg)
-
-## At least predefined altitude above launch point (NAV_RTH_AT_LEAST_ALT)
-nav_rth_alt_mode = AT_LEAST
-
-nav_rth_altitude defines exact RTH altitude above launch point
-
-![](images/NAV_RTH_AT_LEAST_ALT.jpg)
