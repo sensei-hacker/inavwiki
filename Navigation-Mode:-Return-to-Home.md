@@ -10,7 +10,7 @@ There are two altitudes that can be used with RTH: _nav_rth_altitude_ and _nav_r
 
 _nav_rth_altitude_ is used in conjunction with the RTH Altitude control modes to decide the altitude that the model returns home at. See below to see how the two are combined. 
 
-_nav_rth_home_altitude_ sets the altitude that a plane will loiter at when it arrives at home. If above the _nav_rth_altitude_, the plane will start loitering, then loiter down to the home altitude. The default, 0, means that the feature is disabled. In which case the plane will loiter at the RTH altitude.
+_nav_rth_home_altitude_ sets the altitude that a plane will loiter at when it arrives at home. If above the _nav_rth_home_altitude_, the plane will start loitering, then loiter down to the home altitude. The default, 0, means that the feature is disabled. In which case the plane will loiter at the _nav_rth_altitude_.
 
 # RTH Altitude control modes
 
