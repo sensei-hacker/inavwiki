@@ -76,15 +76,18 @@ The _nav_rth_climb_first_ option sets how the model will initiate the **RTH**.
 - If _nav_rth_climb_first_ = **ON**, the multirotor hover and increase altitude. When it reaches the **Actual RTH altitude**, it will fly towards home.
 
 ## Climb first with Fixed Wing
-If _nav_rth_climb_first_ = **OFF**, the plane will turn towards home, and climb to the **Actual RTH altitude** on the homeward journey.
+### _nav_rth_climb_first_ = **OFF**
+The plane will turn towards home, and climb to the **Actual RTH altitude** on the homeward journey.
 
 ![https://imgur.com/qXkxPxh](https://i.imgur.com/qXkxPxhl.png)
 
-If _nav_rth_climb_first_ = **ON**, the plane climb to the **Actual RTH altitude** in the direction it is currently flying. Once the **Actual RTH Altitude** is reached, it will turn and fly towards home.
+### _nav_rth_climb_first_ = **ON**
+The plane climb to the **Actual RTH altitude** in the direction it is currently flying. Once the **Actual RTH Altitude** is reached, it will turn and fly towards home.
 
 ![https://imgur.com/MYWCu2X](https://i.imgur.com/MYWCu2Xl.png)
 
-If _nav_rth_climb_first_ = **ON_FW_SPIRAL**, the plane climb in a loiter to the **Actual RTH altitude**. Once the **Actual RTH Altitude** is reached, it will turn and fly towards home.
+### _nav_rth_climb_first_ = **ON_FW_SPIRAL**
+The plane climb in a loiter to the **Actual RTH altitude**. Once the **Actual RTH Altitude** is reached, it will turn and fly towards home.
 
 _Feature available since iNav 3.0._
 
