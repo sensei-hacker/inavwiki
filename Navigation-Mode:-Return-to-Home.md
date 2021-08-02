@@ -86,4 +86,6 @@ If _nav_rth_climb_first_ = **ON**, the plane climb to the **Actual RTH altitude*
 
 If _nav_rth_climb_first_ = **ON_FW_SPIRAL**, the plane climb in a loiter to the **Actual RTH altitude**. Once the **Actual RTH Altitude** is reached, it will turn and fly towards home.
 
+_Feature available since iNav 3.0._
+
 ![https://imgur.com/iviZOZ4](https://i.imgur.com/iviZOZ4l.png)
