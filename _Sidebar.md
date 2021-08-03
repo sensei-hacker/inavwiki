@@ -32,7 +32,7 @@
  - [INAV blackbox variables](/iNavFlight/inav/wiki/INAV-blackbox-variables)
  - [INAV MSP frames changelog](/iNavFlight/inav/wiki/INAV-MSP-frames-changelog)
  - [Lightweight Telemetry (LTM)](/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM))
- - [MSP Navigation Messages](/iNavFlight/inav/wiki/MSP-Navigation-Messages)
+ - [Waypoint types, usage and MSP messages](/iNavFlight/inav/wiki/MSP-Navigation-Messages)
  - [PID Attenuation and scaling](/iNavFlight/inav/wiki/PID-Attenuation-and-scaling)
  - [Tune INAV PIFF controller for fixedwing](/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing)
  - [Pixel OSD FAQs](https://github.com/iNavFlight/inav/wiki/Pixel-OSD-FAQs)
