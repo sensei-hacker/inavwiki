@@ -121,7 +121,8 @@ They are cheap and because they use the Russian satellite network called GLONASS
 Also as a bonus with such units they have a magnetometer (a compass) on the underside of the board too! 
 
 <img src="https://img2.banggood.com/thumb/large/upload/2015/09/SKU287158/SKU287158-1.jpg">
-<img src="https://quadmeup.com/wp-content/uploads/2016/03/beitian-bn-880-top.jpg">
+
+![BN-880_arrow](https://user-images.githubusercontent.com/65187658/130331246-c5d3bc55-be7a-4481-b202-a51ff40d57eb.jpg)
 
 An important note is that on top of the protective shell of the MN-M8N there is an arrow, this needs to point towards the front of your model. The BN-880 plug needs to point down and to the rear of your model. It is also recommended to [encase](https://www.thingiverse.com/search?q=bn-880&dwh=665c615230c1cbf) the BN-880 as it is quite fragile.
 
