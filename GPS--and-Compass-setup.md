@@ -27,19 +27,13 @@ If  you elect to use the internal FC magnetometer you are highly likely to have 
 
 Just to avoid the mistake many people do while installing a GPS unit (aka pointing the antenna towards the ground): _(thanks to Phil-MC for the images)_
 
-<table>
-  <tbody>
-    <tr>
-      <td><img src="https://user-images.githubusercontent.com/65187658/129951933-6df4d873-b50a-4fe7-b12f-f4041402a4a9.jpg" width="300"></td>
-      <td>This side has to point towards the sky</a></td>
-    </tr>
-    <tr>
-      <td><img src="https://user-images.githubusercontent.com/65187658/129952395-29948465-76ec-48ac-a1b7-7e1c1e539f07.jpg" width="300"></td>
-      <td>This side has to point towards the ground</a></td>
-    </tr>
-  </tbody>
-</table>
+This side has to point towards the sky
 
+![TOP_bn-880](https://user-images.githubusercontent.com/65187658/129951933-6df4d873-b50a-4fe7-b12f-f4041402a4a9.jpg)
+
+This side has to point towards the ground
+
+![BOTTOM_bn-880](https://user-images.githubusercontent.com/65187658/129952395-29948465-76ec-48ac-a1b7-7e1c1e539f07.jpg)
 
 
 ## Setting up the compass alignment
