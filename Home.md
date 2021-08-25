@@ -22,6 +22,8 @@ iNav has many settings that are different than cleanflight, so while the configu
 
 **As such it is ABSOLUTELY mandatory to read these pages:**
 
+- [INAV 3 from flash to flight YouTube playlist](https://youtube.com/playlist?list=PLOUQ8o2_nCLkfcKsWobDLtBNIBzwlwRC8)
+
 - [Getting started with iNav](https://github.com/iNavFlight/inav/wiki/Getting-started-with-iNav)
 
 - [Sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration)
