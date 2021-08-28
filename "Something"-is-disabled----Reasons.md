@@ -29,8 +29,8 @@ iNav will refuse to arm for the following reasons:
 | `OOM ` | `02000000` | The FC is out of memory |
 | `SETTINGFAIL` | `04000000` | A CLI setting is out of range. The erroneous setting should be indicated in a CLI `dump`. If you can't then reset the offending setting, reflash with full chip erase and reapplying settings from scratch may help.|
 | `PWMOUT` | `08000000` | PWM output error. Motor or servo output initialisation failed. | 
-| `NOPREARM` | `10000000` | (tbc) |
-| `DSHOTBEEPER` | `20000000` | (tbc) |
+| `NOPREARM` | `10000000` | PREARM is enabled and timed out  |
+| `DSHOTBEEPER` | `20000000` | DSHOTBEEPER is enabled and is active |
 
 Note: On older processors, just the bitmask is shown, which can be decoded by the numeric values in the table. A numeric value may be a combination of conditions, for example:
 
