@@ -21,7 +21,7 @@ iNav will refuse to arm for the following reasons:
 | `KILLSW` | `00020000` | A kill switch is engaged |
 | `RX` | `00040000` | The RC link is not detected (RX not detected) |
 | `THR` | `00080000` | The throttle setting is not a minimum |
-| `CLI` | `00100000` | The CLI is active |
+| `CLI` | `00100000` | The CLI is active (note: you will always /unavoidably see this when in the CLI) |
 | `CMS` | `00200000` | The CMS menu is active |
 | `OSD` | `00400000` | The OSD menu is active |
 | `ROLL/PITCH` | `00800000` | Roll and/or pitch is not centred |
@@ -29,13 +29,15 @@ iNav will refuse to arm for the following reasons:
 | `OOM ` | `02000000` | The FC is out of memory |
 | `SETTINGFAIL` | `04000000` | A CLI setting is out of range. The erroneous setting should be indicated in a CLI `dump`. If you can't then reset the offending setting, reflash with full chip erase and reapplying settings from scratch may help.|
 | `PWMOUT` | `08000000` | PWM output error. Motor or servo output initialisation failed. | 
+| `NOPREARM` | `10000000` | (tbc) |
+| `DSHOTBEEPER` | `20000000` | (tbc) |
 
 Note: On older processors, just the bitmask is shown, which can be decoded by the numeric values in the table. A numeric value may be a combination of conditions, for example:
 
 ```
 0x184000 = 00100000 + 00080000 + 00004000 (CLI active, throttle not at minimum, arm engaged)
 ```
-The values are correct for iNav 2.5 as of 2020-08.
+The values are correct for iNav 3.01 as of 2021-08.
 
 ### Navigation Unsafe reasons
 
