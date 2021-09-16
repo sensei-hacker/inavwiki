@@ -37,7 +37,9 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | Field | XML Mission File | MSP_WP binary message |
 | ----- | ---------------- | --------------------- |
 | Latitude, Longitude | Decimal degrees, WGS84 | Integer, WGS84 Degrees * 1E7 |
-| Altitude | Integer Metres | Centimetres |
+| Altitude (AMSL) | Integer Metres | Centimetres |
+
+Note that inav uses the GPS' "above mean sea level" elevation for navigation. 
 
 ## FlyBy Home Waypoints
 
@@ -218,7 +220,7 @@ Special waypoints are 0, 254, and 255. #0 returns the RTH (Home) position, #254 
 | flag | uchar | 0xa5 = last, otherwise set to 0 (or 0x48 (72) for FBH WP, inav 3.1+)|
 
 The values for the various parameters are given in the section “WayPoint / Action Attributes”
-Note that altitude is measured from the "home" location, not absolute above mean sea level.
+Note that altitude is measured from the "home" location, not absolute above mean sea level, unless the absolute altitude flag is set for a WP (inav 3.0 and later). 
 
 ## MSP_NAV_STATUS
 
