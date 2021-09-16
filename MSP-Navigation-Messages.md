@@ -39,9 +39,9 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | Field | XML Mission File | MSP_WP binary message |
 | ----- | ---------------- | --------------------- |
 | Latitude, Longitude | Decimal degrees, WGS84 | Integer, WGS84 Degrees * 1E7 |
-| Altitude (AMSL) | Integer Metres | Centimetres |
+| Altitude | Integer Metres | Centimetres |
 
-Note that inav uses the GPS' "above mean sea level" elevation for navigation. 
+Note that inav uses the GPS' "above mean sea level" (not "above WGS84 ellipsoid") elevation for navigation. Be aware of this distinction when using absolute  rather than relative (to home) mission altitudes. 
 
 ## FlyBy Home Waypoints
 
