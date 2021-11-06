@@ -45,14 +45,14 @@ Note that inav uses the GPS' "above mean sea level" (not "above WGS84 ellipsoid"
 
 ## FlyBy Home Waypoints
 
-From inav 3.1, "FlyBy Home" (FBH) waypoints are supported for WAYPOINT, POSHOLD_TIME and LAND. These WPs are designated by either (or both) of
+From inav 4.0, "FlyBy Home" (FBH) waypoints are supported for WAYPOINT, POSHOLD_TIME and LAND. These WPs are designated by either (or both) of
 * The latitude and longitude is zero; or
 * The `flag` field is set to 0x48 (72d, 'H')
 
 FBH waypoints have no defined location until the mission is executed, when they assume the location of the **arming** home location (not affected by `safehome`). This is ephemeral and is reset on each arming. The location uploaded to the FC is irrelevant where `flag == 0x48`; in such cases a subsequent download from the FC will return the original WP latitude and longitude, not the home used for a particular instance. 
 
 ## Annotated Example
-The following example, using the MW XML (ezgui, inav configurator, mwp) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types:
+The following example, using the [MW XML](#xml-mission-files) (inav configurator, mwp, ez-gui) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types:
 ![Complex Mission](images/eg_complex_mission.png)
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -422,4 +422,5 @@ The MSP NAV message set is implemented by [mwptools](https://github.com/stronnag
 
 # XML Mission Files
 
-[mwptools](https://github.com/stronnag/mwptools), ezgui / mp4i, [inav-configurator](https://github.com/iNavFlight/inav-configurator) (and WinGUI) share a common, interoperable, XML mission file format. A [reverse engineered definition (XSD)](https://github.com/stronnag/mwptools/blob/master/src/samples/mw-mission.xsd) can be found in the [mwp](https://github.com/stronnag/mwptools) samples directory.
+[inav-configurator](https://github.com/iNavFlight/inav-configurator), [mwptools](https://github.com/stronnag/mwptools), ezgui / mp4i (and WinGUI) share a common, interoperable, XML mission file format. A XSD can be found in the [inav developer documenation](
+https://github.com/iNavFlight/inav/tree/master/docs/development/wp_mission_schema).
