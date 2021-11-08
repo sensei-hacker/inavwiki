@@ -79,16 +79,38 @@ The _nav_rth_climb_first_ option sets how the model will initiate the **RTH**.
 ### _nav_rth_climb_first_ = **OFF**
 The plane will turn towards home, and climb to the **Actual RTH altitude** on the homeward journey.
 
-![https://imgur.com/qXkxPxh](https://i.imgur.com/qXkxPxhl.png)
+[![https://imgur.com/qXkxPxh](https://i.imgur.com/qXkxPxhl.png)](https://i.imgur.com/qXkxPxh.png)
 
 ### _nav_rth_climb_first_ = **ON**
 The plane climb to the **Actual RTH altitude** in the direction it is currently flying. Once the **Actual RTH Altitude** is reached, it will turn and fly towards home.
 
-![https://imgur.com/MYWCu2X](https://i.imgur.com/MYWCu2Xl.png)
+[![https://imgur.com/MYWCu2X](https://i.imgur.com/MYWCu2Xl.png)](https://i.imgur.com/MYWCu2X.png)
 
 ### _nav_rth_climb_first_ = **ON_FW_SPIRAL**
-The plane climb in a loiter to the **Actual RTH altitude**. Once the **Actual RTH Altitude** is reached, it will turn and fly towards home.
-
 _Feature available since iNav 3.0._
 
-![https://imgur.com/iviZOZ4](https://i.imgur.com/iviZOZ4l.png)
+The plane climb in a loiter to the **Actual RTH altitude**. Once the **Actual RTH Altitude** is reached, it will turn and fly towards home.
+
+[![https://imgur.com/iviZOZ4](https://i.imgur.com/iviZOZ4l.png)](https://i.imgur.com/iviZOZ4.png)
+
+### Two stage climb first
+_Feature available since iNav 4.0_
+
+Climb first can be a pretty inefficient part of the RTH sequence. The problem is that you are using energy spiralling up to altitude, or worse, flying away from home while gaining height. However, turning off climb first may not be a valid option, depending on the flying environment. This setting gives pilots more options with climb first.
+
+This feature can be set up in the CLI with the following commands:
+- **nav_rth_climb_first_stage_altitude**: Allows you to set an altitude for the first climb stage. The default, 0, means the feature is disabled.
+- **nav_rth_climb_first_stage_mode**: This setting is similar to nav_rth_mode, in that it lets you decide how you want to use the first climb stage altitude. Settings are AT_LEAST and EXTRA.
+
+#### nav_rth_climb_first_stage_mode = AT_LEAST
+This setting works in the same vein as the main RTH modes. Your target altitude for the first stage climb will be what you have set in nav_rth_climb_first_stage_altitude. If you are below the first climb stage altitude, the plane will climb to it. If not, it will turn to home. It will either directly fly home, or climb on the way home if your main RTH altitude target has not been reached. If the RTH Altitude is reached in the first stage, it will immediately turn towards home.
+
+#### nav_rth_climb_first_stage_mode = EXTRA
+Again, this setting works just like the main RTH modes. The target altitude for the first stage climb will be your current altitude plus the value you have set in nav_rth_climb_first_stage_altitude. If you are below the RTH Altitude, it will climb to the first climb stage altitude. If not, it will turn to home. The plane will either fly directly home, or climb on the way home if your RTH altitude target has not been reached. If the RTH Altitude is reached in the first stage, it will immediately turn towards home.
+
+#### How does this work?
+To be honest, pretty much as you expect it to. Once you select RTH, the model will start climbing (linear or spiral) up until the first stage target is met. Then it turns towards home and flies in that direction. If more altitude is needed to reach your target RTH altitude, it will climb on the way home. If the target altitude is met during the first climb stage, it will just fly home. Nice and simple, and much more energy efficient.
+
+[![RTH Climb modes - climb first = on with stage](https://i.imgur.com/S9ARPtfl.png)](https://i.imgur.com/S9ARPtf.png)
+
+[![RTH Climb modes - climb first = spiral with stage](https://i.imgur.com/7GMqN9Ql.png)](https://i.imgur.com/7GMqN9Q.png)
