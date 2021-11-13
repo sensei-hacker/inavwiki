@@ -3,39 +3,52 @@
 # Non-navigation modes index:
 
 - [AIR MODE](#air-mode)
-- [ARM](#arm)
 - [ANGLE](#angle)
-- [HORIZON](#horizon)
-- [TURN ASSIST](#turn-assist)
-- [HEADING HOLD](#heading-hold)
-- [HEADFREE](#headfree)
-- [HEADADJ](#headadj)
-- FPV ANGLE MIX
-- [CAMSTAB](#CAMSTAB)
-- [SURFACE](#surface)
-- LOITER CHANGE
-- [MANUAL](#manual) (called PASSTHROUGH mode up to version 1.8.1)
-- [NAV LAUNCH](#nav-launch)
-- [SERVO AUTOTRIM](#servo-autotrim)
-- [AUTOTUNE](#autotune)
+- [ARM](#arm)
+- [AUTOLEVEL](#autolevel-fw)
+- [AUTOTUNE](#autotune-fw)
 - [BEEPER](#BEEPER)
-- [OSD SW](#osd-sw)
 - [BLACKBOX](#blackbox)
-- KILLSWITCH
-- [FAILSAFE](#failsafe)
 - CAMERA CONTROL #
-- OSD ALT #
-- [FLAPERON](#flaperon)
+- [CAMSTAB](#CAMSTAB)
+- [FAILSAFE](#failsafe)
+- [FLAPERON](#flaperon-fw)
+- FPV ANGLE MIX
+- [HEADADJ](#headadj-mc)
+- [HEADFREE](#headfree-mc)
+- [HEADING HOLD](#heading-hold)
+- [HOME RESET](#home-reset)
+- [HORIZON](#horizon)
+- KILLSWITCH
 - [LEDLOW](#ledlow)
-- [AUTOLEVEL](#autolevel)
-
+- LIGHTS
+- [LOITER CHANGE](#loiter-change-fw)
+- [MANUAL](#manual-fw) (called PASSTHROUGH mode up to version 1.8.1)
+- [MC BRAKING](#mc-braking-mc)
+- MSP RC OVERRIDE
+- [NAV LAUNCH](#nav-launch-fw)
+- [OSD ALT](#osd-alt)
+- [OSD SW](#osd-sw)
+- [PREARM](#prearm)
+- [SERVO AUTOTRIM](#servo-autotrim-fw)
+- [SOARING](#soaring-fw)
+- [SURFACE](#surface)
+- [TELEMETRY](#telemetry)
+- [TURN ASSIST](#turn-assist)
+- [TURTLE](#turtle-mc)
+- USER1 & USER2
 
 ## Default flight mode ( No mode selected )
 
 The default flight mode does not self level the aircraft around the roll and the pitch axes. That is, the aircraft does not level on its own if you center the pitch and roll sticks on the radio. Rather, they work just like the yaw axis: the rate of rotation of each axis is controlled directly by the related stick on the radio, and by leaving them centered the flight controller will just try to keep the aircraft in whatever orientation it's in. This default mode is called "Acro" mode (from "acrobatic", shown in the OSD as `ACRO`). It is also sometimes called "rate" mode because the sticks control the rates of rotation of the aircraft around each of the three axes. "Acro" mode is active whenever auto-leveled mode is enabled.
 
 
-## Mode details
+## Mode Details
+
+The following indicate if a mode is specific to a particular craft type:
+
+FW = Fixed wing.\
+MC = Multicopter.
 
 ### AIR MODE
 
@@ -62,11 +75,15 @@ Maximum banking angle is limited by `max_angle_inclination_rll` and `max_angle_i
 
 ### ALTHOLD
 
-The altitude of the aircraft a the moment you activate this mode is fixed. 
+The altitude of the aircraft a the moment you activate this mode is fixed.
 
-### AUTOTUNE
+### AUTOLEVEL (FW)
 
-**AUTOTUNE is only available for fixed wing**
+AUTOLEVEL will attempt to automatically tune the pitch offset (`fw_level_pitch_trim`) a fixed-wing airplane needs to not lose altitude when flying straight in ANGLE mode.
+
+The new value isn't saved to EEPROM, you have to save it manually using either the configurator or a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
+
+### AUTOTUNE (FW)
 
 For detailed description go to https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing
 
@@ -105,7 +122,7 @@ Enables the servo gimbal
 Lets you activate flight controller failsafe with an aux channel.
 Read [Failsafe page](https://github.com/iNavFlight/inav/wiki/Failsafe) for more info.
 
-### FLAPERON
+### FLAPERON (FW)
 
 Activating it moves both ailerons down (or up) by predefined offset.
 
@@ -114,19 +131,19 @@ Configuration besides activating FLAPERON mode is pretty simple, and consists of
 
 Flaperon offset is by default is applied as a servo mixer input with ID=14 so using custom servo mixing you can configure FLAPERON mode to deflect any servos you need (including dedicated flaps).
 
-### HEADADJ
+### HEADADJ (MC)
 
 It allows you to set a new yaw origin for HEADFREE mode.
 
-### HEADFREE
+### HEADFREE (MC)
 
 In this mode, the "head" of the multicopter is always pointing to the same direction as when the feature was activated. This means that when the multicopter rotates around the Z axis (yaw), the controls will always respond according the same "head" direction.
 
-With this mode it is easier to control the multicopter, even fly it with the physical head towards you since the controls always respond the same. This is a friendly mode to new users of multicopters and can prevent losing the control when you don't know the head direction. 
+With this mode it is easier to control the multicopter, even fly it with the physical head towards you since the controls always respond the same. This is a friendly mode to new users of multicopters and can prevent losing the control when you don't know the head direction.
 
 ### HEADING HOLD
 
-This flight mode affects only yaw axis and can be enabled together with any other flight mode. 
+This flight mode affects only yaw axis and can be enabled together with any other flight mode.
 It helps to maintain current heading without pilots input and can be used with and without magnetometer support. When yaw stick is neutral position, Heading Hold mode tries to keep heading (azimuth if compass sensor is available) at a defined direction. When pilot moves yaw stick, Heading Hold is temporary disabled and is waiting for a new setpoint.
 
 Heading hold only uses yaw control (rudder) so it won't work on a flying wing which has no rudder.
@@ -139,15 +156,11 @@ This hybrid mode works exactly like the previous ANGLE mode with centered roll a
 
 Turns off the RGB LEDs
 
-### AUTOLEVEL
+### LOITER CHANGE (FW)
 
-**AUTOLEVEL is only available for fixed wing.**
+Reverses set loiter direction when mode selected.
 
-AUTOLEVEL will attempt to automatically tune the pitch offset (`fw_level_pitch_trim`) a fixed-wing airplane needs to not lose altitude when flying straight in ANGLE mode.
-
-The new value isn't saved to EEPROM, you have to save it manually using either the configurator or a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
-
-### MANUAL
+### MANUAL (FW)
 
 Direct servo control in fixed-wing. This mode was called PASSTHROUGH mode up to version 1.8.1.
 
@@ -155,7 +168,12 @@ In this mode there is no stabilization. Please note that MANUAL mode also overri
 
 What FC does in MANUAL mode is: Motor mixing, Servo Mixing, Expo settings, Throws limiting (see the `manual_*_rate` settings). Note that Failsafe is still active in this mode and can override the controls.
 
-### NAV LAUNCH
+### MC BRAKING (MC)
+
+//TODO//
+
+### NAV LAUNCH (FW)
+
 Airplane launch assistant
 
 This flight mode is intended to provide assistance for launching the fixed-wing UAVs. Launch detection works by monitoring airplane acceleration - once it breaches the threshold for a certain amount of time launch sequence is started.
@@ -165,7 +183,7 @@ Gliders have different needs than motorized planes.  See below for note on glide
 The entire time `NAV LAUNCH` mode it will try and stabilize plane, it will target zero roll, zero yaw and predefined climb angle. The I-gain of the PIFF regulator is also disabled to prevent I-gain growing during launch until motor is started. When successful launch is detected it waits for preconfigured amount of time before starting motor.
 
 `NAV LAUNCH` is automatically aborted after 5 seconds or by any pilot input on PITCH/ROLL stick. When it has aborted it goes to whichever selected mode, which can be Angle, Rate, Horizon, RTH or a waypoint mission (if no other mode is selected it will go to Rate mode).
- 
+
 It's safe to keep it activated the `NAV LAUNCH` mode during flight after the launch has being completed. Keep in mind that if you accidentally disarm while flying you need to disable `NAV LAUNCH` mode to being able to control the model again.
 
 See iNav CLI for all available adjustable parameters, they start with `nav_fw_launch_`
@@ -177,7 +195,7 @@ Sequence for launching airplane using `NAV LAUNCH` mode looks like this:
 1. Put throttle stick to desired throttle value to be set **after** launch is finished. Motor should start spinning with  `nav_fw_launch_idle_thr`. Default is 1000 so it will respect `MOTOR_STOP` if active. From version 3.0 `nav_fw_launch_idle_motor_delay` can be set to delay the motor starting at idle (useful for launching large aircraft). Verify that motor don't respond to throttle stick motion.  Don't touch the pitch/roll stick!
 1. Throw the airplane.  It must be thrown leveled, or thrown by slinging it by wingtip.
 1. Motors will start at pre-configured `nav_fw_launch_thr` (default 1700) after `nav_fw_launch_motor_delay` (500ms)
-1. Launch sequence will finish when pilot switch off the NAV LAUNCH mode or move the sticks.  
+1. Launch sequence will finish when pilot switch off the NAV LAUNCH mode or move the sticks.
 
 If it won't detect launch it's possible that you need to lower your threshold. Look at the CLI variables.
 
@@ -189,9 +207,9 @@ If you inadvertedly disarm mid-air before raising the throttle again (you should
 
 **GLIDER / SLOPER SETUP**
 
-For obtaining launch assistance for hand-thrown gliders, it's a bit tricky.  One possible solution is to setup the throttle as in input for switching modes.  At lowest throttle setting, disarm and enter passthru.  Just above minimal throttle, turn on Nav Launch, then just above that, Arm and activate Angle - all simultaneously "on" for launch.  
+For obtaining launch assistance for hand-thrown gliders, it's a bit tricky.  One possible solution is to setup the throttle as in input for switching modes.  At lowest throttle setting, disarm and enter passthru.  Just above minimal throttle, turn on Nav Launch, then just above that, Arm and activate Angle - all simultaneously "on" for launch.
 
-This will allow the FC to reset the launch sequence and be ready for toss with Angle activated after launch. 
+This will allow the FC to reset the launch sequence and be ready for toss with Angle activated after launch.
 
 Setup launch parameters appropriately:
 
@@ -203,17 +221,21 @@ Setup launch parameters appropriately:
 
 ^^this command for a glider can be problematic.  Not obvious, since Airplanes change PID values for throttle based on `set tpa_rate = XXX` and `set tpa_breakpoint = XXXX`  (adjust accordingly).  Also, not well documented but PIDs are boosted at low throttles by 1.5X!!  Can cause unexplained behavior at launch.  For some gliders - having PID gains reduced for toss is beneficial (DLG launch may be fastest speed the glider travels)
 
-`nav_fw_launch_velocity = XXX 300?` 
+`nav_fw_launch_velocity = XXX 300?`
 
 (Forward velocity threshold for swing-launch detection [cm/s])
 
 One option is to add Horizon mode at very top end of throttle, to enable acro flying with ability to drop back to angle mode for emergency recovery.
 
+### OSD ALT
+
+Switches to the different alternative OSD displays ALT1, ALT2 or ALT3. The default OSD is shown when none of these are selected.
+
 ### OSD SW
 
-Disables the OSD
+Switches off the OSD.
 
-### SERVO AUTOTRIM
+### SERVO AUTOTRIM (FW)
 In flight adjustment of servo midpoint for straight flight
 
 This was changed in 3.0. Only servos with a "stabilized" rule on the INC Servo Mixer are trimmed.  Also note that the automatic version of this introduced in 3.0 requires a GPS and detectable motion in order to work.
@@ -224,14 +246,20 @@ This is so when switching into manual mode the plane will fly straight, its also
 
 How to use:
 
-1. This is intended to use in air. 
+1. This is intended to use in air.
 2. Fly straight, choose what mode that suites you best. (`manual`, `angle` or `acro`)
 3. Enable `SERVO AUTOTRIM` mode, and keep flying straight for 2 seconds. After 2 seconds it will set new midpoints based on average servo position during those 2 seconds.
 4. If you're are NOT happy with new midpoints disable `SERVO AUTOTRIM` mode and it will revert back to old settings. If you want to keep new midpoints keep `SERVO AUTOTRIM` turned on, land aircraft and disarm. New midpoints will be saved.
 
-You may want to inspect your new midpoints after landing, if the servo offset is a lot you may alter your linkage mechanically and redo servo midpoint. 
+You may want to inspect your new midpoints after landing, if the servo offset is a lot you may alter your linkage mechanically and redo servo midpoint.
 
 This is not to be confused with tuning your aircraft for leveled flight in `ANGLE` mode, to do this you need to adjust your board alignment so straight flight for that aircraft is show the board being level ( 0 pitch and 0 roll ).
+
+### SOARING (FW)
+
+Fixed wing mode for soaring flight with motor off so intended for sailplanes or motor gliders. Mode becomes active only when Position Hold or Cruise/Course Hold modes are also selected providing semi-autonomous soaring whilst circling or flying straight with heading hold.
+
+When mode is active altitude control is disabled and Angle mode allowed to free float (disabled) within the pitch range set by `nav_fw_soaring_pitch_deadband` (float pitch angle either side of level). The motor can be stopped by setting `nav_fw_soaring_motor_stop`.
 
 ### SURFACE
 
@@ -255,6 +283,12 @@ This extends TURN_ASSIST flight mode on airplanes - when doing a turn on an airp
 
 TAS (from airspeed sensor) will be used for calculation if available - otherwise code will use cruise airspeed defined by fw_reference_airspeed.
 
+### TURTLE (MC)
+
+Provides a means of flipping a multicopter that has "landed" upside down.
+
+//Description TODO//
+
 ## AUXILIARY CONFIGURATION
 
 Spare auxiliary receiver channels can be used to enable/disable modes.  Some modes can only be enabled this way.
@@ -269,7 +303,7 @@ When a channel is within a specified range the corresponding mode is enabled.
 
 Use the GUI configuration tool to allow easy configuration when channel.
 
-### CLI 
+### CLI
 
 There is a CLI command, `aux` that allows auxiliary configuration.  It takes 5 arguments as follows:
 
@@ -284,7 +318,7 @@ If the low and high position are the same then the values are ignored.
 e.g.
 
 Configure AUX range slot 0 to enable ARM when AUX1 is within 1700 and 2100.
- 
+
 ```
 aux 0 0 0 1700 2100
 ```
