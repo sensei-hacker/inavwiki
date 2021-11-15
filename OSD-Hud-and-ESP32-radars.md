@@ -24,7 +24,7 @@ In the CMS/OSD menu, go to OSD > Hud >...
 ### Crosshair style
 To choose between 7 different types of crosshairs.
 
-**CLI Value:**
+**CLI :**
 `set osd_crosshairs_style = DEFAULT`
 
 **Available Values:** `"DEFAULT", "AIRCRAFT", "TYPE3", "TYPE4", "TYPE5", "TYPE6", "TYPE7"`
@@ -33,13 +33,13 @@ To choose between 7 different types of crosshairs.
 
 Set the camera uptilt for the FPV camera. That's the angle in degres between the horizontal of the aircraft and the line of sight of the camera. For a multirotor with a camera usually pointing up it's a positive value, most often between 5 and 30°. For a plane with the camera pointing down it should be a negative value, often between -5 and -10°.
 
-**CLI Value:**
+**CLI :**
 `set osd_camera_uptilt = 0`
 
 ### Camera FOV horizontal + vertical
 The FOV for the FPV camera, the default values are ok for a 2.8mm lens. If your camera is a 2.5mm or 2.1mm or lower focal, try to raise both the horizontal and vertical FOVs by 5 or 10° by steps (the smaller the focal length, the larger the field of view). If the FOV is too far off, the tracking won't work well near the borders of the screen.
 
-**CLI Values:**
+**CLI :**
 `set osd_camera_fov_h = 135`
 `set osd_camera_fov_v = 85`
 
@@ -47,14 +47,14 @@ The FOV for the FPV camera, the default values are ok for a 2.8mm lens. If your 
 
 How far from the border of the screen the hud ends, so it does not overwrite the rest of your OSD datas.
 
-**CLI Values:**
+**CLI :**
 `set osd_hud_margin_h = 3`
 `set osd_hud_margin_v = 3`
 
 ### Horizon offset
 To vertically adjust, between -2 and +2, the whole OSD and AHI and scrolling bars, it's recommended to leave it at 0.
 
-**CLI Value:**
+**CLI :**
 `set osd_horizon_offset = 0`
 
 ## Displayed items:
@@ -63,45 +63,45 @@ This sub menu will let you select what is displayed on the Hud :
 ### Homing arrows
 To display little arrows around the crossair showing where the home point is.
 
-**CLI Value:**
+**CLI :**
 `set osd_hud_homing = ON`
 
 ### Home point
 To 3D-display the home point location.
 
-**CLI Value:**
+**CLI :**
 `set osd_hud_homepoint = OFF`
 
 ### Radar max aircraft
 Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing). The nearby aircrafts will appear as markers A, B, C, etc
 
-**CLI Value:**
+**CLI :**
 `set osd_hud_radar_disp= 3`
 
 ### Radar min range
 In meters, by default 10 meters, radar aircrafts closer than this will not be displayed. This setting exists mostly to unclutter the OSD view during close range pursuits.
 
-**CLI Value:**
+**CLI :**
 `set osd_hud_radar_range_min= 10`
 
 ### Radar max range
 In meters, by default 4000, radar aircrafts further away than this will not be displayed. 
 
-**CLI Value:**
+**CLI :**
 `set osd_hud_radar_range_max = 4000`
 
 ### Radar detail nearest
 To display an extra bar of informations at the bottom of the hud area for the closest radar aircraft found, if closest than the set value, in meters. Shows : Relative altitude (meters or feet, with an up or down arrow to indicate if above or below), speed (in m/s or f/s), and absolute heading (in °, 0 is north, 90 is east, 180 is south, 270 is west). Set to 0 (zero) to disable.
 
-**CLI Value:**
+**CLI :**
 `set osd_hud_radar_nearest = 0`
 
 ### Next waypoints
-How many waypoint are displayed, from 0 to 3. Set to 0 (zero) to disable. As sample, if set to 2, and you just passed the 3rd waypoint of the mission, you'll see markers for the 4th waypoint (marked "1") and the 5th waypoint (marked "2")
+How many waypoint are displayed, from 0 to 3. Set to 0 (zero) to disable. As sample, if set to 2, and you just passed the 3rd waypoint of the mission, you'll see markers for the 4th and waypoints (marked "4' and '5')
 
 [This is a video demonstrating the display of the waypoints live during an autonomous mission](https://www.youtube.com/watch?v=CqKNGY4pogU).
 
-**CLI Value:**
+**CLI :**
 `set osd_hud_wp_disp= 2`
 
 # CLI commands
@@ -145,7 +145,7 @@ There's a long chain of inaccuracies conspiring to make the tracking not perfect
 
 If you have such a module fitted on your aicraft, extra steps are required in order to display the remote aircrafts live on the Hud :
 
-* Wire the ESP32 module to a free UART on your flight controller, same as you would connect a GPS (+5V, GND, TX, RX). Using a Softserial port is not stable at the time of writing, and not recommended.
+* Wire the ESP32 module to a free UART on your flight controller, same as you would connect a GPS (+5V, GND, TX, RX). Using a Softserial port is not supported, it's not fast enough.
 
 * In the iNav Configurator, Ports tab, enable the MSP option for this UART, and set the speed to **115200**. You don't have to set anything else for the port, the ESP32 will then communicate with the flight controller using standard MSP/MSP2 messages.
 
@@ -162,9 +162,9 @@ Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthr
 
 * If the marker is the home location, then the home icon is shown, it depends of the uploaded OSD font, it's usually a little house or the H letter. Below the marker is the distance, in meters/kilometers if the OSD is set to metric or UK, and in feet/miles if imperial.
 
-* If the marker is a POI sent by the optional ESP32 LoRa Module, the markers are letters A, B, C etc, and below is also the distance, same as above. Additionally left and right of the marker will be displayed the link quality (4 bars  = 100% of packets received, 3 bars = 75%, 2 bars = 50%, 1 bar = 25%, X = link lost), and the relative heading of the other aicrafts : If you and the other aircraft are going in the exact same direction the relative heading arrow will point up. If your two aircrafts are going opposite directions then the arrow will point down.
+* If the marker is a POI sent by the optional ESP32 LoRa Module, the markers are letters A, B, C etc, and below is also the distance, same as above. Additionally left and right of the marker will be displayed the link quality (4 bars  = 100% of packets received, 3 bars = 75%, 2 bars = 50%, 1 bar = 25%, X = link lost), and the relative heading of the other aicraft : If you and the other aircraft are going in the exact same direction the relative heading arrow will point up. If your two aircrafts are going opposite directions then the arrow will point down.
 
-* If the marker is a mission waypoint (WP), the markers are numbers 1, 2, 3, with an icon before. Marker "1" means the point is the next WP in the mission (so the 6th if you've just passed the 5th WP). Marker "2" will be the WP after that (so the 7th), and marker "3" would show the 8th WP.
+* If the marker is a mission waypoint (WP), the markers are numbers 1, 2, 3, etc with an icon before.
 
 
 ##  Troubleshooting
@@ -177,7 +177,7 @@ Check that all 4 wires 5V GND TX RX are connected, and check that the port/UART 
 
 The H marker and/or the A, B, C ... markers will appear on the OSD view only if the position and heading of your aircraft are known. So it needs a valid GPS lock. The home marker will show only when the home point is recorded, so once the flight controller is armed. The home lock is not required to display nearby radar POIs.
 
-Since the 3D markers will only show when the heading of the plane is known, on a flying wing with no compass (no magnetometer) the 3D markers will only appear when the plane is flying, so the GPS can compute the direction.
+Since the 3D markers will only show when the heading of the plane is known, on a flying wing with no compass (no magnetometer) the 3D markers will only appear when the plane is flying/moving, so the GPS can compute the direction.
 
 * **Some characters are missing in the OSD/Hud**
 
