@@ -4,9 +4,11 @@ These boards are well tested with INAV and are known to be of good quality and r
 
 | Board name                | CPU Family | Target name(s)            | GPS  | Compass | Barometer      | Telemetry | RX                             | Blackbox             |
 |---------------------------|:----------:|:-------------------------:|:----:|:-------:|:--------------:|:---------:|:------------------------------:|:--------------------:|
+| [Matek H743-SLIM](https://inavflight.com/shop/s/bg/1755036)       | F7 | MATEKH743 | All  | All     | All      | All  | All | SERIAL, SD |
 | [Matek F765-WSE](https://inavflight.com/shop/s/bg/1890404)       | F7 | MATEKF765SE | All  | All     | All      | All  | All | SERIAL, SD |
-| [Matek F405-STD](https://inavflight.com/shop/p/MATEKF405STD)       | F4         | MATEKF405                | All  | All     | All            | All       | All                            | SERIAL, SD     |
-| [Matek F405-WING](https://inavflight.com/shop/p/MATEKF405WING)       | F4         | MATEKF405SE                | All  | All     | All            | All       | All                            | SERIAL, SD     |
+| [Matek F722-miniSE](https://inavflight.com/shop/s/bg/1707404)       | F4         | MATEKF722MINI          | All  | All     | All            | All       | All                            | SERIAL, SD     |
+| [Kakute F7](https://inavflight.com/shop/s/bg/1315722)       | F7         | KAKUTEF7                | All  | All     | All            | All       | All                            | SERIAL, SD     |
+| [Matek F405-WING](https://inavflight.com/shop/s/bg/1292190)       | F4         | MATEKF405SE                | All  | All     | All            | All       | All                            | SERIAL, SD     |
 | [Matek F722-SE](https://inavflight.com/shop/p/MATEKF722SE)       | F7         | MATEKF722SE               | All  | All     | All            | All       | All                            | SERIAL, SD     |
 
 It's possible to find more supported and tested boards [here](https://github.com/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products)
