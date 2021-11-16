@@ -114,3 +114,7 @@ To be honest, pretty much as you expect it to. Once you select RTH, the model wi
 [![RTH Climb modes - climb first = on with stage](https://i.imgur.com/S9ARPtfl.png)](https://i.imgur.com/S9ARPtf.png)
 
 [![RTH Climb modes - climb first = spiral with stage](https://i.imgur.com/7GMqN9Ql.png)](https://i.imgur.com/7GMqN9Q.png)
+
+## Other Relevant Settings
+### Altitude Control Override
+It is possible to override the default RTH Altitude and Climb First settings during the initial RTH climb phase using the [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) setting.
