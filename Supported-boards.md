@@ -1,16 +1,3 @@
-### Sponsored and recommended boards
-
-These boards come from companies that support INAV development. Buying one of these boards you make your small contribution for improving INAV as well. 
-
-Also these boards are tested by INAV development team and usually flown on a daily basis.
-
-| Board name                | CPU Family | Target name(s)            | GPS  | Compass | Barometer      | Telemetry | RX                             | Blackbox             |
-|---------------------------|:----------:|:-------------------------:|:----:|:-------:|:--------------:|:---------:|:------------------------------:|:--------------------:|
-| [Airbot OMNIBUS F4 PRO](https://inavflight.com/shop/p/OMNIBUSF4PRO)| F4         | OMNIBUSF4PRO   | All  | All     | All            | All       | All                            | SERIAL, SD |
-| [Airbot OMNIBUS F4](https://inavflight.com/shop/s/bg/1319176)| F4         | OMNIBUSF4  | All  | All     | All            | All       | All                            | SERIAL, SD |
-
-Note: In the above and following tables, the sensor columns indicates firmware support for the sensor category; it does not necessarily mean there is an on-board sensor.
-
 ### Recommended boards
 
 These boards are well tested with INAV and are known to be of good quality and reliability.
