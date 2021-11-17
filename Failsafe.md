@@ -10,7 +10,7 @@ This assumes you have regular GPS modes like `RTH` working **already**.
 
 ## Configuration of receiver
 
-You have two options on how to configure receiver:
+You have several options on how to configure receiver:
 
 ### Option one
 
