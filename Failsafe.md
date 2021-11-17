@@ -18,13 +18,19 @@ Set receiver to send out `NO PULSES` or `HOLD` on a failsafe event. This is perf
 
 ### Option two
 
-1. In `Modes` tab select a switch for "Failsafe"
+1. Set up INAV "Failsafe" mode on an RC channel.
 
-2. Set your switches and sticks of your radio to the following on link loss:
-
-    -  `Failsafe mode: activated`
+2. Set up the radio receiver failsafe so the RC channel used in 1. outputs a value that activates INAV "Failsafe" mode on RC link loss.
 
 The above is fine on FlySky radio.
+
+### Option three
+
+Set up  the radio receiver failsafe so the throttle channel outputs a value below the `rx_min_usec` setting. This will trigger INAV Failsafe when the radio receiver goes into failsafe.
+
+The throttle channel lower endpoint may need to be temporarily set to the lowest setting allowing the failsafe value to be set low also (around 800us should be possible). Once the receiver failsafe setting has been saved the throttle endpoint can be reset to the normal value.
+
+Works well with Flysky radios without the need to set Failsafe mode (option 2).
 
 ## Configuration of iNav
 
@@ -35,6 +41,11 @@ For fixed wing set `failsafe_throttle_low_delay = 0` or else it will disarm the 
 The behavior of `RTH` can also be configured.
 
  - [iNav Flight modes / Navigation Modes](/iNavFlight/inav/wiki/Navigation-modes#rth-altitude-control-modes)
+
+Loss of GPS during Failsafe RTH will result in an emergency landing so make sure the following are set to avoid surprises:
+- `nav_emerg_landing_speed` - default is 5 m/s. Reduce for a fixed wing.
+- `failsafe_off_delay` - default will disarm after 20s. Increase or disable if more time required.
+- `failsafe_throttle` - default setting is 1000 which will cause a multicopter to drop if not increased to slightly below hover throttle.
 
 ## Verifying that failsafe works as intended
 
@@ -60,7 +71,7 @@ Note: To regain control after a failsafe event, you must move the roll/pitch sti
 
 ****failsafe_throttle_low_delay**** (Time throttle level must have been closed  to Auto disarm)
 
-The first setting could avoid injury as it will prevent the possibility of the craft blasting off to its RTH height within chosen safety distance of the set home point. It could also work against you if a failsafe event occurred while flying close with a setting of (just land) and you were flying from a very small safe landing area. 
+The first setting could avoid injury as it will prevent the possibility of the craft blasting off to its RTH height within chosen safety distance of the set home point. It could also work against you if a failsafe event occurred while flying close with a setting of (just land) and you were flying from a very small safe landing area.
 All options are available to best suit your needs.
 
 The second setting could just ruin your day with a mid-air disarm but conversely save you from personal injury if it is forgotten to disarm the craft (not using motor stop also goes a long way to making the craft safer as the spinning propellers are a visible sign the craft is armed and dangerous).
