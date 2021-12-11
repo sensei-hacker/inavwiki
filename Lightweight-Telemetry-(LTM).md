@@ -245,9 +245,11 @@ The payload is 12 bytes. This frame is not transmitted by iNav telemetry.
 
 To calculate the checksum of the payload bytes, use the following example (Python):
 
-```def checksum(payload):
+```
+def checksum(payload):
     value = 0
     for d in payload:
         value ^= d
-    return value```
+    return value
+```
  
