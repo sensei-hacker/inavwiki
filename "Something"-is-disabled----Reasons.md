@@ -4,7 +4,7 @@ iNav may fail to perform some action as expected, typically arming or engaging w
 
 ## Arming disabled reasons
 
-iNav will refuse to arm for the following reasons:
+iNav will refuse to arm for the following reasons (e.g. from cli `status`):
 
 | Reason  (CLI Mnemonic) | Bit Mask (Hex) | Explanation |
 | ------ | ----- | ----------- |
