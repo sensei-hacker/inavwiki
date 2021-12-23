@@ -37,7 +37,7 @@ Note: On older processors, just the bitmask is shown, which can be decoded by th
 ```
 0x184000 = 00100000 + 00080000 + 00004000 (CLI active, throttle not at minimum, arm engaged)
 ```
-The values are correct for iNav 4.0..0 as of 2021-12.
+The values are correct for iNav 4.0.0 as of 2021-12.
 
 ### Navigation Unsafe reasons
 
