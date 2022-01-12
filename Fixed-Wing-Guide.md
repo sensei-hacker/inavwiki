@@ -19,7 +19,7 @@ Some of the most popular flight controllers for fixed wing are:
 
 ### Step 1: Getting Your Flight Controller Ready.
 
-* Flash the latest version of iNav using the [iNav Configurator](https://chrome.google.com/webstore/detail/inav-configurator/fmaidjmgkdkpafmbnmigkpdnpdhopgel)
+* Flash the latest version of iNav using the [iNav Configurator](https://github.com/iNavFlight/inav-configurator/releases)
 
 * Do an entire [sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration). Level should be the angle of the plane itself when flying straight. **Do not skip this step**.
 
