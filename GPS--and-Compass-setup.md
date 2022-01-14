@@ -77,6 +77,10 @@ For example cw270flip:
 Enhanced Eplaination in #6232
 [How to Align and Check if your readings are Correct ](https://github.com/iNavFlight/inav/issues/6232#issuecomment-727636397)
 
+Someone Genius build a Software helper Tool fotlr this. 
+[Alignment Tool ] 
+(https://kernel-machine.github.io/INavMagAlignHelper/) 
+
 ## Initial flight tests
 
 Once  you're content that the static configuration of the compass is correct, it's time to go flying. There is still no guarantee that the machine will not generate interference, so it's advisable to do some controlled testing before attempting more advanced navigation modes:
