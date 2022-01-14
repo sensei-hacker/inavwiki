@@ -77,9 +77,9 @@ For example cw270flip:
 Enhanced Eplaination in #6232
 [How to Align and Check if your readings are Correct ](https://github.com/iNavFlight/inav/issues/6232#issuecomment-727636397)
 
-Someone Genius build a Software helper Tool fotlr this. 
-[Alignment Tool ] 
-(https://kernel-machine.github.io/INavMagAlignHelper/) 
+Someone Genius build a Software helper Tool for this. 
+
+[Free Alignment Tool](https://kernel-machine.github.io/INavMagAlignHelper/)
 
 ## Initial flight tests
 
