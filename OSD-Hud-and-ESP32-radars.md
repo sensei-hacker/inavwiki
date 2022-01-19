@@ -73,7 +73,7 @@ To 3D-display the home point location (H)
 `set osd_hud_homepoint = ON`
 
 ### Radar max aircraft
-Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing). The nearby aircrafts will appear as markers A, B, C, D
+Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing), up to 4. The nearby aircrafts will appear as markers A, B, C, D
 
 **CLI :**
 `set osd_hud_radar_disp= 3`
@@ -89,12 +89,6 @@ In meters, by default 4000, radar aircrafts further away than this will not be d
 
 **CLI :**
 `set osd_hud_radar_range_max = 4000`
-
-### Radar detail nearest
-To display an extra bar of informations at the bottom of the hud area for the closest radar aircraft found, if closest than the set value, in meters. Shows : Relative altitude (meters or feet, with an up or down arrow to indicate if above or below), speed (in m/s or f/s), and absolute heading (in °, 0 is north, 90 is east, 180 is south, 270 is west). Set to 0 (zero) to disable.
-
-**CLI :**
-`set osd_hud_radar_nearest = 0`
 
 ### Next waypoints
 How many waypoint are displayed, from 0 to 3. Set to 0 (zero) to disable. As sample, if set to 2, and you just passed the 3rd waypoint of the mission, you'll see markers for the 4th and waypoints (marked "4' and '5')
