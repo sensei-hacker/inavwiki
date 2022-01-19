@@ -70,7 +70,7 @@ To display little arrows around the crossair showing where the home point is.
 To 3D-display the home point location.
 
 **CLI :**
-`set osd_hud_homepoint = OFF`
+`set osd_hud_homepoint = ON`
 
 ### Radar max aircraft
 Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing). The nearby aircrafts will appear as markers A, B, C, etc
