@@ -67,13 +67,13 @@ To display little arrows around the crossair showing where the home point is.
 `set osd_hud_homing = ON`
 
 ### Home point
-To 3D-display the home point location.
+To 3D-display the home point location (H)
 
 **CLI :**
 `set osd_hud_homepoint = ON`
 
 ### Radar max aircraft
-Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing). The nearby aircrafts will appear as markers A, B, C, etc
+Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing). The nearby aircrafts will appear as markers A, B, C, D
 
 **CLI :**
 `set osd_hud_radar_disp= 3`
@@ -82,7 +82,7 @@ Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa
 In meters, by default 10 meters, radar aircrafts closer than this will not be displayed. This setting exists mostly to unclutter the OSD view during close range pursuits.
 
 **CLI :**
-`set osd_hud_radar_range_min= 10`
+`set osd_hud_radar_range_min = 10`
 
 ### Radar max range
 In meters, by default 4000, radar aircrafts further away than this will not be displayed. 
