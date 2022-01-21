@@ -15,7 +15,7 @@ The usage is taken directly from the source code, the following interpretation i
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-*List generated 2021-07-17 from the iNav 3.0.1 branch by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
+*List generated 2022-01-21 from the iNav master branch by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
 You are strongly advised to check the board documentation as to the suitability of any particular board.
 
@@ -217,6 +217,21 @@ Board is DSHOT enabled.
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_SERVO |
 
+## Board: BETAFPVF722
+
+Board is DSHOT enabled.
+
+### Target: BETAFPVF722
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR |
+| 2 | MC_MOTOR |
+| 3 | MC_MOTOR |
+| 4 | MC_MOTOR |
+| 5 | MC_MOTOR |
+| 6 | MC_MOTOR |
+
 ## Board: BLUEJAYF4
 
 Board is not DSHOT enabled.
@@ -301,7 +316,7 @@ Board is not DSHOT enabled.
 
 ## Board: DALRCF405
 
-Board is not DSHOT enabled.
+Board is DSHOT enabled.
 
 ### Target: DALRCF405
 
@@ -690,8 +705,25 @@ Board is DSHOT enabled.
 | 2 | MC_MOTOR, FW_SERVO |
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_MOTOR |
-| 6 | MC_MOTOR, FW_MOTOR |
+| 5 | MC_MOTOR, FW_MOTOR, MC_SERVO |
+| 6 | MC_MOTOR, FW_MOTOR, MC_SERVO |
+| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+
+## Board: IFLIGHT_BLITZ_F722
+
+Board is DSHOT enabled.
+
+### Target: IFLIGHT_BLITZ_F722
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
 | 7 | MC_MOTOR, FW_SERVO |
 | 8 | MC_MOTOR, FW_SERVO |
 
@@ -771,6 +803,23 @@ Board is DSHOT enabled.
 | 5 | MC_SERVO, FW_SERVO |
 | 6 | MC_SERVO, FW_SERVO |
 
+## Board: KAKUTEH7
+
+Board is DSHOT enabled.
+
+### Target: KAKUTEH7
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_MOTOR, FW_SERVO |
+| 8 | MC_MOTOR, FW_SERVO |
+
 ## Board: MAMBAF405US
 
 Board is DSHOT enabled.
@@ -814,6 +863,23 @@ Board is DSHOT enabled.
 | 2 | MC_MOTOR, FW_MOTOR |
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_SERVO |
+
+## Board: MAMBAH743
+
+Board is DSHOT enabled.
+
+### Target: MAMBAH743
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_MOTOR, FW_MOTOR |
+| 8 | MC_MOTOR, FW_MOTOR |
 
 ## Board: MATEKF405
 
@@ -1081,11 +1147,41 @@ Board is DSHOT enabled.
 | 7 | MC_SERVO, FW_MOTOR |
 | 8 | MC_SERVO, FW_MOTOR |
 
+### Target: MATEKF722SE_8MOTOR
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_MOTOR, FW_SERVO |
+| 8 | MC_MOTOR, FW_SERVO |
+
 ## Board: MATEKF765
 
 Board is DSHOT enabled.
 
 ### Target: MATEKF765
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_SERVO, FW_SERVO |
+| 8 | MC_SERVO, FW_SERVO |
+| 9 | MC_SERVO, FW_SERVO |
+| 10 | MC_SERVO, FW_SERVO |
+| 11 | MC_MOTOR, FW_SERVO |
+| 12 | MC_MOTOR, FW_SERVO |
+
+### Target: MATEKF765SE
 
 | PWM | Usage |
 | --- | ----- |
@@ -1285,25 +1381,6 @@ Board is not DSHOT enabled.
 | 5 | MC_MOTOR, FW_MOTOR |
 | 6 | MC_MOTOR, FW_MOTOR |
 
-## Board: QUARKVISION
-
-Board is not DSHOT enabled.
-
-### Target: QUARKVISION
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 9 | MC_MOTOR, FW_SERVO |
-| 10 | MC_MOTOR, FW_SERVO |
-
 ## Board: REVO
 
 Board is DSHOT enabled.
@@ -1322,6 +1399,19 @@ Board is DSHOT enabled.
 | 8 | PWM, FW_SERVO |
 | 9 | PWM, FW_SERVO |
 | 10 | PWM, FW_SERVO |
+
+## Board: SKYSTARSF405HD
+
+Board is DSHOT enabled.
+
+### Target: SKYSTARSF405HD
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_MOTOR |
 
 ## Board: SPARKY2
 
@@ -1369,6 +1459,36 @@ Board is DSHOT enabled.
 | 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
 | 6 | LED, MC_MOTOR, FW_SERVO |
 
+## Board: SPEEDYBEEF7MINI
+
+Board is DSHOT enabled.
+
+### Target: SPEEDYBEEF7MINI
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_SERVO, FW_MOTOR |
+| 8 | MC_SERVO, FW_MOTOR |
+
+## Board: SPEEDYBEEF7V2
+
+Board is DSHOT enabled.
+
+### Target: SPEEDYBEEF7V2
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_MOTOR |
+
 ## Board: SPRACINGF4EVO
 
 Board is not DSHOT enabled.
@@ -1407,6 +1527,24 @@ Board is DSHOT enabled.
 | 11 | FW_SERVO, PWM |
 | 12 | FW_SERVO, PWM |
 
+## Board: TMOTORF7V2
+
+Board is DSHOT enabled.
+
+### Target: TMOTORF7V2
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_MOTOR |
+| 4 | MC_MOTOR, FW_MOTOR |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_MOTOR, FW_SERVO |
+| 8 | MC_MOTOR, FW_SERVO |
+| 9 | PWM, FW_SERVO |
+
 ## Board: YUPIF7
 
 Board is DSHOT enabled.
@@ -1439,13 +1577,11 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR |
-| 2 | MC_MOTOR |
-| 3 | MC_MOTOR |
-| 4 | MC_MOTOR |
-| 5 | MC_MOTOR |
-| 6 | MC_MOTOR |
-| 7 | MC_MOTOR |
-| 8 | MC_MOTOR |
-
-
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_MOTOR, FW_SERVO |
+| 8 | MC_MOTOR, FW_SERVO |
