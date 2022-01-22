@@ -1,4 +1,4 @@
-# INav Boards, Targets and PWM allocations
+# Inav Boards, Targets and PWM allocations
 
 It can be difficult for an aircraft builder to determine if a particular board / target will meet their needs.
 
@@ -15,11 +15,11 @@ The usage is taken directly from the source code, the following interpretation i
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-*List generated 2022-01-21 from the iNav master branch by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
+*List generated 2022-01-22 from the [inav master branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
 You are strongly advised to check the board documentation as to the suitability of any particular board.
 
-The configurations listed above are those supported by the inav developers; other configurations may be possible with a custom target.
+The configurations listed above are those supported by the inav developers; other configurations may be possible with a custom target. The source tree contains other, unofficial targets that may (or not) work.
 
 Note also that due to the complexity of output options available in inav, dynamic resource allocation is not available. Paweł Spychalski has published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU) explaining why resource allocation is not supported by inav; [see also #1154](https://github.com/iNavFlight/inav/issues/1145)
 
@@ -1381,6 +1381,25 @@ Board is not DSHOT enabled.
 | 5 | MC_MOTOR, FW_MOTOR |
 | 6 | MC_MOTOR, FW_MOTOR |
 
+## Board: QUARKVISION
+
+Board is not DSHOT enabled.
+
+### Target: QUARKVISION
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 9 | MC_MOTOR, FW_SERVO |
+| 10 | MC_MOTOR, FW_SERVO |
+
 ## Board: REVO
 
 Board is DSHOT enabled.
@@ -1585,3 +1604,4 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, FW_SERVO |
 | 7 | MC_MOTOR, FW_SERVO |
 | 8 | MC_MOTOR, FW_SERVO |
+
