@@ -15,11 +15,11 @@ The usage is taken directly from the source code, the following interpretation i
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-*List generated 2022-01-22 from the [inav master branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
+*List generated 2022-01-30 from the [inav master branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
 You are strongly advised to check the board documentation as to the suitability of any particular board.
 
-The configurations listed above are those supported by the inav developers; other configurations may be possible with a custom target. The source tree contains other, unofficial targets that may (or not) work.
+The configurations listed above are those supported by the inav developers; other configurations may be possible with a custom target. The source tree contains other, unofficial targets that may (or not) work. A full report, including non-release targets may be generated with `parse_targets.rb --all`.
 
 Note also that due to the complexity of output options available in inav, dynamic resource allocation is not available. Paweł Spychalski has published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU) explaining why resource allocation is not supported by inav; [see also #1154](https://github.com/iNavFlight/inav/issues/1145)
 
@@ -564,6 +564,19 @@ Board is DSHOT enabled.
 | 5 | MC_MOTOR, FW_SERVO |
 | 6 | MC_MOTOR, FW_SERVO |
 
+## Board: FOXEERF745AIO
+
+Board is DSHOT enabled.
+
+### Target: FOXEERF745AIO
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR |
+| 2 | MC_MOTOR |
+| 3 | MC_MOTOR |
+| 4 | MC_MOTOR |
+
 ## Board: FRSKYF4
 
 Board is not DSHOT enabled.
@@ -897,18 +910,6 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, FW_SERVO |
 | 7 | MC_MOTOR, MC_SERVO, FW_MOTOR |
 
-### Target: MATEKF405OSD
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, LED |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-
 ### Target: MATEKF405_SERVOS6
 
 | PWM | Usage |
@@ -919,6 +920,18 @@ Board is DSHOT enabled.
 | 4 | MC_MOTOR, FW_SERVO |
 | 5 | MC_MOTOR, LED |
 | 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 7 | MC_MOTOR, MC_SERVO, FW_MOTOR |
+
+### Target: MATEKF405OSD
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, MC_SERVO, FW_MOTOR |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, LED |
+| 6 | MC_MOTOR, FW_SERVO |
 | 7 | MC_MOTOR, MC_SERVO, FW_MOTOR |
 
 ## Board: MATEKF405CAN
@@ -1023,7 +1036,7 @@ Board is DSHOT enabled.
 | 5 | MC_MOTOR, FW_SERVO |
 | 6 | MC_SERVO, FW_SERVO |
 
-### Target: MATEKF411SE_FD_SFTSRL1
+### Target: MATEKF411SE_PINIO
 
 | PWM | Usage |
 | --- | ----- |
@@ -1034,7 +1047,7 @@ Board is DSHOT enabled.
 | 5 | MC_MOTOR, FW_SERVO |
 | 6 | MC_SERVO, FW_SERVO |
 
-### Target: MATEKF411SE_PINIO
+### Target: MATEKF411SE_FD_SFTSRL1
 
 | PWM | Usage |
 | --- | ----- |
@@ -1232,20 +1245,9 @@ Board is not DSHOT enabled.
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_SERVO |
 
-## Board: OMNIBUSF4
+## Board: DYSF4PRO
 
 Board is DSHOT enabled.
-
-### Target: OMNIBUSF4
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO, LED |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
 ### Target: DYSF4PRO
 
@@ -1259,6 +1261,17 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
 ### Target: DYSF4PROV2
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, MC_SERVO, FW_SERVO, LED |
+| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+
+### Target: OMNIBUSF4
 
 | PWM | Usage |
 | --- | ----- |
@@ -1290,7 +1303,7 @@ Board is DSHOT enabled.
 | 4 | MC_MOTOR, FW_SERVO |
 | 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
-### Target: OMNIBUSF4V3
+### Target: OMNIBUSF4V3_S5_S6_2SS
 
 | PWM | Usage |
 | --- | ----- |
@@ -1298,19 +1311,8 @@ Board is DSHOT enabled.
 | 2 | MC_MOTOR, FW_MOTOR |
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
 ### Target: OMNIBUSF4V3_S5S6_SS
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-
-### Target: OMNIBUSF4V3_S5_S6_2SS
 
 | PWM | Usage |
 | --- | ----- |
@@ -1328,6 +1330,17 @@ Board is DSHOT enabled.
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_SERVO |
 | 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
+
+### Target: OMNIBUSF4V3
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
 ## Board: OMNIBUSF7
 
@@ -1381,25 +1394,6 @@ Board is not DSHOT enabled.
 | 5 | MC_MOTOR, FW_MOTOR |
 | 6 | MC_MOTOR, FW_MOTOR |
 
-## Board: QUARKVISION
-
-Board is not DSHOT enabled.
-
-### Target: QUARKVISION
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 9 | MC_MOTOR, FW_SERVO |
-| 10 | MC_MOTOR, FW_SERVO |
-
 ## Board: REVO
 
 Board is DSHOT enabled.
@@ -1452,6 +1446,30 @@ Board is not DSHOT enabled.
 Board is DSHOT enabled.
 
 ### Target: SPEEDYBEEF4
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
+
+### Target: SPEEDYBEEF4_SFTSRL1
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
+
+### Target: SPEEDYBEEF4_SFTSRL2
 
 | PWM | Usage |
 | --- | ----- |

@@ -7,6 +7,7 @@
 #
 
 require 'find'
+require 'optparse'
 
 def parse_output lines
   pwms=[]
@@ -46,7 +47,7 @@ def build_target defs
     optd = (v == defs[:name]) ? '' : "-D#{v}=1"
     lines = IO.readlines("|gcc #{optd} -E -o- /tmp/_target.c")
     res = parse_output lines
-    opts << {name: v, pwms: res, dshot: dshot}
+    opts << {name: v, pwms: res, dshot: dshot, skip: defs[:skip]}
   end
   opts
 end
@@ -62,6 +63,9 @@ def write_out_md targets
       if i == 0
 	puts "## Board: #{bname}"
 	puts
+        if t[:skip]
+	  puts "Board is not a release target."
+        end
         if t[:dshot]
 	  puts "Board is DSHOT enabled."
 	else
@@ -81,40 +85,54 @@ def write_out_md targets
   end
 end
 
-abort "parse_targets.rb [dir]" if ARGV[0] and ARGV[0].match?(/\-h/)
+def get_targets all=false
+  tlist=[]
+  skip = nil
+  Find.find('./src/main/target') do |f|
+    if m= f.match(/target\/(\w+)\/CMakeLists\.txt/)
+      dnam = m[1]
+      vset = {name: dnam, variants: [], skip: nil}
+      File.open(f) do |fh|
+        fh.each do |l|
+          l.chomp!
+          if m = l.match(/^target_stm32\S+\((\w+)[\) ]/)
+            bname = m[1]
+            if dnam == bname
+              skip = l.match(/SKIP_RELEASES/)
+              vset[:skip] = !skip.nil?
+            end
+            vset[:variants] << bname
+          end
+        end
+      end
+      if all or skip.nil?
+        tlist << vset  if vset[:name]
+      end
+    end
+  end
+  tlist
+end
+
+all = false
+ARGV.options do |opt|
+  opt.banner = "Usage: parse_targets.rb [options] [root-dir]"
+  opt.on('--all', 'Show all targets (not just release targets)') {all=true}
+  opt.on('-?', "--help", "Show this message") {puts opt; exit}
+  begin
+    opt.parse!
+  rescue
+    puts opt ; exit
+  end
+end
 
 root = (ARGV[0]||"inav")
 Dir.chdir(root)
 alltargets=[]
+tlist=nil
 
-tlist=[]
+tlist = get_targets all
 
-Dir.chdir("build") || abort("Need build directory")
-
-lname=""
-vset={}
-IO.popen("ninja -t query release") do |pp|
-  pp.each do |l|
-    next unless m=l.match(/src\/main\/target\/(\S+?)\/(\S+)/)
-    bname=m[1]
-    vname=m[2]
-    if bname != lname
-      lname = bname
-      unless vset.empty?
-        tlist << vset
-      end
-      vset={:name => bname, :variants => [bname]}
-    end
-    if vname != bname
-      vset[:variants] << vname
-    end
-  end
-  unless vset.empty?
-    tlist << vset
-  end
-end
-
-Dir.chdir("../src/main/target")
+Dir.chdir("src/main/target")
 
 tlist.each do |ti|
   res = build_target(ti)
@@ -123,9 +141,9 @@ tlist.each do |ti|
   end
 end
 
-#puts alltargets
+#STDERR.puts alltargets
 #alltargets.each do |ta|
-#  puts "==> #{ta}"
+#  STDERR.puts "==> #{ta}"
 #end
 
 write_out_md alltargets
@@ -148,10 +166,10 @@ The usage is taken directly from the source code, the following interpretation i
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-*List generated %s from the [inav master branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](http://seyrsnys.myzen.co.uk/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
+*List generated %s from the [inav master branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
 You are strongly advised to check the board documentation as to the suitability of any particular board.
 
-The configurations listed above are those supported by the inav developers; other configurations may be possible with a custom target. The source tree contains other, unofficial targets that may (or not) work.
+The configurations listed above are those supported by the inav developers; other configurations may be possible with a custom target. The source tree contains other, unofficial targets that may (or not) work. A full report, including non-release targets may be generated with `parse_targets.rb --all`.
 
 Note also that due to the complexity of output options available in inav, dynamic resource allocation is not available. Paweł Spychalski has published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU) explaining why resource allocation is not supported by inav; [see also #1154](https://github.com/iNavFlight/inav/issues/1145)
