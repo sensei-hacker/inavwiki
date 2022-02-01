@@ -44,9 +44,14 @@ If the model is below _nav_rth_altitude_ it will climb to desired altitude prior
 
 ## Maximum altitude since launch (NAV_RTH_MAX_ALT)
 - _nav_rth_alt_mode_ = **MAX**
-- _nav_rth_altitude_ is ignored
 
-The **Actual RTH Altitude** is the highest altitude during the flight.
+_pre-iNav 4.1_
+- _nav_rth_altitude_ ignored
+
+_iNav 4.1 onwards_
+- _nav_rth_altitude_ defines the minimum RTH altitude above launch point. If the maximum altitude of the flight is below _nav_rth_altitude_, _nav_rth_altitude_ is used. If the maximum altitude of the flight is above _nav_rth_altitude_, the maximum altitude is used. 0 = disabled.
+
+The **Actual RTH Altitude** is the highest altitude during the flight, or _nav_rth_altitude_ if higher.
 
 ![](images/NAV_RTH_MAX_ALT.jpg)
 
