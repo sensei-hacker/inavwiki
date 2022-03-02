@@ -1,6 +1,6 @@
 **Important:** iNav requires you to follow the accelerometer calibration steps below. These steps are different to Cleanflight & Betaflight. So don't skip reading this section, **it's vitally important**.
 
-Modern accelerometer sensors are accurate, but they require calibration if we want precise measurements.  
+Modern accelerometer sensors are precise, but they require calibration if we want accurate measurements.  
 
 The sensors on your flight controller might be biased and gains on different axes might be different. iNav uses an advanced 6-point calibration to take care of all irregularities your flight controller sensors might have.
 
