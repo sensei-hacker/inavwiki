@@ -98,4 +98,4 @@ Diagnosing arming failure and WP execution failure often requires the use of a t
 
 ## Postscript
 
-For 'Navigation is unsafe', you may, of course `set nav_extra_arming_safety = OFF`; however there is a clue is in the name.
+For 'Navigation is unsafe', you may, of course `set nav_extra_arming_safety = ALLOW_BYPASS`; however there is a clue is in the name. There is also `nav_extra_arming_safety = OFF`, which is not recommended. At least with `ALLOW_BYPASS` you know you've done something potentially dangerous.
