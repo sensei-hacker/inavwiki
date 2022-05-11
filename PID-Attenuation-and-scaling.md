@@ -26,10 +26,14 @@ For airplanes TPA works in a different way - it's not only attenuating PID gains
 
 **TPA Breakpoint** = the point in the throttle curve at which PIDs are not attenuated
 
+**FW TPA Time Constant** = TPA smoothing and delay time constant to reflect non-instant speed/throttle response of the plane.
+
 ### How to use this?
 
 Tune your PIDs at throttle level you intend to fly your airplane (cruise throttle). Set that value as TPA Breakpoint.
 You will notice that when you fly at lower throttle your airplane handles worse and at higher throttle (up to full throttle) it begins to oscillate. Increase TPA amount until these oscillations are gone or minimal. You will instantly notice better handling at lower throttle values.
+
+The **TPA Time Constant** feature uses an asymmetric filter, that effects both increasing and decreasing throttle/speed. Planes with low thrust/weight ratio generally need higher time constant, for launch. While planes with a lower drag coefficient, conversely require a higher time constant, during speed wash-off; requiring the constant to be balanced. 
 
 ### Example of airplane TPA curve
 
