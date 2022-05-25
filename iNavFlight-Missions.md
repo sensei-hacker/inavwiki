@@ -15,13 +15,13 @@ Before you get started on a waypoint mission, you need to know what the expectat
 
 The default distance for the first waypoint is configured with the 'nav_wp_safe_distance' value (default of 10000cm, ~ 300 feet).
 
-The MSP (MultiWii Serial Protocol) messages defining mission navigation are [documented](https://docs.google.com/document/d/16ZfS_qwc-rJeA7N5Tx0DA6wtgxl6HdGgaz-jE3lHBWs). This message set is supported by the [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://www.ps3cfw.com/cool.php?item=24719564) ground stations.
+The MSP (MultiWii Serial Protocol) messages defining mission navigation are [documented](https://docs.google.com/document/d/16ZfS_qwc-rJeA7N5Tx0DA6wtgxl6HdGgaz-jE3lHBWs). This message set is supported by the [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://github.com/stronnag/mwptools) ground stations.
 
 # Ground Control Stations
 
-Currently there are a number of GCS applications widely used for iNav mission management, including  [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://www.ps3cfw.com/cool.php?item=24719564) (Linux). In the future, other options may become available, particularly as the MAVLink protocol becomes supported by iNav. However, MAVLink based tools will only provide monitoring.
+Currently there are a number of GCS applications widely used for iNav mission management, including  [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://github.com/stronnag/mwptools) (Linux). In the future, other options may become available, particularly as the MAVLink protocol becomes supported by iNav. However, MAVLink based tools will only provide monitoring.
 
-[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://www.ps3cfw.com/cool.php?item=24719564) (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. 
+[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://github.com/stronnag/mwptools) (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. 
 
 Note: Earlier versions of this article recommended ezgui for use on Android. ezgui is no longer maintained and [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) is the recommended Android application.
 
@@ -42,9 +42,9 @@ Log files can be opened in PC software Mission Planner.
 
 ## [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows)
 
-[mwp](https://www.ps3cfw.com/cool.php?item=24719564) can be downloaded from [Github](https://www.ps3cfw.com/cool.php?item=24719564). [mwp](https://www.ps3cfw.com/cool.php?item=24719564) is open source (GPL 3). It is available only as a source distribution and it is necessary to compile and install the application. Build instructions and dependencies are provided for Ubuntu and Fedora. Arch Linux users can install [mwp](https://github.com/stronnag/mwptools) from the AUR ([Arch User Repository](https://aur.archlinux.org/packages/mwptools-git/)). 
+[mwp](https://github.com/stronnag/mwptools) can be downloaded from [Github](https://github.com/stronnag/mwptools). [mwp](https://github.com/stronnag/mwptools) is open source (GPL 3). It is available only as a source distribution and it is necessary to compile and install the application. Build instructions and dependencies are provided for Ubuntu and Fedora. Arch Linux users can install [mwp](https://github.com/stronnag/mwptools) from the AUR ([Arch User Repository](https://aur.archlinux.org/packages/mwptools-git/)). 
 
-In addition to mission planning and logger, [mwp](https://www.ps3cfw.com/cool.php?item=24719564) also supports the replay of blackbox logs against a geospatial background (requires [blackbox-tools](https://www.ps3cfw.com/cool.php?item=24719564)). [mwp](https://www.ps3cfw.com/cool.php?item=24719564) also includes numerous poorly documented scripts for mission and blackbox analysis, as well as an overly comprehensive user guide.
+In addition to mission planning and logger, [mwp](https://github.com/stronnag/mwptools) also supports the replay of blackbox logs against a geospatial background (requires [blackbox-tools](https://github.com/cleanflight/blackbox-tools)). [mwp](https://github.com/stronnag/mwptools) also includes numerous poorly documented scripts for mission and blackbox analysis, as well as an overly comprehensive user guide.
 
 There is a [RC Groups support forum](http://www.rcgroups.com/forums/showthread.php?t=2633708)
 
@@ -73,7 +73,7 @@ Telemetry viewer is an Android application which allows you to track your teleme
 
 Please see [impload's wiki user guide](https://github.com/stronnag/impload/wiki/impload-User-Guide) for more information and CSV format.
 
-[mwp](https://www.ps3cfw.com/cool.php?item=24719564) can be run in a virtual machine on MS Windows and OSX / macOS, using virtualisation tools such as VirtualBox and Parallels. 
+[mwp](https://github.com/stronnag/mwptools) can be run in a virtual machine on MS Windows and OSX / macOS, using virtualisation tools such as VirtualBox and Parallels. 
 
 WinGUI is a Windows program developed for Multiwii-nav. It is currently somewhat abandoned, but would be a viable basis for developing a Windows program for iNav navigation (or better, supporting both Multiwii and iNav, as do the other tools described here). Should anyone wish to rescue this fine application, the source code (GPL v3) may be found at https://code.google.com/archive/p/mw-wingui/.
 
