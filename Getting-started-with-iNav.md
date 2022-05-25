@@ -1,7 +1,7 @@
 ### Getting started
 
 ## Where to download?!
-Install the latest version of [iNav Configurator](https://www.ps3cfw.com/cool.php?item=67890597) and use it to download and flash the firmware. Note that the Chrome app is no longer supported by Google.
+Install the latest version of [iNav Configurator](https://github.com/iNavFlight/inav-configurator/releases) and use it to download and flash the firmware. Note that the Chrome app is no longer supported by Google.
 
 Be aware on the first boot after a reflash, or clean erase, iNAV tries to auto detect MAG, BARO, and SPEED (Pitot-tube).  If none of them are detected, it will indicate this with red icons on the sensor bar.  It will also fail on `Hardware health` on the Pre-arming checks. To fix this, reboot the controller and it should be fine.
 
