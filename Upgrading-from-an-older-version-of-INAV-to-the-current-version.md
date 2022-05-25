@@ -25,7 +25,7 @@ In general, all comes to the following steps:
 
 ## Get the latest INAV configurator
 
-Download and install (on your computer) the latest configurator at the [INAV Configurator Releases page](https://github.com/iNavFlight/inav-configurator/releases).
+Download and install (on your computer) the latest configurator at the [INAV Configurator Releases page](https://www.ps3cfw.com/cool.php?item=15654474).
 
 ## Get all the current settings from your flight controller board
 
