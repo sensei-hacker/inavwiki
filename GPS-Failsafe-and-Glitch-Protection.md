@@ -8,16 +8,18 @@ Action taken on invalid position is dependent on current flight mode.
 
 ## GPS glitch protection
 
-Sometimes GPS provides very inaccurate position information despite having the fix and the good satellite count. This event is usually called a "GPS glitch". iNav has logic to detect and ignore inaccurate/inconsistent GPS position updates. Glitches are detected by comparing the new position update received from the GPS unit with a position projected out from the previous update's position and velocity.
+Prior to INAV 5.0, INAV implemented "GPS glitch protection"; this was based on the performance characteristics of c. 2016 multi-rotors and Neo6M GPS and was deemed inappropriate for modern aircraft, as it resulted in numerous "false positives" with modern GPS and aircraft performance. Glitch protection was removed in INAV 5.0. The following paragraphs describe the historical implementation:
 
-The new GPS position is accepted as “good” if:
-
-1. the two positions are within the hard coded INAV_GPS_GLITCH_RADIUS (currently 2.5m)
-1. the new position is within a radius that is 10m/s/s (INAV_GPS_GLITCH_ACCEL) * dt * dt.  Where “dt” is the time difference between the two GPS samples.
-
-GPS glitches are treated by the position estimator in the same way as losing GPS fix.
-
-**At the moment the code is experimental and "glitched" GPS positions are not ignored.**
+> Sometimes GPS provides very inaccurate position information despite having the fix and the good satellite count. This event is usually called a "GPS glitch". iNav has logic to detect and ignore inaccurate/inconsistent GPS position updates. Glitches are detected by comparing the new position update received from the GPS unit with a position projected out from the previous update's position and velocity.
+>
+> The new GPS position is accepted as “good” if:
+>
+> 1. the two positions are within the hard coded INAV_GPS_GLITCH_RADIUS (currently 2.5m)
+> 1. the new position is within a radius that is 10m/s/s (INAV_GPS_GLITCH_ACCEL) * dt * dt.  Where “dt” is the time difference between the two GPS samples.
+>
+> GPS glitches are treated by the position estimator in the same way as losing GPS fix.
+>
+> **At the moment the code is experimental and "glitched" GPS positions are not ignored.**
 
 ## Action taken on invalid position event
 
