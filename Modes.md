@@ -308,7 +308,7 @@ Use the GUI configuration tool to allow easy configuration when channel.
 There is a CLI command, `aux` that allows auxiliary configuration.  It takes 5 arguments as follows:
 
 * AUD range slot number (0 - 39)
-* mode id (see mode list above)
+* mode id (see mode list below)
 * AUX channel index (AUX1 = 0, AUX2 = 1,... etc)
 * low position, from 900 to 2100. Should be a multiple of 25.
 * high position, from 900 to 2100. Should be a multiple of 25.
@@ -324,3 +324,53 @@ aux 0 0 0 1700 2100
 ```
 
 You can display the AUX configuration by using the `aux` command with no arguments.
+
+### Mode ID List
+*  "ARM"	0
+*  "ANGLE"	1
+*  "HORIZON"	2
+*  "NAV ALTHOLD"	3
+*  "HEADING HOLD"	5
+*  "HEADFREE"	6
+*  "HEADADJ"	7
+*  "CAMSTAB"	8
+*  "NAV RTH"	10
+*  "NAV POSHOLD"	11
+*  "MANUAL"	12
+*  "BEEPER"	13
+*  "LEDS OFF"	15
+*  "LIGHTS"	16
+*  "OSD OFF"	19
+*  "TELEMETRY"	20
+*  "AUTO TUNE"	21
+*  "BLACKBOX"	26
+*  "FAILSAFE"	27
+*  "NAV WP"	28
+*  "AIR MODE"	29
+*  "HOME RESET"	30
+*  "GCS NAV"	31
+*  "FPV ANGLE MIX"	32
+*  "SURFACE"	33
+*  "FLAPERON"	34
+*  "TURN ASSIST"	35
+*  "NAV LAUNCH"	36
+*  "SERVO AUTOTRIM"	37
+*  "KILLSWITCH"	38
+*  "CAMERA CONTROL 1"	39
+*  "CAMERA CONTROL 2"	40
+*  "CAMERA CONTROL 3"	41
+*  "OSD ALT 1"	42
+*  "OSD ALT 2"	43
+*  "OSD ALT 3"	44
+*  "NAV COURSE HOLD"	45
+*  "MC BRAKING"	46
+*  "USER1"	47
+*  "USER2"	48
+*  "LOITER CHANGE"	49
+*  "MSP RC OVERRIDE"	50
+*  "PREARM"	51
+*  "TURTLE"	52
+*  "NAV CRUISE"	53
+*  "AUTO LEVEL"	54
+*  "WP PLANNER"	55
+*  "SOARING"	56
