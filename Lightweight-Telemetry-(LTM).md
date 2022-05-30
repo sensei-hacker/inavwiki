@@ -1,8 +1,8 @@
 # Overview
 
-LTM was defined by "KipK" for the Ghetto Station antenna tracking project and originally implemented in Taulabs and Baseflight. It was adopted by iNav due to its excellent characteristics for low data rate / high update rate telemetry.
+LTM was defined by "KipK" for the Ghetto Station antenna tracking project and originally implemented in Taulabs and Baseflight. It was adopted by INAV due to its excellent characteristics for low data rate / high update rate telemetry.
 
-Since its introduction to iNav, a number of extension have been added; these are documented below, in addition to the original frames.
+Since its introduction to INAV, a number of extension have been added; these are documented below, in addition to the original frames.
 
 # Protocol Definition
 
@@ -10,9 +10,17 @@ Since its introduction to iNav, a number of extension have been added; these are
 
 The LTM protocol starts with "$T", followed by a function byte, the payload and a simple CRC checksum. Its weakness is that there is no length parameter (so the receiver needs to know, apriori,the length for each function), and the single byte checksum is not as robust as the multi-byte checksum in for example the ublox GPS protocol. However, the high data rate ensures that good data should be delivered over occasional transmission errors. In practice, LTM is an excellent light weight telemetry solution. 
 
+| Position | Byte |
+| -------- | ---- |
+|   0      |   $  |
+|   1      |   T  |
+|   2      |   G/A/S/O/N/X/T |
+|   3..n   | n bytes payload |
+|   n + 3  | <CRC> |
+
 LTM telemetry can be read by [Ghettostation](https://github.com/KipK/Ghettostation),  [LTM Telemetry OLED ](https://github.com/sppnk/LTM-Telemetry-OLED) , [EZGUI](http://ez-gui.com/) , [MwpTools](https://github.com/stronnag/mwptools) and others.
 
-LTM can provide good telemetry down to 2400 (5Hz attitude updates). Due to restrictions in iNav 1.2 and earlier, 9600 is the lowest baud rate supported, which gives 10Hz attitude and 5Hz GPS data. More recently (iNav 1.7.0), LTM is available from 1200 baud and higher; the data transmission frequency is automatically determined from the baud rate, but can be overridden by the user where the baud rate can support the required update frequency. See the  [iNav Telemetry documentation](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md#lighttelemetry-ltm) for CLI settings.
+LTM can provide good telemetry down to 2400 (5Hz attitude updates). Due to restrictions in INAV 1.2 and earlier, 9600 was the lowest baud rate supported, which gives 10Hz attitude and 5Hz GPS data. More recently (INAV 1.7.0), LTM is available from 1200 baud and higher; the data transmission frequency is automatically determined from the baud rate, but can be overridden by the user where the baud rate can support the required update frequency. See the  [INAV Telemetry documentation](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md#lighttelemetry-ltm) and [below](#inav-cli-support) for CLI settings.
 
 The function consists of a single ASCII character, described below. Data is binary, little endian. The checksum is an XOR of the payload bytes.
 
@@ -67,7 +75,7 @@ The payload is 7 bytes
 | Airspeed | uchar, m/s |
 | Status | uchar |
 
-Airspeed (vice GPS ground speed in the G-frame) requires iNav 1.7.2 or later, with `PITOT` defined at build time, and a detected pitot sensor.  
+Airspeed (vice GPS ground speed in the G-frame) requires INAV 1.7.2 or later, with `PITOT` defined at build time, and a detected pitot sensor.  
 
 The status byte is used as
 
@@ -99,7 +107,7 @@ The status byte is used as
 | | Launch (20*) |
 | | Autotune (21*) |
 
-As a general purpose protocol, not all status can be mapped to iNav modes.
+As a general purpose protocol, not all status can be mapped to INAV modes.
 
 (*) indicates iNav extension, post 2019-02-28
 
@@ -117,7 +125,7 @@ The payload is 14 bytes
 
 ## Navigation Frame (N)
 
-The payload is 6 bytes. Note that this frame largely mirrors the Multiwii-nav `MSP_NAV_STATUS` message and this contains redundancies and values that are not used in iNav. 
+The payload is 6 bytes. Note that this frame largely mirrors the Multiwii-nav `MSP_NAV_STATUS` message and this contains redundancies and values that are not used in INAV. 
 
 | Data | Usage |
 | ---- | ---- |
@@ -156,7 +164,7 @@ where:
 | 14 | Emergency landing (iNav only) |
 | 15 | Critical GPS failure (yes 15, you never want to see this) |
 
-Note that these values were defined by Multiwii-nav and not all are applicable to iNav.
+Note that these values were defined by Multiwii-nav and not all are applicable to INAV.
 
 | Nav Action |  Enumeration |
 | ----------- | -------- |
@@ -197,7 +205,7 @@ The payload is 6 bytes.
 | Disarm Reason | uint8 |
 | (unused) | 1 byte | 
 
-Note that hw status (hardware sensor status) is iNav 1.5 and later. If the value is non-zero, then a sensor has failed. 
+Note that hw status (hardware sensor status) is INAV 1.5 and later. If the value is non-zero, then a sensor has failed. 
 A complementary update has been made to MSP_STATUS (https://github.com/iNavFlight/inav/wiki/INAV-MSP-frames-changelog).
 Thus, on disarming, the sensor status may be evinced from the MSP_STATUS/sensor field.
 
@@ -205,9 +213,9 @@ The sensor hardware failure indication is backwards compatible with versions pri
 
 The LTM_X_counter value is incremented each transmission and rolls over (modulo 256). It is intended to enable consumers to estimate packet loss.
 
-# iNav CLI Support
+# INAV CLI Support
 
-LTM is transmit only, and can work at any supported baud rate. It was designed to operate over 2400 baud and does not benefit from (much) higher rates. It is thus usable on soft serial. The extra frames introduced by iNav means that 4800 baud is required for the highest update rate.
+LTM is transmit only, and can work at any supported baud rate. It was designed to operate over 2400 baud and does not benefit from (much) higher rates. It is thus usable on soft serial. The extra frames later introduced by INAV means that 4800 baud is required for the highest update rate.
 
 A CLI variable `ltm_update_rate` may be used to configure the update rate and hence band-width used by LTM, with the following enumerations:
 
@@ -243,7 +251,7 @@ The payload is 12 bytes. This frame is not transmitted by iNav telemetry.
 
 ## Checksum Calculation
 
-To calculate the checksum of the payload bytes, use the following example (Python):
+The checksum is a simple XOR over the payload. The following example (Python) illustrates the calculation of the checksum over the payload bytes:
 
 ```
 def checksum(payload):
