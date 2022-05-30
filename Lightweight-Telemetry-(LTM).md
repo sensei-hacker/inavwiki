@@ -16,7 +16,7 @@ The LTM protocol starts with "$T", followed by a function byte, the payload and 
 |   1      |   T  |
 |   2      |   G/A/S/O/N/X/T |
 |   3..n   | n bytes payload |
-|   n + 3  | <CRC> |
+|   n + 3  | CRC |
 
 LTM telemetry can be read by [Ghettostation](https://github.com/KipK/Ghettostation),  [LTM Telemetry OLED ](https://github.com/sppnk/LTM-Telemetry-OLED) , [EZGUI](http://ez-gui.com/) , [MwpTools](https://github.com/stronnag/mwptools) and others.
 
