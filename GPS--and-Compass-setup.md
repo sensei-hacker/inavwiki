@@ -74,7 +74,7 @@ For example cw270flip:
 
 * Because Magnetometer with cw270° has its roll axis in relation to the Pitch Axis of the FC
 
-Enhanced Eplaination in #6232
+Enhanced Explanation in #6232
 [How to Align and Check if your readings are Correct ](https://github.com/iNavFlight/inav/issues/6232#issuecomment-727636397)
 
 Painless360 done a superior Video on this
@@ -88,7 +88,7 @@ Someone Genius build a Software helper Tool for this.
 
 Once  you're content that the static configuration of the compass is correct, it's time to go flying. There is still no guarantee that the machine will not generate interference, so it's advisable to do some controlled testing before attempting more advanced navigation modes:
 
-* In a clear space (no trees!) attempt a simple line of slight POSHOLD. If the craft fails to hold (toilet bowling, or ever increasing circles (in range and speed)), be prepared to disengage PH and take manual control.
+* In a clear space (no trees!) attempt a simple line of sight POSHOLD. If the craft fails to hold (toilet bowling, or ever increasing circles (in range and speed)), be prepared to disengage PH and take manual control.
 
 To confirm magnetic interference, blackbox logging is most useful:
 
