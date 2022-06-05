@@ -52,9 +52,9 @@ def build_target defs
   opts
 end
 
-def write_out_md targets
+def write_out_md targets, branch
   now = Time.now.utc.strftime("%F")
-  puts DATA.read % now
+  puts DATA.read % {:now => now, :branch => branch}
   puts
 
   targets.each do |t0|
@@ -114,8 +114,10 @@ def get_targets all=false
 end
 
 all = false
+branch = "master"
 ARGV.options do |opt|
   opt.banner = "Usage: parse_targets.rb [options] [root-dir]"
+  opt.on('--branch=BRANCH', 'Use branch)') {|o| branch=o}
   opt.on('--all', 'Show all targets (not just release targets)') {all=true}
   opt.on('-?', "--help", "Show this message") {puts opt; exit}
   begin
@@ -126,9 +128,12 @@ ARGV.options do |opt|
 end
 
 root = (ARGV[0]||"inav")
+
 Dir.chdir(root)
 alltargets=[]
 tlist=nil
+
+system "git checkout #{branch} >/dev/null"
 
 tlist = get_targets all
 
@@ -146,10 +151,10 @@ end
 #  STDERR.puts "==> #{ta}"
 #end
 
-write_out_md alltargets
+write_out_md alltargets, branch
 
 __END__
-# Inav Boards, Targets and PWM allocations
+# INAV Boards, Targets and PWM allocations
 
 It can be difficult for an aircraft builder to determine if a particular board / target will meet their needs.
 
@@ -166,10 +171,10 @@ The usage is taken directly from the source code, the following interpretation i
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-*List generated %s from the [inav master branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
+*List generated %{now} from the [INAV %{branch} branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
 You are strongly advised to check the board documentation as to the suitability of any particular board.
 
-The configurations listed above are those supported by the inav developers; other configurations may be possible with a custom target. The source tree contains other, unofficial targets that may (or not) work. A full report, including non-release targets may be generated with `parse_targets.rb --all`.
+The configurations listed above are those supported by the INAV developers; other configurations may be possible with a custom target. The source tree contains other, unofficial targets that may (or not) work. A full report, including non-release targets may be generated with `parse_targets.rb --all`.
 
-Note also that due to the complexity of output options available in inav, dynamic resource allocation is not available. Paweł Spychalski has published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU) explaining why resource allocation is not supported by inav; [see also #1154](https://github.com/iNavFlight/inav/issues/1145)
+Note also that due to the complexity of output options available in INAV, dynamic resource allocation is not available. Paweł Spychalski has published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU) explaining why resource allocation is not supported by INAV; [see also #1154](https://github.com/iNavFlight/inav/issues/1145)
