@@ -94,7 +94,7 @@ To confirm magnetic interference, blackbox logging is most useful:
 
 * Fly at a reasonable speed (> 5m/s) in straight lines, as close as possible to a 90° crossing paths, or a square / rectangular pattern.
 
-* The blackbox can be analysed to compare the course over the ground (from GPS) with the compass readings (`GPS_ground_course` v. `attutide[2]/10`). Run `blackbox_decode` with `--merge-gps` option.
+* The blackbox can be analysed to compare the course over the ground (from GPS) with the compass readings (`GPS_ground_course` v. `attitude[2]/10`). Run `blackbox_decode` with the `--merge-gps` option to get GPS fields in the log.
 
 * If you need help doing this, post the log in the iNav RC Groups forum (or Discord / Telegram channel) and ask for help. There are a number of users familiar with this type of analysis who will assist.
 
