@@ -44,7 +44,7 @@ This Wiki is available in other languages: [Русский](https://github.com/i
 
 ## Searching the wiki
 
-The wiki can be searched via Google (at least) as follows:
+You may use the right pane to list all the available Wiki pages or search via Google (at least) as follows:
 
 * In the search bar enter `site:github.com/iNavFlight/inav/wiki TOPIC` (where TOPIC is your search item), e.g.
 * `site:github.com/iNavFlight/inav/wiki 3DR` for information on using 3DR radios with iNav
