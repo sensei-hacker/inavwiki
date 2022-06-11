@@ -1,5 +1,10 @@
 # Setting up Failsafe for RTH
 
+---
+Warning: one can assign a RC switch to simulate a FAILSAFE condition. Bear in mind that while the mode is activated, the FC will behave as if radio link is lost. This means that disarming the model will not work. To regain control one will have to 1) cancel the FAILSAFE with the RC assigned switch 2) move the roll / pitch sticks 3) possibly DISARM. Not to say that in case of emergency this procedure has to be well known. Therefore, it is wise to not assign FAILSAFE to a switch, but rather assign RTH.
+---
+
+
 ## Foreword
 
 The goal is to configure both your flight controller and radio receiver so that failsafe does as you expect in every situation.
