@@ -1,6 +1,6 @@
 INAV supports Ublox, DJI NAZA, and NMEA. NMEA is not recommended for navigation, due to its slower update rate.
 
-Recommended GPS are M8N versions. 
+Recommended GPS are M8N or later models. 
 
 Modules known to work reasonably well:
 * [Beitian BN-880](https://inavflight.com/shop/p/BN880)
@@ -9,7 +9,7 @@ Modules known to work reasonably well:
 Older versions as M6N and M7N also work, but the newer M8N (and later, M9N, M10N) are far superior. 
 Most GPS modules have a built in magnetometer (compass), but there are also some available without e.g. [Beitian BN-180](https://inavflight.com/shop/p/BN180) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
 
-With default settings iNav will configure the GPS automatically, **there is no need for configuring it manually** using software like `u-center`. Nevertheless you have to configure your FC with INAV to receive the GPS signals.
+With default settings INAV will configure the GPS automatically, **there is no need for configuring it manually** using software like `u-center`. Nevertheless you have to configure your FC with INAV to receive the GPS signals.
 
 For INAV before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites. 
 
