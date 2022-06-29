@@ -186,9 +186,9 @@ Memory region         Used Size  Region Size  %age Used
 [366/366] cd /home/jrh/Projects/fc/ina.../inav/build/inav_6.0.0_QUARKVISION.hex
 ```
 
-## Fix any error and warnings
+## Fix any errors /  warnings
 
-If you changes introduce compiler warnings, please fix them. Submissions (pull requests). If your changes overflow the flash size, consider removing unwanted features in `target.h`. Your `target.h` can always `#undef` generic features from `src/main/target/common.h` (e.g. unwanted RX or telemetry options). 
+If you changes introduce compiler warnings, please fix them. Submissions (pull requests) with compiler errors / warnings will not be accepted. If your changes overflow the flash size, consider removing unwanted features in `target.h`. Your `target.h` can always `#undef` generic features from `src/main/target/common.h` (e.g. unwanted RX or telemetry options). 
 
 ## Commit your changes
 
