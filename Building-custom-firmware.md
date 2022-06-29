@@ -192,7 +192,7 @@ If you changes introduce compiler warnings, please fix them. Submissions (pull r
 
 ## Commit your changes
 
-You can now commit the changes to your branch, otherwise if one wants to update the source tree (e.g.)
+You can now commit the changes to your branch, e.g. `git commit -a -m "my descriptive commit message"` ; otherwise if one wanted to update to the upstream the source tree (e.g.)
 
 ```
 git pull
@@ -200,6 +200,8 @@ git pull
 
 git will complain that there are uncommitted changes and won't perform the update. There are a number of solutions, some beyond the scope of this simple guide, however the easiest are:
 
-* Commit to your private branch as above  `git commit -a -m "my descriptive commit message"` ; or
+* Commit to your private branch as above ; or
 * `$ git reset --hard` before pulling ; or
 * Stash away the original files and restore them after pulling.
+
+The developer documentation has more information on synchronising a custom branch with upstream Github.
