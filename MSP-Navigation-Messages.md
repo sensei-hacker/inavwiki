@@ -188,7 +188,7 @@ For safety, if no mission is defined, a single RTH action should be sent.
 
 1. your choice, really.
 
-In general, flag is 0, unless it's the last point in a mission, in which case it is set to 0xa5 (165) (or 0x48 (72) for FBH WP). When waypoints are uploaded, the values are also returned by the FC, thus enabling the application to verify that the mission has been uploaded correctly.
+In general, flag is 0, unless it's the last point in a mission, in which case it is set to 0xa5 (165) (or 0x48 (72) for FBH WP). When waypoints are uploaded, the same data can also be requested from he FC, thus enabling the application to verify that the mission has been uploaded correctly.
 
 # Messages (Navigation related)
 
