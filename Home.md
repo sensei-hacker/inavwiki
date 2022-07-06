@@ -40,3 +40,7 @@ You may use the right pane to list all the available Wiki pages or search via Go
 The wider project (issues, pull requests) can be searched by omitting the `wiki` term, e.g.:
 
 * `site:github.com/iNavFlight/inav softserial` 
+
+## Documents from source code
+
+Many documents are available in the source code tree: https://github.com/iNavFlight/inav/tree/master/docs
