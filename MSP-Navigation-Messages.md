@@ -164,7 +164,7 @@ After WP11, the craft flies normally, "nose first".
 
 ### SET_HEAD (Multirotor only, multiwii, inav 2.6 and later)
 
-The `SET_HEAD` type sets the craft's heading (where it 'looks', not the direction of travel). This may be useful for useful for aerial photography. A value of `-1` causing the heading to be 'straight ahead', i.e. the direction of travel. Thus, `SET_POI` `-1` may used to cancel a previous valid `SET_HEAD` or `SET_POI`. A `SET_HEAD` remains in force until cancelled by `SET_HEAD` with `p1` of `-1`, or modified by a subsequent `SET_HEAD` or `SET_POI`.
+The `SET_HEAD` type sets the craft's heading (where it 'looks', not the direction of travel). This may be useful for useful for aerial photography. A value of `-1` causing the heading to be 'straight ahead', i.e. the direction of travel. Thus, `SET_HEAD` `-1` may used to cancel a previous valid `SET_HEAD` or `SET_POI`. A `SET_HEAD` remains in force until cancelled by `SET_HEAD` with `p1` of `-1`, or modified by a subsequent `SET_HEAD` or `SET_POI`.
 
 In the following example (note that WP8 - WP9 is orientated 120°- 300°):
 
