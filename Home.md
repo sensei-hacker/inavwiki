@@ -31,15 +31,7 @@ All configuration is done through [INAV Configurator](https://github.com/iNavFIi
 
 ## Searching the wiki
 
-You may use the right pane to list all the available Wiki pages or search via Google (at least) as follows:
-
-* In the search bar enter `site:github.com/iNavFlight/inav/wiki TOPIC` (where TOPIC is your search item), e.g.
-* `site:github.com/iNavFlight/inav/wiki 3DR` for information on using 3DR radios with INAV
-* `site:github.com/iNavFlight/inav/wiki mission planner` for information about iNav capable mission planners
-
-The wider project (issues, pull requests) can be searched by omitting the `wiki` term, e.g.:
-
-* `site:github.com/iNavFlight/inav softserial` 
+You may use the right pane to list all the available Wiki pages or use the Github search function (top left corner). Unfortunately, the wiki is no longer indexed by the major search engines.
 
 ## Documents from source code
 
