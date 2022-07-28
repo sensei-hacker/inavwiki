@@ -18,6 +18,8 @@ See the [docs](https://github.com/iNavFlight/inav/tree/master/docs) folder for a
 
 This [wiki article](https://github.com/iNavFlight/inav/wiki/Boards,-Targets-and-PWM-allocations) lists all boards supported by INAV, together with their supported PWM allocation (motors / servos).
 
+This [wiki article](https://github.com/iNavFlight/inav/wiki/Target-and-Sensor-support) lists all boards supported by INAV, together with their supported sensors.
+
 ### Boards based on F405/F745/F765 CPUs
 
 These boards are powerful and, in general, offer everything INAV is capable of. Limitations are quite rare and are usually caused by hardware design issues.
