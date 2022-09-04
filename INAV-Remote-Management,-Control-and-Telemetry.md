@@ -163,7 +163,7 @@ INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). T
 
 Ever so often, someone asks on Discord / Telegram / chat platform du jour how to do "Obstacle Avoidance" on INAV, often with some assumptions that:
 
-* There is a relatively powerful (compared to the FC) co-processor (Rpi, Jetson Nano) with sensors and the CPU power to detect / classify obstacles from the its on board sensors.
+* There is a relatively powerful (compared to the FC) co-processor (Rpi, Jetson Nano) with sensors and the CPU power to detect / classify obstacles from its on board sensors.
 * The range, azimuth and elevation (at least relative to the vehicle) of the obstacle is known via the co-processor / sensors.
 
 If would seem that there are at least two options using the remote control / management (MSP) API.
