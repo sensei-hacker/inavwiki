@@ -97,7 +97,7 @@ There are numerous open source implementations (libraries and application module
 
 There is also a long abandoned (alas) [changelog](https://github.com/iNavFlight/inav/wiki/INAV-MSP-frames-changelog) of historic interest only.
 
-Note that the INAV developers take backwards compatibility seriously; changing a payload is usually not permitted (however, extending it is OK); this is why there are a number of variations on the same basic request (`MSP_STATUS`, `MSP_STATUS_EX`, `MSP2_INAV_STATUS`) as the size of the internal status has changed. 
+Note that the INAV developers take backwards compatibility seriously; changing a payload is usually not permitted (however, extending it is OK); this is why there are a number of variations on the same basic request (`MSP_STATUS`, `MSP_STATUS_EX`, `MSP2_INAV_STATUS`) as the size of the internal status has changed.
 
 ### MAVLink
 
@@ -159,8 +159,29 @@ INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). T
 * The consumer updates WP#255 (holds the requested `POSHOLD` location) using `MSP_SET_WP` messages.
 * See [INAV source](https://github.com/iNavFlight/inav/blob/master/src/main/navigation/navigation.c#L3126).
 
+### The "Obstacle Avoidance" problem
+
+Ever so often, someone asks on Discord / Telegram / chat platform du jour how to do "Obstacle Avoidance" on INAV, often with some assumptions that:
+
+* There is a relatively powerful (compared to the FC) co-processor (Rpi, Jetson Nano) with sensors and the CPU power to detect / classify obstacles from the its on board sensors.
+* The range, azimuth and elevation (at least relative to the vehicle) of the obstacle is known via the co-processor / sensors.
+
+If would seem that there are at least two options using the remote control / management (MSP) API.
+
+#### Use remote control to pilot the vehicle
+
+The vehicle is commanded via Remote Control (MSP or MAVLink) to fly around the obstacle by providing inputs to the Roll, Pitch, Yaw and Throttle channels. The co-processor would compute the channel values required to manoeuvre the vehicle, based on some internal model of the vehicle physics. This seems to be a complex approach, particularly the computation of channel values required, which have to be continually updated (5Hz for MSP).
+
+#### The vehicle's navigation engine is used
+
+* The obstacle's location in known from the sensors with reference to the vehicle (range, azimuth, elevation).
+* The vehicle's location is known in geospatial coordinates (latitude, longitude, altitude) as well as the speed and heading, (`MSP_RAW_GPS`, `MSP_ATTITUDE` etc.).
+* A safe location can be calculated based on the vehicle's location and the relative location of the obstacle.
+* The vehicle can be commanded using `MSP_SET_WP` for WP #255 to use its navigation system to avoid the obstacle (with `POSHOLD` and `NAV GCS` modes activated).
+
+Potentially a less complex solution, as the piloting of the vehicle is done by the well proven flight controller firmware.
+
 ## Other References
 
 * [Building custom INAV](https://github.com/iNavFlight/inav/wiki/Building-custom-firmware).
 * [Developer Info / Navigation internals](https://github.com/iNavFlight/inav/wiki/Developer-info)
-
