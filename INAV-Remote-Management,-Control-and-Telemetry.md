@@ -24,7 +24,7 @@ All of the above are message based, requiring a **communications channel**, whic
 
 * A physical transport. This could be a cable (USB, 4 wire serial) or a radio link (either a RC radio or a dedicated radio link using technologies such as LoRa, HC-12 or "3DR / SiK").
 
-* A protocol. The protocol defines how the data is serialised for transmission over the physical transport; examples discussed include [MSP](#multiwii-serial-protocol) and [LTM](lightweight-telemetry).
+* A protocol. The protocol defines how the data is serialised for transmission over the physical transport; examples discussed include [MSP](#multiwii-serial-protocol) and [LTM](#lightweight-telemetry).
 
 Note that as far as the INAV firmware is concerned, we are discussing "serial" transmission / reception regardless of the physical transport between the vehicle and consumer.
 
@@ -147,7 +147,7 @@ Note:
 
 The MSP messages `MSP_SET_RAW_RC` / `MSP_RC` can be used to implement remote control via MSP (i.e. 16 channel control, stick commands).
 
-There is an [sample application](https://github.com/stronnag/msp_set_rx) that describes the requirements / restrictions / idiosyncrasies involved using the MSP interface.
+There is a [sample application](https://github.com/stronnag/msp_set_rx) that describes the requirements / restrictions / idiosyncrasies involved using the MSP interface.
 
 Likewise, the MAVLink `RC_CHANNELS_OVERRIDE`, `RC_CHANNELS_OVERRIDE_RAW`, `RC_CHANNELS`. See, inter alia,  [INAV #8282](https://github.com/iNavFlight/inav/pull/8282) and [INAV #8132](https://github.com/iNavFlight/inav/issues/8132) and [INAV #8173](https://github.com/iNavFlight/inav/pull/8273) for limitation / caveats / current implementation status.
 
