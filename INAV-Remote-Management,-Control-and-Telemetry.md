@@ -67,7 +67,7 @@ INAV places a number of restrictions on the number of channels available and the
 
 [LTM (Lightweight Telemetry)](#lightweight-telemetry), [MAVLink](#mavlink) and various RC radio protocols (e.g. [Smartport](#smartport), [Crossfire (CRSF)](#crossfire), [FlySky](#flysky) provide essentially unsolicited telemetry.
 
-### MultiiWii Serial Protocol
+### MultiWii Serial Protocol
 
 Multiwii Serial Protocol originated on the MultiWii Flight controller around 2010. The original documention is available in the [Multiwii wiki](http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol); the details should not be relied upon for INAV / Betaflight implementations (or even 2.4 MultiWii).
 
