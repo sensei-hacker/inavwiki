@@ -97,7 +97,7 @@ There are numerous open source implementations (libraries and application module
 
 There is also a long abandoned (alas) [changelog](https://github.com/iNavFlight/inav/wiki/INAV-MSP-frames-changelog) of historic interest only.
 
-Note that the INAV developers take backwards compatibility seriously; changing a payload is usually not permitted (however, extending it is OK); this is why there are a number of variations on the same basic request (`MSP_STATUS`, `MSP_STATUS_EX`, `MSP2_INAV_STATUS`) as the size of the internal status has changed.
+Note that the INAV developers take backwards compatibility seriously; changing a payload is usually not permitted (however, extending it is OK); this is why there are a number of variations on the same basic request (`MSP_STATUS`, `MSP_STATUS_EX`, `MSP2_INAV_STATUS`) as the size of the internal status structure has changed.
 
 ### MAVLink
 
