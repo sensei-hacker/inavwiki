@@ -59,9 +59,9 @@ Telemetry viewer is an Android application which allows you to track your teleme
 
 ## Options for other platforms
 
-[impload](https://github.com/stronnag/impload) is a cross-platform command line application to upload / download /save / restore missions in a number of formats to an iNav flight controller. Supported formats include:
+[impload](https://github.com/stronnag/impload) is a cross-platform command line application to upload / download /save / restore missions in a number of formats to an INAV flight controller. Supported formats include:
 
-* MW XML mission files (as used by [mwp](https://github.com/stronnag/mwptools), ezgui, mission planner for inav, iNav configurator)
+* MW XML mission files (as used by [mwp](https://github.com/stronnag/mwptools), ezgui, mission planner for INAV, INAV configurator)
 * apmplanner / qgroundcontrol mission files (QGC WP 110 format)
 * GPX files (tracks, routes, waypoints)
 * KML, KMZ files
@@ -71,7 +71,7 @@ Please see [impload's wiki user guide](https://github.com/stronnag/impload/wiki/
 
 [mwp](https://github.com/stronnag/mwptools) can be run in a virtual machine on MS Windows and OSX / macOS, using virtualisation tools such as VirtualBox and Parallels. 
 
-WinGUI is a Windows program developed for Multiwii-nav. It is currently somewhat abandoned, but would be a viable basis for developing a Windows program for iNav navigation (or better, supporting both Multiwii and iNav, as do the other tools described here). Should anyone wish to rescue this fine application, the source code (GPL v3) may be found at https://code.google.com/archive/p/mw-wingui/.
+WinGUI is a Windows program developed for Multiwii-nav. It is currently somewhat abandoned, but would be a viable basis for developing a Windows program for INAV navigation (or better, supporting both Multiwii and INAV, as do the other tools described here). Should anyone wish to rescue this fine application, the source code (GPL v3) may be found at https://code.google.com/archive/p/mw-wingui/.
 
 # Telemetry Hardware
 
@@ -92,7 +92,7 @@ Bluetooth is the easiest solution to get working with minimal effort. A cheap HC
 
 ## 3DR
 
-3DR radios operate in the regionally unlicensed 433MHz and 900MHz bands. They are widely available from online retailers. Detailed documentation is available at from [Ardupilot.org](http://ardupilot.org/copter/docs/common-3dr-radio-advanced-configuration-and-technical-information.html). The standard 3DR firmware is designed for the MAVLink protocol. While there is a fork of the firmware available for the MSP (Multiwii Serial Protocol), it does not support recent advances in iNav (MSPv2, LTM); and the current recommendation is just to use the standard firmware with MAVLink options disabled.
+3DR radios operate in the regionally unlicensed 433MHz and 900MHz bands. They are widely available from online retailers. Detailed documentation is available at from [Ardupilot.org](http://ardupilot.org/copter/docs/common-3dr-radio-advanced-configuration-and-technical-information.html). The standard 3DR firmware is designed for the MAVLink protocol. While there is a fork of the firmware available for the MSP (Multiwii Serial Protocol), it does not support recent advances in INAV (MSPv2, LTM); and the current recommendation is just to use the standard firmware with MAVLink options disabled.
 
 3DR is a medium range technology, up to at least 1km. Range is somewhat dependent on baud rate and is [well documented](http://ardupilot.org/copter/docs/common-3dr-radio-advanced-configuration-and-technical-information.html).
 
@@ -110,7 +110,7 @@ Another, highly detailed how-to for ESP8266 and Cleanflight/Baseflight/INAV is a
 
 ## HC-12
 
-HC-12 is a comparable radio technology to 3DR with similar range and performance characteristics. Its configuration and usage with iNav is well documented https://quadmeup.com/diy-wireless-telemetry-link-for-uav/ and https://quadmeup.com/hc-12-433mhz-wireless-serial-communication-module-configuration/. The configuration documented would work equally well in ezgui and [mwp](https://github.com/stronnag/mwptools). These small radios work really well with good range in FU3 mode / 9600 baud (and very cheap). 
+HC-12 is a comparable radio technology to 3DR with similar range and performance characteristics. Its configuration and usage with INAV is well documented https://quadmeup.com/diy-wireless-telemetry-link-for-uav/ and https://quadmeup.com/hc-12-433mhz-wireless-serial-communication-module-configuration/. The configuration documented would work equally well in ezgui and [mwp](https://github.com/stronnag/mwptools). These small radios work really well with good range in FU3 mode / 9600 baud (and very cheap). 
 
 ## Openlrsng
 
@@ -124,7 +124,7 @@ A great number of compatible openlrsng devices can be found, from Hobbyking (UHF
 
 ## LoRA
 
-LoRA provides the capability for low power / long range telemetry using similar arrangements as for 3DR and HC-12, with the possibility of extended range. A description of a working setup and albeit short range comparison with 3DR/HC-12 is in the [mwptools wiki](https://github.com/stronnag/mwptools/wiki/Using-LoRa-for-iNav-Telemetryhttps://github.com/stronnag/mwptools/wiki/Using-LoRa-for-iNav-Telemetry) or as a [PDF]( https://raw.githubusercontent.com/wiki/stronnag/mwptools/data/Using-LoRa-for-iNav-Telemetry.pdf).
+LoRA provides the capability for low power / long range telemetry using similar arrangements as for 3DR and HC-12, with the possibility of extended range. A description of a working setup and albeit short range comparison with 3DR/HC-12 is in the [mwptools wiki](https://github.com/stronnag/mwptools/wiki/Using-LoRa-for-INAV-Telemetryhttps://github.com/stronnag/mwptools/wiki/Using-LoRa-for-INAV-Telemetry) or as a [PDF]( https://raw.githubusercontent.com/wiki/stronnag/mwptools/data/Using-LoRa-for-INAV-Telemetry.pdf).
 
 ## Other solutions
 
@@ -158,11 +158,11 @@ No test flights have been performed yet.
 
 # Telemetry Protocols
 
-Data is transferred between the GCS and the FC using a "Telemetry Protocol". Currently, iNav offers two protocols (MSP and LTM), both of which are supported by ezgui and [mwp](https://github.com/stronnag/mwptools). There is also a minimal implementation of MAVLink ([mwp](https://github.com/stronnag/mwptools) already supports this MAVLink subset), this will allow other tools to be used, such as the cross-platform [QGroundControl](http://qgroundcontrol.org/). The MAVLink implementation only supports push telemetry (i.e. mission monitoring, not mission planning).
+Data is transferred between the GCS and the FC using a "Telemetry Protocol". Currently, INAV offers two protocols (MSP and LTM), both of which are supported by ezgui and [mwp](https://github.com/stronnag/mwptools). There is also a minimal implementation of MAVLink ([mwp](https://github.com/stronnag/mwptools) already supports this MAVLink subset), this will allow other tools to be used, such as the cross-platform [QGroundControl](http://qgroundcontrol.org/). The MAVLink implementation only supports push telemetry (i.e. mission monitoring, not mission planning).
 
 ## MSP - MultiWii Serial Protocol
 
-MSP is the 'native' messaging protocol for iNav. It is well supported by the configurator, ezgui, [mwp](https://github.com/stronnag/mwptools) and many OSDs. It is all you need to upload missions and monitor flights. Its one disadvantage for mission monitoring is that it is a polled protocol, that is the GCS has to request data and then the FC responds. This is not really an issue for some data links such as BT and WiFi, but the half-duplex nature of 3DR, where there is significant time cost in switching between receive and transmit modes, limits the performance for mission monitoring.
+MSP is the 'native' messaging protocol for INAV. It is well supported by the configurator, ezgui, [mwp](https://github.com/stronnag/mwptools) and many OSDs. It is all you need to upload missions and monitor flights. Its one disadvantage for mission monitoring is that it is a polled protocol, that is the GCS has to request data and then the FC responds. This is not really an issue for some data links such as BT and WiFi, but the half-duplex nature of 3DR, where there is significant time cost in switching between receive and transmit modes, limits the performance for mission monitoring.
 
 [mwp](https://github.com/stronnag/mwptools) (and possibly other ground stations) can mitigate this performance hit by using MSP for configuration, mission upload / verification and monitoring prior to arming, and when configured in the FC, switching to LTM for mission monitoring when armed. This switch-over is automatic and transparent to the user.
 
@@ -170,17 +170,17 @@ MSP is the 'native' messaging protocol for iNav. It is well supported by the con
 
 LTM is a 'push' telemetry protocol; that is the FC sends data unsolicited to the GCS. This avoids the 'half-duplex' time penalty of MSP on 3DR radios. Unlike MSP, LTM only provides flight data, thus if you need the GCS to select a vehicle icon based on the multirotor type (QUADX, TRI etc), offer additional functions based in the FC firmware version or upload waypoints, then it is necessary to share the serial port on the FC between MSP and LTM; MSP is used when unarmed and LTM when armed. Both ezgui and [mwp](https://github.com/stronnag/mwptools) handle the switch-over automatically.
 
-You can find documentation / specification for the LTM implementation in Inav in the [iNav Wiki](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)). 
+You can find documentation / specification for the LTM implementation in Inav in the [INAV Wiki](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)). 
 
-LTM will operate effectively over low data rate links. Currently the iNav implementation pushes c. 300 bytes /sec in its fastest rate, so 4800 baud over the air rate would suffice. iNav provides configuration options for 'medium' and 'slow' LTM rates, further reducing the required baud rate, which may in turn increase range for some radio solutions.
+LTM will operate effectively over low data rate links. Currently the INAV implementation pushes c. 300 bytes /sec in its fastest rate, so 4800 baud over the air rate would suffice. INAV provides configuration options for 'medium' and 'slow' LTM rates, further reducing the required baud rate, which may in turn increase range for some radio solutions.
 
 LTM is supported by ezgui, [mwp](https://github.com/stronnag/mwptools) and ([for OSD, ltm-osd-simple](https://github.com/digitalentity/ltm-osd-simple)). Also [LTM Oled](https://github.com/sppnk/LTM-Telemetry-OLED).
 
 ## MAVLink 
 
-[MAVLink](http://qgroundcontrol.org/mavlink/start) is a full-feature, highly capable protocol used by PX4, PIXHAWK, APM and Parrot AR.Drone platforms (inter alia). The implementation for iNav is 'push telemetry' only, it only be used for flight monitoring and should be able to accept missions (however finding a ground station that will cooperate may not be easy).
+[MAVLink](http://qgroundcontrol.org/mavlink/start) is a full-feature, highly capable protocol used by PX4, PIXHAWK, APM and Parrot AR.Drone platforms (inter alia). The implementation for INAV is 'push telemetry' only, it only be used for flight monitoring and should be able to accept missions (however finding a ground station that will cooperate may not be easy).
 
-The initial implementation in iNav is supported by ezgui, Droid Planner 2, [mwp](https://github.com/stronnag/mwptools) and some older versions of QGroundControl (modern versions appear to require a more complex handshake). Probably some of the Android .apks for Mavlink will work with this telemetry protocol. Tower (Droid Planner 3) is reported as not working.
+The initial implementation in INAV is supported by ezgui, Droid Planner 2, [mwp](https://github.com/stronnag/mwptools) and some older versions of QGroundControl (modern versions appear to require a more complex handshake). Probably some of the Android .apks for Mavlink will work with this telemetry protocol. Tower (Droid Planner 3) is reported as not working.
 
 # Configuring the Flight Controller
 ## Ports & port sharing
@@ -212,9 +212,9 @@ Using a serial RX is more difficult, particularly for F1 devices. For F3 devices
 
 # Mission Planning
 
-iNav currently supports a subset of the WP / Mission MSP
+INAV currently supports a subset of the WP / Mission MSP
 ["specification"](https://docs.google.com/document/d/16ZfS_qwc-rJeA7N5Tx0DA6wtgxl6HdGgaz-jE3lHBWs). The
-following waypoint types are available (iNav 1.1, or later as indicated).
+following waypoint types are available (INAV 1.1, or later as indicated).
 
 * Waypoint (leg speed addition)
 * Infinite position hold
@@ -225,7 +225,7 @@ following waypoint types are available (iNav 1.1, or later as indicated).
 * Set Heading (2.6+)
 * Land (2.5+)
 
-ezgui and [mwp](https://github.com/stronnag/mwptools) support iNav WP navigation; they both use the mission definition originally implemented in WinGui, thus mission definitions are interchangeable between these applications (and mw-nav if you limit the mission features to the common subset).
+ezgui and [mwp](https://github.com/stronnag/mwptools) support INAV WP navigation; they both use the mission definition originally implemented in WinGui, thus mission definitions are interchangeable between these applications (and mw-nav if you limit the mission features to the common subset).
 
 ezgui and [mwp](https://github.com/stronnag/mwptools) both provide interactive WP editing on a geospatial background and mission upload to / download from the multicopter. At least for [mwp](https://github.com/stronnag/mwptools) (to be confirmed for ezgui), the mission upload process also downloads the mission and compares the two. **You should not attempt to fly a mission unless it has validated**.
 
@@ -246,12 +246,12 @@ Prior to engaging any automated mode, it is advisable to verify that you have re
 
 # Waypoint Mode
 
-As soon as iNav starts a leg on a WP mission, it will attempt to reach the leg altitude, so if you have
+As soon as INAV starts a leg on a WP mission, it will attempt to reach the leg altitude, so if you have
 
 * WP 1, altitude 10m
 * WP 2, altitude 50m
 
-On engaging WP mode, iNav will attempt to reach 10m altitude. On passing WP 1, iNav will attempt to reach 50m. Altitude is not taken into consideration in determining when a waypoint is reached (only latitude / longitude).
+On engaging WP mode, INAV will attempt to reach 10m altitude. On passing WP 1, INAV will attempt to reach 50m. Altitude is not taken into consideration in determining when a waypoint is reached (only latitude / longitude).
 
 WP mode is only disengaged under the following circumstances:
 

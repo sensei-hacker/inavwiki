@@ -1,6 +1,6 @@
 # Features safe to remove
 
-Due to flash size limitation on F1 targets it cannot include all features iNav supports at once.
+Due to flash size limitation on F1 targets it cannot include all features INAV supports at once.
 
 Purpose of this document is to provide infomation on which features that can safely be removed and added as see fit.
 
@@ -14,7 +14,7 @@ To remove an feature simple find the feature name and then make a new line in ta
 
 ## GPS protocols
 
-iNav supports 4 different GPS protocols. Default on F1 targets is only Ublox enabled.
+INAV supports 4 different GPS protocols. Default on F1 targets is only Ublox enabled.
 
 The four protocols are defined in the common.h file inside main target folder.
 
@@ -31,7 +31,7 @@ You can choose to remove all expect the one you need.
 
 ## Telemetry protocols
 
-iNav supports 4 different GPS protocols. Default on F1 targets is only LTM and FrSky telemetry.
+INAV supports 4 different GPS protocols. Default on F1 targets is only LTM and FrSky telemetry.
 
 The four protocols are defined in the common.h file inside main target folder.
 
