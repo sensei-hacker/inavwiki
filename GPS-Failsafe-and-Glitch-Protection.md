@@ -10,7 +10,7 @@ Action taken on invalid position is dependent on current flight mode.
 
 Prior to INAV 5.0, INAV implemented "GPS glitch protection"; this was based on the performance characteristics of c. 2016 multi-rotors and Neo6M GPS and was deemed inappropriate for modern aircraft, as it resulted in numerous "false positives" with modern GPS and aircraft performance. Glitch protection was removed in INAV 5.0. The following paragraphs describe the historical implementation:
 
-> Sometimes GPS provides very inaccurate position information despite having the fix and the good satellite count. This event is usually called a "GPS glitch". iNav has logic to detect and ignore inaccurate/inconsistent GPS position updates. Glitches are detected by comparing the new position update received from the GPS unit with a position projected out from the previous update's position and velocity.
+> Sometimes GPS provides very inaccurate position information despite having the fix and the good satellite count. This event is usually called a "GPS glitch". INAV has logic to detect and ignore inaccurate/inconsistent GPS position updates. Glitches are detected by comparing the new position update received from the GPS unit with a position projected out from the previous update's position and velocity.
 >
 > The new GPS position is accepted as “good” if:
 >

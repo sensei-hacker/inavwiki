@@ -9,7 +9,7 @@ Worth reading regards to deciding to use asynchronous mode. https://quadmeup.com
 ### History: **PLEASE WRITE HERE IF YOU CHANGE ANYTHING AND WHY.**
 ```
 05.01.3017 oleøst: Changed some settings in 250 class.
-21.11.2016 oleoat: Removed disabling of baro because fixed in iNav 1.4
+21.11.2016 oleoat: Removed disabling of baro because fixed in INAV 1.4
 21.11.2016 oleoat: Changed recommend gyro_lpf on flying wing, should probably be changed on acrobatic airplanes aswell
 17.11.2016 oleost: Added disabled baro for fixedwing until [543](https://github.com/iNavFlight/inav/pull/543) is fixed
 17.11.2016 oleost: Added values for fixed wing.
@@ -19,13 +19,13 @@ Worth reading regards to deciding to use asynchronous mode. https://quadmeup.com
 24.06.2016 oleost: Created first version of this wiki
 24.06.2016 oleost: Changed default to "mag_hardware = 1" on regular regular airplane because airplanes flies better with gps heading instead of mag heading.
 24.06.2016 oleost: removed looptime 1000, to low for f1 targets.
-2016-11-21 stronnag Added Quad 250 settings for F3/ iNav 1.4
-2016-11-21 stronnag Added Tri 600 settings for F3/ iNav 1.4
+2016-11-21 stronnag Added Quad 250 settings for F3/ INAV 1.4
+2016-11-21 stronnag Added Tri 600 settings for F3/ INAV 1.4
 ```
 
-# Change to default iNav settings 
+# Change to default INAV settings 
 
-Changes **you** think that should be done to iNav globally:
+Changes **you** think that should be done to INAV globally:
 
 ```
 24.06.2016 oleost: Change default to velned on because it generally looks like a better solution. (use_gps_velned = 1)
@@ -151,7 +151,7 @@ Home design 600mm tricopter. Same amateur pilot who only ever flies in horizon /
 
 ````
 3S, 4200mAh (Graphene), 10x5 HQ Thin Electic props, 1000kv. c. 900grams all up.
-iNav 1.4 for the rockin' async_gyro. 
+INAV 1.4 for the rockin' async_gyro. 
 Gets about 18 minutes gentle / nav modes, maybe 16 mins for aggressive manual flying.
 
 F3 (SPEVO). Enjoys the relatively high PIDs.

@@ -11,7 +11,7 @@
 
 INAV is **being actively developed** and currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features. 
 
-A wide variety of inexpensive flight controller boards are supported.  F4 & F7 flight control boards are **strongly suggested** to gain access to the full features of iNav.
+A wide variety of inexpensive flight controller boards are supported.  F4 & F7 flight control boards are **strongly suggested** to gain access to the full features of INAV.
 
 **To read and watch:**
 
@@ -19,7 +19,7 @@ A wide variety of inexpensive flight controller boards are supported.  F4 & F7 f
 - [INAV 5 on a flying wing video tutorial](https://www.youtube.com/playlist?list=PLOUQ8o2_nCLkZlulvqsX_vRMfXd5zM7Ha)
 - [INAV 3 from flash to flight YouTube playlist](https://youtube.com/playlist?list=PLOUQ8o2_nCLkfcKsWobDLtBNIBzwlwRC8)
 - [Betaflight to INAV migration guide](https://www.youtube.com/watch?v=1hhsqyXeKew)
-- [Getting started with iNav](https://github.com/iNavFlight/inav/wiki/Getting-started-with-iNav)
+- [Getting started with INAV](https://github.com/iNavFlight/inav/wiki/Getting-started-with-iNav)
 - [Sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration)
 - [Multirotor guide](https://github.com/iNavFlight/inav/wiki/Multirotor-guide) if you're going to use it in a multirotor.
 - [Fixed wing guide](https://github.com/iNavFlight/inav/wiki/Fixed-wing-guide) if you're going to use it in a fixed-wing model.

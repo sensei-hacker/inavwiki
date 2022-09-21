@@ -1,8 +1,8 @@
-**Important:** iNav requires you to follow the accelerometer calibration steps below. These steps are different to Cleanflight & Betaflight. So don't skip reading this section, **it's vitally important**.
+**Important:** INAV requires you to follow the accelerometer calibration steps below. These steps are different to Cleanflight & Betaflight. So don't skip reading this section, **it's vitally important**.
 
 Modern accelerometer sensors are precise, but they require calibration if we want accurate measurements.  
 
-The sensors on your flight controller might be biased and gains on different axes might be different. iNav uses an advanced 6-point calibration to take care of all irregularities your flight controller sensors might have.
+The sensors on your flight controller might be biased and gains on different axes might be different. INAV uses an advanced 6-point calibration to take care of all irregularities your flight controller sensors might have.
 
 ## Accelerometer calibration steps
 
@@ -28,7 +28,7 @@ There is no need to place the model perfectly aligned, the algorithm does not ca
 
 ## Board Orientation and Level Calibration
 
-If you have your board rotated in any way, change board alignment to match (_see the configuration tab in the iNav configurator_). 
+If you have your board rotated in any way, change board alignment to match (_see the configuration tab in the INAV configurator_). 
 
 You can verify the correct board orientation by banking your your aircraft left and right, forward and back and rotate left and right. In all examples the 3D model image in configurator **must** move accordingly.
 
@@ -48,7 +48,7 @@ Without an accurate heading the drone will not move in the correct direction in 
 
 The magnetometer (_basically a compass_) measures magnetic field strength so it should be placed a**way from any sources of magnetic interference** - power wires, ESCs, motors, beepers, metal parts of the frame, video transmitters, Llamas & so on... 
 
-The best way is to place the compass on a mast along with GPS module. When an external compass is used remember to set correct "align_mag", see the [iNav CLI variables](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) for more information. Compass must be mounted parallel to f/c. If not please follow the guide in [setting-up-the-compass-alignment](https://github.com/iNavFlight/inav/wiki/GPS--and-Compass-setup#setting-up-the-compass-alignment).
+The best way is to place the compass on a mast along with GPS module. When an external compass is used remember to set correct "align_mag", see the [INAV CLI variables](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) for more information. Compass must be mounted parallel to f/c. If not please follow the guide in [setting-up-the-compass-alignment](https://github.com/iNavFlight/inav/wiki/GPS--and-Compass-setup#setting-up-the-compass-alignment).
 
 When using an external magnetometer 9/10 times you need to physically remove (_remove chip from board or cut a trace_) the internal one if you have on. 
 
@@ -75,9 +75,9 @@ If the value is incorrect when copter is level, you likely don't have **align_ma
 2. Also, remember to set magnetic declination to a proper value on the "Configuration" screen.
 The magnetic declination of your specific location can be found here: (magnetic-declination.com)[http://magnetic-declination.com].
 
-If your magnetic declination readings are e.g. +3° 34' , the value entered in the iNav configurator is 3.34 (_3,34 in some locales_). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
+If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (_3,34 in some locales_). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
 
-Since iNav 1.2, on non-F1 targets, one can use an automatic declination setting, which is more than accurate enough for iNav. `set inav_auto_mag_decl = ON`.
+Since INAV 1.2, on non-F1 targets, one can use an automatic declination setting, which is more than accurate enough for INAV. `set inav_auto_mag_decl = ON`.
 
 
 ## Gyroscope Calibration

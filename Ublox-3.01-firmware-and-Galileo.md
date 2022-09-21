@@ -24,11 +24,11 @@ The FIS value indicates it is upgradable. In u-center:
 
 ## Device Status
 
-Devices manufactured in 2018 and later are likely to be firmware 3.01 or later as purchased. This is certainly the case for the popular (and well suited to iNav) Beitian BN-880.
+Devices manufactured in 2018 and later are likely to be firmware 3.01 or later as purchased. This is certainly the case for the popular (and well suited to INAV) Beitian BN-880.
 
-## iNav Configuration
+## INAV Configuration
 
-For iNav 1.9.0 and later, it is not necessary to manually configure the GPS in u-center; it can be enabled using the iNav CLI:
+For INAV 1.9.0 and later, it is not necessary to manually configure the GPS in u-center; it can be enabled using the INAV CLI:
 ```
 set gps_ublox_use_galileo = ON
 ```
@@ -93,7 +93,7 @@ PVT: lat: 50.910534 lon: -1.535244 elev: 17.40 acc(h/v): 0.6/0.7
 sats: 17, fix 3
 2017-04-22 13:05:47.600
 ````
-For iNav firmware prior to 1.7.1, it is necessary to compile custom firmware with `-D GPS_PROTO_UBLOX_NEO7PLUS=1`. For iNav 1.7.1 firmware and later, PVT/10Hz updates can be enabled just by configuration:
+For INAV firmware prior to 1.7.1, it is necessary to compile custom firmware with `-D GPS_PROTO_UBLOX_NEO7PLUS=1`. For INAV 1.7.1 firmware and later, PVT/10Hz updates can be enabled just by configuration:
 ````
 set gps_provider = UBLOX7
 ````

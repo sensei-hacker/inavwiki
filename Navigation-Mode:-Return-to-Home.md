@@ -45,7 +45,7 @@ If the model is below _nav_rth_altitude_ it will climb to desired altitude prior
 ## Maximum altitude since launch (NAV_RTH_MAX_ALT)
 - _nav_rth_alt_mode_ = **MAX**
 
-_pre-iNav 4.1_
+_pre-INAV 4.1_
 - _nav_rth_altitude_ ignored
 
 _iNav 4.1 onwards_
@@ -92,14 +92,14 @@ The plane climb to the **Actual RTH altitude** in the direction it is currently 
 [![https://imgur.com/MYWCu2X](https://i.imgur.com/MYWCu2Xl.png)](https://i.imgur.com/MYWCu2X.png)
 
 ### _nav_rth_climb_first_ = **ON_FW_SPIRAL**
-_Feature available since iNav 3.0._
+_Feature available since INAV 3.0._
 
 The plane climb in a loiter to the **Actual RTH altitude**. Once the **Actual RTH Altitude** is reached, it will turn and fly towards home.
 
 [![https://imgur.com/iviZOZ4](https://i.imgur.com/iviZOZ4l.png)](https://i.imgur.com/iviZOZ4.png)
 
 ### Two stage climb first
-_Feature available since iNav 4.0_
+_Feature available since INAV 4.0_
 
 Climb first can be a pretty inefficient part of the RTH sequence. The problem is that you are using energy spiralling up to altitude, or worse, flying away from home while gaining height. However, turning off climb first may not be a valid option, depending on the flying environment. This setting gives pilots more options with climb first.
 

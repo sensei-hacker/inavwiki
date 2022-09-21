@@ -2,7 +2,7 @@
 
 # Getting Started
 
- - [Getting started with iNav](/iNavFlight/inav/wiki/Getting-started-with-iNav)
+ - [Getting started with INAV](/iNavFlight/inav/wiki/Getting-started-with-iNav)
  - [Multirotor guide](/iNavFlight/inav/wiki/Multirotor-guide)
  - [Fixed-Wing Guide](/iNavFlight/inav/wiki/Fixed-wing-guide)
  - [YouTube video guides](/iNavFlight/inav/wiki/YouTube-video-guides)
@@ -15,11 +15,11 @@
 
 # Additional Information
 
- - [iNav Flight Modes](/iNavFlight/inav/wiki/Modes)
- - [iNav Navigation Modes](/iNavFlight/inav/wiki/Navigation-modes)
- - [iNav Return to Home](/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)
- - [iNav Missions / Waypoint flying](/iNavFlight/inav/wiki/iNavFlight-Missions)
- - [iNav CLI variables](/iNavFlight/inav/wiki/iNav-CLI-variables)
+ - [INAV Flight Modes](/iNavFlight/inav/wiki/Modes)
+ - [INAV Navigation Modes](/iNavFlight/inav/wiki/Navigation-modes)
+ - [INAV Return to Home](/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)
+ - [INAV Missions / Waypoint flying](/iNavFlight/inav/wiki/iNavFlight-Missions)
+ - [INAV CLI variables](/iNavFlight/inav/wiki/iNav-CLI-variables)
  - [Upgrading from an older version](/iNavFlight/inav/wiki/Upgrading-from-an-older-version-of-INAV-to-the-current-version)
  - [INAV Version History](/iNavFlight/inav/wiki/New-features-over-versions-log)
  - [Fixed Wing Tuning for INAV 3.0](/iNavFlight/inav/wiki/Fixed-Wing-Tuning-for-INAV-3.0)

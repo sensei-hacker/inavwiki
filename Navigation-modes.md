@@ -1,6 +1,6 @@
 **This Wiki page needs updating in regards to renamed CLI variables.**
 
-This page lists and explains all the different navigational flight modes of iNav:
+This page lists and explains all the different navigational flight modes of INAV:
 
 - [NAV ALTHOLD - Altitude hold](#althold---altitude-hold)
 - [NAV POSHOLD - Horizontal position hold](#nav-poshold---Position-hold)
@@ -35,7 +35,7 @@ This applies to enabling the navigation modes in the Configurator as well as at 
 
 - There is a companion [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
 
-Note: All iNAV parameters for distance, velocity, and acceleration are input in cm, cm/s and cm/s^2.
+Note: All INAV parameters for distance, velocity, and acceleration are input in cm, cm/s and cm/s^2.
 
 Let's have a look at each mode of operation in detail.
 
@@ -43,7 +43,7 @@ Let's have a look at each mode of operation in detail.
 When activated, the aircraft maintains its actual altitude unless changed by manual throttle input.
 Throttle input indicates climb or sink up to a predetermined maximum rate (see CLI variables). Using ALTHOLD with a multicopter, you need a barometer.
 SONAR: Altitude hold code will use sonar automatically on low altitudes (< 3m) if hardware is available.
-Using ALTHOLD with a plane (fixed wing: fw) with GPS: Since iNAV 1.5 it's recommended to keep baro enabled, and for iNav 1.6 the plan is to rely even less on GPS altitude when baro is enabled.
+Using ALTHOLD with a plane (fixed wing: fw) with GPS: Since iNAV 1.5 it's recommended to keep baro enabled, and for INAV 1.6 the plan is to rely even less on GPS altitude when baro is enabled.
 
 In general you shouldn't mix up ALTHOLD and ACRO/HORIZON: ALTHOLD doesn't account for extreme acro maneuvers.
 
@@ -63,20 +63,20 @@ In the moment you engage ALTHOLD, iNAV always sends “nav_mc_hover_thr” to th
 
 Example: Let's assume "nav_mc_hover_thr” is already set correctly to your copter's hover throttle and “set nav_use_midthr_for_althold =OFF”. Let's say you have your throttle stick at 30%, and you enter ALTHOLD, your copter will maintain hover at this 30%. If throttle is increased up to 40% it will start to climb. (Even if your copter needs 60% throttle to actually climb up in normal flight without ALTHOLD.)
 
-It's important to note that when the battery is full, "nav_mc_hover_thr” could be a lower value than when the battery is weaker. With a weaker battery more throttle will be needed to maintain a hover. A practical way to establish an approximate valid value is to use the iNav OSD screen to test values real-time when in the field. Once an approximate "nav_mc_hover_thr” has been established, then adjust the PIDs as described in the "PIDs for altitude hold" section below.
+It's important to note that when the battery is full, "nav_mc_hover_thr” could be a lower value than when the battery is weaker. With a weaker battery more throttle will be needed to maintain a hover. A practical way to establish an approximate valid value is to use the INAV OSD screen to test values real-time when in the field. Once an approximate "nav_mc_hover_thr” has been established, then adjust the PIDs as described in the "PIDs for altitude hold" section below.
 
 "set alt_hold_deadband = 50": You have to change throttle command (e.g. move throttle stick) by at least this amount to make the copter climb or descend and change target altitude for ALTHOLD.
 If ALTHOLD is activated at zero throttle iNAV will account for deadband and move the neutral "zero climb rate" position a little bit up to make sure you are able to descend.
 
 
 PIDs for altitude hold:
-_**The following values can be accessed using iNav OSD when configured for FPV from the "ALT MAG" screen within the "PIDS" section. Alternatively, the comparable variable, in parenthesis (), can be entered in the CLI of iNav Configurator.**_
+_**The following values can be accessed using INAV OSD when configured for FPV from the "ALT MAG" screen within the "PIDS" section. Alternatively, the comparable variable, in parenthesis (), can be entered in the CLI of INAV Configurator.**_
 - ALT P (nav_mc_pos_z_p) - defines how fast copter will attempt to compensate for altitude error (converts alt error to desired climb rate)
 - ALT I (nav_auto_climb_rate) - defines how fast copter will accelerate to reach desired climb rate
 - VEL P (nav_mc_vel_z_p) - defines how much throttle copter will add to achieve desired acceleration
 - VEL I  (nav_mc_vel_z_i)- controls compensation for hover throttle (and vertical air movement, thermals). This can essentially be zero if hover throttle is precisely 1500us. Too much "VEL I" will lead to vertical oscillations, too low "VEL I" will cause drops or jumps when ALTHOLD is switched on.
 - VEL D (nav_mc_vel_z_d)- acts as a dampener for VEL P and VEL I, will slower the response and reduce oscillations from too high VEL P and VEL I
-- If ALT P (nav_mc_pos_z_p) and ALT I (nav_auto_climb_rate) have been set to zero (0) during the PID adjustments, setting ALT P (nav_mc_pos_z_p) to a non-zero value (100?), will have the effect of changing the ALTHOLD altitude using the throttle. Once again, the easiest trial and error testing is done through the iNav OSD while in the field.
+- If ALT P (nav_mc_pos_z_p) and ALT I (nav_auto_climb_rate) have been set to zero (0) during the PID adjustments, setting ALT P (nav_mc_pos_z_p) to a non-zero value (100?), will have the effect of changing the ALTHOLD altitude using the throttle. Once again, the easiest trial and error testing is done through the INAV OSD while in the field.
 
 Inability to maintain altitude can be caused by a number of reasons:
 1. insufficient ALT_P and/or ALT_I
@@ -162,7 +162,7 @@ Activated by **RTH** flight mode.
 
 
 ## WP - Autonomous waypoint mission
-Autonomous waypoint missions allow the craft to fly a predefined sequence of mission waypoints. The mission waypoints include information about the type of waypoint, latitude, longitude, height and speed between the waypoints as well as other settings that control the behaviour during a mission. GUIs such as INAV Configurator Mission Control, [MWP Tools](https://github.com/stronnag/mwptools), EZ-GUI, Mission Planner for iNav, Mobile Flight and can be used to set the waypoints and upload the mission as well as store missions locally for reuse. Uploaded missions are saved in FC volatile memory until a reboot or a new uploaded mission overwrites the old one. Missions can also be saved to EEPROM non volatile memory which retains the mission after power off/reboot.
+Autonomous waypoint missions allow the craft to fly a predefined sequence of mission waypoints. The mission waypoints include information about the type of waypoint, latitude, longitude, height and speed between the waypoints as well as other settings that control the behaviour during a mission. GUIs such as INAV Configurator Mission Control, [MWP Tools](https://github.com/stronnag/mwptools), EZ-GUI, Mission Planner for INAV, Mobile Flight and can be used to set the waypoints and upload the mission as well as store missions locally for reuse. Uploaded missions are saved in FC volatile memory until a reboot or a new uploaded mission overwrites the old one. Missions can also be saved to EEPROM non volatile memory which retains the mission after power off/reboot.
 
 When waypoint mode is activated (using a switch as other modes), the quad/plane will start to fly the waypoint mission following the waypoints in numerical order. Waypoint missions can be interrupted during a mission by switching NAV WP off (Manual mode on a fixed wing or RTH will also interrupt a WP mission). Up to INAV 4.0 WP missions always start from the first WP. From INAV 4.0 it is possible to resume an interrupted mission from an intermediate WP using the [nav_wp_mission_restart](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_wp_mission_restart) setting.
 

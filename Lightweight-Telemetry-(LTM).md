@@ -32,14 +32,14 @@ The follow telemetry frames are supported:
 | A | Attitude Frame | 10 Hz at > 2400 baud |
 | S | Status Frame | 5Hhz at > 2400 baud | 
 | O | Origin Frame | 1 Hz rate | 
-| N | Navigation Frame (iNav extension) | ~4 Hz rate |
-| X | GPS eXended data (iNav extension) | 1 Hz rate |
+| N | Navigation Frame (INAV extension) | ~4 Hz rate |
+| X | GPS eXended data (INAV extension) | 1 Hz rate |
 
-In addition, LTM is used by NRF24L01 / deviationtx iNav protocol, which defines an additional frame for in-TX tuning. This frame is not transmitted for telemetry.
+In addition, LTM is used by NRF24L01 / deviationtx INAV protocol, which defines an additional frame for in-TX tuning. This frame is not transmitted for telemetry.
 
 | Function Byte | Usage |
 | ------------- | ----- |
-| T | Tuning frame (iNav extension) |
+| T | Tuning frame (INAV extension) |
 
 ## GPS Frame (G)
 
@@ -50,7 +50,7 @@ The payload is 14 bytes.
 | Latitude | int32 decimal degrees * 10,000,000 (1E7) |
 | Longitude | int32 decimal degrees * 10,000,000 (1E7) |
 | Ground Speed |  uchar m/s |
-| Altitude | (u)int32, cm (m / 100). In the original specification, this was unsigned. In iNav it is signed and should be so interpreted by consumers |
+| Altitude | (u)int32, cm (m / 100). In the original specification, this was unsigned. In INAV it is signed and should be so interpreted by consumers |
 | Sats | uchar. bits 0-1 : fix ; bits 2-7 : number of satellites |
 
 ## Attitide Frame (A)
@@ -109,7 +109,7 @@ The status byte is used as
 
 As a general purpose protocol, not all status can be mapped to INAV modes.
 
-(*) indicates iNav extension, post 2019-02-28
+(*) indicates INAV extension, post 2019-02-28
 
 ## Origin Frame (O)
 
@@ -119,7 +119,7 @@ The payload is 14 bytes
 | ---- | ---- |
 | Latitude | int32 decimal degrees * 10,000,000 (1E7) |
 | Longitude | int32 decimal degrees * 10,000,000 (1E7) |
-| Altitude | uint32, cm (m / 100) [always 0 in iNav] |
+| Altitude | uint32, cm (m / 100) [always 0 in INAV] |
 | OSD on | uchar (always 1) |
 | Fix | uchar, home fix status (0 == no fix) |
 
@@ -160,8 +160,8 @@ where:
 | 10 | Landed |
 | 11 | Settling before landing |
 | 12 | Start descent |
-| 13 | Hover above home (iNav only) |
-| 14 | Emergency landing (iNav only) |
+| 13 | Hover above home (INAV only) |
+| 14 | Emergency landing (INAV only) |
 | 15 | Critical GPS failure (yes 15, you never want to see this) |
 
 Note that these values were defined by Multiwii-nav and not all are applicable to INAV.
@@ -233,7 +233,7 @@ A couple of data samples are available from the [mwptools](https://github.com/st
 
 ## Tuning Frame (T)
 
-The payload is 12 bytes. This frame is not transmitted by iNav telemetry.
+The payload is 12 bytes. This frame is not transmitted by INAV telemetry.
 
 | Data | Format |
 | ---- | ---- |

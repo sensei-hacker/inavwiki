@@ -2,9 +2,9 @@
 
 ## Overview
 
-This page describes MSPV2 (MultiWii Serial Protocol Version 2). MSP is the remote messaging protocol used by iNav and other flight controllers such as MultiWii, CleanFlight and BetaFlight.
+This page describes MSPV2 (MultiWii Serial Protocol Version 2). MSP is the remote messaging protocol used by INAV and other flight controllers such as MultiWii, CleanFlight and BetaFlight.
 
-MSPV2 was introduced in iNav 1.73 for legacy commands, and is fully implemented (16bit commands) after 1.73 (i.e. 1.74 development branch and successors). An MSP API version of 2 or greater indicates MSPV2 support. 
+MSPV2 was introduced in INAV 1.73 for legacy commands, and is fully implemented (16bit commands) after 1.73 (i.e. 1.74 development branch and successors). An MSP API version of 2 or greater indicates MSPV2 support. 
 
 ## MSP Protocol
 
@@ -16,7 +16,7 @@ A specific device may function as both "MSP Master" and "MSP Slave" or implement
 
 The reasons for introducing a incrementally improved version of MSP include:
 
-* Limited message IDs. MSP v1 provided 255 message IDs; between iNav and BetaFlight (CleanFlight), this space is almost exhausted.
+* Limited message IDs. MSP v1 provided 255 message IDs; between INAV and BetaFlight (CleanFlight), this space is almost exhausted.
 * Limited message size. MSP v1 is limited to 255 byte message payloads. This is already a problem and can only get worse. The extant attempt to address this limitation in MSP v1 (the JUMBO frame extension) is a 'band-aid' and still suffers from the next restriction.
 * Weak check-summing. MSP v1 uses a simple XOR checksum. This is vulnerable to simple communications errors (transposed bits). It can fail to detect common transmission corruptions.
 
@@ -68,7 +68,7 @@ As MSP V2 (function id: 100, payload size: 0)
 ````
 ### Embedded example
 
-For a mythical V2 "Hello World" message with function id 0x4242 (note: this function id is not implemented in iNav), as MSPV2 (hex bytes), 18 byte payload, flag set to 0xa5:
+For a mythical V2 "Hello World" message with function id 0x4242 (note: this function id is not implemented in INAV), as MSPV2 (hex bytes), 18 byte payload, flag set to 0xa5:
 
 ````
 24 58 3e a5 42 42 12 00 48 65 6c 6c 6f 20 66 6c 79 69 6e 67 20 77 6f 72 6c 64 82 
@@ -87,7 +87,7 @@ Note: This message function is NOT implemented in the FC. It is just a (temporar
 
 ## crc_dvb_s2 example
 
-The checksum should be initialised to zero. The following 'C' code snippet shows the iNav implementation.
+The checksum should be initialised to zero. The following 'C' code snippet shows the INAV implementation.
 ````
 uint8_t crc8_dvb_s2(uint8_t crc, unsigned char a)
 {
@@ -130,13 +130,13 @@ One could embed a MSP V2 message within a MSP V1 JUMBO frame, but this is not li
 
 # MSP V2 Message Catalogue
 
-For iNav 1.8.0, MSP V2 messages have been defined (0x4242 is a joke, not a land grab). It is hoped that a message catalogue can be cooperatively developed by FC authors to avoid the current fragmentation in MSP V1. 
+For INAV 1.8.0, MSP V2 messages have been defined (0x4242 is a joke, not a land grab). It is hoped that a message catalogue can be cooperatively developed by FC authors to avoid the current fragmentation in MSP V1. 
 
 Suggested approach is to allocate blocks of MSPv2 messages to certain firmwares - use high nibble of Function ID as firmware family identifier. This will allow up to 4096 firmware-specific messages.
 
 | Function ID | Usage | Supports flags | FCs implemntating | Documentation Link |
 | ----- | ---------- | ---- | ---- | ---- |
-| 0x0000-0x00FE | Legacy     |  ✘   | iNav, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
-| 0x1000-0x1EFF | Common messages   |  ✘   | iNav    |      |
-| 0x1F00-0x1FFF | Sensors connected via MSP  |  ✘   | iNav    |      |
-| 0x2000-0x2FFF | INAV-specific     |  ✘   | iNav    |      |
+| 0x0000-0x00FE | Legacy     |  ✘   | INAV, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
+| 0x1000-0x1EFF | Common messages   |  ✘   | INAV    |      |
+| 0x1F00-0x1FFF | Sensors connected via MSP  |  ✘   | INAV    |      |
+| 0x2000-0x2FFF | INAV-specific     |  ✘   | INAV    |      |

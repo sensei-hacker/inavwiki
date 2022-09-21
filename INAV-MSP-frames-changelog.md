@@ -182,7 +182,7 @@ Frame IDs:
 
 ## INAV 1.5 MSP API Version 1.23
 
-For iNav 1.5 and later, the MSP_STATUS/sensor field reports sensor failure. This updates MSP_SENSOR (see http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol) in a backwards compatible manner to report additional sensors and sensor health. The sensor field is reported as:
+For INAV 1.5 and later, the MSP_STATUS/sensor field reports sensor failure. This updates MSP_SENSOR (see http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol) in a backwards compatible manner to report additional sensors and sensor health. The sensor field is reported as:
 
 | Bit | Usage |
 | ---- | ----- |
@@ -300,7 +300,7 @@ Frame IDs:
 ##Change log:
 
 * 2016-11-20 - scaling of `rate_accel_limit_roll_pitch` and `rate_accel_limit_yaw` in **MSP_PID_ADVANCED** changed from 1000 to 10
-* 2016-12-11 - added MSP_STATUS update for iNav 1.5
+* 2016-12-11 - added MSP_STATUS update for INAV 1.5
 * 2017-01-15 - added dterm_setpoint_weight added to MSP_PID_ADVANCED frame
 * 2017-01-15 - MSP_CALIBRATION_DATA
 * 2017-01-18 - `pidsum_limit` in `MSP_PID_ADVANCED`

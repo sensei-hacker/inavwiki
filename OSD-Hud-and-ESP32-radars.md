@@ -135,17 +135,17 @@ There's a long chain of inaccuracies conspiring to make the tracking not perfect
 * The position of the other aircrafts as sent by the ESP32 modules are updated at 2Hz (every 0.5sec), so at high speed there's lag involved because of relative movements.
 
 
-## ESP32 LoRa modem ("iNav Radar" project)
+## ESP32 LoRa modem ("INAV Radar" project)
 
 If you have such a module fitted on your aicraft, extra steps are required in order to display the remote aircrafts live on the Hud :
 
 * Wire the ESP32 module to a free UART on your flight controller, same as you would connect a GPS (+5V, GND, TX, RX). Using a Softserial port is not supported, it's not fast enough.
 
-* In the iNav Configurator, Ports tab, enable the MSP option for this UART, and set the speed to **115200**. You don't have to set anything else for the port, the ESP32 will then communicate with the flight controller using standard MSP/MSP2 messages.
+* In the INAV Configurator, Ports tab, enable the MSP option for this UART, and set the speed to **115200**. You don't have to set anything else for the port, the ESP32 will then communicate with the flight controller using standard MSP/MSP2 messages.
 
 * In the CMS, OSD > Hud > Displayed items, set **Radar max aircraft to 4**
 
-* If the wiring and port configuration is correct, at boot time the ESP32 module will show the iNav/host version detected.
+* If the wiring and port configuration is correct, at boot time the ESP32 module will show the INAV/host version detected.
 
 Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthread.php?3304673-iNav-Radar-ESP32-LoRa-modems) for mode details about the ESP32 modules and the radar project.
 
@@ -163,7 +163,7 @@ Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthr
 
 ##  Troubleshooting
 
-* **The ESP32 says "NoFC", it does not see the iNav flight controller**
+* **The ESP32 says "NoFC", it does not see the INAV flight controller**
 
 Check that all 4 wires 5V GND TX RX are connected, and check that the port/UART the ESP32 is connected to is set with MSP enabled and speed is 115200 baud.
 

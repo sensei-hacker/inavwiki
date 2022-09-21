@@ -1,6 +1,6 @@
-# How auto detect works in iNav
+# How auto detect works in INAV
 
-On iNav when mag_hardware and baro_hardware is set to `AUTO` it tries to auto detect which sensor is connected.  
+On INAV when mag_hardware and baro_hardware is set to `AUTO` it tries to auto detect which sensor is connected.  
 When it finds a sensor it will change the parameter to the one found, example `BMP280`. If it fails to find any sensor it will set *_hardware to `NONE`
 
 Reason for switching from `AUTO` to the detected sensor is to make the hardware failure detection work properly.
@@ -25,4 +25,4 @@ If sensor is configured it's checked periodically and it's status is reported to
 
 If any of the sensors is in `NOT DETECTED` or `NOT HEALTHY` state - the board will not ARM and `FAIL` will be indicated for `Hardware health` pre-arming check in the Configurator.
 
-Hardware detection failure does not work while in flight. Only detection working is if iNav looses position data, and it does not have knowledge of where it is anymore, example loosing GPS lock. This will cause the machine to exit GPS modes, and if its during fail-safe RTH it will emergency land.
+Hardware detection failure does not work while in flight. Only detection working is if INAV looses position data, and it does not have knowledge of where it is anymore, example loosing GPS lock. This will cause the machine to exit GPS modes, and if its during fail-safe RTH it will emergency land.

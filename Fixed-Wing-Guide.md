@@ -1,4 +1,4 @@
-# The Basics of Getting iNav Working on an Airplane
+# The Basics of Getting INAV Working on an Airplane
 
 ### Flight controllers designed for fixed wing
 
@@ -19,17 +19,17 @@ Some of the most popular flight controllers for fixed wing are:
 
 ### Step 1: Getting Your Flight Controller Ready.
 
-* Flash the latest version of iNav using the [iNav Configurator](https://github.com/iNavFlight/inav-configurator/releases)
+* Flash the latest version of INAV using the [INAV Configurator](https://github.com/iNavFlight/inav-configurator/releases)
 
 * Do an entire [sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration). Level should be the angle of the plane itself when flying straight. **Do not skip this step**.
 
-* Select a preset from the iNav presets tab that fits your aircraft the best, then press "Save & Reboot"
+* Select a preset from the INAV presets tab that fits your aircraft the best, then press "Save & Reboot"
 
 ### Step 2: Hooking Everything Up.
 
 The image below shows the standard wiring for both a flying wing and for a normal fixed wing model with ailerons, elevator & rudder. You connect each servo to the corresponding PWM output on your flight controller.
 
-**Note:** If you are using iNav with a Mini Talon you'll need a [Custom Mix](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#v-tail-fixed-wing) so that the servos move correctly or if using a Skyhunter (Nano, Micro, Mini & full sized) then there is also a custom mix available [here](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#skyhunter-nano-no-rudder).
+**Note:** If you are using INAV with a Mini Talon you'll need a [Custom Mix](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#v-tail-fixed-wing) so that the servos move correctly or if using a Skyhunter (Nano, Micro, Mini & full sized) then there is also a custom mix available [here](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#skyhunter-nano-no-rudder).
 
 <img src="https://cloud.githubusercontent.com/assets/16717155/26343189/d7ffbef4-3f92-11e7-8997-242fa990d50c.png"/>
 
@@ -103,17 +103,17 @@ At this point everything should work as expected.
 ``set max_angle_inclination_rll = 600``    
 ``set max_angle_inclination_pit = 600``  
 
-* Increase small angle (so iNav will let you arm in any position) type this and save in CLI:
+* Increase small angle (so INAV will let you arm in any position) type this and save in CLI:
 ``set small_angle = 180`` 
 
 * If you wish for your fixed wing model to loiter instead of attempting a landing after RTH mode is selected & the model returning home, you can set the model to loiter by typing this and saving in CLI:
 ``set nav_rth_allow_landing = NEVER``
 
-* In iNav when the RTH mode is enabled, the model will climb FIRST then return home. If you set this value below, the model will **turn and then climb** on it's way back to the home position:
+* In INAV when the RTH mode is enabled, the model will climb FIRST then return home. If you set this value below, the model will **turn and then climb** on it's way back to the home position:
 ``set nav_rth_climb_first = OFF`` 
 (Generally the default would be more useful than possibly turning back into any scenery that caused the RTH)
 
-* In iNav the default RTH height is 10 metres (approx 32') which might be too low for flying sites with trees. You can change this to 70 metres (approx 230') by setting this value in the CLI tab and typing save afterwards:
+* In INAV the default RTH height is 10 metres (approx 32') which might be too low for flying sites with trees. You can change this to 70 metres (approx 230') by setting this value in the CLI tab and typing save afterwards:
 ``set nav_rth_altitude = 7000``
 
 * If you intend to glide for more than 10 seconds it's suggested that you also set this value, so that the model doesn't "failsafe" by itself when using zero throttle during a glide: ``set failsafe_throttle_low_delay = 0`` 
@@ -127,11 +127,11 @@ At this point everything should work as expected.
 
 * Have `manual` mode configured so if it happens anything with gyro / accelerometer in the air you can use manual control. This includes if your flight controller resets during flight because of example an brownout.  
 
-* Read through the iNav [CLI commands](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md), especially ALL marked with "**fw_ **" This will give you hints how the modes for fixed wings work.  
+* Read through the INAV [CLI commands](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md), especially ALL marked with "**fw_ **" This will give you hints how the modes for fixed wings work.  
 
 ### Step 6: Optional, but Recommended:
 
-* [Tune your PIFF controller](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing) ( iNav versions 1.6 & later )
+* [Tune your PIFF controller](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing) ( INAV versions 1.6 & later )
 
 * To make altitude hold smoother you can adjust ``set nav_fw_pos_z_p`` , ``set nav_fw_pos_z_i`` and ``set nav_fw_pos_z_d``. Good values to start are 30/10/10.
 

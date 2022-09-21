@@ -9,7 +9,7 @@ Warning: one can assign a RC switch to simulate a FAILSAFE condition. Bear in mi
 
 The goal is to configure both your flight controller and radio receiver so that failsafe does as you expect in every situation.
 
-For failsafe to work optimally iNav needs to know it's in a failsafe event and not just doing regular RTH. This is necessary for example to correctly handle loss of GPS while returning to home.
+For failsafe to work optimally INAV needs to know it's in a failsafe event and not just doing regular RTH. This is necessary for example to correctly handle loss of GPS while returning to home.
 
 This assumes you have regular GPS modes like `RTH` working **already**.
 
@@ -37,7 +37,7 @@ The throttle channel lower endpoint may need to be temporarily set to the lowest
 
 Works well with Flysky radios without the need to set Failsafe mode (option 2).
 
-## Configuration of iNav
+## Configuration of INAV
 
 Go to `Failsafe` tab, and enable `RTH` as Stage 2 failsafe.
 
@@ -45,7 +45,7 @@ For fixed wing set `failsafe_throttle_low_delay = 0` or else it will disarm the 
 
 The behavior of `RTH` can also be configured.
 
- - [iNav Flight modes / Navigation Modes](/iNavFlight/inav/wiki/Navigation-modes#rth-altitude-control-modes)
+ - [INAV Flight modes / Navigation Modes](/iNavFlight/inav/wiki/Navigation-modes#rth-altitude-control-modes)
 
 Loss of GPS during Failsafe RTH will result in an emergency landing so make sure the following are set to avoid surprises:
 - `nav_emerg_landing_speed` - default is 5 m/s. Reduce for a fixed wing.

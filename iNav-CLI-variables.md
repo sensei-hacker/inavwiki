@@ -10,6 +10,6 @@ _As for CLI, here are some useful commands:_
  _"set nav_rth_altitude = 300" to change this setting to 300 (centimeters)._  
  _"save" to save it permanently and reboot your flight controller, remember to do this or your setting changes will be lost!_  
 
-The iNav CLI variables are explained in the [iNav cli variables documentation](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md). 
+The INAV CLI variables are explained in the [INAV cli variables documentation](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md). 
 
 To see new CLI values for release candidates or other pre release you have to change to the appropriate branch, example [development](https://github.com/iNavFlight/inav/blob/development/docs/Cli.md). 

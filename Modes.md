@@ -186,7 +186,7 @@ The entire time `NAV LAUNCH` mode it will try and stabilize plane, it will targe
 
 It's safe to keep it activated the `NAV LAUNCH` mode during flight after the launch has being completed. Keep in mind that if you accidentally disarm while flying you need to disable `NAV LAUNCH` mode to being able to control the model again.
 
-See iNav CLI for all available adjustable parameters, they start with `nav_fw_launch_`
+See INAV CLI for all available adjustable parameters, they start with `nav_fw_launch_`
 
 Sequence for launching airplane using `NAV LAUNCH` mode looks like this:
 

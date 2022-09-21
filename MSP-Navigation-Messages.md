@@ -14,7 +14,7 @@ Prior to inav 3.0, the [inav-configurator](https://github.com/iNavFlight/inav-co
 
 Each  waypoint has a type and takes a number of parameters, as below. These are used in the MSP_WP message. The final column indicated if the message is implemented for inav 1.2 (and later).
 
-| Value | Enum | P1 | P2 | P3 | Lat | Lon | Alt | iNav |
+| Value | Enum | P1 | P2 | P3 | Lat | Lon | Alt | INAV |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | 1 | WAYPOINT      | Speed (cm/s) [1] (exception [6]) | | Altitude Mode [7] | ✔ | ✔ | ✔ | ✔ |
 | 2 | POSHOLD_UNLIM |          | | | ✔ | ✔ | ✔ | [5] |
@@ -418,7 +418,7 @@ Note that 32bit flight controllers (baseflight, cleanflight) use capability == 1
 
 # Implementations
 
-The MSP NAV message set is implemented by [mwptools](https://github.com/stronnag/mwptools) (Linux, Windows, FreeBSD), ezgui / mission planner for iNav (Android), WinGUI (MS Windows) and the [inav-configurator](https://github.com/iNavFlight/inav-configurator).
+The MSP NAV message set is implemented by [mwptools](https://github.com/stronnag/mwptools) (Linux, Windows, FreeBSD), ezgui / mission planner for INAV (Android), WinGUI (MS Windows) and the [inav-configurator](https://github.com/iNavFlight/inav-configurator).
 
 # XML Mission Files
 

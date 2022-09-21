@@ -1,6 +1,6 @@
 # Overview
 
-iNav supports autonomous flight using waypoints. In order to use this capability, it is also necessary to utilise and configure some supporting technologies, including:
+INAV supports autonomous flight using waypoints. In order to use this capability, it is also necessary to utilise and configure some supporting technologies, including:
 
 * A GCS (Ground Control Station). The GCS will typically provide functions to create waypoint (WP) missions, upload WP missions to the flight controller (FC), validate the mission, execute the mission and log the mission;
 * Telemetry Hardware. In order to transfer the mission to the FC and monitor the mission in real time during mission execution it is necessary to install and configure a telemetry system between the GCS and the multicopter.
@@ -19,7 +19,7 @@ The MSP (MultiWii Serial Protocol) messages defining mission navigation are [doc
 
 # Ground Control Stations
 
-Currently there are a number of GCS applications widely used for iNav mission management, including  [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://github.com/stronnag/mwptools) (Linux). In the future, other options may become available, particularly as the MAVLink protocol becomes supported by iNav. However, MAVLink based tools will only provide monitoring.
+Currently there are a number of GCS applications widely used for INAV mission management, including  [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://github.com/stronnag/mwptools) (Linux). In the future, other options may become available, particularly as the MAVLink protocol becomes supported by INAV. However, MAVLink based tools will only provide monitoring.
 
 [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://github.com/stronnag/mwptools) (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. 
 
@@ -32,7 +32,7 @@ Note: Earlier versions of this article recommended ezgui for use on Android. ezg
 
 Droid Planner 2 can also be downloaded from the [GitHub](https://github.com/DroidPlanner/Tower/releases/download/Droidplanner_v2.8.6_RC2/Droidplanner_v2.8.6_RC2.apk). It is free and released under GNU Public License v3.
 
-Droid Planner only supports iNav's one-way MAVLink protocol. The following telemetry data is displayed:
+Droid Planner only supports INAV's one-way MAVLink protocol. The following telemetry data is displayed:
 
 Vehicle position on map, active flight mode, heading, altitude, speed.
 
@@ -50,13 +50,9 @@ There is a [RC Groups support forum](http://www.rcgroups.com/forums/showthread.p
 
 Use on MS Windows requires Cygwin or WSL (or a virtual machine).
 
-## Mobile Flight (IOS / iphone).
+## INAV Configurator
 
-Mobile Flight: Configuration and ground control app for iNav (and Betaflight) on iPhone http://www.rcgroups.com/forums/showthread.php?t=2601895&highlight=ios. 
-
-## iNav Configurator
-
-Since version 1.9.2, the iNav configurator provides rudimentary mission planning capabilities. Since 2.2 it can save and restore missions to the file system.iNav coupled with LuaTelemetry and an applicable radio such as the Taranis series using SmartPort negates the need for a discrete telemetry radio system and sends all of the telemetry data directly to the LCD screen on the transmitter.
+Since version 1.9.2, the INAV configurator provides rudimentary mission planning capabilities. Since 2.2 it can save and restore missions to the file system. INAV coupled with LuaTelemetry and an applicable radio such as the Taranis series using SmartPort negates the need for a discrete telemetry radio system and sends all of the telemetry data directly to the LCD screen on the transmitter.
 
 ## [Telemetry Viewer (Android)](https://github.com/CrazyDude1994/android-taranis-smartport-telemetry)
 Telemetry viewer is an Android application which allows you to track your telemetry data and GPS location. It has a log recorder and log replay function which allows you to track down your drone location. It works by using bluetooth module in your TX (if your TX doesn't have BL module, you can always buy BL module and connect to your TX). R9M, CrossFire(both lite and standard editions), Mavlink and LTM are supported. In latest version you also can connect to your TX by USB cable. More info at [GitHub](https://github.com/CrazyDude1994/android-taranis-smartport-telemetry) Page

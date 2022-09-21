@@ -1,6 +1,6 @@
 ## Overview
 
-In iNav 2.0 (and hence in *development* after the release of inav 1.9.1), all mixers are removed from the flight controller. Mixers can be assigned by either the Configurator 2.0, or in the CLI. If the CLI is used:
+In INAV 2.0 (and hence in *development* after the release of inav 1.9.1), all mixers are removed from the flight controller. Mixers can be assigned by either the Configurator 2.0, or in the CLI. If the CLI is used:
 
 * The `mixer` statement is removed
 * The new settings `platform_type` and `model_preview_type` are required, see Cli.md.

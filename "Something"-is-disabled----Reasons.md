@@ -1,10 +1,10 @@
 ## Something is disabled
 
-iNav may fail to perform some action as expected, typically arming or engaging waypoints. This articles documents the reasons for some of these events. 
+INAV may fail to perform some action as expected, typically arming or engaging waypoints. This articles documents the reasons for some of these events. 
 
 ## Arming disabled reasons
 
-iNav will refuse to arm for the following reasons (e.g. from cli `status`):
+INAV will refuse to arm for the following reasons (e.g. from cli `status`):
 
 | Reason  (CLI Mnemonic) | Bit Mask (Hex) | Explanation |
 | ------ | ----- | ----------- |
@@ -37,7 +37,7 @@ Note: On older processors, just the bitmask is shown, which can be decoded by th
 ```
 0x184000 = 00100000 + 00080000 + 00004000 (CLI active, throttle not at minimum, arm engaged)
 ```
-The values are correct for iNav 4.0.0 as of 2021-12.
+The values are correct for INAV 4.0.0 as of 2021-12.
 
 ### Navigation Unsafe reasons
 
@@ -83,9 +83,9 @@ The pilot *thinks* that they have loaded a waypoint mission, but the mission wil
 
 Diagnosing arming failure and WP execution failure often requires the use of a tool external to the FC; the following may help:
 
-* The iNav configurator displays reasons for arming failure
+* The INAV configurator displays reasons for arming failure
 * A blackbox log provides post event diagnostics
-* The iNav CLI (available from a terminal, the configurator and many ground-stations) displays arming disabled reasons:
+* The INAV CLI (available from a terminal, the configurator and many ground-stations) displays arming disabled reasons:
 
 	```
 	# status

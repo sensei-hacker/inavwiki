@@ -99,7 +99,7 @@ Switch on the GPS feature, and select the protocol.
 If your GPS receiver have enough satellites visible you'll be able to check the 3D fix in GPS tab
 ![3D fix] (http://s8.hostingkartinok.com/uploads/images/2017/02/2db676b5f03d436480919b1cbc945fb5.png)
 
-By default iNav won't arm without GPS fix if the GPS feature is ON. To disable it use CLI: "set nav_extra_arming_safety = OFF". And it is highly recomended to switch it back ON before real flights.
+By default INAV won't arm without GPS fix if the GPS feature is ON. To disable it use CLI: "set nav_extra_arming_safety = OFF". And it is highly recomended to switch it back ON before real flights.
 
 If your receiver connection is other than Parallel PWM Receiver, then you'll be able to setup battery voltage, current, RSSI monitoring. It is very userful. So IMHO a PPM is a must for CC3D FC.
 
@@ -117,7 +117,7 @@ On the Modes tab set up the flight modes according to the position of the AUX ch
 
 Check [this link](https://github.com/iNavFlight/inav/wiki/Failsafe) for RTH failsafe
 
-Starting from iNav 1.6 the Filesafe feature is very transparent and clear. For the failsafe to work you'll need:
+Starting from INAV 1.6 the Filesafe feature is very transparent and clear. For the failsafe to work you'll need:
 * Setup the receiver output no signal when your TX is off
 * OR assign the Failsafe mode to one of the channels and force it to trigger when your TX is off
 

@@ -1,14 +1,14 @@
-Since release 3.0, iNav directly supports embedded video telemetry data to drive the VirtualPilot Sentinel antenna tracker.
+Since release 3.0, INAV directly supports embedded video telemetry data to drive the VirtualPilot Sentinel antenna tracker.
 
 This enables the use of directional higher gain antennas to maintain higher quality video in all directions, provide the ability to use lower video transmission power or increase the maximum reception distance over traditional omnidirectional antennas. The AAT provides the benefit of maintaining a more accurate direction over manually mounted antennas without the concern of the aircraft moving outside of the antenna’s dominant reception area. 
 
 ***
 ## Configuring - iNAV 3.0 onwards (embedded support) 
-* Requires minimum of iNav 3.0 and fonts installed
+* Requires minimum of INAV 3.0 and fonts installed
 * Enable AAT telemetry in the cli: set osd_telemetry = ON
 
 ## Configuring - iNAV earlier versions
-* Check content at the link here: [iNAV AAT for earlier versions](https://github.com/aat-sentinel/Documentation/blob/main/Sentinel%20AAT%20lite%20User%20Guide.pdf)
+* Check content at the link here: [INAV AAT for earlier versions](https://github.com/aat-sentinel/Documentation/blob/main/Sentinel%20AAT%20lite%20User%20Guide.pdf)
 
 ## Testing 
 As telemetry data is not normally visible, the telemetry data can be viewed on the OSD using a cli command:
