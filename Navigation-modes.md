@@ -18,7 +18,7 @@ For safety reasons, INAV’s navigation modes can be activated only if:
 - the FC is armed
 
 This applies to enabling the navigation modes in the Configurator as well as at the flying field.
-(For bench tests without(!) propellers you may change “set nav_extra_arming_safety = ON” to “OFF” in CLI.)
+(For bench tests without(!) propellers you may change “set nav_extra_arming_safety = ON” to “ALLOW_BYPASS” in CLI. Then use yaw right when arming to bypass the checks.)
 
 - Flightmodes are self contained. For example: with RTH and WP (Waypoints) it's not necessary to enable angle, althold or mag, it enables what it needs. Read more below in POSHOLD section.
 - On fixed wing aircraft, enabling CRUISE, RTH, WP or POSHOLD also enables TURN ASSIST. TURN ASSIST applies elevator and rudder input when the airplane is banked to obtain a coordinated turn.
