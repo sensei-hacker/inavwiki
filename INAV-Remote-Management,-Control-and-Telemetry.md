@@ -159,6 +159,8 @@ INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). T
 * The consumer updates WP#255 (holds the requested `POSHOLD` location) using `MSP_SET_WP` messages.
 * See [INAV source](https://github.com/iNavFlight/inav/blob/master/src/main/navigation/navigation.c#L3126).
 
+With `GCS NAV`, is also possible to update the home position via WP#0
+
 ### The "Obstacle Avoidance" problem
 
 Ever so often, someone asks on Discord / Telegram / chat platform du jour how to do "Obstacle Avoidance" on INAV, often with some assumptions that:
