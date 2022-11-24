@@ -196,11 +196,9 @@ It should be noted that unlike other Nav modes WP PLANNER will work when disarme
 This mode is just an permission for GCS to change position hold coordinates and the altitude.
 So it's not a flight mode itself, and needs to be combined with other flight modes.
 
-In order to let the GCS have full control over the aircraft the following modes must be activated: `NAV POSHOLD` `NAV ALTHOLD` `MAG` TOGETHER with `GCS_NAV`.
+In order to let the GCS have full control over the aircraft, e.g. 'follow me', the following modes must be activated: `NAV POSHOLD` with `GCS_NAV`. In order to update the home position, no other mode is required.
 
-This can be combined in whichever way you want to permit, e.g manual yawing or altitude control.
-
-Keep in mind that if `NAV POSHOLD` is not combined with this mode you must combine `ANGLE` as the other modes are best combined with `ANGLE` mode.
+For more [detail](https://github.com/iNavFlight/inav/wiki/INAV-Remote-Management,-Control-and-Telemetry#follow-me-gcs-nav).
 
 ## GPS loss during navigation
 Loss of GPS during navigation will have the following affect on the different modes:
