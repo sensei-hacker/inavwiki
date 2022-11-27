@@ -106,6 +106,6 @@ Diagnosing arming failure and WP execution failure often requires the use of a t
 ## Postscript
 
 For 'Navigation is unsafe', you may, of course `set nav_extra_arming_safety = ALLOW_BYPASS`; however there is a clue is in the name. 
-Bypass is enabled by holding full right yaw whilst switch arming.
+**Bypass is enabled by holding full right yaw whilst switch arming.**
 
-Prior to IBAV 6.0, there is also `nav_extra_arming_safety = OFF`, which is not recommended. At least with `ALLOW_BYPASS` you know you've done something potentially dangerous.
+Prior to INAV 6.0, there is also `nav_extra_arming_safety = OFF`, which is not recommended. At least with `ALLOW_BYPASS` you know you've done something potentially dangerous.
