@@ -1,18 +1,18 @@
 # MSP NAV Protocol and Types
 
-This document describes MSP navigation messages, their usage and implementation details. Both **inav** and **multiwii** implementations (which are largely the same) are documented in this article.
+This document describes MSP navigation messages, their usage and implementation details. Both **INAV** and **Multiwii** implementations (which are largely the same) are documented in this article.
 
 Note that all binary values are little endian (MSP standard).
 
 # Implementation and versions
 
-This document should match the inav 1.2 (and later) and Multiwii 2.5 flight controller firmware. 
+This document should match the INAV 1.2 (and later) and Multiwii 2.5 flight controller firmware.
 
-Prior to inav 3.0, the [inav-configurator](https://github.com/iNavFlight/inav-configurator) supported a subset of  MSP Waypoint (WP) types; for inav 3.0 it supports all WP types. In addition to the inav configurator, the messages described are implemented in [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows (Cygwin,WSL)), ezgui (Android) mission planners / ground station applications and "drone helper" (Windows 10) mission planner. mwp and ezgui support both iNav and Multiwii; WinGui is a legacy Windows / Multiwii only mission planner that also supports this message set. 
+Prior to INAV 3.0, the [inav-configurator](https://github.com/iNavFlight/inav-configurator) supported a subset of  MSP Waypoint (WP) types; for INAV 3.0 it supports all WP types. In addition to the inav configurator, the messages described are implemented in [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows (Cygwin,WSL)), ezgui (Android) mission planners / ground station applications and "drone helper" (Windows 10) mission planner. mwp and ezgui support both INAV and Multiwii; WinGui is a legacy Windows / Multiwii only mission planner that also supports this message set.
 
 # WayPoint and Action Attributes
 
-Each  waypoint has a type and takes a number of parameters, as below. These are used in the MSP_WP message. The final column indicated if the message is implemented for inav 1.2 (and later).
+Each  waypoint has a type and takes a number of parameters, as below. These are used in the MSP_WP message. The final column indicated if the message is implemented for INAV 1.2 (and later).
 
 | Value | Enum | P1 | P2 | P3 | Lat | Lon | Alt | INAV |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -25,36 +25,47 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | 7 | SET_HEAD [3]  | Heading  (degrees) | | | | | | ✔ 2.6 and later |
 | 8 | LAND | Speed (cm/s) [1] | Elevation Adjustment (m) [8] | Altitude Mode & Actions [7] | ✔ | ✔ | ✔ | ✔ 2.5 and later |
 
-1. Leg speed is an inav extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
-2. Not used by inav
+1. Leg speed is an INAV extension (for multi-rotors only). It is the speed on the leg terminated by the WP (so the speed for WP2 is used for the leg WP1 -> WP2) (cm/s).
+2. Not used by INAV
 3. Once SET_HEAD or SET_POI is invoked, it remains active until cleared by SET_HEAD with a P1 value of -1.
-4. If a mission contains multiple RTH stanzas, then for MultiWii, the mission terminates at the first RTH. For inav, prior to c. 2.6, the mission would continue if RTH-LAND is not set, and valid waypoints follow.
-5. If the final entry in a mission is a WAYPOINT, the inav treats it as POSHOLD_UNLIM.
-6. For inav's "follow-me" mode (WP#255, POSHOLD engaged), P1 may be used to send an orientation heading (0-359 degrees).
-7. INAV 3.0 and later, P3 defines the altitude mode. 0 (default, legacy) = Relative to Home, 1 = Absolute (AMSL). Ignored for releases prior to 3.0. INAV 6.0 and later additionally define user "Actions" which may be invoked using the logic programming framework. 
-8. inav 3.0 and later, P2 defines the ground elevation (in metres) for the LAND WP. If the altitude mode is absolute, this is also absolute; for relative altitude, then it is the difference between the assumed home location and the LAND WP. Ignored for releases prior to 3.0.
+4. If a mission contains multiple RTH stanzas, then for Multiwii, the mission terminates at the first RTH. For INAV, prior to c. 2.6, the mission would continue if RTH-LAND is not set, and valid waypoints follow.
+5. If the final entry in a mission is a WAYPOINT, the INAV treats it as POSHOLD_UNLIM.
+6. For INAV's "follow-me" mode (WP#255, POSHOLD engaged), P1 may be used to send an orientation heading (0-359 degrees).
+7. INAV 3.0 and later, P3 defines the altitude mode. 0 (default, legacy) = Relative to Home, 1 = Absolute (AMSL). Ignored for releases prior to 3.0. INAV 6.0 and later additionally define user "Actions" which may be invoked using the logic programming framework.
+8. INAV 3.0 and later, P2 defines the ground elevation (in metres) for the LAND WP. If the altitude mode is absolute, this is also absolute; for relative altitude, then it is the difference between the assumed home location and the LAND WP. Ignored for releases prior to 3.0.
 
 ## P3 bitfield usage
 
-## Geospatial Units 
+Since INAV 6.0, the usage of the P3 parameter is:
+
+| Bit | Usage |
+| ---- | ---- |
+| 0 | Relative (not set) or absolute (AMSL) (set) altitude reference |
+| 1 | User Action 1 |
+| 2 | User Action 2 |
+| 3 | User Action 3 |
+| 4 | User Action 4 |
+| 5-15 | Reserved |
+
+## Geospatial Units
 
 | Field | XML Mission File | MSP_WP binary message |
 | ----- | ---------------- | --------------------- |
 | Latitude, Longitude | Decimal degrees, WGS84 | Integer, WGS84 Degrees * 1E7 |
 | Altitude | Integer Metres | Centimetres |
 
-Note that inav uses the GPS' "above mean sea level" (not "above WGS84 ellipsoid") elevation for navigation. Be aware of this distinction when using absolute  rather than relative (to home) mission altitudes. 
+Note that INAV uses the GPS' "above mean sea level" (not "above WGS84 ellipsoid") elevation for navigation. Be aware of this distinction when using absolute  rather than relative (to home) mission altitudes.
 
 ## FlyBy Home Waypoints
 
-From inav 4.0, "FlyBy Home" (FBH) waypoints are supported for WAYPOINT, POSHOLD_TIME and LAND. These WPs are designated by either (or both) of
+From INAV 4.0, "FlyBy Home" (FBH) waypoints are supported for WAYPOINT, POSHOLD_TIME and LAND. These WPs are designated by either (or both) of
 * The latitude and longitude is zero; or
 * The `flag` field is set to 0x48 (72d, 'H')
 
-FBH waypoints have no defined location until the mission is executed, when they assume the location of the **arming** home location (not affected by `safehome`). This is ephemeral and is reset on each arming. The location uploaded to the FC is irrelevant where `flag == 0x48`; in such cases a subsequent download from the FC will return the original WP latitude and longitude, not the home used for a particular instance. 
+FBH waypoints have no defined location until the mission is executed, when they assume the location of the **arming** home location (not affected by `safehome`). This is ephemeral and is reset on each arming. The location uploaded to the FC is irrelevant where `flag == 0x48`; in such cases a subsequent download from the FC will return the original WP latitude and longitude, not the home used for a particular instance.
 
 ## Annotated Example
-The following example, using the [MW XML](#xml-mission-files) (inav configurator, mwp, ez-gui) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types:
+The following example, using the [MW XML](#xml-mission-files) (INAV configurator, mwp, ez-gui) format, illustrates the WAYPOINT, JUMP, POSHOLD_TIME and LAND types:
 ![Complex Mission](images/eg_complex_mission.png)
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -116,9 +127,9 @@ There is a video animation of the flight in [a short youtube video](https://yout
 A number of the WP types (JUMP, SET_POI, SET_HEAD, RTH) act as modifiers to the current location (i.e. the previous WP), as follows:
 
 ### JUMP
-JUMP facilitates adding loop to mission, the first parameter is the WP to jump to, and the second parameter is the number of times the JUMP is executed. A parameter2 value of `-1` means JUMP indefinitely (i.e. the pilot must eventually manually abort the mission and take control). For MultiWii, the jump target (parameter 1) must be prior to the jump WP, for inav, forward and backward jumps are permitted. In general, forward jumps are less useful and will usually need a backward jump to be useful.
+JUMP facilitates adding loop to mission, the first parameter is the WP to jump to, and the second parameter is the number of times the JUMP is executed. A parameter2 value of `-1` means JUMP indefinitely (i.e. the pilot must eventually manually abort the mission and take control). For Multiwii, the jump target (parameter 1) must be prior to the jump WP, for INAV, forward and backward jumps are permitted. In general, forward jumps are less useful and will usually need a backward jump to be useful.
 
-inav validates JUMP WPs prior to arming; the following conditions will cause a "Navigation Unsafe" [arming blocker](https://github.com/iNavFlight/inav/wiki/%22Something%22-is-disabled----Reasons/_edit).
+INAV validates JUMP WPs prior to arming; the following conditions will cause a "Navigation Unsafe" [arming blocker](https://github.com/iNavFlight/inav/wiki/%22Something%22-is-disabled----Reasons/_edit).
 
 * First item can't be JUMP (can't calculate 1st WP distance, impossible for backward jumps)
 * Can't jump to immediately adjacent WPs (pointless)
@@ -146,7 +157,7 @@ In the following example of a forward jump, WP #5 (POSHOLD_TIME) is visited exac
 ### RTH
 The craft returns to the home location.
 
-### SET POI (Multirotor only, multiwii, inav 2.6 and later)
+### SET POI (Multirotor only, Multiwii, INAV 2.6 and later)
 
 The `SET_POI` defines a location for a point of interest (POI). The craft will fly the mission (until a `SET_HEAD`) with the nose pointing at the POI, which might be useful for aerial photography. Note that the craft does NOT fly to the POI.
 
@@ -164,7 +175,7 @@ After WP11, the craft flies normally, "nose first".
 
 [Youtube video tutorial on SET_POI and SET_HEAD](https://youtu.be/RO5N9tbzNg8)
 
-### SET_HEAD (Multirotor only, multiwii, inav 2.6 and later)
+### SET_HEAD (Multirotor only, Multiwii, INAV 2.6 and later)
 
 The `SET_HEAD` type sets the craft's heading (where it 'looks', not the direction of travel). This may be useful for useful for aerial photography. A value of `-1` causing the heading to be 'straight ahead', i.e. the direction of travel. Thus, `SET_HEAD` `-1` may used to cancel a previous valid `SET_HEAD` or `SET_POI`. A `SET_HEAD` remains in force until cancelled by `SET_HEAD` with `p1` of `-1`, or modified by a subsequent `SET_HEAD` or `SET_POI`.
 
@@ -221,14 +232,14 @@ Special waypoints are 0, 254, and 255. #0 returns the RTH (Home) position, #254 
 | p1 | int16 | varies according to action |
 | p2 | int16 | varies according to action |
 | p3 | int16 | varies according to action |
-| flag | uchar | 0xa5 = last, otherwise set to 0 (or 0x48 (72) for FBH WP, inav 3.1+)|
+| flag | uchar | 0xa5 = last, otherwise set to 0 (or 0x48 (72) for FBH WP, INAV 3.1+)|
 
 The values for the various parameters are given in the section “WayPoint / Action Attributes”
-Note that altitude is measured from the "home" location, not absolute above mean sea level, unless the absolute altitude flag is set for a WP (inav 3.0 and later). 
+Note that altitude is measured from the "home" location, not absolute above mean sea level, unless the absolute altitude flag is set for a WP (INAV 3.0 and later).
 
 ## MSP_NAV_STATUS
 
-The following data are returned by a MSP_NAV_STATUS message. The usage texts are those defined by Wingui; multiwii and inav support this message. Almost the same data is returned by the [inav LTM NFRAME](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)#navigation-frame-n)
+The following data are returned by a MSP_NAV_STATUS message. The usage texts are those defined by Wingui; Multiwii and INAV support this message. Almost the same data is returned by the [inav LTM NFRAME](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)#navigation-frame-n)
 
 <table>
 <thead>
@@ -302,7 +313,7 @@ Landing is in progress, check attitude if possible. </td>
 
 ## MSP_NAV_CONFIG (MW)
 
-The following data are returned from a MSP_NAV_CONFIG message. Values are from multiwii config.h. Values may also be set by MSP_SET_NAV_CONFIG.
+The following data are returned from a MSP_NAV_CONFIG message. Values are from Multiwii config.h. Values may also be set by MSP_SET_NAV_CONFIG.
 
 <table>
 <thead>
