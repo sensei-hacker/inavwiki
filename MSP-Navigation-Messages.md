@@ -217,10 +217,7 @@ In general, flag is 0, unless it's the last point in a mission, in which case it
 
 ## MSP_WP / MSP_SET_WP
 
-Special waypoints are 0, 254, and 255. #0 returns the RTH (Home) position, #254 returns the current desired position (e.g. target waypoint), #255 returns the current position. WP #255 may also be used to set the vehicle's desired location (i.e. "follow me") when the following modes are asserted:
-
-* NAV_POSHOLD
-* GCS_NAV
+Special waypoints are 0, 254, and 255. #0 returns the RTH (Home) position, #254 returns the current desired position (e.g. target waypoint), #255 returns the current position.
 
 | Name | Type | Usage |
 | ---- | ---- | ----- |
@@ -236,6 +233,14 @@ Special waypoints are 0, 254, and 255. #0 returns the RTH (Home) position, #254 
 
 The values for the various parameters are given in the section “WayPoint / Action Attributes”
 Note that altitude is measured from the "home" location, not absolute above mean sea level, unless the absolute altitude flag is set for a WP (INAV 3.0 and later).
+
+## Updating special waypoints
+
+When the craft has a valid position, is armed and the mode `GCS NAV` is asserted, two of the special waypoints may be updated using `MSP_SET_WP`:
+
+WP#255 may be updated to set the vehicle's desired location (i.e. "Follow Me"); this also requires that `NAV POSHOLD` mode is asserted. If the altitude is 0, then the vehicle altitude is unchanged, otherwise it is set as desired relative altitude. If 'P1' is in the range 1-359, the heading is also updated, so "nose first follow me" is possible for a multi-rotor.
+
+WP#0 may be updated to update the home position.
 
 ## MSP_NAV_STATUS
 
