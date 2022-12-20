@@ -31,6 +31,7 @@ INAV will renav_wp_max_safe_distancefuse to arm for the following reasons (e.g. 
 | `PWMOUT` | `08000000` | PWM output error. Motor or servo output initialisation failed. | 
 | `NOPREARM` | `10000000` | PREARM is enabled and timed out  |
 | `DSHOTBEEPER` | `20000000` | DSHOTBEEPER is enabled and is active |
+| `LANDED` | `40000000` | Landing detected. |
 
 Note: On older processors, just the bitmask is shown, which can be decoded by the numeric values in the table. A numeric value may be a combination of conditions, for example:
 
@@ -106,6 +107,6 @@ Diagnosing arming failure and WP execution failure often requires the use of a t
 ## Postscript
 
 For 'Navigation is unsafe', you may, of course `set nav_extra_arming_safety = ALLOW_BYPASS`; however there is a clue is in the name. 
-**Bypass is enabled by holding full right yaw whilst switch arming.**
+**Arming with `ALLOW_BYPASS` is performed by holding full right yaw whilst switch arming.**
 
 Prior to INAV 6.0, there is also `nav_extra_arming_safety = OFF`, which is not recommended. At least with `ALLOW_BYPASS` you know you've done something potentially dangerous.
