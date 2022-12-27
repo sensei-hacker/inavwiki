@@ -18,6 +18,8 @@ With INAV 1.9 and later, Galileo can be enabled with the CLI setting `set gps_ub
 If you want to use the external magnetometer (built in in your GPS) and you have a FC with the same magnetometer (HMC5883L is very common), you have to disable it physically on your FC: remove chip from board or cut a trace. You can't use two identical chips/magnetometers on the same I2C bus. 
   * When using DJI NAZA gps this is not the case, DJI NAZA sends compass over serial and does not use the I2C bus)
   * On MPU9250 board internal magnetometer is an AK8963, most GPS pucks are HMC5883L. So no need to remove hardware, only choose which one to use with cli command `mag_hardware`
+  * Recent MATEK M10 compass is provided over serial MSP
+  * Compass is mandatory on multi-rotor, optional on fixed wing.
 
 If  you elect to use the internal FC magnetometer you are highly likely to have poor results due to magnetic interference (not recommended).
 
@@ -36,7 +38,7 @@ This side has to point towards the ground
 
 ## Setting up the compass alignment
 
-Before attempting any navigation modes, you should verify that the compass alignment is correct (Configurator or CLI `set align_mag`)
+Before attempting any MR navigation modes, you should verify that the compass alignment is correct (Configurator or CLI `set align_mag`)
 * Perform any tests away of sources of magnetic interference. Domestic appliances or even audio speakers can cause erroneous affects.
 * Use an analogue compass in preference to a digital (mobile phone) compass. The compass in your phone is likely to be a similar chip to that on your aircraft, and is as susceptible to errors of interference and calibration
 * Alternatively, if you know the orientation of surrounding landmarks (e.g. my house is pretty much N/S), then you can do  static tests against land orientation.
