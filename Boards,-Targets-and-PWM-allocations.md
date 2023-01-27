@@ -1675,6 +1675,23 @@ Board is DSHOT enabled.
 | 6 | MC_MOTOR, MC_SERVO, FW_MOTOR |
 | 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
+## Board: SPEEDYBEE F405 V3
+
+DSHOT currently does not work on this flight controller. Please use Multishot instead
+
+### Target: SPEEDYBEEF405V3
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_MOTOR |
+| 4 | MC_MOTOR, FW_MOTOR |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_MOTOR, FW_SERVO |
+| 8 | MC_MOTOR, FW_SERVO |
+
 ## Board: SPEEDYBEEF7
 
 Board is DSHOT enabled.
