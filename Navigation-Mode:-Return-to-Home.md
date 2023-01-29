@@ -120,6 +120,15 @@ To be honest, pretty much as you expect it to. Once you select RTH, the model wi
 
 [![RTH Climb modes - climb first = spiral with stage](https://i.imgur.com/7GMqN9Ql.png)](https://i.imgur.com/7GMqN9Q.png)
 
-## Other Relevant Settings
+## Other Settings
+### Trackback
+RTH Trackback records the recent track of the craft allowing it to return back along the track when RTH is triggered rather than returning directly back home. It's mainly intended to be used as a means of returning the craft to a position where the Rx signal can be recovered if it was lost due to a line of sight obstruction. This should improve the chances of recovering the Rx signal whilst reducing the risk of flying into the obstruction that caused the loss compared to normal RTH heading directly back home.
+
+When triggered the craft returns along the trackback route until the end is reached at which point it reverts to normal RTH heading directly home. It doesn't perform the RTH climb phase at the start of the Trackback but instead uses the altitude recorded for each track point so long as that altitude is no lower than the altitude when Trackback was triggered (this is the minimum altitude used throughout the Trackback phase).
+
+Trackback currently allows 50 trackback points with a maximum potential trackback distance of 2000m if the recorded track allows within the track point limit. It should be noted that the distance is the straight line distance from the point Trackback was triggered to the current position rather than the accumulative distance along the track. It's mainly intended to be used to limit the distance travelled away from the start point before a normal RTH is initiated. It can be set using [nav_rth_trackback_distance](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_trackback_distance). Trackback usage is controlled by setting [nav_rth_trackback_mode](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_trackback_mode), OFF, ON and FS. ON works for normal and failsafe RTH, FS is for Failsafe RTH only.
+
+Trackback RTH can be cancelled using the RTH Altitude Control Override `RIGHT ROLL` command at which point RTH will revert to a normal RTH heading directly back home. [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) needs to be ON for this to work.
+
 ### Altitude Control Override
 It is possible to override the default RTH Altitude and Climb First settings during the initial RTH climb phase using the [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) setting.
