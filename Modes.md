@@ -203,7 +203,12 @@ CAUTION: Motors will spin if you unset `NAV LAUNCH` mode after arming.
 
 From version 1.9 `NAV LAUNCH` can be permanently enabled via the configurator or the CLI using `feature FW_LAUNCH` in this case `NAV LAUNCH` doesn't need to be enabled via a transmitter switch prior to arming.
 If you want to launch the plane manually just move pitch/roll stick after you have armed the plane and you have back throttle control.
-If you inadvertedly disarm mid-air before raising the throttle again (you should lower the throttle to arm again) move pitch/roll stick and you will have throttle control back.
+If you inadvertently disarm mid-air before raising the throttle again (you should lower the throttle to arm again) move pitch/roll stick and you will have throttle control back.
+
+**MANUAL THROTTLE LAUNCH**
+
+From INAV 6.0.0 it is possible to use NAV Launch with manual throttle control. This is really intended as a more controllable alternative to the shake to start motor and throw method of launching. When enabled using setting [nav_fw_launch_manual_throttle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_launch_manual_throttle) the throttle is controlled manually throughout the launch using the throttle stick. There is no motor idle or detection used to start the motor, motor control is entirely manual and active via the throttle stick once armed. INAV only controls roll and pitch attitude during the launch climb out.
+**NOTE:** If this option is used with no GPS fix available it is recommended to throw the plane as soon as the throttle is raised in order to avoid possible degraded control issues and premature end of the launch timeout (moving the throttle stick back to idle will reset the affected launch parameters if required).
 
 **GLIDER / SLOPER SETUP**
 
