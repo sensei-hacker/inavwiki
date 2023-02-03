@@ -170,6 +170,16 @@ Up to 30 waypoints can be set on F1 boards. On F3 boards and better 60 waypoints
 
 There is an additional [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
 
+### Fixed Wing Waypoint Tracking Accuracy and Turn Smoothing
+Waypoint tracking accuracy forces the craft to quickly head toward and track along the waypoint course line as closely as possible. 2 settings control the alignment behaviour. [nav_fw_wp_tracking_accuracy](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_wp_tracking_accuracy) adjusts the stability of the alignment. Higher values dampen the response reducing possible overshoot and oscillation. [nav_fw_wp_tracking_max_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_wp_tracking_max_angle)
+sets the maximum alignment convergence angle to the waypoint course line (see below). This is the maximum angle allowed during alignment and in reality will only be acheived when some distance away from the course line with the angle reducing as the craft gets closer to alignment. Lower values result in smoother alignment with the course line but a greater distance along the course line will be required until this is achieved.
+ 
+Turn Smoothing helps to smooth turns during WP missions by switching to a loiter turn at waypoints with the turn initiated slightly before the waypoint is actually reached. This helps to avoid the overshoot often seen on tighter turns. The [nav_fw_wp_turn_smoothing](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_wp_turn_smoothing) setting provides 2 options as shown below.
+
+(Available from INAV 6.0)
+
+![](https://user-images.githubusercontent.com/56191411/216628721-034b4864-212d-47c7-89dd-c0f4c012cb0f.png)
+
 ### Multi-Missions
 Multi-missions allows up to 9 missions to be stored in the FC at the same time. It works with missions saved to and loaded from EEPROM rather than missions loaded into the FC by other means. It requires the OSD `MISSION INFO` field be enabled in order to select loaded missions.
 
