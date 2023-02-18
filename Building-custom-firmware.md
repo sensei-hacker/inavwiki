@@ -96,7 +96,7 @@ See [the developer documentation](https://github.com/iNavFlight/inav/blob/master
 
 Of note:
 
-* `TARGET_BOARD_IDENTIFIER` this is **4 bytes**. It must be unique. If the mythical `QUARKVISION_V2` existed, it would need a separate ID. For example:
+* `TARGET_BOARD_IDENTIFIER` this should be unique in the first **4 bytes**. If the mythical `QUARKVISION_V2` existed, it would need a separate ID. For example:
 
 ```
 #if defined(QUARKVISION_V2)
