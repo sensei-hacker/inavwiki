@@ -58,7 +58,7 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 |  Name of field in txt file 	|  Name in Blackbox Log Viewer 	|  Explanation 	|  . 	|  ..            |
 |:--------------------------:	|:----------------------------:	|:------------:	|:---:	|:----------:|
 |  loopIteration 	|  not used 	|  counter from main loop 	|   	|   |
-|  time (us) 	    |  x-axis of diagram 	|  real time in micoseconds 	|   	|   |
+|  time (us) 	    |  x-axis of diagram 	|  real time in micoseconds 	|   	|   |sensors/acceleration.h
 |  axisRate[0] 	    |  gyros[roll] (.. deg/s) 	|  rotation rate 	|  roll 	|  deg/sec |
 |  axisRate[1] 	    |  gyros[pitch] (.. deg/s) 	|  rotation rate 	|  pitch 	|  deg/sec |
 |  axisRate[2] 	    |  gyros[yaw] (.. deg/s) 	|  rotation rate 	|  yaw 	|  deg/sec |
@@ -107,9 +107,9 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 |  gyroADC[0] 	|   gyroADC[0] 	|  rotation(gyro) 	|  roll 	|  deg/sec |
 |  gyroADC[1] 	|   gyroADC[1] 	|  rotation(gyro) 	|  pitch 	|  deg/sec |
 |  gyroADC[2] 	|   gyroADC[2] 	|  rotation(gyro) 	|  yaw 	|  deg/sec |
-|  accSmooth[0] 	|  acc[x] 	|  acceleration  	|  north 	|  ADC*1g |
-|  accSmooth[1] 	|  acc[y] 	|  acceleration  	|  east 	|  ADC*1g |
-|  accSmooth[2] 	|  acc[z] 	|  acceleration  	|  vertical 	|  ADC*1g |
+|  accSmooth[0] 	|  acc[x] 	|  acceleration  	|  north 	|  ADC * normalised 1g |
+|  accSmooth[1] 	|  acc[y] 	|  acceleration  	|  east 	|  ADC * normalised 1g |
+|  accSmooth[2] 	|  acc[z] 	|  acceleration  	|  vertical 	|  ADC * normalised 1g |
 |  attitude[0] 	|   attitude[0] 	|  heading  	|  roll 	|  0-3600 deg/10 |
 |  attitude[1] 	|   attitude[1] 	|  heading  	|  pitch 	|  0-3600 deg/10 |
 |  attitude[2] 	|   attitude[2] 	|  heading  	|  yaw 	|  0-3600 deg/10 |
