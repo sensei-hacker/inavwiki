@@ -137,8 +137,8 @@ This frame of reference defines coordinate in NEU coordinate system relative to 
 
 Attached to the aircraft.
 
-* The x axis points in forward direction (as defined by geometry and not by movement) (roll axis)
-* The y axis points to the right (geometrically) (pitch axis)
-* The z axis points upwards (geometrically) (yaw axis)
+* The x axis points in forward direction (as defined by geometry and not by movement) (roll axis, +ve to right)
+* The y axis points to the right (geometrically) (pitch axis, +ve nose down, an INAV anomaly to convention)
+* The z axis points upwards (geometrically) (yaw axis, +ve nose to right)
 
 This frame of reference is used to read sensor data and calculate lean angles. Usually the only operations in this frame of reference are coordinate transformations to/from local frame of reference.
