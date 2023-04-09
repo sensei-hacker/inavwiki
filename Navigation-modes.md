@@ -132,8 +132,29 @@ iNAV’s parameters for fixed wing:
 
 ## NAV POSHOLD - Position hold
 
+MULTIROTOR
+
 For multirotor it will hold 3D position, throttle is automatic (AH).
 You can use your roll and pitch stick to move around. The position hold will be resumed when you center the roll/pitch stick again. You can also enable HEADING HOLD at the same time to lock the heading.
+
+POSHOLD can be modified via the ADVANCED TUNING TAB under the heading Multirotor Navigation Settings
+
+ The User Control Mode can be either ATTI or CRUISE:
+ 
+-  ATTI The Pitch/Roll stick behaves in a similar way to ANGLE
+-  CRUISE The Pitch/Roll stick behaves in a similar way to HORIZON (Recommended for smooth video work)
+
+A number of other parameters can also be set:
+
+- Default navigation speed
+- Max. navigation speed
+- Max. CRUISE speed
+- Multirotor max. banking angle
+- Use mid. throttle for ALTHOLD
+- Hover throttle
+
+
+FIXED WING
 
 For fixed wing it will loiter in circles which radius is defined by the `nav_fw_loiter_radius` variable. The throttle is automatic. The altitude is controlled with the pitch stick (AH).
 
