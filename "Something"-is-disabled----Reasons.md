@@ -4,7 +4,7 @@ INAV may fail to perform some action as expected, typically arming or engaging w
 
 ## Arming disabled reasons
 
-INAV will renav_wp_max_safe_distancefuse to arm for the following reasons (e.g. from cli `status`):
+INAV will refuse to arm for the following reasons (e.g. from cli `status`):
 
 | Reason  (CLI Mnemonic) | Bit Mask (Hex) | Explanation |
 | ------ | ----- | ----------- |
