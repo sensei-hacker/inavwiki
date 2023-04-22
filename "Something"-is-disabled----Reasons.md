@@ -1,6 +1,6 @@
 ## Something is disabled
 
-INAV may fail to perform some action as expected, typically arming or engaging waypoints. This articles documents the reasons for some of these events. 
+INAV may fail to perform some action as expected, typically arming or engaging waypoints. This articles documents the reasons for some of these events.
 
 ## Arming disabled reasons
 
@@ -28,7 +28,7 @@ INAV will refuse to arm for the following reasons (e.g. from cli `status`):
 | `AUTOTRIM` | `01000000` | Servo autotrim is engaged |
 | `OOM ` | `02000000` | The FC is out of memory |
 | `SETTINGFAIL` | `04000000` | A CLI setting is out of range. The erroneous setting should be indicated in a CLI `dump`. If you can't then reset the offending setting, reflash with full chip erase and reapplying settings from scratch may help.|
-| `PWMOUT` | `08000000` | PWM output error. Motor or servo output initialisation failed. | 
+| `PWMOUT` | `08000000` | PWM output error. Motor or servo output initialisation failed. |
 | `NOPREARM` | `10000000` | PREARM is enabled and timed out  |
 | `DSHOTBEEPER` | `20000000` | DSHOTBEEPER is enabled and is active |
 | `LANDED` | `40000000` | Landing detected. |
@@ -38,7 +38,7 @@ Note: On older processors, just the bitmask is shown, which can be decoded by th
 ```
 0x184000 = 00100000 + 00080000 + 00004000 (CLI active, throttle not at minimum, arm engaged)
 ```
-The values are correct for INAV 4.0.0 as of 2021-12.
+The values are correct for INAV 6.1.0 as of 2023-04.
 
 ### Navigation Unsafe reasons
 
@@ -50,7 +50,7 @@ Requires that a navigation mode (which includes failsafe RTH) is configured
 | A navigation switch is engaged (e.g.PH, WP, RTH) |
 | First WP distance exceeded |
 | Satellite quality is unacceptable: EPH/EPV > 10m (note the limit in the CLI `inav_max_eph_epv` is in cm, default 1000) |
-| The WP mission contains an invalid JUMP sequence | 
+| The WP mission contains an invalid JUMP sequence |
 | The first waypoint is beyond the distance defined by the CLI setting: INAV 5.1 and below uses `nav_wp_safe_distance`. From INAV 6.0 use `nav_wp_max_safe_distance` |
 
 *  `nav_wp_safe_distance` : The default is 100m (10000cm, as the value is entered in cm), 0 disables this check.
@@ -59,14 +59,14 @@ Requires that a navigation mode (which includes failsafe RTH) is configured
 	# get nav_wp_safe_distance
 	nav_wp_safe_distance = 10000
 	Allowed range: 0 - 65000
-	``` 
+	```
 *  `nav_wp_max_safe_distance` : The default is 100m, 0 disables this check. This setting is entered in metres.
 
 	```
 	# get nav_wp_safe_distance
 	nav_wp_safe_distance = 100
 	Allowed range: 0 - 1500
-	``` 
+	```
 * Invalid JUMP.
     - First item can't be JUMP (can't calculate 1st WP distance, impossible for backward jumps)
     - Can't jump to immediately adjacent WPs (pointless)
@@ -106,7 +106,7 @@ Diagnosing arming failure and WP execution failure often requires the use of a t
 
 ## Postscript
 
-For 'Navigation is unsafe', you may, of course `set nav_extra_arming_safety = ALLOW_BYPASS`; however there is a clue is in the name. 
+For 'Navigation is unsafe', you may, of course `set nav_extra_arming_safety = ALLOW_BYPASS`; however there is a clue is in the name.
 **Arming with `ALLOW_BYPASS` is performed by holding full right yaw whilst switch arming.**
 
 Prior to INAV 6.0, there is also `nav_extra_arming_safety = OFF`, which is not recommended. At least with `ALLOW_BYPASS` you know you've done something potentially dangerous.
