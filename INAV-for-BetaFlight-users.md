@@ -1,6 +1,6 @@
 Do you already know how to setup and fly a BetaFlight multirotor, and are now willing to try INAV?
 
-**Good**! You are on the right place.
+**Good**! You are in the right place.
 
 INAV and BetaFlight are forks from CleanFlight, but nowadays they are all very different from each other.
 
@@ -21,7 +21,7 @@ Let's then review the differences:
 * Also, you have to cover the barometer sensor with a small piece of non-blocking foam, because the wind affects the sensor readings. This is the most common cause of altitude holding problems.
 * The GPS module must be fitted with a magnetometer sensor. GPS modules without a mag sensor do not allow INAV to navigate (on a multirotor aircraft) and will only be useful for logging purposes.
 
-* The GPS module should be mounted on a small mast pole to avoid magnetic interference from motors on the compass. 5 or 6 centimeters above motors should be fine.
+* The GPS module should be mounted on a small mast pole to avoid magnetic interference from motors on the compass; 5 or 6 centimeters above motors should be fine.
 
 <img src="https://user-images.githubusercontent.com/17026744/68337067-7aaa7880-00be-11ea-8096-e6b9c74abb0a.jpg" width="300" alt="FPV Quadcopter with GPS mast" />
 
@@ -30,7 +30,7 @@ _FPV Quadcopter with GPS mast_
 
 * INAV does NOT have the resource remapping feature, which means that **you can't change the motors order** so easily. Be careful to wire the motors signal wires on the correct order.
 * INAV supports DShot ESC protocol, but it doesn’t behave the same way as in BetaFlight. DShot 150 or 300 is more than enough for a reliable flight. Faster protocols will reduce the reliability, so avoid using them.
-* INAV supports loop frequencies up to 8kHz, but flies just fine with 2kHz. There’s no real benefit to using such higher frequencies as it will only make the CPU more busy for others tasks.
+* INAV supports loop frequencies up to 8kHz, but flies just fine with 2kHz. There’s no real benefit to using higher frequencies as it will only make the CPU more busy for others tasks.
 * DShot telemetry is supported, but not Bi-directional single-wire telemetry.
 
 ### Most important settings you should take a look at before your first flight
