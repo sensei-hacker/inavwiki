@@ -15,7 +15,7 @@ The usage is taken directly from the source code, the following interpretation i
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-*List generated 2023-03-23 from the [INAV release_6.0.0 branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
+*List generated 2023-04-27 from the [INAV release_6.1.0 branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
 You are strongly advised to check the board documentation as to the suitability of any particular board.
 
@@ -527,6 +527,36 @@ Board is DSHOT enabled.
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_MOTOR |
 
+## Board: GEPRCF722_BT_HD
+
+Board is DSHOT enabled.
+
+### Target: GEPRCF722_BT_HD
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_MOTOR, MC_SERVO |
+| 6 | MC_MOTOR, FW_MOTOR, MC_SERVO |
+| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+
+## Board: GEPRC_F722_AIO
+
+Board is DSHOT enabled.
+
+### Target: GEPRC_F722_AIO
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+
 ## Board: HAKRCF405D
 
 Board is DSHOT enabled.
@@ -542,6 +572,23 @@ Board is DSHOT enabled.
 | 5 | MC_MOTOR, FW_SERVO |
 | 6 | MC_MOTOR, FW_SERVO |
 
+## Board: HAKRCF405V2
+
+Board is DSHOT enabled.
+
+### Target: HAKRCF405V2
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_MOTOR |
+| 4 | MC_MOTOR, FW_MOTOR |
+| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
+
 ## Board: HAKRCF411D
 
 Board is DSHOT enabled.
@@ -554,6 +601,23 @@ Board is DSHOT enabled.
 | 2 | MC_MOTOR, FW_MOTOR |
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_SERVO |
+
+## Board: HAKRCF722V2
+
+Board is DSHOT enabled.
+
+### Target: HAKRCF722V2
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
 
 ## Board: HAKRCKD722
 
@@ -1383,6 +1447,53 @@ Board is DSHOT enabled.
 | 11 | MC_SERVO, FW_SERVO |
 | 12 | MC_SERVO, FW_SERVO |
 
+## Board: NEUTRONRCF435MINI
+
+Board is DSHOT enabled.
+
+### Target: NEUTRONRCF435MINI
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+
+## Board: NEUTRONRCF435SE
+
+Board is DSHOT enabled.
+
+### Target: NEUTRONRCF435SE
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+
+## Board: NEUTRONRCF435WING
+
+Board is DSHOT enabled.
+
+### Target: NEUTRONRCF435WING
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+
 ## Board: NEUTRONRCH7BT
 
 Board is DSHOT enabled.
@@ -1611,6 +1722,23 @@ Board is DSHOT enabled.
 | 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
 | 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
 
+## Board: SAGEATF4
+
+Board is DSHOT enabled.
+
+### Target: SAGEATF4
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+
 ## Board: SKYSTARSF405HD
 
 Board is DSHOT enabled.
@@ -1636,6 +1764,34 @@ Board is DSHOT enabled.
 | 2 | MC_MOTOR, FW_SERVO |
 | 3 | MC_MOTOR, FW_SERVO |
 | 4 | MC_MOTOR, FW_MOTOR |
+
+### Target: SKYSTARSF722MINIHD
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_SERVO |
+| 2 | MC_MOTOR, FW_SERVO |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_MOTOR |
+
+## Board: SKYSTARSH743HD
+
+Board is DSHOT enabled.
+
+### Target: SKYSTARSH743HD
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_MOTOR, FW_SERVO |
+| 8 | MC_MOTOR, FW_SERVO |
+| 9 | MC_SERVO, FW_SERVO |
+| 10 | MC_SERVO, FW_SERVO |
 
 ## Board: SPEEDYBEEF4
 
@@ -1693,6 +1849,26 @@ Board is not DSHOT enabled.
 | 6 | MC_MOTOR, FW_SERVO |
 | 7 | MC_MOTOR, FW_SERVO |
 | 8 | MC_MOTOR, FW_SERVO |
+
+## Board: SPEEDYBEEF405WING
+
+Board is DSHOT enabled.
+
+### Target: SPEEDYBEEF405WING
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MC_MOTOR, FW_MOTOR |
+| 2 | MC_MOTOR, FW_MOTOR |
+| 3 | MC_MOTOR, FW_SERVO |
+| 4 | MC_MOTOR, FW_SERVO |
+| 5 | MC_MOTOR, FW_SERVO |
+| 6 | MC_MOTOR, FW_SERVO |
+| 7 | MC_SERVO, FW_SERVO |
+| 8 | MC_SERVO, FW_SERVO |
+| 9 | MC_SERVO, FW_SERVO |
+| 10 | MC_SERVO, FW_SERVO |
+| 11 | MC_SERVO, FW_SERVO |
 
 ## Board: SPEEDYBEEF7
 
@@ -1812,6 +1988,10 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
+| 1 | MC_MOTOR |
+| 2 | MC_MOTOR |
+| 3 | MC_MOTOR |
+| 4 | MC_MOTOR |
 
 ### Target: ZEEZF7V2
 

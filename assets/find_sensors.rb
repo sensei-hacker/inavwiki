@@ -34,6 +34,10 @@ def find_sensors fn
 	  s[ss] ||= []
 	  s[ss] << m[1]
 	end
+	if m = l.match(/USE_FAKE_#{sn}/)
+	  s[ss] ||= []
+	  s[ss] << "FAKE"
+	end
       end
     end
   end
@@ -73,7 +77,7 @@ Find.find('.').select { |f| f =~ /target\.h$/ }.each do |fn|
     f.each_with_index do |l,n|
       if n > 0
         multiple = true
-        if m=l.match(/target_stm32\w+\((\w+)/)
+        if m=l.match(/target_\S{2,3}32\w+\((\w+)/)
           textras << m[1]
         end
       end

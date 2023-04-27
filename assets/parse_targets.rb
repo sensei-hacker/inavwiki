@@ -9,7 +9,7 @@
 require 'find'
 require 'optparse'
 
-def parse_output lines
+def parse_output lines,name
   pwms=[]
   n = 0
   lines.each do |l|
@@ -44,9 +44,9 @@ def build_target defs
   end
 
   defs[:variants].each do |v|
-    optd = (v == defs[:name]) ? '' : "-D#{v}=1"
+    optd = "-D#{v}=1" #(v == defs[:name]) ? '' : "-D#{v}=1"
     lines = IO.readlines("|gcc #{optd} -E -o- /tmp/_target.c")
-    res = parse_output lines
+    res = parse_output lines,v
     opts << {name: v, pwms: res, dshot: dshot, skip: defs[:skip]}
   end
   opts
@@ -91,11 +91,12 @@ def get_targets all=false
   Find.find('./src/main/target') do |f|
     if m= f.match(/target\/(\w+)\/CMakeLists\.txt/)
       dnam = m[1]
+      next if dnam == "SITL"
       vset = {name: dnam, variants: [], skip: nil}
       File.open(f) do |fh|
         fh.each do |l|
           l.chomp!
-          if m = l.match(/^target_stm32\S+\((\w+)[\) ]/)
+          if m = l.match(/^target_\S{2,3}32\S+\((\w+)[\) ]/)
             bname = m[1]
             if dnam == bname
               skip = l.match(/SKIP_RELEASES/)
@@ -146,10 +147,12 @@ tlist.each do |ti|
   end
 end
 
-#STDERR.puts alltargets
-#alltargets.each do |ta|
-#  STDERR.puts "==> #{ta}"
-#end
+File.open("/tmp/allt.txt", "w") do |fh|
+  fh.puts alltargets
+  alltargets.each do |ta|
+    fh.puts "==> #{ta}"
+  end
+end
 
 write_out_md alltargets, branch
 
