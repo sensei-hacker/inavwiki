@@ -156,10 +156,18 @@ Likewise, the MAVLink `RC_CHANNELS_OVERRIDE`, `RC_CHANNELS_OVERRIDE_RAW`, `RC_CH
 INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). This allows the user to direct the vehicle to fly to a specific location. This was intended for mobile ground station (specifically the obsolete Android application "EZGUI") to instruct the vehicle to follow a GPS equipped target (often the pilot).
 
 * The FC is placed in `POSHOLD` and `GCS NAV` modes.
-* The consumer updates WP#255 (holds the requested `POSHOLD` location) using `MSP_SET_WP` messages.
+* The consumer updates 'special' `WP#255` (holds the requested `POSHOLD` location) using `MSP_SET_WP` messages.
 * See [INAV source](https://github.com/iNavFlight/inav/blob/master/src/main/navigation/navigation.c#L3126).
 
 With `GCS NAV`, is also possible to update the home position via WP#0
+
+#### Querying locations
+
+The following 'special' WPs can be interrogated with the `MSP_WP` message:
+
+* `WP#0` returns the home position
+* `WP#254` returns the desired position, i.e. that set by `MSP_SET_WP` / `WP#255` 
+* `WP#255` returns the current position.
 
 ### The "Obstacle Avoidance" problem
 
@@ -179,7 +187,7 @@ The vehicle is commanded via Remote Control (MSP or MAVLink) to fly around the o
 * The obstacle's location in known from the sensors with reference to the vehicle (range, azimuth, elevation).
 * The vehicle's location is known in geospatial coordinates (latitude, longitude, altitude) as well as the speed and heading, (`MSP_RAW_GPS`, `MSP_ATTITUDE` etc.).
 * A safe location can be calculated based on the vehicle's location and the relative location of the obstacle.
-* The vehicle can be commanded using `MSP_SET_WP` for WP #255 to use its navigation system to avoid the obstacle (with `POSHOLD` and `NAV GCS` modes activated).
+* The vehicle can be commanded using `MSP_SET_WP` for `WP#255` to use its navigation system to avoid the obstacle (with `POSHOLD` and `NAV GCS` modes activated).
 
 Potentially a less complex solution, as the piloting of the vehicle is done by the well proven flight controller firmware.
 
@@ -187,3 +195,4 @@ Potentially a less complex solution, as the piloting of the vehicle is done by t
 
 * [Building custom INAV](https://github.com/iNavFlight/inav/wiki/Building-custom-firmware).
 * [Developer Info / Navigation internals](https://github.com/iNavFlight/inav/wiki/Developer-info)
+`WP#255`
