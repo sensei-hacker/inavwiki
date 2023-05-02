@@ -23,20 +23,18 @@ If you want to use the external magnetometer (built in in your GPS) and you have
 
 If  you elect to use the internal FC magnetometer you are highly likely to have poor results due to magnetic interference (not recommended).
 
-## Installing the GPS unit
+## Installing the GPS unit - Antenna orietation
 
-Just to avoid the mistake many people do while installing a GPS unit (aka pointing the antenna towards the ground): 
-
-### Sky side 
-
-![TOP_bn-880](https://user-images.githubusercontent.com/65187658/129952395-29948465-76ec-48ac-a1b7-7e1c1e539f07.jpg)
-
-### Ground side 
-
-![BOTTOM_bn-880](https://user-images.githubusercontent.com/65187658/129951933-6df4d873-b50a-4fe7-b12f-f4041402a4a9.jpg)
+To avoid confusion over the antenna orientation, ensure the antenna is skywards as follows: 
 
 
+|  **Sky side**   |     |
+| -------- | ------------- |
+| ![TOP_bn-880](https://user-images.githubusercontent.com/65187658/129952395-29948465-76ec-48ac-a1b7-7e1c1e539f07.jpg) | Antenna upwards |
 
+|  **Ground side**  |      |
+| -------- | ------------- |
+| ![BOTTOM_bn-880](https://user-images.githubusercontent.com/65187658/129951933-6df4d873-b50a-4fe7-b12f-f4041402a4a9.jpg) | Connector on the bottom (downwards) |
 
 ## Setting up the compass alignment
 
