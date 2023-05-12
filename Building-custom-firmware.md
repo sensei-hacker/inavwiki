@@ -199,9 +199,15 @@ git pull
 ```
 
 git will complain that there are uncommitted changes and won't perform the update. There are a number of solutions, some beyond the scope of this simple guide, however the easiest are:
-
+https://github.com/iNavFlight/inav/blob/mosca-target-converter/src/utils/bf2inav.py
 * Commit to your private branch as above ; or
 * `$ git reset --hard` before pulling ; or
 * Stash away the original files and restore them after pulling.
 
 The developer documentation has more information on synchronising a custom branch with upstream Github.
+
+## Other tools and resources
+
+There is a [script in beta test](https://github.com/iNavFlight/inav/blob/mosca-target-converter/src/utils/bf2inav.py) that can help automate conversion of Betaflight targets to INAV. The developer, @mosca, will be grateful for any reports of success (or failure).
+
+Paweł Spychalski has also made YouTube videos on the subject.
