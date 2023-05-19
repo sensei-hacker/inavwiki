@@ -267,16 +267,16 @@ Using the MSP outlined above:
 * Monitor status and location until arming is possible (e.g. GPS fix).
 * Using the 'magic' sensor / AI etc., determine a safe loiter location.
 * Generate and upload a 1 WP mission to the safe location (the craft will automatically loiter there when completed). Ideally elevation will be double vertical range to avoid tip over on take off.
-* Arm the craft, apply a little throttle, and immediately engage WP mode.
+* Arm the craft, apply a little throttle, and immediately engage WP mode. The craft will take off and start the mission.
 * Continually monitor location, battery and status.
 * Once the craft reaches the loiter location, engage POSHOLD and disengage WP mode.
 * Using the `magic` sensor, determine the target location. Assuming this is available as range and bearing (absolute or relative), calculate the geographic location of the target. Enable `GCS NAV` mode and update `WP#255` to fly the craft to the target.
 * Repeat the above until target is determined to be the landing position (e.g. within 50m in the notional requirement).
-* Cache launch position (i.e. read `WP#0`). Set target position as `WP#0` (home), engage `RTH`.
+* Cache launch position (i.e. read `WP#0`). Set the target position as `WP#0` (home), engage `RTH`.
 * Craft will land at target location.
 * If an unsafe condition is detected (low battery etc.), restore any cached home location and engage `RTH`.
 
-Note: you could do most or all of the above just with `MSP_SET_RAW_RC` rather than with navigation engine, but that might increase the co-processor computation / monitoring requirement and implementation risk.
+Note: you could do most or all of the above just with `MSP_SET_RAW_RC` rather than with the navigation engine, but that might increase the co-processor computation / monitoring requirement and implementation risk.
 
 ## Other References
 
