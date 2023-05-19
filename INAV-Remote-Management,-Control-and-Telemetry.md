@@ -166,7 +166,7 @@ With `GCS NAV`, is also possible to update the home position via WP#0
 The following 'special' WPs can be interrogated with the `MSP_WP` message:
 
 * `WP#0` returns the home position
-* `WP#254` returns the desired position, i.e. that set by `MSP_SET_WP` / `WP#255` 
+* `WP#254` returns the desired position, i.e. that set by `MSP_SET_WP` / `WP#255`
 * `WP#255` returns the current position.
 
 ### The "Obstacle Avoidance" problem
@@ -191,8 +191,92 @@ The vehicle is commanded via Remote Control (MSP or MAVLink) to fly around the o
 
 Potentially a less complex solution, as the piloting of the vehicle is done by the well proven flight controller firmware.
 
+## Further Considerations
+
+### Partial Automation
+
+It is possible to combine manual control with some channel automation.
+
+* Compile the firmware with `USE_MSP_RC_OVERRIDE` defined (e.g. in `src/main/target/common.h`).
+* Use the CLI `msp_override_channels` to define the channels to be automated.
+* Ensure the channel(s) are refreshed at a minimum of 5Hz to avoid fail-safe.
+
+### Control by stick commands
+
+In a cruise mode (e.g. POSHOLD/CRUISE for multi-rotor). It will be possible to fly the craft using A,E,R stick emulation, with minimal concern for flight physics.
+
+### Useful / relevant MSP stanzas and application
+
+The following `MSP` stanzas may be useful for remote control / automation applications.
+
+#### Pre-flight setup
+
+Prior to arming the craft, an automation application can be made "target agnostic" by requesting data from the FC. A specific application may need some or all of:
+
+* `MSP_FC_VARIANT` : Validate that you're running on INAV.
+* `MSP_API_VERSION`, `MSP_FC_VERSION` : Validate that the firmware is sufficiently capable for your application.
+* `MSP_RX_MAP` : Obtain channel map for subsequent `MSP_SET_RAW_RC`.
+* `MSP2_COMMON_SETTING` / `nav_extra_arming_safety` : Checking arming requirement and whether you can bypass it
+* `MSP_MODE_RANGES`: Determine the configured switches, functions and ranges.
+* `MSP_BOXNAMES` : Determine the modes available to the craft (e.g. for mode validation via `MSP2_INAV_STATUS`).
+* `MSP2_COMMON_SERIAL_CONFIG` : Determine serial channel functions.
+* `MSP_RX_CONFIG` : Determine the RX type.
+* `MSP2_INAV_STATUS` : Determining various status items (arming status, mode status etc.)
+* `MSP2_INAV_MIXER` : Get vehicle type (e.g. to avoid MR only actions on FW).
+
+#### Flight (and some pre-flight)
+
+* `MSP_SET_RAW_RC` : Set RC channel values (PWM values), both for "stick" and "switch" channels.
+* `MSP2_INAV_STATUS` : Determining various status items (arming status, mode status etc.)
+* `MSP_RAW_GPS` : Get GPS data (fix, number of satellites, location)
+* `MSP_SET_WP` : Set Waypoint (either for mission for "follow me").
+* `MSP_WP` : Get Waypoint (e.g. to cache home location).
+* `MSP2_INAV_ANALOG` : Battery status
+* `MSP_ATTITUDE` : Vehicle attitude
+* `MSP_ALTITUDE` : Vehicle altitude / vario
+* `MSP_NAV_STATUS` : Navigation status
+
+Note. These may not be comprehensive lists, but they are a start.
+
+### Notional Usage
+
+#### Notional Requirement
+
+Fully automated, using a co-processor for target detection and flight management
+
+* Once powered on, the craft shall arm automatically.
+* Once armed, the craft shall take off and loiter in a 'safe' location.
+* The craft shall determine (by some 'magic' means, beyond the scope of this article), the 'target location')
+* The craft shall fly to the target location (which may move as long as the vehicle is more than 50m from the target).
+* Once the target is assumed stationary the vehicle shall land as close as possible to the target and disarm.
+* If it unsafe to continue (e.g. low battery), the craft shall return to the launch location and land and disarm.
+
+#### Notional Solution
+
+Assumptions.
+
+* Required modes are configured (`RTH`, `POSHOLD`, `GCS NAV`, `WP`).
+* Configured for land / disarm on RTH.
+* Co-processor / 'magic' sensor can determine target (relative) location.
+
+Using the MSP outlined above:
+
+* Determine vehicle characteristics. Stop now if not capable of mission.
+* Monitor status and location until arming is possible (e.g. GPS fix).
+* Using the 'magic' sensor / AI etc., determine a safe loiter location.
+* Generate and upload a 1 WP mission to the safe location (the craft will automatically loiter there when completed). Ideally elevation will be double vertical range to avoid tip over on take off.
+* Arm the craft, apply a little throttle, and immediately engage WP mode.
+* Continually monitor location, battery and status.
+* Once the craft reaches the loiter location, engage POSHOLD and disengage WP mode.
+* Using the `magic` sensor, determine the target location. Assuming this is available as range and bearing (absolute or relative), calculate the geographic location of the target. Enable `GCS NAV` mode and update `WP#255` to fly the craft to the target.
+* Repeat the above until target is determined to be the landing position (e.g. within 50m in the notional requirement).
+* Cache launch position (i.e. read `WP#0`). Set target position as `WP#0` (home), engage `RTH`.
+* Craft will land at target location.
+* If an unsafe condition is detected (low battery etc.), restore any cached home location and engage `RTH`.
+
+Note: you could do most or all of the above just with `MSP_SET_RAW_RC` rather than with navigation engine, but that might increase the co-processor computation / monitoring requirement and implementation risk.
+
 ## Other References
 
 * [Building custom INAV](https://github.com/iNavFlight/inav/wiki/Building-custom-firmware).
 * [Developer Info / Navigation internals](https://github.com/iNavFlight/inav/wiki/Developer-info)
-`WP#255`
