@@ -203,7 +203,7 @@ It is possible to combine manual control with some channel automation.
 
 ### Control by stick commands
 
-In a cruise mode (e.g. POSHOLD/CRUISE for multi-rotor). It will be possible to fly the craft using A,E,R stick emulation, with minimal concern for flight physics.
+In a cruise mode (e.g. POSHOLD/CRUISE for multi-rotor), it will be possible to fly the craft using A,E,R stick emulation, with minimal concern for flight physics.
 
 ### Useful / relevant MSP stanzas and application
 
@@ -239,6 +239,8 @@ Prior to arming the craft, an automation application can be made "target agnosti
 Note. These may not be comprehensive lists, but they are a start.
 
 ### Notional Usage
+
+The following may cover a number of "home work" / "undergraduate project" use cases:
 
 #### Notional Requirement
 
