@@ -157,7 +157,7 @@ INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). T
 
 * The FC is placed in `POSHOLD` and `GCS NAV` modes.
 * The consumer updates 'special' `WP#255` (holds the requested `POSHOLD` location) using `MSP_SET_WP` messages.
-* See [INAV source](https://github.com/iNavFlight/inav/blob/master/src/main/navigation/navigation.c#L3126).
+* See [INAV source](https://github.com/iNavFlight/inav/blob/master/src/main/navigation/navigation.c), `setWaypoint()` function.
 
 With `GCS NAV`, is also possible to update the home position via WP#0
 
