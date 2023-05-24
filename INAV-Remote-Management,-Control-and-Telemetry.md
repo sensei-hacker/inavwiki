@@ -286,6 +286,10 @@ The [flightlog2kml](https://github.com/stronnag/bbl2kml) project contains a tool
 
 The MSP initialisation, MSP status monitoring and MSP RC management code is in [msp.go](https://github.com/stronnag/bbl2kml/blob/master/pkg/sitlgen/msp.go), specifically the `init()` and `run()` functions. Arming / disarming in [sitlgen.go](https://github.com/stronnag/bbl2kml/blob/master/pkg/sitlgen/sitlgen.go), `arm_action()` function.
 
+The [msp_set_rx](https://github.com/stronnag/msp_set_rx) project exercises `MSP_SET_RAW_RC`.
+
+The [inav-follow-me](https://github.com/stronnag/inav-follow-me) project provides a Rpi Pico based project implementing "follow-me" using `GCS NAV`.
+
 ## Other References
 
 * [Building custom INAV](https://github.com/iNavFlight/inav/wiki/Building-custom-firmware).
