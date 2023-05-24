@@ -278,7 +278,7 @@ Using the MSP outlined above:
 
 Note: you could do most or all of the above just with `MSP_SET_RAW_RC` rather than with the navigation engine, but that might increase the co-processor computation / monitoring requirement and implementation risk.
 
-#### Implementation example
+#### Implementation examples
 
 NOTE: If you have a better example (or additional examples), please augment or replace the following paragraphs.
 
