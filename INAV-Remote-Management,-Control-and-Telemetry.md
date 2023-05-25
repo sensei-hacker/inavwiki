@@ -290,6 +290,8 @@ The [msp_set_rx](https://github.com/stronnag/msp_set_rx) project exercises `MSP_
 
 The [inav-follow-me](https://github.com/stronnag/inav-follow-me) project provides a Rpi Pico based project implementing "follow-me" using `GCS NAV`.
 
+The [msp_override](https://codeberg.org/stronnag/msp_override) projects provides a simple example of using `MSP SET_RAW_RC` with `USE_MSP_RC_OVERRIDE` (and a physical RX/TX).
+
 ## Other References
 
 * [Building custom INAV](https://github.com/iNavFlight/inav/wiki/Building-custom-firmware).
