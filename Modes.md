@@ -25,7 +25,7 @@
 - [LOITER CHANGE](#loiter-change-fw)
 - [MANUAL](#manual-fw) (called PASSTHROUGH mode up to version 1.8.1)
 - [MC BRAKING](#mc-braking-mc)
-- [MSP RC OVERRIDE](#msp_rc_override)
+- [MSP RC OVERRIDE](#msp-rc-override)
 - [NAV LAUNCH](#nav-launch-fw)
 - [OSD ALT](#osd-alt)
 - [OSD SW](#osd-sw)
