@@ -25,7 +25,7 @@
 - [LOITER CHANGE](#loiter-change-fw)
 - [MANUAL](#manual-fw) (called PASSTHROUGH mode up to version 1.8.1)
 - [MC BRAKING](#mc-braking-mc)
-- MSP RC OVERRIDE
+- [MSP RC OVERRIDE](#msp_rc_override)
 - [NAV LAUNCH](#nav-launch-fw)
 - [OSD ALT](#osd-alt)
 - [OSD SW](#osd-sw)
@@ -171,6 +171,10 @@ What FC does in MANUAL mode is: Motor mixing, Servo Mixing, Expo settings, Throw
 ### MC BRAKING (MC)
 
 //TODO//
+
+### MSP RC OVERRIDE
+
+Allows defined RC channels to be overridden by MSP `MSP_SET_RAW_RC` messages. The channels to be overridden are defined by the CLI setting `msp_override_channels`. There is a [code example](https://codeberg.org/stronnag/msp_override) that provides further information and a sample application illustrating the use of MSP RC OVERRIDE.
 
 ### NAV LAUNCH (FW)
 
