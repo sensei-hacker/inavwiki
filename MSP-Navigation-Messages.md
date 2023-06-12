@@ -441,3 +441,65 @@ The MSP NAV message set is implemented by [mwptools](https://github.com/stronnag
 
 [inav-configurator](https://github.com/iNavFlight/inav-configurator), [mwptools](https://github.com/stronnag/mwptools), ezgui / mp4i (and WinGUI) share a common, interoperable, XML mission file format. A XSD can be found in the [inav developer documenation](
 https://github.com/iNavFlight/inav/tree/master/docs/development/wp_mission_schema).
+
+# Encoding MSP Messages
+
+In order to send waypoints to the flight controller, they need to be serialised into an `MSP_SET_WP` message. This is a standard MSP message; it may be encoded as either MSPv1 or MSPv2. In general, you should use MSPv2 unless you're targeting MultiWii or ancient versions of INAV.
+
+The payload comprises the following packed 'C' language structure:
+
+```
+struct __attribute__ ((__packed__))  _msp_wp {
+     uint8_t wp_no;
+     uint8_t action;
+     int32_t lat;
+     int32_t lon;
+     int32_t altitude;
+     int16_t p1;
+     int16_t p2;
+     int16_t p3;
+     uint8_t flag;
+};
+typedef struct _msp_wp MSP_WP;
+```
+All values are little endian; of particular note:
+* MSP_SET_WP has value `209` (decimal).
+* `lat`, `lon` (latitude and longitude). These values are the WGS84 floating point values multiplied by `1e7` (`10,000,000`). So the point 54.137110 -4.719426 (54:08:13.60N 004:43:09.93W) would be encoded as 541371100, -47194260.
+* `altitude`. In centimetres.
+* `action`, `p1`, `p2` and `p3` are encoding according to the values in sections [WayPoint and Action Attributes](#waypoint-and-action-attributes) and [P3 bitfield usage](#p3-bitfield-usage).
+* `flag` values are `0` (default), `72` Fly by home WP, `165` final WP.
+
+Depending on your preference and programming language features, you can either write the (little endian) values directly into a packed structure, or individually serialise each element into a contiguous byte array (21 bytes total). In the latter case, the `lat` value would occupy bytes offsets 4-7.
+
+So for the simple mission (one geographic WP and RTH)
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<mission>
+ <missionitem no="1" action="WAYPOINT" lat="54.13711" lon="-4.719426" alt="42" parameter1="1200" parameter2="0" parameter3="0"></missionitem>
+ <missionitem no="2" action="RTH" lat="0" lon="0" alt="0" parameter1="1" parameter2="0" parameter3="0" flag="165"></missionitem>
+</mission>
+```
+
+The WP1 payload comprises the following 21 bytes (as hexadecimal):
+
+```
+01 01 dc aa 44 20 6c df 2f fd 68 10 00 00 b0 04 00 00 00 00 00
+```
+Which encodes to the MSPV2 message:
+
+```
+24 58 3c 00 d1 00 15 00 01 01 dc aa 44 20 6c df 2f fd 68 10 00 00 b0 04 00 00 00 00 00 9a
+```
+
+The WP2 payload comprises the following 21 bytes (as hexadecimal):
+
+```
+02 04 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 a5
+```
+
+Which encodes to the MSPV2 message:
+
+```
+24 58 3c 00 d1 00 15 00 02 04 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 a5 a3
+```
