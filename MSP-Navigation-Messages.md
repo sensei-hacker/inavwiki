@@ -464,12 +464,12 @@ typedef struct _msp_wp MSP_WP;
 ```
 All values are little endian; of particular note:
 * MSP_SET_WP has value `209` (decimal).
-* `lat`, `lon` (latitude and longitude). These values are the WGS84 floating point values multiplied by `1e7` (`10,000,000`). So the point 54.137110 -4.719426 (54:08:13.60N 004:43:09.93W) would be encoded as 541371100, -47194260.
+* `lat`, `lon` (latitude and longitude). These values are the WGS84 floating point values multiplied by `1e7` (`10,000,000`). So the point `54.137110 -4.719426` (`54:08:13.60N 004:43:09.93W`) would be encoded as `541371100 -47194260`.
 * `altitude`. In centimetres.
 * `action`, `p1`, `p2` and `p3` are encoding according to the values in sections [WayPoint and Action Attributes](#waypoint-and-action-attributes) and [P3 bitfield usage](#p3-bitfield-usage).
 * `flag` values are `0` (default), `72` Fly by home WP, `165` final WP.
 
-Depending on your preference and programming language features, you can either write the (little endian) values directly into a packed structure, or individually serialise each element into a contiguous byte array (21 bytes total). In the latter case, the `lat` value would occupy bytes offsets 4-7.
+Depending on your preference and programming language features, you can either write the (little endian) values directly into a packed structure, or individually serialise each element into a contiguous byte array (21 bytes total). In the latter case, the `lat` value would occupy byte offsets 4-7.
 
 So for the simple mission (one geographic WP and RTH)
 
