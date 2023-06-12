@@ -503,3 +503,7 @@ Which encodes to the MSPV2 message:
 ```
 24 58 3c 00 d1 00 15 00 02 04 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 a5 a3
 ```
+
+## Firmware source reference
+
+The normative reference is the source code, the following are definitive `src/main/msp/msp` and `src/main/fc/fc_msp.c`.
