@@ -469,7 +469,7 @@ All values are little endian; of particular note:
 * `action`, `p1`, `p2` and `p3` are encoding according to the values in sections [WayPoint and Action Attributes](#waypoint-and-action-attributes) and [P3 bitfield usage](#p3-bitfield-usage).
 * `flag` values are `0` (default), `72` Fly by home WP, `165` final WP.
 
-Depending on your preference and programming language features, you can either write the (little endian) values directly into a packed structure, or individually serialise each element into a contiguous byte array (21 bytes total). In the latter case, the `lat` value would occupy byte offsets 4-7.
+Depending on your preference and programming language features, you can either write the (little endian) values directly into a packed structure, or individually serialise each element into a contiguous byte array (21 bytes total). In the latter case, the `lat` value would occupy byte offsets 2-5.
 
 So for the simple mission (one geographic WP and RTH)
 
