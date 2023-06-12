@@ -17,7 +17,7 @@ Each  waypoint has a type and takes a number of parameters, as below. These are 
 | Value | Enum | P1 | P2 | P3 | Lat | Lon | Alt | INAV |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | 1 | WAYPOINT      | Speed (cm/s) [1] (exception [6]) | | Altitude Mode & Actions [7] | ✔ | ✔ | ✔ | ✔ |
-| 2 | POSHOLD_UNLIM |          | | | ✔ | ✔ | ✔ | 🗴 [5] |
+| 2 | POSHOLD_UNLIM |          | | | ✔ | ✔ | ✔ | ✘ [5] |
 | 3 | POSHOLD_TIME  | Wait time (seconds) | (speed (cm/s)[1]) | Altitude Mode & Actions [7] | ✔ | ✔ | ✔ | ✔ 2.5 and later |
 | 4 | RTH [4]       | Land if non-zero | | |    |    | ✔ [2] | ✔ |
 | 5 | SET_POI [3]   |          | | | ✔ | ✔ | | ✔ 2.6 and later |
