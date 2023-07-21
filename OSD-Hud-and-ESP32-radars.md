@@ -111,10 +111,9 @@ set osd_hud_margin_h = 3
 set osd_hud_margin_v = 3
 set osd_hud_homing = OFF
 set osd_hud_homepoint = OFF
-set osd_hud_radar_disp = 0
+set osd_hud_radar_disp = 3
 set osd_hud_radar_range_min = 10
 set osd_hud_radar_range_max = 4000
-set osd_hud_radar_nearest = 0
 set osd_hud_wp_disp = 2
 ```
 
