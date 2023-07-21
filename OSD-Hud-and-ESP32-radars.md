@@ -100,7 +100,7 @@ How many waypoint are displayed, from 0 to 3. Set to 0 (zero) to disable. As sam
 
 # CLI commands
 
-All the settings are available in the CLI, defaults are :
+All the settings are available in the CLI, recommended settings are :
 ```
 set osd_crosshairs_style = DEFAULT
 set osd_horizon_offset = 0
