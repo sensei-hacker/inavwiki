@@ -1,6 +1,6 @@
 # Overview
 
-INAV supports autonomous flight using waypoints. In order to use this capability, it is also necessary to utilise and configure some supporting technologies, including:
+INAV supports autonomous flight using waypoints. In order to use this capability, it is may be necessary to utilise and configure some supporting technologies, including:
 
 * A GCS (Ground Control Station) / INAV Configurator. The GCS will typically provide functions to create waypoint (WP) missions, upload WP missions to the flight controller (FC), validate the mission, execute the mission and log the mission;
 * Telemetry Hardware. In order to transfer the mission to the FC (pre arming), and potentially to monitor the mission in real time during mission execution it is necessary to install and configure a telemetry system between the GCS and the multicopter.
