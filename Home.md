@@ -9,7 +9,7 @@
   </tbody>
 </table>
 
-INAV is **being actively developed** and currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features. 
+INAV is **being actively developed** and currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features.
 
 A wide variety of inexpensive flight controller boards are supported.  F4 & F7 flight control boards are **strongly suggested** to gain access to the full features of INAV.
 
@@ -31,7 +31,10 @@ All configuration is done through [INAV Configurator](https://github.com/iNavFIi
 
 ## Searching the wiki
 
-You may use the right pane to list all the available Wiki pages or use the Github search function (top left corner). Unfortunately, the wiki is no longer indexed by the major search engines.
+* You may use the right pane to list all the available Wiki pages. Note the "Show XX more pages..." button.
+* Use the Github search function (usually at the top). Then refine the search by filtering on "wiki".
+
+Unfortunately, the wiki is no longer indexed by the major search engines.
 
 ## Documents from source code
 
