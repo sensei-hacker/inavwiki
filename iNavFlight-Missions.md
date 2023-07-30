@@ -15,7 +15,7 @@ Before you get started on a waypoint mission, you need to know what the expectat
 
 The default distance for the first waypoint is configured with the 'nav_wp_safe_distance' value (default of 10000cm, ~ 300 feet).
 
-The MSP (MultiWii Serial Protocol) messages defining mission navigation are [documented](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages). This message set is supported by the [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://github.com/stronnag/mwptools) ground stations. The [protocol documentation](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages) documents optional parameters to control mission behaviour.
+The MSP (MultiWii Serial Protocol) messages defining mission navigation are [documented](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages). This message set is supported by the [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://github.com/stronnag/mwptools) ground stations. The [protocol documentation](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages) describes any optional parameters to control mission behaviour.
 
 # Ground Control Stations
 
