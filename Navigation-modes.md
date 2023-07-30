@@ -190,6 +190,8 @@ Up to 30 waypoints can be set on F1 boards. On F3 boards and better 60 waypoints
 
 There is an additional [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
 
+The [MSP navigation message protocol documentation](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages) describes optional parameters affecting WP behaviour.
+
 ### Fixed Wing Waypoint Tracking Accuracy and Turn Smoothing
 Waypoint tracking accuracy forces the craft to quickly head toward and track along the waypoint course line as closely as possible. 2 settings control the alignment behaviour. [nav_fw_wp_tracking_accuracy](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_wp_tracking_accuracy) adjusts the stability of the alignment. Higher values dampen the response reducing possible overshoot and oscillation. [nav_fw_wp_tracking_max_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_wp_tracking_max_angle)
 sets the maximum alignment convergence angle to the waypoint course line (see below). This is the maximum angle allowed during alignment and in reality will only be acheived when some distance away from the course line with the angle reducing as the craft gets closer to alignment. Lower values result in smoother alignment with the course line but a greater distance along the course line will be required until this is achieved.
