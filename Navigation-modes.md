@@ -133,10 +133,10 @@ INAV’s parameters for fixed wing:
 
 MULTIROTOR
 
-For multirotor it will hold 3D position, throttle is automatic (AH).
-You can use your roll and pitch stick to move around. The position hold will be resumed when you center the roll/pitch stick again. You can also enable HEADING HOLD at the same time to lock the heading.
+For multirotors it will hold 3D position, throttle is automatic (AH).
+You can use your roll and pitch stick to move around. The POSHOLD will be resumed when you center the roll/pitch stick again. HEADING HOLD is now included automatically to achieve 3D stability and it is therefore unwise to add it yourself.
 
-POSHOLD can be modified via the ADVANCED TUNING TAB under the heading Multirotor Navigation Settings
+POSHOLD permits smooth controlled flight and can be modified via the ADVANCED TUNING TAB under the heading Multirotor Navigation Settings
 
  The User Control Mode can be either ATTI or CRUISE:
  
