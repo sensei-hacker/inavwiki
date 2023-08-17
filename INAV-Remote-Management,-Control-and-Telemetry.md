@@ -276,7 +276,7 @@ Using the MSP outlined above:
 * Craft will land at target location.
 * If an unsafe condition is detected (low battery etc.), restore any cached home location and engage `RTH`.
 
-Note: you could do most or all of the above just with `MSP_SET_RAW_RC` rather than with the navigation engine, but that might increase the co-processor computation / monitoring requirement and implementation risk.
+Note: you could do most or all of the above just with `MSP_SET_RAW_RC` rather than with the navigation engine, but that might increase the co-processor computation / monitoring requirement and implementation risk. However, if you're using `MSP_SET_RAW_RC` for anything you need to comply with its minimum update rate.
 
 #### Implementation examples
 
