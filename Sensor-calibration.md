@@ -73,7 +73,7 @@ Calibrating Mag/Compass without the need to be connected to a computer can extre
 If the value is incorrect when copter is level, you likely don't have **align_mag** CLI variable set to proper compass alignment value. If heading value is correct when copter is level but drifts when you tilt the model, then your should re-calibrate the compass.
 
 2. Also, remember to set magnetic declination to a proper value on the "Configuration" screen.
-The magnetic declination of your specific location can be found here: (magnetic-declination.com)[http://magnetic-declination.com].
+The magnetic declination of your specific location can be found here: [magnetic-declination.com](http://magnetic-declination.com).
 
 If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (_3,34 in some locales_). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
 
