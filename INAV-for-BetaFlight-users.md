@@ -49,7 +49,7 @@ _FPV Quadcopter with GPS mast_
 * `set nav_auto_climb_rate = 200` # Aircraft vertical speed on automatic modes (centimeters per second)
 * `set nav_rth_allow_landing = FS_ONLY` # Allow aircraft to land by itself only if it’s in a Failsafe state.
 * `set nav_rth_altitude = 5000` # Altitude that aircraft will try to reach when doing RTH (in centimeters)
-* `set nav_rth_alt_mode = AT_LEAST_LINEAR_DESCENT` # Allow aircraft to come home descending to the RTH altitude. It saves energy by trading altitude for speed.
+* `set nav_rth_alt_mode = AT_LEAST` # Allow aircraft to come home descending to the RTH altitude. It saves energy by trading altitude for speed.
 
 ![](https://i.imgur.com/CPgKb4w.png)
 
