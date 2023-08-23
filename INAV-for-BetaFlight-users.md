@@ -44,7 +44,7 @@ _FPV Quadcopter with GPS mast_
 * `set gps_ublox_use_galileo = ON` # Let GPS module use galileo satellites if it is supported (check local regulations)
 * `set nav_extra_arming_safety = ALLOW_BYPASS` # Let aircraft arm without GPS 3D fix (careful, navigation will not work if enabled)
 * `set nav_wp_radius = 500` # Radius in centimeters to consider a waypoint reached
-* `set nav_wp_safe_distance = 20000` # If the first waypoint of a loaded mission is further than this value (in centimeters), INAV will not arm.
+* `set nav_wp_safe_distance = 200` # If the first waypoint of a loaded mission is further than this value (in meters), INAV will not arm.
 * `set nav_auto_speed = 1300` # Aircraft ground speed on automatic modes (in centimeters per second)
 * `set nav_auto_climb_rate = 200` # Aircraft vertical speed on automatic modes (centimeters per second)
 * `set nav_rth_allow_landing = FS_ONLY` # Allow aircraft to land by itself only if it’s in a Failsafe state.
