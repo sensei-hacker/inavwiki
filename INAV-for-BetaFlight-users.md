@@ -42,7 +42,7 @@ _FPV Quadcopter with GPS mast_
 * `set throttle_idle =  5` # Set the minimal motor speed (in percent). The default is 15, which can be high for modern ESCs.
 * `set small_angle = 180` # Let aircraft arm in any angle
 * `set gps_ublox_use_galileo = ON` # Let GPS module use galileo satellites if it is supported (check local regulations)
-* `set nav_extra_arming_safety = OFF` # Let aircraft arm without GPS 3D fix (careful, navigation will not work if enabled)
+* `set nav_extra_arming_safety = ALLOW_BYPASS` # Let aircraft arm without GPS 3D fix (careful, navigation will not work if enabled)
 * `set nav_wp_radius = 500` # Radius in centimeters to consider a waypoint reached
 * `set nav_wp_safe_distance = 20000` # If the first waypoint of a loaded mission is further than this value (in centimeters), INAV will not arm.
 * `set nav_auto_speed = 1300` # Aircraft ground speed on automatic modes (in centimeters per second)
