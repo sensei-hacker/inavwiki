@@ -4,8 +4,8 @@ This page lists and explains all the different navigational flight modes of INAV
 
 - [NAV ALTHOLD - Altitude hold](#althold---altitude-hold)
 - [NAV POSHOLD - Horizontal position hold](#nav-poshold---Position-hold)
-- [NAV COURSE HOLD - Fixed Wing Heading Hold](#nav-course-hold---fixed-wing-heading-hold)
-- [NAV CRUISE - Fixed Wing Heading + Altitude Hold](#nav-cruise---fixed-wing-heading--altitude-hold)
+- [NAV COURSE HOLD - Course Hold](#nav-course-hold---course-hold)
+- [NAV CRUISE - Course Hold + Altitude Hold](#nav-cruise---course-hold--altitude-hold)
 - [NAV RTH - Return to home](#rth---return-to-home)
 - [NAV WP - Autonomous waypoint mission](#wp---autonomous-waypoint-mission)
 - [WP PLANNER - On the fly waypoint mission planner](#wp-planner---on-the-fly-waypoint-mission-planner)
@@ -163,11 +163,23 @@ Hints for safe operation:
 - Activate without props installed to check for reasonable operation.
 - When misconfigured, this mode can result in dramatic failure to hold position. Attitude (yaw & motion) inputs can/will result in rapid and unexpected motion.
 
-## NAV COURSE HOLD - Fixed Wing Heading Hold
+## NAV COURSE HOLD - Course Hold
 
-When enabled the machine will try to maintain the current heading and compensate for any external disturbances (2D CRUISE). User can adjust the flight direction directly with ROLL stick or with the YAW stick (`nav_fw_cruise_yaw_rate` set the yawing rate at full stick deflection). The latter will offer a smoother way to adjust the flight direction. If the mode is enabled in conjunction with NAV ALTHOLD also the current altitude will be maintained (CRUISE). Altitude can be adjusted, as usual, via the pitch stick. ANGLE mode is forced to be active so the plane will auto level.
+Course hold is only available for multirotor from INAV 7.0.
 
-## NAV CRUISE - Fixed Wing Heading + Altitude Hold
+When enabled the craft will try to maintain the current course and compensate for any external disturbances (2D CRUISE). Control behaviour is different for fixed wing and multirotor as follows:
+
+**Fixed wing**  
+The flight direction is controlled directly with ROLL stick as usual or with the YAW stick which provides a smoother way to adjust the flight direction.
+
+**Multirotor**  
+The heading is adjusted using the YAW stick or the ROLL stick (ROLL stick behaves exactly the same as the YAW stick). Cruise speed is increased by raising the pitch stick with the speed set in proportion to stick deflection up to a maximum limit of `nav_manual_speed`. This speed is maintained after the stick returns to centre. If the multirotor is already moving when Course Hold is selected the current speed will be maintained up to the `nav_manual_speed` limit. Speed is decreased by lowering the pitch stick with the rate of reduction proportional to stick position such that at maximum deflection it should take around 2s to slow to a stop. Position is held when the speed drops below 0.5m/s.
+
+`nav_cruise_yaw_rate` sets the yaw rate at full stick deflection (only applicable for YAW stick control on fixed wing).
+
+If the mode is enabled in conjunction with NAV ALTHOLD the current altitude will also be maintained (CRUISE). Altitude can be adjusted, as usual, via the pitch stick for fixed wing or the throttle stick for multirotor. ANGLE mode is active so the craft will auto level and heading hold is active on a multirotor.
+
+## NAV CRUISE - Course Hold + Altitude Hold
 
 Equivalent to the combination of NAV COURSE HOLD and NAV ALTHOLD described above.
 
