@@ -212,10 +212,12 @@ The OSD `MISSION INFO` field will display the total number of missions loaded on
 Selecting mission numbers 1 to 9 will load missions saved in EEPROM. Mission selection behaviour changed slightly with INAV 6.0 as follows:
 
 **Pre INAV 6.0**
+
 It is possible to select Mission number 0 which appears in the `MISSION INFO` field as "WP CNT". This shows the current active WP count loaded in FC volatile memory and changes depending on the Arm state. When disarmed with a mission loaded it shows the total number of WPs for all missions stored in EEPROM. After arming and until another mission is loaded on disarm it displays the number of WPs in the loaded mission. "WP CNT" will also display the waypoint count for missions loaded to the FC from a source other than EEPROM, e.g. via telemetry. When less than 2 missions are loaded in the FC EEPROM mission numbers can only be selected using the CMS MISSIONS menu.
 
 **From INAV 6.0**
-The previous behaviour has changed. Only mission numbers 1 - 9 can be selected and "WP CNT" only appears if a mission has been loaded from a source other than EEPROM. Also waypoint count now only shows the number of WPs in the selected mission.
+
+Only mission numbers 1 - 9 can be selected and "WP CNT" only appears if a mission has been loaded from a source other than EEPROM. Also waypoint count now only shows the number of WPs in the selected mission.
 
 The only limitation with multi missions relates to single WP RTH missions. There seems little purpose in such a mission but if used it must be saved as mission number 1 (if saved at any other position it will truncate loading of other missions beyond that number).
 
