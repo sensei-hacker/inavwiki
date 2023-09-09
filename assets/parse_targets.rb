@@ -13,10 +13,10 @@ def parse_output lines,name
   pwms=[]
   n = 0
   lines.each do |l|
-    if l.match(/TIM_USE_.._(MOTOR|SERVO)/)
+    if l.match(/TIM_USE_(.._MOTOR|.._SERVO|OUTPUT_AUTO)/)
       deftims = l.split(',')
       alloc = deftims[3]
-      allocs = alloc.split('|').collect{|z| z.strip.gsub('TIM_USE_','')}
+      allocs = alloc.split('|').collect{|z| z.strip.gsub('TIM_USE_','').gsub('OUTPUT_','')}
       pwms << allocs.join(', ')
       n += 1
     end
@@ -171,8 +171,11 @@ The usage is taken directly from the source code, the following interpretation i
 | FW_MOTOR | Fixed wing motor |
 | MC_SERVO | Multi-rotor servo |
 | FW_SERVO | Fixed wing servo |
+| AUTO | Automatic motor / servo allocation |
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
+
+`AUTO` requires INAV 7 or later. See project [Cli](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) and [ESC and servo outputs](https://github.com/iNavFlight/inav/blob/master/docs/ESC%%20and%%20servo%%20outputs.md) documentation.
 
 *List generated %{now} from the [INAV %{branch} branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
