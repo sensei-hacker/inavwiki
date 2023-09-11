@@ -15,7 +15,7 @@ A wide variety of inexpensive flight controller boards are supported.  F4 & F7 f
 
 **To read and watch:**
 
-- [**Latest Releases**](https://github.com/iNavFIight/inav-configurator/releases/tag/5.0.0)
+- [**Latest Releases**](https://github.com/iNavFlight/inav-configurator/releases/)
 - [INAV 5 on a flying wing video tutorial](https://www.youtube.com/playlist?list=PLOUQ8o2_nCLkZlulvqsX_vRMfXd5zM7Ha)
 - [INAV 3 from flash to flight YouTube playlist](https://youtube.com/playlist?list=PLOUQ8o2_nCLkfcKsWobDLtBNIBzwlwRC8)
 - [Betaflight to INAV migration guide](https://www.youtube.com/watch?v=1hhsqyXeKew)
