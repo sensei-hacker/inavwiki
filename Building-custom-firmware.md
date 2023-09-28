@@ -121,20 +121,20 @@ There will similar stanzas for all the available sensor components.
 ```
 ...
 timerHardware_t timerHardware[] = {
-    DEF_TIM(TIM1, CH3, PA10, TIM_USE_PPM, 0, 0),        // S1_IN_PPM A01
+    DEF_TIM(TIM1, CH3, PA10, TIM_USE_PPM, 0, 0), // S1_IN_PPM A01
     DEF_TIM(TIM8, CH2, PC7, TIM_USE_ANY, 0, 0), // SSERIAL1 RX c07
     DEF_TIM(TIM8, CH1, PC6, TIM_USE_ANY, 0, 0), // SSERIAL1 TX
-    DEF_TIM(TIM2, CH1, PA15, 0, 0, 0),  // LED A15
-    DEF_TIM(TIM3, CH3, PB0, TIM_USE_MC_MOTOR | TIM_USE_FW_MOTOR, 0, 0), // S1_OUT
-    DEF_TIM(TIM3, CH4, PB1, TIM_USE_MC_MOTOR | TIM_USE_FW_MOTOR, 0, 0), // S2_OUT
-    DEF_TIM(TIM12, CH1, PB14, TIM_USE_MC_MOTOR | TIM_USE_FW_SERVO, 0, 0),       // S3_OUT
-    DEF_TIM(TIM12, CH2, PB15, TIM_USE_MC_MOTOR | TIM_USE_FW_SERVO, 0, 0),       // S4_OUT
-    DEF_TIM(TIM11, CH1, PB9, TIM_USE_MC_MOTOR | TIM_USE_FW_SERVO, 0, 0),        // S5_OUT
-    DEF_TIM(TIM10, CH1, PB8, TIM_USE_MC_MOTOR | TIM_USE_FW_SERVO, 0, 0),        // S6_OUT
-    DEF_TIM(TIM3, CH2, PB5, TIM_USE_MC_MOTOR | TIM_USE_MC_SERVO | TIM_USE_FW_SERVO, 0, 0),      // S7_OUT
-    DEF_TIM(TIM3, CH1, PB4, TIM_USE_MC_MOTOR | TIM_USE_MC_SERVO | TIM_USE_FW_SERVO, 0, 0),      // S8_OUT
-    DEF_TIM(TIM8, CH3, PC8, TIM_USE_MC_MOTOR | TIM_USE_FW_SERVO, 0, 0), // S9_OUT
-    DEF_TIM(TIM2, CH2, PB3, TIM_USE_MC_MOTOR | TIM_USE_FW_SERVO, 0, 0), // S10_OUT
+    DEF_TIM(TIM2, CH1, PA15, 0, 0, 0), // LED A15
+    DEF_TIM(TIM3, CH3, PB0, TIM_USE_OUTPUT_AUTO, 0, 0),   // S1_OUT
+    DEF_TIM(TIM3, CH4, PB1, TIM_USE_OUTPUT_AUTO, 0, 0),   // S2_OUT
+    DEF_TIM(TIM12, CH1, PB14, TIM_USE_OUTPUT_AUTO, 0, 0), // S3_OUT
+    DEF_TIM(TIM12, CH2, PB15, TIM_USE_OUTPUT_AUTO, 0, 0), // S4_OUT
+    DEF_TIM(TIM11, CH1, PB9, TIM_USE_OUTPUT_AUTO, 0, 0),  // S5_OUT
+    DEF_TIM(TIM10, CH1, PB8, TIM_USE_OUTPUT_AUTO, 0, 0),  // S6_OUT
+    DEF_TIM(TIM3, CH2, PB5, TIM_USE_OUTPUT_AUTO, 0, 0),   // S7_OUT
+    DEF_TIM(TIM3, CH1, PB4, TIM_USE_OUTPUT_AUTO, 0, 0),   // S8_OUT
+    DEF_TIM(TIM8, CH3, PC8, TIM_USE_OUTPUT_AUTO, 0, 0),   // S9_OUT
+    DEF_TIM(TIM2, CH2, PB3, TIM_USE_OUTPUT_AUTO, 0, 0),   // S10_OUT
 };
 ...
 ```
@@ -144,7 +144,7 @@ The parameters are:
 * `TIMn`: The timer
 * `CHn` : The channel
 * `Pxy` : The hardware (MCU) pin
-* The usage function(s) available in this pin. Note that each timer is assigned a rate defined by function, so it is inadvisable to have both `MOTOR` and `SERVO` definition on the same timer for the same vehicle type `MC` (multicopter), `FW` (fixed wing).
+* The usage function(s) available in this pin. Note that each timer is assigned a rate defined by function, so it is inadvisable to have both `MOTOR` and `SERVO` definition on the same timer. `TIM_USE_AUTPUT_AUTO` will let INAV assign the output to either `MOTOR` or `SERVO` automatically.
 * The final two parameters (`flags`, `dmavar` are hardware specific / required for DMA (e.g. DSHOT), which is turn is defined by `#define USE_DSHOT` in `target.h`. See vendor's technical definitions perhaps compared to comparable targets. The example target here does not define `USE_DSHOT` and the values are 0. These parameters provide a DMA descriptor table compatible with Betaflight.
 
 ## Adding a new source file
