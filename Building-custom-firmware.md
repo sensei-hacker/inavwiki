@@ -144,7 +144,7 @@ The parameters are:
 * `TIMn`: The timer
 * `CHn` : The channel
 * `Pxy` : The hardware (MCU) pin
-* The usage function(s) available in this pin. Note that each timer is assigned a rate defined by function, so it is inadvisable to have both `MOTOR` and `SERVO` definition on the same timer. `TIM_USE_AUTPUT_AUTO` will let INAV assign the output to either `MOTOR` or `SERVO` automatically.
+* The usage function(s) available in this pin. Note that each timer is assigned a rate defined by function, so it is inadvisable to have both `MOTOR` and `SERVO` definition on the same timer. `TIM_USE_OUTPUT_AUTO` will let INAV assign the output to either `MOTOR` or `SERVO` automatically.
 * The final two parameters (`flags`, `dmavar` are hardware specific / required for DMA (e.g. DSHOT), which is turn is defined by `#define USE_DSHOT` in `target.h`. See vendor's technical definitions perhaps compared to comparable targets. The example target here does not define `USE_DSHOT` and the values are 0. These parameters provide a DMA descriptor table compatible with Betaflight.
 
 ## Adding a new source file
