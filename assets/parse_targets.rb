@@ -13,7 +13,7 @@ def parse_output lines,name
   pwms=[]
   n = 0
   lines.each do |l|
-    if l.match(/T.._USE_(MOTOR|SERVO|OUTPUT)/)
+    if l.match(/T.._USE_((..)*MOTOR|(..)*SERVO|OUTPUT)/)
       deftims = l.split(',')
       alloc = deftims[3]
       allocs = alloc.split('|').collect{|z| z.strip.gsub(/T.._USE_/,'')}
