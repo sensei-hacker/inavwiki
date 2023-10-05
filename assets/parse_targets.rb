@@ -13,13 +13,13 @@ def parse_output lines,name
   pwms=[]
   n = 0
   lines.each do |l|
-    if l.match(/TIM_USE_(.._MOTOR|.._SERVO|OUTPUT_AUTO)/)
+    if l.match(/T.._USE_(MOTOR|SERVO|OUTPUT)/)
       deftims = l.split(',')
       alloc = deftims[3]
-      allocs = alloc.split('|').collect{|z| z.strip.gsub('TIM_USE_','').gsub('OUTPUT_','')}
+      allocs = alloc.split('|').collect{|z| z.strip.gsub(/T.._USE_/,'')}
       allocs.each_with_index do |a,j|
-        if a == 'AUTO'
-          tm = deftims[0].match(/TIM(\d+)/)
+        if a == 'OUTPUT_AUTO'
+          tm = deftims[0].match(/T..(\d+)/)
           if !tm.nil?
             allocs[j] = "AUTO TIMER #{tm[1]}"
           end
@@ -176,16 +176,18 @@ The usage is taken directly from the source code, the following interpretation i
 | Symbol | Interpretation |
 | ------ | -------------- |
 | AUTO | Automatic motor / servo allocation |
-| MC_MOTOR | Multi-rotor motor |
-| FW_MOTOR | Fixed wing motor |
-| MC_SERVO | Multi-rotor servo |
-| FW_SERVO | Fixed wing servo |
+| MOTOR | Motor |
+| SERVO | Servo |
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-`AUTO` is used by INAV 7.0 and later. Hardware timer number is shown againt each `AUTO` line; a common function (`MOTOR`, `SERVO`) may be assigned by the user for a given timer number.
+`AUTO` is used by INAV 7.0 and later. Hardware timer number is shown againt each `AUTO` line; a common function (`MOTOR`, `SERVO`) may be assigned by the user for a particular timer number.
 
-`MC_MOTOR`, `MC_SERVO`, `FW_MOTOR`, `FW_SERVO` are used prior to INAV 7.0.
+`MOTOR`, `SERVO` are shown against a small number of boards where specific allocation is needed.
+
+Prior to INAV 7.0 `MC_`, `FW_` prefixes were shown against motors and servos.
+
+Note that the following tables only document PWM outputs that have at least a MOTOR or SERVO use. PWM outputs _solely_ supporting other (LED, PWM, ANY)functions are not listed; for those see the manufacter's documentation (or `target.c`).
 
 See project [Cli](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) and [ESC and servo outputs](https://github.com/iNavFlight/inav/blob/master/docs/ESC%%20and%%20servo%%20outputs.md) documentation.
 
