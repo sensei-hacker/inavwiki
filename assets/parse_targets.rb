@@ -167,15 +167,17 @@ The usage is taken directly from the source code, the following interpretation i
 
 | Symbol | Interpretation |
 | ------ | -------------- |
+| AUTO | Automatic motor / servo allocation |
 | MC_MOTOR | Multi-rotor motor |
 | FW_MOTOR | Fixed wing motor |
 | MC_SERVO | Multi-rotor servo |
 | FW_SERVO | Fixed wing servo |
-| AUTO | Automatic motor / servo allocation |
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-`AUTO` requires INAV 7 or later. See project [Cli](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) and [ESC and servo outputs](https://github.com/iNavFlight/inav/blob/master/docs/ESC%%20and%%20servo%%20outputs.md) documentation.
+`AUTO` is used by INAV 7.0 and later. `MC_MOTOR`, `MC_SERVO`, `FW_MOTOR`, `FW_SERVO` are used prior to INAV 7.0.
+
+See project [Cli](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) and [ESC and servo outputs](https://github.com/iNavFlight/inav/blob/master/docs/ESC%%20and%%20servo%%20outputs.md) documentation.
 
 *List generated %{now} from the [INAV %{branch} branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
