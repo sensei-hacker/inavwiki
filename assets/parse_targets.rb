@@ -17,6 +17,14 @@ def parse_output lines,name
       deftims = l.split(',')
       alloc = deftims[3]
       allocs = alloc.split('|').collect{|z| z.strip.gsub('TIM_USE_','').gsub('OUTPUT_','')}
+      allocs.each_with_index do |a,j|
+        if a == 'AUTO'
+          tm = deftims[0].match(/TIM(\d+)/)
+          if !tm.nil?
+            allocs[j] = "AUTO TIMER #{tm[1]}"
+          end
+        end
+      end
       pwms << allocs.join(', ')
       n += 1
     end
@@ -175,7 +183,9 @@ The usage is taken directly from the source code, the following interpretation i
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-`AUTO` is used by INAV 7.0 and later. `MC_MOTOR`, `MC_SERVO`, `FW_MOTOR`, `FW_SERVO` are used prior to INAV 7.0.
+`AUTO` is used by INAV 7.0 and later. Hardware timer number is shown againt each `AUTO` line; a common function (`MOTOR`, `SERVO`) may be assigned by the user for a given timer number.
+
+`MC_MOTOR`, `MC_SERVO`, `FW_MOTOR`, `FW_SERVO` are used prior to INAV 7.0.
 
 See project [Cli](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) and [ESC and servo outputs](https://github.com/iNavFlight/inav/blob/master/docs/ESC%%20and%%20servo%%20outputs.md) documentation.
 
