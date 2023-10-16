@@ -48,7 +48,7 @@ If the model is below _nav_rth_altitude_ it will climb to desired altitude prior
 _pre-INAV 4.1_
 - _nav_rth_altitude_ ignored
 
-_iNav 4.1 onwards_
+_INAV 4.1 onwards_
 - _nav_rth_altitude_ defines the minimum RTH altitude above launch point. If the maximum altitude of the flight is below _nav_rth_altitude_, _nav_rth_altitude_ is used. If the maximum altitude of the flight is above _nav_rth_altitude_, the maximum altitude is used. 0 = disabled.
 
 The **Actual RTH Altitude** is the highest altitude during the flight, or _nav_rth_altitude_ if higher.
@@ -64,12 +64,25 @@ If the aircraft is below _nav_rth_altitude_ it will climb to desired altitude pr
 ![](images/NAV_RTH_AT_LEAST_ALT.jpg)
 
 ## Predefined altitude linear descent (NAV_RTH_AT_LEAST_ALT_LINEAR_DESCENT)
+_pre-INAV 4.1_
 - _nav_rth_alt_mode_ = **AT_LEAST_LINEAR_DESCENT**
 - _nav_rth_altitude_ defines minimum RTH altitude above launch point. 
 
 If the aircraft is below _nav_rth_altitude_ it will climb to desired altitude prior to flying back home. If the model is above the desired altitude, it will turn and fly home, and descend on the way (on a linear straight line). This defines the **Actual RTH Altitude**. Aircraft will descend in a way that it'll reach the _nav_rth_altitude_ altitude only when it reaches the home point. So aircraft can save energy by doing an easy descend on it's way back home.
 
 ![](https://i.imgur.com/CPgKb4w.png)
+
+# Linear Descent
+_INAV 7.0 Onwards_
+
+Before INAV 7.0; linear descent was an extended version of the **AT_LEAST** return to home method. From INAV 7.0 onwards, linear descent can be used with all RTH methods. It has also been extended to give the pilot more control. Because all RTH methods can now use linear descent; there needs to be a target altitude to descend to, that works with all RTH methods. To do this, the target altitude of the linear descent is now the `nav_rth_home_altitude`. You will need to set this parameter in order for linear descent to work.
+
+If Linear Descent is enabled, and the RTH Home Altitude is less than 10m. A warning is shown around the RTH Home Altitude input box. You can enter whatever values they want, including 0. If the RTH Home Altitude is not set, Linear Descent is not used in flight.
+![image](https://user-images.githubusercontent.com/17590174/219960451-626acd82-c885-4b92-a836-30f3cfc81a41.png)
+
+An option has also been added to decide how far away the linear descent starts. This is via the `nav_rth_linear_descent_start_distance` parameter. Current behaviour can be maintained by setting this to 0 [default]. When set to 0, the linear descent starts immediately upon entering RTH. You can also specify a distance from home when the linear descent begins. This is in metres and be up to 10km (10,000m). In all cases, the linear descent aims to reach the `nav_rth_home_altitude` as it arrives home, if possible.
+
+Though this feature is still called linear descent, due to consistency. In some cases, if flying below the home position, this can work as a linear ascent. Rising up to the `nav_rth_home_altitude`.
 
 # Climb first
 
@@ -122,6 +135,7 @@ To be honest, pretty much as you expect it to. Once you select RTH, the model wi
 
 ## Other Settings
 ### Trackback
+_INAV 6.0 Onwards_
 RTH Trackback records the recent track of the craft allowing it to return back along the track when RTH is triggered rather than returning directly back home. It's mainly intended to be used as a means of returning the craft to a position where the Rx signal can be recovered if it was lost due to a line of sight obstruction. This should improve the chances of recovering the Rx signal whilst reducing the risk of flying into the obstruction that caused the loss compared to normal RTH heading directly back home.
 
 When triggered the craft returns along the trackback route until the end is reached at which point it reverts to normal RTH heading directly home. It doesn't perform the RTH climb phase at the start of the Trackback but instead uses the altitude recorded for each track point so long as that altitude is no lower than the altitude when Trackback was triggered (this is the minimum altitude used throughout the Trackback phase).
@@ -131,4 +145,5 @@ Trackback currently allows 50 trackback points with a maximum potential trackbac
 Trackback RTH can be cancelled using the RTH Altitude Control Override `RIGHT ROLL` command at which point RTH will revert to a normal RTH heading directly back home. [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) needs to be ON for this to work.
 
 ### Altitude Control Override
+_INAV 3.0 Onwards_
 It is possible to override the default RTH Altitude and Climb First settings during the initial RTH climb phase using the [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) setting.
