@@ -195,6 +195,8 @@ See project [Cli](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) an
 
 You are strongly advised to check the board documentation as to the suitability of any particular board.
 
+In particular, even though a board is marked as 'DSHOT enabled', there is no guarantee that DSHOT will be available on an arbitrary output as its timer may not have DMA enabled.
+
 The configurations listed above are those supported by the INAV developers; other configurations may be possible with a custom target. The source tree contains other, unofficial targets that may (or not) work. A full report, including non-release targets may be generated with `parse_targets.rb --all`.
 
 Note also that due to the complexity of output options available in INAV, dynamic resource allocation is not available. Paweł Spychalski has published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU) explaining why resource allocation is not supported by INAV; [see also #1154](https://github.com/iNavFlight/inav/issues/1145)
