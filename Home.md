@@ -27,7 +27,7 @@ A wide variety of inexpensive flight controller boards are supported.  F4 & F7 f
 - [INAV for BetaFlight users](https://github.com/iNavFlight/inav/wiki/INAV-for-BetaFlight-users)
 - Many flight controller boards are supported. See the [Supported boards](Supported-boards) page.
 
-All configuration is done through [INAV Configurator](https://github.com/iNavFIight/inav-configurator/releases/tag/5.0.0).
+All configuration is done through [INAV Configurator](https://github.com/iNavFlight/inav-configurator/releases/latest).
 
 ## Searching the wiki
 
