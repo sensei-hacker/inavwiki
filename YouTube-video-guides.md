@@ -6,6 +6,9 @@
 * [INAV on 7" FPV drones](https://youtu.be/phafJYNzTR0)
 * [INAV from flash to flight for multirotor drones](https://youtube.com/playlist?list=PLOUQ8o2_nCLkfcKsWobDLtBNIBzwlwRC8)
 * [INAV Fixed Wing Tuning Guide](https://youtu.be/A45vc4OihgY)
+* [INAV Cruise Mode for multirotors](https://youtu.be/4pgDxexuSnU)
+* [Circular geofence with INAV](https://youtu.be/qxkhDCLynU4)
+* [Position Hold tutorial](https://youtu.be/a-pjXIXVkSU)
 
 ## Troubleshooting videos
 
@@ -25,3 +28,5 @@
 * [Painless360 INAV playlist](http://www.youtube.com/playlist?list=PLYsWjANuAm4qdXEGFSeUhOZ10-H8YTSnH)
 * [Can I copy my tune from Betaflight?](https://youtu.be/jgqjhSxd9EA)
 * [INAV channel forwarding](https://youtu.be/sjML2r4dcIw)
+* [Magnetometers are optional](https://youtu.be/uoSMMGpb9-o)
+* [Is GPS required?](https://youtu.be/6jIb0c2dlxE)
