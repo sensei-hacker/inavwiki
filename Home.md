@@ -23,6 +23,7 @@ A wide variety of inexpensive flight controller boards are supported.  F4 & F7 f
 * [How to use Autotune](https://youtu.be/Gsi1-0NXm0Y)
 * [How to use servo autotrim](https://youtu.be/BOy0d9-s6Uc)
 * [INAV on 7" FPV drones](https://youtu.be/phafJYNzTR0)
+* [What is Ez Tune?](https://youtu.be/94foP_mxBLk)
 - [Other videos](https://github.com/iNavFlight/inav/wiki/YouTube-video-guides)
 
 All configuration is done through [INAV Configurator](https://github.com/iNavFlight/inav-configurator/releases/latest).
