@@ -10,6 +10,7 @@
 * [Circular geofence with INAV](https://youtu.be/qxkhDCLynU4)
 * [Position Hold tutorial](https://youtu.be/a-pjXIXVkSU)
 * [What is Ez Tune?](https://youtu.be/94foP_mxBLk)
+* [Differential thrust for airplanes](https://youtu.be/UeroXOmn_8Y)
 
 ## Troubleshooting videos
 
