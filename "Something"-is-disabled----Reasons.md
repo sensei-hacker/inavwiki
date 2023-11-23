@@ -16,7 +16,7 @@ INAV will refuse to arm for the following reasons (e.g. from cli `status`):
 | `COMPASS` | `00001000` | The compass is not calibrated. Perform the calibration procedure |
 | `ACC` | `00002000` | The accelerometer is not calibrated. Perform the 6 point calibration procedure |
 | `ARMSW` | `00004000` | The arm switch was engaged as the FC booted |
-| `HWFAIL` | `00008000`| A required hardware device has failed / is not recognised (e.g. GPS, Compass, Baro) |
+| `HWFAIL` | `00008000`| A required hardware device (Gyro, Accelerometer, Baro, Compass, RangeFinder, Pitot, GPS or OpticalFlow) has failed / is not recognized |
 | `BOXFS` | `00010000` | A failsafe switch is engaged |
 | `KILLSW` | `00020000` | A kill switch is engaged |
 | `RX` | `00040000` | The RC link is not detected (RX not detected) |
