@@ -35,6 +35,6 @@ All configuration is done through [INAV Configurator](https://github.com/iNavFli
 
 Unfortunately, the wiki is no longer indexed by the major search engines.
 
-## Documents from source code
+## Additional Documentation in the source code tree.
 
 Many documents are available in the source code tree: https://github.com/iNavFlight/inav/tree/master/docs
