@@ -8,16 +8,27 @@ The usage is taken directly from the source code, the following interpretation i
 
 | Symbol | Interpretation |
 | ------ | -------------- |
-| MC_MOTOR | Multi-rotor motor |
-| FW_MOTOR | Fixed wing motor |
-| MC_SERVO | Multi-rotor servo |
-| FW_SERVO | Fixed wing servo |
+| AUTO | Automatic motor / servo allocation |
+| MOTOR | Motor |
+| SERVO | Servo |
 | LED      | LED strip  |
 | PWM, ANY | Some other PWM function |
 
-*List generated 2023-04-27 from the [INAV release_6.1.0 branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
+`AUTO` is used by INAV 7.0 and later. Hardware timer number is shown againt each `AUTO` line; a common function (`MOTOR`, `SERVO`) may be assigned by the user for a particular timer number.
+
+`MOTOR`, `SERVO` are shown against a small number of boards where specific allocation is needed.
+
+Prior to INAV 7.0 `MC_`, `FW_` prefixes were shown against motors and servos.
+
+Note that the following tables only document PWM outputs that have at least a MOTOR or SERVO use. PWM outputs _solely_ supporting other (LED, PWM, ANY)functions are not listed; for those see the manufacter's documentation (or `target.c`).
+
+See project [Cli](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) and [ESC and servo outputs](https://github.com/iNavFlight/inav/blob/master/docs/ESC%20and%20servo%20outputs.md) documentation.
+
+*List generated 2023-12-06 from the [INAV release_7.0.0 branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
 You are strongly advised to check the board documentation as to the suitability of any particular board.
+
+In particular, even though a board is marked as 'DSHOT enabled', there is no guarantee that DSHOT will be available on an arbitrary output as its timer may not have DMA enabled.
 
 The configurations listed above are those supported by the INAV developers; other configurations may be possible with a custom target. The source tree contains other, unofficial targets that may (or not) work. A full report, including non-release targets may be generated with `parse_targets.rb --all`.
 
@@ -31,16 +42,12 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO, ANY |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | PWM, FW_SERVO |
-| 8 | PWM, FW_SERVO |
-| 9 | PWM, FW_SERVO |
-| 10 | PWM, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5, ANY |
+| 6 | AUTO TIMER 1 |
 
 ## Board: ANYFCF7
 
@@ -50,39 +57,52 @@ Board is not DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | PWM, MC_SERVO |
-| 2 | PWM, MC_SERVO |
-| 3 | PWM, MC_SERVO |
-| 4 | PWM, MC_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_MOTOR |
-| 9 | MC_MOTOR, FW_MOTOR |
-| 10 | MC_MOTOR, FW_SERVO |
-| 11 | MC_MOTOR, FW_SERVO |
-| 12 | MC_MOTOR, FW_SERVO |
-| 13 | MC_MOTOR, FW_SERVO, LED |
-| 14 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 5 |
+| 9 | AUTO TIMER 5 |
+| 10 | AUTO TIMER 9 |
+| 11 | AUTO TIMER 3 |
+| 12 | AUTO TIMER 5 |
+| 13 | AUTO TIMER 2, LED |
+| 14 | AUTO TIMER 3 |
 
 ### Target: ANYFCF7_EXTERNAL_BARO
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | PWM, MC_SERVO |
-| 2 | PWM, MC_SERVO |
-| 3 | PWM, MC_SERVO |
-| 4 | PWM, MC_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_MOTOR |
-| 9 | MC_MOTOR, FW_MOTOR |
-| 10 | MC_MOTOR, FW_SERVO |
-| 11 | MC_MOTOR, FW_SERVO |
-| 12 | MC_MOTOR, FW_SERVO |
-| 13 | MC_MOTOR, FW_SERVO, LED |
-| 14 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 5 |
+| 9 | AUTO TIMER 5 |
+| 10 | AUTO TIMER 9 |
+| 11 | AUTO TIMER 3 |
+| 12 | AUTO TIMER 5 |
+| 13 | AUTO TIMER 2, LED |
+| 14 | AUTO TIMER 3 |
+
+## Board: AOCODARCF405AIO
+
+Board is DSHOT enabled.
+
+### Target: AOCODARCF405AIO
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
 
 ## Board: AOCODARCF4V2
 
@@ -92,14 +112,27 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+
+## Board: AOCODARCF722AIO
+
+Board is DSHOT enabled.
+
+### Target: AOCODARCF722AIO
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MOTOR |
+| 2 | MOTOR |
+| 3 | MOTOR |
+| 4 | MOTOR |
 
 ## Board: AOCODARCF7DUAL
 
@@ -109,14 +142,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_MOTOR |
-| 4 | MC_MOTOR, FW_MOTOR |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ## Board: AOCODARCF7MINI_V1
 
@@ -126,26 +159,47 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_MOTOR |
-| 4 | MC_MOTOR, FW_MOTOR |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 4 |
 
 ### Target: AOCODARCF7MINI_V2
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_MOTOR |
-| 4 | MC_MOTOR, FW_MOTOR |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+
+## Board: AOCODARCH7DUAL
+
+Board is DSHOT enabled.
+
+### Target: AOCODARCH7DUAL
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+| 11 | AUTO TIMER 15 |
+| 12 | AUTO TIMER 15 |
 
 ## Board: ATOMRCF405NAVI
 
@@ -155,14 +209,34 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 3 |
+
+## Board: ATOMRCF405NAVI_DELUX
+
+Board is DSHOT enabled.
+
+### Target: ATOMRCF405NAVI_DELUX
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 8 |
+| 9 | AUTO TIMER 8 |
+| 10 | AUTO TIMER 8 |
+| 11 | AUTO TIMER 1 |
 
 ## Board: AXISFLYINGF7PRO
 
@@ -172,14 +246,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_MOTOR |
-| 4 | MC_MOTOR, FW_MOTOR |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
 
 ## Board: BEEROTORF4
 
@@ -189,14 +263,14 @@ Board is not DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 4 |
 
 ## Board: BETAFLIGHTF4
 
@@ -206,10 +280,10 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
 
 ## Board: BETAFPVF722
 
@@ -219,12 +293,68 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR |
-| 2 | MC_MOTOR |
-| 3 | MC_MOTOR |
-| 4 | MC_MOTOR |
-| 5 | MC_MOTOR |
-| 6 | MC_MOTOR |
+| 1 | MOTOR |
+| 2 | MOTOR |
+| 3 | MOTOR |
+| 4 | MOTOR |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+
+## Board: BLACKPILL_F411_OSD
+
+Board is DSHOT enabled.
+
+### Target: BLACKPILL_F411_OSD
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 4 |
+
+### Target: BLACKPILL_F411_BLACKBOX
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 4 |
+
+## Board: DAKEFPVF405
+
+Board is DSHOT enabled.
+
+### Target: DAKEFPVF405
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+
+## Board: DAKEFPVF722
+
+Board is DSHOT enabled.
+
+### Target: DAKEFPVF722
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
 
 ## Board: DALRCF405
 
@@ -234,14 +364,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_MOTOR |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
 
 ## Board: DALRCF722DUAL
 
@@ -251,12 +381,12 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_MOTOR |
-| 6 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 1 |
 
 ## Board: FF_F35_LIGHTNING
 
@@ -266,23 +396,23 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
 
 ### Target: WINGFC
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
 
 ## Board: FIREWORKSV2
 
@@ -292,27 +422,89 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR |
-| 2 | FW_MOTOR |
-| 3 | MC_MOTOR |
-| 4 | FW_MOTOR |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
 
 ### Target: OMNIBUSF4V6
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR |
-| 2 | FW_MOTOR |
-| 3 | MC_MOTOR |
-| 4 | FW_MOTOR |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+
+## Board: FLASHHOBBYF405
+
+Board is DSHOT enabled.
+
+### Target: FLASHHOBBYF405
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
+
+## Board: FLASHHOBBYF722
+
+Board is DSHOT enabled.
+
+### Target: FLASHHOBBYF722
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
+
+## Board: FLYCOLORF7MINI
+
+Board is DSHOT enabled.
+
+### Target: FLYCOLORF7MINI
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+
+## Board: FLYWOOF405PRO
+
+Board is DSHOT enabled.
+
+### Target: FLYWOOF405PRO
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 8 |
 
 ## Board: FLYWOOF411
 
@@ -322,19 +514,19 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 1 |
+| 4 | MOTOR |
 
 ### Target: FLYWOOF411_V2
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 2 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
 
 ## Board: FLYWOOF745
 
@@ -344,27 +536,27 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
 
 ### Target: FLYWOOF745NANO
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: FLYWOOF7DUAL
 
@@ -374,12 +566,12 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
 
 ## Board: FOXEERF405
 
@@ -389,12 +581,12 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
 
 ## Board: FOXEERF722DUAL
 
@@ -404,23 +596,23 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
 
 ### Target: FOXEERF722V2
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
 
 ## Board: FOXEERF722V4
 
@@ -430,23 +622,23 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
 
 ### Target: FOXEERF722V4_X8
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
 
 ## Board: FOXEERF745AIO
 
@@ -456,19 +648,38 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR |
-| 2 | MC_MOTOR |
-| 3 | MC_MOTOR |
-| 4 | MC_MOTOR |
+| 1 | MOTOR |
+| 2 | MOTOR |
+| 3 | MOTOR |
+| 4 | MOTOR |
 
 ### Target: FOXEERF745AIO_V3
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR |
-| 2 | MC_MOTOR |
-| 3 | MC_MOTOR |
-| 4 | MC_MOTOR |
+| 1 | MOTOR |
+| 2 | MOTOR |
+| 3 | MOTOR |
+| 4 | MOTOR |
+
+## Board: FOXEERH743
+
+Board is DSHOT enabled.
+
+### Target: FOXEERH743
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
+| 9 | AUTO TIMER 15 |
+| 10 | AUTO TIMER 15 |
 
 ## Board: FRSKYPILOT
 
@@ -478,32 +689,32 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_SERVO, FW_MOTOR |
-| 2 | MC_SERVO, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
-| 9 | MC_MOTOR, FW_SERVO |
-| 10 | MC_MOTOR, FW_SERVO |
-| 11 | MC_MOTOR, FW_SERVO |
-| 12 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 2 |
+| 11 | AUTO TIMER 2 |
+| 12 | AUTO TIMER 2 |
 
 ### Target: FRSKYPILOT_LED
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_SERVO, FW_MOTOR |
-| 2 | MC_SERVO, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
-| 9 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
 
 ## Board: FURYF4OSD
 
@@ -513,19 +724,49 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 2 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 2 |
 
 ### Target: MAMBAF405
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 2 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 2 |
+
+## Board: GEPRCF405
+
+Board is DSHOT enabled.
+
+### Target: GEPRCF405
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 3 |
+
+## Board: GEPRCF722
+
+Board is DSHOT enabled.
+
+### Target: GEPRCF722
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
 
 ## Board: GEPRCF722_BT_HD
 
@@ -535,14 +776,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_MOTOR, MC_SERVO |
-| 6 | MC_MOTOR, FW_MOTOR, MC_SERVO |
-| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: GEPRC_F722_AIO
 
@@ -552,10 +793,10 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | MOTOR |
+| 2 | MOTOR |
+| 3 | MOTOR |
+| 4 | MOTOR |
 
 ## Board: HAKRCF405D
 
@@ -565,12 +806,12 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 1 |
 
 ## Board: HAKRCF405V2
 
@@ -580,14 +821,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_MOTOR |
-| 4 | MC_MOTOR, FW_MOTOR |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: HAKRCF411D
 
@@ -597,10 +838,10 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
 
 ## Board: HAKRCF722V2
 
@@ -610,14 +851,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 1 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: HAKRCKD722
 
@@ -627,14 +868,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ## Board: HGLRCF722
 
@@ -644,14 +885,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 8 | MC_MOTOR, MC_SERVO, FW_MOTOR |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ## Board: IFLIGHTF4_SUCCEXD
 
@@ -661,10 +902,10 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR |
-| 2 | MC_MOTOR |
-| 3 | MC_MOTOR |
-| 4 | MC_MOTOR |
+| 1 | MOTOR |
+| 2 | MOTOR |
+| 3 | MOTOR |
+| 4 | MOTOR |
 
 ## Board: IFLIGHTF7_TWING
 
@@ -674,14 +915,31 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_MOTOR, MC_SERVO |
-| 6 | MC_MOTOR, FW_MOTOR, MC_SERVO |
-| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
+
+## Board: IFLIGHT_BLITZ_ATF435
+
+Board is DSHOT enabled.
+
+### Target: IFLIGHT_BLITZ_ATF435
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
 
 ## Board: IFLIGHT_BLITZ_F722
 
@@ -691,14 +949,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
 
 ## Board: IFLIGHT_BLITZ_F7_PRO
 
@@ -708,14 +966,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: IFLIGHT_JBF7PRO
 
@@ -725,14 +983,46 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 8 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+
+## Board: JHEMCUF405
+
+Board is DSHOT enabled.
+
+### Target: JHEMCUF405
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
+
+## Board: JHEMCUF722
+
+Board is DSHOT enabled.
+
+### Target: JHEMCUF722
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
 
 ## Board: KAKUTEF4
 
@@ -742,32 +1032,43 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 8 |
 
 ### Target: KAKUTEF4V2
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 5 |
 
 ### Target: KAKUTEF4V23
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+
+### Target: KAKUTEF4V24
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
 
 ## Board: KAKUTEF7
 
@@ -777,34 +1078,34 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 5 |
 
 ### Target: KAKUTEF7HDV
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 5 |
 
 ### Target: KAKUTEF7MINI
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 5 |
 
 ## Board: KAKUTEF7MINIV3
 
@@ -814,12 +1115,12 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_MOTOR |
-| 4 | MC_MOTOR, FW_MOTOR |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
 
 ## Board: KAKUTEH7
 
@@ -829,40 +1130,62 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
 
 ### Target: KAKUTEH7V2
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
 
 ### Target: KAKUTEH7MINI
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
+
+## Board: KAKUTEH7WING
+
+Board is DSHOT enabled.
+
+### Target: KAKUTEH7WING
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 5 |
+| 8 | AUTO TIMER 5 |
+| 9 | AUTO TIMER 15 |
+| 10 | AUTO TIMER 15 |
+| 11 | AUTO TIMER 3 |
+| 12 | AUTO TIMER 3 |
+| 13 | AUTO TIMER 3 |
 
 ## Board: MAMBAF405US
 
@@ -872,19 +1195,19 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
 
 ### Target: MAMBAF405US_I2C
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
 
 ## Board: MAMBAF405_2022A
 
@@ -894,23 +1217,23 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_MOTOR |
-| 6 | MC_SERVO, FW_MOTOR |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
 
 ### Target: MAMBAF405_2022B
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_MOTOR |
-| 6 | MC_SERVO, FW_MOTOR |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
 
 ## Board: MAMBAF722
 
@@ -920,19 +1243,19 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
 
 ### Target: MAMBAF722_I2C
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
 
 ## Board: MAMBAF722_2022A
 
@@ -942,27 +1265,27 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 1 |
+| 8 | AUTO TIMER 3 |
 
 ### Target: MAMBAF722_2022B
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 1 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: MAMBAF722_WING
 
@@ -972,14 +1295,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 1 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: MAMBAF722_X8
 
@@ -989,14 +1312,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 1 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: MAMBAH743
 
@@ -1006,27 +1329,27 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_MOTOR |
-| 8 | MC_SERVO, FW_MOTOR |
+| 1 | AUTO TIMER 5 |
+| 2 | AUTO TIMER 5 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
 
 ### Target: MAMBAH743_2022B
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_MOTOR |
-| 8 | MC_SERVO, FW_MOTOR |
+| 1 | AUTO TIMER 5 |
+| 2 | AUTO TIMER 5 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
 
 ## Board: MATEKF405
 
@@ -1036,37 +1359,25 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, LED |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-
-### Target: MATEKF405_SERVOS6
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, LED |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_MOTOR |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 2, LED |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 4 |
 
 ### Target: MATEKF405OSD
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, LED |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_MOTOR |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 2, LED |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 4 |
 
 ## Board: MATEKF405CAN
 
@@ -1076,14 +1387,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_MOTOR |
-| 8 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ## Board: MATEKF405SE
 
@@ -1093,29 +1404,29 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 12 |
+| 8 | AUTO TIMER 12 |
+| 9 | AUTO TIMER 1 |
 
 ### Target: MATEKF405SE_PINIO
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 12 |
+| 8 | AUTO TIMER 12 |
+| 9 | AUTO TIMER 1 |
 
 ## Board: MATEKF405TE
 
@@ -1125,33 +1436,33 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
-| 10 | MC_SERVO, FW_SERVO |
-| 11 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+| 9 | AUTO TIMER 12 |
+| 10 | AUTO TIMER 13 |
+| 11 | AUTO TIMER 4 |
 
 ### Target: MATEKF405TE_SD
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
-| 10 | MC_SERVO, FW_SERVO |
-| 11 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+| 9 | AUTO TIMER 12 |
+| 10 | AUTO TIMER 13 |
+| 11 | AUTO TIMER 4 |
 
 ## Board: MATEKF411
 
@@ -1161,49 +1472,49 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 2 |
 
 ### Target: MATEKF411_FD_SFTSRL
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 2 |
 
 ### Target: MATEKF411_RSSI
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 2 |
 
 ### Target: MATEKF411_SFTSRL2
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_SERVO, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 2 |
 
 ## Board: MATEKF411SE
 
@@ -1213,44 +1524,44 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 4 |
 
 ### Target: MATEKF411SE_PINIO
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 4 |
 
 ### Target: MATEKF411SE_FD_SFTSRL1
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 4 |
 
 ### Target: MATEKF411SE_SS2_CH6
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
 
 ## Board: MATEKF411TE
 
@@ -1260,13 +1571,13 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | LED, MC_SERVO |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | LED, SERVO |
 
 ## Board: MATEKF722
 
@@ -1276,25 +1587,13 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_MOTOR |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-
-### Target: MATEKF722_HEXSERVO
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_MOTOR |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 4 |
 
 ## Board: MATEKF722PX
 
@@ -1304,46 +1603,46 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
-| 10 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
 
 ### Target: MATEKF722PX_PINIO
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
-| 10 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
 
 ### Target: MATEKF722WPX
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
-| 10 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
 
 ## Board: MATEKF722SE
 
@@ -1353,40 +1652,27 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_SERVO, FW_MOTOR |
-| 8 | MC_SERVO, FW_MOTOR |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ### Target: MATEKF722MINI
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_SERVO, FW_MOTOR |
-| 8 | MC_SERVO, FW_MOTOR |
-
-### Target: MATEKF722SE_8MOTOR
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ## Board: MATEKF765
 
@@ -1396,35 +1682,35 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
-| 10 | MC_SERVO, FW_SERVO |
-| 11 | MC_MOTOR, FW_SERVO |
-| 12 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 2 |
+| 2 | AUTO TIMER 2 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+| 11 | AUTO TIMER 9 |
+| 12 | AUTO TIMER 9 |
 
 ### Target: MATEKF765SE
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
-| 10 | MC_SERVO, FW_SERVO |
-| 11 | MC_MOTOR, FW_SERVO |
-| 12 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 2 |
+| 2 | AUTO TIMER 2 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+| 11 | AUTO TIMER 9 |
+| 12 | AUTO TIMER 9 |
 
 ## Board: MATEKH743
 
@@ -1434,18 +1720,35 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
-| 9 | MC_MOTOR, FW_SERVO |
-| 10 | MC_MOTOR, FW_SERVO |
-| 11 | MC_SERVO, FW_SERVO |
-| 12 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+| 11 | AUTO TIMER 15 |
+| 12 | AUTO TIMER 15 |
+
+### Target: MATEKH743HD
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+| 11 | AUTO TIMER 15 |
+| 12 | AUTO TIMER 15 |
 
 ## Board: NEUTRONRCF435MINI
 
@@ -1455,10 +1758,10 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 3 |
 
 ## Board: NEUTRONRCF435SE
 
@@ -1468,14 +1771,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: NEUTRONRCF435WING
 
@@ -1485,14 +1788,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 2 |
 
 ## Board: NEUTRONRCH7BT
 
@@ -1502,14 +1805,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ## Board: NOX
 
@@ -1519,10 +1822,10 @@ Board is not DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 5 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 3 |
 
 ## Board: DYSF4PRO
 
@@ -1532,94 +1835,94 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO, LED |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5, LED |
+| 6 | AUTO TIMER 1 |
 
 ### Target: DYSF4PROV2
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO, LED |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5, LED |
+| 6 | AUTO TIMER 1 |
 
 ### Target: OMNIBUSF4
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO, LED |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5, LED |
+| 6 | AUTO TIMER 1 |
 
 ### Target: OMNIBUSF4PRO
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 1 |
 
 ### Target: OMNIBUSF4PRO_LEDSTRIPM5
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 1 |
 
 ### Target: OMNIBUSF4V3_S5_S6_2SS
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
 
 ### Target: OMNIBUSF4V3_S5S6_SS
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
 
 ### Target: OMNIBUSF4V3_S6_SS
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5 |
 
 ### Target: OMNIBUSF4V3
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 1 |
 
 ## Board: OMNIBUSF7
 
@@ -1629,19 +1932,19 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
 
 ### Target: OMNIBUSF7V2
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
 
 ## Board: OMNIBUSF7NXT
 
@@ -1651,12 +1954,12 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_MOTOR |
-| 6 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
 
 ## Board: PIXRACER
 
@@ -1666,12 +1969,12 @@ Board is not DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_MOTOR |
-| 6 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
 
 ## Board: REVO
 
@@ -1681,16 +1984,16 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO, ANY |
-| 6 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 7 | PWM, FW_SERVO |
-| 8 | PWM, FW_SERVO |
-| 9 | PWM, FW_SERVO |
-| 10 | PWM, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5, ANY |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
+| 9 | AUTO TIMER 8 |
+| 10 | AUTO TIMER 8 |
 
 ## Board: RUSH_BLADE_F7
 
@@ -1700,27 +2003,27 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ### Target: RUSH_BLADE_F7_HD
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ## Board: SAGEATF4
 
@@ -1730,14 +2033,31 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
+
+## Board: SDMODELH7V1
+
+Board is DSHOT enabled.
+
+### Target: SDMODELH7V1
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
 
 ## Board: SKYSTARSF405HD
 
@@ -1747,10 +2067,10 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 2 |
 
 ## Board: SKYSTARSF722HD
 
@@ -1760,19 +2080,19 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
 
 ### Target: SKYSTARSF722MINIHD
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
 
 ## Board: SKYSTARSH743HD
 
@@ -1782,16 +2102,48 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
-| 10 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 5 |
+| 8 | AUTO TIMER 5 |
+
+## Board: SPEDIXF405
+
+Board is DSHOT enabled.
+
+### Target: SPEDIXF405
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
+
+## Board: SPEDIXF722
+
+Board is DSHOT enabled.
+
+### Target: SPEDIXF722
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
 
 ## Board: SPEEDYBEEF4
 
@@ -1801,54 +2153,97 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 6 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 4 |
 
 ### Target: SPEEDYBEEF4_SFTSRL1
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 6 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 4 |
 
 ### Target: SPEEDYBEEF4_SFTSRL2
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 6 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 7 | MC_MOTOR, MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 4 |
+
+## Board: SPEEDYBEEF405MINI
+
+Board is DSHOT enabled.
+
+### Target: SPEEDYBEEF405MINI
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+
+### Target: SPEEDYBEEF405MINI_6OUTPUTS
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 12 |
+| 6 | AUTO TIMER 1 |
 
 ## Board: SPEEDYBEEF405V3
 
-Board is not DSHOT enabled.
+Board is DSHOT enabled.
 
 ### Target: SPEEDYBEEF405V3
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_MOTOR |
-| 4 | MC_MOTOR, FW_MOTOR |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
+
+## Board: SPEEDYBEEF405V4
+
+Board is DSHOT enabled.
+
+### Target: SPEEDYBEEF405V4
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+| 9 | AUTO TIMER 12 |
+| 10 | AUTO TIMER 12 |
 
 ## Board: SPEEDYBEEF405WING
 
@@ -1858,17 +2253,17 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_SERVO, FW_SERVO |
-| 8 | MC_SERVO, FW_SERVO |
-| 9 | MC_SERVO, FW_SERVO |
-| 10 | MC_SERVO, FW_SERVO |
-| 11 | MC_SERVO, FW_SERVO |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 2 |
+| 9 | AUTO TIMER 2 |
+| 10 | AUTO TIMER 2 |
+| 11 | AUTO TIMER 12 |
 
 ## Board: SPEEDYBEEF7
 
@@ -1878,12 +2273,12 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, MC_SERVO, FW_SERVO |
-| 6 | LED, MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 1 |
+| 6 | LED, AUTO TIMER 4 |
 
 ## Board: SPEEDYBEEF745AIO
 
@@ -1893,10 +2288,10 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR |
-| 2 | MC_MOTOR |
-| 3 | MC_MOTOR |
-| 4 | MC_MOTOR |
+| 1 | MOTOR |
+| 2 | MOTOR |
+| 3 | MOTOR |
+| 4 | MOTOR |
 
 ## Board: SPEEDYBEEF7MINI
 
@@ -1906,14 +2301,27 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_SERVO, FW_MOTOR |
-| 8 | MC_SERVO, FW_MOTOR |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+
+### Target: SPEEDYBEEF7MINIV2
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ## Board: SPEEDYBEEF7V2
 
@@ -1923,10 +2331,10 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_MOTOR |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 3 |
 
 ## Board: SPEEDYBEEF7V3
 
@@ -1936,14 +2344,14 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 2 |
+| 2 | AUTO TIMER 2 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: SPRACINGF4EVO
 
@@ -1953,14 +2361,14 @@ Board is not DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_SERVO |
-| 2 | MC_MOTOR, FW_SERVO |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, MC_SERVO, FW_MOTOR |
-| 8 | MC_MOTOR, MC_SERVO, FW_MOTOR |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 10 |
+| 6 | AUTO TIMER 11 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
 
 ## Board: TMOTORF7V2
 
@@ -1970,15 +2378,15 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_MOTOR |
-| 4 | MC_MOTOR, FW_MOTOR |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
-| 9 | PWM, FW_SERVO |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
+| 9 | PWM, SERVO |
 
 ## Board: ZEEZF7
 
@@ -1988,34 +2396,34 @@ Board is DSHOT enabled.
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR |
-| 2 | MC_MOTOR |
-| 3 | MC_MOTOR |
-| 4 | MC_MOTOR |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 4 |
+| 4 | AUTO TIMER 3 |
 
 ### Target: ZEEZF7V2
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO |
-| 6 | MC_MOTOR, FW_SERVO |
-| 7 | MC_MOTOR, FW_SERVO |
-| 8 | MC_MOTOR, FW_SERVO |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 3 |
 
 ### Target: ZEEZF7V3
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | MC_MOTOR, FW_MOTOR |
-| 2 | MC_MOTOR, FW_MOTOR |
-| 3 | MC_MOTOR, FW_SERVO |
-| 4 | MC_MOTOR, FW_SERVO |
-| 5 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 6 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 7 | MC_MOTOR, FW_SERVO, MC_SERVO |
-| 8 | MC_MOTOR, FW_SERVO, MC_SERVO |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
 
