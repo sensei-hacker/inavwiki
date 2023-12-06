@@ -16,6 +16,7 @@ A wide variety of inexpensive flight controller boards are supported.  F4 & F7 f
 
 ## To watch
 
+- [INAV 7 Ferocious Falcon](https://youtu.be/8Q8t_KwlSAQ)
 - [INAV on a flying wing video tutorial](https://www.youtube.com/playlist?list=PLOUQ8o2_nCLkZlulvqsX_vRMfXd5zM7Ha)
 - [INAV on multirotor drone tutorial](https://youtube.com/playlist?list=PLOUQ8o2_nCLkfcKsWobDLtBNIBzwlwRC8)
 - [Betaflight to INAV migration guide](https://www.youtube.com/watch?v=1hhsqyXeKew)
