@@ -5,7 +5,7 @@
 - [AIR MODE](#air-mode)
 - [ANGLE](#angle)
 - [ARM](#arm)
-- [AUTO LEVEL TRIM](#autoleveltrim-fw)
+- [AUTO LEVEL TRIM](#auto-level-trim-fw)
 - [AUTOTUNE](#autotune-fw)
 - [BEEPER](#BEEPER)
 - [BLACKBOX](#blackbox)
