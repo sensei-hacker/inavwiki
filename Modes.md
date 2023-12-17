@@ -249,6 +249,8 @@ Switches to the different alternative OSD displays ALT1, ALT2 or ALT3. The defau
 Switches off the OSD.
 
 ### SERVO AUTOTRIM (FW)
+_Tuning mode_
+
 In flight adjustment of servo midpoint for straight flight
 
 This was changed in 3.0. Only servos with a "stabilized" rule on the INC Servo Mixer are trimmed.  Also note that the automatic version of this introduced in 3.0 requires a GPS and detectable motion in order to work.
