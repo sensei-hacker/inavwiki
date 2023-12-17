@@ -5,7 +5,7 @@
 - [AIR MODE](#air-mode)
 - [ANGLE](#angle)
 - [ARM](#arm)
-- [AUTO LEVEL](#autolevel-fw)
+- [AUTO LEVEL TRIM](#autoleveltrim-fw)
 - [AUTOTUNE](#autotune-fw)
 - [BEEPER](#BEEPER)
 - [BLACKBOX](#blackbox)
@@ -75,15 +75,19 @@ Maximum banking angle is limited by `max_angle_inclination_rll` and `max_angle_i
 
 ### ALTHOLD
 
-The altitude of the aircraft a the moment you activate this mode is fixed.
+Maintain the altitude of the aircraft a the moment you activate this mode is fixed. Find more information [here](https://github.com/iNavFlight/inav/wiki/Navigation-modes#althold---altitude-hold).
 
-### AUTO LEVEL (FW)
+### AUTO LEVEL TRIM (FW)
+_Tuning mode_
 
-AUTO LEVEL will attempt to automatically tune the pitch offset (`fw_level_pitch_trim`) a fixed-wing airplane needs to not lose altitude when flying straight in a self levelling flight mode. To use AUTO LEVEL you should first be in a self levelling flight mode which does _not_ use ALTHOLD. ANGLE, HORIZON, and COURSE HOLD are all fine. Once in that mode, enable AUTO LEVEL and do not make corrections. AUTO LEVEL will attempt to tune the correct Angle of Attack for your current speed. You can see how level the craft is flying with the digital variometer element on the OSD. +/1 0.3 is fine. Once flying level, you can disable AUTO LEVEL. From INAV 6.0, a system message is shown when AUTO LEVEL is active.
+AUTO LEVEL TRIM will attempt to automatically tune the pitch offset (`fw_level_pitch_trim`) a fixed-wing airplane needs to not lose altitude when flying straight in a self levelling flight mode. To use AUTO LEVEL you should first be in a self levelling flight mode which does _not_ use ALTHOLD. ANGLE, HORIZON, and COURSE HOLD are all fine. Once in that mode, enable AUTO LEVEL and do not make corrections. AUTO LEVEL will attempt to tune the correct Angle of Attack for your current speed. You can see how level the craft is flying with the digital variometer element on the OSD. +/1 0.3 is fine. Once flying level, you can disable AUTO LEVEL. From INAV 6.0, a system message is shown when AUTO LEVEL is active.
 
 The new value isn't saved to EEPROM, you have to save it manually using either the configurator or a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md). However, if you have a feature enabled which saves on disarm, such as Continuous Servo Trim or [Stats](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#stats). The new `fw_level_pitch_trim` will be saved.
 
+Pre INAV 7.0, this tuning mode was called AUTO LEVEL
+
 ### AUTOTUNE (FW)
+_Tuning mode_
 
 For detailed description go to https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing
 
