@@ -40,10 +40,12 @@ Note: All INAV parameters for distance, velocity, and acceleration are input in 
 Let's have a look at each mode of operation in detail.
 
 ## ALTHOLD - Altitude hold
-When activated, the aircraft maintains its actual altitude unless changed by manual throttle input.
-Throttle input indicates climb or sink up to a predetermined maximum rate (see CLI variables). Using ALTHOLD with a multicopter, you need a barometer. **Please see the platform specific notes for ALTHOLD below.**
+ALTHOLD is not a flight mode in it's own right. It is a modifier which, when activated in combination with a flight mode, maintains the aircraft's  altitude.
+
+**Please see the platform specific notes for ALTHOLD below.**
 
 SONAR: Altitude hold code will use sonar automatically on low altitudes (< 3m) if hardware is available.
+
 Using ALTHOLD with a plane (fixed wing: fw) with GPS: Since INAV 1.5 it's recommended to keep baro enabled, and for INAV 1.6 the plan is to rely even less on GPS altitude when baro is enabled.
 
 **In general you shouldn't use ALTHOLD with ACRO/HORIZON: ALTHOLD doesn't account for extreme acro manoeuvres.**
@@ -52,9 +54,12 @@ Activate ALTHOLD by **ALTHOLD** flight mode.
 Altitude, as calculated by INAV's position estimator, is recorded to BLACKBOX as navPos[2].
 
 ### a) Using ALTHOLD with a multicopter (mc):
+Using ALTHOLD with a multicopter, you need a barometer. 
+
 Activate AIRMODE to keep the copter stable in fast descent - now you can do the whole flight in altitude hold - from take-off to landing.
 
 Climb rate in ALTHOLD mode:
+Throttle input indicates climb or sink up to a predetermined maximum rate (see CLI variables).
 "set nav_max_climb_rate = 500" and "set nav_manual_climb_rate = 200" define the maximum climb and decent rate in autonomous/manual flight modes.
 The neutral position of the throttle stick to hold current altitude is defined by
 - “set nav_use_midthr_for_althold=ON”: use mid position of throttle stick as neutral. By default the mid position value is typically 1500us as set in the "Receiver" tab.
@@ -111,13 +116,13 @@ for vertical position (z) and
 - set inav_w_z_gps_v = 0.500
 for vertical velocity. Too high “inav_w_z_baro_p” will make ALTHOLD nervous, and too low will make it drift so you risk running into the ground when cruising around. Using GPS readings for vertical velocity allows for a lower weight for baro to make ALTHOLD smoother without making it less accurate.
 
-
 //  : explain remaining relevant settings
 
 ### b) Using ALTHOLD with an airplane (fixed wing, FW):
-With Fixed Wing models, INAV is not intended to use ALTHOLD controller in anything but ANGLE mode.
+**With Fixed Wing models, INAV is not intended to use ALTHOLD controller in anything but ANGLE mode. It should not be used on it's own, or with other modes.**
+
 INAV controls pitch angle and throttle. It assumes that altitude is held (roughly) when pitch angle is zero. If plane has to climb, INAV will also increase throttle. If plane has to dive, INAV will reduce throttle and glide. The strength of this mixing is controlled by “nav_fw_pitch2thr”.
-Set board alignment in such a way that your plane is flying level both in "MANUAL" and in "ANGLE", when you don't touch the sticks.
+Trim the aircraft and set Fixed Wing Level Trim in such a way that your plane is flying level both in "MANUAL" and in "ANGLE", when you don't touch the sticks.
 
 INAV’s parameters for fixed wing:
 - set nav_fw_cruise_thr = 1400  # cruise throttle
