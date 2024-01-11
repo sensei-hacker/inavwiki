@@ -145,8 +145,9 @@ POSHOLD permits smooth controlled flight and can be modified via the ADVANCED TU
 
  The User Control Mode can be either ATTI or CRUISE:
  
--  ATTI The Pitch/Roll stick behaves in a similar way to ANGLE
--  CRUISE The Pitch/Roll stick behaves in a similar way to HORIZON (Recommended for smooth video work)
+-  ATTI - When the Pitch/Roll sticks are moved, autopilot position control is disengaged. So the multirotor behaves with the freedom of ANGLE mode.
+-  CRUISE - The autopilot position control always remains active. So when the Pitch/Roll sticks are moved, the input is transformed from a command 
+   to speed and merged with the current position. To provide more precise 3D position control over the craft. But will feel less fluid than ATTI.
 
 A number of other parameters can also be set:
 
