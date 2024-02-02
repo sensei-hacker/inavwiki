@@ -1,5 +1,9 @@
 ![](http://static.rcgroups.net/forums/attachments/6/1/0/3/7/6/a9088858-102-inav.png)
 
+INAV is a Free and Open Source Flight Controller and Autopilot Software System.
+
+It's compatible with very diverse set of hardware, and also can control flying vehicles (airplanes, gliders, multirotors like quadcopters, helicopters), ground vehicles (like cars and tanks) and water vehicles (like boats).
+
 INAV is **being actively developed** and currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features.
 
 A wide variety of inexpensive flight controller boards are supported.  F4 & F7 flight control boards are **strongly suggested** to gain access to the full features of INAV.
