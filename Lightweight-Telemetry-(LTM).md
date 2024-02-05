@@ -28,9 +28,9 @@ The follow telemetry frames are supported:
 
 | Function Byte | Usage | Frequency |
 | ------------- | ----- | ---- | 
-| G | GPS Frame | 5Hhz at > 2400 baud |
+| G | GPS Frame | 5Hz at > 2400 baud |
 | A | Attitude Frame | 10 Hz at > 2400 baud |
-| S | Status Frame | 5Hhz at > 2400 baud | 
+| S | Status Frame | 5Hz at > 2400 baud | 
 | O | Origin Frame | 1 Hz rate | 
 | N | Navigation Frame (INAV extension) | ~4 Hz rate |
 | X | GPS eXended data (INAV extension) | 1 Hz rate |
