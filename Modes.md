@@ -4,10 +4,12 @@
 
 - [AIR MODE](#air-mode)
 - [ANGLE](#angle)
+- [ANGLE HOLD](#angle-hold) (7.1 and later)
 - [ARM](#arm)
 - [AUTO LEVEL TRIM](#auto-level-trim-fw)
 - [AUTOTUNE](#autotune-fw)
 - [BEEPER](#BEEPER)
+- [BEEPER MUTE](#BEEPER-MUTE)
 - [BLACKBOX](#blackbox)
 - CAMERA CONTROL #
 - [CAMSTAB](#CAMSTAB)
@@ -36,7 +38,11 @@
 - [TELEMETRY](#telemetry)
 - [TURN ASSIST](#turn-assist)
 - [TURTLE](#turtle-mc)
-- USER1 & USER2
+- [MULTI FUNCTION](#OSD-utility) 
+- [MIXER PROFILE 2](#VTOL)
+- [MIXER TRANSITION](#VTOL)
+- USER1 & USER2 
+- USER3 & USER4
 
 ## Default flight mode ( No mode selected )
 
@@ -65,13 +71,23 @@ same switch like your arm switch or you can enable/disable it in air. Additional
 will additionally fully enable Iterm at zero throttle. Note that there is still some protection on the ground
 when throttle zeroed (below min_check) and roll/pitch sticks centered. This is a basic protection to limit
 motors spooling up on the ground. Also the Iterm will be reset above 70% of stick input in acro mode to prevent
-quick Iterm windups during finishes of rolls and flips, which will provide much cleaner and more natural stops
+quick i-term windups during finishes of rolls and flips, which will provide much cleaner and more natural stops
 of flips and rolls what again opens the ability to have higher I gains for some.
 
 ### ANGLE
 
 In this auto-leveled mode the roll and pitch channels control the angle between the relevant axis and the vertical, achieving leveled flight just by leaving the sticks centered.
 Maximum banking angle is limited by `max_angle_inclination_rll` and `max_angle_inclination_pit`
+
+### ANGLE HOLD (FW)
+
+This mode is a simple version of an attitude lock stabilizer.
+It is designed to be used with fixedwing aircraft, and is based on Angle mode. But unlike Angle mode which _self levels_ when you release the stick to center.. Angle Hold will attempt to _hold_ the pitch or roll _angle_ the airplane is climbing/diving or banking at, when the stick is released back to center.
+The airplane will not return to level flight, until you move that corresponding stick to make that axis become level again, and release the stick back to center.
+This mode can be enabled with flight modifier modes like COURSE HOLD mode, to maintain a constant heading and climb angle over a long distance. e.g. Up or Down the side of a long mountain range.
+And it can also be enabled with ALT HOLD mode, to allow the airplane to make a long slow bank, without losing altitude in the turn.
+This flight mode has its angle limits set by `nav_fw_bank_angle`, `nav_fw_climb_angle` and `nav_fw_dive_angle`.
+**For this mode to work effectively on the pitch axis. The pilot MUST provide adequate throttle (motor thrust) to hold that climb angle, or the airplane will stall.. Use Caution!**
 
 ### ALTHOLD
 
@@ -108,6 +124,10 @@ Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using
 ### BEEPER
 
 Make the beeper connected to the FC beep (lost model finder).
+
+### BEEPER MUTE
+
+Allows the flight controller beeper to be muted by a switch. To provide some peace  and quiet.
 
 ### BLACKBOX
 
@@ -174,11 +194,40 @@ What FC does in MANUAL mode is: Motor mixing, Servo Mixing, Expo settings, Throw
 
 ### MC BRAKING (MC)
 
-//TODO//
+This mode provides faster manual braking when the pitch stick is released. If the multirotor is being flown around in POSHOLD flight mode.
+For this mode to work. It requires `nav_user_control_mode = CRUISE` to be enabled.
+**Use with caution**. This mode can cause temporary runaway with some settings and under some conditions.
+
+### MIXER PROFILE 2
+
+This mode is primarily used to activate Mixer profile 2, which contains multirotor control and PID settings for VTOL models.
+ 
+### MIXER TRANSITION
+
+Used to transition VTOL aircraft from the _multirotor control profile_ to the _fixedwing control profile_ and back again. This is useful for allowing a VTOL to increase forward airspeed, before entering full fixedwing flight. So as not to stall or loss altitude in the transition process. Or it can also be used to slow the aircraft in fixedwing flight, for braking and better control stability before it enters the multirotor (VTOL) state.
 
 ### MSP RC OVERRIDE
 
 Allows defined RC channels to be overridden by MSP `MSP_SET_RAW_RC` messages. The channels to be overridden are defined by the CLI setting `msp_override_channels`. There is a [code example](https://codeberg.org/stronnag/msp_override) that provides further information and a sample application illustrating the use of MSP RC OVERRIDE.
+
+
+### MULTI FUNCTION 
+
+This function use a single mode to select between different functions based on feedback provided by the Multi Function OSD field. Functions are selected by briefly toggling the mode ON/OFF with this sequence, repeating until the required function is displayed in the OSD. The function is then triggered by activating the mode for > 3s. Deactivating the mode for > 3s resets everything leaving the OSD field blank. Ideally a momentary switch should be used to operate the mode although it should also work with a normal switch. Current functions include -
+* re-displaying any warnings
+* emergency landing activation
+* Safehome suspend
+* Trackback suspend 
+* Turtle mode activation 
+* Emergency arming function
+
+It also provides warnings that are displayed for 10s when first triggered after which the warning disappears to be replaced with an alert symbol with a number showing the active warning total. Active warnings are then re-displayed for 5s on a rolling 30s cycle. The field is blank if there are no warnings. Current Warnings are provided for -
+* Battery state
+* Vibration level
+* GPS Fix or Failure
+* RTH Sanity (>200m heading in wrong direction)
+* Altitude Sanity (difference between estimated and GPS altitude > 20m)
+* Compass failure and Ground Test mode being active. 
 
 ### NAV LAUNCH (FW)
 
