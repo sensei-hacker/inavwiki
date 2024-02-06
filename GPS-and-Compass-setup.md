@@ -1,29 +1,44 @@
-INAV supports Ublox, DJI NAZA, and NMEA. NMEA is not recommended for navigation, due to its slower update rate.
+In post 7.0 releases. INAV only supports Ublox and Ublox7 protocols.
 
-Recommended GPS are M8N or later models. 
+Recommended GNSS units are M8, M9 or M10 models for best navigation performance.
 
 Modules known to work reasonably well:
 * [Beitian BN-880](https://inavflight.com/shop/p/BN880)
-* [Ublox NEO-M8N APM version](https://inavflight.com/shop/s/bg/1035454)
+* [Matek M10Q-5883](http://www.mateksys.com/?portfolio=m10q-5883)
 
-Older versions as M6N and M7N also work, but the newer M8N (and later, M9N, M10N) are far superior. 
-Most GPS modules have a built in magnetometer (compass), but there are also some available without e.g. [Beitian BN-180](https://inavflight.com/shop/p/BN180) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
+Older versions as M6N and M7N also work, but the newer M10 versions are far superior. 
+Most GPS modules have a built in magnetometer (compass), but there are also some available without e.g. [Matek M10Q](http://www.mateksys.com/?portfolio=sam-m10q) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
 
 With default settings INAV will configure the GPS automatically, **there is no need for configuring it manually** using software like `u-center`. Nevertheless you have to configure your FC with INAV to receive the GPS signals.
 
 For INAV before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites. 
 
-With INAV 1.9 and later, Galileo can be enabled with the CLI setting `set gps_ublox_use_galileo = ON` (the default is off).
+With INAV 7.0 and later, GPS, Galileo and BeiDou **or** Glonass (not both) can be enabled in the GPS configuration tab (GPS is ON by default).
 
-If you want to use the external magnetometer (built in in your GPS) and you have a FC with the same magnetometer (HMC5883L is very common), you have to disable it physically on your FC: remove chip from board or cut a trace. You can't use two identical chips/magnetometers on the same I2C bus. 
+If you want to use the external magnetometer (built in your GPS) and you have a FC with the same magnetometer (HMC5883L is very common), you have to disable it physically on your FC: remove chip from board or cut a trace. You can't use two identical chips/magnetometers on the same I2C bus. 
   * When using DJI NAZA gps this is not the case, DJI NAZA sends compass over serial and does not use the I2C bus)
   * On MPU9250 board internal magnetometer is an AK8963, most GPS pucks are HMC5883L. So no need to remove hardware, only choose which one to use with cli command `mag_hardware`
   * Recent MATEK M10 compass is provided over serial MSP
-  * Compass is mandatory on multi-rotor, optional on fixed wing.
 
 If  you elect to use the internal FC magnetometer you are highly likely to have poor results due to magnetic interference (not recommended).
 
-## Installing the GPS unit - Antenna orietation
+ ## INAV 7.1 changes
+
+**From the release of INAV 7.1. The use of a compass is no longer mandatory for multirotor navigation as it once was. BUT is still recommended for best performance when it comes to maintaining a fixed position for an _extended period of time_, without heading drift.** e.g. in Poshold. Or taking off and immediately starting a Waypoint mission.
+* Compass-less navigation performance is heavily dependent on clean build.. Having minimal levels of Gyro/Acc noise.. It may not work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
+
+INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
+
+If a user does decide to omitted the use of a compass for a multirotor.. For reasons like the models size or magnetic interference that can not be overcome. 
+Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will not** be operational UNTIL a GPS heading is first obtained, by flying in a straight line until -
+* The OSD Heading or Course over Ground indicator displays a valid heading.
+* The OSD Home arrow provides direction
+
+Only then can the IMU heading estimator data be trusted for slow speed or fixed position navigation. Be certain this is the case before you depend on RTH.
+
+INAV 7.1 and later will also benefit fixedwing models by the use of a compass, in providing better heading estimation.. While in previous releases a compass provided no extra benefit.
+
+## Installing the GPS unit - Antenna orientation
 
 To avoid confusion over the antenna orientation, ensure the antenna is skywards as follows: 
 
@@ -191,6 +206,7 @@ The default is AUTO.
 | WAAS     | North America |
 | MSAS     | Asia          |
 | GAGAN    | India         |
+| SOUTHPAN | Australia NZ  |
 | NONE     | NONE         |
 
 If you use a regional specific setting you may achieve a faster GPS lock than using AUTO, but keep in mind to change it if you change your location for holidays etc.
