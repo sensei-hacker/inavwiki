@@ -4,26 +4,25 @@
 
 - [AIR MODE](#air-mode)
 - [ANGLE](#angle)
-- [ANGLE HOLD](#angle-hold) (7.1 and later)
+- [ANGLE HOLD](#ANGLE-HOLD-fw) (7.1 and later)
 - [ARM](#arm)
 - [AUTO LEVEL TRIM](#auto-level-trim-fw)
 - [AUTOTUNE](#autotune-fw)
 - [BEEPER](#BEEPER)
 - [BEEPER MUTE](#BEEPER-MUTE)
 - [BLACKBOX](#blackbox)
-- CAMERA CONTROL #
+- [CAMERA CONTROL](#camera-control)
 - [CAMSTAB](#CAMSTAB)
 - [FAILSAFE](#failsafe)
 - [FLAPERON](#flaperon-fw)
-- FPV ANGLE MIX
+- [FPV ANGLE MIX](#FPV-ANGLE-MIX-mc)
 - [HEADADJ](#headadj-mc)
 - [HEADFREE](#headfree-mc)
 - [HEADING HOLD](#heading-hold)
 - [HOME RESET](#home-reset)
 - [HORIZON](#horizon)
-- KILLSWITCH
+- [KILLSWITCH](#killswitch)
 - [LEDLOW](#ledlow)
-- LIGHTS
 - [LOITER CHANGE](#loiter-change-fw)
 - [MANUAL](#manual-fw) (called PASSTHROUGH mode up to version 1.8.1)
 - [MC BRAKING](#mc-braking-mc)
@@ -38,9 +37,9 @@
 - [TELEMETRY](#telemetry)
 - [TURN ASSIST](#turn-assist)
 - [TURTLE](#turtle-mc)
-- [MULTI FUNCTION](#OSD-utility) 
-- [MIXER PROFILE 2](#VTOL)
-- [MIXER TRANSITION](#VTOL)
+- [MULTI FUNCTION](#multi-function) 
+- [MIXER PROFILE 2](#mixer-profile-2)
+- [MIXER TRANSITION](#mixer-transition)
 - USER1 & USER2 
 - USER3 & USER4
 
@@ -137,6 +136,14 @@ A log header will always be recorded at arming time, even if logging is paused. 
 
 See [`BLACKBOX`](/iNavFlight/inav/blob/master/docs/Blackbox.md) for more information
 
+### CAMERA CONTROL
+
+Camera control 1, 2 & 3 are used to adjust settings from your RC transmitter, when analogue/HD camera's like the _Runcam Hybrid_ or _Split_ are used.
+Available function control is -
+1) WiFi - App connection
+2) Power - Start/Stop record
+3) Mode change - Alter analogue and HD image settings.
+
 ### CAMSTAB
 
 Enables the servo gimbal
@@ -155,6 +162,11 @@ Configuration besides activating FLAPERON mode is pretty simple, and consists of
 
 Flaperon offset is by default is applied as a servo mixer input with ID=14 so using custom servo mixing you can configure FLAPERON mode to deflect any servos you need (including dedicated flaps).
 
+### FPV ANGLE MIX (MC)
+
+This mode mixes in Pitch with a commanded ROLL stick input. Or mixes in Pitch with a commanded YAW stick input. To overcome the sweeping or arching effect that is seen via the FPV view, based on the camera's up-tilt angle. This provides a more visually appealing (true to axis) freestyle or cinematic experience.
+Simply set `fpv_mix_degrees = X°` , to the up-tilt angle your camera is set.
+
 ### HEADADJ (MC)
 
 It allows you to set a new yaw origin for HEADFREE mode.
@@ -172,9 +184,17 @@ It helps to maintain current heading without pilots input and can be used with a
 
 Heading hold only uses yaw control (rudder) so it won't work on a flying wing which has no rudder.
 
+### HOME RESET
+
+This mode provides a means to reset the home location or arming coordinates the model will return to. This is beneficial if you choose to launch or takeoff before the model has a GPS fix.. By using this mode, you can fly past your launch site later in the flight, once a GPS fix is established.  And momentarily activate the feature.. **Ideally, it is better to place this mode on a Pot or one of the multi-position buttons, so it does not get unintentionally bumped.**
+
 ### HORIZON
 
 This hybrid mode works exactly like the previous ANGLE mode with centered roll and pitch sticks (thus enabling auto-leveled flight), then gradually behaves more and more like the default RATE mode as the sticks are moved away from the center position. Which means it has no limitation on banking angle and can do flips.
+
+### KILLSWITCH
+
+Allows the flight controller to be instantly disarmed and locked out, regardless of other Settings, Saves or Checks. As with the disarm switch.
 
 ### LEDLOW
 
@@ -204,7 +224,7 @@ This mode is primarily used to activate Mixer profile 2, which contains multirot
  
 ### MIXER TRANSITION
 
-Used to transition VTOL aircraft from the _multirotor control profile_ to the _fixedwing control profile_ and back again. This is useful for allowing a VTOL to increase forward airspeed, before entering full fixedwing flight. So as not to stall or loss altitude in the transition process. Or it can also be used to slow the aircraft in fixedwing flight, for braking and better control stability before it enters the multirotor (VTOL) state.
+Used to transition VTOL aircraft from the _multirotor control profile_ to the _fixedwing control profile_ and back again. This is useful for allowing a VTOL to increase forward airspeed, before entering full fixedwing flight. So as not to stall or lose altitude in the transition process. Or it can also be used to slow the aircraft in fixedwing flight, for braking and better control stability before it enters the multirotor (VTOL) state.
 
 ### MSP RC OVERRIDE
 
@@ -214,8 +234,8 @@ Allows defined RC channels to be overridden by MSP `MSP_SET_RAW_RC` messages. Th
 ### MULTI FUNCTION 
 
 This function use a single mode to select between different functions based on feedback provided by the Multi Function OSD field. Functions are selected by briefly toggling the mode ON/OFF with this sequence, repeating until the required function is displayed in the OSD. The function is then triggered by activating the mode for > 3s. Deactivating the mode for > 3s resets everything leaving the OSD field blank. Ideally a momentary switch should be used to operate the mode although it should also work with a normal switch. Current functions include -
-* re-displaying any warnings
-* emergency landing activation
+* Re-displaying any warnings
+* Emergency landing activation
 * Safehome suspend
 * Trackback suspend 
 * Turtle mode activation 
@@ -227,7 +247,8 @@ It also provides warnings that are displayed for 10s when first triggered after 
 * GPS Fix or Failure
 * RTH Sanity (>200m heading in wrong direction)
 * Altitude Sanity (difference between estimated and GPS altitude > 20m)
-* Compass failure and Ground Test mode being active. 
+* Compass failure 
+* Ground Test mode 
 
 ### NAV LAUNCH (FW)
 
@@ -349,11 +370,9 @@ TAS (from airspeed sensor) will be used for calculation if available - otherwise
 
 ### TURTLE (MC)
 
-Provides a means of flipping a multicopter that has "landed" upside down.
+Provides a means of flipping over a multicopter that has crash landed upside down, by using the roll or pitch sticks.
 
-//Description TODO//
-
-## AUXILIARY CONFIGURATION
+### AUXILIARY CONFIGURATION
 
 Spare auxiliary receiver channels can be used to enable/disable modes.  Some modes can only be enabled this way.
 
