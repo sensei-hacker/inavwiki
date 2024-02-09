@@ -2,7 +2,7 @@
 
 Blackbox is a valuable tool for analyzing the flight dynamics of our airborne vehicles and as such it can be useful for troubleshooting and debugging purposes.
 
-In INAV we use a set of specific variables, each variable may contain multiple arrays, for example - navPos[0-2]. 
+In INAV we use a set of specific variables, each variable may contain multiple arrays, for example - navPos[0-2].
 
 **navPos**, **navVel**, **navTgtPos** and **navTgtVel** each hold arrays [0-2], which represent distances due North [0], due East [1] and straight Up [2], all relative to the "point of origin".
 North and East are fused from accelerometer and GPS data, while Up is fused from accelerometer + barometer for multicopters and accelerometer + gps for airplanes if no barometer is available. Read the [[Inertial position estimator|Inertial-position-estimator-(INAV)]] page for detailed explanation.
@@ -11,21 +11,21 @@ North and East are fused from accelerometer and GPS data, while Up is fused from
 
 For further information about the coordinate system used please read the [[Coordinate systems|Coordinate-systems]] page.
 
-#INAV Variables 
+#INAV Variables
 
 Variables listed below with a short description of each:
 
 *  **navMode** (**navState** in newer code):
 current mode of operation from INAV's point of view. Might be different from flight mode. Meaning vary by version, but navMode=0 and navState=1 means idle.
 
-* **navFlags**: 
+* **navFlags**:
 binary flags of INAV internal state: new data availability for altitude, position and heading, validity of altitude, surface distance and position, flags to indicate if pilot is adjusting altitude and position via rc input.
 
 * **navTgtPos**:
-represents the desired position velocity as used/calculated by INAV. When you are in PH, navTgtPos will be set to hold position coordinates. 
+represents the desired position as used/calculated by INAV. When you are in PH, navTgtPos will be set to hold position coordinates.
 
 * **navPos**:
-array of latest NEU coordinates as provided by inertial estimator. Will be slightly different from GPS/baro readings for 99% of time. Units - cm. 
+array of latest NEU coordinates as provided by inertial estimator. Will be slightly different from GPS/baro readings for 99% of time. Units - cm.
 
 * **navVel**:
 same as navPos, but for estimated velocity. Units - cm/s
@@ -33,13 +33,13 @@ same as navPos, but for estimated velocity. Units - cm/s
 * **navTgtVel**:
 represents the desired velocity as used/calculated by INAV. When you are in PH, navTgtVel will be set to calculated desired velocity to reach the target position.
 
-* **navDebug**: 
+* **navDebug**:
 as the name suggests it is used for debugging. Meaning of these values differ all the time depending on what part of the code is currently being debugged.
 
-Blackbox can log data either via serial port or into internal dataflash. In order to log the data into the internal flash at the moment is possible via CLI:  
-set blackbox_device = SPIFLASH # instead of SERIAL  
-set blackbox_rate_num = 1  
-set blackbox_rate_denom = 2  
+Blackbox can log data either via serial port or into internal dataflash. In order to log the data into the internal flash at the moment is possible via CLI:
+set blackbox_device = SPIFLASH # instead of SERIAL
+set blackbox_rate_num = 1
+set blackbox_rate_denom = 2
 This will make it work and store every second value.
 
 # INAV Logging Intervals
@@ -124,18 +124,18 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 |  navPos[0] 	|   navPos[0] 	|  position of copter 	|  north 	|  cm |
 |  navPos[1] 	|   navPos[1] 	|  position of copter 	|  east 	|  cm |
 |  navPos[2] 	|   navPos[2] 	|  position of copter 	|  vertical 	|  cm |
-|  navVel[0] 	|   navVel[0] 	|  velocity of copter 	|  north 	|  cm |
-|  navVel[1] 	|   navVel[1] 	|  velocity of copter 	|  east 	|  cm |
-|  navVel[2] 	|   navVel[2] 	|  velocity of copter 	|  vertical 	|  cm |
-|  navAcc[0] 	|   navAcc[0] 	|  velocity of copter 	|  north 	|  cm |
-|  navAcc[1] 	|   navAcc[1] 	|  velocity of copter 	|  east 	|  cm |
-|  navAcc[2] 	|   navAcc[2] 	|  velocity of copter 	|  vertical 	|  cm |
-|  navTgtVel[0] 	|   navTgtVel[0] 	|  target value: position 	|  north 	|  cm |
-|  navTgtVel[1] 	|   navTgtVel[1] 	|  target value: position 	|  east 	|  cm |
-|  navTgtVel[2] 	|   navTgtVel[2] 	|  target value: position 	|  vertical 	|  cm |
-|  navTgtPos[0] 	|   navTgtPos[0] 	|  target value: velocity 	|  north 	|  cm |
-|  navTgtPos[1] 	|   navTgtPos[1] 	|  target value: velocity 	|  east 	|  cm |
-|  navTgtPos[2] 	|   navTgtPos[2] 	|  target value: velocity 	|  vertical 	|  cm |
+|  navVel[0] 	|   navVel[0] 	|  velocity of copter 	|  north 	|  cm/s |
+|  navVel[1] 	|   navVel[1] 	|  velocity of copter 	|  east 	|  cm/s |
+|  navVel[2] 	|   navVel[2] 	|  velocity of copter 	|  vertical 	|  cm/s |
+|  navAcc[0] 	|   navAcc[0] 	|  acceleration of copter 	|  north 	|  cm/s/s |
+|  navAcc[1] 	|   navAcc[1] 	|  acceleration of copter 	|  east 	|  cm/s/s |
+|  navAcc[2] 	|   navAcc[2] 	|  acceleration of copter 	|  vertical 	|  cm/s/s |
+|  navTgtVel[0] 	|   navTgtVel[0] 	|  target value: velocity 	|  north 	|  cm/s |
+|  navTgtVel[1] 	|   navTgtVel[1] 	|  target value: velocity 	|  east 	|  cm/s |
+|  navTgtVel[2] 	|   navTgtVel[2] 	|  target value: velocity 	|  vertical 	|  cm/s |
+|  navTgtPos[0] 	|   navTgtPos[0] 	|  target value: position 	|  north 	|  cm |
+|  navTgtPos[1] 	|   navTgtPos[1] 	|  target value: position 	|  east 	|  cm |
+|  navTgtPos[2] 	|   navTgtPos[2] 	|  target value: position 	|  vertical 	|  cm |
 |  navSurf[0] 	|   navSurf[0] 	|   	|   	|   |
 |  flightModeFlags (flags) 	|   	|   	|   	|   |
 |  stateFlags (flags) 	|   	|   	|   	|   |
@@ -148,15 +148,15 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 |  wind[0] 	|   	|   	|   	|   |
 |  wind[1] 	|   	|   	|   	|   |
 |  wind[2] 	|   	|   	|   	|   |
-|  GPS_home[0] 	|   	|  longitude 	|   	|   |
-|  GPS_home[1] 	|   	|  lattitude 	|   	|   |
+|  GPS_home[0] 	|   	|  latitude 	|   	| degrees  |
+|  GPS_home[1] 	|   	|  longitude 	|   	| degrees  |
 |  GPS_fixType 	|   	|  GPS_fixType 	|   	|   |
 |  GPS_numSat 	|   	|  number od sats 	|   	|   |
-|  GPS_coord[0] 	|   	|  longitude 	|   	|   |
-|  GPS_coord[1] 	|   	|  lattitude 	|   	|   |
-|  GPS_altitude 	|   	|  GPS_altitude 	|   	|   |
-|  GPS_speed 	|   	|  GPS_speed 	|   	|   |
-|  GPS_ground_course 	|   	|  GPS_ground_course 	|   	|   |
+|  GPS_coord[0] 	|   	|  latitude 	|   	| degrees |
+|  GPS_coord[1] 	|   	|  longitude	|   	| degrees |
+|  GPS_altitude 	|   	|  GPS_altitude 	|   	| m |
+|  GPS_speed 	|   	|  GPS_speed 	|   	| m/s  |
+|  GPS_ground_course 	|   	|  GPS_ground_course 	|   	| degrees |
 |  GPS_hdop 	|   	|  quality of GPS fix 	|   	|   |
 |  GPS_eph 	|   	|  quality of GPS fix 	|   	|   |
 |  GPS_epv 	|   	|  quality of GPS fix 	|   	|   |
