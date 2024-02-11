@@ -1,4 +1,4 @@
-In post 7.0 releases. INAV only supports Ublox and Ublox7 protocols.
+In the 7.0 release and later. INAV only supports Ublox and Ublox7 protocols.
 
 Recommended GNSS units are M8, M9 or M10 models for best navigation performance.
 
@@ -15,9 +15,8 @@ For INAV before 1.9, it is also necessary to perform some [manual configuration 
 
 With INAV 7.0 and later, GPS, Galileo and BeiDou **or** Glonass (not both) can be enabled in the GPS configuration tab (GPS is ON by default).
 
-If you want to use the external magnetometer (built in your GPS) and you have a FC with the same magnetometer (HMC5883L is very common), you have to disable it physically on your FC: remove chip from board or cut a trace. You can't use two identical chips/magnetometers on the same I2C bus. 
-  * When using DJI NAZA gps this is not the case, DJI NAZA sends compass over serial and does not use the I2C bus)
-  * On MPU9250 board internal magnetometer is an AK8963, most GPS pucks are HMC5883L. So no need to remove hardware, only choose which one to use with cli command `mag_hardware`
+If you want to use the another external magnetometer besides the one on your GNSS module. Do not use both together. You can't use two identical chips/magnetometers on the same I2C bus. 
+  
   * Recent MATEK M10 compass is provided over serial MSP
 
 If  you elect to use the internal FC magnetometer you are highly likely to have poor results due to magnetic interference (not recommended).
@@ -25,35 +24,43 @@ If  you elect to use the internal FC magnetometer you are highly likely to have 
  ## INAV 7.1 changes
 
 **From the release of INAV 7.1. The use of a compass is no longer mandatory for multirotor navigation as it once was. BUT is still recommended for best performance when it comes to maintaining a fixed position for an _extended period of time_, without heading drift.** e.g. in Poshold. Or taking off and immediately starting a Waypoint mission.
-* Compass-less navigation performance is heavily dependent on clean build.. Having minimal levels of Gyro/Acc noise.. It may not work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
+* Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise.. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
 
 INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
 If a user does decide to omitted the use of a compass for a multirotor.. For reasons like the models size or magnetic interference that can not be overcome. 
-Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will not** be operational UNTIL a GPS heading is first obtained, by flying in a straight line until -
+Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will not** be operational UNTIL a GPS heading is first obtained, by flying in a straight line until either -
 * The OSD Heading or Course over Ground indicator displays a valid heading.
-* The OSD Home arrow provides direction
+* Or the OSD Home arrow appears, showing a valid home direction.
 
-Only then can the IMU heading estimator data be trusted for slow speed or fixed position navigation. Be certain this is the case before you depend on RTH.
+Only then can the IMU heading data be trusted for slow speed or fixed position navigation. Be certain this is the case before you depend on RTH or any navigation mode.
 
 INAV 7.1 and later will also benefit fixedwing models by the use of a compass, in providing better heading estimation.. While in previous releases a compass provided no extra benefit.
 
-## Installing the GPS unit - Antenna orientation
+## Installing the GNSS unit - Antenna orientation
 
-To avoid confusion over the antenna orientation, ensure the antenna is skywards as follows: 
+Ensure the ceramic antenna (light brown or beige in color) faces skywards. To provide the strongest signal and best hemispherical satellite coverage. And be sure its mounted a minimum of 5cm away from any source of Radio Frequency or (Electro) Magnetic interference. **e.g.** Digital or Analogue video transmitters. A radio receiver that has telemetry. Or for the sake of the magnetometer/compass. Any source of magnetic field, like high current power wires, motors or a beeper.
 
+ ![TOP_Matek GNSS](http://www.mateksys.com/wp-content/uploads/2023/03/M10Q-5883_4.jpg)
 
-|  **Sky side**   |     |
-| -------- | ------------- |
-| ![TOP_bn-880](https://user-images.githubusercontent.com/65187658/129952395-29948465-76ec-48ac-a1b7-7e1c1e539f07.jpg) | Antenna upwards |
-
-|  **Ground side**  |      |
-| -------- | ------------- |
-| ![BOTTOM_bn-880](https://user-images.githubusercontent.com/65187658/129951933-6df4d873-b50a-4fe7-b12f-f4041402a4a9.jpg) | Connector on the bottom (downwards) |
 
 ## Setting up the compass alignment
 
-Before attempting any MR navigation modes, you should verify that the compass alignment is correct (Configurator or CLI `set align_mag`)
+INAV's default Orientation Preset is `CW270FLIP`. This value is based on the PCB mounting position of the magnetometer chip by the individual manufacturer. With respect to the Arrow direction they provide on their GNSS module.
+
+Note : The QMC5883 magnetometer chip circled in _red_ on the base of the GNSS module. And the orientation Arrow circled in _orange_. Showing the direction the compass should **ideally** be mounted, with the Arrow facing the front of the model, and its direction of travel, based on `CW270FLIP`for more reputable manufacturers.
+
+
+![M10Q-5883_2](https://github.com/iNavFlight/inav/assets/47995726/4183e4af-a043-49d1-9733-5b1515b7de05)
+
+However, there are many manufactures that have released GNSS/compass modules onto the market. Without any thought of adding an orientation arrow to assist installation.
+In this case. You maybe required to work out the orientation preset required for your hardware. Based on the magnetometer chips position, on your specific installation. Or using the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations.
+
+![M181](https://github.com/iNavFlight/inav/assets/47995726/cd8f6567-c142-400f-885a-5e5c708ad716)
+
+**NOTE :** Compass orientation preset and is solely based on the Flight controller having its _mounting arrow facing the direction the model will travel_. If you invert the flight controller, or rotate it on the Yaw axis. This will effect the compass alignment settings.
+Before attempting use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment, by using the Configurator SETUP Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identical to your motions, without any axis drift.
+
 * Perform any tests away of sources of magnetic interference. Domestic appliances or even audio speakers can cause erroneous affects.
 * Use an analogue compass in preference to a digital (mobile phone) compass. The compass in your phone is likely to be a similar chip to that on your aircraft, and is as susceptible to errors of interference and calibration
 * Alternatively, if you know the orientation of surrounding landmarks (e.g. my house is pretty much N/S), then you can do  static tests against land orientation.
@@ -91,8 +98,8 @@ For example cw270flip:
 Enhanced Explanation in #6232
 [How to Align and Check if your readings are Correct ](https://github.com/iNavFlight/inav/issues/6232#issuecomment-727636397)
 
-Painless360 done a superior Video on this
-[Setup non Flat mounted External Compass. (Tilted) ](https://youtu.be/tjKPD69Lrgg)
+Painless360 done a video on this
+(https://www.youtube.com/watch?v=kVVJ-DjUjsc)
 
 There is an online (web based) software tool to help with alignment [Alignment Tool](https://kernel-machine.github.io/INavMagAlignHelper/); this tool is built into the INAV configurator for INAV 5.0 and later.
 
@@ -125,30 +132,9 @@ Only when you're content that the compass reads correctly for all throttle setti
  * Connect the magnetometer to I2C ports (SCL/SDA) Be aware that with SDA/SLC lines connected the flight battery must often be connected to access configurator and power up the magnetometer. 
  * Select your newly connected magnetometer by using `mag_hardware` CLI command. Example `set mag_hardware = auto` if you only have one magnetometer connected.
  * Most built in magnetometers are on the underside and rotated 180 degrees, use example `set align_mag = CW180FLIP`. If compass is not working properly in all directions then either think and figure out the direction of your mag, or go through them all until it works as expected.
- * F3 based board and newer uses default automatic magnetic declination, if your on F1 board or want to change magnetic declination manually you have to set correct declination of your spesific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
+ * INAV does provide an automatic declination setting, based on GNSS coordinates, which is enabled by default `inav_auto_mag_decl = ON`. But if you want to change magnetic declination manually `set inav_auto_mag_decl = OFF`. You have to set correct declination of your specific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
  * Calibrate your compass according to [compass calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#compass-calibration)
 
-
-Note to change magnetic declination manually on F3 or later board you have to turn off automatic function. `set inav_auto_mag_decl = OFF`.
-
-## NEO-M8N PixHawk GPS Unit / BN-880
-
-A readily available GPS unit is the "NEO-M8N" unit that is available from eBay, Amazon, Banggood & so on... 
-
-They are cheap and use multiple satellite networks in addition to GPS (GLONASS, Galileo) so obtaining a GPS fix is quicker and you can be flying around with anywhere between 15 to 30 satellites.
-
-Also as a bonus with such units they have a magnetometer (a compass) on the underside of the board too! 
-
-<img src="https://img2.banggood.com/thumb/large/upload/2015/09/SKU287158/SKU287158-1.jpg">
-
-![BN-880_arrow](https://user-images.githubusercontent.com/65187658/130331246-c5d3bc55-be7a-4481-b202-a51ff40d57eb.jpg)
-
-An important note is that on top of the protective shell of the MN-M8N there is an arrow, this needs to point towards the front of your model. The BN-880 plug needs to point down and to the rear of your model. It is also recommended to [encase](https://www.thingiverse.com/search?q=bn-880&dwh=665c615230c1cbf) the BN-880 as it is quite fragile.
-
-**Important**: 
-You need to switch the Rx and Tx wires around. So you connect your GPS Tx wire (yellow) to your desired Rx pin and the GPS Rx wire (White) to your Tx pin on your flight controller.
-
-A video showing you how to do this for a Omnibus F4 V2 board is in [this video on YouTube](https://www.youtube.com/watch?v=nQCQXuqQSd8)
 
 Other boards (e.g. MATEK) may not power 5V when on USB. In order to power the GPS it is necessary to connect the battery or use another power source (a 4.5V source may be powered by USB). The onboard 3.3V will be powered by USB, but may not provide adequate voltage, as the GPS regulator typically requires 3.6V minimum. 
 
@@ -171,23 +157,8 @@ If it is the first time you have connected the GPS unit, then it can take severa
 **Note:** For the GPS unit to work & pick up satellites it needs an unobstructed view to the sky (so if using indoors, don't expect any satellites to be picked up!)
 
 
-## Getting started with DJI NAZA GPS
-
-- Physically connect your GPS to your FC using UART. Connect RX from GPS to TX on FC, TX from GPS to RX on FC
-- Activate GPS in the ports tab in INAV configurator and set it to 115 200 on correct UART
-- Type this in CLI
-
-   feature GPS
-   set gps_provider = NAZA
-   set mag_hardware = GPSMAG
-   set align_mag = CW180FLIP
-
-Default DJI GPS puck pointing forward is set with CW180FLIP, but can be changed with CW0FLIP, CW90FLIP, CW180FLIP or CW270FLIP
-
- * Inav since 1.5 version and newer uses default automatic magnetic declination, if your on old verion or want to change magnetic declination manually you have to set correct declination of your spesific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
+ * Inav since 1.5 version and newer uses default automatic magnetic declination, if your on old verion or want to change magnetic declination manually you have to set correct declination of your specific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
  * Calibrate your compass according to [compass calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#compass-calibration)
-
-Note to change magnetic declination manually on F3 or newer board you have to turn off automatic function. `set inav_auto_mag_decl = OFF`.
 
 
 Thats it!
