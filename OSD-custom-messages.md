@@ -13,12 +13,11 @@ With 3 custom elements available. And various user selections. Which are as foll
 |  Options       |        Description                                                                                            |
 | ------------   |  -----------------------------------------------------------------------------------------------------------  |
 | **NONE**       | Don't use any selection in the drop-down                                                                     |
-| **TEXT**       | Show your text. 0 - 15 characters which can include [`A-Z`] [`0-9`] [`^!.\*`]                                            |
+| **TEXT**       | Displays text. 0 - 15 characters which can include [`A-Z`] [`0-9`] [`^!.\*`] * Text can only be used once in a single element, due to memory limitations                                           |
 | **ICON STATIC**| User can select a [character](https://github.com/iNavFlight/inav-configurator/blob/master/resources/osd/analogue/impact.png) number from the [INAV OSD](https://github.com/iNavFlight/inav-configurator/tree/master/resources/osd/digital/default/36x54) they want to display as a descriptive reference                                                                      |
 | **ICON GV**    | OSD character appears, when driven by a global variable value                                                           |                                                              
 | **GV**         | Select global variable value with different decimal formats [`00000` `000.00` `000` `0.0`]                                                                                 
 | **VISIBILITY** | Display items as **Always** or as the result of a **Global variable** or **Logic Condition** being met        |
 
 
-This video made by the features developer. Shows an example of a custom distance to !GROUND! message with the GV containing the Lidar readout next to it. And a static altitude icon character. 
-https://youtu.be/BqkDo-2O7js?si=_vOAHQn2N0MGbKdl&t=81
+This [video](https://youtu.be/BqkDo-2O7js?si=_vOAHQn2N0MGbKdl&t=81) made by the features developer. Shows an example of a custom element, which is the **!GROUND!** message, and a GV containing Lidar altitude above the surface. With a static altitude character beside it. 
