@@ -13,7 +13,7 @@ With default settings INAV will configure the GPS automatically, **there is no n
 
 For INAV before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites. 
 
-With INAV 7.0 and later, GPS, Galileo and BeiDou **or** Glonass (not both) can be enabled in the GPS configuration tab (GPS is ON by default).
+With INAV 7.0 and later, `GPS`, `Galileo` and `BeiDou` **or** `Glonass` (not both) can be enabled in the GPS configuration tab (the `GPS` constellation is enabled by default).
 
 If you want to use the another external magnetometer besides the one on your GNSS module. Do not use both together. You can't use two identical chips/magnetometers on the same I2C bus. 
   
@@ -33,7 +33,7 @@ Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoi
 * The OSD Heading or Course over Ground indicator displays a valid heading.
 * Or the OSD Home arrow appears, showing a valid home direction.
 
-Only then can the IMU heading data be trusted for slow speed or fixed position navigation. Be certain this is the case before you depend on RTH or any navigation mode.
+Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Be certain this is the case before you depend on RTH or any navigation mode. Also conduct some tests to be sure everything is working correctly, when you first setup a multirotor without a compass, just as you would with a compass. 
 
 INAV 7.1 and later will also benefit fixedwing models by the use of a compass, in providing better heading estimation.. While in previous releases a compass provided no extra benefit.
 
@@ -127,16 +127,26 @@ To confirm magnetic interference, blackbox logging is most useful:
 Only when you're content that the compass reads correctly for all throttle settings and directions should you progress to more advanced navigation feature (way points, return to home). The majority of navigation failures are due to poorly performing compasses. 
 
 ## Getting started with Ublox GPS
+
 - Physically connect your GPS to your FC using UART (preferred) or softserial (not recommended). Connect RX from GPS to TX on FC, TX from GPS to RX on FC
-- Activate GPS in the ports tab in INAV configurator and set it to 57600, 115200 or 230400 using UART. Or 19200 using softserial (on your chosen port)
-- Activate GPS in the configuration tab, set it to ublox7.
+
+- Activate GPS in the ports tab in INAV configurator and set it to `57600`, `115200` using UART. Or `19200` using softserial (on your chosen port)
+
+- The baud rate can be set to `230400` when using an M10 device. Which can be beneficial. BUT higher baud rates are also susceptible to interference if the GNSS UART leads run close to a source of RF/EM interference. If you choose to use a higher baud rate, be sure to twist the `TX/RX/5v/G` leads together. Especially if the cable length between the GNSS module and FC is more than 5cm or so.
+
+- Activate GPS in the configuration tab, set it to Ublox7.
 
 - Using external compass:
+
  * Connect the magnetometer to I2C ports (SCL/SDA) Be aware that with SDA/SLC lines connected the flight battery must often be connected to access configurator and power up the magnetometer. 
+
  * Select your newly connected magnetometer by using `mag_hardware` CLI command. Example `set mag_hardware = auto` if you only have one magnetometer connected.
- * Most built in magnetometers are on the underside and rotated 180 degrees, use example `set align_mag = CW180FLIP`. If compass is not working properly in all directions then either think and figure out the direction of your mag, or go through them all until it works as expected.
+ 
+* Most built in magnetometers are on the underside and rotated 180 degrees, use example `set align_mag = CW180FLIP`. If compass is not working properly in all directions then either think and figure out the direction of your mag, or go through them all until it works as expected.
+
  * INAV does provide an automatic declination setting, based on GNSS coordinates, which is enabled by default `inav_auto_mag_decl = ON`. But if you want to change magnetic declination manually `set inav_auto_mag_decl = OFF`. You have to set correct declination of your specific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
- * Calibrate your compass according to [compass calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#compass-calibration)
+ 
+* Calibrate your compass according to [compass calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#compass-calibration)
 
 
 Some FC boards may not provide 4.5V power on USB supply. In order to power the GPS it is necessary to connect the battery or use another power source (a 4.5V source may be powered by USB). The onboard 3.3V will be powered by USB, but may not provide adequate voltage, as the GPS regulator typically requires 3.6V minimum. 
@@ -145,7 +155,7 @@ Once you have connected the GPS to your flight control board
 
 - Open the INAV Configurator 
 - Enable GPS on your desired UART port
-- Set the the baud rate to 115200 or 230400
+- Set the baud rate
 - Press "Save & Reboot"
 - Then go to the "Configuration" tab in the INAV Configurator 
 - Enable GPS
@@ -159,12 +169,12 @@ Once you have connected the GPS to your flight control board
 
 INAV 7.0 and later supports a higher GNSS update rate for Ublox receivers.  `gps_ublox_nav_hz`. With M10 (now) supporting up to 25Hz.
 If you wish to increase navigation precision. And you have a low noise build, good fix and with EPH/EPV data being acceptable. You may wish to alter this setting. But only do so according to the table below. Note how the maximum update rate can only be achieved with lower concurrent constellations.
-_And a trade off will also be noticed. The satellite count will generally be little lower, the higher the update rate. But this isn't a draw back. Because higher precision can still be achieved._
+_And a trade off will also be noticed. The satellite count will generally be a little lower, the higher the update rate. But this isn't a draw back. Because higher precision can still be achieved._
 
 ![update rate](https://github.com/iNavFlight/inav/assets/47995726/a541d4bb-3dca-4813-a3ce-60a067ae67a1)
 
 
-If it is the first time you have connected the GNSS unit, then it can take several minutes for a GNSS fix to be obtained. This is the time required to download the Almanac and Ephemeris data. This is perfectly normal. But if it tales longer than 10 minutes. You likely have GNSS RF band interference coming from a hardware source in your model.
+If it is the first time you have connected the GNSS unit, then it can take several minutes for a satellite fix to be obtained. This is the time required to download the Almanac and Ephemeris data. This is perfectly normal. But if it takes longer than 10 minutes. You likely have GNSS RF band interference coming from a hardware source in your model.
 
 **Note:** For the GPS unit to work & pick up satellites it needs an unobstructed view to the sky (so if using indoors, don't expect any satellites to be picked up!)
 
