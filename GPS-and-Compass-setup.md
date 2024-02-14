@@ -23,12 +23,12 @@ If  you elect to use the internal FC magnetometer you are highly likely to have 
 
  ## INAV 7.1 changes
 
-**From the release of INAV 7.1. The use of a compass is no longer mandatory for multirotor navigation as it once was. BUT is still recommended for best performance when it comes to maintaining a fixed position for an _extended period of time_, without heading drift.** e.g. in Poshold. Or taking off and immediately starting a Waypoint mission.
+**From the release of INAV 7.1. The use of a compass is no longer mandatory for multirotor navigation as it once was. BUT is still recommended for best performance, when it comes to maintaining a fixed position for an _extended period of time_, without heading drift.** e.g. in Poshold. Or taking off and immediately starting a Waypoint mission.
 * Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise.. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
 
 INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
-If a user does decide to omitted the use of a compass for a multirotor.. For reasons like the models size or magnetic interference that can not be overcome. 
+If a user does decide to omit the use of a compass for a multirotor.. For reasons like the models size or magnetic interference that can not be overcome. 
 Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will not** be operational UNTIL a GPS heading is first obtained, by flying in a straight line until either -
 * The OSD Heading or Course over Ground indicator displays a valid heading.
 * Or the OSD Home arrow appears, showing a valid home direction.
@@ -77,9 +77,9 @@ Cli setting Align_mag must be set to
  `Align_mag = default`
  `save`
  
-For example cw270flip, this value is to ADD manualy. 
-For free Alignment, all three axis need to set manualy. 
-A sensor flip is always to realise
+For example CW270flip, this value is to ADD manually. 
+For free Alignment, all three axis need to set manually. 
+A sensor flip is always to realize
 over the pitch axis. 
 For example cw270flip:
 
@@ -93,7 +93,10 @@ For example cw270flip:
     set align_mag_roll = -300
     save
 
-* Because Magnetometer with cw270° has its roll axis in relation to the Pitch Axis of the FC
+* Because Magnetometer with CW270° has its roll axis in relation to the Pitch Axis of the FC
+
+The terminology of the setting FLIP. Is based on the magnetometer chip being upside down, on the under side of the GNSS unit.
+If the chip could be mounted with it top facing the sky. FLIP would not be required. The only other exception. Is if your Flight Controller is mounted inverted in you model. Because the Compass and FC work together to provide the correct heading. FLIP is not required in that case.
 
 Enhanced Explanation in #6232
 [How to Align and Check if your readings are Correct ](https://github.com/iNavFlight/inav/issues/6232#issuecomment-727636397)
@@ -125,8 +128,8 @@ Only when you're content that the compass reads correctly for all throttle setti
 
 ## Getting started with Ublox GPS
 - Physically connect your GPS to your FC using UART (preferred) or softserial (not recommended). Connect RX from GPS to TX on FC, TX from GPS to RX on FC
-- Activate GPS in the ports tab in INAV configurator and set it to 57600 or 115200 using UART or 19200 using softserial (on your chosen port)
-- Activate GPS in the configuration tab, set it to ublox.
+- Activate GPS in the ports tab in INAV configurator and set it to 57600, 115200 or 230400 using UART. Or 19200 using softserial (on your chosen port)
+- Activate GPS in the configuration tab, set it to ublox7.
 
 - Using external compass:
  * Connect the magnetometer to I2C ports (SCL/SDA) Be aware that with SDA/SLC lines connected the flight battery must often be connected to access configurator and power up the magnetometer. 
@@ -136,13 +139,13 @@ Only when you're content that the compass reads correctly for all throttle setti
  * Calibrate your compass according to [compass calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#compass-calibration)
 
 
-Other boards (e.g. MATEK) may not power 5V when on USB. In order to power the GPS it is necessary to connect the battery or use another power source (a 4.5V source may be powered by USB). The onboard 3.3V will be powered by USB, but may not provide adequate voltage, as the GPS regulator typically requires 3.6V minimum. 
+Some FC boards may not provide 4.5V power on USB supply. In order to power the GPS it is necessary to connect the battery or use another power source (a 4.5V source may be powered by USB). The onboard 3.3V will be powered by USB, but may not provide adequate voltage, as the GPS regulator typically requires 3.6V minimum. 
 
 Once you have connected the GPS to your flight control board
 
 - Open the INAV Configurator 
 - Enable GPS on your desired UART port
-- Set the the baud rate to 115200
+- Set the the baud rate to 115200 or 230400
 - Press "Save & Reboot"
 - Then go to the "Configuration" tab in the INAV Configurator 
 - Enable GPS
@@ -152,16 +155,22 @@ Once you have connected the GPS to your flight control board
 - Press "Set & Reboot"
  You can confirm the GPS unit is working by going to the GPS tab in the INAV Configurator and if it is working you will see the "Total Messages" count on the left incrementing in numbers.
 
-If it is the first time you have connected the GPS unit, then it can take several minutes for a GPS fix to be obtained. This is perfectly normal. 
+## GNSS Ublox update rate
+
+INAV 7.0 and later supports a higher GNSS update rate for Ublox receivers.  `gps_ublox_nav_hz`. With M10 (now) supporting up to 25Hz.
+If you wish to increase navigation precision. And you have a low noise build, good fix and with EPH/EPV data being acceptable. You may wish to alter this setting. But only do so according to the table below. Note how the maximum update rate can only be achieved with lower concurrent constellations.
+_And a trade off will also be noticed. The satellite count will generally be little lower, the higher the update rate. But this isn't a draw back. Because higher precision can still be achieved._
+
+![update rate](https://github.com/iNavFlight/inav/assets/47995726/a541d4bb-3dca-4813-a3ce-60a067ae67a1)
+
+
+If it is the first time you have connected the GNSS unit, then it can take several minutes for a GNSS fix to be obtained. This is the time required to download the Almanac and Ephemeris data. This is perfectly normal. But if it tales longer than 10 minutes. You likely have GNSS RF band interference coming from a hardware source in your model.
 
 **Note:** For the GPS unit to work & pick up satellites it needs an unobstructed view to the sky (so if using indoors, don't expect any satellites to be picked up!)
 
 
  * Inav since 1.5 version and newer uses default automatic magnetic declination, if your on old verion or want to change magnetic declination manually you have to set correct declination of your specific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
  * Calibrate your compass according to [compass calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#compass-calibration)
-
-
-Thats it!
 
 
 ## SBAS
