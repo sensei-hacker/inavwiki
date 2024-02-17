@@ -40,8 +40,7 @@
 - [MULTI FUNCTION](#multi-function) 
 - [MIXER PROFILE 2](#mixer-profile-2)
 - [MIXER TRANSITION](#mixer-transition)
-- USER1 & USER2 
-- USER3 & USER4
+- [USER1 & USER2 & USER3 & USER4](#USER)
 
 ## Default flight mode ( No mode selected )
 
@@ -81,15 +80,15 @@ Maximum banking angle is limited by `max_angle_inclination_rll` and `max_angle_i
 ### ANGLE HOLD (FW)
 
 This mode is a simple version of an attitude lock stabilizer. But its not designed for 3D aerobatic use.
-It behaves more like Acro mode, in the way the desired flight attitude is achieved by stick defection, and then you release the stick to center. But the difference is, ANGLE HOLD will attempt to _hold or lock_ the pitch or roll attitude the airplane was commanded to, when the stick is released back to center. Thus resisting any change to that flight attitude caused by the effects of wind...
-Returning the airplane to level flight is done the same you would if flying in Acro or Manual modes.
+It behaves more like Acro mode, in the way the desired flight attitude is achieved by stick deflection, and you release the stick to center. But the difference is, ANGLE HOLD will attempt to _hold or lock_ the pitch or roll attitude the airplane was commanded, when the stick is released back to center. Thus resisting any long term change to the flight attitude caused by the effects of wind...
+Returning the airplane to level flight is done the same as when flying in Acro or Manual modes.
 
-This flight mode has angle constraints set by the navigation angle limits - `nav_fw_climb_angle`, `nav_fw_dive_angle` and `nav_fw_bank_angle`.
+This flight mode has angle constraints set by the navigation angle limits - `nav_fw_climb_angle`, `nav_fw_dive_angle` and `nav_fw_bank_angle`. Which may also make it feel a little like ANGLE mode, with its bank limits.
 
-This mode was designed to work with two flight modifier modes - `COURSE HOLD` or `ALT HOLD`. _Although both can not be selected for use with ANGLE HOLD at the same time._
+It was designed to work with a flight mode and a modifier - `COURSE HOLD` or `ALT HOLD`. Although both **can not** be selected for use with ANGLE HOLD at the same time.
  
 * ANGLE HOLD + COURSE HOLD - Will maintain a constant heading and climb angle over a long distance. e.g. Up or Down the side of a long mountain range.
-* ANGLE HOLD + ALT HOLD - Will allow the airplane to make a long banking turns, without losing altitude in the turn.
+* ANGLE HOLD + ALT HOLD - Will allow the airplane to make a long banking turn, without losing altitude in the turn.
 
 
 **Use caution! - If the pilot requests the airplane to hold a high climb angle. The pilot MUST provide adequate throttle (motor thrust) to maintain airspeed or the airplane will stall.**
@@ -377,6 +376,19 @@ TAS (from airspeed sensor) will be used for calculation if available - otherwise
 ### TURTLE (MC)
 
 Provides a means of flipping over a multicopter that has crash landed upside down, by using the roll or pitch sticks.
+
+### USER 
+
+Also known as `PinIO` , when broken out on many flight controllers.
+The four USER selection are generic in nature. But are often used for certain functions, depending on what the flight controller manufacturer decides to place on that mode.
+
+**e.g.**
+- Some FC manufactures have `USER 1` as a VTX power switch. Which includes the electronic hardware, to power ON and OFF your HD or Analogue VTX.
+- They may also add the flight controller hardware to allow for analogue dual camera switching on `USER 2`.
+- While it is common to see `USER 3` selected to turn ON or OFF the power to a free standing HD camera. 
+- And `USER 4` to allow for the remote Start/Stop recording of a free standing HD camera.
+
+**Note:** This should not be taken as a set order. Always read the hardware definition in FC manufacturers manual. 
 
 ### AUXILIARY CONFIGURATION
 
