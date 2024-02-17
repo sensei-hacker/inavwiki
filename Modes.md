@@ -80,13 +80,19 @@ Maximum banking angle is limited by `max_angle_inclination_rll` and `max_angle_i
 
 ### ANGLE HOLD (FW)
 
-This mode is a simple version of an attitude lock stabilizer.
-It is designed to be used with fixedwing aircraft, and is based on Angle mode. But unlike Angle mode which _self levels_ when you release the stick to center.. Angle Hold will attempt to _hold_ the pitch or roll _angle_ the airplane is climbing/diving or banking at, when the stick is released back to center.
-The airplane will not return to level flight, until you move that corresponding stick to make that axis become level again, and release the stick back to center.
-This mode can be enabled with flight modifier modes like COURSE HOLD mode, to maintain a constant heading and climb angle over a long distance. e.g. Up or Down the side of a long mountain range.
-And it can also be enabled with ALT HOLD mode, to allow the airplane to make a long slow bank, without losing altitude in the turn.
-This flight mode has its angle limits set by `nav_fw_bank_angle`, `nav_fw_climb_angle` and `nav_fw_dive_angle`.
-**For this mode to work effectively on the pitch axis. The pilot MUST provide adequate throttle (motor thrust) to hold that climb angle, or the airplane will stall.. Use Caution!**
+This mode is a simple version of an attitude lock stabilizer. But its not designed for 3D aerobatic use.
+It behaves more like Acro mode, in the way the desired flight attitude is achieved by stick defection, and then you release the stick to center. But the difference is, ANGLE HOLD will attempt to _hold or lock_ the pitch or roll attitude the airplane was commanded to, when the stick is released back to center. Thus resisting any change to that flight attitude caused by the effects of wind...
+Returning the airplane to level flight is done the same you would if flying in Acro or Manual modes.
+
+This flight mode has angle constraints set by the navigation angle limits - `nav_fw_climb_angle`, `nav_fw_dive_angle` and `nav_fw_bank_angle`.
+
+This mode was designed to work with two flight modifier modes - `COURSE HOLD` or `ALT HOLD`. _Although both can not be selected for use with ANGLE HOLD at the same time._
+ 
+* ANGLE HOLD + COURSE HOLD - Will maintain a constant heading and climb angle over a long distance. e.g. Up or Down the side of a long mountain range.
+* ANGLE HOLD + ALT HOLD - Will allow the airplane to make a long banking turns, without losing altitude in the turn.
+
+
+**Use caution! - If the pilot requests the airplane to hold a high climb angle. The pilot MUST provide adequate throttle (motor thrust) to maintain airspeed or the airplane will stall.**
 
 ### ALTHOLD
 
