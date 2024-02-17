@@ -61,6 +61,20 @@ In this case. You maybe required to work out the orientation preset required for
 **NOTE :** Compass orientation preset and is solely based on the Flight controller having its _mounting arrow facing the direction the model will travel_. If you invert the flight controller, or rotate it on the Yaw axis. This will effect the compass alignment settings.
 Before attempting use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment, by using the Configurator SETUP Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identical to your motions, without any axis drift.
 
+
+## Compass calibration and testing
+
+The general rule behind compass calibration. Is to ensure the magnetometer reports the earths magnetic field strength equally on all axis's, regardless of weak localized magnetic perturbations. Meaning that the calibration of the compass should be done _in_ the aircraft.
+
+Ideally, its not good enough to rotate the compass or aircraft, so that each axis faces skyward or towards the ground. Because this can leave areas where _complete_ calibration is missed. Which will provide poor results and navigation performance.
+
+To acquire the best 3 axis calibration results. **Your wrist should move the aircraft in an infinity [∞](https://www.google.com.au/search?sca_esv=c7d05ac6ad01166f&sca_upv=1&q=3D+compass++calibration+motion&tbm=vid&source=lnms&sa=X&ved=2ahUKEwiThc-btLGEAxVEa2wGHaZaAO8Q0pQJegQIDBAB&biw=1366&bih=615&dpr=1#fpstate=ive&vld=cid:8bdfdcb6,vid:J_cZnPcW-Yw,st:0) symbol motion in the air, while ensuring every axis faces skywards in the process**. Doing this several times (not too quickly) within the allotted 30secs. 
+* Use a long USB extension lead if its done via connection to the configurator.
+
+The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 as possible. While `magzero_x`  `magzero_y` `magzero_z` can vary. But should not exceed +- 1000.  Any dramatic difference indicates a poor calibration. Or too much localized magnetic or electromagnetic interference.
+**Note**: A good calibration may take several attempts.
+
+
 * Perform any tests away of sources of magnetic interference. Domestic appliances or even audio speakers can cause erroneous affects.
 * Use an analogue compass in preference to a digital (mobile phone) compass. The compass in your phone is likely to be a similar chip to that on your aircraft, and is as susceptible to errors of interference and calibration
 * Alternatively, if you know the orientation of surrounding landmarks (e.g. my house is pretty much N/S), then you can do  static tests against land orientation.
@@ -105,6 +119,7 @@ Painless360 done a video on this
 (https://www.youtube.com/watch?v=kVVJ-DjUjsc)
 
 There is an online (web based) software tool to help with alignment [Alignment Tool](https://kernel-machine.github.io/INavMagAlignHelper/); this tool is built into the INAV configurator for INAV 5.0 and later.
+
 
 ## Initial flight tests
 
