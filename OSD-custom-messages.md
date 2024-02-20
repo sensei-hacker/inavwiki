@@ -4,9 +4,8 @@ But from the release of INAV 7.1.0 there is the addition of _custom OSD_ element
 
 The settings are found under the Configurator OSD tab. 
 
-![Custom OSD elements](https://github.com/iNavFlight/inav/assets/47995726/09905b3d-6217-4777-939a-7174c2207a63)
-
 ![Custom elements GV](https://github.com/iNavFlight/inav/assets/47995726/26c8b12d-27da-4a10-9ce7-e8b42289623b)
+
 
 With 3 custom elements available. And various user selections. Which are as follows.
 
@@ -19,5 +18,17 @@ With 3 custom elements available. And various user selections. Which are as foll
 | **GV**         | Select global variable value with different decimal formats [`00000` `000.00` `000` `0.0`]                                                                                 
 | **VISIBILITY** | Display items as **Always** or as the result of a **Global variable** or **Logic Condition** being met        |
 
-
 This [video](https://youtu.be/BqkDo-2O7js?si=_vOAHQn2N0MGbKdl&t=81) made by the features developer. Shows an example of a custom element, which is the **!GROUND!** message, and a GV containing Lidar altitude above the surface. With a static altitude character beside it. 
+
+## This is an example of a simple stall detection message.
+
+The logic checks if the throttle is less than 20%, with the airplanes AoA at greater than 23 degree.. The timer is set to flash the message every 800mS.
+
+![Stall warning logic](https://github.com/iNavFlight/inav/assets/47995726/7ec0ecaa-a804-4b2a-a860-f5e10598aedb)
+
+The message will display STALL WARNING and the pitch angle, with an OSD warning symbol (221). The stall message will only appear when the conditions are met.
+
+![OSD custom](https://github.com/iNavFlight/inav/assets/47995726/b386631b-2589-448e-ab00-6703ea70b332)
+
+
+
