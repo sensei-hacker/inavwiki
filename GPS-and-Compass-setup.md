@@ -13,7 +13,7 @@ With default settings INAV will configure the GPS automatically, **there is no n
 
 For INAV before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites. 
 
-With INAV 7.0 and later, `GPS`, `Galileo` and `BeiDou` **or** `Glonass` (not both) can be enabled in the GPS configuration tab (the `GPS` constellation is enabled by default).
+With INAV 7.0 and later, `GPS`, `Galileo` and `BeiDou` **or** `Glonass` (not both) can be enabled in the GPS configuration tab (the `GPS` constellation is enabled by default). **Always enable as many constellation as your hardware will allow.**
 
 If you want to use the another external magnetometer besides the one on your GNSS module. Do not use both together. You can't use two identical chips/magnetometers on the same I2C bus. 
   
@@ -23,17 +23,20 @@ If  you elect to use the internal FC magnetometer you are highly likely to have 
 
  ## INAV 7.1 changes
 
-**From the release of INAV 7.1. The use of a compass is no longer mandatory for multirotor navigation as it once was. BUT is still recommended for best performance, when it comes to maintaining a fixed position for an _extended period of time_, without heading drift.** e.g. in Poshold. Or taking off and immediately starting a Waypoint mission.
-* Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise.. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
-
-INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
+**From the release of INAV 7.1. The use of a compass is no longer mandatory for multirotor navigation as it once was. BUT it is still recommended for the best navigation performance, when it comes to maintaining a fixed position for an _extended period of time_, without heading drift.** e.g. in Poshold. Or taking off and immediately starting a Waypoint mission.
+* Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise.. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance. And always enable the maximum number of GNSS constellations your hardware will allow. EPV and EPH (Standard deviation of position error) will greatly effect navigation precision. Regardless of having a 3D fix, or what you think is an acceptable HDOP or number of satellites.
 
 If a user does decide to omit the use of a compass for a multirotor.. For reasons like the models size or magnetic interference that can not be overcome. 
-Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will not** be operational UNTIL a GPS heading is first obtained, by flying in a straight line until either -
-* The OSD Heading or Course over Ground indicator displays a valid heading.
-* Or the OSD Home arrow appears, showing a valid home direction.
+Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will not** be operational UNTIL a GPS heading is first obtained, by flying in a straight line until both **-**
+* The OSD _Heading_ and _Course over Ground_ indicators display a valid heading. Then keeping both headings closely aligned for a time.
 
-Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Be certain this is the case before you depend on RTH or any navigation mode. Also conduct some tests to be sure everything is working correctly, when you first setup a multirotor without a compass, just as you would with a compass. 
+* e.g. ![heading](https://github.com/iNavFlight/inav/assets/47995726/e344d72d-a951-4acf-9974-f85e3e821313)
+
+* And the OSD Home arrow appears, showing a valid home direction.
+
+Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Do not omit any of the above steps. Or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly, when you first setup a multirotor without a compass, just as you would with a compass. 
+
+INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
 INAV 7.1 and later will also benefit fixedwing models by the use of a compass, in providing better heading estimation.. While in previous releases a compass provided no extra benefit.
 
