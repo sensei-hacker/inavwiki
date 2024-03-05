@@ -5,7 +5,7 @@ But from the release of INAV 7.1.0 there is the addition of _custom OSD_ element
 The settings are found under the Configurator OSD tab. 
 
 ![Custom elements GV](https://github.com/iNavFlight/inav/assets/47995726/26c8b12d-27da-4a10-9ce7-e8b42289623b)
-
+![elements](https://github.com/iNavFlight/inav/assets/47995726/33bb28e2-d090-4716-b01c-6a0aec59f9eb)
 
 With 3 custom elements available. And various user selections. Which are as follows.
 
@@ -16,19 +16,27 @@ With 3 custom elements available. And various user selections. Which are as foll
 | **ICON STATIC**| User can select a [character](https://github.com/iNavFlight/inav-configurator/blob/master/resources/osd/analogue/impact.png) number from the [INAV OSD](https://github.com/iNavFlight/inav-configurator/tree/master/resources/osd/digital/default/36x54) they want to display as a descriptive reference                                                                      |
 | **ICON GV**    | OSD character appears, when driven by a global variable value                                                           |                                                              
 | **GV**         | Select global variable value with different decimal formats [`00000` `000.00` `000` `0.0`]                                                                                 
-| **VISIBILITY** | Display items as **Always** or as the result of a **Global variable** or **Logic Condition** being met        |
+| **VISIBILITY** | Display items as **Always** or as the result of a **Global Variable** or **Logic Condition** being met        |
 
 This [video](https://youtu.be/BqkDo-2O7js?si=_vOAHQn2N0MGbKdl&t=81) made by the features developer. Shows an example of a custom element, which is the **!GROUND!** message, and a GV containing Lidar altitude above the surface. With a static altitude character beside it. 
 
-## This is an example of a simple stall detection message.
 
-The logic checks if the throttle is less than 20%, with the airplanes AoA at greater than 23 degree.. The timer is set to flash the message every 800mS.
 
-![Stall warning logic](https://github.com/iNavFlight/inav/assets/47995726/7ec0ecaa-a804-4b2a-a860-f5e10598aedb)
+***
 
-The message will display STALL WARNING and the pitch angle, with an OSD warning symbol (221). The stall message will only appear when the conditions are met.
+## This is a simple example of stall warning indicator
 
-![OSD custom](https://github.com/iNavFlight/inav/assets/47995726/b386631b-2589-448e-ab00-6703ea70b332)
+The logic checks if the AoA is greater than 20 degrees, with the airspeed being less than 30km/h, or the throttle is less than 48%. Makes sure you enable the _virtual pitot_ if you do not use a real pitot. Values can be altered to suit your models requirements.
+
+
+![Stall warning logic](https://github.com/iNavFlight/inav/assets/47995726/7326b09e-83e8-42c3-aba4-3ef2706cb522)
+
+
+The message will display STALL WARNING with a warning symbol (221). The stall message will only appear when the conditions are met.
+
+![OSD warning](https://github.com/iNavFlight/inav/assets/47995726/1d479cda-6620-4025-9958-fb693149d886)
+
+
 
 
 
