@@ -98,8 +98,8 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 |  rcCommand[1] 	|   rcCommand[1] 	|  stabilized control command 	|  pitch 	|  1000-2000  µs |
 |  rcCommand[2] 	|   rcCommand[2] 	|  stabilized control command 	|  yaw 	|  1000-2000  µs |
 |  rcCommand[3] 	|   rcCommand[3] 	|  stabilized control command 	|  throttle 	|  1000-2000  µs |
-|  vbat 	|   vbat 	|  voltage of flight battery 	|   	|  V |
-|  amperage 	|   	|   	|   	|   |
+|  vbat 	|   vbat 	|  voltage of flight battery 	|   	|  volts |
+|  amperage 	|   	|system current drain   	|   	| amps  |
 |  magADC[0] 	|   magADC[0] 	|  compass 	|  roll 	|   |
 |  magADC[1] 	|   magADC[1] 	|  compass 	|  pitch 	|   |
 |  magADC[2] 	|   magADC[2] 	|  compass 	|  yaw 	|   |
@@ -117,10 +117,10 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 |  motor[1] 	|   motor[1] 	|  output to motor ESC 	|  1 	|  1000-2000  µs |
 |  motor[2] 	|   motor[2] 	|  output to motor ESC 	|  2 	|  1000-2000  µs |
 |  motor[3] 	|   motor[3] 	|  output to motor ESC 	|  3 	|  1000-2000  µs |
-|  navState 	|   	|  quality of GPS fix 	|   	|   |
-|  navFlags 	|   	|  quality of GPS fix 	|   	|   |
-|  navEPH 	|   	|  quality of GPS fix 	|   	|   |
-|  navEPV 	|   	|  quality of GPS fix 	|   	|   |
+|  navState 	|   	|  navigation control state 	|   	|   |
+|  navFlags 	|   	|  navigation data trusted 	|   	|   |
+|  navEPH 	|   	|  Std deviation horizontal position error 	|   	| meters  |
+|  navEPV 	|   	|  Std deviation of vertical position error	|   	| meters  |
 |  navPos[0] 	|   navPos[0] 	|  position of copter 	|  north 	|  cm |
 |  navPos[1] 	|   navPos[1] 	|  position of copter 	|  east 	|  cm |
 |  navPos[2] 	|   navPos[2] 	|  position of copter 	|  vertical 	|  cm |
@@ -136,27 +136,28 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 |  navTgtPos[0] 	|   navTgtPos[0] 	|  target value: position 	|  north 	|  cm |
 |  navTgtPos[1] 	|   navTgtPos[1] 	|  target value: position 	|  east 	|  cm |
 |  navTgtPos[2] 	|   navTgtPos[2] 	|  target value: position 	|  vertical 	|  cm |
+|  navTgtHdg           |                        |  active heading computation   | horizontal    |     |
 |  navSurf[0] 	|   navSurf[0] 	|   	|   	|   |
-|  flightModeFlags (flags) 	|   	|   	|   	|   |
-|  stateFlags (flags) 	|   	|   	|   	|   |
+|  flightModeFlags (flags) 	|   	| active modes  	|   	|   |
+|  stateFlags (flags) 	|   	| active control states  	|  	|   |
 |  failsafePhase (flags) 	|   	|   	|   	|   |
 |  rxSignalReceived 	|   	|   	|   	|   |
 |  rxFlightChannelsValid 	|   	|   	|   	|   |
-|  hwHealthStatus 	|   	|   	|   	|   |
-|  powerSupplyImpedance 	|   	|   	|   	|   |
-|  sagCompensatedVBat 	|   	|   	|   	|   |
-|  wind[0] 	|   	|   	|   	|   |
-|  wind[1] 	|   	|   	|   	|   |
-|  wind[2] 	|   	|   	|   	|   |
+|  hwHealthStatus 	|   	| active sensor communication  	|   	|   |
+|  powerSupplyImpedance 	|   	| flight battery internal resistance  	|   	|mΩ   |
+|  sagCompensatedVBat 	|   	| load compensated battery voltage  	|   	| volts  |
+|  wind[0] 	|   	|wind force X axis   	| north  	| m/s  |
+|  wind[1] 	|   	|wind force Y axis  	| east  	| m/s  |
+|  wind[2] 	|   	|wind force Z axis   	| vertical  	| m/s  |
+|  windHeading |        |                            |           |degrees|
+| windVelocity |        |                      |                |    m/s |
 |  GPS_home[0] 	|   	|  latitude 	|   	| degrees  |
 |  GPS_home[1] 	|   	|  longitude 	|   	| degrees  |
 |  GPS_fixType 	|   	|  GPS_fixType 	|   	|   |
-|  GPS_numSat 	|   	|  number od sats 	|   	|   |
+|  GPS_numSat 	|   	|  number of sats 	|   	|   |
 |  GPS_coord[0] 	|   	|  latitude 	|   	| degrees |
 |  GPS_coord[1] 	|   	|  longitude	|   	| degrees |
 |  GPS_altitude 	|   	|  GPS_altitude 	|   	| m |
-|  GPS_speed 	|   	|  GPS_speed 	|   	| m/s  |
-|  GPS_ground_course 	|   	|  GPS_ground_course 	|   	| degrees |
+|  GPS_speed 	|   	|  velocity 	|   	| m/s  |
+|  GPS ground course 	|   	|  ground course heading 	|   	| degrees |
 |  GPS_hdop 	|   	|  quality of GPS fix 	|   	|   |
-|  GPS_eph 	|   	|  quality of GPS fix 	|   	|   |
-|  GPS_epv 	|   	|  quality of GPS fix 	|   	|   |
