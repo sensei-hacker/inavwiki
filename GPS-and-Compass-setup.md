@@ -6,17 +6,17 @@ Modules known to work reasonably well:
 * [Beitian BN-880](https://inavflight.com/shop/p/BN880)
 * [Matek M10Q-5883](http://www.mateksys.com/?portfolio=m10q-5883)
 
-Older versions as M6N and M7N also work, but the newer M10 versions are far superior. 
+Older versions as M6N and M7N also work, but the newer M10 versions are far superior.
 Most GPS modules have a built in magnetometer (compass), but there are also some available without e.g. [Matek M10Q](http://www.mateksys.com/?portfolio=sam-m10q) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
 
 With default settings INAV will configure the GPS automatically, **there is no need for configuring it manually** using software like `u-center`. Nevertheless you have to configure your FC with INAV to receive the GPS signals.
 
-For INAV before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites. 
+For INAV before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites.
 
 With INAV 7.0 and later, `GPS`, `Galileo` and `BeiDou` **or** `Glonass` (not both) can be enabled in the GPS configuration tab (the `GPS` constellation is enabled by default). **Always enable as many constellation as your hardware will allow.**
 
-If you want to use the another external magnetometer besides the one on your GNSS module. Do not use both together. You can't use two identical chips/magnetometers on the same I2C bus. 
-  
+If you want to use the another external magnetometer besides the one on your GNSS module. Do not use both together. You can't use two identical chips/magnetometers on the same I2C bus.
+
   * Recent MATEK M10 compass is provided over serial MSP
 
 If  you elect to use the internal FC magnetometer you are highly likely to have poor results due to magnetic interference (not recommended).
@@ -26,7 +26,7 @@ If  you elect to use the internal FC magnetometer you are highly likely to have 
 **From the release of INAV 7.1. The use of a compass is no longer mandatory for multirotor navigation as it once was. BUT it is still recommended for the best navigation performance, when it comes to maintaining a fixed position for an _extended period of time_, without heading drift.** e.g. in Poshold. Or taking off and immediately starting a Waypoint mission.
 * Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise.. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance. And always enable the maximum number of GNSS constellations your hardware will allow. EPV and EPH (Standard deviation of position error) will greatly effect navigation precision. Regardless of having a 3D fix, or what you think is an acceptable HDOP or number of satellites.
 
-If a user does decide to omit the use of a compass for a multirotor.. For reasons like the models size or magnetic interference that can not be overcome. 
+If a user does decide to omit the use of a compass for a multirotor.. For reasons like the models size or magnetic interference that can not be overcome.
 Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will not** be operational UNTIL a GPS heading is first obtained, by flying in a straight line until both **-**
 * The OSD _Heading_ and _Course over Ground_ indicators display a valid heading. Then keeping both headings closely aligned for a time.
 
@@ -34,11 +34,48 @@ Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoi
 
 * And the OSD Home arrow appears, showing a valid home direction.
 
-Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Do not omit any of the above steps. Or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly, when you first setup a multirotor without a compass, just as you would with a compass. 
+Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Do not omit any of the above steps. Or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly, when you first setup a multirotor without a compass, just as you would with a compass.
 
 INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
 INAV 7.1 and later will also benefit fixedwing models by the use of a compass, in providing better heading estimation.. While in previous releases a compass provided no extra benefit.
+
+## INAV GPS Configuration
+
+INAV will attempt to provide GPS configuration. This is controlled by a number of CLI settings
+
+* `gps_auto_config`
+* `gps_auto_baud`
+
+INAV only requires a few UBLOX messages and it is recommended that you leave auto-config enabled to ensure the GPS is configured to INAV's requirements.
+
+In particular, if you enable messages that INAV does not require, it is possible to seriously downgrade or even disable GPS functionality. This is typically indicated by a high error count being reported. In this case, it is recommended that you use "u-center" to reset the GPS to factory settings and let INAV perform auto-configuration.
+
+### INAV runtime Configuration steps
+
+When the GPS port is enabled, INAV will:
+
+* Auto-baud if set, to the limit set by `gps_auto_baud_max_supported`. Do not set this too high on older models
+* Disable "standard" NMEA periodic sentences
+* Set UBLOX parameters
+* Enable the required UBLOX periodic messages
+
+Note that GPS is a push protocol; if your GPS has pre-configured messages enabled for transmission, then they will be sent; it is not practical for INAV to disable the whole of the large UBLOX message catalogue. If in doubt, perform a factory reset.
+
+### INAV Required Messages
+
+INAV will enable UBLOX periodic messages according to the UBLOX version:
+
+| Class | Id   | Usage                                                  | UBLOX Versions |
+|-------|------|--------------------------------------------------------|----------------|
+| 0x01  | 0x02 | UBX-NAV-POSLLH Geodetic Position Solution              | 5,6            |
+| 0x01  | 0x03 | UBX-NAV-STATUS Receiver Navigation status              | 5,6            |
+| 0x01  | 0x12 | UBX-NAV-VELNED Velocity Solution in NED                | 5,6            |
+| 0x01  | 0x21 | UBX-NAV-TIMEUTC GPS Time Solution                      | 5,6            |
+| 0x01  | 0x35 | UBX=NAV-SOL Navigation Solution Information            | 5,6,7,8        |
+| 0x01  | 0x07 | UBX-NAV-PVT Navigation Position Velocity Time Solution | 7,8,9,10       |
+
+As of March 2024 / INAV 7.1.
 
 ## Installing the GNSS unit - Antenna orientation
 
@@ -71,7 +108,7 @@ The general rule behind compass calibration. Is to ensure the magnetometer repor
 
 Ideally, its not good enough to rotate the compass or aircraft, so that each axis faces skyward or towards the ground. Because this can leave areas where _complete_ calibration is missed. Which will provide poor results and navigation performance.
 
-To acquire the best 3 axis calibration results. **Your wrist should move the aircraft in an infinity [∞](https://www.google.com.au/search?sca_esv=c7d05ac6ad01166f&sca_upv=1&q=3D+compass++calibration+motion&tbm=vid&source=lnms&sa=X&ved=2ahUKEwiThc-btLGEAxVEa2wGHaZaAO8Q0pQJegQIDBAB&biw=1366&bih=615&dpr=1#fpstate=ive&vld=cid:8bdfdcb6,vid:J_cZnPcW-Yw,st:0) symbol motion in the air, while ensuring every axis faces skywards in the process**. Doing this several times (not too quickly) within the allotted 30secs. 
+To acquire the best 3 axis calibration results. **Your wrist should move the aircraft in an infinity [∞](https://www.google.com.au/search?sca_esv=c7d05ac6ad01166f&sca_upv=1&q=3D+compass++calibration+motion&tbm=vid&source=lnms&sa=X&ved=2ahUKEwiThc-btLGEAxVEa2wGHaZaAO8Q0pQJegQIDBAB&biw=1366&bih=615&dpr=1#fpstate=ive&vld=cid:8bdfdcb6,vid:J_cZnPcW-Yw,st:0) symbol motion in the air, while ensuring every axis faces skywards in the process**. Doing this several times (not too quickly) within the allotted 30secs.
 * Use a long USB extension lead if its done via connection to the configurator.
 
 The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 as possible. While `magzero_x`  `magzero_y` `magzero_z` can vary. But should not exceed +- 1000.  Any dramatic difference indicates a poor calibration. Or too much localized magnetic or electromagnetic interference.
@@ -87,17 +124,17 @@ Check your machine at cardinal points (North (0°), East (90°), South (180°), 
 * If the values are incorrect by a multiple of 90°, then the numeric alignment needs to be changed
 * If the values are just randomly wrong across the cardinal points, then FLIP is probably wrong (as well).
 
-* If external Compass module is mounted at 30 degree. 
+* If external Compass module is mounted at 30 degree.
 For example at top of a Cam mount,
 free alignment is possible by Cli commands.
 Cli setting Align_mag must be set to
  `Align_mag = default`
  `save`
- 
-For example CW270flip, this value is to ADD manually. 
-For free Alignment, all three axis need to set manually. 
+
+For example CW270flip, this value is to ADD manually.
+For free Alignment, all three axis need to set manually.
 A sensor flip is always to realize
-over the pitch axis. 
+over the pitch axis.
 For example cw270flip:
 
     set align_mag_pitch = 1800
@@ -142,7 +179,7 @@ To confirm magnetic interference, blackbox logging is most useful:
 
 * If you use mwp as a ground station with telemetry, then mwp logs can also provide useful analysis, but blackbox is preferred, as there is more data and it is also possible to analyse throttle affects.
 
-Only when you're content that the compass reads correctly for all throttle settings and directions should you progress to more advanced navigation feature (way points, return to home). The majority of navigation failures are due to poorly performing compasses. 
+Only when you're content that the compass reads correctly for all throttle settings and directions should you progress to more advanced navigation feature (way points, return to home). The majority of navigation failures are due to poorly performing compasses.
 
 ## Getting started with Ublox GPS
 
@@ -156,26 +193,26 @@ Only when you're content that the compass reads correctly for all throttle setti
 
 - Using external compass:
 
- * Connect the magnetometer to I2C ports (SCL/SDA) Be aware that with SDA/SLC lines connected the flight battery must often be connected to access configurator and power up the magnetometer. 
+ * Connect the magnetometer to I2C ports (SCL/SDA) Be aware that with SDA/SLC lines connected the flight battery must often be connected to access configurator and power up the magnetometer.
 
  * Select your newly connected magnetometer by using `mag_hardware` CLI command. Example `set mag_hardware = auto` if you only have one magnetometer connected.
- 
+
 * Most built in magnetometers are on the underside and rotated 180 degrees, use example `set align_mag = CW180FLIP`. If compass is not working properly in all directions then either think and figure out the direction of your mag, or go through them all until it works as expected.
 
  * INAV does provide an automatic declination setting, based on GNSS coordinates, which is enabled by default `inav_auto_mag_decl = ON`. But if you want to change magnetic declination manually `set inav_auto_mag_decl = OFF`. You have to set correct declination of your specific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
- 
+
 * Calibrate your compass according to [compass calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#compass-calibration)
 
 
-Some FC boards may not provide 4.5V power on USB supply. In order to power the GPS it is necessary to connect the battery or use another power source (a 4.5V source may be powered by USB). The onboard 3.3V will be powered by USB, but may not provide adequate voltage, as the GPS regulator typically requires 3.6V minimum. 
+Some FC boards may not provide 4.5V power on USB supply. In order to power the GPS it is necessary to connect the battery or use another power source (a 4.5V source may be powered by USB). The onboard 3.3V will be powered by USB, but may not provide adequate voltage, as the GPS regulator typically requires 3.6V minimum.
 
 Once you have connected the GPS to your flight control board
 
-- Open the INAV Configurator 
+- Open the INAV Configurator
 - Enable GPS on your desired UART port
 - Set the baud rate
 - Press "Save & Reboot"
-- Then go to the "Configuration" tab in the INAV Configurator 
+- Then go to the "Configuration" tab in the INAV Configurator
 - Enable GPS
 - Set the "Protocol" to UBLOX7
 - Set the "Ground Assistance Type" to "Auto Detect"
@@ -227,4 +264,4 @@ This setting only works when `gps_auto_config= ON`
 - No GPS lock: often due to electric noise from flight controller or other equipment such as 1.2ghz video TX. Try getting the GPS as far away as possible from electric noise emitting parts as the FC, ESCs or power cables. Placing the GPS on a mast is also a common way, you can further try shielding with aluminum or copper foil. Don´t place the GPS inside the frame.
 - "Toilet bowling": in the beginning the copter holds its position and then starts to make bigger and bigger circles, you probably have your magnetometer not calibrated correctly or it’s interfered from the magnetic field of your power lines or the beeper.
 If you are using your FC onboard mag, try to place the the FC as far away as possible from the magnetic interference causing parts e.g. mounting it on/under the top plate on small racers.
-- 3.3V GPS units, such as the GPS from 3DR should not be powered by the flight controller's 3.3V pin along with a Spektrum (or other DSM) receiver. The current draw can cause the Spektrum receiver to brownout. Instead use a 3.3V regulator and power the GPS from the BEC or separate battery. 
+- 3.3V GPS units, such as the GPS from 3DR should not be powered by the flight controller's 3.3V pin along with a Spektrum (or other DSM) receiver. The current draw can cause the Spektrum receiver to brownout. Instead use a 3.3V regulator and power the GPS from the BEC or separate battery.
