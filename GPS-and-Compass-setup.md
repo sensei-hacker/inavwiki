@@ -30,9 +30,8 @@ If a user does decide to omit the use of a compass for a multirotor.. For reason
 Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will not** be operational UNTIL a GPS heading is first obtained, by flying in a straight line until both **-**
 * The OSD _Heading_ and _Course over Ground_ indicators display a valid heading. Then keeping both headings closely aligned for a time.
 
-* e.g. ![heading](https://github.com/iNavFlight/inav/assets/47995726/e344d72d-a951-4acf-9974-f85e3e821313)
-
 * And the OSD Home arrow appears, showing a valid home direction.
+* Example [Video](https://www.youtube.com/watch?v=iopZfH-DdTI)
 
 Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Do not omit any of the above steps. Or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly, when you first setup a multirotor without a compass, just as you would with a compass.
 
@@ -111,7 +110,7 @@ Ideally, its not good enough to rotate the compass or aircraft, so that each axi
 To acquire the best 3 axis calibration results. **Your wrist should move the aircraft in an infinity [∞](https://www.google.com.au/search?sca_esv=c7d05ac6ad01166f&sca_upv=1&q=3D+compass++calibration+motion&tbm=vid&source=lnms&sa=X&ved=2ahUKEwiThc-btLGEAxVEa2wGHaZaAO8Q0pQJegQIDBAB&biw=1366&bih=615&dpr=1#fpstate=ive&vld=cid:8bdfdcb6,vid:J_cZnPcW-Yw,st:0) symbol motion in the air, while ensuring every axis faces skywards in the process**. Doing this several times (not too quickly) within the allotted 30secs.
 * Use a long USB extension lead if its done via connection to the configurator.
 
-The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 as possible. While `magzero_x`  `magzero_y` `magzero_z` can vary. But should not exceed +- 1000.  Any dramatic difference indicates a poor calibration. Or too much localized magnetic or electromagnetic interference.
+The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 as possible. While `magzero_x`  `magzero_y` `magzero_z` can vary. But should never exceed +- 1000 on any axis.  Any dramatic difference indicates a poor calibration. Or too much localized magnetic or electromagnetic interference.
 **Note**: A good calibration may take several attempts.
 
 
