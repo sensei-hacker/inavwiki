@@ -34,6 +34,7 @@ Be mindful that any navigation mode (_RTH, Failsafe, Poshold, Cruise or a Waypoi
 * Example [Video](https://www.youtube.com/watch?v=iopZfH-DdTI)
 
 Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Do not omit any of the above steps. Or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly, when you first setup a multirotor without a compass, just as you would with a compass.
+* **Note** - _Presently multirotor navigation flight modes (RTH, POSHOLD etc) are required to be set **before** the magnetometer is turn off in the Configuration tab. Otherwise navigation modes will not appear in the modes tab. And you will not be able to set them after._  (This will be changed in later releases)
 
 INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
