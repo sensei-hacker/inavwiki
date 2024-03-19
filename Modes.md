@@ -100,7 +100,7 @@ Maintain the altitude of the aircraft a the moment you activate this mode is fix
 ### AUTO LEVEL TRIM (FW)
 _Tuning mode_
 
-AUTO LEVEL TRIM will attempt to automatically tune the pitch offset (`fw_level_pitch_trim`) a fixed-wing airplane needs to not lose altitude when flying straight in a self levelling flight mode. To use AUTO LEVEL you should first be in a self levelling flight mode which does _not_ use ALTHOLD. ANGLE, HORIZON, and COURSE HOLD are all fine. Once in that mode, enable AUTO LEVEL and do not make corrections. AUTO LEVEL will attempt to tune the correct Angle of Attack for your current speed. You can see how level the craft is flying with the digital variometer element on the OSD. +/1 0.3 is fine. Once flying level, you can disable AUTO LEVEL. From INAV 6.0, a system message is shown when AUTO LEVEL is active.
+AUTO LEVEL TRIM will attempt to automatically tune the pitch offset (`fw_level_pitch_trim`) a fixed-wing airplane needs to not lose altitude when flying straight in a self levelling flight mode. To use AUTO LEVEL you should first be in a self levelling flight mode which does _not_ use ALTHOLD. ANGLE, HORIZON, and COURSE HOLD are all fine. Once in that mode, enable AUTO LEVEL and do not make corrections. AUTO LEVEL will attempt to tune the correct Angle of Attack for your current speed. You can see how level the craft is flying with the numerical variometer element on the OSD. +/- 0.3° is an acceptable tolerance. Once flying level, you can disable AUTO LEVEL. From INAV 6.0, a system message is shown when AUTO LEVEL is active. The trimming speed and accuracy can also be adjusted via [fw_level_pitch_gain](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_level_pitch_gain). 
 
 The new value isn't saved to EEPROM, you have to save it manually using either the configurator or a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md). However, if you have a feature enabled which saves on disarm, such as Continuous Servo Trim or [Stats](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#stats). The new `fw_level_pitch_trim` will be saved.
 
@@ -131,7 +131,7 @@ Make the beeper connected to the FC beep (lost model finder).
 
 ### BEEPER MUTE
 
-Allows the flight controller beeper to be muted by a switch. To provide some peace  and quiet.
+Allows the flight controller beeper to be muted by a switch. To provide some peace and quiet during setup.
 
 ### BLACKBOX
 
@@ -151,11 +151,11 @@ Available function control is -
 
 ### CAMSTAB
 
-Enables the servo gimbal
+Allows a Pan, Tilt or Roll servo's to be used as an actively stabilized gimbal. The dedicated axis for each servo is selected in the mixer tab.
 
 ### FAILSAFE
 
-Lets you activate flight controller failsafe with an aux channel.
+Lets you activate flight controller failsafe with an aux channel. This mode is primarily designed to manually test if failsafe will work when required.
 Read [Failsafe page](https://github.com/iNavFlight/inav/wiki/Failsafe) for more info.
 
 ### FLAPERON (FW)
