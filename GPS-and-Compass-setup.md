@@ -6,6 +6,7 @@ Modules known to work reasonably well:
 * [Beitian BN-880](https://inavflight.com/shop/p/BN880)
 * [Matek M10Q-5883](http://www.mateksys.com/?portfolio=m10q-5883)
 
+
 Older versions as M6N and M7N also work, but the newer M9/M10 versions are far superior.
 Most GPS modules have a built in magnetometer (compass), but there are also some available without e.g. [Matek M10Q](http://www.mateksys.com/?portfolio=sam-m10q) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
 
@@ -13,13 +14,12 @@ With default settings INAV will configure the GPS automatically, **there is no n
 
 For INAV before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites.
 
-With INAV 7.0 and later, `GPS`, `Galileo` and `BeiDou` **or** `Glonass` (not both) can be enabled in the GPS configuration tab (the `GPS` constellation is enabled by default). **Always enable as many constellation as your hardware will allow.**
+With INAV 7.0 and later, `GPS`, `Galileo` and `BeiDou` or `Glonass`  can be enabled in the GPS configuration tab (the `GPS` constellation is enabled by default). **Always enable as many constellation as your hardware will allow.**
 
-If you want to use the another external magnetometer besides the one on your GNSS module. Do not use both together. You can't use two identical chips/magnetometers on the same I2C bus.
+The magnetometer / compass is normally included as part of the GNSS (GPS) module. 
+If you want to use an external magnetometer other than the one on your GNSS module do not use both together. You can't use two identical chips/magnetometers on the same I2C bus.
 
-  * Recent MATEK M10 compass is provided over serial MSP
-
-If  you elect to use the internal FC magnetometer you are highly likely to have poor results due to magnetic interference (not recommended).
+If your flight controller has an internal magnetometer on the FC, using it will likely to have poor results due to magnetic interference (not recommended).
 
  ## INAV 7.1 changes
 
@@ -94,30 +94,30 @@ Note : The QMC5883 magnetometer chip circled in _red_ on the base of the GNSS mo
 
 ![M10Q-5883_2](https://github.com/iNavFlight/inav/assets/47995726/4183e4af-a043-49d1-9733-5b1515b7de05)
 
-However, there are many manufactures that have released GNSS/compass modules onto the market. Without any thought of adding an orientation arrow to assist installation.
-In this case. You maybe required to work out the orientation preset required for your hardware. Based on the magnetometer chips position, on your specific installation. Or using the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations.
+However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation.
+In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations.
 
 ![M181](https://github.com/iNavFlight/inav/assets/47995726/cd8f6567-c142-400f-885a-5e5c708ad716)
 
-**NOTE :** Compass orientation preset and is solely based on the Flight controller having its _mounting arrow facing the direction the model will travel_. If you invert the flight controller, or rotate it on the Yaw axis. This will effect the compass alignment settings.
+**NOTE :** Compass orientation preset is solely based on the Flight controller having its _mounting arrow facing the direction the model will travel_. If you invert the flight controller, or rotate it on the Yaw axis this will effect the compass alignment settings.
 Before attempting use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment, by using the Configurator SETUP Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identical to your motions, without any axis drift.
 
 
 ## Compass calibration and testing
 
-The general rule behind compass calibration. Is to ensure the magnetometer reports the earths magnetic field strength equally on all axis's, regardless of weak localized magnetic perturbations. Meaning that the calibration of the compass should be done _in_ the aircraft.
+The general rule behind compass calibration is to ensure the magnetometer reports the earths magnetic field strength equally on all axis's, regardless of weak localized magnetic perturbations. Therfore calibration of the compass should be done _in_ the aircraft.
 
 Ideally, its not good enough to rotate the compass or aircraft, so that each axis faces skyward or towards the ground. Because this can leave areas where _complete_ calibration is missed. Which will provide poor results and navigation performance.
 
-To acquire the best 3 axis calibration results. **Your wrist should move the aircraft in an infinity [∞](https://www.google.com.au/search?sca_esv=c7d05ac6ad01166f&sca_upv=1&q=3D+compass++calibration+motion&tbm=vid&source=lnms&sa=X&ved=2ahUKEwiThc-btLGEAxVEa2wGHaZaAO8Q0pQJegQIDBAB&biw=1366&bih=615&dpr=1#fpstate=ive&vld=cid:8bdfdcb6,vid:J_cZnPcW-Yw,st:0) symbol motion in the air, while ensuring every axis faces skywards in the process**. Doing this several times (not too quickly) within the allotted 30secs.
+To acquire the best 3 axis calibration results, **your wrist should move the aircraft in an infinity [∞](https://www.google.com.au/search?sca_esv=c7d05ac6ad01166f&sca_upv=1&q=3D+compass++calibration+motion&tbm=vid&source=lnms&sa=X&ved=2ahUKEwiThc-btLGEAxVEa2wGHaZaAO8Q0pQJegQIDBAB&biw=1366&bih=615&dpr=1#fpstate=ive&vld=cid:8bdfdcb6,vid:J_cZnPcW-Yw,st:0) symbol motion in the air, while ensuring every axis faces skywards in the process**. Do this several times (not too quickly) within the allotted 30secs.
 * Use a long USB extension lead if its done via connection to the configurator.
 
 The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 as possible. While `magzero_x`  `magzero_y` `magzero_z` can vary. But should never exceed +- 1000 on any axis.  Any dramatic difference indicates a poor calibration. Or too much localized magnetic or electromagnetic interference.
 **Note**: A good calibration may take several attempts.
 
 
-* Perform any tests away of sources of magnetic interference. Domestic appliances or even audio speakers can cause erroneous affects.
-* Use an analogue compass in preference to a digital (mobile phone) compass. The compass in your phone is likely to be a similar chip to that on your aircraft, and is as susceptible to errors of interference and calibration
+* Perform any tests away of sources of magnetic interference. Domestic appliances or even audio speakers can cause erroneous affects.  COmputer monitors may also interfere.
+* Use an analogue compass in preference to a digital (mobile phone) compass. The compass in your phone is likely to be a similar chip to that on your aircraft, and is as susceptible to the same errors of interference and calibration
 * Alternatively, if you know the orientation of surrounding landmarks (e.g. my house is pretty much N/S), then you can do  static tests against land orientation.
 
 Check your machine at cardinal points (North (0°), East (90°), South (180°), West (270°)). Degree perfect alignment is not necessary (and probably not measurable), but you should aim for +/- 5° of known magnetic direction.
@@ -151,7 +151,7 @@ For example cw270flip:
 * Because Magnetometer with CW270° has its roll axis in relation to the Pitch Axis of the FC
 
 The terminology of the setting FLIP. Is based on the magnetometer chip being upside down, on the under side of the GNSS unit.
-If the chip could be mounted with it top facing the sky. FLIP would not be required. The only other exception. Is if your Flight Controller is mounted inverted in you model. Because the Compass and FC work together to provide the correct heading. FLIP is not required in that case.
+If the chip could be mounted with it top facing the sky. FLIP would not be required. The only other exception is if your Flight Controller is mounted inverted in you model. Because the Compass and FC work together to provide the correct heading. FLIP is not required in that case.
 
 Enhanced Explanation in #6232
 [How to Align and Check if your readings are Correct ](https://github.com/iNavFlight/inav/issues/6232#issuecomment-727636397)
