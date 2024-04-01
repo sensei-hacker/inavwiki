@@ -1,8 +1,8 @@
-## Fixed Wing Autolaunch
+# Fixed Wing Autolaunch
 
 Fixed Wing Autolaunch, aka launch mode, allows the pilot to have assistance in launching their airplane. This can be particularly useful if you're a new pilot, have a difficult model to launch, or have a large model.
 
-### Enabling Autolaunch
+## Enabling Autolaunch
 
 By default, autolaunch will not work. You need to tell INAV that you want to use it. There are two ways to do this. You can use a switched mode, or you can have it permanently enabled. Which you choose it personal preference. The switch gives you more control. Having it permanently enabled means it will work all the time. But if you don't want to use it, you must remember to move the pitch or roll stick to deactivated it.
 
@@ -77,3 +77,17 @@ Is the **Maximum Altitude** that the airplane will climb to. Once this altitude 
 
 ### End Transition Time
 Is the time that the final launch phase will take. The **End Transition Time** makes for a smooth transition from the launch angle and throttle to level flight and the current or cruise throttle.
+
+## Advanced Settings
+The advanced settings are only accessible through the CLI. For the most part, they are not needed. But some pilots may find them useful.
+
+### Wiggle to Wake Idle Throttle
+_From INAV 8.0_
+
+Wiggle to Wake allows you to wiggle the yaw of the plane to start the idle throttle. This does not start the launch procedure or launch throttle, only the idle throttle. This gives more control over when the idle throttle starts, as you don't need to use a timer. Though the timer can still also be used. If so, idle will start either when the timer expires or the wiggle is detected.
+
+There is one setting in the CLI: `nav_fw_launch_wiggle_to_wake_idle`. 0 = disabled. 1 and 2 signify 1 or 2 yaw wiggles to activate. 
+* 1 wiggle has a higher detection point, for airplanes without a tail. 
+* 2 wiggles has a lower detection point, but requires the repeated action. This is intended for larger models and airplanes with tails.
+
+For this to work. An idle throttle value greater than 1000uS must be set, and `nav_fw_launch_wiggle_to_wake_idle` must not be 0. If there is no idle throttle delay, the wiggle will activate the idle throttle. If an idle delay is also set up, whichever occurs first activates the idle throttle.
