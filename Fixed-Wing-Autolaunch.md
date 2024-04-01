@@ -35,7 +35,7 @@ The **Idle Throttle** setting allows you to let the motor spin at the desired th
 * your plane suffers from torque roll
 * you would like a visual indicator that the aircraft is ready to launch
 
-The amount of **Idle Throttle** you need depends on your goal. If you only want a visual indicator, a low value like 1000uS (10%) will work for you. However, if you want to have some launch assistance or to combat torque roll. You will need to estimate and adjust this value until it works well for your aircraft. A good starting point may be half the launch throttle, which we will cover later. If you don't want to use **Idle Throttle**. Set the value to 1000uS (0%)
+The amount of **Idle Throttle** you need depends on your goal. If you only want a visual indicator, a low value like 1100uS (10%) will work for you. However, if you want to have some launch assistance or to combat torque roll. You will need to estimate and adjust this value until it works well for your aircraft. A good starting point may be half the launch throttle, which we will cover later. If you don't want to use **Idle Throttle**. Set the value to 1000uS (0%)
 
 > [!NOTE]
 > If you see a red box around the **Idle Throttle**. It is because you have specified an **Idle Throttle Delay** but do not have an **Idle Throttle** set.
