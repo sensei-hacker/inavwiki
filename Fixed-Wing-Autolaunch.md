@@ -115,7 +115,7 @@ At this point, the process is different depending on your settings.
 
 6. At this point, the motor will start with the Idle Throttle. `** READY TO LAUNCH**` will be shown on the OSD. Throw the airplane and it will enter the launch procedure.
 
-** Idle Throttle set with an Idle Throttle Delay**
+**Idle Throttle set with an Idle Throttle Delay**
 
 6. For the length of the Idle Throttle Delay. Nothing will happen. On the OSD it will show `** WAITING FOR IDLE **`. Then, the motor will start with the Idle Throttle and show `** READY TO LAUNCH **` on the OSD. Throw the airplane and it will enter the launch procedure.
 
