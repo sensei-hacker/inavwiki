@@ -27,7 +27,10 @@ The basic settings for Autolaunch can be found on the **Advanced Tuning** page i
 > [!TIP]
 > The Autolaunch settings on the **Advanced Tuning** page are ordered in the way they happen during the launch. So they start with idle throttle (the first part of launch mode to activate, if set) to the end transition time (the end of the launch). 
 
-We will look at these setting briefly. But there are videos explaining the settings, including <a href="https://youtu.be/rj_RSrXqib8" target="_blank">this one</a>. 
+Graphical explanation of Autolaunch sequence, related parameters and events is provided:
+![AutoLaunch](https://github.com/iNavFlight/inav/assets/64522330/5a79c637-9724-481d-aba3-ad72581d2123)
+
+We will look at these setting briefly. But there are videos explaining the settings, including <a href="https://youtu.be/rj_RSrXqib8" target="_blank">this one</a>.
 
 ### Idle Throttle
 The **Idle Throttle** setting allows you to let the motor spin at the desired throttle level _before_ you throw the airplane. This can be useful if: 
