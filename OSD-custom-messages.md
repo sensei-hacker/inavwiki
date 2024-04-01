@@ -13,10 +13,10 @@ With 3 custom elements available. And various user selections. Which are as foll
 | ------------   |  -----------------------------------------------------------------------------------------------------------  |
 | **NONE**       | Don't use any selection in the drop-down                                                                     |
 | **TEXT**       | Displays text. 0 - 15 characters which can include [`A-Z`] [`0-9`] [`^!.\*`] * Text can only be used once in a single element, due to memory limitations                                           |
-| **ICON STATIC**| User can select a [character](https://github.com/iNavFlight/inav-configurator/blob/master/resources/osd/analogue/impact.png) number from the [INAV OSD](https://github.com/iNavFlight/inav-configurator/tree/master/resources/osd/digital/default/36x54) they want to display as a descriptive reference                                                                      |
-| **ICON GV**    | OSD character appears, when driven by a global variable value                                                           |                                                              
-| **GV**         | Select global variable value with different decimal formats [`00000` `000.00` `000` `0.0`]                                                                                 
-| **VISIBILITY** | Display items as **Always** or as the result of a **Global Variable** or **Logic Condition** being met        |
+| **ICON STATIC**| User can select a [character](https://github.com/iNavFlight/inav-configurator/tree/master/resources/osd/digital/default/36x54) number from the [INAV OSD](https://github.com/iNavFlight/inav-configurator/blob/master/resources/osd/analogue/impact.png) , they want to display as a descriptive reference                                                                      |
+| **ICON GV**    | Displays the driven global variable                                                       |                                                              
+| **GV**         | Data within the global variable can be displayed in these decimal format's [`00000` `000.00` `000` `0.0`]                                                                                 
+| **VISIBILITY** | Choose when to display custom message - **Always** or as the result of a **Global Variable** or **Logic Condition** being met        |
 
 This [video](https://youtu.be/BqkDo-2O7js?si=_vOAHQn2N0MGbKdl&t=81) made by the features developer. Shows an example of a custom element, which is the **!GROUND!** message, and a GV containing Lidar altitude above the surface. With a static altitude character beside it. 
 
@@ -26,7 +26,7 @@ This [video](https://youtu.be/BqkDo-2O7js?si=_vOAHQn2N0MGbKdl&t=81) made by the 
 
 ## This is a simple example of stall warning indicator
 
-The logic checks if the AoA is greater than 20 degrees, with the airspeed being less than 30km/h, or the throttle is less than 48%. Makes sure you enable the _virtual pitot_ if you do not use a real pitot. Values can be altered to suit your models requirements.
+The logic checks if the AoA is greater than 20 degrees, with the airspeed being less than 30km/h, or if the throttle is less than 48%. Makes sure you enable the _virtual pitot_ if you do not use a real pitot. Values can be altered to suit your models requirements.
 
 
 ![Stall warning logic](https://github.com/iNavFlight/inav/assets/47995726/7326b09e-83e8-42c3-aba4-3ef2706cb522)
