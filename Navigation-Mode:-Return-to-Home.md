@@ -135,7 +135,6 @@ To be honest, pretty much as you expect it to. Once you select RTH, the model wi
 
 ## Other Settings
 ### Trackback
-_INAV 6.0 Onwards_
 RTH Trackback records the recent track of the craft allowing it to return back along the track when RTH is triggered rather than returning directly back home. It's mainly intended to be used as a means of returning the craft to a position where the Rx signal can be recovered if it was lost due to a line of sight obstruction. This should improve the chances of recovering the Rx signal whilst reducing the risk of flying into the obstruction that caused the loss compared to normal RTH heading directly back home.
 
 When triggered the craft returns along the trackback route until the end is reached at which point it reverts to normal RTH heading directly home. It doesn't perform the RTH climb phase at the start of the Trackback but instead uses the altitude recorded for each track point so long as that altitude is no lower than the altitude when Trackback was triggered (this is the minimum altitude used throughout the Trackback phase).
@@ -145,5 +144,10 @@ Trackback currently allows 50 trackback points with a maximum potential trackbac
 Trackback RTH can be cancelled using the RTH Altitude Control Override `RIGHT ROLL` command at which point RTH will revert to a normal RTH heading directly back home. [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) needs to be ON for this to work.
 
 ### Altitude Control Override
-_INAV 3.0 Onwards_
 It is possible to override the default RTH Altitude and Climb First settings during the initial RTH climb phase using the [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) setting.
+
+### Manual Emergency Landing (FW and MC)
+Allows an emergency landing to be triggered manually as required.
+Landing is started or ended by toggling the POSHOLD mode switch at least 5 times at a minimum rate of 1Hz.
+Provided sensor position data is available. The aircraft will commence descent, holding the target position above which it was activated.
+Failsafe is inhibited during manual emergency landing, to allow the landing to continue if the RX signal is lost. Under this condition, aborting  manual emergency landing must be done before a FS occurs. Manual emergency landing can also be triggered by use of the [multi-function utility](https://github.com/iNavFlight/inav/wiki/Modes#multi-function)
