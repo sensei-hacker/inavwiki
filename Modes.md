@@ -41,6 +41,7 @@
 - [MIXER PROFILE 2](#mixer-profile-2)
 - [MIXER TRANSITION](#mixer-transition)
 - [USER1 & USER2 & USER3 & USER4](#USER)
+- [WAYPOINT PLANNER](#WP-Planner)
 
 ## Default flight mode ( No mode selected )
 
@@ -170,7 +171,7 @@ Flaperon offset is by default is applied as a servo mixer input with ID=14 so us
 ### FPV ANGLE MIX (MC)
 
 This mode mixes in Pitch with a commanded ROLL stick input. Or mixes in Pitch with a commanded YAW stick input. To overcome the sweeping or arching effect that is seen via the FPV view, based on the camera's up-tilt angle. This provides a more visually appealing (true to axis) freestyle or cinematic experience.
-Simply set `fpv_mix_degrees = X°` , to the up-tilt angle your camera is set.
+Simply set `fpv_mix_degrees = X°` , to the up-tilt angle your camera is set. Then enable it together with ACRO mode. 
 
 ### HEADADJ (MC)
 
@@ -187,11 +188,11 @@ With this mode it is easier to control the multicopter, even fly it with the phy
 This flight mode affects only yaw axis and can be enabled together with any other flight mode.
 It helps to maintain current heading without pilots input and can be used with and without magnetometer support. When yaw stick is neutral position, Heading Hold mode tries to keep heading (azimuth if compass sensor is available) at a defined direction. When pilot moves yaw stick, Heading Hold is temporary disabled and is waiting for a new setpoint.
 
-Heading hold only uses yaw control (rudder) so it won't work on a flying wing which has no rudder.
+Heading hold only uses yaw control (rudder) so it won't work on a flying wing which has no rudder, unless it has twin motor yaw stabilization active.
 
 ### HOME RESET
 
-This mode provides a means to reset the home location or arming coordinates the model will return to. This is beneficial if you choose to launch or takeoff before the model has a GPS fix.. By using this mode, you can fly past your launch site later in the flight, once a GPS fix is established.  And momentarily activate the feature.. **Ideally, it is better to place this mode on a Pot or one of the multi-position buttons, so it does not get unintentionally bumped.**
+This mode provides a means to reset the home location or arming coordinates the model will return to. This is beneficial if you choose to launch or takeoff before the model has a GPS fix.. By using this mode, you can fly past your launch site later in the flight, once a GPS fix is established.  And momentarily activate the feature.. **Ideally, it is better to place this mode on a Pot or multi-position button, so it doesn't get unintentionally bumped.**
 
 ### HORIZON
 
@@ -317,7 +318,7 @@ One option is to add Horizon mode at very top end of throttle, to enable acro fl
 
 ### OSD ALT
 
-Switches to the different alternative OSD displays ALT1, ALT2 or ALT3. The default OSD is shown when none of these are selected.
+Switches to the different alternative OSD displays ALT1, ALT2 or ALT3. The default OSD is shown when none of these are selected. 
 
 ### OSD SW
 
@@ -390,6 +391,9 @@ The four USER selection are generic in nature. But are often used for certain fu
 
 **Note:** This should not be taken as a set order. Always read the hardware definition in FC manufacturers manual. 
 
+### WP Planner
+
+Allows you to plot a waypoint mission as you fly. See more [details](https://github.com/iNavFlight/inav/wiki/Navigation-modes#wp-planner---on-the-fly-waypoint-mission-planner)
 ### AUXILIARY CONFIGURATION
 
 Spare auxiliary receiver channels can be used to enable/disable modes.  Some modes can only be enabled this way.
