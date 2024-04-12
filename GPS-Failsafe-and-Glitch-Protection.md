@@ -32,10 +32,25 @@ The copter will be forced into ANGLE mode, pilot will have complete control over
 ### RTH and WP modes (including failsafe RTH)
 RTH and WP are considered full-auto modes. It is assumed that pilot might have no control over the copter so the safest action in case of invalid position is landing the machine. Copter will enter Emergency Landing state if failure is consistent for over 2 seconds.
 
-## Emergency Landing
-In case of critical failure, Emergency Landing is triggered. In Emergency Landing state copter is forced into ANGLE mode, ROLL and PITCH input is centered to maintain level, pilot stick input is ignored and copter enters a controlled descent.
+### Emergency Landing 
 
-While Emergency Landing is active pilot is unable to switch into ALTHOLD, POSHOLD, RTH or WP mode. If pilot wants to regain control of the copter he should switch to ANGLE, HORIZON or ACRO more.
+ **Receiver failsafe**
+
+If the radio control signal is lost and the sensor data is still active. (GPS and barometer)
+
+* The multicopter will enter emergency landing, and descend via the use of altitude and position data. It will descend at a controlled rate according to your landing setting in the Advanced tuning tab, and disarm.
+If `LAND` is set as the failsafe procedure, in place of `RTH`. It will still make a controller descent. But it will land at the location the failsafe occurred. Instead of returning to home.
+
+* A fixedwing will land in the same manor as with a hardware failure, if `LAND` is selected as a failsafe procedure. But if `RTH` is selected, and [fixedwing auto landing](https://github.com/iNavFlight/inav/blob/master/docs/Fixed%20Wing%20Landing.md) is set up by the user. The airplane will land at your designated land site.
+
+ **Hardware failure**
+
+In case of critical failure **e.g.** Hardware, electrical or microwave jammer interference. Emergency Landing will be triggered. The Emergency Landing state forces the aircraft into ANGLE mode.
+
+* The multicoter will center ROLL and PITCH inputs to maintain level, the pilot stick input is ignored, and the copter enters a controlled descent, based on your landing failsafe presets. Which are THROTTLE POSITION and a TIMER. Once the timer has expired the motors will be shut off.
+
+* The fixedwing will enter a slow descending spiral until it touches down, according to the default landing presets in the Advanced tuning tab.. It will also disarm.
+
 
 ## Tips to improve GPS reception and avoid GPS outages and glitches
 
