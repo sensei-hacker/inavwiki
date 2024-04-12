@@ -38,18 +38,19 @@ RTH and WP are considered full-auto modes. It is assumed that pilot might have n
 
 If the radio control signal is lost and the sensor data is still active. (GPS and barometer)
 
-* The multicopter will enter emergency landing, and descend via the use of altitude and position data. It will descend at a controlled rate according to your landing setting in the Advanced tuning tab, and disarm.
-If `LAND` is set as the failsafe procedure, in place of `RTH`. It will still make a controller descent. But it will land at the location the failsafe occurred. Instead of returning to home.
+* The multicopter will enter emergency landing, and descend via the use of altitude and position data. It will descend at a controlled rate according to your _automatic landing settings_ in the _Advanced tuning tab_, and then disarm.
+If `failsafe_procedure = LAND` is selected, in place of `RTH`. It will still make a controller descent. But it will land at the location the failsafe occurred. Instead of returning to home.
 
-* A fixedwing will land in the same manor as with a hardware failure, if `LAND` is selected as a failsafe procedure. But if `RTH` is selected, and [fixedwing auto landing](https://github.com/iNavFlight/inav/blob/master/docs/Fixed%20Wing%20Landing.md) is set up by the user. The airplane will land at your designated land site.
+* A fixedwing will enter a slow descending spiral if `failsafe_procedure = LAND`. But if `RTH` is selected, and [fixedwing auto landing](https://github.com/iNavFlight/inav/blob/master/docs/Fixed%20Wing%20Landing.md) is set up by the user. The airplane will land at your designated landing coordinates.
 
  **Hardware failure**
 
-In case of critical failure **e.g.** Hardware, electrical or microwave jammer interference. Emergency Landing will be triggered. The Emergency Landing state forces the aircraft into ANGLE mode.
+In case of critical failure **e.g.** Hardware, electrical or microwave jammer interference. The Emergency Landing state will force the aircraft into ANGLE mode.
 
-* The multicoter will center ROLL and PITCH inputs to maintain level, the pilot stick input is ignored, and the copter enters a controlled descent, based on your landing failsafe presets. Which are THROTTLE POSITION and a TIMER. Once the timer has expired the motors will be shut off.
+* The multicoter will center ROLL and PITCH inputs to maintain level as the copter enters a controlled descent, based on your failsafe landing presets. Which are `failsafe_throttle` and `failsafe_off_delay`. Once the timer has expired the motors will be shut off..
+**Note** : _These presets are set to zero by default. You should always tune them according to your multicopters requirements. Or the system will revert to `failsafe_procedure = DROP`._ Which will damage your copter.
 
-* The fixedwing will enter a slow descending spiral until it touches down, according to the default landing presets in the Advanced tuning tab.. It will also disarm.
+* The fixedwing will enter a slow descending spiral until it touches down, according to the _automatic landing settings_ in the _Advanced tuning tab_.. It will also disarm.
 
 
 ## Tips to improve GPS reception and avoid GPS outages and glitches
