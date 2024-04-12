@@ -17,7 +17,7 @@ For INAV before 1.9, it is also necessary to perform some [manual configuration 
 With INAV 7.0 and later, `GPS`, `Galileo` and `BeiDou` or `Glonass`  can be enabled in the GPS configuration tab (the `GPS` constellation is enabled by default). **Always enable as many constellation as your hardware will allow.**
 
 The magnetometer / compass is normally included as part of the GNSS (GPS) module. 
-If you want to use an external magnetometer other than the one on your GNSS module do not use both together. You can't use two identical chips/magnetometers on the same I2C bus.
+If you want to use an external magnetometer other than the one on your GNSS module, do not use both together. You can't use two identical chips/magnetometers on the same I2C bus.
 
 If your flight controller has an internal magnetometer on the FC, using it will likely to have poor results due to magnetic interference (not recommended).
 
