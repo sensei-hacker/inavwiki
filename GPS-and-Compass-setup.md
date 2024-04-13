@@ -31,7 +31,7 @@ If the user does decide to omit the use of a compass for a multirotor for reason
 * keep both headings closely aligned for a time
 * the OSD Home arrow appears, showing a valid home direction
 
-Example [Video](https://www.youtube.com/watch?v=iopZfH-DdTI)
+JetrellRC has an example video: (https://www.youtube.com/watch?v=iopZfH-DdTI)
 
 Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Do not omit any of the above steps or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly when you first setup a multirotor without a compass, just as you would with a compass.
 
