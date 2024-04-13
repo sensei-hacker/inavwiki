@@ -156,7 +156,7 @@ If the chip could be mounted with it top facing the sky. FLIP would not be requi
 Enhanced Explanation in #6232
 [How to Align and Check if your readings are Correct ](https://github.com/iNavFlight/inav/issues/6232#issuecomment-727636397)
 
-Painless360 done a video on this
+Painless360 has done a video on this
 (https://www.youtube.com/watch?v=kVVJ-DjUjsc)
 
 There is an online (web based) software tool to help with alignment [Alignment Tool](https://kernel-machine.github.io/INavMagAlignHelper/); this tool is built into the INAV configurator for INAV 5.0 and later.
