@@ -116,7 +116,7 @@ The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated sett
 **Note**: A good calibration may take several attempts.
 
 
-* Perform any tests away of sources of magnetic interference. Domestic appliances or even audio speakers can cause erroneous affects.  COmputer monitors may also interfere.
+* Perform any tests away of sources of magnetic interference. Domestic appliances or even audio speakers can cause erroneous affects.  Computer monitors may also interfere.
 * Use an analogue compass in preference to a digital (mobile phone) compass. The compass in your phone is likely to be a similar chip to that on your aircraft, and is as susceptible to the same errors of interference and calibration
 * Alternatively, if you know the orientation of surrounding landmarks (e.g. my house is pretty much N/S), then you can do  static tests against land orientation.
 
