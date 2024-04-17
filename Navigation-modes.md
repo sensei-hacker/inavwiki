@@ -262,8 +262,12 @@ Loss of GPS during navigation will have the following affect on the different mo
 - RTH and WP: Emergency landing triggered. Switching the modes off will stop the emergency landing allowing the craft to be flown manually.
 - CRUISE/COURSE HOLD: Heading hold no longer maintained (Altitude hold only maintained during CRUISE if ALTHOLD mode set independently).
 - POSHOLD: Falls back to forced ANGLE mode.
+- ALTHOLD mode should still work normally if a barometer is available.
 
-ALTHOLD mode should still work normally if a barometer is available.
+## Emergency Landing
+An emergency landing will be triggered during WP and RTH modes if navigation sensors fail or in the case of RTH if the craft heads off in the wrong direction.
+
+It is also possible to manually trigger an emergency landing at any time using [MULTIFUNCTION](https://github.com/iNavFlight/inav/wiki/Modes#multi-function) mode or by using [POSHOLD](https://github.com/iNavFlight/inav/wiki/Navigation-modes#nav-poshold---Position-hold) mode. To trigger using POSHOLD mode rapidly toggle the mode ON/OFF at least 5 times. Repeat this action to cancel the emergency landing once started.
 
 ## Mode switch diagram
 
