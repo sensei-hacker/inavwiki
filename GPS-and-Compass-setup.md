@@ -35,7 +35,7 @@ JetrellRC has an example video: (https://www.youtube.com/watch?v=iopZfH-DdTI)
 
 Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Do not omit any of the above steps or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly when you first setup a multirotor without a compass, just as you would with a compass.
 
-* **Note** : _Presently multirotor navigation flight modes (RTH, POSHOLD etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. Magnetometer type FAKE can be used if no device is installed.
+* **Note** : _Presently multirotor navigation flight modes (RTH, POSHOLD etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. You can select magnetometer type FAKE if no device is installed. Then proceed to alter your navigation modes. Once that is done, set magnetometer type back to NONE for compass-less operation.. **This will be fixed in 7.1.1**
 
 INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
@@ -88,32 +88,38 @@ Ensure the ceramic antenna (light brown or beige in color) faces skywards. To pr
 ## Setting up the compass alignment
 
 INAV's default Orientation Preset is `CW270FLIP`. This value is based on the PCB mounting position of the magnetometer chip by the individual manufacturer. With respect to the Arrow direction they provide on their GNSS module.
+ 
+* Circled in _Red_ at the base of the GNSS unit. Is the QMC5883 magnetometer chip **with a white DOT providing an **X** axis internal magnetic bearing reference**.
 
-Note : The QMC5883 magnetometer chip circled in _red_ on the base of the GNSS module. And the orientation Arrow circled in _orange_. Showing the direction the compass should **ideally** be mounted, with the Arrow facing the front of the model, and its direction of travel, based on `CW270FLIP`for more reputable manufacturers.
+* Circled in _Orange_ is the orientation arrow showing the direction the compass should **ideally** be mounted, with that arrow facing the front of the model, and its direction of travel. Along with the Flight controllers arrow facing forward as well.
+
+**For reference, circled in Green. You can see an image of a QMC5883. Note how the reference dot for the magnetometer chips **X** axis is facing forward. The same way as the direction arrow on the GNSS unit. IF the manufacturer had mounted the magnetometer chip this way, and at the top next to the patch antenna. This specific unit would have had its orientation default set as CW0 (no flip) instead of CW270FLIP.**
 
 
-![M10Q-5883_2](https://github.com/iNavFlight/inav/assets/47995726/4183e4af-a043-49d1-9733-5b1515b7de05)
+![M10Q-5883_2](https://github.com/iNavFlight/inav/assets/47995726/1ad10ddc-e1d8-43f4-b1ce-e96afadd563e)
 
-However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation.
+
+However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation. 
 In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations.
 
 ![M181](https://github.com/iNavFlight/inav/assets/47995726/cd8f6567-c142-400f-885a-5e5c708ad716)
 
 **NOTE :** Compass orientation preset is solely based on the Flight controller having its _mounting arrow facing the direction the model will travel_. If you invert the flight controller, or rotate it on the Yaw axis this will effect the compass alignment settings.
-Before attempting use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment, by using the Configurator SETUP Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identical to your motions, without any axis drift.
+Before attempting to use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment, by using the Configurator SETUP Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identical to your motions, without any axis drift.
+So be mindful of the complexity involved in getting the correct orientation settings, if you deciding to mount the flight controller or GNSS/compass unit on an axis different from what the manufacturer recommends by their arrow,
 
 
 ## Compass calibration and testing
 
-The general rule behind compass calibration is to ensure the magnetometer reports the earths magnetic field strength equally on all axis's, regardless of weak localized magnetic perturbations. Therfore calibration of the compass should be done _in_ the aircraft.
+The general rule behind compass calibration is to ensure the magnetometer reports the earths magnetic field strength equally on all axis's, regardless of weak localized magnetic perturbations. Therefore calibration of the compass should be done _in_ the aircraft.
 
 Ideally, its not good enough to rotate the compass or aircraft, so that each axis faces skyward or towards the ground. Because this can leave areas where _complete_ calibration is missed. Which will provide poor results and navigation performance.
 
-To acquire the best 3 axis calibration results, **your wrist should move the aircraft in an infinity [∞](https://www.google.com.au/search?sca_esv=c7d05ac6ad01166f&sca_upv=1&q=3D+compass++calibration+motion&tbm=vid&source=lnms&sa=X&ved=2ahUKEwiThc-btLGEAxVEa2wGHaZaAO8Q0pQJegQIDBAB&biw=1366&bih=615&dpr=1#fpstate=ive&vld=cid:8bdfdcb6,vid:J_cZnPcW-Yw,st:0) symbol motion in the air, while ensuring every axis faces skywards in the process**. Do this several times (not too quickly) within the allotted 30secs.
+To acquire the best 3 axis calibration results, **your arm and wrist should move the aircraft in a figure 8 or infinity [∞](https://www.google.com.au/search?sca_esv=c7d05ac6ad01166f&sca_upv=1&q=3D+compass++calibration+motion&tbm=vid&source=lnms&sa=X&ved=2ahUKEwiThc-btLGEAxVEa2wGHaZaAO8Q0pQJegQIDBAB&biw=1366&bih=615&dpr=1#fpstate=ive&vld=cid:8bdfdcb6,vid:J_cZnPcW-Yw,st:0) symbol motion in the air, while ensuring every axis faces skywards in the process**. Do this several times (not too quickly) within the allotted 30secs.
 * Use a long USB extension lead if its done via connection to the configurator.
 
 The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 as possible. While `magzero_x`  `magzero_y` `magzero_z` can vary. But should never exceed +- 1000 on any axis.  Any dramatic difference indicates a poor calibration. Or too much localized magnetic or electromagnetic interference.
-**Note**: A good calibration may take several attempts.
+**Note**: A good calibration may take several attempts. So use the above settings for a reference to see if you can get the calibration any better.
 
 
 * Perform any tests away of sources of magnetic interference. Domestic appliances or even audio speakers can cause erroneous affects.  Computer monitors may also interfere.
