@@ -2,7 +2,7 @@ Do you already know how to setup and fly a BetaFlight multirotor, and are now wi
 
 **Good**! You are in the right place.
 
-INAV and BetaFlight are forks from CleanFlight, but nowadays they are all very different from each other.
+INAV and BetaFlight were forks from CleanFlight. But nowadays they are both very different from each other.
 
 While BetaFlight evolved to provide good flight performance for multirotors in **ACRO** mode, INAV evolved to provide flight reliability, navigation capabilities and vehicle configuration diversity.
 
@@ -17,9 +17,9 @@ Let's then review the differences:
 * Not all Flight Controller boards have a proper target for INAV. But the most common ones do.
 * After flashing, the first time you connect your FC board to INAV configurator, it'll ask you to load a preset. Do it, as it'll make things easier from now on.
 * The accelerometer and gyroscope calibration is mandatory on INAV, and it’s a 6-step process (different from BetaFlight, which is an optional single-step process). Follow the on-screen instructions and you’ll be fine.
-* For a fully autonomous multirotor (with automatic navigation capabilities like RTH and WP Missions), the Flight Controller board must have an onboard barometer sensor. INAV can't navigate without one (on a multirotor aircraft). 
-* Also, you have to cover the barometer sensor with a small piece of non-blocking foam, because the wind affects the sensor readings. This is the most common cause of altitude holding problems.
-* The GPS module must be fitted with a magnetometer sensor. GPS modules without a mag sensor do not allow INAV to navigate (on a multirotor aircraft) and will only be useful for logging purposes.
+* For a fully autonomous multirotor (with automatic navigation capabilities like RTH, Poshold and WP Missions). The Flight Controller board should have an onboard barometer sensor. INAV's multicopter navigation altitude precision will suffer without one. 
+* Also, you have to cover the barometer sensor with a small piece of open-cell foam, because the wind affects the sensor readings. This is the most common cause of altitude holding problems.
+* Prior to 7.1 release. The GNSS module should be fitted with a magnetometer sensor for best navigation precision. GNSS modules without a mag sensor will work from 7.1 on-wards for copter navigation. [See requirements](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#inav-71-changes)
 
 * The GPS module should be mounted on a small mast pole to avoid magnetic interference from motors on the compass; 5 or 6 centimeters above motors should be fine.
 
@@ -28,26 +28,26 @@ Let's then review the differences:
 _FPV Quadcopter with GPS mast_
 
 
-* INAV does NOT have the resource remapping feature, which means that **you can't change the motors order** so easily. Be careful to wire the motors signal wires on the correct order.
-* INAV supports DShot ESC protocol, but it doesn’t behave the same way as in BetaFlight. DShot 150 or 300 is more than enough for a reliable flight. Faster protocols will reduce the reliability, so avoid using them.
-* INAV supports loop frequencies up to 8kHz, but flies just fine with 2kHz. There’s no real benefit to using higher frequencies as it will only make the CPU more busy for others tasks.
-* DShot telemetry is supported, but not Bi-directional single-wire telemetry.
+* INAV does NOT have a complete resource mapping feature. But it does support timer output mapping for motors and servo's.
+* INAV supports DShot ESC protocol, but not to the same level as BetaFlight. DShot 150, 300 or 600 is more than enough for a reliable flight. Faster protocols will reduce the reliability on larger copters, due to ESC signal interference on long wire runs.
+* INAV supports loop frequencies up to 4kHz without i2C devices. Although, for reliable navigation performance its should be limited to 2kHz with i2C devices. 
+* DShot telemetry and beeper is supported, but not Bi-directional. Only single-wire telemetry.
 
 ### Most important settings you should take a look at before your first flight
 
-* `set nav_mc_hover_thr = 1450` # Base throttle value that the aircraft will use for altitude hold
-* `set max_angle_inclination_rll = 450` # Maximum bank angle allowed in ANGLE mode, in decidegrees (for roll)
+* `set nav_mc_hover_thr` # Is the base throttle value your copter will use for holding altitude while hovering. Must be set for Poshold operation.
+* `set max_angle_inclination_rll = 600` # Maximum bank angle allowed in ANGLE mode, in decidegrees (for roll)
 * `set max_angle_inclination_pit = 450` # Maximum bank angle allowed in ANGLE mode, in decidegrees (for pitch)
-* `set nav_mc_bank_angle = 25` # Max bank angle that the aircraft will do in automatic modes, in degrees (constrained by max_angle_inclination_rll and max_angle_inclination_pit)
+* `set nav_mc_bank_angle = 27` # Max bank angle that the aircraft will command in automated or position control modes, in degrees. (constrained by max_angle_inclination_rll and max_angle_inclination_pit)
 * `set throttle_idle =  5` # Set the minimal motor speed (in percent). The default is 15, which can be high for modern ESCs.
 * `set small_angle = 180` # Let aircraft arm in any angle
-* `set gps_ublox_use_galileo = ON` # Let GPS module use galileo satellites if it is supported (check local regulations)
-* `set nav_extra_arming_safety = ALLOW_BYPASS` # Let aircraft arm without GPS 3D fix (careful, navigation will not work if enabled)
-* `set nav_wp_radius = 500` # Radius in centimeters to consider a waypoint reached
-* `set nav_wp_safe_distance = 200` # If the first waypoint of a loaded mission is further than this value (in meters), INAV will not arm.
-* `set nav_auto_speed = 1300` # Aircraft ground speed on automatic modes (in centimeters per second)
-* `set nav_auto_climb_rate = 200` # Aircraft vertical speed on automatic modes (centimeters per second)
-* `set nav_rth_allow_landing = FS_ONLY` # Allow aircraft to land by itself only if it’s in a Failsafe state.
+* `set gps_ublox_use_galileo = ON` # Let GNSS module use galileo satellites if it is supported (check local constellation availability)
+* `set nav_extra_arming_safety = ALLOW_BYPASS` # Let aircraft arm without GPS 3D fix (Caution: RTH position will not be recorded)
+* `set nav_wp_radius = 500` # Radius in centimeters to consider a waypoint reached.
+* `set nav_wp_safe_distance = 400` # If the first waypoint of a loaded mission is further than this value (in meters).
+* `set nav_auto_speed = 2000` # Maximum copter ground speed in automated modes (in centimeters per second)
+* `set nav_auto_climb_rate = 600` # Aircraft vertical speed on automatic modes (centimeters per second)
+* `set nav_rth_allow_landing = ALWAYS` # Allow copter to land by itself after RTH or FS.
 * `set nav_rth_altitude = 5000` # Altitude that aircraft will try to reach when doing RTH (in centimeters)
 * `set nav_rth_alt_mode = AT_LEAST` # Allow aircraft to come home descending to the RTH altitude. It saves energy by trading altitude for speed.
 
