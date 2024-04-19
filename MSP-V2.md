@@ -134,9 +134,10 @@ For INAV 1.8.0, MSP V2 messages have been defined (0x4242 is a joke, not a land 
 
 Suggested approach is to allocate blocks of MSPv2 messages to certain firmwares - use high nibble of Function ID as firmware family identifier. This will allow up to 4096 firmware-specific messages.
 
-| Function ID | Usage | Supports flags | FCs implemntating | Documentation Link |
+| Function ID | Usage | Supports flags | FCs implementing | Documentation Link |
 | ----- | ---------- | ---- | ---- | ---- |
 | 0x0000-0x00FE | Legacy     |  ✘   | INAV, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
 | 0x1000-0x1EFF | Common messages   |  ✘   | INAV    |      |
 | 0x1F00-0x1FFF | Sensors connected via MSP  |  ✘   | INAV    |      |
 | 0x2000-0x2FFF | INAV-specific     |  ✘   | INAV    |      |
+| 0x3000-0x3FFF | Betaflight-specific, Cleanflight-specific | ✘ | Betaflight, Cleanflight   |    |
