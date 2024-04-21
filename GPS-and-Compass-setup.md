@@ -2,15 +2,19 @@ In the 7.0 release and later. INAV only supports Ublox and Ublox7 protocols.
 
 Recommended GNSS units are M8, M9 or M10 models for best navigation performance.
 
+Older versions as M6N and M7N also work, but the newer M9/M10 versions are superior.
+Most GNSS modules have a built in magnetometer (compass), but there are also some available without e.g. [Matek M10Q](http://www.mateksys.com/?portfolio=sam-m10q) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
+
 Modules known to work reasonably well:
-* [Beitian BN-880](https://inavflight.com/shop/p/BN880)
 * [Matek M10Q-5883](http://www.mateksys.com/?portfolio=m10q-5883)
+* [Beitian BN-880](https://inavflight.com/shop/p/BN880)
 
 
-Older versions as M6N and M7N also work, but the newer M9/M10 versions are far superior.
-Most GPS modules have a built in magnetometer (compass), but there are also some available without e.g. [Matek M10Q](http://www.mateksys.com/?portfolio=sam-m10q) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
+**Note** : Not all GNSS units are made equal. If you buy cheap, you are more likely to get cheap performance. Many do not include a quality _front end LNA and SAW filter_. Without those components, the chances of the GNSS working poorly is much higher if you have localized RF noise from a VTX or RX with telemetry.
 
-With default settings INAV will configure the GPS automatically, **there is no need for configuring it manually** using software like `u-center`. Nevertheless you have to configure your FC with INAV to receive the GPS signals.
+
+
+Using default settings INAV will configure the GPS automatically, **there is no need for configuring it manually** using software like `u-center`. Nevertheless you have to configure your FC with INAV to receive the GPS signals.
 
 For INAV before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites.
 
@@ -35,7 +39,8 @@ JetrellRC has an example video: (https://www.youtube.com/watch?v=iopZfH-DdTI)
 
 Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Do not omit any of the above steps or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly when you first setup a multirotor without a compass, just as you would with a compass.
 
-* **Note** : Presently multirotor navigation flight modes (RTH, POSHOLD etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. You can select magnetometer type FAKE if no device is installed. Then proceed to alter your navigation modes. Once done, set magnetometer type back to NONE for compass-less navigation. **This will be fixed in 7.1.1**
+* **Note** : Presently multirotor navigation flight modes (RTH, POSHOLD etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. You can select magnetometer type FAKE if no device is installed. Then proceed to alter your navigation modes. Once done, set Magnetometer type back to NONE for compass-less navigation. **This will be fixed in 7.1.1**..  The same will apply if your flight controller doesn't have a barometer. In this case you will be required to enter `inav_use_gps_no_baro = ON ` in the CLI, and select Barometer type FAKE. Then you can alter the navigation modes. Once done, set the barometer type back to NONE.
+**Be aware. If you don't use a barometer as well as a magnetometer. And your satellite fix is poor, the copters altitude and position accuracy will be greatly reduced.** 
 
 INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
@@ -80,7 +85,9 @@ As of March 2024 / INAV 7.1.
 
 ## Installing the GNSS unit - Antenna orientation
 
-Ensure the ceramic antenna (light brown or beige in color) faces skywards. To provide the strongest signal and best hemispherical satellite coverage. And be sure its mounted a minimum of 5cm away from any source of Radio Frequency or (Electro) Magnetic interference. **e.g.** Digital or Analogue video transmitters. A radio receiver that has telemetry. Or for the sake of the magnetometer/compass. Any source of magnetic field, like high current power wires, motors or a beeper.
+Ensure the ceramic antenna (light brown or beige in color) faces skywards. To provide the strongest signal and best hemispherical satellite coverage. 
+
+* **Important** : Be sure your GNSS module is mounted a minimum of 5cm away from any source of Radio Frequency or (Electro) Magnetic interference. **e.g.** A digital or analog video transmitters and its antenna. A radio receiver that has telemetry and its antenna. Or for the sake of the magnetometer, any source of magnetic fields, like high current power wires, motors or a beeper.
 
  ![TOP_Matek GNSS](http://www.mateksys.com/wp-content/uploads/2023/03/M10Q-5883_4.jpg)
 
