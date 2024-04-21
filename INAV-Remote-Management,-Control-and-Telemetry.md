@@ -14,7 +14,7 @@ For the purpose of this article, the following definitions are used:
 
 * **Remote Management**: Methods to get and set internal parameters and data from and to the flight controller. This may be considered to be a super-set of the information that can be shown / updated from the [INAV Configurator](https://github.com/iNavFlight/inav-configurator). It should be noted that setting / using much of this information requires saving to EEPROM and thus cannot (safely) be used when the vehicle is armed.
 
-* **Remote Control:** Methods to alter the behaviour of the vehicle when armed. This includes overriding or replacing the radio TX "stick commands" and "follow me" functionality.
+* **Remote Control:** Methods to alter the behaviour of the vehicle when armed. This includes overriding or replacing the radio TX "stick commands" and preset navigation "switch" commands.
 
 * **Telemetry**: Methods to receive status and geospatial data from the vehicle. This is typically sent unsolicited (e.g. once telemetry is configured it will be sent without further action from the receiver / consumer).
 
