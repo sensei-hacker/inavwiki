@@ -87,33 +87,35 @@ As of March 2024 / INAV 7.1.
 
 Ensure the ceramic antenna (light brown or beige in color) faces skywards. To provide the strongest signal and best hemispherical satellite coverage. 
 
-* **Important** : Be sure your GNSS module is mounted a minimum of 5cm away from any source of Radio Frequency or (Electro) Magnetic interference. **e.g.** A digital or analog video transmitters and its antenna. A radio receiver that has telemetry and its antenna. Or for the sake of the magnetometer, any source of magnetic fields, like high current power wires, motors or a beeper.
+* **Important** : Be sure your GNSS module is mounted a minimum of 5cm away from any source of Radio Frequency or (Electro) Magnetic interference. **e.g.** A digital or analog video transmitter and its antenna. A radio receiver that has telemetry and its antenna. Or for the sake of the magnetometer, any source of magnetic fields. High current power wires, Motors or a Beeper.
 
- ![TOP_Matek GNSS](http://www.mateksys.com/wp-content/uploads/2023/03/M10Q-5883_4.jpg)
+
+![M10Q-5883_4](https://github.com/iNavFlight/inav/assets/47995726/5fd7604b-986e-417f-b134-235b9c67c3dd)
+
 
 
 ## Setting up the compass alignment
 
-INAV's default Orientation Preset is `CW270FLIP`. This value is based on the PCB mounting position of the magnetometer chip by the individual manufacturer. With respect to the Arrow direction they provide on their GNSS module.
+INAV's default Orientation Preset is `CW270FLIP`. Although this value is based on the orientation of the magnetometer chip on its PCB, chosen by the manufacturer. With respect to the Arrow direction they provide on their GNSS module.
  
-* Circled in _Red_ at the base of the GNSS unit. Is the QMC5883 magnetometer chip **with a white DOT providing an **X** axis internal magnetic bearing reference**.
+* Circled in _Red_ at the base of the GNSS unit. Is the QMC5883 magnetometer chip **with its white DOT providing an **X** axis magnetic bearing reference based on the internal coil**.
 
 * Circled in _Orange_ is the orientation arrow showing the direction the compass should **ideally** be mounted, with that arrow facing the front of the model, and its direction of travel. Along with the Flight controllers arrow facing forward as well.
 
-**For reference, circled in Green. You can see an image of a QMC5883. Note how the reference dot for the magnetometer chips **X** axis is facing forward. The same way as the direction arrow on the GNSS unit. IF the manufacturer had mounted the magnetometer chip this way, and at the top next to the patch antenna. This specific unit would have had its orientation default set as CW0 (no flip) instead of CW270FLIP.**
+To help understand orientation preset, the image circled in _Green_ shows the QMC5883. Note how the reference dot for the magnetometer chips **X** axis is now facing forward in this example, in the same direction as  the arrow on the GNSS unit. **IF Matek had mounted the magnetometer chip this way, and on the top next to the patch antenna. This specific unit would have its orientation default set as CW0 (no flip) with respect to its arrow, instead of CW270FLIP.**
 
-
-![M10Q-5883_2](https://github.com/iNavFlight/inav/assets/47995726/1ad10ddc-e1d8-43f4-b1ce-e96afadd563e)
-
+![Matek M10Q + 5883](https://github.com/iNavFlight/inav/assets/47995726/09cfb068-edec-47cc-9d70-6ad661810d05)
 
 However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation. 
-In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations.
+In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations. **The Orange orientation arrow has been added to the image below, to assist your installation if you have this unit. Its Orientation preset is CW0FLIP.**
 
-![M181](https://github.com/iNavFlight/inav/assets/47995726/cd8f6567-c142-400f-885a-5e5c708ad716)
 
-**NOTE :** Compass orientation preset is solely based on the Flight controller having its _mounting arrow facing the direction the model will travel_. If you invert the flight controller, or rotate it on the Yaw axis this will effect the compass alignment settings.
+![Walksnail M181 GPS](https://github.com/iNavFlight/inav/assets/47995726/5146a1fd-8ea3-479f-abb4-45e1dbbe61df)
+
+
+**NOTE :** The compass must work in conjunction with the Flight controllers IMU. If you invert the flight controller, or rotate it on the Yaw axis this will effect the compass alignment settings.
 Before attempting to use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment, by using the Configurator SETUP Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identical to your motions, without any axis drift.
-So be mindful of the complexity involved in getting the correct orientation settings, if you deciding to mount the flight controller or GNSS/compass unit on an axis different from what the manufacturer recommends by their arrow,
+So be mindful of the complexity involved in getting the correct orientation settings if you deciding to mount the flight controller or GNSS/compass unit on an axis different from what the manufacturer recommends by their arrow.
 
 
 ## Compass calibration and testing
