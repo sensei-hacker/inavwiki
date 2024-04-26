@@ -107,7 +107,7 @@ To help understand orientation preset, the image circled in _Green_ shows the QM
 ![Matek M10Q + 5883](https://github.com/iNavFlight/inav/assets/47995726/09cfb068-edec-47cc-9d70-6ad661810d05)
 
 However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation. 
-In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations. **The Orange orientation arrow has been added to the image below, to assist your installation if you have this unit. Its Orientation preset is CW0FLIP.**
+In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations. **The orange orientation arrow has been added to the image below to assist your installation if you have this unit. Its Orientation preset is CW0FLIP with the plug facing to the rear of the model.** _This is how Beitian should have mounted the magnetometer chip in the first GPS modules that included a compass, back in 2014. But instead we now have this confusing default orientation preset of CW270._
 
 
 ![Walksnail M181 GPS](https://github.com/iNavFlight/inav/assets/47995726/5146a1fd-8ea3-479f-abb4-45e1dbbe61df)
