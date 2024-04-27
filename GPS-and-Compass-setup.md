@@ -106,8 +106,15 @@ To help understand orientation preset, the image circled in _Green_ shows the QM
 
 ![Matek M10Q + 5883](https://github.com/iNavFlight/inav/assets/47995726/09cfb068-edec-47cc-9d70-6ad661810d05)
 
+
+
 However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation. 
-In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations. **The orange orientation arrow has been added to the image below to assist your installation if you have this unit. Its Orientation preset is CW180FLIP with the plug facing to the rear of the model.** _This is how Beitian should have mounted the magnetometer chip in the first GPS modules that included a compass, back in 2014. But instead we now have this confusing default orientation preset of CW270._
+In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. 
+This chart is a reference to help work out the orientation preset of your magnetometer, based on the chips Clockwise rotation. And the power plug facing the rear of GNSS module and aircraft, when there is no arrow provided.
+
+![Clockwise arrows](https://github.com/iNavFlight/inav/assets/47995726/a75595e6-d767-4c8e-98d9-ceefb1500335)
+
+You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations. The image below is an example of a module that does not use the default orientation preset, nor has a mounting direction arrow from factory. **The orange orientation arrow has been added to the image below to assist your installation if you have this unit. Its Orientation preset is CW180FLIP with the plug facing to the rear of the model.** _Beitian made the first GPS modules that included a compass for hobby use, back in 2014. And this is how we ended up the confusing default orientation preset of CW270 (flip)_
 
 
 ![Walksnail M181 GPS](https://github.com/iNavFlight/inav/assets/47995726/5146a1fd-8ea3-479f-abb4-45e1dbbe61df)
