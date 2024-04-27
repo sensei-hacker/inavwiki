@@ -102,11 +102,7 @@ INAV's default Orientation Preset is `CW270FLIP`. Although this value is based o
 
 * Circled in _Orange_ is the orientation arrow showing the direction the compass should **ideally** be mounted, with that arrow facing the front of the model, and its direction of travel. Along with the Flight controllers arrow facing forward as well.
 
-To help understand orientation preset, the image circled in _Green_ shows the QMC5883. Note how the reference dot for the magnetometer chips **X** axis is now facing forward in this example, in the same direction as  the arrow on the GNSS unit. **IF Matek had mounted the magnetometer chip this way, and on the top next to the patch antenna. This specific unit would have its orientation default set as CW180 (no flip) with respect to its arrow, instead of CW270FLIP.**
-
-![Matek M10Q + 5883](https://github.com/iNavFlight/inav/assets/47995726/09cfb068-edec-47cc-9d70-6ad661810d05)
-
-
+![Matek M10Q](https://github.com/iNavFlight/inav/assets/47995726/52d67080-b96c-47be-bf3a-e6db04f5d374)
 
 However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation. 
 In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. 
