@@ -1,59 +1,63 @@
-**REFER TO THIS PAGE FOR NAVIGATION MODES:** [Navigation-modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes)
+# Introduction
+Flight Modes in INAV can be categorized into two groups:
+* **Navigation-Modes** which involve GPS and other positional sensors. Refer to the [Navigation-Modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes) page for more information.
+* **Non-Navigation-Modes** perform actions that may rely on a sensor like the gyro or no sensor at all. See the mode descriptions below.
 
-# Non-navigation modes index:
+Some modes are only available to certain craft types. This is indicated by:
+* **FW** = Fixed Wing
+* **MC** = Multi-Copter
 
+Scroll down to the [AUXILIARY CONFIGURATION](#AUXILIARY-CONFIGURATION) section for how Modes are assigned to channels on your radio.
+
+# Non-Navigation Modes Index:
+
+- [ACRO MODE](#acro-mode) (default mode)
 - [AIR MODE](#air-mode)
 - [ANGLE](#angle)
-- [ANGLE HOLD](#ANGLE-HOLD-fw) (7.1 and later)
+- [ANGLE HOLD](#angle-hold-fw) **FW** (7.1 and later)
 - [ARM](#arm)
-- [AUTO LEVEL TRIM](#auto-level-trim-fw)
-- [AUTOTUNE](#autotune-fw)
+- [ALTHOLD](#althold)
+- [AUTO LEVEL TRIM](#auto-level-trim-fw) **FW**
+- [AUTOTUNE](#autotune-fw) **FW**
 - [BEEPER](#BEEPER)
 - [BEEPER MUTE](#BEEPER-MUTE)
 - [BLACKBOX](#blackbox)
 - [CAMERA CONTROL](#camera-control)
 - [CAMSTAB](#CAMSTAB)
 - [FAILSAFE](#failsafe)
-- [FLAPERON](#flaperon-fw)
-- [FPV ANGLE MIX](#FPV-ANGLE-MIX-mc)
-- [HEADADJ](#headadj-mc)
-- [HEADFREE](#headfree-mc)
+- [FLAPERON](#flaperon-fw) **FW**
+- [FPV ANGLE MIX](#FPV-ANGLE-MIX-mc) **MC**
+- [HEADADJ](#headadj-mc) **MC**
+- [HEADFREE](#headfree-mc) **MC**
 - [HEADING HOLD](#heading-hold)
 - [HOME RESET](#home-reset)
 - [HORIZON](#horizon)
 - [KILLSWITCH](#killswitch)
 - [LEDLOW](#ledlow)
-- [LOITER CHANGE](#loiter-change-fw)
-- [MANUAL](#manual-fw) (called PASSTHROUGH mode up to version 1.8.1)
-- [MC BRAKING](#mc-braking-mc)
+- [LOITER CHANGE](#loiter-change-fw) **FW**
+- [MANUAL](#manual-fw) **FW** (PASSTHROUGH v1.8.1 & earlier)
+- [MC BRAKING](#mc-braking-mc) **MC**
+- [MIXER PROFILE 2](#mixer-profile-2)
+- [MIXER TRANSITION](#mixer-transition)
 - [MSP RC OVERRIDE](#msp-rc-override)
-- [NAV LAUNCH](#nav-launch-fw)
+- [MULTI FUNCTION](#multi-function) 
+- [NAV LAUNCH](#nav-launch-fw) **FW**
 - [OSD ALT](#osd-alt)
 - [OSD SW](#osd-sw)
 - [PREARM](#prearm)
-- [SERVO AUTOTRIM](#servo-autotrim-fw)
-- [SOARING](#soaring-fw)
+- [SERVO AUTOTRIM](#servo-autotrim-fw) **FW**
+- [SOARING](#soaring-fw) **FW**
 - [SURFACE](#surface)
 - [TELEMETRY](#telemetry)
 - [TURN ASSIST](#turn-assist)
-- [TURTLE](#turtle-mc)
-- [MULTI FUNCTION](#multi-function) 
-- [MIXER PROFILE 2](#mixer-profile-2)
-- [MIXER TRANSITION](#mixer-transition)
-- [USER1 & USER2 & USER3 & USER4](#USER)
+- [TURTLE](#turtle-mc) **MC**
+- [USER1 & USER2 & USER3 & USER4](#USER)  (aka PinIO)
 - [WAYPOINT PLANNER](#WP-Planner)
 
-## Default flight mode ( No mode selected )
+### ACRO MODE
+NOTE: This is **default** flight mode. It is only active when no other mode is active. There is no mode selection for ACRO in the configurator, only an ACRO box that highlights when no other mode is active.
 
-The default flight mode does not self level the aircraft around the roll and the pitch axes. That is, the aircraft does not level on its own if you center the pitch and roll sticks on the radio. Rather, they work just like the yaw axis: the rate of rotation of each axis is controlled directly by the related stick on the radio, and by leaving them centered the flight controller will just try to keep the aircraft in whatever orientation it's in. This default mode is called "Acro" mode (from "acrobatic", shown in the OSD as `ACRO`). It is also sometimes called "rate" mode because the sticks control the rates of rotation of the aircraft around each of the three axes. "Acro" mode is active whenever auto-leveled mode is enabled.
-
-
-## Mode Details
-
-The following indicate if a mode is specific to a particular craft type:
-
-FW = Fixed wing.\
-MC = Multicopter.
+This default flight mode does not self level the aircraft around the roll and the pitch axes. That is, the aircraft does not level on its own if you center the pitch and roll sticks on the radio. Rather, they work just like the yaw axis: the rate of rotation of each axis is controlled directly by the related stick on the radio, and by leaving them centered the flight controller will just try to keep the aircraft in whatever orientation it's in. This default mode is called "Acro" mode (from "acrobatic", shown in the OSD as `ACRO`). It is also sometimes called "rate" mode because the sticks control the rates of rotation of the aircraft around each of the three axes. "Acro" mode is active whenever auto-leveled mode is enabled.
 
 ### AIR MODE
 
@@ -93,6 +97,9 @@ It was designed to work with a flight mode and a modifier - `COURSE HOLD` or `AL
 
 
 **Use caution! - If the pilot requests the airplane to hold a high climb angle. The pilot MUST provide adequate throttle (motor thrust) to maintain airspeed or the airplane will stall.**
+
+### ARM
+Activates the flight controller to be ready for flight.
 
 ### ALTHOLD
 
@@ -236,7 +243,6 @@ Used to transition VTOL aircraft from the _multirotor control profile_ to the _f
 
 Allows defined RC channels to be overridden by MSP `MSP_SET_RAW_RC` messages. The channels to be overridden are defined by the CLI setting `msp_override_channels`. There is a [code example](https://codeberg.org/stronnag/msp_override) that provides further information and a sample application illustrating the use of MSP RC OVERRIDE.
 
-
 ### MULTI FUNCTION 
 
 This function use a single mode to select between different functions based on feedback provided by the Multi Function OSD field. Functions are selected by briefly toggling the mode ON/OFF with this sequence, repeating until the required function is displayed in the OSD. The function is then triggered by activating the mode for > 3s. Deactivating the mode for > 3s resets everything leaving the OSD field blank. Ideally a momentary switch should be used to operate the mode although it should also work with a normal switch. Current functions include -
@@ -324,6 +330,10 @@ Switches to the different alternative OSD displays ALT1, ALT2 or ALT3. The defau
 
 Switches off the OSD.
 
+### PREARM
+
+When PREARM is assigned a range, INAV then prevents Arming until the PREARM condition is met and will raise a prearm error if Arming is attempted. After the craft is armed, then INAV stops monitoring the PREARM condition.
+
 ### SERVO AUTOTRIM (FW)
 _Tuning mode_
 
@@ -356,6 +366,8 @@ When mode is active altitude control is disabled and Angle mode allowed to free 
 
 Enable terrain following when you have a rangefinder enabled
 
+### TELEMETRY
+
 ### TURN ASSIST
 
 Normally YAW stick makes a turn around a vertical axis of the craft - this is why when you fly forward in RATE and do a 180-deg turn using only YAW you'll end up looking upwards and flying backwards. In ANGLE mode this also causes an effect known as a pirouetting where turn is not smooth the horizon line is not maintained.
@@ -379,9 +391,8 @@ TAS (from airspeed sensor) will be used for calculation if available - otherwise
 Provides a means of flipping over a multicopter that has crash landed upside down, by using the roll or pitch sticks.
 
 ### USER 
-
-Also known as `PinIO` , when broken out on many flight controllers.
-The four USER selection are generic in nature. But are often used for certain functions, depending on what the flight controller manufacturer decides to place on that mode.
+These are shown as USER1 & USER2 & USER3 & USER4 and also known as `PinIO` , when broken out on many flight controllers.
+The four USER selections are generic in nature. But are often used for certain functions, depending on what the flight controller manufacturer decides to place on that mode.
 
 **e.g.**
 - Some FC manufactures have `USER 1` as a VTX power switch. Which includes the electronic hardware, to power ON and OFF your HD or Analogue VTX.
@@ -393,8 +404,9 @@ The four USER selection are generic in nature. But are often used for certain fu
 
 ### WP Planner
 
-Allows you to plot a waypoint mission as you fly. See more [details](https://github.com/iNavFlight/inav/wiki/Navigation-modes#wp-planner---on-the-fly-waypoint-mission-planner)
-### AUXILIARY CONFIGURATION
+This is a Navigation-Mode that allows you to plot a waypoint mission as you fly. See more [details](https://github.com/iNavFlight/inav/wiki/Navigation-modes#wp-planner---on-the-fly-waypoint-mission-planner)
+
+# AUXILIARY CONFIGURATION
 
 Spare auxiliary receiver channels can be used to enable/disable modes.  Some modes can only be enabled this way.
 
