@@ -1,9 +1,14 @@
-# INTRODUCTION
+<details>
+<summary>INTRODUCTION</summary>
+
 [Home](https://github.com/iNavFlight/inav/wiki/Home)\
 DevDocs [Introduction.md](https://github.com/iNavFlight/inav/blob/master/docs/Introduction.md)\
 [Welcome to INAV, useful links and products](https://github.com/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products)
+</details>
 
-# QUICK START
+<details>
+<summary>QUICK START GUIDES</summary>
+
 [Getting started with iNav](https://github.com/iNavFlight/inav/wiki/Getting-started-with-iNav)\
 [Fixed Wing Guide](https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Guide)\
 [Howto: CC3D flight controller, minimOSD , telemetry and GPS for fixed wing](https://github.com/iNavFlight/inav/wiki/Howto:-CC3D-flight-controller,-minimOSD-,-telemetry-and-GPS-for-fixed-wing)\
@@ -15,19 +20,25 @@ DevDocs [Introduction.md](https://github.com/iNavFlight/inav/blob/master/docs/In
 DevDocs [Getting Started.md](https://github.com/iNavFlight/inav/blob/master/docs/Getting%20Started.md)\
 DevDocs [INAV_Fixed_Wing_Setup_Guide.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Fixed_Wing_Setup_Guide.pdf)\
 DevDocs [Safety.md](https://github.com/iNavFlight/inav/blob/master/docs/Safety.md)
+</details>
 
-# START OF CONFIGURATION
+### START OF CONFIGURATION
 
-## Connecting to INAV
+<details>
+<summary>Connecting to INAV</summary>
+
 [Bluetooth setup to configure your flight controller](https://github.com/iNavFlight/inav/wiki/Bluetooth-setup-to-configure-your-flight-controller)\
 DevDocs [Wireless Connections (BLE, TCP and UDP).md](https://github.com/iNavFlight/inav/blob/master/docs/Wireless%20Connections%20(BLE%2C%20TCP%20and%20UDP).md)\
+</details>
 
-## Flashing and Upgrading
+<details>
+<summary>Flashing and Upgrading</summary>
+
 [Boards, Targets and PWM allocations](https://github.com/iNavFlight/inav/wiki/Boards,-Targets-and-PWM-allocations)\
 [Upgrading from an older version of INAV to the current version](https://github.com/iNavFlight/inav/wiki/Upgrading-from-an-older-version-of-INAV-to-the-current-version)\
 DevDocs [Installation.md](https://github.com/iNavFlight/inav/blob/master/docs/Installation.md)\
 DevDocs [USB Flashing.md](https://github.com/iNavFlight/inav/blob/master/docs/USB%20Flashing.md)
-
+</details>
 
 <details>
 <summary>Release Notes of INAV Versions</summary>
@@ -57,35 +68,55 @@ DevDocs [USB Flashing.md](https://github.com/iNavFlight/inav/blob/master/docs/US
 
 </details>
 
-## Setup Tab
-Shows model preview and pre-arm checks
+<details>
+<summary>Setup Tab</summary>
 
-## Calibration
+Shows model preview and pre-arm checks
+</details>
+
+<details>
+<summary>Calibration</summary>
+
 [Sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration)
 ## Alignment Tool
 Allows FC and Compass to be flipped
+</details>
 
-## Ports and Serial Devices
+<details>
+<summary>Ports and Serial Devices</summary>
+
 [iNav Telemetry](https://github.com/iNavFlight/inav/wiki/iNav-Telemetry)\
 DevDocs [Rangefinder.md](https://github.com/iNavFlight/inav/blob/master/docs/Rangefinder.md)\
 DevDocs [Rssi.md](https://github.com/iNavFlight/inav/blob/master/docs/Rssi.md)\
 DevDocs [Runcam device.md](https://github.com/iNavFlight/inav/blob/master/docs/Runcam%20device.md)\
 DevDocs [Serial.md](https://github.com/iNavFlight/inav/blob/master/docs/Serial.md)\
 DevDocs [Telemetry.md](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md)
+</details>
 
-## Receiver
+<details>
+<summary>Receiver</summary>
+
 DevDocs [Rx.md](https://github.com/iNavFlight/inav/blob/master/docs/Rx.md)\
 DevDocs [Spektrum bind.md]()
+</details>
 
-## Mixer
+<details>
+<summary>Mixer</summary>
+
 [Custom mixes for exotic setups]()\
 DevDocs [Mixer.md](https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md)
+</details>
 
-## Outputs
+<details>
+<summary>Outputs</summary>
+
 DevDocs [ESC and servo outputs.md](https://github.com/iNavFlight/inav/blob/master/docs/ESC%20and%20servo%20outputs.md)\
 DevDocs [Servo.md](https://github.com/iNavFlight/inav/blob/master/docs/Servo.md)
+</details>
 
-## Modes
+<details>
+<summary>Modes</summary>
+
 [Modes](https://github.com/iNavFlight/inav/wiki/Modes)\
 [Navigation modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes)\
 [Navigation Mode: Return to Home](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)\
@@ -93,16 +124,24 @@ DevDocs [Controls.md](https://github.com/iNavFlight/inav/blob/master/docs/Contro
 DevDocs [INAV_Modes.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Modes.pdf)\
 DevDocs [Navigation.md](https://github.com/iNavFlight/inav/blob/master/docs/Navigation.md)
 
-# ADDITIONAL CONFIGURATION
+### ADDITIONAL CONFIGURATION
 
-## Configuration
+<details>
+<summary>Configuration</summary>
+
 [Sensor auto detect and hardware failure detection](https://github.com/iNavFlight/inav/wiki/Sensor-auto-detect-and-hardware-failure-detection)
+</details>
 
-## Failsafe
+<details>
+<summary>Failsafe</summary>
+
 [Failsafe](https://github.com/iNavFlight/inav/wiki/Failsafe)\
 DevDocs [Failsafe.md](https://github.com/iNavFlight/inav/blob/master/docs/Failsafe.md)
+</details>
 
-## PID Tuning
+<details>
+<summary>PID Tuning</summary>
+
 [PID Attenuation and scaling](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling)\
 [Fixed Wing Tuning for INAV 3.0](https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Tuning-for-INAV-3.0)\
 [Tune INAV PIFF controller for fixedwing](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing)\
@@ -111,64 +150,106 @@ DevDocs [INAV PID Controller.md](https://github.com/iNavFlight/inav/blob/master/
 DevDocs [INAV_Wing_Tuning_Masterclass.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Wing_Tuning_Masterclass.pdf)\
 DevDocs [PID tuning.md](https://github.com/iNavFlight/inav/blob/master/docs/PID%20tuning.md)\
 DevDocs [Profiles.md](https://github.com/iNavFlight/inav/blob/master/docs/Profiles.md)
+</details>
 
-## GPS
+<details>
+<summary>GPS</summary>
+
 [GPS and Compass setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup)\
 [GPS Failsafe and Glitch Protection](https://github.com/iNavFlight/inav/wiki/GPS-Failsafe-and-Glitch-Protection)\
+</details>
 
-## OSD and VTx
+<details>
+<summary>OSD and VTx</summary>
+
 DevDocs [Betaflight 4.3 compatible OSD.md](https://github.com/iNavFlight/inav/blob/master/docs/Betaflight%204.3%20compatible%20OSD.md)\
 [OSD custom messages](https://github.com/iNavFlight/inav/wiki/OSD-custom-messages)\
 [OSD Hud and ESP32 radars](https://github.com/iNavFlight/inav/wiki/OSD-Hud-and-ESP32-radars)\
 DevDocs [OSD.md](https://github.com/iNavFlight/inav/blob/master/docs/OSD.md)\
 DevDocs [VTx.md](https://github.com/iNavFlight/inav/blob/master/docs/VTx.md)\
+</details>
 
-## LED Strip
+<details>
+<summary>LED Strip</summary>
+
 DevDocs [LedStrip.md](https://github.com/iNavFlight/inav/blob/master/docs/LedStrip.md)\
+</details>
 
-# ADVANCED CONFIGURATION
+### ADVANCED CONFIGURATION
 
-## Advanced Tuning
+<details>
+<summary>Advanced Tuning</summary>
+
 [Fixed Wing Autolaunch](https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Autolaunch)\
 DevDocs [INAV_Autolaunch.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Autolaunch.pdf)
+</details>
 
-## Programming
+<details>
+<summary>Programming</summary>
+
 DevDocs [Programming Framework.md](https://github.com/iNavFlight/inav/blob/master/docs/Programming%20Framework.md)
+</details>
 
-## Adjustments
+<details>
+<summary>Adjustments</summary>
+
 DevDocs [Inflight Adjustments.md](https://github.com/iNavFlight/inav/blob/master/docs/Inflight%20Adjustments.md)
+</details>
 
-## Mission Control
+<details>
+<summary>Mission Control</summary>
+
 [INAV Remote Management, Control and Telemetry](https://github.com/iNavFlight/inav/wiki/INAV-Remote-Management,-Control-and-Telemetry)\
 [iNavFlight Missions](https://github.com/iNavFlight/inav/wiki/iNavFlight-Missions)\
 DevDocs [Safehomes.md](https://github.com/iNavFlight/inav/blob/master/docs/Safehomes.md)
+</details>
 
-## Tethered Logging
+<details>
+<summary>Tethered Logging</summary>
+
 Log when FC is connected via USB
+<details>
 
-## Blackbox
+<details>
+<summary>Blackbox</summary>
+
 DevDocs [Blackbox.md](https://github.com/iNavFlight/inav/blob/master/docs/Blackbox.md)\
 [INAV blackbox variables](https://github.com/iNavFlight/inav/wiki/INAV-blackbox-variables)\
 DevDocs [USB_Mass_Storage_(MSC)_mode.md](https://github.com/iNavFlight/inav/blob/master/docs/USB_Mass_Storage_(MSC)_mode.md)
+</details>
 
-## CLI
+<details>
+<summary>CLI</summary>
+
 [iNav CLI variables](https://github.com/iNavFlight/inav/wiki/iNav-CLI-variables)\
 DevDocs [Cli.md](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md)\
 DevDocs [Settings.md](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md)
+</details>
 
-# VTOL
+### VTOL
+<details>
+<summary>Configuration</summary>
+
 DevDocs [MixerProfile.md](https://github.com/iNavFlight/inav/blob/master/docs/MixerProfile.md)\
 DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
+</details>
 
-# TROUBLESHOOTING
+### TROUBLESHOOTING
+<details>
+<summary>Click to Expand</summary>
+
 Sensors Tab shows a graph of the sensors\
 ["Something" is disabled Reasons](https://github.com/iNavFlight/inav/wiki/%22Something%22-is-disabled----Reasons)\
 [Blinkenlights](https://github.com/iNavFlight/inav/wiki/Blinkenlights)\
 [Pixel OSD FAQs](https://github.com/iNavFlight/inav/wiki/Pixel-OSD-FAQs)\
 [TROUBLESHOOTING](https://github.com/iNavFlight/inav/wiki/TROUBLESHOOTING)\
 [Why do I have limited servo throw in my airplane](https://github.com/iNavFlight/inav/wiki/Why-do-I-have-limited-servo-throw-in-my-airplane)
+</details>
 
-# ADVANCED TOPICS, FEATURES, and DEV INFO
+### ADVANCED TOPICS, FEATURES, and DEV INFO
+<details>
+<summary>Click to expand</summary>
+
 [AAT Automatic Antenna Tracker](https://github.com/iNavFlight/inav/wiki/AAT-Automatic-Antenna-Tracker)\
 [Building custom firmware](https://github.com/iNavFlight/inav/wiki/Building-custom-firmware)\
 [Default values for different type of aircrafts](https://github.com/iNavFlight/inav/wiki/Default-values-for-different-type-of-aircrafts)\
@@ -197,8 +278,12 @@ DevDocs [Lights.md](https://github.com/iNavFlight/inav/blob/master/docs/Lights.m
 DevDocs [OSD Joystick.md](https://github.com/iNavFlight/inav/blob/master/docs/OSD%20Joystick.md)\
 DevDocs [Servo Gimbal.md](https://github.com/iNavFlight/inav/blob/master/docs/Servo%20Gimbal.md)\
 DevDocs [Temperature sensors.md](https://github.com/iNavFlight/inav/blob/master/docs/Temperature%20sensors.md)
+</details>
 
-# OLD LEGACY INFO
+### OLD LEGACY INFO
+<details>
+<summary>Click to expand</summary>
+
 [Supported boards](https://github.com/iNavFlight/inav/wiki/Supported-boards)\
 DevDocs [Boards.md](https://github.com/iNavFlight/inav/blob/master/docs/Boards.md)\
 [Legacy Mixers](https://github.com/iNavFlight/inav/wiki/Legacy-Mixers)\
@@ -213,6 +298,10 @@ DevDocs [Boards.md](https://github.com/iNavFlight/inav/blob/master/docs/Boards.m
 [Legacy target SPRacingF3EVO](https://github.com/iNavFlight/inav/wiki/Legacy-target-SPRacingF3EVO)\
 [Legacy target SPRacingF3EVO_1SS](https://github.com/iNavFlight/inav/wiki/Legacy-target-SPRacingF3EVO_1SS)\
 DevDocs [Configuration.md](https://github.com/iNavFlight/inav/blob/master/docs/Configuration.md)\
+</details>
 
-# TO DELETE
+### TO DELETE
+<details>
+<summary>Click to expand</summary>
 [Request form new PRESET](https://github.com/iNavFlight/inav/wiki/Request-form-new-PRESET)
+</details>
