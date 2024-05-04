@@ -159,3 +159,60 @@ DevDocs [Settings.md](https://github.com/iNavFlight/inav/blob/master/docs/Settin
 # VTOL
 DevDocs [MixerProfile.md](https://github.com/iNavFlight/inav/blob/master/docs/MixerProfile.md)\
 DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
+
+# TROUBLESHOOTING
+Sensors Tab shows a graph of the sensors\
+["Something" is disabled Reasons](https://github.com/iNavFlight/inav/wiki/%22Something%22-is-disabled----Reasons)\
+[Blinkenlights](https://github.com/iNavFlight/inav/wiki/Blinkenlights)\
+[Pixel OSD FAQs](https://github.com/iNavFlight/inav/wiki/Pixel-OSD-FAQs)\
+[TROUBLESHOOTING](https://github.com/iNavFlight/inav/wiki/TROUBLESHOOTING)\
+[Why do I have limited servo throw in my airplane](https://github.com/iNavFlight/inav/wiki/Why-do-I-have-limited-servo-throw-in-my-airplane)
+
+# ADVANCED TOPICS, FEATURES, and DEV INFO
+[AAT Automatic Antenna Tracker](https://github.com/iNavFlight/inav/wiki/AAT-Automatic-Antenna-Tracker)\
+[Building custom firmware](https://github.com/iNavFlight/inav/wiki/Building-custom-firmware)\
+[Default values for different type of aircrafts](https://github.com/iNavFlight/inav/wiki/Default-values-for-different-type-of-aircrafts)\
+[Features safe to add and remove to fit your needs.](https://github.com/iNavFlight/inav/wiki/Features-safe-to-add-and-remove-to-fit-your-needs.)\
+[Developer info](https://github.com/iNavFlight/inav/wiki/Developer-info)\
+[INAV MSP frames changelog](https://github.com/iNavFlight/inav/wiki/INAV-MSP-frames-changelog)\
+[Lightweight Telemetry (LTM)](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM))\
+[Making a new Virtualbox to make your own INAV](https://github.com/iNavFlight/inav/wiki/Making-a-new-Virtualbox-to-make-your-own-INAV)\
+[MSP Navigation Messages](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages)\
+[MSP V2](https://github.com/iNavFlight/inav/wiki/MSP-V2)\
+[OrangeRX LRS RX and OMNIBUS F4](https://github.com/iNavFlight/inav/wiki/OrangeRX-LRS-RX-and-OMNIBUS-F4)\
+[Rate Dynamics](https://github.com/iNavFlight/inav/wiki/Rate-Dynamics)\
+[Target and Sensor support](https://github.com/iNavFlight/inav/wiki/Target-and-Sensor-support)\
+[UAV Interconnect Bus](https://github.com/iNavFlight/inav/wiki/UAV-Interconnect-Bus)\
+[Ublox 3.01 firmware and Galileo](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo)\
+DevDocs [1wire.md](https://github.com/iNavFlight/inav/blob/master/docs/1wire.md)\
+DevDocs [ADSB.md](https://github.com/iNavFlight/inav/blob/master/docs/ADSB.md)\
+DevDocs [Battery.md](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md)\
+DevDocs [Buzzer.md](https://github.com/iNavFlight/inav/blob/master/docs/Buzzer.md)\
+DevDocs [Channel forwarding.md](https://github.com/iNavFlight/inav/blob/master/docs/Channel%20forwarding.md)\
+DevDocs [Display.md](https://github.com/iNavFlight/inav/blob/master/docs/Display.md)\
+DevDocs [Fixed Wing Landing.md](https://github.com/iNavFlight/inav/blob/master/docs/Fixed%20Wing%20Landing.md)\
+DevDocs [GPS_fix_estimation.md](https://github.com/iNavFlight/inav/blob/master/docs/GPS_fix_estimation.md)\
+DevDocs [LED pin PWM.md](https://github.com/iNavFlight/inav/blob/master/docs/LED%20pin%20PWM.md)\
+DevDocs [Lights.md](https://github.com/iNavFlight/inav/blob/master/docs/Lights.md)\
+DevDocs [OSD Joystick.md](https://github.com/iNavFlight/inav/blob/master/docs/OSD%20Joystick.md)\
+DevDocs [Servo Gimbal.md](https://github.com/iNavFlight/inav/blob/master/docs/Servo%20Gimbal.md)\
+DevDocs [Temperature sensors.md](https://github.com/iNavFlight/inav/blob/master/docs/Temperature%20sensors.md)
+
+# OLD LEGACY INFO
+[Supported boards](https://github.com/iNavFlight/inav/wiki/Supported-boards)\
+DevDocs [Boards.md](https://github.com/iNavFlight/inav/blob/master/docs/Boards.md)\
+[Legacy Mixers](https://github.com/iNavFlight/inav/wiki/Legacy-Mixers)\
+[Legacy target ChebuzzF3](https://github.com/iNavFlight/inav/wiki/Legacy-target----ChebuzzF3)\
+[Legacy target Colibri RACE](https://github.com/iNavFlight/inav/wiki/Legacy-target-Colibri-RACE)\
+[Legacy target Motolab](https://github.com/iNavFlight/inav/wiki/Legacy-target-Motolab)\
+[Legacy target Omnibus F3](https://github.com/iNavFlight/inav/wiki/Legacy-target-Omnibus-F3)\
+[Legacy target Paris Air Hero 32](https://github.com/iNavFlight/inav/wiki/Legacy-target-Paris-Air-Hero-32)\
+[Legacy target Paris Air Hero 32 F3](https://github.com/iNavFlight/inav/wiki/Legacy-target-Paris-Air-Hero-32-F3)\
+[Legacy target Sparky](https://github.com/iNavFlight/inav/wiki/Legacy-target-Sparky)\
+[Legacy target SPRacingF3](https://github.com/iNavFlight/inav/wiki/Legacy-target-SPRacingF3)\
+[Legacy target SPRacingF3EVO](https://github.com/iNavFlight/inav/wiki/Legacy-target-SPRacingF3EVO)\
+[Legacy target SPRacingF3EVO_1SS](https://github.com/iNavFlight/inav/wiki/Legacy-target-SPRacingF3EVO_1SS)\
+DevDocs [Configuration.md](https://github.com/iNavFlight/inav/blob/master/docs/Configuration.md)\
+
+# TO DELETE
+[Request form new PRESET](https://github.com/iNavFlight/inav/wiki/Request-form-new-PRESET)
