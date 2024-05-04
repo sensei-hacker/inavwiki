@@ -78,7 +78,11 @@ Shows model preview and pre-arm checks
 <summary>Calibration</summary>
 
 [Sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration)
-## Alignment Tool
+</details>
+
+<details>
+<summary>Alignment Tool</summary>
+
 Allows FC and Compass to be flipped
 </details>
 
@@ -123,6 +127,7 @@ DevDocs [Servo.md](https://github.com/iNavFlight/inav/blob/master/docs/Servo.md)
 DevDocs [Controls.md](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md)\
 DevDocs [INAV_Modes.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Modes.pdf)\
 DevDocs [Navigation.md](https://github.com/iNavFlight/inav/blob/master/docs/Navigation.md)
+</details>
 
 ### ADDITIONAL CONFIGURATION
 
@@ -208,7 +213,7 @@ DevDocs [Safehomes.md](https://github.com/iNavFlight/inav/blob/master/docs/Safeh
 <summary>Tethered Logging</summary>
 
 Log when FC is connected via USB
-<details>
+</details>
 
 <details>
 <summary>Blackbox</summary>
@@ -228,7 +233,7 @@ DevDocs [Settings.md](https://github.com/iNavFlight/inav/blob/master/docs/Settin
 
 ### VTOL
 <details>
-<summary>Configuration</summary>
+<summary>Click to expand</summary>
 
 DevDocs [MixerProfile.md](https://github.com/iNavFlight/inav/blob/master/docs/MixerProfile.md)\
 DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
@@ -303,5 +308,6 @@ DevDocs [Configuration.md](https://github.com/iNavFlight/inav/blob/master/docs/C
 ### TO DELETE
 <details>
 <summary>Click to expand</summary>
+
 [Request form new PRESET](https://github.com/iNavFlight/inav/wiki/Request-form-new-PRESET)
 </details>
