@@ -26,7 +26,7 @@ DevDocs [Wireless Connections (BLE, TCP and UDP).md](https://github.com/iNavFlig
 [Boards, Targets and PWM allocations](https://github.com/iNavFlight/inav/wiki/Boards,-Targets-and-PWM-allocations)\
 [Upgrading from an older version of INAV to the current version](https://github.com/iNavFlight/inav/wiki/Upgrading-from-an-older-version-of-INAV-to-the-current-version)\
 DevDocs [Installation.md](https://github.com/iNavFlight/inav/blob/master/docs/Installation.md)\
-DevDocs [USB Flashing.md](https://github.com/iNavFlight/inav/blob/master/docs/USB%20Flashing.md)\
+DevDocs [USB Flashing.md](https://github.com/iNavFlight/inav/blob/master/docs/USB%20Flashing.md)
 
 
 <details>
@@ -56,3 +56,40 @@ DevDocs [USB Flashing.md](https://github.com/iNavFlight/inav/blob/master/docs/US
 [New features over versions log](https://github.com/iNavFlight/inav/wiki/New-features-over-versions-log)
 
 </details>
+
+## Setup Tab
+Shows model preview and pre-arm checks
+
+## Calibration
+[Sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration)
+## Alignment Tool
+Allows FC and Compass to be flipped
+
+## Ports and Serial Devices
+[iNav Telemetry](https://github.com/iNavFlight/inav/wiki/iNav-Telemetry)\
+DevDocs [Rangefinder.md](https://github.com/iNavFlight/inav/blob/master/docs/Rangefinder.md)\
+DevDocs [Rssi.md](https://github.com/iNavFlight/inav/blob/master/docs/Rssi.md)\
+DevDocs [Runcam device.md](https://github.com/iNavFlight/inav/blob/master/docs/Runcam%20device.md)\
+DevDocs [Serial.md](https://github.com/iNavFlight/inav/blob/master/docs/Serial.md)\
+DevDocs [Telemetry.md](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md)
+
+## Receiver
+DevDocs [Rx.md](https://github.com/iNavFlight/inav/blob/master/docs/Rx.md)\
+DevDocs [Spektrum bind.md]()
+
+## Mixer
+[Custom mixes for exotic setups]()\
+DevDocs [Mixer.md](https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md)
+
+## Outputs
+DevDocs [ESC and servo outputs.md](https://github.com/iNavFlight/inav/blob/master/docs/ESC%20and%20servo%20outputs.md)\
+DevDocs [Servo.md](https://github.com/iNavFlight/inav/blob/master/docs/Servo.md)
+
+## Modes
+[Modes](https://github.com/iNavFlight/inav/wiki/Modes)\
+[Navigation modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes)\
+[Navigation Mode: Return to Home](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)\
+DevDocs [Controls.md](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md)\
+DevDocs [INAV_Modes.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Modes.pdf)\
+DevDocs [Navigation.md](https://github.com/iNavFlight/inav/blob/master/docs/Navigation.md)
+
