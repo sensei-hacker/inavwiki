@@ -93,3 +93,35 @@ DevDocs [Controls.md](https://github.com/iNavFlight/inav/blob/master/docs/Contro
 DevDocs [INAV_Modes.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Modes.pdf)\
 DevDocs [Navigation.md](https://github.com/iNavFlight/inav/blob/master/docs/Navigation.md)
 
+# ADDITIONAL CONFIGURATION
+
+## Configuration
+[Sensor auto detect and hardware failure detection](https://github.com/iNavFlight/inav/wiki/Sensor-auto-detect-and-hardware-failure-detection)
+
+## Failsafe
+[Failsafe](https://github.com/iNavFlight/inav/wiki/Failsafe)\
+DevDocs [Failsafe.md](https://github.com/iNavFlight/inav/blob/master/docs/Failsafe.md)
+
+## PID Tuning
+[PID Attenuation and scaling](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling)\
+[Fixed Wing Tuning for INAV 3.0](https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Tuning-for-INAV-3.0)\
+[Tune INAV PIFF controller for fixedwing](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing)\
+DevDocs [Autotune - fixedwing.md](https://github.com/iNavFlight/inav/blob/master/docs/Autotune%20-%20fixedwing.md)\
+DevDocs [INAV PID Controller.md](https://github.com/iNavFlight/inav/blob/master/docs/INAV%20PID%20Controller.md)\
+DevDocs [INAV_Wing_Tuning_Masterclass.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Wing_Tuning_Masterclass.pdf)\
+DevDocs [PID tuning.md](https://github.com/iNavFlight/inav/blob/master/docs/PID%20tuning.md)\
+DevDocs [Profiles.md](https://github.com/iNavFlight/inav/blob/master/docs/Profiles.md)
+
+## GPS
+[GPS and Compass setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup)\
+[GPS Failsafe and Glitch Protection](https://github.com/iNavFlight/inav/wiki/GPS-Failsafe-and-Glitch-Protection)\
+
+## OSD and VTx
+DevDocs [Betaflight 4.3 compatible OSD.md](https://github.com/iNavFlight/inav/blob/master/docs/Betaflight%204.3%20compatible%20OSD.md)\
+[OSD custom messages](https://github.com/iNavFlight/inav/wiki/OSD-custom-messages)\
+[OSD Hud and ESP32 radars](https://github.com/iNavFlight/inav/wiki/OSD-Hud-and-ESP32-radars)\
+DevDocs [OSD.md](https://github.com/iNavFlight/inav/blob/master/docs/OSD.md)\
+DevDocs [VTx.md](https://github.com/iNavFlight/inav/blob/master/docs/VTx.md)\
+
+## LED Strip
+DevDocs [LedStrip.md](https://github.com/iNavFlight/inav/blob/master/docs/LedStrip.md)\
