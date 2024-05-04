@@ -125,3 +125,37 @@ DevDocs [VTx.md](https://github.com/iNavFlight/inav/blob/master/docs/VTx.md)\
 
 ## LED Strip
 DevDocs [LedStrip.md](https://github.com/iNavFlight/inav/blob/master/docs/LedStrip.md)\
+
+# ADVANCED CONFIGURATION
+
+## Advanced Tuning
+[Fixed Wing Autolaunch](https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Autolaunch)\
+DevDocs [INAV_Autolaunch.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Autolaunch.pdf)
+
+## Programming
+DevDocs [Programming Framework.md](https://github.com/iNavFlight/inav/blob/master/docs/Programming%20Framework.md)
+
+## Adjustments
+DevDocs [Inflight Adjustments.md](https://github.com/iNavFlight/inav/blob/master/docs/Inflight%20Adjustments.md)
+
+## Mission Control
+[INAV Remote Management, Control and Telemetry](https://github.com/iNavFlight/inav/wiki/INAV-Remote-Management,-Control-and-Telemetry)\
+[iNavFlight Missions](https://github.com/iNavFlight/inav/wiki/iNavFlight-Missions)\
+DevDocs [Safehomes.md](https://github.com/iNavFlight/inav/blob/master/docs/Safehomes.md)
+
+## Tethered Logging
+Log when FC is connected via USB
+
+## Blackbox
+DevDocs [Blackbox.md](https://github.com/iNavFlight/inav/blob/master/docs/Blackbox.md)\
+[INAV blackbox variables](https://github.com/iNavFlight/inav/wiki/INAV-blackbox-variables)\
+DevDocs [USB_Mass_Storage_(MSC)_mode.md](https://github.com/iNavFlight/inav/blob/master/docs/USB_Mass_Storage_(MSC)_mode.md)
+
+## CLI
+[iNav CLI variables](https://github.com/iNavFlight/inav/wiki/iNav-CLI-variables)\
+DevDocs [Cli.md](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md)\
+DevDocs [Settings.md](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md)
+
+# VTOL
+DevDocs [MixerProfile.md](https://github.com/iNavFlight/inav/blob/master/docs/MixerProfile.md)\
+DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
