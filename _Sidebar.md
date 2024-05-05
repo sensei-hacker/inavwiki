@@ -1,3 +1,6 @@
+### WIKI TOPICS
+
+
 <details>
 <summary>INTRODUCTION</summary>
 
@@ -21,8 +24,6 @@ DevDocs [Getting Started.md](https://github.com/iNavFlight/inav/blob/master/docs
 DevDocs [INAV_Fixed_Wing_Setup_Guide.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Fixed_Wing_Setup_Guide.pdf)\
 DevDocs [Safety.md](https://github.com/iNavFlight/inav/blob/master/docs/Safety.md)
 </details>
-
-### START OF CONFIGURATION
 
 <details>
 <summary>Connecting to INAV</summary>
@@ -129,8 +130,6 @@ DevDocs [INAV_Modes.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INA
 DevDocs [Navigation.md](https://github.com/iNavFlight/inav/blob/master/docs/Navigation.md)
 </details>
 
-### ADDITIONAL CONFIGURATION
-
 <details>
 <summary>Configuration</summary>
 
@@ -180,7 +179,7 @@ DevDocs [VTx.md](https://github.com/iNavFlight/inav/blob/master/docs/VTx.md)\
 DevDocs [LedStrip.md](https://github.com/iNavFlight/inav/blob/master/docs/LedStrip.md)\
 </details>
 
-### ADVANCED CONFIGURATION
+### ADVANCED
 
 <details>
 <summary>Advanced Tuning</summary>
@@ -231,17 +230,15 @@ DevDocs [Cli.md](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md)\
 DevDocs [Settings.md](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md)
 </details>
 
-### VTOL
 <details>
-<summary>Click to expand</summary>
+<summary>VTOL</summary>
 
 DevDocs [MixerProfile.md](https://github.com/iNavFlight/inav/blob/master/docs/MixerProfile.md)\
 DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
 </details>
 
-### TROUBLESHOOTING
 <details>
-<summary>Click to Expand</summary>
+<summary>TROUBLESHOOTING</summary>
 
 Sensors Tab shows a graph of the sensors\
 ["Something" is disabled Reasons](https://github.com/iNavFlight/inav/wiki/%22Something%22-is-disabled----Reasons)\
@@ -251,9 +248,8 @@ Sensors Tab shows a graph of the sensors\
 [Why do I have limited servo throw in my airplane](https://github.com/iNavFlight/inav/wiki/Why-do-I-have-limited-servo-throw-in-my-airplane)
 </details>
 
-### ADVANCED TOPICS, FEATURES, and DEV INFO
 <details>
-<summary>Click to expand</summary>
+<summary>ADTL TOPICS, FEATURES, DEV INFO</summary>
 
 [AAT Automatic Antenna Tracker](https://github.com/iNavFlight/inav/wiki/AAT-Automatic-Antenna-Tracker)\
 [Building custom firmware](https://github.com/iNavFlight/inav/wiki/Building-custom-firmware)\
@@ -285,9 +281,8 @@ DevDocs [Servo Gimbal.md](https://github.com/iNavFlight/inav/blob/master/docs/Se
 DevDocs [Temperature sensors.md](https://github.com/iNavFlight/inav/blob/master/docs/Temperature%20sensors.md)
 </details>
 
-### OLD LEGACY INFO
 <details>
-<summary>Click to expand</summary>
+<summary>OLD LEGACY INFO</summary>
 
 [Supported boards](https://github.com/iNavFlight/inav/wiki/Supported-boards)\
 DevDocs [Boards.md](https://github.com/iNavFlight/inav/blob/master/docs/Boards.md)\
@@ -305,9 +300,8 @@ DevDocs [Boards.md](https://github.com/iNavFlight/inav/blob/master/docs/Boards.m
 DevDocs [Configuration.md](https://github.com/iNavFlight/inav/blob/master/docs/Configuration.md)\
 </details>
 
-### TO DELETE
 <details>
-<summary>Click to expand</summary>
+<summary>TO DELETE</summary>
 
 [Request form new PRESET](https://github.com/iNavFlight/inav/wiki/Request-form-new-PRESET)
 </details>
