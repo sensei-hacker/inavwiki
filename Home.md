@@ -1,45 +1,20 @@
 ![](http://static.rcgroups.net/forums/attachments/6/1/0/3/7/6/a9088858-102-inav.png)
 
-INAV is a Free and Open Source Flight Controller and Autopilot Software System.
+INAV is a Free and Open Source Flight Controller and Autopilot Software System that is **being actively developed** with a [couple of new feature releases each year](https://github.com/iNavFlight/inav-configurator/releases/).
 
-It's compatible with very diverse set of hardware, and also can control flying vehicles (airplanes, gliders, multirotors like quadcopters, helicopters), ground vehicles (like cars and tanks) and water vehicles (like boats).
+- It is compatible with large quantity of inexpensive flight controller boards (FC) and sensors built specificly for INAV and use in RC vehicles. Specifically F4 & F7 flight control (FC) boards are **strongly suggested** to gain access to the full features of INAV.
+- It can control a variety of flying vehicles (airplanes, gliders, multi-rotors, quadcopters), ground vehicles (cars, tanks), and water vehicles (boats).
+- It includes auto navigation modes like [[RTH (_return to home_)|Navigation-Mode:-Return-to-Home]], position hold, [[waypoints|iNavFlight Missions]], "follow-me", and many more features.
 
-INAV is **being actively developed** and currently supports RTH (_Return To Home_) with a predefined climb height, position hold, [[waypoints|iNavFlight Missions]], "follow-me" and many more features.
+## Using the wiki
 
-A wide variety of inexpensive flight controller boards are supported.  F4 & F7 flight control boards are **strongly suggested** to gain access to the full features of INAV.
+* The right sidebar lists the wiki pages and developer docs grouped by topic.
+* You can search the wiki by using Github search (usually at the top right of the site) and then filter by "wikis". Here is a [direct link to Github search](https://github.com/search?q=repo%3AiNavFlight%2Finav&type=wikis). Unfortunately, the wiki is no longer indexed by the major search engines.
 
-## To read
+## Getting Started
 
-- [**Latest Releases**](https://github.com/iNavFlight/inav-configurator/releases/)
-- [Getting started with INAV](https://github.com/iNavFlight/inav/wiki/Getting-started-with-iNav)
-- [Sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration)
-- [Multirotor guide](https://github.com/iNavFlight/inav/wiki/Multirotor-guide) if you're going to use it in a multirotor.
-- [Fixed wing guide](https://github.com/iNavFlight/inav/wiki/Fixed-wing-guide) if you're going to use it in a fixed-wing model.
-- Many flight controller boards are supported. See the [Supported boards](Supported-boards) page.
-- [INAV for BetaFlight users](https://github.com/iNavFlight/inav/wiki/INAV-for-BetaFlight-users)
-
-## To watch
-
-- [INAV 7 Ferocious Falcon](https://youtu.be/8Q8t_KwlSAQ)
-- [INAV on a flying wing video tutorial](https://www.youtube.com/playlist?list=PLOUQ8o2_nCLkZlulvqsX_vRMfXd5zM7Ha)
-- [INAV on multirotor drone tutorial](https://youtube.com/playlist?list=PLOUQ8o2_nCLkfcKsWobDLtBNIBzwlwRC8)
-- [Betaflight to INAV migration guide](https://www.youtube.com/watch?v=1hhsqyXeKew)
-* [Can I copy my tune from Betaflight?](https://youtu.be/jgqjhSxd9EA)
-* [How to use Autotune](https://youtu.be/Gsi1-0NXm0Y)
-* [How to use servo autotrim](https://youtu.be/BOy0d9-s6Uc)
-* [INAV on 7" FPV drones](https://youtu.be/phafJYNzTR0)
-* [What is Ez Tune?](https://youtu.be/94foP_mxBLk)
-- [Other videos](https://github.com/iNavFlight/inav/wiki/YouTube-video-guides)
-
-All configuration is done through [INAV Configurator](https://github.com/iNavFlight/inav-configurator/releases/latest).
-
-## Searching the wiki
-
-* You may use the right pane to list all the available Wiki pages. Note the "Show XX more pages..." button.
-* Use the Github search function (usually at the top). Then refine the search by filtering on "wiki".
-
-Unfortunately, the wiki is no longer indexed by the major search engines.
-
-## Additional Documentation in the source code tree.
-
-Many documents are available in the source code tree: https://github.com/iNavFlight/inav/tree/master/docs
+- See the wiki pages grouped under INTRODUCTION and QUICK START GUIDES in the sidebar to the right
+- Many flight controller boards are supported and usually list INAV support in their product descriptions.
+- You connecting to and configuring INAV on the flight controller (FC) using the [INAV Configurator](https://github.com/iNavFlight/inav-configurator/releases/latest).
+- If you have experience with BetaFlight, see the wiki page [INAV for BetaFlight users](https://github.com/iNavFlight/inav/wiki/INAV-for-BetaFlight-users) would be a great starting point.
+- See our [YouTube video guides](https://github.com/iNavFlight/inav/wiki/YouTube-video-guides) for a handful of the hundreds of great YouTube videos made by many RC/FPV edutainers for each feature of INAV.
