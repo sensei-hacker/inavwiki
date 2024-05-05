@@ -15,7 +15,7 @@ Go through the index on the right side to find useful information.
 [Video showing how to edit and tailor INAV for you needs.](https://youtu.be/n3Z1fOQJAg8)
 
 ## GPS
-INAV supports Ublox, DJI NAZA, NMEA, multiwii's i2c-nav board and MultiWiiCopter's i2c-gps modules.
+INAV supports Ublox, DJI NAZA, NMEA (Removed in V7), multiwii's i2c-nav board and MultiWiiCopter's i2c-gps modules.
 
 M8N versions ( example [Ublox NEO-M8N](https://inavflight.com/shop/s/bg/1005394) and [Beitian BN-880](https://inavflight.com/shop/p/BN880) ) have been tested and are recommended, but both M6N and M7N should work.
 
