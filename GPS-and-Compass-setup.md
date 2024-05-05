@@ -10,7 +10,7 @@ Modules known to work reasonably well:
 * [Beitian BN-880](https://inavflight.com/shop/p/BN880)
 
 
-**Note** : Not all GNSS units are made equal. If you buy cheap, you are more likely to get cheap performance. Many do not include a quality _front end LNA and SAW filter_. Without those components, the chances of the GNSS working poorly is much higher if you have localized RF noise from a VTX or RX with telemetry.
+**Note** : Not all GNSS units are made equal. If you buy cheap, you are more likely to get cheap performance. Many GNSS units do not include a quality _front end LNA and SAW filter_. Without those components, the chances of poor performance is much greater if you have localized RF noise from a VTX or RX with telemetry.
 
 
 
@@ -40,7 +40,7 @@ JetrellRC has an example video: (https://www.youtube.com/watch?v=iopZfH-DdTI)
 Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Do not omit any of the above steps or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly when you first setup a multirotor without a compass, just as you would with a compass.
 
 * **Note** : Presently multirotor navigation flight modes (RTH, POSHOLD etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. You can select magnetometer type FAKE if no device is installed. Then proceed to alter your navigation modes. Once done, set Magnetometer type back to NONE for compass-less navigation. **This will be fixed in 7.1.1**..  The same will apply if your flight controller doesn't have a barometer. In this case you will be required to enter `inav_use_gps_no_baro = ON ` in the CLI, and select Barometer type FAKE. Then you can alter the navigation modes. Once done, set the barometer type back to NONE.
-**Be aware. If you don't use a barometer as well as a magnetometer. And your satellite fix is poor, the copters altitude and position accuracy will be greatly reduced.** 
+**Be aware. If you don't use a barometer as well as a magnetometer. And your satellite HDOP is greater than 1.3, the copters altitude and position accuracy will be greatly reduced.** 
 
 INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
@@ -96,7 +96,7 @@ Ensure the ceramic antenna (light brown or beige in color) faces skywards. To pr
 
 ## Setting up the compass alignment
 
-INAV's default Orientation Preset is `CW270FLIP`. Although this value is based on the orientation of the magnetometer chip on its PCB, chosen by the manufacturer. With respect to the Arrow direction they provide on their GNSS module.
+INAV's default Orientation Preset is `CW270FLIP`. This value is based on the orientation of the magnetometer chip on its PCB, chosen by the manufacturer. With respect to the Arrow direction they provide facing the front of the aircraft. Or the plug facing the rear of the aircraft.
  
 * Circled in _Red_ at the base of the GNSS unit. Is the QMC5883 magnetometer chip **with its white DOT providing an axis magnetic bearing reference based on the internal coil**.
 
@@ -106,11 +106,12 @@ INAV's default Orientation Preset is `CW270FLIP`. Although this value is based o
 
 However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation. 
 In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. 
-This chart is a reference to help gauge the hardware `Orientation Preset` of your magnetometer, based on the chips **Clockwise rotation**. And the power plug being a reference marker for the rear, if no forward arrow is provided. The orientation preset must first be established before making any mounting adjustment by the `align_mag` settings in the CLI.
+This chart is a reference to help gauge the hardware `Orientation Preset` of your magnetometer, based on the chips **Clockwise rotation**. And the power plug being a reference marker for the rear, if no forward arrow is provided. The orientation preset must first be established before making any mounting adjustment by the `align_mag_pitch, align_mag_roll, align_mag_yaw` settings in the CLI or alignment tool sliders.
 
 ![Clockwise Orientation reference chart](https://github.com/iNavFlight/inav/assets/47995726/c047fb0d-7b83-4a2d-9b2f-b1b986ecfc89)
 
-You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations. The image below is an example of a module that does not use the default orientation preset, nor has a mounting direction arrow from factory. **The orange orientation arrow has been added to the image below to assist your installation if you have this unit. Its Orientation preset is CW180FLIP with the plug facing to the rear of the model.** _Beitian made the first GPS modules that included a compass for hobby use, back in 2014. And this is how we ended up the confusing default orientation preset of CW270 (flip)_
+You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations until after 7.1. _But in future releases the alignment tool will cover more extensive hardware alignment._
+The image below is an example of a module that does not use the default orientation preset, nor has a mounting direction arrow from factory. **The orange orientation arrow has been added to the image below to assist your installation if you have this unit. Its Orientation preset is CW180FLIP with the plug facing to the rear of the model.** _Beitian made the first GPS modules that included a compass for hobby use, back in 2014. And this is how we ended up the confusing default orientation preset of CW270 (flip)_
 
 
 ![Walksnail M181 GPS](https://github.com/iNavFlight/inav/assets/47995726/5146a1fd-8ea3-479f-abb4-45e1dbbe61df)
