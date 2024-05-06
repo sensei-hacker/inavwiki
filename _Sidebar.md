@@ -26,7 +26,7 @@
 [1.9.0 Release notes](https://github.com/iNavFlight/inav/wiki/1.9.0-Release-notes)\
 [1.8.0 Release notes](https://github.com/iNavFlight/inav/wiki/1.8.0-Release-notes)\
 [1.7.3 Release notes](https://github.com/iNavFlight/inav/wiki/1.7.3-Release-notes)\
-[New features over versions log](https://github.com/iNavFlight/inav/wiki/New-features-over-versions-log)
+[Older Release Notes](https://github.com/iNavFlight/inav/wiki/Older-Release-Notes)
 
 </details>
 
