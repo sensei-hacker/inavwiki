@@ -65,11 +65,8 @@ DevDocs [USB Flashing.md](https://github.com/iNavFlight/inav/blob/master/docs/US
 [**Setup Tab**](https://github.com/iNavFlight/inav/wiki/Setup-Tab)\
 Live 3D Graphic & Pre-Arming Checks
 
-<details>
-<summary>Calibration</summary>
-
-[Sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration)
-</details>
+[**Calibration Tab**](https://github.com/iNavFlight/inav/wiki/Calibration-Tab)\
+Accelerometer, Compass, & Optic Flow Calibration
 
 <details>
 <summary>Alignment Tool</summary>
