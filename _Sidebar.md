@@ -62,11 +62,8 @@ DevDocs [USB Flashing.md](https://github.com/iNavFlight/inav/blob/master/docs/US
 
 </details>
 
-<details>
-<summary>Setup Tab</summary>
-
-Shows model preview and pre-arm checks
-</details>
+[**Setup Tab**](https://github.com/iNavFlight/inav/wiki/Setup)\
+Live 3D Graphic & Pre-Arming Checks
 
 <details>
 <summary>Calibration</summary>
