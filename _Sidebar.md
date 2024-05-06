@@ -77,7 +77,7 @@ Shows model preview and pre-arm checks
 <details>
 <summary>Alignment Tool</summary>
 
-Allows FC and Compass to be flipped
+Allows FC and Compass to be flipped. See the quick start guides.
 </details>
 
 <details>
@@ -95,14 +95,14 @@ DevDocs [Telemetry.md](https://github.com/iNavFlight/inav/blob/master/docs/Telem
 <summary>Receiver</summary>
 
 DevDocs [Rx.md](https://github.com/iNavFlight/inav/blob/master/docs/Rx.md)\
-DevDocs [Spektrum bind.md]()
+DevDocs [Spektrum bind.md](https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md)
 </details>
 
 <details>
 <summary>Mixer</summary>
 
-[Custom mixes for exotic setups]()\
-DevDocs [Mixer.md](https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md)
+[Custom mixes for exotic setups](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups)\
+DevDocs [Mixer.md](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md)
 </details>
 
 <details>
