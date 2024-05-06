@@ -1,13 +1,6 @@
 ### WIKI TOPICS
 
-
-<details>
-<summary>INTRODUCTION</summary>
-
-[Home](https://github.com/iNavFlight/inav/wiki/Home)\
-DevDocs [Introduction.md](https://github.com/iNavFlight/inav/blob/master/docs/Introduction.md)\
-[Welcome to INAV, useful links and products](https://github.com/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products)
-</details>
+[**Wiki Home Page**](https://github.com/iNavFlight/inav/wiki/Home)
 
 <details>
 <summary>QUICK START GUIDES</summary>
@@ -303,5 +296,7 @@ DevDocs [Configuration.md](https://github.com/iNavFlight/inav/blob/master/docs/C
 <details>
 <summary>TO DELETE</summary>
 
-[Request form new PRESET](https://github.com/iNavFlight/inav/wiki/Request-form-new-PRESET)
+[Request form new PRESET](https://github.com/iNavFlight/inav/wiki/Request-form-new-PRESET)\
+DevDocs [Introduction.md](https://github.com/iNavFlight/inav/blob/master/docs/Introduction.md)\
+[Welcome to INAV, useful links and products](https://github.com/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products)
 </details>
