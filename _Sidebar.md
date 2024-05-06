@@ -233,7 +233,6 @@ DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
 <details>
 <summary>TROUBLESHOOTING</summary>
 
-Sensors Tab shows a graph of the sensors\
 ["Something" is disabled Reasons](https://github.com/iNavFlight/inav/wiki/%22Something%22-is-disabled----Reasons)\
 [Blinkenlights](https://github.com/iNavFlight/inav/wiki/Blinkenlights)\
 [Pixel OSD FAQs](https://github.com/iNavFlight/inav/wiki/Pixel-OSD-FAQs)\
