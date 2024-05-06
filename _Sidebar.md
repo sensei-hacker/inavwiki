@@ -153,7 +153,7 @@ DevDocs [Profiles.md](https://github.com/iNavFlight/inav/blob/master/docs/Profil
 <summary>GPS</summary>
 
 [GPS and Compass setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup)\
-[GPS Failsafe and Glitch Protection](https://github.com/iNavFlight/inav/wiki/GPS-Failsafe-and-Glitch-Protection)\
+[GPS Failsafe and Glitch Protection](https://github.com/iNavFlight/inav/wiki/GPS-Failsafe-and-Glitch-Protection)
 </details>
 
 <details>
@@ -163,13 +163,13 @@ DevDocs [Betaflight 4.3 compatible OSD.md](https://github.com/iNavFlight/inav/bl
 [OSD custom messages](https://github.com/iNavFlight/inav/wiki/OSD-custom-messages)\
 [OSD Hud and ESP32 radars](https://github.com/iNavFlight/inav/wiki/OSD-Hud-and-ESP32-radars)\
 DevDocs [OSD.md](https://github.com/iNavFlight/inav/blob/master/docs/OSD.md)\
-DevDocs [VTx.md](https://github.com/iNavFlight/inav/blob/master/docs/VTx.md)\
+DevDocs [VTx.md](https://github.com/iNavFlight/inav/blob/master/docs/VTx.md)
 </details>
 
 <details>
 <summary>LED Strip</summary>
 
-DevDocs [LedStrip.md](https://github.com/iNavFlight/inav/blob/master/docs/LedStrip.md)\
+DevDocs [LedStrip.md](https://github.com/iNavFlight/inav/blob/master/docs/LedStrip.md)
 </details>
 
 ### ADVANCED
