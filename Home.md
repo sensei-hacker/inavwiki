@@ -7,7 +7,7 @@ INAV is a Free and Open Source Flight Controller and Autopilot Software System t
 - A wide variety of flying vehicles can be controlled with INAV including airplanes, gliders, multi-rotors, quadcopters, etc. as well as ground vehicles (cars, tanks) and water vehicles (boats).
 - Auto navigation modes are a major component of INAV such as [[RTH (return to home)|Navigation-Mode:-Return-to-Home]], position hold, [[waypoints|iNavFlight Missions]], "follow-me", and many more.
 - Connecting to a video transmission & receive system for FPV (first person view) is also a major component of INAV.
-- Go to the [project home page](https://github.com/iNavFlight/inav?tab=readme-ov-file#readme) for a longer list of features.
+- Go to the [INAV Welcome Page](https://github.com/iNavFlight/inav?tab=readme-ov-file#readme) for a longer list of features.
 
 ## Using the wiki
 
