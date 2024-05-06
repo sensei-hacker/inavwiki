@@ -1,12 +1,12 @@
 ![](http://static.rcgroups.net/forums/attachments/6/1/0/3/7/6/a9088858-102-inav.png)
 
-INAV is a Free and Open Source Flight Controller and Autopilot Software System that is [**actively developed** with feature releases every 4-8 months](https://github.com/iNavFlight/inav-configurator/releases/). INAV has two primary components, the firmware that runs on the flight controller board, and the GUI configuration tool that runs on your PC.
+INAV is a Free and Open Source Flight Controller and Autopilot Software System that is **actively developed** with feature releases every 4-8 months. INAV has two primary components, the [firmware](https://github.com/iNavFlight/inav/releases/) that runs on the flight controller board, and the [GUI configuration tool](https://github.com/iNavFlight/inav-configurator/releases/) that runs on your PC. Some INAV features include:
 
-- A large quantity of inexpensive flight controller (FC) boards and sensors are supported by INAV. Many FC's are built specifically for INAV with board layouts intended for easy connection of motors, sensors, servos, etc. intended for use in RC vehicles.
-- Flight controller (FC) boards based on the F405, F722, & H743 chips are most likely to support all current and future features of INAV.
-- A wide variety of flying vehicles can be controlled with INAV including airplanes, gliders, multi-rotors, quadcopters, etc. as well as ground vehicles (cars, tanks) and water vehicles (boats).
-- Auto navigation modes are a major component of INAV such as [[RTH (return to home)|Navigation-Mode:-Return-to-Home]], position hold, [[waypoints|iNavFlight Missions]], "follow-me", and many more.
-- Connecting to a video transmission & receive system for FPV (first person view) is also a major component of INAV.
+- Support for a large variety and quantity of inexpensive flight controller (FC) boards and sensors. Many FC's are built specifically for INAV with board layouts intended for easy connection of motors, sensors, servos, etc. intended for use in RC vehicles.
+- Support for a wide variety of flying vehicles including airplanes, gliders, multi-rotors, quadcopters, etc. as well as ground vehicles (cars, tanks) and water vehicles (boats).
+- Support for Auto Navigation Modes such as [[RTH (return to home)|Navigation-Mode:-Return-to-Home]], position hold, [[waypoints|iNavFlight Missions]], "follow-me", and many more.
+- Support for video transmission & receive systems for FPV (first person view) with On-Screen Display (OSD) of telemetry data.
+- Use of flight controller (FC) boards based on the F405, F722, & H743 chips are most likely for support of all current and future features of INAV.
 - Go to the [INAV Welcome Page](https://github.com/iNavFlight/inav?tab=readme-ov-file#readme) for a longer list of features.
 
 ## Using the wiki
