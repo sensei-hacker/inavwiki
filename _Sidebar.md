@@ -62,7 +62,7 @@ DevDocs [USB Flashing.md](https://github.com/iNavFlight/inav/blob/master/docs/US
 
 </details>
 
-[**Setup Tab**](https://github.com/iNavFlight/inav/wiki/Setup)\
+[**Setup Tab**](https://github.com/iNavFlight/inav/wiki/Setup-Tab)\
 Live 3D Graphic & Pre-Arming Checks
 
 <details>
