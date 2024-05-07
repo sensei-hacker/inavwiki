@@ -187,7 +187,6 @@ DevDocs [Inflight Adjustments.md](https://github.com/iNavFlight/inav/blob/master
 <details>
 <summary>Mission Control</summary>
 
-[INAV Remote Management, Control and Telemetry](https://github.com/iNavFlight/inav/wiki/INAV-Remote-Management,-Control-and-Telemetry)\
 [iNavFlight Missions](https://github.com/iNavFlight/inav/wiki/iNavFlight-Missions)\
 DevDocs [Safehomes.md](https://github.com/iNavFlight/inav/blob/master/docs/Safehomes.md)
 </details>
@@ -240,6 +239,7 @@ DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
 [Features safe to add and remove to fit your needs.](https://github.com/iNavFlight/inav/wiki/Features-safe-to-add-and-remove-to-fit-your-needs.)\
 [Developer info](https://github.com/iNavFlight/inav/wiki/Developer-info)\
 [INAV MSP frames changelog](https://github.com/iNavFlight/inav/wiki/INAV-MSP-frames-changelog)\
+[INAV Remote Management, Control and Telemetry](https://github.com/iNavFlight/inav/wiki/INAV-Remote-Management,-Control-and-Telemetry)\
 [Lightweight Telemetry (LTM)](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM))\
 [Making a new Virtualbox to make your own INAV](https://github.com/iNavFlight/inav/wiki/Making-a-new-Virtualbox-to-make-your-own-INAV)\
 [MSP Navigation Messages](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages)\
