@@ -281,11 +281,6 @@ DevDocs [Boards.md](https://github.com/iNavFlight/inav/blob/master/docs/Boards.m
 [Legacy target SPRacingF3EVO](https://github.com/iNavFlight/inav/wiki/Legacy-target-SPRacingF3EVO)\
 [Legacy target SPRacingF3EVO_1SS](https://github.com/iNavFlight/inav/wiki/Legacy-target-SPRacingF3EVO_1SS)\
 DevDocs [Configuration.md](https://github.com/iNavFlight/inav/blob/master/docs/Configuration.md)\
-</details>
-
-<details>
-<summary>TO DELETE</summary>
-
 [Request form new PRESET](https://github.com/iNavFlight/inav/wiki/Request-form-new-PRESET)\
 DevDocs [Introduction.md](https://github.com/iNavFlight/inav/blob/master/docs/Introduction.md)\
 [Welcome to INAV, useful links and products](https://github.com/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products)
