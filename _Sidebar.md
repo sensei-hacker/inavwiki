@@ -68,11 +68,8 @@ Live 3D Graphic & Pre-Arming Checks
 [**Calibration Tab**](https://github.com/iNavFlight/inav/wiki/Calibration-Tab)\
 Accelerometer, Compass, & Optic Flow Calibration
 
-<details>
-<summary>Alignment Tool</summary>
-
-Allows FC and Compass to be flipped. See the quick start guides.
-</details>
+[**Alignment Tool Tab**](https://github.com/iNavFlight/inav/wiki/Alignment-Tool-Tab)\
+Adjust for FC and Compass mount angles
 
 <details>
 <summary>Ports and Serial Devices</summary>
