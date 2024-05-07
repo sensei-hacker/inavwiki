@@ -219,7 +219,7 @@ Prior to arming the craft, an automation application can be made "target agnosti
 * `MSP2_COMMON_SETTING` / `nav_extra_arming_safety` : Checking arming requirement and whether you can bypass it
 * `MSP_MODE_RANGES`: Determine the configured switches, functions and ranges.
 * `MSP_BOXNAMES` : Determine the modes available to the craft (e.g. for mode validation via `MSP2_INAV_STATUS`). (see also `MSP_BOXIDS`)
-* `MSP_BOXIDS` : Determine the modes (as `permanentIds`) available to the craft (e.g. for mode validation via `MSP2_INAV_STATUS`). Use in preference to `MSP_BOXNAMES` as long as you're willing to keep and up to date `permanentIds` list, as it's a much more efficient message).
+* `MSP_BOXIDS` : Determine the modes (as `permanentIds`) available to the craft (e.g. for mode validation via `MSP2_INAV_STATUS`). Use in preference to `MSP_BOXNAMES` as long as you're willing to keep an up to date `permanentIds` list, as it's a much more efficient message).
 * `MSP2_COMMON_SERIAL_CONFIG` : Determine serial channel functions.
 * `MSP_RX_CONFIG` : Determine the RX type.
 * `MSP2_INAV_STATUS` : Determining various status items (arming status, mode status etc.)
