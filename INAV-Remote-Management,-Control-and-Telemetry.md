@@ -153,7 +153,7 @@ Likewise, the MAVLink `RC_CHANNELS_OVERRIDE`, `RC_CHANNELS_OVERRIDE_RAW`, `RC_CH
 
 ### Follow Me (`GCS NAV`).
 
-INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). This allows the user to direct the vehicle to fly to a specific location. This was intended for mobile ground station (specifically the obsolete Android application "EZGUI") to instruct the vehicle to follow a GPS equipped target (often the pilot). [mwp](https://github.com/stronnag/mwptools) supports `GCS NAV`, allowing in flight selection of a "follow me" point on the map, which is then transmitted to the vehicle. The is also a [follow me gadget/wand]{https://github.com/stronnag/inav-follow-me) project, using a RPi Pico MCU.
+INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). This allows the user to direct the vehicle to fly to a specific location. This was intended for mobile ground station (specifically the obsolete Android application "EZGUI") to instruct the vehicle to follow a GPS equipped target (often the pilot). [mwp](https://github.com/stronnag/mwptools) supports `GCS NAV`, allowing in flight selection of a "follow me" point on the map, which is then transmitted to the vehicle. The is also a [follow me gadget/wand](https://github.com/stronnag/inav-follow-me) project, using a RPi Pico MCU.
 
 * The FC is placed in `POSHOLD` and `GCS NAV` modes.
 * The consumer updates 'special' `WP#255` (holds the requested `POSHOLD` location) using `MSP_SET_WP` messages.
