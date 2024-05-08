@@ -71,16 +71,8 @@ Accelerometer, Compass, & Optic Flow Calibration
 [**Alignment Tool Tab**](https://github.com/iNavFlight/inav/wiki/Alignment-Tool-Tab)\
 Adjust mount angle of FC & Compass
 
-<details>
-<summary>Ports and Serial Devices</summary>
-
-[iNav Telemetry](https://github.com/iNavFlight/inav/wiki/iNav-Telemetry)\
-DevDocs [Rangefinder.md](https://github.com/iNavFlight/inav/blob/master/docs/Rangefinder.md)\
-DevDocs [Rssi.md](https://github.com/iNavFlight/inav/blob/master/docs/Rssi.md)\
-DevDocs [Runcam device.md](https://github.com/iNavFlight/inav/blob/master/docs/Runcam%20device.md)\
-DevDocs [Serial.md](https://github.com/iNavFlight/inav/blob/master/docs/Serial.md)\
-DevDocs [Telemetry.md](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md)
-</details>
+[**Ports Tab**](https://github.com/iNavFlight/inav/wiki/Ports-Tab)\
+Map Devices to UART Serial Ports</summary>
 
 <details>
 <summary>Receiver</summary>
@@ -283,5 +275,11 @@ DevDocs [Boards.md](https://github.com/iNavFlight/inav/blob/master/docs/Boards.m
 DevDocs [Configuration.md](https://github.com/iNavFlight/inav/blob/master/docs/Configuration.md)\
 [Request form new PRESET](https://github.com/iNavFlight/inav/wiki/Request-form-new-PRESET)\
 DevDocs [Introduction.md](https://github.com/iNavFlight/inav/blob/master/docs/Introduction.md)\
-[Welcome to INAV, useful links and products](https://github.com/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products)
+[Welcome to INAV, useful links and products](https://github.com/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products)\
+[iNav Telemetry](https://github.com/iNavFlight/inav/wiki/iNav-Telemetry)\
+DevDocs [Rangefinder.md](https://github.com/iNavFlight/inav/blob/master/docs/Rangefinder.md)\
+DevDocs [Rssi.md](https://github.com/iNavFlight/inav/blob/master/docs/Rssi.md)\
+DevDocs [Runcam device.md](https://github.com/iNavFlight/inav/blob/master/docs/Runcam%20device.md)\
+DevDocs [Serial.md](https://github.com/iNavFlight/inav/blob/master/docs/Serial.md)\
+DevDocs [Telemetry.md](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md)
 </details>
