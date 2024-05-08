@@ -11,7 +11,7 @@ The serial port settings are presented in a table format with each UART and USB 
 - The columns represent different types or groups of communication devices and sensors.
 - Remember, **only one device can be active per serial port**. Having more than one device on a port is an invalid configuration and INAV running on the FC will reject the configuration and not save the updated settings. Effectively you will lose the changes you just made. Take your time and maybe save your settings often.
 
-## Ports Table Columns
+## Ports
 
 ### Identifier
 Lists the available ports with their labels. The UART numbers match the UART labels on your FC board. On your FC board, the labels are abbreviated to UART 1 = R1 and T1 or sometimes TX1 and RX1. You might find an inverted UART on your FC and its most times labeled as nT1 or nR1 with stands for -not-.
@@ -22,23 +22,36 @@ The MSP protocol is the native data protocol of INAV used by only specific devic
 **Other Notes:** Its good practice to setup MSP on at least one UART. There is a possibility that you might break off or damage your USB port in a crash or soldering. A UART with MSP can be uses as an alternate connection method.
 
 ### Telemetry
-In the RC world, telemetry is generally used to refer to the measurements and stats from your aircraft that is sent back to your radio control (RC) transmitter (TX). This allows you to see these values live and even set alerts in your radio as the values change. An example would be your live battery voltage or current GPS coordinates all being sent back to your radio for your to set a low battery alarm or find a lost aircraft. The RC Receiver is what handles the telemetry communication between the FC and your RC TX. Some RC Receivers use their RX connection for telemetry and as such do not use this telemetry column at all. While other Receivers (RX) use a separate wire for telemetry and in these cases they need a separate UART for the telemetry connection.\
+This refers to the values and stats send from your aircraft back to your radio control (RC) transmitter (TX). This is received live by your radio and can be used to set alerts and other functions as the values change. You could have a low voltage warning as your battery gets near empty or get the current GPS coordinates to find a lost aircraft. The RC Receiver (RX) is what typically handles telemetry communication between the FC and your radio TX. Some RXs use a separate UART for telemetry and other do not.\
 **Supported Devices:** See the dropdown list in the configurator\
-**Non-Telem Port Devices:** TBS Crossfire / Tracer, ExpressLRS, Ghost, FPORT, Spektrum, and others\
-**Other Notes:** Receivers that have a separate wire for telemetry need to have a UART dedicated for just telemetry only. This wire cannot be on the same UART as the RX. The wiring diagram that may have been included in the FC documentation may help you in selecting an acceptable port.
-
-### RX
- TX protocols. A number of TX devices (FrSky, Hott, IBUS, Smartport) can also receive telemetry. 
+**Notes:** The type of RC Receivers that use this port will have a separate wire for telemetry that needs to have a UART dedicated for just telemetry. A UART used for telemetry can only be used for telemetry and nothing else. It can not be the same UART as the RX, it needs its own UART. If your FC has a wiring diagram in the documentation it may help you select an acceptable pad for telemetry from your RX.\
 \
-**Supported Devices:** \
-**Other Notes:** 
+**Non-Telem Port RXs:** TBS Crossfire / Tracer, ExpressLRS, Ghost, FPORT, Spektrum, and others\
+**Notes:** See the RX section below for how to connection these devices.
 
-- Sensors
-- Peripherals
-It is also the case in INAV that getting data into a CGS or OSD can be achieved _without_ defining a telemetry protocol (using MSP, below).
-\
-**Supported Devices:** \
-**Other Notes:** 
+
+### RX (Radio Control Receiver)
+Flip this toggle for the UART that your radio control receiver is connected to. If your FC has a wiring diagram in the documentation it may help you select an acceptable pad to connect your RX to. Only the port is selected on this tab. The actual protocol used by your RX is selected on the Receiver Tab. But be sure to save your ports settings before switching to the other tab.
+**Supported Devices:** All Receivers\
+**Other Notes:**
+- Receiver protocols like SBUS only send data and can only be connected to an inverted UART RX pad. These pads are typically marked as SBUS on the FC specifically for this purpose. A pad marked as nR1, etc. would also typically work. 
+- Receivers protocols that use two-way communication use a pair of wires and can typically be connected to any pair of UART pads (eg TX1 RX1)
+- (Uncommon) Receivers protocols that use half-duplex communication use only one wire and can only be connected to a UART TX pad and not an RX pad. Some may also require an inverted UART TX pad. Jump into an online INAV group if you think you may be using one of these receivers for help.
+
+### Sensors
+This includes devices like a GPS and some other devices. See the GPS Tab for troubling shooting help and other GPS settings. You may need to try a lower speed to get a device to work. Start at 9600 baud and go up from there. Many devices easily handle 115200 baud.
+
+### Peripherals
+**Blackbox:** Used for an external blackbox device.\
+**RunCam Device:** Used to change camera settings.\
+**TBS SmartAudio:** An analog video transmitter (VTx) protocol that allows you to change transmission channel and power. The pad on the VTx is sometimes labeled SA and is connected with one wire to any UART TX pad.\
+**IRC Tramp:**  An analog video transmitter (VTx) protocol that allows you to change transmission channel and power. This protocol is sometimes called Tramp and is connected with one wire to any UART TX pad.\
+**DJI FPV VTX:** (Do not confuse this with WTFOS) The protocol used by DJI for their video transmitters such as the DJI Digital FPV System, Caddx Vista, Runcam Link,  protocol that allows you to change transmission channel and power. This protocol is sometimes called Tramp and is connected with one wire to any UART TX pad.\
+**:** \
+**:** \
+**:** \
+**:** \
+**:** 
 
 
 ### Example
