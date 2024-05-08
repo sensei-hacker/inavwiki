@@ -54,10 +54,3 @@ Mostly used for connecting to video transmitters (VTx). Other Vtx settings are o
 
 Please note that this port configuration is not directly applicable to your flight controller and aircraft.
 ![Ports](https://imgur.com/PnqqpAN.png)
-
-Advanced: Multiwii Serial Protocol (MSP). This is a polled protocol, and thus in INAV terms, not considered 'telemetry', even when used for remote measurement. The application (OSD, CGS) polls the flight controller "send me status data" and the FC responds, "here's the status data"; "send me the GPS data" -> "here's the GPS data". This is supported by most OSDs and CGS. It has advantages and disadvantages:
-- The remote (OSD, CGS) can determine what data it requests (+ve)
-- The configurator uses MSP to communicate with and configure the FC (+ve)
-- The remote (OSD, CGS) must maintain a timeout and retry, as data can be lost in transmission (-ve)
-- For packet radio links (3DR, HC-12), this is slow (much slower than the data rate would indicate), due the overheads on creating and tearing down the packets.
-
