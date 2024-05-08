@@ -42,17 +42,13 @@ Flip this toggle for the UART that your radio control receiver is connected to. 
 This includes devices like a GPS and some other devices. See the GPS Tab for troubling shooting help and other GPS settings. You may need to try a lower speed to get a device to work. Start at 9600 baud and go up from there. Many devices easily handle 115200 baud.
 
 ### Peripherals
-**Blackbox:** Used for an external blackbox device.\
-**RunCam Device:** Used to change camera settings.\
+Mostly used for connecting to video transmitters (VTx). Other Vtx settings are on the OSD Tab.
+
+**MSP DisplayPort:** The protocol used by most digital video transmission systems such as WTFOS, Walksnail, HD Zero, etc. It enables telemetry data to be shown on the goggle's onscreen display (OSD).\
+**DJI FPV VTX:** (Do not confuse this with WTFOS) The protocol used by DJI for their video transmission system such as the DJI Digital FPV System, Caddx Vista, Runcam Link, and DJI O3. It enables telemetry data to be shown on the goggle's onscreen display (OSD).\
 **TBS SmartAudio:** An analog video transmitter (VTx) protocol that allows you to change transmission channel and power. The pad on the VTx is sometimes labeled SA and is connected with one wire to any UART TX pad.\
 **IRC Tramp:**  An analog video transmitter (VTx) protocol that allows you to change transmission channel and power. This protocol is sometimes called Tramp and is connected with one wire to any UART TX pad.\
-**DJI FPV VTX:** (Do not confuse this with WTFOS) The protocol used by DJI for their video transmitters such as the DJI Digital FPV System, Caddx Vista, Runcam Link,  protocol that allows you to change transmission channel and power. This protocol is sometimes called Tramp and is connected with one wire to any UART TX pad.\
-**:** \
-**:** \
-**:** \
-**:** \
-**:** 
-
+**RunCam Device:** Used to change camera settings.
 
 ### Example
 
