@@ -74,12 +74,8 @@ Adjust mount angle of FC & Compass
 [**Ports Tab**](https://github.com/iNavFlight/inav/wiki/Ports-Tab)\
 Map Devices to UART Serial Ports</summary>
 
-<details>
-<summary>Receiver</summary>
-
-DevDocs [Rx.md](https://github.com/iNavFlight/inav/blob/master/docs/Rx.md)\
-DevDocs [Spektrum bind.md](https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md)
-</details>
+[**Receiver Tab**](https://github.com/iNavFlight/inav/wiki/Receiver-Tab)\
+Set protocol and channel mapping
 
 <details>
 <summary>Mixer</summary>
@@ -281,5 +277,7 @@ DevDocs [Rangefinder.md](https://github.com/iNavFlight/inav/blob/master/docs/Ran
 DevDocs [Rssi.md](https://github.com/iNavFlight/inav/blob/master/docs/Rssi.md)\
 DevDocs [Runcam device.md](https://github.com/iNavFlight/inav/blob/master/docs/Runcam%20device.md)\
 DevDocs [Serial.md](https://github.com/iNavFlight/inav/blob/master/docs/Serial.md)\
-DevDocs [Telemetry.md](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md)
+DevDocs [Telemetry.md](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md)\
+DevDocs [Rx.md](https://github.com/iNavFlight/inav/blob/master/docs/Rx.md)\
+DevDocs [Spektrum bind.md](https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md)
 </details>
