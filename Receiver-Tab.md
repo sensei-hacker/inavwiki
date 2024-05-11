@@ -44,105 +44,23 @@ This is where you tell the FC what type of Rx you have and what protocol it spea
 
 ### Channel Map
 
+After configuring channel ranges use the sub-trim on your transmitter to set the middle point of pitch, roll, yaw and throttle.
 
 
-
-
-### RX signal-loss detection
-
-The software has signal loss detection which is always enabled.  Signal loss detection is used for safety and failsafe reasons.
-
-The `rx_min_usec` and `rx_max_usec` settings helps detect when your RX stops sending any data, enters failsafe mode or when the RX loses signal.
-
-By default, when the signal loss is detected the FC will set pitch/roll/yaw to the value configured for `mid_rc`. The throttle will be set to the value configured for `rx_min_usec` or `mid_rc` if using 3D feature.
-
-Signal loss can be detected when:
-
-1. no rx data is received (due to radio reception, recevier configuration or cabling issues).
-2. using Serial RX and receiver indicates failsafe condition.
-3. using any of the first 4 stick channels do not have a value in the range specified by `rx_min_usec` and `rx_max_usec`.
-
-#### `rx_min_usec`
-
-The lowest channel value considered valid.  e.g. PWM/PPM pulse length
-
-#### `rx_max_usec`
-
-The highest channel value considered valid.  e.g. PWM/PPM pulse length
-
-### Serial RX
-
-See the Serial chapter for some some RX configuration examples.
-
-To setup spectrum in the GUI:
-1. Start on the "Ports" tab make sure that teh required has serial RX.  If not set the checkbox, save and reboot.
-2. Move to the "Configuration" page and in the upper lefthand corner choose Serial RX as the receiver type.
-3. Below that choose the type of serial receiver that you are using.  Save and reboot.
-
-#### Using CLI:
-
-For Serial RX set the `receiver_type` and `serialrx_provider` setting as appropriate for your RX.
-
-```
-# get rec
-receiver_type = SERIAL
-Allowed values: NONE, SERIAL, MSP, SIM (SITL)
-
-# get serialrx
-serialrx_provider = SBUS
-Allowed values: SPEK1024, SPEK2048, SBUS, SUMD, IBUS, JETIEXBUS, CRSF, FPORT, SBUS_FAST, FPORT2, SRXL2, GHST, MAVLINK, FBUS
-
-```
-
-## Receiver configuration.
-
-### FrSky D4R-II
-
-Set the RX for 'No Pulses'.  Turn OFF TX and RX, Turn ON RX.  Press and release F/S button on RX.  Turn off RX.
-
-### Graupner GR-24 PWM
-
-Set failsafe on the throttle channel in the receiver settings (via transmitter menu) to a value below `rx_min_usec` using channel mode FAILSAFE.
-This is the prefered way, since this is *much faster* detected by the FC then a channel that sends no pulses (OFF).
-
-__NOTE:__
-One or more control channels may be set to OFF to signal a failsafe condition to the FC, all other channels *must* be set to either HOLD or OFF.
-Do __NOT USE__ the mode indicated with FAILSAFE instead, as this combination is NOT handled correctly by the FC.
-
-## Receiver Channel Range Configuration.
-
-If you have a transmitter/receiver, that output a non-standard pulse range (i.e. 1070-1930 as some Spektrum receivers)
-you could use rx channel range configuration to map actual range of your transmitter to 1000-2000 as expected by INAV.
-
-The low and high value of a channel range are often referred to as 'End-points'.  e.g. 'End-point adjustments / EPA'.
-
-All attempts should be made to configure your transmitter/receiver to use the range 1000-2000 *before* using this feature
-as you will have less preceise control if it is used.
-
-To do this you should figure out what range your transmitter outputs and use these values for rx range configuration.
-You can do this in a few simple steps:
-
-If you have used rc range configuration previously you should reset it to prevent it from altering rc input. Do so
-by entering the following command in CLI:
+### Advanced: RxRange
+INAV expects your transmitter/receiver to send RC values (called end-points) with a range of 1000-2000. But some transmitters/receivers have a non-standard end-points (i.e. 1070-1930 as some Spektrum receivers) which can be a problem in INAV. To adjust for this, go into your transmitter settings and try to set the output end-points as close as you can to 1000-2000. If you still can't get end-points to 1000-2000 then you can go to the cli and use the command rxrange to map your non-standard range to the standard 1000-2000 in INAV.
+1. If you used rxrange in the past, reset it by entering the following command into the CLI:
 ```
 rxrange reset
 save
 ```
-
-Now reboot your FC, connect the configurator, go to the `Receiver` tab move sticks on your transmitter and note min and
-max values of first 4 channels. Take caution as you can accidentally arm your craft. Best way is to move one channel at
-a time.
-
-Go to CLI and set the min and max values with the following command:
+2. Reconnect INAV Configurator, go to the `Receiver` tab, move one stick at a time on your transmitter to the min and max values (first 4 channels) and write these values down. *Always take care to avoid accidentally arming your craft*. Go to CLI and set the min and max values with the following cli command `rxrange <channel_number> <min> <max>` and note that Channel 1 is 0 in the cli, and 2 is 1, and 3 is 2, and 4 is 3. Here is an example.
 ```
-rxrange <channel_number> <min> <max>
+rxrange 0 1070 1930
+rxrange 1 1070 1930
+rxrange 2 1070 1930
+rxrange 3 1070 1930
+save
 ```
-
-For example, if you have the range 1070-1930 for the first channel you should use `rxrange 0 1070 1930` in
-the CLI. Be sure to enter the `save` command to save the settings.
-
-After configuring channel ranges use the sub-trim on your transmitter to set the middle point of pitch, roll, yaw and throttle.
-
-
-You can also use rxrange to reverse the direction of an input channel, e.g. `rxrange 0 2000 1000`.
+You can also use rxrange to reverse the direction of an input channel, e.g. `rxrange 0 2000 1000`. But be sure to know what you are doing whenever usinf the cli.
 
