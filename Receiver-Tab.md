@@ -4,7 +4,7 @@ You install an RC Receiver (Rx) into your aircraft in order to receive radio con
 
 **Binding**
 
-Before you can know if you have configured INAV to talk to your Rx, you need to be sure your Rx has a bind to your RC transmitter. There may be a blinking light pattern or some way as outlined by the documentation of your radio to know that the two have a bind and are talking to each other.
+Before you can know if you have configured INAV to talk to your Rx, you need to be sure your Rx has a bind to your RC transmitter. There may be a blinking light pattern or some way as outlined by the documentation of your radio to know that the two have a bind and are talking to each other. If you have a Spektrum receiver, you might need to set bind in the  support    https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md
 
 ## Receiver Mode
 This is where you tell the FC what type of Rx you have and what protocol it speaks.
@@ -29,9 +29,9 @@ INAV can't talk to your receiver until the serial protocol is set. Select a prot
 - **MAVLINK:** 
 - **SBUS:** FrSky, Futaba, ExpressLRS (all frequencies) | 16 channels | See SBUS labeled pad on your FC (an inverted RX UART)
 - **SBUS_FAST:** 
-- **SPEK1024:** Spektrum** Spektrum DSM
-- **SPEK2048:** Spektrum** Spektrum DSM2 / DSMX
-- **SRXL2:** Spektrum** Spektrum | newer Spektrum protocol
+- **SPEK1024:** Spektrum | Spektrum DSM
+- **SPEK2048:** Spektrum | Spektrum DSM2 / DSMX
+- **SRXL2:** Spektrum | newer Spektrum protocol
 - **SUMD:** Graupner | 16 channels 
 
 *Depending on the receiver specs, protocol used, radio limits, etc. there may be a limited number of channels available for your use.*
