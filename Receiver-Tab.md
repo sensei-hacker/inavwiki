@@ -29,7 +29,7 @@ This is where you tell the FC what type of Rx you have and what protocol it spea
 - **SBUS_FAST:** 
 - **SPEK1024:** Spektrum** Spektrum DSM
 - **SPEK2048:** Spektrum** Spektrum DSM2 / DSMX
-- **SRXL2:** Spektrum** Spektrum DSMX
+- **SRXL2:** Spektrum** Spektrum | newer Spektrum protocol
 - **SUMD:** Graupner | 16 channels 
 
 *Depending on the receiver specs, protocol used, radio limits, etc. there may be a limited number of channels available for your use.*
@@ -38,6 +38,8 @@ This is where you tell the FC what type of Rx you have and what protocol it spea
 
 *IBUS RX and IBUS telemetry can be configured to both be on the same Serial UART - see [Telemetry.md](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md)*
 
+*SRXL2 provides both RC control and telemetry over a two-wire connection to UART but requires [special cli settings](https://github.com/iNavFlight/inav/blob/master/docs/Rx.md#configuration-1).*
+
 ### RC Smoothing
 
 ### Channel Map
@@ -45,70 +47,6 @@ This is where you tell the FC what type of Rx you have and what protocol it spea
 
 
 
-
-### SRXL2
-
-SRXL2 is a newer Spektrum protocol that provides a bidirectional link between the FC and the receiver, allowing the user to get FC telemetry data and basic settings on Spektrum Gen 2 airware TX. SRXL2 is supported in INAV 2.6 and later. It offers improved performance and features compared to earlier Spektrum RX.
-
-#### Wiring
-
-Signal pin on receiver (labeled "S") must be wired to a **UART TX** pin on the FC. Voltage can be 3.3V (4.0V for SPM4651T) to 8.4V. On some F4 FCs, the TX pin may have a signal inverter (such as for S.Port). Make sure this isn't the case for the pin you intend to use.
-
-#### Configuration
-
-Selection of SXRL2 is provided in the INAV 2.6 and later configurators. It is necessary to complete the configuration via the CLI; the following settings are recommended:
-
-```
-feature TELEMETRY
-feature -RSSI_ADC
-map TAER
-set receiver_type = SERIAL
-set serialrx_provider = SRXL2
-set serialrx_inverted = OFF
-set srxl2_unit_id = 1
-set srxl2_baud_fast = ON
-set rssi_source = PROTOCOL
-set rssi_channel = 0
-```
-
-#### Notes:
-
-* RSSI_ADC is disabled, as this would override the value provided through SRXL2
-* `rssi_channel = 0` is required, unlike earlier Spektrum devices (e.g. SPM4649T).
-
-Setting these values differently may have an adverse effects on RSSI readings.
-
-#### CLI Bind Command
-
-This command will put the receiver into bind mode without the need to reboot the FC as it was required with the older `spektrum_sat_bind` command.
-
-```
-bind_rx
-```
-
-## MultiWii serial protocol (MSP RX)
-
-Allows you to use MSP commands as the RC input. Up to 18 channels are supported.
-Note:
-* It is necessary to update `MSP_SET_RAW_RC` at 5Hz or faster.
-* `MSP_SET_RAW_RC` uses the defined RC channel map
-* `MSP_RC` returns `AERT` regardless of channel map
-* You can combine "real" RC radio and MSP RX by compiling custom firmware with `USE_MSP_RC_OVERRIDE` defined. Then use `msp_override_channels` to set the channels to be overridden.
-* The [wiki Remote Control and Management article](https://github.com/iNavFlight/inav/wiki/INAV-Remote-Management,-Control-and-Telemetry) provides more information, including links to 3rd party projects that exercise `MSP_SET_RAW_RC` and `USE_MSP_RC_OVERRIDE`
-
-## SIM (SITL) Joystick
-
-Enables the use of a joystick in the INAV SITL with a flight simulator. See the [SITL documentation](SITL/SITL).
-
-## Configuration
-
-The receiver type can be set from the configurator or CLI.
-
-```
-# get receiver_type
-receiver_type = NONE
-Allowed values: NONE, SERIAL, MSP, SIM (SITL)
-```
 
 ### RX signal-loss detection
 
