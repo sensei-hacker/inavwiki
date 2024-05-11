@@ -1,24 +1,23 @@
 # Introduction
+This guide assumes you have already [connected your Rx to a Serial UART Port on your flight controller and have set the correct port on the ports tab](https://github.com/iNavFlight/inav/wiki/Ports-Tab). The RC Receiver (Rx) in your aircraft conveys the radio control (RC) commands from your RC Transmitter and sends them to your flight controller over a wire connection using a Serial UART Port and using a particular communication protocol.
 
-You install an RC Receiver (Rx) into your aircraft in order to receive radio control (RC) commands from your RC Transmitter where the Rx then sends them to your flight controller over a wire connection to a Serial UART Port using a particular protocol. This guide assumes you have [connected your Rx to a Serial UART Port on your flight controller and have set the correct port on the ports tab](https://github.com/iNavFlight/inav/wiki/Ports-Tab).
+### Binding
+Be sure to bind your Rx to your RC transmitter by following the process outlined in the manual for your radio equipment. It may be a button and blinking light pattern or some other way you can be sure it is bound. This is a huge troubleshooting step that can save hours of frustration. If you have a Spektrum serial receiver, you might have to [set the Spektrum bind in the cli](https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md). Without a bind, you receiver may appear dead.
 
-**Binding**
-
-Before you can know if you have configured INAV to talk to your Rx, you need to be sure your Rx has a bind to your RC transmitter. There may be a blinking light pattern or some way as outlined by the documentation of your radio to know that the two have a bind and are talking to each other. If you have a Spektrum receiver, you might need to set bind in the  support    https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md
-
-## Receiver Mode
+## Receiver Mode Section
 This is where you tell the FC what type of Rx you have and what protocol it speaks.
 
-**Receiver Type**\
-This is the first step get INAV to talk to your receiver. 
-- Serial Receivers - your Rx is 99% likely to be a serial receiver. These can be TBS Crossfire / Tracer, ExpressLRS, Ghost, FrSky, Spektrum, FlySky, etc.
+### Receiver Type
+This is the first step to get INAV to talk to your receiver. The available options are:
+- **Serial Receivers** - your Rx is 99% likely to be a serial receiver.\
+These can be TBS Crossfire / Tracer, ExpressLRS, Ghost, FrSky, Spektrum, FlySky, etc.
 - _MSP RX (very rare)_
 - _SIM SITL (for computer simulator use only)_
-- _PPM Receivers (obsolete INAV 3.x and below)_
+- _PPM Receivers (obsolete in INAV 3.x and below)_
 
 *Warning: Do not connect an Rx to a Soft Serial Ports as these ports often drop data which can cause unintentional failsafes and other unexpected behaviors.*
 
-**Serial Receiver Provider** (Receiver Protocol)\
+### Serial Receiver Provider *(Receiver Protocol)*
 INAV can't talk to your receiver until the serial protocol is set. Select a protocol and press **Save and Reboot**. Once INAV Configurator reconnects, a working connection will be evidenced by moving color bars in the Channel Map that move with your stick inputs.
 - **CRSF:** TBS Crossfire / Tracer, ExpressLRS (all frequencies) | ?? Channel Limit
 - **FBUS:**
@@ -42,10 +41,10 @@ INAV can't talk to your receiver until the serial protocol is set. Select a prot
 
 *SRXL2 provides both RC control and telemetry over a two-wire connection to UART but requires [special cli settings](https://github.com/iNavFlight/inav/blob/master/docs/Rx.md#configuration-1).*
 
-### RC Smoothing
+## RC Smoothing Section
 This is used to filter out jitters in the RC values coming from the sticks on your transmitter. You should leave this ON in almost all cases and the defaults for the other values in this section should be fine for all most cases. A higher value for *Manual LPF Hz* or *auto smoothing factor* will add delay to you controls from the filter calculations. So adjust these values only if you understand what you are doing.
 
-### Channel Map
+## Channel Map Section
 The first four channels of almost all radios are dedicated to the values of the sticks. INAV needs to know which channel is which in order to understand your inputs. So we need to map the channel for each stick from your radio to the matching inputs in INAV using the **Channel Map**. The four letters TAER represent this mapping. This would be **A**ilerons (Roll), **E**levator (Pitch), **T**hrottle, and **R**udder (Yaw). There is a drop down box with two presets, AETR and TAER. 99% one these two will be the correct setting. There is also the option to manually type these four letters into that box to change the channel mapping. After selecting a channel order, press **Save and Reboot** before you can see the changes take effect. You are looking for the color bar labels Roll [A], Pitch [E], Yaw [R], Throttle [T] to match the stick inputs on your transmitter.
 
 This is a great time to check your radio. INAV has its own settings for trim so make sure the trims on your transmitter are set back to the middle on all four sticks. You can check this by looking at the channel values on the color bars. The should be at 1500 in the middle. This is also a good time to check the stick gimble calibrate in your radio’s settings. Find a video on YouTube specific to your radio model.
