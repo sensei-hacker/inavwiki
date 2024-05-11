@@ -9,7 +9,8 @@ Before you can know if you have configured INAV to talk to your Rx, you need to 
 ## Receiver Mode
 This is where you tell the FC what type of Rx you have and what protocol it speaks.
 
-**Receiver Type**
+**Receiver Type**\
+This is the first step get INAV to talk to your receiver. 
 - Serial Receivers - your Rx is 99% likely to be a serial receiver. These can be TBS Crossfire / Tracer, ExpressLRS, Ghost, FrSky, Spektrum, FlySky, etc.
 - _MSP RX (very rare)_
 - _SIM SITL (for computer simulator use only)_
@@ -17,7 +18,8 @@ This is where you tell the FC what type of Rx you have and what protocol it spea
 
 *Warning: Do not connect an Rx to a Soft Serial Ports as these ports often drop data which can cause unintentional failsafes and other unexpected behaviors.*
 
-**Serial Receiver Provider** (Receiver Protocol)
+**Serial Receiver Provider** (Receiver Protocol)\
+INAV can't talk to your receiver until the serial protocol is set. Select a protocol and press **Save and Reboot**. Once INAV Configurator reconnects, a working connection will be evidenced by moving color bars in the Channel Map that move with your stick inputs.
 - **CRSF:** TBS Crossfire / Tracer, ExpressLRS (all frequencies) | ?? Channel Limit
 - **FBUS:**
 - **FPORT2:** FrSky | 16 channels | RC Control and Telemetry over one-wire connected to a TX UART
@@ -41,11 +43,15 @@ This is where you tell the FC what type of Rx you have and what protocol it spea
 *SRXL2 provides both RC control and telemetry over a two-wire connection to UART but requires [special cli settings](https://github.com/iNavFlight/inav/blob/master/docs/Rx.md#configuration-1).*
 
 ### RC Smoothing
+This is used to filter out jitters in the RC values coming from the sticks on your transmitter. You should leave this ON in almost all cases and the defaults for the other values in this section should be fine for all most cases. A higher value for *Manual LPF Hz* or *auto smoothing factor* will add delay to you controls from the filter calculations. So adjust these values only if you understand what you are doing.
 
 ### Channel Map
+The first four channels of almost all radios are dedicated to the values of the sticks. INAV needs to know which channel is which in order to understand your inputs. So we need to map the channel for each stick from your radio to the matching inputs in INAV using the **Channel Map**. The four letters TAER represent this mapping. This would be **A**ilerons (Roll), **E**levator (Pitch), **T**hrottle, and **R**udder (Yaw). There is a drop down box with two presets, AETR and TAER. 99% one these two will be the correct setting. There is also the option to manually type these four letters into that box to change the channel mapping. After selecting a channel order, press **Save and Reboot** before you can see the changes take effect. You are looking for the color bar labels Roll [A], Pitch [E], Yaw [R], Throttle [T] to match the stick inputs on your transmitter.
 
-After configuring channel ranges use the sub-trim on your transmitter to set the middle point of pitch, roll, yaw and throttle.
+This is a great time to check your radio. INAV has its own settings for trim so make sure the trims on your transmitter are set back to the middle on all four sticks. You can check this by looking at the channel values on the color bars. The should be at 1500 in the middle. This is also a good time to check the stick gimble calibrate in your radio’s settings. Find a video on YouTube specific to your radio model.
 
+**RSSI Channel** (Received Signal Strength Indicator)\
+Some older receivers use a radio channel to communicate the health of the radio signal. You can tell what this channel is as it will be jittering up and down especially can you move your transmitter around. Many times its channel 16. But modern receivers with telemetry enabled don't need this set at all and this setting should be *Disabled*.
 
 ### Advanced: RxRange
 INAV expects your transmitter/receiver to send RC values (called end-points) with a range of 1000-2000. But some transmitters/receivers have a non-standard end-points (i.e. 1070-1930 as some Spektrum receivers) which can be a problem in INAV. To adjust for this, go into your transmitter settings and try to set the output end-points as close as you can to 1000-2000. If you still can't get end-points to 1000-2000 then you can go to the cli and use the command rxrange to map your non-standard range to the standard 1000-2000 in INAV.
