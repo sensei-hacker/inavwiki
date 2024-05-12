@@ -49,7 +49,7 @@ Requires that a navigation mode (which includes failsafe RTH) is configured
 | The GPS has insufficient satellites (this is checked even if you disable GPS, but have a NAV mode configured in Modes tab) |
 | A navigation switch is engaged (e.g.PH, WP, RTH) |
 | First WP distance exceeded |
-| Satellite quality is unacceptable: EPH/EPV > 10m (note the limit in the CLI `inav_max_eph_epv` is in cm, default 1000) |
+| Sensor quality is unacceptable: EPH/EPV > 10m (note the limit in the CLI `inav_max_eph_epv` is in cm, default 1000). Check also `inav_baro_epv` |
 | The WP mission contains an invalid JUMP sequence |
 | The first waypoint is beyond the distance defined by the CLI setting: INAV 5.1 and below uses `nav_wp_safe_distance`. From INAV 6.0 use `nav_wp_max_safe_distance` |
 
