@@ -80,6 +80,7 @@ Set protocol and channel mapping
 <details>
 <summary>Mixer</summary>
 
+[Mixer Tab](https://github.com/iNavFlight/inav/wiki/Mixer-Tab)\
 [Custom mixes for exotic setups](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups)\
 DevDocs [Mixer.md](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md)
 </details>
