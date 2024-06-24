@@ -279,7 +279,7 @@ This setting only works when `gps_auto_config= ON`
 
 ## AssistNow Online/Offline
 
-INAV 8.0 adds support for AssitNow Online and AssistNow Offline GPS assistance services, which is a proprietary A-GNSS service that can reduce Time To First Fix (TTFF) but requires access to the internet to fetch data. AssistNow Online data is valid for a few hours, while AssistNow Offline data can be valid for weeks.
+INAV 8.0 adds support for AssitNow Online and AssistNow Offline GPS assistance services, which is a proprietary A-GNSS service that can reduce Time To First Fix (TTFF) but requires access to the internet to fetch data. AssistNow Online data is valid for a few hours, while AssistNow Offline data can be valid for weeks. It can be specially beneficial for new GPS units and for units without flash or battery backed ram (BBR).
 
 In order to use the service, you have to create a thingstream account and register applications to use AssistNow Online and Offline service. The process is described here: https://developer.thingstream.io/guides/location-services/assistnow-getting-started-guide 
 
@@ -288,8 +288,12 @@ Once you have your AssitNow service token, you need to configure INAV Configurat
 
 Once INAV Configurator has your token, you can use the buttons on the bottom of the GPS tab to upload AssistNow data to your GPS unit.
 
+![image](https://github.com/iNavFlight/inav/assets/23555060/2bd2a160-5756-4f4e-8550-04962b19acaf)
 
- 
+AssistNow Online data requires an active internet connection, while AssistNow Offline will cache the data for 3 days, and will not need internet connection, unless the data is expired.
+
+If you have internet access, it is recommended to use both AssistNow Online and Offline services.
+
 ## Issues
 - **`X!`** in the OSD `GPS Satellites` field indicates the flight controller isn't receiving a valid data signal from the GPS.
 - No GPS lock: often due to electric noise from flight controller or other equipment such as 1.2ghz video TX. Try getting the GPS as far away as possible from electric noise emitting parts as the FC, ESCs or power cables. Placing the GPS on a mast is also a common way, you can further try shielding with aluminum or copper foil. Don´t place the GPS inside the frame.
