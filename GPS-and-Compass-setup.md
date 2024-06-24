@@ -277,7 +277,19 @@ If you use a regional specific setting you may achieve a faster GPS lock than us
 
 This setting only works when `gps_auto_config= ON`
 
+## AssistNow Online/Offline
 
+INAV 8.0 adds support for AssitNow Online and AssistNow Offline GPS assistance services, which is a proprietary A-GNSS service that can reduce Time To First Fix (TTFF) but requires access to the internet to fetch data. AssistNow Online data is valid for a few hours, while AssistNow Offline data can be valid for weeks.
+
+In order to use the service, you have to create a thingstream account and register applications to use AssistNow Online and Offline service. The process is described here: https://developer.thingstream.io/guides/location-services/assistnow-getting-started-guide 
+
+Once you have your AssitNow service token, you need to configure INAV Configurator to use it, by clicking on the gear cog on the top right of the Configurator window.
+![image](https://github.com/iNavFlight/inav/assets/23555060/1b0baf83-2306-4e19-a321-110ba480a9aa)
+
+Once INAV Configurator has your token, you can use the buttons on the bottom of the GPS tab to upload AssistNow data to your GPS unit.
+
+
+ 
 ## Issues
 - **`X!`** in the OSD `GPS Satellites` field indicates the flight controller isn't receiving a valid data signal from the GPS.
 - No GPS lock: often due to electric noise from flight controller or other equipment such as 1.2ghz video TX. Try getting the GPS as far away as possible from electric noise emitting parts as the FC, ESCs or power cables. Placing the GPS on a mast is also a common way, you can further try shielding with aluminum or copper foil. Don´t place the GPS inside the frame.
