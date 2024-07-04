@@ -7,8 +7,10 @@ While older versions as M6N and M7N also work up to INAV 8.0, the newer M9/M10 v
 Most GNSS modules have a built in magnetometer (compass), but there are also some available without e.g. [Matek M10Q](http://www.mateksys.com/?portfolio=sam-m10q) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
 
 Modules known to work reasonably well:
-* [Matek M10Q-5883](http://www.mateksys.com/?portfolio=m10q-5883)
-* [Beitian BN-880](https://inavflight.com/shop/p/BN880)
+* [Matek M10Q-5883](http://www.mateksys.com/?portfolio=m10q-5883) M10
+* [Beitian BE-880Q](https://store.beitian.com/products/beitian-compass-qmc5883l-amp2-6-pix4-pixhawk-gnss-gps-glonass-dual-flight-control-gps-module-bn-880q?variant=44696118133023) M10
+* [Beitian BK-880Q](https://store.beitian.com/products/beitian-compass-qmc5883l-amp2-6-pix4-pixhawk-gnss-gps-glonass-dual-flight-control-gps-module-bn-880q?variant=45152276119839) M9
+* [Beitian BN-880](https://inavflight.com/shop/p/BN880) M8
 
 
 **Note** : Not all GNSS units are made equal. If you buy cheap, you are more likely to get cheap performance. Many GNSS units do not include a quality _front end LNA and SAW filter_. Without those components, the chances of poor performance is much greater if you have localized RF noise from a VTX or RX with telemetry.
