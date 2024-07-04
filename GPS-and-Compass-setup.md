@@ -1,8 +1,9 @@
 In the 7.0 release and later. INAV only supports Ublox and Ublox7 protocols.
+In the 8.0 release and later INAV Ublox GPS units with Ublox Protocol version < 15.00 are deprecated and from INAV 9.0 will no longer be supported.
 
-Recommended GNSS units are M8, M9 or M10 models for best navigation performance.
+Recommended GNSS units are M8, M9 or M10 models for best navigation performance. While it is uncertain if there are M8 versions with Protocol version lower than 15.00, the majority of the units should be 15.00 or newer.
 
-Older versions as M6N and M7N also work, but the newer M9/M10 versions are superior.
+While older versions as M6N and M7N also work up to INAV 8.0, the newer M9/M10 versions are superior.
 Most GNSS modules have a built in magnetometer (compass), but there are also some available without e.g. [Matek M10Q](http://www.mateksys.com/?portfolio=sam-m10q) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
 
 Modules known to work reasonably well:
