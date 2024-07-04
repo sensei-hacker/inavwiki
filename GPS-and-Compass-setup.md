@@ -73,16 +73,18 @@ Note that GPS is a push protocol; if your GPS has pre-configured messages enable
 
 INAV will enable UBLOX periodic messages according to the UBLOX version:
 
-| Class | Id   | Usage                                                  | UBLOX Versions |
-|-------|------|--------------------------------------------------------|----------------|
-| 0x01  | 0x02 | UBX-NAV-POSLLH Geodetic Position Solution              | 5,6            |
-| 0x01  | 0x03 | UBX-NAV-STATUS Receiver Navigation status              | 5,6            |
-| 0x01  | 0x12 | UBX-NAV-VELNED Velocity Solution in NED                | 5,6            |
-| 0x01  | 0x21 | UBX-NAV-TIMEUTC GPS Time Solution                      | 5,6            |
-| 0x01  | 0x35 | UBX=NAV-SOL Navigation Solution Information            | 5,6,7,8        |
-| 0x01  | 0x07 | UBX-NAV-PVT Navigation Position Velocity Time Solution | 7,8,9,10       |
+| Class | Id   | Usage                                                  | UBLOX Versions | INAV Version |
+|-------|------|--------------------------------------------------------|----------------|--------------|
+| 0x01  | 0x02 | UBX-NAV-POSLLH Geodetic Position Solution              | 5,6            | < 9.0.0      |
+| 0x01  | 0x03 | UBX-NAV-STATUS Receiver Navigation status              | 5,6            | < 9.0.0      |
+| 0x01  | 0x12 | UBX-NAV-VELNED Velocity Solution in NED                | 5,6            | < 9.0.0      |
+| 0x01  | 0x21 | UBX-NAV-TIMEUTC GPS Time Solution                      | 5,6            | < 9.0.0      |
+| 0x01  | 0x35 | UBX-NAV-SAT Sattelite Infrmation                       | 5,6,7          | < 9.0.0      |
+| 0x01  | 0x35 | UBX-NAV-SAT Sattelite Infrmation                       | 8              |              |
+| 0x01  | 0x42 | UBX-NAV-SIG Signal Information                         | 9,10           | >= 8.0.0     |
+| 0x01  | 0x07 | UBX-NAV-PVT Navigation Position Velocity Time Solution | 7,8,9,10       |              |
 
-As of March 2024 / INAV 7.1.
+As of July 2024 / INAV 8.0.0-dev.
 
 ## Installing the GNSS unit - Antenna orientation
 
