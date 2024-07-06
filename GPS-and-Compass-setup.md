@@ -188,7 +188,7 @@ Painless360 has done a video on this: (https://www.youtube.com/watch?v=kVVJ-DjUj
 
 There is an Alignment Tool built into the INAV configurator for INAV 5.0 and later.
 
-##<a id="emperical-method"></a>Emperical Method of Determining Compass Alignment
+## Emperical Method of Determining Compass Alignment<a id="emperical-method"></a>
 
 Rather than using the alignment tool, it is sometimes easier to instead test the actual readings you are getting from
 your compass. The following procedure can be used.
