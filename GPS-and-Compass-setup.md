@@ -115,7 +115,10 @@ This chart is a reference to help gauge the hardware `Orientation Preset` of you
 
 ![Clockwise Orientation reference chart](https://github.com/iNavFlight/inav/assets/47995726/c047fb0d-7b83-4a2d-9b2f-b1b986ecfc89)
 
-You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations until after 7.1. _But in future releases the alignment tool will cover more extensive hardware alignment._
+You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations until after 7.1.
+_But in future releases the alignment tool will cover more extensive hardware alignment._  Alternatively, you may
+instead choose the impercial method, outlined below.
+
 The image below is an example of a module that does not use the default orientation preset, nor has a mounting direction arrow from factory. **The orange orientation arrow has been added to the image below to assist your installation if you have this unit. Its Orientation preset is CW180FLIP with the plug facing to the rear of the model.** _Beitian made the first GPS modules that included a compass for hobby use, back in 2014. And this is how we ended up the confusing default orientation preset of CW270 (flip)_
 
 
@@ -182,7 +185,36 @@ Enhanced Explanation in #6232
 
 Painless360 has done a video on this: (https://www.youtube.com/watch?v=kVVJ-DjUjsc)
 
-There is an online (web based) software tool to help with alignment [Alignment Tool](https://kernel-machine.github.io/INavMagAlignHelper/); this tool is built into the INAV configurator for INAV 5.0 and later.
+
+There is an Alignment Tool built into the INAV configurator for INAV 5.0 and later.
+
+##<a id="emperical-method"></a>Emperical Method of Determining Compass Alignment
+
+Rather than using the alignment tool, it is sometimes easier to instead test the actual readings you are getting from
+your compass. The following procedure can be used.
+
+If the compass is tilted at an odd angle, use a piece of tape or similar to temporarily hold it flat.
+
+
+First ensure the FC alignment is correct. In the Setup tab it must move the correct direction in all three axis.
+
+Point the aircraft north. Look at the heading in the Setup tab. Quickly turn the aircraft 90°, so it points east, and set it down.  Watch the heading reading over the next five seconds.  Does it remain stable, or does it slowly change, by more than 10°?
+
+If the heading slowly catches up over a few seconds, the compass alignment is upside-down.  If it remains stable, it's right-side up. If needed, add/subtract 180° to the roll to flip it.
+
+Now that it's right-side up, we need to set which way is front by adjusting the yaw. Adjust the yaw in 90° increments so that the heading reads about 0°/360° when the aircraft is pointed north.
+
+Confirm east, south, and west also read correctly.
+Save and reboot.
+
+If you 3D-printed a mount to put the magnetometer at a weird angle, adjust for that now in the alignment tool.
+
+
+That's it, you're done!
+
+* If you have a tiny whoop board with the 45° angle mounting, you may need to adjust yaw in 45° increments.
+
+
 
 
 ## Initial flight tests
