@@ -227,8 +227,8 @@ What FC does in MANUAL mode is: Motor mixing, Servo Mixing, Expo settings, Throw
 
 ### MC BRAKING (MC)
 
-This mode provides faster manual braking when the pitch stick is released. If the multirotor is being flown around in POSHOLD flight mode.
-For this mode to work. It requires `nav_user_control_mode = CRUISE` to be enabled.
+Used with POSHOLD mode, this mode provides faster manual braking when the pitch stick is released. 
+For this mode to work, it requires `nav_user_control_mode = CRUISE` to be enabled.
 **Use with caution**. This mode can cause temporary runaway with some settings and under some conditions.
 
 ### MIXER PROFILE 2
