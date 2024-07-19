@@ -3,7 +3,7 @@ In the 8.0 release and later INAV Ublox GPS units with Ublox Protocol version < 
 
 Recommended GNSS units are M8, M9 or M10 models for best navigation performance. While it is uncertain if there are M8 versions with Protocol version lower than 15.00, the majority of the units should be 15.00 or newer.
 
-While older versions as M6N and M7N also work up to INAV 8.0, the newer M9/M10 versions are superior.
+While older versions as M6N and M7N also work up to INAV 8.0. But later generation M8 and the newer M9/M10 versions are superior.
 Most GNSS modules have a built in magnetometer (compass), but there are also some available without e.g. [Matek M10Q](http://www.mateksys.com/?portfolio=sam-m10q) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
 
 Modules known to work reasonably well:
@@ -31,16 +31,17 @@ If your flight controller has an internal magnetometer on the FC, using it will 
  ## INAV 7.1 changes
 
 **From the release of INAV 7.1 the use of a compass is no longer mandatory for multirotor navigation as it once was. BUT it is still recommended for the best navigation performance, when it comes to maintaining a fixed position for an _extended period of time_, without heading drift.** e.g. in Poshold. Or taking off and immediately starting a Waypoint mission.
-* Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance. Also, always enable the maximum number of GNSS constellations your hardware will allow. EPV and EPH (Standard deviation of position error) will greatly effect navigation precision. Regardless of having a 3D fix, or what you think is an acceptable HDOP or number of satellites.
+* Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
+ Always enable the maximum number of GNSS constellations your hardware will allow. Poor EPV and EPH (Standard deviation of position error) will greatly effect navigation precision. Regardless of having a 3D fix, or what you consider an acceptable number of satellites.
 
-If the user does decide to omit the use of a compass for a multirotor for reasons like the model size or magnetic interference that can not be overcome, be mindful that navigation modes will not be operational until a GPS heading is obtained.  To enable navigation modes (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) fly in a straight line until **-**
-* the OSD _Heading_ and _Course over Ground_ indicators display a valid heading.
-* keep both headings closely aligned for a time
-* the OSD Home arrow appears, showing a valid home direction
+If you decide to omit the use of a compass on a multirotor or VTOL platform, due to space limitations or magnetic interference that can not be overcome. **Be mindful that none of the navigation modes** (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will become operational until a GPS based heading is obtained**.  To accomplish this, start flying the copter in a straight line until -
+* the OSD Home arrow appears, showing a valid home direction.
+* both the OSD _Heading_ and _Course over Ground_ indicators show a valid heading.
+* keeping both headings closely aligned for a short time.
 
-JetrellRC has an example video: (https://www.youtube.com/watch?v=iopZfH-DdTI)
+As seen in this [video](https://www.youtube.com/watch?v=iopZfH-DdTI)
 
-Only then can the IMU heading data be trusted for fixed position or slow speed navigation. Do not omit any of the above steps or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly when you first setup a multirotor without a compass, just as you would with a compass.
+Only then can the IMU heading data be trusted for _fixed position_ or slow speed navigation. Do not omit any of the above steps or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly when you first setup a multirotor without a compass, just as you would with a compass.
 
 * **Note** : Presently multirotor navigation flight modes (RTH, POSHOLD etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. You can select magnetometer type FAKE if no device is installed. Then proceed to alter your navigation modes. Once done, set Magnetometer type back to NONE for compass-less navigation. **This will be fixed in 7.1.1**..  The same will apply if your flight controller doesn't have a barometer. In this case you will be required to enter `inav_use_gps_no_baro = ON ` in the CLI, and select Barometer type FAKE. Then you can alter the navigation modes. Once done, set the barometer type back to NONE.
 **Be aware. If you don't use a barometer as well as a magnetometer. And your satellite HDOP is greater than 1.3, the copters altitude and position accuracy will be greatly reduced.** 
@@ -103,7 +104,7 @@ Ensure the ceramic antenna (light brown or beige in color) faces skywards. To pr
 
 INAV's default Orientation Preset is `CW270FLIP`. This value is based on the orientation of the magnetometer chip on its PCB, chosen by the manufacturer. With respect to the Arrow direction they provide facing the front of the aircraft. Or the plug facing the rear of the aircraft.
  
-* Circled in _Red_ at the base of the GNSS unit. Is the QMC5883 magnetometer chip **with its white DOT providing an axis magnetic bearing reference based on the internal coil**.
+* Circled in _Red_ at the base of the GNSS unit. Is the QMC5883 magnetometer chip **with its white DOT providing an axis magnetic bearing reference based on the internal coils**.
 
 * Circled in _Orange_ is the orientation arrow showing the direction the compass should **ideally** be mounted, with that arrow facing the front of the model, and its direction of travel. Along with the Flight controllers arrow facing forward as well.
 
@@ -111,7 +112,7 @@ INAV's default Orientation Preset is `CW270FLIP`. This value is based on the ori
 
 However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation. 
 In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. 
-This chart is a reference to help gauge the hardware `Orientation Preset` of your magnetometer, based on the chips **Clockwise rotation**. And the power plug being a reference marker for the rear, if no forward arrow is provided. The orientation preset must first be established before making any mounting adjustment by the `align_mag_pitch, align_mag_roll, align_mag_yaw` settings in the CLI or alignment tool sliders.
+This chart is a reference to help gauge the hardware `Orientation Preset` of your magnetometer, based on the chips **Clockwise rotation**. And the power plug being a reference marker for the rear, if no forward arrow is provided. The Orientation Preset must first be established, based on the hardware reference marker, before making any alignment changes with the `align_mag_pitch`, `align_mag_roll`, `align_mag_yaw` settings in the CLI or alignment tool sliders.
 
 ![Clockwise Orientation reference chart](https://github.com/iNavFlight/inav/assets/47995726/c047fb0d-7b83-4a2d-9b2f-b1b986ecfc89)
 
@@ -125,9 +126,9 @@ The image below is an example of a module that does not use the default orientat
 ![Walksnail M181 GPS](https://github.com/iNavFlight/inav/assets/47995726/5146a1fd-8ea3-479f-abb4-45e1dbbe61df)
 
 
-**NOTE :** The compass must work in conjunction with the Flight controllers IMU. If you invert the flight controller, or rotate it on the Yaw axis this will effect the compass alignment settings.
-Before attempting to use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment, by using the Configurator SETUP Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identical to your motions, without any axis drift.
-So be mindful of the complexity involved in getting the correct orientation settings if you deciding to mount the flight controller or GNSS/compass unit on an axis different from what the manufacturer recommends by their arrow.
+**NOTE :** The compass must work in conjunction with the Flight controllers IMU. If you invert the flight controller or rotate it on the Yaw axis, this will effect the compass alignment settings.
+Before attempting to use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment. By using the Configurator SETUP/STATUS Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identically to your motions, without any axis drift.
+So be mindful of the complexity involved in getting the correct orientation settings if you do deciding to mount the flight controller or GNSS/compass unit on an axis different from the manufacturer recommendation arrow.
 
 
 ## Compass calibration and testing
@@ -140,7 +141,7 @@ To acquire the best 3 axis calibration results, **your arm and wrist should move
 * Use a long USB extension lead if its done via connection to the configurator.
 
 The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 as possible. While `magzero_x`  `magzero_y` `magzero_z` can vary. But should never exceed +- 1000 on any axis.  Any dramatic difference indicates a poor calibration. Or too much localized magnetic or electromagnetic interference.
-**Note**: A good calibration may take several attempts. So use the above settings for a reference to see if you can get the calibration any better.
+**Note**: A good calibration may take several attempts. So use the above information as a reference if you attempt to obtain a more precise calibration.
 
 
 * Perform any tests away of sources of magnetic interference. Domestic appliances or even audio speakers can cause erroneous affects.  Computer monitors may also interfere.
