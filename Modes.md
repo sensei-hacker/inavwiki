@@ -205,6 +205,13 @@ This mode provides a means to reset the home location or arming coordinates the 
 
 This hybrid mode works exactly like the previous ANGLE mode with centered roll and pitch sticks (thus enabling auto-leveled flight), then gradually behaves more and more like the default RATE mode as the sticks are moved away from the center position. Which means it has no limitation on banking angle and can do flips.
 
+The biggest complaint against Horizon mode, is the abruptness in which the stock settings transition from Angle to rate. This can catch newer pilots off guard.
+But can be made smoother by altering these setting - 
+`max_angle_inclination_rll = 900`
+`max_angle_inclination_pit = 900`
+`fw_d_level = 95` OR `mc_d_level = 95`.
+This will allow for a more linear stick feel, equivalent to Acro. And only permit the transition to occur near maximum stick deflection, or around 85° roll or pitch angle from level, when you're certain you want to command a roll or flip. This can be applied to both MC and FW platforms.
+
 ### KILLSWITCH
 
 Allows the flight controller to be instantly disarmed and locked out, regardless of other Settings, Saves or Checks. As with the disarm switch.
