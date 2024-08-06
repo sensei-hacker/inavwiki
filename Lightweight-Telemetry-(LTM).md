@@ -53,7 +53,7 @@ The payload is 14 bytes.
 | Altitude | (u)int32, cm (m / 100). In the original specification, this was unsigned. In INAV it is signed and should be so interpreted by consumers |
 | Sats | uchar. bits 0-1 : fix ; bits 2-7 : number of satellites |
 
-## Attitide Frame (A)
+## Attitude Frame (A)
 
 The payload is 6 bytes
 
