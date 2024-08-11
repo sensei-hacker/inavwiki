@@ -26,7 +26,7 @@ This [video](https://youtu.be/BqkDo-2O7js?si=_vOAHQn2N0MGbKdl&t=81) made by the 
 
 ## This is a simple example of a stall warning indicator
 
-The logic checks if the AoA is greater than 20 degrees, with the airspeed being less than 30km/h, or if the throttle is less than 48%. Makes sure you enable the _virtual pitot_ if you do not use a real pitot. Values can be altered to suit your models requirements.
+The logic checks if the pitch is greater than 20 degrees, with the estimated airspeed being less than 30km/h or if the throttle is less than 48%. Makes sure you enable the _virtual pitot_ if you do not use a real pitot. Values can be altered to suit your models requirements.
 
 
 ![Stall warning logic](https://github.com/iNavFlight/inav/assets/47995726/7326b09e-83e8-42c3-aba4-3ef2706cb522)
