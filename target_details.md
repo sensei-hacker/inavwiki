@@ -1,6 +1,6 @@
 <table id="targets">
 <tr>
- <th>Board</th><th>Target</th>PWMs (Servo/Motor)<th id="uarts">UARTs</th>
+ <th>Board</th><th>Target</th><th>PWMs (Servo/Motor)</th><th id="uarts">UARTs</th>
   <th>Unreleased</th><th>i2c for compass</th><th>DSHOT</th>
 </tr>
 
