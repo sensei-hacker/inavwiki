@@ -1,3 +1,6 @@
+This is a quick reference to find a flight controller which may meet your needs.
+Be sure to double-check the manufacturer's product info page - it is possible that connections that are defined in the target may not always be physically accessible.
+
 Note that on many boards, 1 uart is dedicated to ESC telemetry, so subtract 1 to get the number of available UARTs.
 Also if the board has Bluetooth, that will use up another UART.
 
