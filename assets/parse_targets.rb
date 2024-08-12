@@ -37,8 +37,8 @@ def build_target defs
   File.open(File.join(defs[:name], "target.c")) do |f0|
     File.open("/tmp/_target.c","w") do |f1|
       f0.each do |l|
-	next if l.match(/#include/)
-	f1.puts l
+        next if l.match(/#include/)
+        f1.puts l
       end
     end
   end
@@ -46,7 +46,7 @@ def build_target defs
   File.open(File.join(defs[:name], "target.h")) do |f0|
     f0.each do |l|
       if l.match(/^\s*#define\s+USE_DSHOT/)
-	dshot = true
+        dshot = true
       end
     end
   end
@@ -69,16 +69,16 @@ def write_out_md targets, branch
     bname = t0[0][:name]
     t0.each_with_index do |t,i|
       if i == 0
-	puts "## Board: #{bname}"
-	puts
+        puts "## Board: #{bname}"
+        puts
         if t[:skip]
-	  puts "Board is not a release target."
+          puts "Board is not a release target."
         end
         if t[:dshot]
-	  puts "Board is DSHOT enabled."
-	else
-	  puts "Board is not DSHOT enabled."
-	end
+          puts "Board is DSHOT enabled."
+        else
+          puts "Board is not DSHOT enabled."
+        end
         puts
       end
       puts "### Target: #{t[:name]}"
@@ -86,7 +86,7 @@ def write_out_md targets, branch
       puts "| PWM | Usage |"
       puts "| --- | ----- |"
       t[:pwms].each_with_index do |p,n|
-	puts "| #{n+1} | #{p} |"
+        puts "| #{n+1} | #{p} |"
       end
       puts
     end
