@@ -3,44 +3,9 @@ Also if the board has Bluetooth, that will use up another UART.
 
 <table id="targets">
 <tr>
- <th>Board</th><th>Target</th>PWMs (Servo/Motor)<th id="uarts">UARTs</th>
+ <th>Board</th><th>Target</th><th>PWMs (Servo/Motor)</th><th id="uarts">UARTs</th>
   <th>Unreleased</th><th>i2c for compass</th><th>DSHOT</th>
 </tr>
-
-
-<script type="text/javascript">
-
-  function createSelect(event){
-    var newthing = document.createElement("input");                
-    document.getElementById("adivthing").appendChild(newthing); // Your existing code
-
-
-    // get the coordinates of the mouse
-    var x = event.clientX;     // get the horizontal coordinate
-    var y = event.clientY;   // get the vertical coordinate
-
-    // position newthing using the coordinates
-    newthing.style.position = "fixed"; // fixes el relative to page. Could use absolute.
-    newthing.style.left = x + "px";
-    newthing.style.top = y + "px";
-  }
-
-  function show_filter(td) {
-    let xpath_col = '//table/tbody/tr/td[count(//table/thead/tr/th[.="' + td.textContent + '"]/preceding-sibling::th)+1]'
-
-
-
-    column = document.evaluate(xpath_col, document.getElementById('targets'));
-    let val = column.iterateNext();
-    while (val) {
-      // console.log(val.textContent);
-      val = column.iterateNext();
-    }
-  }
-  document.getElementById('uarts').addEventListener('click', show_filter);
-
-
-</script>
 
 
 <tr class="target">
