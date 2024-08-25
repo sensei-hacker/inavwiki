@@ -371,7 +371,16 @@ When mode is active altitude control is disabled and Angle mode allowed to free 
 
 ### SURFACE
 
-Enable terrain following when you have a rangefinder enabled
+Enable terrain following when you have a rangefinder enabled.
+
+This will use a LIDAR or SONAR to follow the shape of the ground,as shown by the yellow line in this image.
+
+![surface_mode](https://github.com/user-attachments/assets/b615d06e-6fa5-44c7-83c9-c5ec67358eca)
+
+Pilots occasionally ask about combining the rangefinder reading with the barometer.
+The image should show why these two different measurements are not compatible - 
+the aircraft can't fly both the red line and the yellow line at the same time.
+
 
 ### TELEMETRY
 
