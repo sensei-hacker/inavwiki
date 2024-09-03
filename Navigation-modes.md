@@ -54,7 +54,7 @@ Activate ALTHOLD by **ALTHOLD** flight mode.
 Altitude, as calculated by INAV's position estimator, is recorded to BLACKBOX as navPos[2].
 
 ### a) Using ALTHOLD with a multicopter (mc):
-Using ALTHOLD with a multicopter, you need a barometer. 
+Using ALTHOLD with a multicopter, you need a barometer for reliable stable flight.
 
 Activate AIRMODE to keep the copter stable in fast descent - now you can do the whole flight in altitude hold - from take-off to landing.
 
