@@ -8,7 +8,7 @@ INAV is a Free and Open Source Flight Controller and Autopilot Software System t
 - Support for video transmission & receive systems for FPV (first person view) with On-Screen Display (OSD) of telemetry data.
 - Use of flight controller (FC) boards based on those below.
 
-   | Processor | Type   | Flash |
+   | Processor | Speed  | Flash |
    |:---------:|:------:|:-----:|
    | STM-F411  | 100Mhz | 512k  | 
    | STM-F405  | 168Mhz |  1Mb  |
