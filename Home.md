@@ -6,7 +6,20 @@ INAV is a Free and Open Source Flight Controller and Autopilot Software System t
 - Support for a wide variety of flying vehicles including airplanes, gliders, multi-rotors, quadcopters, etc. as well as ground vehicles (cars, tanks) and water vehicles (boats).
 - Support for Auto Navigation Modes such as [[RTH (return to home)|Navigation-Mode:-Return-to-Home]], position hold, [[waypoints|iNavFlight Missions]], "follow-me", and many more.
 - Support for video transmission & receive systems for FPV (first person view) with On-Screen Display (OSD) of telemetry data.
-- Use of flight controller (FC) boards based on the F405, F722, & H743 chips are most likely for support of all current and future features of INAV.
+- Use of flight controller (FC) boards based on the
+
+ | Processor | Type   | Flash |
+ |:---------:|:------:|:-----:|
+ | STM-F411  | 100Mhz | 512k  | 
+ | STM-F405  | 168Mhz |  1Mb  |
+ | STM-F722  | 216Mhz | 512k  |
+ | STM-F745  | 216Mhz |  1Mb  |
+ | STM-F765  | 216Mhz |  2Mb  |
+ | STM-H743  | 480Mhz |  2Mb  |
+ | AT-F435   | 288Mhz |  1Mb  |
+
+General support for STM-F411 processors finished in 7.1.2. 
+All other chips listed will support current and future releases of INAV. (flash memory dependent.)
 - Go to the [INAV Welcome Page](https://github.com/iNavFlight/inav?tab=readme-ov-file#readme) for a longer list of features.
 
 ## Using the wiki
