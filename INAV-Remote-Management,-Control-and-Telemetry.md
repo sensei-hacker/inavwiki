@@ -101,7 +101,7 @@ Note that the INAV developers take backwards compatibility seriously; changing a
 
 ### MAVLink
 
-* [MAVlink developer info](https://mavlink.io/en/). Note that INAV supports a small subset of the MAVLink message set (some unsolicited telemetry and remote control). INAV supports MAVLink V1 and V2.
+* [MAVlink developer info](https://mavlink.io/en/). Note that INAV supports a subset of the MAVLink message set (some unsolicited telemetry and remote control). INAV supports MAVLink V1 and V2.
 * There is a application in the [mwptools repository, mavtest](https://github.com/stronnag/mwptools/tree/master/src/samples/mavtest) that summarises / validates the MAVLink messages supported by INAV.
 * INAV source code.
   - [Telemetry](https://github.com/iNavFlight/inav/blob/master/src/main/telemetry/mavlink.c)
@@ -145,7 +145,7 @@ Note:
 
 ### Remote Control using MSP / MAVLink
 
-The MSP messages `MSP_SET_RAW_RC` / `MSP_RC` can be used to implement remote control via MSP (i.e. 16 channel control, stick commands).
+The MSP messages `MSP_SET_RAW_RC` / `MSP_RC` can be used to implement remote control via MSP (i.e. 16 channel control, stick commands). These commands can come from a co-processor / flight computer , a ground station, or other source.
 
 There is a [sample application](https://github.com/stronnag/msp_set_rx) that describes the requirements / restrictions / idiosyncrasies involved using the MSP interface.
 
@@ -173,7 +173,7 @@ The following 'special' WPs can be interrogated with the `MSP_WP` message:
 
 Ever so often, someone asks on Discord / Telegram / chat platform du jour how to do "Obstacle Avoidance" on INAV, often with some assumptions that:
 
-* There is a relatively powerful (compared to the FC) co-processor (Rpi, Jetson Nano) with sensors and the CPU power to detect / classify obstacles from its on board sensors.
+* There is a relatively powerful (compared to the FC) co-processor (Raspberry Pi, Jetson Nano) with sensors and the CPU power to detect / classify obstacles from its on board sensors.
 * The range, azimuth and elevation (at least relative to the vehicle) of the obstacle is known via the co-processor / sensors.
 
 If would seem that there are at least two options using the remote control / management (MSP) API.
@@ -277,7 +277,7 @@ Using the MSP outlined above:
 * Craft will land at target location.
 * If an unsafe condition is detected (low battery etc.), restore any cached home location and engage `RTH`.
 
-Note: you could do most or all of the above just with `MSP_SET_RAW_RC` rather than with the navigation engine, but that might increase the co-processor computation / monitoring requirement and implementation risk. However, if you're using `MSP_SET_RAW_RC` for anything you need to comply with its minimum update rate.
+Note: you could do most or all of the above just with `MSP_SET_RAW_RC` rather than with the navigation engine, but that might increase the co-processor computation / monitoring requirement and implementation risk. However, if you're using `MSP_SET_RAW_RC` for anything you need to comply with its minimum update rate. It is often best if the co-processor (flight computer) specifies the *goal*, such as flying a certain heading or to certain coordinates, then let the flight controller and INAV handle how to do that.
 
 #### Implementation examples
 
@@ -289,7 +289,7 @@ The MSP initialisation, MSP status monitoring and MSP RC management code is in [
 
 The [msp_set_rx](https://github.com/stronnag/msp_set_rx) project exercises `MSP_SET_RAW_RC`.
 
-The [inav-follow-me](https://github.com/stronnag/inav-follow-me) project provides a Rpi Pico based project implementing "follow-me" using `GCS NAV`.
+The [inav-follow-me](https://github.com/stronnag/inav-follow-me) project provides a Raspberry Pi Pico based project implementing "follow-me" using `GCS NAV`.
 
 The [msp_override](https://codeberg.org/stronnag/msp_override) projects provides a simple example of using `MSP SET_RAW_RC` with `USE_MSP_RC_OVERRIDE` (and a physical RX/TX).
 
