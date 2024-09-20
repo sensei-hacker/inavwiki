@@ -19,7 +19,7 @@ The MSP (MultiWii Serial Protocol) messages defining mission navigation are [doc
 
 # Ground Control Stations
 
-Currently there are two applications widely used for INAV mission management. The INAV Configurator as a Multi-Platform tool and [mwp](https://github.com/stronnag/mwptools) for different Linux and . In the future, other options may become available, particularly as the MAVLink protocol becomes supported by INAV. However, MAVLink based tools will only provide monitoring.
+Currently there are two applications widely used for INAV mission management. The INAV Configurator as a Multi-Platform tool and [mwp](https://github.com/stronnag/mwptools) for different Linux, Windows (WSL) and FreeBSD. In the future, other options may become available, particularly as the MAVLink protocol becomes supported by INAV. However, MAVLink based tools will only provide monitoring.
 
 ## [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows)
 
