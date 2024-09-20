@@ -19,26 +19,7 @@ The MSP (MultiWii Serial Protocol) messages defining mission navigation are [doc
 
 # Ground Control Stations
 
-Currently there are a number of GCS applications widely used for INAV mission management, including  [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android), [MobileFlight](https://flyinghead.github.io/mobile-flight/) (IOS) and [mwp](https://github.com/stronnag/mwptools) (Linux). In the future, other options may become available, particularly as the MAVLink protocol becomes supported by INAV. However, MAVLink based tools will only provide monitoring.
-
-[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) and [mwp](https://github.com/stronnag/mwptools) (at least, maybe MobileFlight as well) support mission planning (they share a common mission definition file format, so missions can be used in either tool), mission upload / download, mission monitoring and mission logging. 
-
-Note: Earlier versions of this article recommended ezgui for use on Android. ezgui is no longer maintained and [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) is the recommended Android application.
-
-## [Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) (Android)
-[Mission Planner for INAV](https://play.google.com/store/apps/details?id=com.eziosoft.ezgui.inav&hl=en) can be downloaded from Google Play Store. There is a free version which limits number of waypoints to 2 and (very reasonably priced) paid-for version with additional functionality. The application is not open source. For questions and help the RCG "Mission Planner for INAV" thread can be used: [RC Groups support forum](https://www.rcgroups.com/forums/showthread.php?3030784-Mission-Planner-for-INAV-%28Android%29).
-
-## Droid Planner 2 (Android)
-
-Droid Planner 2 can also be downloaded from the [GitHub](https://github.com/DroidPlanner/Tower/releases/download/Droidplanner_v2.8.6_RC2/Droidplanner_v2.8.6_RC2.apk). It is free and released under GNU Public License v3.
-
-Droid Planner only supports INAV's one-way MAVLink protocol. The following telemetry data is displayed:
-
-Vehicle position on map, active flight mode, heading, altitude, speed.
-
-A broken connection recovers once restored after any amount of time.
-The flight track remains on screen even when data link is broken -> lost model recovery.
-Log files can be opened in PC software Mission Planner.
+Currently there are two applications widely used for INAV mission management. The INAV Configurator as a Multi-Platform tool and [mwp](https://github.com/stronnag/mwptools) for different Linux and . In the future, other options may become available, particularly as the MAVLink protocol becomes supported by INAV. However, MAVLink based tools will only provide monitoring.
 
 ## [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows)
 
@@ -83,6 +64,7 @@ In order to transfer missions from the GCS to the flight controller, and to moni
 * HC-12 (433Mhz, similar to 3DR)
 * Openlrs/Openlrsng devices (such orangerx 433 tx/rx combo)
 * LoRA (868 / 433 Mhz options)
+* mLRS (433 / 868,915 / 2.4GHz options)
  
 ## Bluetooth
 
