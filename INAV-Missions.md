@@ -127,7 +127,7 @@ Pin 5: SBUS
 
 Note: The 1W DL RX needs at least 5V, the 4v5 pad of my F722-WING did not have the mustard to power the DL RX so i just ran a male-male servo jumper from PWM rail of DL RX to PWM rail of F722-WING. Pins 1,4,6 of the UEXP3 connector were not physically connected. DO NOT POWER THE RX FROM MORE THAN ONE LOCATION!
 
-I do not recommend using the "wireless" slider switch option in iNAV Configurator, it induced significant lag on initial connection. So just set iNAV to the right port and baud (57600) and hit connect. It takes just slightly longer than a direct USB connection.
+I do not recommend using the "wireless" slider switch option in INAV Configurator, it induced significant lag on initial connection. So just set iNAV to the right port and baud (57600) and hit connect. It takes just slightly longer than a direct USB connection.
 
 This is being connected to a Matek F722-WING using hardware UART1 MSP2 at 57600 baud on latest stable iNAV as of 01/15/2020.
 
@@ -152,7 +152,7 @@ MSP is the 'native' messaging protocol for INAV. It is well supported by the con
 
 LTM is a 'push' telemetry protocol; that is the FC sends data unsolicited to the GCS. This avoids the 'half-duplex' time penalty of MSP on 3DR radios. Unlike MSP, LTM only provides flight data, thus if you need the GCS to select a vehicle icon based on the multirotor type (QUADX, TRI etc), offer additional functions based in the FC firmware version or upload waypoints, then it is necessary to share the serial port on the FC between MSP and LTM; MSP is used when unarmed and LTM when armed. Both ezgui and [mwp](https://github.com/stronnag/mwptools) handle the switch-over automatically.
 
-You can find documentation / specification for the LTM implementation in Inav in the [INAV Wiki](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)). 
+You can find documentation / specification for the LTM implementation in INAV in the [INAV Wiki](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)). 
 
 LTM will operate effectively over low data rate links. Currently the INAV implementation pushes c. 300 bytes /sec in its fastest rate, so 4800 baud over the air rate would suffice. INAV provides configuration options for 'medium' and 'slow' LTM rates, further reducing the required baud rate, which may in turn increase range for some radio solutions.
 
@@ -211,7 +211,7 @@ ezgui and [mwp](https://github.com/stronnag/mwptools) support INAV WP navigation
 
 ezgui and [mwp](https://github.com/stronnag/mwptools) both provide interactive WP editing on a geospatial background and mission upload to / download from the multicopter. At least for [mwp](https://github.com/stronnag/mwptools) (to be confirmed for ezgui), the mission upload process also downloads the mission and compares the two. **You should not attempt to fly a mission unless it has validated**.
 
-On F1 boards (Naze, Flip32), you can define 30 waypoints, for F3 and better FCs, 60 waypoints can be defined.
+60 waypoints can be defined.
 
 Missions are initiated by a switch setting on the RC TX. It can also be aborted at any time turning this switch (NAV WP) off.
 
