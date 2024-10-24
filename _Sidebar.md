@@ -176,7 +176,7 @@ DevDocs [Inflight Adjustments.md](https://github.com/iNavFlight/inav/blob/master
 <details>
 <summary>Mission Control</summary>
 
-[iNavFlight Missions](https://github.com/iNavFlight/inav/wiki/iNavFlight-Missions)\
+[iNavFlight Missions](https://github.com/iNavFlight/inav/wiki/iNav-Missions)\
 DevDocs [Safehomes.md](https://github.com/iNavFlight/inav/blob/master/docs/Safehomes.md)
 </details>
 
