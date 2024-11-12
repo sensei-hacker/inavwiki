@@ -33,7 +33,7 @@ MSP V2 addresses these shortcomings:
 | 0 | $ |  | Same lead-in as V1 |
 | 1 | X |  | 'X' in place of v1 'M' |
 | 2 | type |  | '<' / '>' / '!' see [Message Types](#Message-Types) |
-| 3 | flag | ✔  | uint8, flag, bit 0 = No reply expected, otherwise usage to be defined (set to zero) |
+| 3 | flag | ✔  | uint8, flag, See [Message Flags](#Message-Flags) |
 | 4 | function | ✔  |uint16 (little endian). 0 - 255 is the same function as V1 for backwards compatibility |
 | 6 | payload size | ✔  |uint16 (little endian) payload size in bytes |
 | 8 | payload |  ✔ | n (up to 65535 bytes) payload |
@@ -48,6 +48,25 @@ The fields marked with a ✔ are included in the checksum calculation.
 | '<' | Request | Master | Slave | |
 | '>' | Response | Slave | Master | Only sent in response to a request |
 | '!' | Error | Master, Slave | Master, Slave | Response to receipt of data that cannot be processed (corrupt checksum, unknown function, message type that cannot be processed) |
+
+
+## Message Flags
+
+Message flags are used to fine-tune the behaviour of message exchange, often for use cases that do not require the integrity guarantees of a request - response protocol.
+
+These flags are primarily intended to be used by RC radio systems and not by general consumers who should ensure that the flag value is set to zero to avoid unintended behaviours.
+
+| Flag | Bit / Mask value | Status | Usage |
+| ---- | ---------------- | ------ | ----- |
+| `NO_REPLY` | `0` / `0x1` | Implemented | DO not send a reply |
+| `ILMI` | `1` / `0x2` | Proposed | "In-Line Message identifier"; intended for radio system that inject transient messages into an extant message stream for private usage. This flag will be preserved in the response (unless `NO_REPLY` was also set.) |
+
+The normative reference for MSP V2 message flags is enumeration `mspFlags_e` in the source code file `src/main/msp/msp.h`.
+
+* These flags are intended for very specific use cases
+* "Normal" consumers (GCS, Configurators, Remote Management etc.) should ensure the flag is set to zero.
+* Setting values other than those defined in `src/main/msp/msp.h` is undefined behaviour.
+
 
 ## Encapsulation over V1
 
