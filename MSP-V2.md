@@ -52,7 +52,7 @@ The fields marked with a ✔ are included in the checksum calculation.
 
 ## Message Flags
 
-Message flags are used to fine-tune the behaviour of message exchange, often for use cases that do not require the integrity guarantees of a request - response protocol.
+Message flags are used to fine-tune the behaviour of the message exchange, often for use cases that do not require the integrity guarantees of a request - response protocol.
 
 These flags are primarily intended to be used by RC radio systems and not by general consumers who should ensure that the flag value is set to zero to avoid unintended behaviours.
 
