@@ -1,5 +1,3 @@
-UNDER CONSTRUCTION
-
 ###
 EZ-TUNE
 
@@ -10,12 +8,12 @@ A simplified multirotor tuning tool for PIDs and more.
 
 For example instead of setting several filters with specified frequencies and types, you only need one slider to set them all.
 
-Where to Find It and How to Use It:
-- There is a new tab called EZ-Tune.
+Where to Find It:
+- There is a new tab in the CONFIGURATOR labelled EZ-Tune.
 - This tab contains all settings related to the Easy Tune framework, consolidated on one page.
-- No need to use the CLI anymore.
+- There is no need to use the CLI anymore.
 
-Features Available in Easy Tune:
+Features Available in EZ-Tune:
 - A general switch to enable and disable Easy Tune.
 - A slider for setting filter cutoff frequencies.
 - A slider for the axis ratio, adjusting how the weight distribution on your multirotor drone is configured.
@@ -30,17 +28,17 @@ Safety Features:
 Ez Tune vs Betaflight:
 
 The simplified slider tuning is similar to the Betaflight slider tuning but differs in several ways:
-- Unlike the Betaflight PID slider tuning, Easy Tune in INAV not only adjusts PID controllers but also:
+- Unlike the Betaflight PID slider tuning, EZ-Tune in INAV not only adjusts PID controllers but also:
 	- Sets rates and Expo values.
 	- Enables and disables functions.
 	- Greatly reduces the number of settings you need to manage.
 - Instead of setting 12 values for the PID controller, you only need four.
-- Instead of dealing with multiple filters and configurations, there's one simple full slider.
+- Instead of dealing with multiple filters and configurations, there's one simple slider.
 - Both the rates and Expo settings for all axes are controlled by only two sliders.
 
-Use
+USE
 
-EZ TUNE is still new so please keep a copy of the current configuration with a 'diff all' command in the CLI followed by saving to a file.
+EZ TUNE is still new so please keep a copy of the current configuration with a 'diff all' command in the CLI followed by saving to a file in case you need to go back to the original
 
 Select EZ TUNE from the CONFIGURATOR TABS.
 
@@ -77,7 +75,7 @@ Moving each slider across from left to right increases the effect, from mild at 
 The defaults for the blue box from top to bottom are:
 - Axis ratio	110
 - Response	100
-- Damping		100
+- Damping	100
 - Stability	100
 
 EZ TUNE calculates the values to go into the Preview Boxes on the right hand side.
@@ -85,4 +83,4 @@ EZ TUNE calculates the values to go into the Preview Boxes on the right hand sid
 When you press SAVE they are transferred to the Flight Controller.
 
 FEEDBACK
-Please send comments both positive and negative to the relevant group on INAV DISCORD
+Please send comments both positive and negative to the relevant section on INAV DISCORD or the INAV Facebook Forum
