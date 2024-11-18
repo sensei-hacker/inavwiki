@@ -24,7 +24,7 @@ Note that the following tables only document PWM outputs that have at least a MO
 
 See project [Cli](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) and [ESC and servo outputs](https://github.com/iNavFlight/inav/blob/master/docs/ESC%20and%20servo%20outputs.md) documentation.
 
-*List generated 2024-06-10 from the [INAV release_7.1.1 branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
+*List generated 2024-11-18 from the [INAV 8.0.0-RC1 branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
 You are strongly advised to check the board documentation as to the suitability of any particular board.
 
@@ -103,21 +103,6 @@ Board is DSHOT enabled.
 | 2 | AUTO TIMER 3 |
 | 3 | AUTO TIMER 3 |
 | 4 | AUTO TIMER 3 |
-
-## Board: AOCODAF405
-
-Board is DSHOT enabled.
-
-### Target: AOCODAF405
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 8 |
-| 2 | AUTO TIMER 8 |
-| 3 | AUTO TIMER 8 |
-| 4 | AUTO TIMER 8 |
-| 5 | AUTO TIMER 1 |
-| 6 | AUTO TIMER 4 |
 
 ## Board: AOCODARCF4V2
 
@@ -208,9 +193,10 @@ Board is DSHOT enabled.
 | 2 | AUTO TIMER 3 |
 | 3 | AUTO TIMER 3 |
 | 4 | AUTO TIMER 3 |
-| 5 | AUTO TIMER 2 |
-| 6 | AUTO TIMER 4 |
-| 7 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 4 |
 
 ### Target: AOCODARCF7MINI_V2
 
@@ -237,10 +223,10 @@ Board is DSHOT enabled.
 | 2 | AUTO TIMER 3 |
 | 3 | AUTO TIMER 5 |
 | 4 | AUTO TIMER 5 |
-| 5 | AUTO TIMER 5 |
-| 6 | AUTO TIMER 5 |
-| 7 | AUTO TIMER 4 |
-| 8 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 5 |
+| 8 | AUTO TIMER 5 |
 | 9 | AUTO TIMER 4 |
 | 10 | AUTO TIMER 4 |
 | 11 | AUTO TIMER 15 |
@@ -566,27 +552,35 @@ Board is DSHOT enabled.
 | 7 | AUTO TIMER 3 |
 | 8 | AUTO TIMER 8 |
 
-## Board: FLYWOOF411
+### Target: FLYWOOF405HD
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 8 |
+
+## Board: FLYWOOF722PRO
 
 Board is DSHOT enabled.
 
-### Target: FLYWOOF411
+### Target: FLYWOOF722PRO
 
 | PWM | Usage |
 | --- | ----- |
-| 1 | AUTO TIMER 1 |
-| 2 | AUTO TIMER 1 |
-| 3 | AUTO TIMER 1 |
-| 4 | MOTOR |
-
-### Target: FLYWOOF411_V2
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 1 |
-| 2 | AUTO TIMER 2 |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
 | 3 | AUTO TIMER 2 |
 | 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
 
 ## Board: FLYWOOF745
 
@@ -597,10 +591,10 @@ Board is DSHOT enabled.
 | PWM | Usage |
 | --- | ----- |
 | 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 8 |
-| 3 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 1 |
 | 4 | AUTO TIMER 1 |
-| 5 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 8 |
 | 6 | AUTO TIMER 5 |
 | 7 | AUTO TIMER 3 |
 | 8 | AUTO TIMER 3 |
@@ -632,6 +626,27 @@ Board is DSHOT enabled.
 | 4 | AUTO TIMER 2 |
 | 5 | AUTO TIMER 8 |
 | 6 | AUTO TIMER 8 |
+
+## Board: FLYWOOH743PRO
+
+Board is DSHOT enabled.
+
+### Target: FLYWOOH743PRO
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+| 11 | AUTO TIMER 15 |
+| 12 | AUTO TIMER 15 |
 
 ## Board: FOXEERF405
 
@@ -775,6 +790,9 @@ Board is DSHOT enabled.
 | 7 | AUTO TIMER 4 |
 | 8 | AUTO TIMER 4 |
 | 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 2 |
+| 11 | AUTO TIMER 2 |
+| 12 | AUTO TIMER 2 |
 
 ## Board: FURYF4OSD
 
@@ -862,11 +880,37 @@ Board is DSHOT enabled.
 | 7 | AUTO TIMER 3 |
 | 8 | AUTO TIMER 3 |
 
+## Board: GEPRCF745_BT_HD
+
+Board is DSHOT enabled.
+
+### Target: GEPRCF745_BT_HD
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
+
 ## Board: GEPRC_F722_AIO
 
 Board is DSHOT enabled.
 
 ### Target: GEPRC_F722_AIO
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | MOTOR |
+| 2 | MOTOR |
+| 3 | MOTOR |
+| 4 | MOTOR |
+
+### Target: GEPRC_F722_AIO_UART3
 
 | PWM | Usage |
 | --- | ----- |
@@ -906,19 +950,6 @@ Board is DSHOT enabled.
 | 6 | AUTO TIMER 3 |
 | 7 | AUTO TIMER 3 |
 | 8 | AUTO TIMER 3 |
-
-## Board: HAKRCF411D
-
-Board is DSHOT enabled.
-
-### Target: HAKRCF411D
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 3 |
-| 3 | AUTO TIMER 4 |
-| 4 | AUTO TIMER 4 |
 
 ## Board: HAKRCF722V2
 
@@ -970,19 +1001,6 @@ Board is DSHOT enabled.
 | 6 | AUTO TIMER 2 |
 | 7 | AUTO TIMER 4 |
 | 8 | AUTO TIMER 4 |
-
-## Board: IFLIGHTF4_SUCCEXD
-
-Board is DSHOT enabled.
-
-### Target: IFLIGHTF4_SUCCEXD
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | MOTOR |
-| 2 | MOTOR |
-| 3 | MOTOR |
-| 4 | MOTOR |
 
 ## Board: IFLIGHTF7_TWING
 
@@ -1104,6 +1122,23 @@ Board is DSHOT enabled.
 Board is DSHOT enabled.
 
 ### Target: IFLIGHT_BLITZ_H7_PRO
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+| 11 | AUTO TIMER 15 |
+| 12 | AUTO TIMER 15 |
+
+### Target: IFLIGHT_BLITZ_H7_WING
 
 | PWM | Usage |
 | --- | ----- |
@@ -1268,6 +1303,21 @@ Board is DSHOT enabled.
 | 4 | AUTO TIMER 5 |
 | 5 | AUTO TIMER 4 |
 | 6 | AUTO TIMER 4 |
+
+## Board: KAKUTEF4WING
+
+Board is DSHOT enabled.
+
+### Target: KAKUTEF4WING
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 8 |
+| 6 | AUTO TIMER 8 |
 
 ## Board: KAKUTEF7
 
@@ -1575,7 +1625,7 @@ Board is DSHOT enabled.
 | 2 | AUTO TIMER 8 |
 | 3 | AUTO TIMER 8 |
 | 4 | AUTO TIMER 8 |
-| 5 | AUTO TIMER 2, LED |
+| 5 | AUTO TIMER 2 |
 | 6 | AUTO TIMER 1 |
 | 7 | AUTO TIMER 4 |
 
@@ -1587,7 +1637,7 @@ Board is DSHOT enabled.
 | 2 | AUTO TIMER 8 |
 | 3 | AUTO TIMER 8 |
 | 4 | AUTO TIMER 8 |
-| 5 | AUTO TIMER 2, LED |
+| 5 | AUTO TIMER 2 |
 | 6 | AUTO TIMER 1 |
 | 7 | AUTO TIMER 4 |
 
@@ -1675,121 +1725,6 @@ Board is DSHOT enabled.
 | 9 | AUTO TIMER 12 |
 | 10 | AUTO TIMER 13 |
 | 11 | AUTO TIMER 4 |
-
-## Board: MATEKF411
-
-Board is DSHOT enabled.
-
-### Target: MATEKF411
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 3 |
-| 3 | AUTO TIMER 4 |
-| 4 | AUTO TIMER 4 |
-| 5 | AUTO TIMER 2 |
-| 6 | AUTO TIMER 2 |
-| 7 | AUTO TIMER 2 |
-
-### Target: MATEKF411_FD_SFTSRL
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 3 |
-| 3 | AUTO TIMER 4 |
-| 4 | AUTO TIMER 4 |
-| 5 | AUTO TIMER 2 |
-| 6 | AUTO TIMER 2 |
-| 7 | AUTO TIMER 2 |
-
-### Target: MATEKF411_RSSI
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 3 |
-| 3 | AUTO TIMER 4 |
-| 4 | AUTO TIMER 4 |
-| 5 | AUTO TIMER 2 |
-| 6 | AUTO TIMER 2 |
-| 7 | AUTO TIMER 2 |
-
-### Target: MATEKF411_SFTSRL2
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 3 |
-| 3 | AUTO TIMER 4 |
-| 4 | AUTO TIMER 4 |
-| 5 | AUTO TIMER 2 |
-| 6 | AUTO TIMER 2 |
-| 7 | AUTO TIMER 2 |
-
-## Board: MATEKF411SE
-
-Board is DSHOT enabled.
-
-### Target: MATEKF411SE
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 3 |
-| 3 | AUTO TIMER 1 |
-| 4 | AUTO TIMER 1 |
-| 5 | AUTO TIMER 1 |
-| 6 | AUTO TIMER 4 |
-
-### Target: MATEKF411SE_PINIO
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 3 |
-| 3 | AUTO TIMER 1 |
-| 4 | AUTO TIMER 1 |
-| 5 | AUTO TIMER 1 |
-| 6 | AUTO TIMER 4 |
-
-### Target: MATEKF411SE_FD_SFTSRL1
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 3 |
-| 3 | AUTO TIMER 1 |
-| 4 | AUTO TIMER 1 |
-| 5 | AUTO TIMER 1 |
-| 6 | AUTO TIMER 4 |
-
-### Target: MATEKF411SE_SS2_CH6
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 3 |
-| 3 | AUTO TIMER 1 |
-| 4 | AUTO TIMER 1 |
-| 5 | AUTO TIMER 1 |
-
-## Board: MATEKF411TE
-
-Board is DSHOT enabled.
-
-### Target: MATEKF411TE
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 4 |
-| 2 | AUTO TIMER 4 |
-| 3 | AUTO TIMER 3 |
-| 4 | AUTO TIMER 3 |
-| 5 | AUTO TIMER 3 |
-| 6 | AUTO TIMER 3 |
-| 7 | LED, SERVO |
 
 ## Board: MATEKF722
 
@@ -1962,6 +1897,77 @@ Board is DSHOT enabled.
 | 11 | AUTO TIMER 15 |
 | 12 | AUTO TIMER 15 |
 
+## Board: MICOAIR405MINI
+
+Board is DSHOT enabled.
+
+### Target: MICOAIR405MINI
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 12 |
+
+## Board: MICOAIR405V2
+
+Board is DSHOT enabled.
+
+### Target: MICOAIR405V2
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 2 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 12 |
+| 10 | AUTO TIMER 12 |
+
+## Board: MICOAIR743
+
+Board is DSHOT enabled.
+
+### Target: MICOAIR743
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+
+### Target: MICOAIR743_EXTMAG
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 1 |
+| 3 | AUTO TIMER 1 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+
 ## Board: NEUTRONRCF435MINI
 
 Board is DSHOT enabled.
@@ -2026,19 +2032,6 @@ Board is DSHOT enabled.
 | 7 | AUTO TIMER 4 |
 | 8 | AUTO TIMER 4 |
 
-## Board: NOX
-
-Board is not DSHOT enabled.
-
-### Target: NOX
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 5 |
-| 2 | AUTO TIMER 1 |
-| 3 | AUTO TIMER 4 |
-| 4 | AUTO TIMER 3 |
-
 ## Board: DYSF4PRO
 
 Board is DSHOT enabled.
@@ -2051,7 +2044,7 @@ Board is DSHOT enabled.
 | 2 | AUTO TIMER 3 |
 | 3 | AUTO TIMER 2 |
 | 4 | AUTO TIMER 2 |
-| 5 | AUTO TIMER 5, LED |
+| 5 | AUTO TIMER 5 |
 | 6 | AUTO TIMER 1 |
 
 ### Target: DYSF4PROV2
@@ -2062,7 +2055,7 @@ Board is DSHOT enabled.
 | 2 | AUTO TIMER 3 |
 | 3 | AUTO TIMER 2 |
 | 4 | AUTO TIMER 2 |
-| 5 | AUTO TIMER 5, LED |
+| 5 | AUTO TIMER 5 |
 | 6 | AUTO TIMER 1 |
 
 ### Target: OMNIBUSF4
@@ -2073,7 +2066,7 @@ Board is DSHOT enabled.
 | 2 | AUTO TIMER 3 |
 | 3 | AUTO TIMER 2 |
 | 4 | AUTO TIMER 2 |
-| 5 | AUTO TIMER 5, LED |
+| 5 | AUTO TIMER 5 |
 | 6 | AUTO TIMER 1 |
 
 ### Target: OMNIBUSF4PRO
@@ -2086,16 +2079,6 @@ Board is DSHOT enabled.
 | 4 | AUTO TIMER 2 |
 | 5 | AUTO TIMER 5 |
 | 6 | AUTO TIMER 1 |
-
-### Target: OMNIBUSF4PRO_LEDSTRIPM5
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 3 |
-| 2 | AUTO TIMER 3 |
-| 3 | AUTO TIMER 2 |
-| 4 | AUTO TIMER 2 |
-| 5 | AUTO TIMER 1 |
 
 ### Target: OMNIBUSF4V3_S5_S6_2SS
 
@@ -2187,6 +2170,25 @@ Board is not DSHOT enabled.
 | 4 | AUTO TIMER 1 |
 | 5 | AUTO TIMER 4 |
 | 6 | AUTO TIMER 4 |
+
+## Board: PRINCIPIOTF7
+
+Board is DSHOT enabled.
+
+### Target: PRINCIPIOTF7
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
 
 ## Board: REVO
 
@@ -2430,17 +2432,6 @@ Board is DSHOT enabled.
 | 3 | AUTO TIMER 3 |
 | 4 | AUTO TIMER 3 |
 
-### Target: SPEEDYBEEF405MINI_6OUTPUTS
-
-| PWM | Usage |
-| --- | ----- |
-| 1 | AUTO TIMER 4 |
-| 2 | AUTO TIMER 4 |
-| 3 | AUTO TIMER 3 |
-| 4 | AUTO TIMER 3 |
-| 5 | AUTO TIMER 12 |
-| 6 | AUTO TIMER 1 |
-
 ## Board: SPEEDYBEEF405V3
 
 Board is DSHOT enabled.
@@ -2620,6 +2611,42 @@ Board is DSHOT enabled.
 | 7 | AUTO TIMER 8 |
 | 8 | AUTO TIMER 8 |
 
+## Board: TBS_LUCID_FC
+
+Board is DSHOT enabled.
+
+### Target: TBS_LUCID_FC
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+
+## Board: TBS_LUCID_H7
+
+Board is DSHOT enabled.
+
+### Target: TBS_LUCID_H7
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+| 11 | AUTO TIMER 15 |
+| 12 | AUTO TIMER 15 |
+
 ## Board: TMOTORF7V2
 
 Board is DSHOT enabled.
@@ -2710,3 +2737,4 @@ Board is DSHOT enabled.
 | 6 | AUTO TIMER 8 |
 | 7 | AUTO TIMER 8 |
 | 8 | AUTO TIMER 1 |
+
