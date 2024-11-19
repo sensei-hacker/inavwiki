@@ -10,7 +10,6 @@ INAV is a Free and Open Source Flight Controller and Autopilot Software System t
 
    | Processor | Speed  | Flash |
    |:---------:|:------:|:-----:|
-   | STM-F411  | 100Mhz | 512k  | 
    | STM-F405  | 168Mhz |  1Mb  |
    | STM-F722  | 216Mhz | 512k  |
    | STM-F745  | 216Mhz |  1Mb  |
