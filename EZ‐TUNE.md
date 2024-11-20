@@ -70,7 +70,7 @@ CHANGE ONE ENTRY AT A TIME.
 
 SAVE AND TEST  BEFORE MAKING ANY MORE CHANGES.
 
-Moving each slider across from left to right increases the effect, from mild at the left to extreme at the right. In many cases going from a sluggish response to an unstable one. Damping is an exception and is best left alone until the final test. I recommend finding a responsive setting while still stable, and then going back a little or increasing D until it feels reliable. This is because the settings may well affect each other.
+Moving each slider across from left to right increases the effect, from mild at the left to extreme at the right. In many cases going from a sluggish response to an unstable one. Damping is an exception and is best left alone until the final test. I recommend finding a responsive setting while still stable, and then going back a little or increasing Damping at the end until it feels reliable. This is because the settings may well affect each other.
 
 The defaults for the blue box from top to bottom are:
 - Axis ratio	110
