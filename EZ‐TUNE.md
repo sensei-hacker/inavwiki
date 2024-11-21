@@ -9,11 +9,12 @@ A simplified multirotor tuning tool for PIDs and more.
 For example instead of setting several filters with specified frequencies and types, you only need one slider to set them all.
 
 Where to Find It:
-- There is a new tab in the CONFIGURATOR labelled EZ-Tune.
-- This tab contains all settings related to the Easy Tune framework, consolidated on one page.
+- There is a tab in the CONFIGURATOR labelled EZ-Tune.
+- This tab contains all settings related to the Easy Tune framework, consolidated onto one page.
 - There is no need to use the CLI anymore.
 
 Features Available in EZ-Tune:
+- Default settings for large multirotors and the ability to choose them for sizes between the ususal ones.
 - A general switch to enable and disable Easy Tune.
 - A slider for setting filter cutoff frequencies.
 - A slider for the axis ratio, adjusting how the weight distribution on your multirotor drone is configured.
@@ -36,7 +37,7 @@ The simplified slider tuning is similar to the Betaflight slider tuning but diff
 - Instead of dealing with multiple filters and configurations, there's one simple slider.
 - Both the rates and Expo settings for all axes are controlled by only two sliders.
 
-USE
+How To Use
 
 EZ TUNE is still new so please keep a copy of the current configuration with a 'diff all' command in the CLI followed by saving to a file in case you need to go back to the original
 
@@ -44,7 +45,7 @@ Select EZ TUNE from the CONFIGURATOR TABS.
 
 Do read carefully what is written in each of the 9 sections on the left hand side.
 
-First you will need to enable EZ TUNE in the green box. This will then only allow you to safely adjust settings on the page. There is nothing else to change. If you feel that you need to go to PID tuning then don't. Everything you need to start with is here.
+First you will need to enable EZ TUNE in the green box. This will then allow you to safely adjust settings on the page. There is nothing else to change. If you feel that you need to go to PID tuning tab then don't. Everything you need to start with is here.
 
 
 If you go through setting the recommended values for your craft in each box then you will have a default stable tune.
@@ -70,7 +71,7 @@ CHANGE ONE ENTRY AT A TIME.
 
 SAVE AND TEST  BEFORE MAKING ANY MORE CHANGES.
 
-Moving each slider across from left to right increases the effect, from mild at the left to extreme at the right. In many cases going from a sluggish response to an unstable one. Damping is an exception and is best left alone until the final test. I recommend finding a responsive setting while still stable, and then going back a little or increasing Damping at the end until it feels reliable. This is because the settings may well affect each other.
+Moving each slider across from left to right increases the effect, from mild at the left to extreme at the right. In many cases going from a sluggish response through the ideal one to an unstable one. Damping is an exception and is best left alone until the final test. I recommend finding a responsive setting while still stable, and then going back a little or increasing Damping at the end until it feels reliable. This is because the settings may well affect each other.
 
 The defaults for the blue box from top to bottom are:
 - Axis ratio	110
