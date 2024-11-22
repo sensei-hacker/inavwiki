@@ -60,6 +60,7 @@ Usual starting points for 'Filter Hz' are:
 -  12-inch props: 60. 
 
 ![Graphically](https://github.com/Phil-MC/hello-world/blob/master/eztune-graph.webp)
+The slope from 3" to 5" is misleading as the calculations change after this.
 
 Use Blackbox and your own judgement to find a value that is most suited for your UAV after you have tested it.
 
