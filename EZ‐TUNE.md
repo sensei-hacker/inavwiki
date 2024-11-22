@@ -91,4 +91,5 @@ NOTE
 You can make use of EZ-TUNE to generate settings for quad sizes other than those listed on EZ-TUNE by using the graph. You do of course have to test them and modify as necessary. There are no guarantees. You are responsible for the outcome. I suggested using this technique to assist you in your search for a stable tune for other quad sizes.
 
 FEEDBACK
+
 Please send comments both positive and negative to the relevant section on INAV DISCORD or the INAV Facebook Forum
