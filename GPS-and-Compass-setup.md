@@ -345,6 +345,7 @@ If you aren't seeing a fix, or have a "navigation is unsafe" message, you can ch
 - Next check if the "errors" count is increasing on the same tab. If so, you have low frequency interference or an unreliable physical connection between the FC and GPS.
 
 - Next, does the GPS tab say you have a good fix?  If so, in CLI check that inav_max_eph_epv is set to 1000, not 1.000. You can run:
+
 set inav_max_eph_epv = 1000
 save
 
