@@ -333,6 +333,23 @@ AssistNow Online data requires an active internet connection, while AssistNow Of
 If you have internet access, it is recommended to use both AssistNow Online and Offline services.
 
 ## Issues
+
+### Troubleshooting no GPS fix
+
+If you aren't seeing a fix, or have a "navigation is unsafe" message, you can check the following things:
+
+- Check if the PPS light on the GPS module is flashing once per second. You may need to put it outdoors for at least 12.5 minutes the first time. This is so it can download the almanac and ephemerides. If the PPS isn't flashing, the GPS itself doesn't have a fix - this is a separate issue from how it's connected to the FC and how INAV is configured to use it.
+
+- In the GPS tab, check whether the "messages" count is increasing. If not, you have a communication error between the GPS and the FC - check wiring and the port setting.
+
+- Next check if the "errors" count is increasing on the same tab. If so, you have low frequency interference or an unreliable physical connection between the FC and GPS.
+
+- Next, does the GPS tab say you have a good fix?  If so, in CLI check that inav_max_eph_epv is set to 1000, not 1.000. You can run:
+set inav_max_eph_epv = 1000
+save
+
+### Other issues
+
 - **`X!`** in the OSD `GPS Satellites` field indicates the flight controller isn't receiving a valid data signal from the GPS.
 - No GPS lock: often due to electric noise from flight controller or other equipment such as 1.2ghz video TX. Try getting the GPS as far away as possible from electric noise emitting parts as the FC, ESCs or power cables. Placing the GPS on a mast is also a common way, you can further try shielding with aluminum or copper foil. Don´t place the GPS inside the frame.
 - "Toilet bowling": in the beginning the copter holds its position and then starts to make bigger and bigger circles, you probably have your magnetometer not calibrated correctly or it’s interfered from the magnetic field of your power lines or the beeper.
