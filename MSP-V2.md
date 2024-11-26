@@ -59,14 +59,15 @@ These flags are primarily intended to be used by RC radio systems and not by gen
 | Flag | Bit / Mask value | Status | Usage |
 | ---- | ---------------- | ------ | ----- |
 | `NO_REPLY` | `0` / `0x1` | Implemented | Do not send a reply |
-| `ILMI` | `1` / `0x2` | Implemented for INAV 8 | "In-Line Message identifier"; intended for radio system that inject transient messages into an extant message stream for private usage. This flag will be preserved in the response (unless `NO_REPLY` was also set.) |
+| `ILMI` | `1` / `0x2` | Implemented for INAV 8 | "In-Line Message identifier"; intended for radio system that inject transient messages into an extant message stream for private usage. |
+
+Note that for INAV 8 and later, the `flag` field is returned, unaltered in the response (unless `NO_REPLY` was also set.) |
 
 The normative reference for MSP V2 message flags is the enumeration `mspFlags_e` in the source code file `src/main/msp/msp.h`.
 
-* These flags are intended for very specific use cases
-* "Normal" consumers (GCS, Configurators, Remote Management etc.) should ensure the flag is set to zero.
-* Setting values other than those defined in `src/main/msp/msp.h` is undefined behaviour.
-
+* Defined flag enumerations are reserved for specific use cases
+* "Normal" consumers (GCS, Configurators, Remote Management etc.) should set the flag to zero.
+* Setting values other than those defined in `src/main/msp/msp.h` is undefined behaviour. However if you have a use case, bits not defined in `mspFlags_e` may be used by applications.
 
 ## Encapsulation over V1
 
