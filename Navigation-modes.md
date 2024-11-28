@@ -62,8 +62,8 @@ Climb rate in ALTHOLD mode:
 Throttle input indicates climb or sink up to a predetermined maximum rate (see CLI variables).
 "set nav_max_climb_rate = 500" and "set nav_manual_climb_rate = 200" define the maximum climb and decent rate in autonomous/manual flight modes.
 The neutral position of the throttle stick to hold current altitude is defined by
-- “set nav_use_midthr_for_althold=ON”: use mid position of throttle stick as neutral. By default the mid position value is typically 1500us as set in the "Receiver" tab.
-- “set nav_use_midthr_for_althold =OFF”: use current stick position (i.e. when activating ALTHOLD) as neutral. [Yet, if "nav_use_midthr_for_althold=OFF”, and you enable ALTHOLD with throttle stick too low (like on the ground) INAV will take “thr_mid” as a safe default for neutral. “thr_mid” is defined in the “Receiver” tab and should be set to hover throttle.]
+- “set nav_use_midthr_for_althold=ON”: use mid position of throttle stick as neutral. By default the mid position value is typically 1500us as set in the "Receiver" tab. This option may be most useful for people who have althold enabled at all times, not switchign bqwteen althold and non-althold modes.
+- “set nav_use_midthr_for_althold =OFF”: use current stick position (i.e. when activating ALTHOLD) as neutral. This option may be most useful if you intend to switch althold on and off during a flight. [Yet, if "nav_use_midthr_for_althold=OFF”, and you enable ALTHOLD with throttle stick too low (like on the ground) INAV will take “thr_mid” as a safe default for neutral. “thr_mid” is defined in the “Receiver” tab and should be set to hover throttle.]
 
 In the moment you engage ALTHOLD, INAV always sends “nav_mc_hover_thr” to the motors as the starting value of the altitude control loop. You should configure this to your copter's hover setting, if your copter doesn't hover close to the default value of 1500us. Otherwise your copter will begin ALTHOLD with a jump or drop.
 
@@ -138,7 +138,7 @@ INAV’s parameters for fixed wing:
 
 MULTIROTOR
 
-For multirotors it will hold 3D position, throttle is automatic (AH).
+For multirotors it will hold 3D position. Altitude is controlled as ALTHOLD mode above - leaving the throttle stick centered will maintain the current altitude.
 You can use your roll and pitch stick to move around. The POSHOLD will be resumed when you center the roll/pitch stick again. HEADING HOLD is now included automatically to achieve 3D stability and it is therefore unwise to add it yourself as well. It is adjustable in the CLI via the parameter 'heading_hold_rate_limit'. The default at the time of writing is heading_hold_rate_limit = 90.
 
 POSHOLD permits smooth controlled flight and can be modified via the ADVANCED TUNING TAB under the heading Multirotor Navigation Settings
