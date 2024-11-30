@@ -26,9 +26,9 @@ This [video](https://youtu.be/BqkDo-2O7js?si=_vOAHQn2N0MGbKdl&t=81) made by the 
 
 ## This is an example of a simple stall warning indicator
 
-The logic checks if the _Virtual Airspeed_ had dropped below 30km/h, and the _Pitch_ being above 20° Angle of Attack or the _Throttle_ below 48%. Warning of a potential stall. Being that most tip stalls conditions are induced unknowingly by the pilot, this can help avoid such events.
+The logic checks if the _Virtual Airspeed_ has dropped below 30km/h, with the _Pitch_ being above 20°, or the _Throttle_ being below 48%. Warning of a potential stall.. Being that most tip stall conditions are induced unknowingly by the pilot, this can help avoid such events.
 
-Makes sure you enable the _virtual pitot_ if you do not use a real pitot. To better suit your aircraft. **Pitch** angle, **Throttle** and **Airspeed** values should be altered for best detection.
+Makes sure you enable the _Virtual Pitot_ if you do not use a real Pitot.. To better suit your aircraft. Pitch angle, Throttle and Airspeed values should be altered for best detection.
 
 ![Air speed stall warning logic](https://github.com/user-attachments/assets/0f9ecb36-7903-476f-a843-5c53cfcbeac0)
 
@@ -38,7 +38,7 @@ The message will display STALL WARNING with a warning symbol (221). The stall me
 ![OSD warning](https://github.com/iNavFlight/inav/assets/47995726/1d479cda-6620-4025-9958-fb693149d886)
 
 > [!NOTE]
-> Please note that stalls are not caused directly by the speed of the aircraft. Stalls are caused by too little airflow over the wing. Which is dependent on airspeed at the attitude of the aircraft. So ground speed will only give a very basic warning. It will not detect all instances of a stall. So please do not be complacent.
+> Please note that stalls are not caused directly by the speed of the aircraft. Stalls are caused by too little airflow over the wing. Which is dependent on airspeed at the attitude of the aircraft. So it may not detect all instances of a stall. Please do not be complacent. Aircraft with higher wing loading or poor stall characteristics should always be flown with caution when lowering the throttle to conserve energy.
 
 ## This is an example of a basic switch indicator
 While there are switch indicators for the OSD. Using the Custom OSD elements can give you much more control over this. This is an example of how to set them up.
