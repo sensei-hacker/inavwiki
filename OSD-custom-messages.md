@@ -26,9 +26,12 @@ This [video](https://youtu.be/BqkDo-2O7js?si=_vOAHQn2N0MGbKdl&t=81) made by the 
 
 ## This is an example of a simple stall warning indicator
 
-The logic checks if the pitch is greater than 20 degrees, with the estimated airspeed being less than 30km/h or if the throttle is less than 48%. Makes sure you enable the _virtual pitot_ if you do not use a real pitot. Values can be altered to suit your models requirements.
+The logic checks if the _Virtual Airspeed_ had dropped below 30km/h, and the _Pitch_ being above 20° Angle of Attack or the _Throttle_ below 48%. Warning of a potential stall. Being that most tip stalls conditions are induced unknowingly by the pilot, this can help avoid such events.
 
-![Stall warning logic](https://github.com/iNavFlight/inav/assets/47995726/7326b09e-83e8-42c3-aba4-3ef2706cb522)
+Makes sure you enable the _virtual pitot_ if you do not use a real pitot. To better suit your aircraft. **Pitch** angle, **Throttle** and **Airspeed** values should be altered for best detection.
+
+![Air speed stall warning logic](https://github.com/user-attachments/assets/0f9ecb36-7903-476f-a843-5c53cfcbeac0)
+
 
 The message will display STALL WARNING with a warning symbol (221). The stall message will only appear when the conditions are met.
 
