@@ -1,11 +1,13 @@
 One of INAV's most useful features has been the [Programming Framework](https://github.com/iNavFlight/inav/blob/master/docs/Programming%20Framework.md) . Allowing users to customize their flight logic, to suit their requirements. But, from the release of INAV 7.0.0. There is the addition of _custom OSD_ elements. So users can add their own elements, and display relevant data derived from the Programming framework.
 
-The settings are found under the Configurator OSD tab. 
+The settings are found under the Configurator OSD tab. The layout has changed slightly in INAV 8.0.0.
 
-![Custom elements GV](https://github.com/iNavFlight/inav/assets/47995726/26c8b12d-27da-4a10-9ce7-e8b42289623b)
+![Custom elements GV](https://github.com/iNavFlight/inav/assets/47995726/26c8b12d-27da-4a10-9ce7-e8b42289623b) 
 ![elements](https://github.com/iNavFlight/inav/assets/47995726/33bb28e2-d090-4716-b01c-6a0aec59f9eb)
 
-Each custom OSD element has three configurable spaces, plus an activation condition. You don't need to use all three configuration spaces, and the element can always be active. The three configurable spaces can either be a character from the OSD font, data from the programming framework, or text. The character numbers can be found in [this document](https://github.com/iNavFlight/inav-configurator/blob/master/resources/osd/INAV%20Character%20Map.md). These are the options available in each configurable space.
+Each custom OSD element has three configurable spaces (eight in INAV 8.0.0), with each having an activation condition. You're not required to use all the configuration custom spaces, if all elements are active. The custom configurable spaces can either be a character from the OSD font, data from the programming framework, or text. The character numbers can be found in [this document](https://github.com/iNavFlight/inav-configurator/blob/master/resources/osd/INAV%20Character%20Map.md). 
+
+These are the options available in each configurable space.
 
 |  Options       |        Description                                                                                            |
 | ------------   |  -----------------------------------------------------------------------------------------------------------  |
@@ -36,11 +38,11 @@ To see that with real numbers. Imagine that **Flight** - **Home distance [m]** i
 
 ## This is an example of a simple stall warning indicator
 
-The logic checks if the _Virtual Airspeed_ has dropped below 30km/h, with the _Pitch_ being above 20°, or the _Throttle_ being below 48%. Warning of a potential stall.. Being that most tip stall conditions are induced unknowingly by the pilot, this can help avoid such events.
+The logic checks if the _Pitch_ is above 20°, and the _Virtual Airspeed_ has dropped below 35km/h, or the _Throttle_ has been reduced below 48%. Warning of a potential stall.. Being that most tip stall conditions are induced unknowingly by the pilot, this can help avoid such events.
 
-Makes sure you enable the _Virtual Pitot_ if you do not use a real Pitot.. To better suit your aircraft. Pitch angle, Throttle and Airspeed values should be altered for best detection.
+Make sure you enable the _Virtual Pitot_ if you do not use a real _Pitot_.. To better suit your aircraft. Pitch angle, Airspeed and Throttle/Delay values should be altered for best detection.
 
-![Air speed stall warning logic](https://github.com/user-attachments/assets/0f9ecb36-7903-476f-a843-5c53cfcbeac0)
+![Improved Airspd stall warning](https://github.com/user-attachments/assets/4c0a62e0-4928-45f7-bb46-4946b775bad3)
 
 The message will display STALL WARNING with a warning symbol (221). The stall message will only appear when the conditions are met.
 
