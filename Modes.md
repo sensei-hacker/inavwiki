@@ -119,17 +119,18 @@ _Tuning mode_
 
 For detailed description go to https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing
 
-AUTOTUNE will attempt to tune roll and pitch P, I and FF gains on a fixed-wing airplane.
+AUTOTUNE will attempt to tune the Roll and Pitch FeedForward and Rates on a fixed-wing airplane.
 
-Autotune will monitor behavior of the airplane when you fly it and adjust P, I and FF gains to reach optimal performance.
+Autotune will monitor the behavior of the airplane when your flying, and attempt to set the FeedForward gain and Rate of rotation on each axis, to provide the optimal performance for your aircraft.
 
 How to use:
 
-Take off. Any manual flight mode will do, ACRO is the best option. Enable AUTOTUNE mode. Do hard maneuvers on each axis separately. For roll - bank hard left/hard right. For pitch - fast climb, steep dive. Initially you probably will notice very soft response - make sure your flying field is big enough for slow turns.
+Take off. Any non-navigation flight mode will do, ACRO is the best option. Enable AUTOTUNE mode. Do hard maneuvers on each axis separately. **For roll -** bank hard left/hard right or allow the aircraft to complete a roll at full stick deflection, both left and right. 
+**For pitch -** fast climb, steep dive or perform a forward and inverted loop. Initially you probably will notice very soft response - make sure your flying field is big enough for slow turns.
 
 The more maneuvers you will do - the better results AUTOTUNE will be able to reach.
 
-AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse - PIFF gains won't be changed.
+AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable, AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse - FF gains and Rates won't be changed.
 
 Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
 
@@ -199,7 +200,7 @@ Heading hold only uses yaw control (rudder) so it won't work on a flying wing wh
 
 ### HOME RESET
 
-This mode provides a means to reset the home location or arming coordinates the model will return to. This is beneficial if you choose to launch or takeoff before the model has a GPS fix.. By using this mode, you can fly past your launch site later in the flight, once a GPS fix is established.  And momentarily activate the feature.. **Ideally, it is better to place this mode on a Pot or multi-position button, so it doesn't get unintentionally bumped.**
+This mode provides a means to reset the home location or arming coordinates the model will return to. This is beneficial if you choose to launch or takeoff before the model has a GPS fix.. By using this mode, you can fly past your launch site later in the flight, once a GPS fix is established.  And momentarily activate the feature.. **Ideally, it is better to place this mode on a Pot or multi-position button, so it doesn't get unintentionally activated.**
 
 ### HORIZON
 
@@ -331,7 +332,8 @@ One option is to add Horizon mode at very top end of throttle, to enable acro fl
 
 ### OSD ALT
 
-Switches to the different alternative OSD displays ALT1, ALT2 or ALT3. The default OSD is shown when none of these are selected. 
+Switches to the different alternative OSD displays ALT1, ALT2 or ALT3. The default OSD layout is shown when none of these are selected.
+If the user selects `osd_failsafe_switch_layout = ON`, the OSD will switch to the default OSD layout if a Failsafe occurs. For this reason, it can be useful to have the home coordinates on your default OSD layout.
 
 ### OSD SW
 
