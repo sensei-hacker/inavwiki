@@ -91,7 +91,7 @@ The _nav_rth_climb_first_ option sets how the model will initiate the **RTH**.
 ## Climb first with Multirotors
 
 - If _nav_rth_climb_first_ = **OFF**, the multirotor will turn to home, and immediately fly towards it, climbing on the way to the **Actual RTH Altitude**.
-- If _nav_rth_climb_first_ = **ON**, the multirotor hover and increase altitude. When it reaches the **Actual RTH altitude**, it will fly towards home.
+- If _nav_rth_climb_first_ = **ON**, the multirotor will immediately commence a vertical climb, turning towards home at the same time. When it reaches the **Actual RTH altitude**, it will start flying home.
 
 ## Climb first with Fixed Wing
 ### _nav_rth_climb_first_ = **OFF**
