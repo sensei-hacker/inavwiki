@@ -6,6 +6,12 @@ The Hud is a feature that displays various points of interest (POI) on the OSD, 
 - Nearby aircrafts as sent by an ESP32 LoRa modem
 - Next waypoints during a mission.
 
+# Later updates
+
+  - INAV 6.0 seen an update in the way the radar information is display on the OSD. [Craft radar layout](#craft-radar-layout)
+  - INAV 8.0 provides the ability to display the Craft radar in a fix location on the OSD. Without having to use the HUD (which is still an option).
+  - [FormationFlight](#formation-flight) project.
+
 # Video Resources 
 
 * [This is a video demonstrating the hud for both home point and ESP32 radar tracking](https://youtu.be/zzKkcd5_cY4?t=27).
@@ -15,8 +21,12 @@ The Hud is a feature that displays various points of interest (POI) on the OSD, 
 
 The hud must be set from the CMS menu of the OSD or from the CLI in the Configurator.
 
-**Important! The Hud is a sub-set of the crosshair, it's designed this way because the crosshair is the origin/reference for anything hud-related. So make sure you have the crosshair enabled and displayed in the OSD tab of the Configurator. It is not recommended to have any of the legacy map or 2D-view items displayed in your OSD, as this could cause overlaps on the screen.**
+**Important!** The Hud is a sub-set of the crosshair, it's designed this way because the crosshair is the origin/reference for anything hud-related.
 
+- So make sure you have the crosshair enabled and displayed in the OSD tab of the Configurator, if you wish to display any HUD related information, including the Craft Radar.
+- You are NOT required to select the crosshair if you use the `INAV radar fixed` element. Its selected in the OSD tab under **Maps & Radar**. It     can be beneficial when using the Craft Radar with multicopter platforms.
+
+It is not recommended to have any of the legacy map or 2D-view items displayed in your OSD, as this could cause overlaps on the screen.
 In order for the hud to display in "3D" where the POI is, it needs to know few things about your FPV camera :
 
 In the CMS/OSD menu, go to OSD > Hud >... 
@@ -116,6 +126,11 @@ set osd_hud_radar_range_min = 10
 set osd_hud_radar_range_max = 4000
 set osd_hud_wp_disp = 2
 ```
+### Craft radar layout
+ The radar layout is the same for both Analog and Digital. However digital can be in color and requires a video system that fully supports the INAV font set. Which DJI does not provide at the time of writing this. Meaning it **will not** have a full compliment of OSD elements, as in the image below.
+
+![Inav radar digital](https://github.com/user-attachments/assets/e43dcc83-eda0-48ff-82a0-7b868ea3ffcc)
+
 
 #  Accuracy and limitations
 
@@ -123,7 +138,7 @@ There's a long chain of inaccuracies conspiring to make the tracking not perfect
 
 * The heading of your aircraft can be wrong by a significant margin during or right after a hard turn. The steadier the flight, the more accurate it is.
 
-* The artificial horizon drift issue does not help. Accurate positioning for the POI markers depends on the actual attitude and heading of the aircraft, any slight difference of few degrees will mess up the tracking.
+* Accurate positioning for the POI markers depends on the actual attitude and heading of the aircraft, any slight difference of few degrees will mess up the tracking.
 
 * The tracking is not taking into account the roll angle of the plane so it remains simple and fast, so it won't be accurate when the banking angle is too high.
 
@@ -150,6 +165,12 @@ Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthr
 
 [This is a video demonstrating the hud for both home point and ESP32 radar tracking](https://youtu.be/zzKkcd5_cY4?t=27).
 
+## Formation Flight
+
+The [FormationFlight](https://formationflight.org/) project is separate to INAV ESP32 Radar. Both firmware's provide a means of RF communication between multiple aircraft.. But its more versatile, using the same hardware as the ELRS project. And has many advantages over the original Lora ESP32 boards. Being that the hardware is smaller, lighter and cheaper.
+The INAV project supports the use of both types of hardware and software for OSD craft radar display. It depends on your choice.
+
+If you require assistance with setting up FormationFlight. You can ask on its [Discord](https://discord.gg/SbJcK3Ee)
 
 ## What's displayed exactly ?
 
