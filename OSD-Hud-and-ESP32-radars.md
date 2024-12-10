@@ -1,15 +1,15 @@
-# The Hud
+# The HUD
 
-The Hud is a feature that displays various points of interest (POI) on the OSD, in "3D", by showing a marker where the location is on the screen. For now it's capable to display : 
+The HUD is a feature that displays various points of interest (POI) on the OSD, in "3D", by showing a marker where the location is on the screen. For now it's capable to display : 
 
-- The home point
+- The home point 
 - Nearby aircrafts as sent by an ESP32 LoRa modem
 - Next waypoints during a mission.
 
 # Later updates
 
-  - INAV 6.0 seen an update in the way the radar information is display on the OSD. [Craft radar layout](#craft-radar-layout)
-  - INAV 8.0 provides the ability to display the Craft radar in a fix location on the OSD. Without having to use the HUD (which is still an option).
+  - INAV 6.0 - Seen an update in the way the Craft radar information is display on the OSD. [Craft radar layout](#craft-radar-layout)
+  - INAV 8.0 - Provides the ability to display the Craft radar in a fix location on the OSD. Without using the HUD (which is still an option).
   - [FormationFlight](#formation-flight) project.
 
 # Video Resources 
@@ -19,17 +19,17 @@ The Hud is a feature that displays various points of interest (POI) on the OSD, 
 
 # Configuration
 
-The hud must be set from the CMS menu of the OSD or from the CLI in the Configurator.
+The HUD must be set from the CMS menu of the OSD or from the CLI in the Configurator.
 
-**Important!** The Hud is a sub-set of the crosshair, it's designed this way because the crosshair is the origin/reference for anything hud-related.
+**Important!** The HUD is a sub-set of the crosshair, it's designed this way because the crosshair is the origin/reference for anything hud-related.
 
-- So make sure you have the crosshair enabled and displayed in the OSD tab of the Configurator, if you wish to display any HUD related information, including the Craft Radar.
-- You are NOT required to select the crosshair if you use the `INAV radar fixed` element. Its selected in the OSD tab under **Maps & Radar**. It     can be beneficial when using the Craft Radar with multicopter platforms.
+- So make sure you enable the Crosshair in the configurator OSD tab, if you wish to display any HUD related information, including the Craft Radar.
+- You are NOT required to select the Crosshair if you use the `INAV radar fixed` element. Its selected in the OSD tab under **Maps & Radar**. It     can be beneficial when using the Craft Radar on multicopter platforms.
 
 It is not recommended to have any of the legacy map or 2D-view items displayed in your OSD, as this could cause overlaps on the screen.
-In order for the hud to display in "3D" where the POI is, it needs to know few things about your FPV camera :
+In order for the HUD to display in "3D" where the POI is, it needs to know few things about your FPV camera :
 
-In the CMS/OSD menu, go to OSD > Hud >... 
+In the CMS/OSD menu, go to OSD > HUD >... 
 
 ### Crosshair style
 To choose between 7 different types of crosshairs.
@@ -129,24 +129,27 @@ set osd_hud_wp_disp = 2
 ### Craft radar layout
  The radar layout is the same for both Analog and Digital. However digital can be in color and requires a video system that fully supports the INAV font set. Which DJI does not provide at the time of writing this. Meaning it **will not** have a full compliment of OSD elements, as in the image below.
 
-![Inav radar digital](https://github.com/user-attachments/assets/e43dcc83-eda0-48ff-82a0-7b868ea3ffcc)
+![Inav craft radar](https://github.com/user-attachments/assets/9ff09053-2f8b-43fa-a02f-9ff726e60935)
+
+There can be some confusion concerning the use of **(1) The peer aircraft's heading arrow**. You may know the direction the peer aircraft is located by **(5) The Cardinal pointer** e.g. 2 O'clock. But without the heading arrow, you will not know whether that aircraft is traveling towards you, away from you, or across your aircraft's line of flight. So by using both the Cardinal pointer and the Heading arrow reference of the other aircraft, you can set a heading that will help you intersect the other aircraft more quickly.
+
 
 
 #  Accuracy and limitations
 
 There's a long chain of inaccuracies conspiring to make the tracking not perfectly accurate :
 
-* The heading of your aircraft can be wrong by a significant margin during or right after a hard turn. The steadier the flight, the more accurate it is.
+* The heading of your aircraft can be wrong by a significant margin during, or right after a hard turn. The steadier the flight, the more accurate it is.
 
 * Accurate positioning for the POI markers depends on the actual attitude and heading of the aircraft, any slight difference of few degrees will mess up the tracking.
 
 * The tracking is not taking into account the roll angle of the plane so it remains simple and fast, so it won't be accurate when the banking angle is too high.
 
-* OSD is character based, it's a 30x16 grid for PAL, and 30x13 for NTSC, it's not super high-definition.
+* The OSD is character based and not pixel based. Limited by [grid size.](https://github.com/iNavFlight/inav/blob/master/docs/OSD.md#features-and-limitations)
 
-* The crosshair is not perfectly centered in both horizontal and vertical dimensions because of an even numbers of columns and rows
+* The analog crosshair is not perfectly centered in both horizontal and vertical dimensions because of an even numbers of columns and rows.
 
-* The position of the other aircrafts as sent by the ESP32 modules are updated at 2Hz (every 0.5sec), so at high speed there's lag involved because of relative movements.
+* The position of the other aircrafts as sent by the ESP32 modules are updated at 2Hz (10Hz with FormationFlight), so at high speed there's lag involved because of relative movements.
 
 
 ## ESP32 LoRa modem ("INAV Radar" project)
