@@ -279,10 +279,11 @@ Once you have connected the GPS to your flight control board
 
 ## GNSS Ublox update rate
 
-INAV 7.0 and later supports a higher GNSS update rate for Ublox receivers.  `gps_ublox_nav_hz`. With M10 (now) supporting up to 25Hz.
+INAV 7.0 and later supports a higher GNSS update rate for Ublox receivers.  `gps_ublox_nav_hz`. With M9 and now M10 supporting up to 25Hz.
 If you wish to increase navigation precision. And you have a low noise build, good fix and with EPH/EPV data being acceptable. You may wish to alter this setting. But only do so according to the table below. Note how the maximum update rate can only be achieved with lower concurrent constellations.
 _And a trade off will also be noticed. The satellite count will generally be a little lower, the higher the update rate. But this isn't a draw back. Because higher precision can still be achieved._
 
+The M9 can run up to 25 Hz with all four constellations enabled. The M10 is more limited as shown here:
 ![update rate](https://github.com/iNavFlight/inav/assets/47995726/a541d4bb-3dca-4813-a3ce-60a067ae67a1)
 
 
