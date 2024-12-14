@@ -140,7 +140,10 @@ _From INAV 8.0_
 Wiggle to Wake allows you to wiggle the yaw of the plane to start the idle throttle. This does not start the launch procedure or launch throttle, only the idle throttle. This gives more control over when the idle throttle starts, as you don't need to use a timer. Though the timer can still also be used. If so, idle will start either when the timer expires or the wiggle is detected.
 
 There is one setting in the CLI: `nav_fw_launch_wiggle_to_wake_idle`. 0 = disabled. 1 and 2 signify 1 or 2 yaw wiggles to activate. 
-* 1 wiggle has a higher detection point, for airplanes without a tail. 
-* 2 wiggles has a lower detection point, but requires the repeated action. This is intended for larger models and airplanes with tails.
+* 1 wiggle has a higher detection point (quicker movement), for airplanes without a tail. 
+* 2 wiggles has a lower detection point (slightly slower movement), but requires the repeated action. This is intended for larger models and airplanes with tails.
 
 For this to work. An idle throttle value greater than 1000uS must be set, and `nav_fw_launch_wiggle_to_wake_idle` must not be 0. If there is no idle throttle delay, the wiggle will activate the idle throttle. If an idle delay is also set up, whichever occurs first activates the idle throttle.
+
+> [!NOTE]
+> The wiggle needs to be a quick movement. This is deliberate, as slow movements could cause accidental triggers when walking about.
