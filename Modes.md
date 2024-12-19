@@ -280,7 +280,7 @@ Gliders have different needs than motorized planes.  See below for note on glide
 
 The entire time `NAV LAUNCH` mode it will try and stabilize plane, it will target zero roll, zero yaw and predefined climb angle. The I-gain of the PIFF regulator is also disabled to prevent I-gain growing during launch until motor is started. When successful launch is detected it waits for preconfigured amount of time before starting motor.
 
-`NAV LAUNCH` is automatically aborted after 5 seconds or by any pilot input on PITCH/ROLL stick. When it has aborted it goes to whichever selected mode, which can be Angle, Rate, Horizon, RTH or a waypoint mission (if no other mode is selected it will go to Rate mode).
+`NAV LAUNCH` is automatically aborted after a timeout in seconds (default of 5 seconds), by exceeding an altitude (default to off), or by any pilot input on PITCH/ROLL stick. When it has aborted it goes to whichever selected mode, which can be Angle, Acro, Horizon, RTH or a waypoint mission (if no other mode is selected it will go to Acro mode).
 
 It's safe to keep it activated the `NAV LAUNCH` mode during flight after the launch has being completed. Keep in mind that if you accidentally disarm while flying you need to disable `NAV LAUNCH` mode to being able to control the model again.
 
@@ -288,9 +288,11 @@ See INAV CLI for all available adjustable parameters, they start with `nav_fw_la
 
 Sequence for launching airplane using `NAV LAUNCH` mode looks like this:
 
-1. Set switch to `NAV LAUNCH` mode prior to arming (note that it won't actually enable until arming)
-1. ARM the plane. Motor should start spinning at min_throttle (if `MOTOR_STOP` is active, motor won't spin)
-1. Put throttle stick to desired throttle value to be set **after** launch is finished. Motor should start spinning with  `nav_fw_launch_idle_thr`. Default is 1000 so it will respect `MOTOR_STOP` if active. Verify that motor doesn't respond to throttle stick motion. Don't touch the pitch/roll stick! From version 3.0 `nav_fw_launch_idle_motor_delay` can be set to delay the motor starting at idle (useful for launching large aircraft). When idle motor delay is used the launch beep sound changes a few seconds before the motor is about to start as a warning to the pilot (beep becomes more rapid).
+1. Make sure you are in a non-navigation mode (Manual, Acro, Angle, or Horizon)
+1. If autolaunch is not permanently enabled. Set switch to `NAV LAUNCH` mode prior to arming (note that it won't actually enable until arming)
+1. ARM the plane.
+1. Set the flight mode to the **exit** flight mode. This will be used after the launch has completed. **Loiter** is a great choice for the exit flight mode
+1. Put throttle stick to desired throttle value to be set **after** launch is finished. The motor should start spinning with  `nav_fw_launch_idle_thr` if it is set. Verify that motor doesn't respond to throttle stick motion. Don't touch the pitch/roll stick! From version 3.0 `nav_fw_launch_idle_motor_delay` can be set to delay the motor starting at idle (useful for launching large aircraft). When idle motor delay is used the launch beep sound changes a few seconds before the motor is about to start as a warning to the pilot (beep becomes more rapid).
 1. Throw the airplane.  It must be thrown leveled, or thrown by slinging it by wingtip.
 1. Motors will start at pre-configured `nav_fw_launch_thr` (default 1700) after `nav_fw_launch_motor_delay` (500ms)
 1. Launch sequence will finish when pilot switch off the NAV LAUNCH mode or move the sticks.
