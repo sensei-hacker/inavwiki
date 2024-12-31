@@ -127,7 +127,8 @@ The image below is an example of a module that does not use the default orientat
 ![Walksnail M181 GPS](https://github.com/iNavFlight/inav/assets/47995726/5146a1fd-8ea3-479f-abb4-45e1dbbe61df)
 
 
-**NOTE :** The compass must work in conjunction with the Flight controllers IMU. If you invert the flight controller or rotate it on the Yaw axis, this will effect the compass alignment settings.
+## **NOTE :** 
+The compass must work in conjunction with the Flight controllers IMU. If you invert the flight controller or rotate it on the Yaw axis, this will effect the compass alignment settings.
 Before attempting to use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment. By using the Configurator SETUP/STATUS Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identically to your motions, without any axis drift.
 So be mindful of the complexity involved in getting the correct orientation settings if you do deciding to mount the flight controller or GNSS/compass unit on an axis different from the manufacturer recommendation arrow.
 
