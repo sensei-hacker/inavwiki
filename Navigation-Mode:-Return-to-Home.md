@@ -40,7 +40,7 @@ The **Altitude before RTH** the model is currently flying at, plus the `nav_rth_
 
 If the model is below `nav_rth_altitude` it will climb to desired altitude prior to flying back home. If the model is above the desired altitude, it will fly home, descending on the way. 
 
-![FIXED](https://github.com/user-attachments/assets/b0fa9879-79fc-48a3-b7ec-bdc794824242)
+![FIXED](https://github.com/user-attachments/assets/5f2cb22f-0f3b-42c6-bbce-d19e549509e6)
 
 ## Maximum altitude since launch 
 - _nav_rth_alt_mode_ = **MAX**
@@ -61,7 +61,7 @@ The aircraft will fly home at the highest altitude since launch. Or at the `nav_
 
 If the aircraft is below `nav_rth_altitude` it will climb to desired altitude prior to flying back home. If the model is above the desired altitude, it will fly home at the current altitude. This will define the altitude until `nav_rth_home_altitude` is reached.
 
-![AT_LEAST](https://github.com/user-attachments/assets/d01d3ea0-c3a7-4136-af7f-afb0356b092f)
+![AT_LEAST](https://github.com/user-attachments/assets/ba2e869e-cf5b-4511-8821-04e161cbdc1f)
 
 ## Predefined altitude linear descent 
 _pre-INAV 7.0_
