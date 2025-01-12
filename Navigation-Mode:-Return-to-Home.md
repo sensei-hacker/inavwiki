@@ -4,81 +4,82 @@ With default settings RTH will land immediately if you are closer than 5 meters 
 
 Return to Home is activated by the NAV RTH flight mode.
 
+* RTH control modes work the same for Multicopters and for fixedwings. The difference is only seen in the way plane's climb or descend in a loitering spiral.
+
 # RTH Altitudes
 
-There are two altitudes that can be used with RTH: _nav_rth_altitude_ and _nav_rth_home_altitude_. 
+There are two altitudes that can be used with RTH: `nav_rth_altitude` and `nav_rth_home_altitude`. 
 
-_nav_rth_altitude_ is used in conjunction with the RTH Altitude control modes to decide the altitude that the model returns home at. See below to see how the two are combined. 
+`nav_rth_altitude` is used in conjunction with the RTH Altitude control modes to decide the altitude that the model returns home at. See below to see how the two are combined. 
 
-_nav_rth_home_altitude_ sets the altitude that a plane will loiter at when it arrives at home. If above the _nav_rth_home_altitude_, the plane will start loitering, then loiter down to the home altitude. The default, 0, means that the feature is disabled. In which case the plane will loiter at the **Actual RTH Altitude**, or _nav_rth_altitude_ if linear descent is used.
+`nav_rth_home_altitude` sets the altitude that a plane will loiter at when it arrives at home. If the plane arrives above the `nav_rth_home_altitude`, the plane will start loitering downwards in a descending spiral, until it reaches the home altitude. The default, 0, means that the feature is disabled. In which case the plane will loiter at the `nav_rth_altitude` if linear descent is used.
 
 # RTH Altitude control modes
 
-RTH sequence can control altitude in several different ways, controlled by _nav_rth_alt_mode_ and _nav_rth_altitud_ (the altitude in centimetres) parameters.
+RTH sequence can control altitude in several different ways, controlled by `nav_rth_alt_mode` and `nav_rth_altitude` (the altitude in centimeters) parameters.
 
-Default setting is **NAV_RTH_AT_LEAST_ALT** - climb to preconfigured altitude if below, stay at current altitude if above.
+## Maintain current altitude 
+- `nav_rth_alt_mode` = **CURRENT**
+- `nav_rth_altitude` - is ignored
 
-## Maintain current altitude (NAV_RTH_NO_ALT)
-- _nav_rth_alt_mode_ = **CURRENT**
-- _nav_rth_altitude_ is ignored
+The **Altitude before RTH** is the altitude that the model will fly home at, disregarding any `nav_rth_altitude` setting.
 
-The **Actual RTH Altitude** is the altitude that the model is currently flying at.
+![CURRENT](https://github.com/user-attachments/assets/5290ae6a-76aa-4e9b-a1a0-cac04b7001d6)
 
-![](images/NAV_RTH_NO_ALT.jpg)
+## Maintain current altitude + predefined safety margin 
+- `nav_rth_alt_mode` = **EXTRA**
+- `nav_rth_altitude` - defines extra altitude margin required
 
-## Maintain current altitude + predefined safety margin (NAV_RTH_EXTRA_ALT)
-- _nav_rth_alt_mode_ = **EXTRA**
-- _nav_rth_altitude_ defines extra altitude margin
+The **Altitude before RTH** the model is currently flying at, plus the `nav_rth_altitude`.
 
-The **Actual RTH Altitude** is the altitude that the model is currently flying at, plus the _nav_rth_altitude_.
+![EXTRA](https://github.com/user-attachments/assets/57c79c87-a0a9-40e6-b053-e41b5821c36e)
 
-![](images/NAX_RTH_EXTRA_ALT.jpg)
+## Predefined altitude 
+- `nav_rth_alt_mode` = **FIXED**
+- `nav_rth_altitude` - defines exact RTH altitude above the launch point.
 
-## Predefined altitude (NAV_RTH_CONST_ALT)
-- _nav_rth_alt_mode_ = **FIXED**
-- _nav_rth_altitude_ defines exact RTH altitude above launch point.
+If the model is below `nav_rth_altitude` it will climb to desired altitude prior to flying back home. If the model is above the desired altitude, it will fly home, descending on the way. 
 
-If the model is below _nav_rth_altitude_ it will climb to desired altitude prior to flying back home. If the model is above the desired altitude, it will turn and fly home and descend on the way. That defines the **Actual RTH Altitude**.
+![FIXED](https://github.com/user-attachments/assets/b0fa9879-79fc-48a3-b7ec-bdc794824242)
 
-![](images/NAV_RTH_CONST_ALT.jpg)
-
-## Maximum altitude since launch (NAV_RTH_MAX_ALT)
+## Maximum altitude since launch 
 - _nav_rth_alt_mode_ = **MAX**
 
 _pre-INAV 4.1_
 - _nav_rth_altitude_ ignored
 
 _INAV 4.1 onwards_
-- _nav_rth_altitude_ defines the minimum RTH altitude above launch point. If the maximum altitude of the flight is below _nav_rth_altitude_, _nav_rth_altitude_ is used. If the maximum altitude of the flight is above _nav_rth_altitude_, the maximum altitude is used. 0 = disabled.
+- `nav_rth_altitude` defines the minimum RTH altitude above launch point. If the maximum altitude within the flight is below the `nav_rth_altitude` setting. Its altitude value is used. If the maximum altitude of the flight is above `nav_rth_altitude`, the MAX altitude within the flight is used. If `nav_rth_altitude = 0`, the function is disabled.
 
-The **Actual RTH Altitude** is the highest altitude during the flight, or _nav_rth_altitude_ if higher.
+The aircraft will fly home at the highest altitude since launch. Or at the `nav_rth_altitude` if its value is not exceeded within the flight.
 
-![](images/NAV_RTH_MAX_ALT.jpg)
+![MAX](https://github.com/user-attachments/assets/3e4e0fe7-76c9-4697-96d8-1b3193da33da)
 
-## At least predefined altitude above launch point (NAV_RTH_AT_LEAST_ALT)
-- _nav_rth_alt_mode_ = **AT_LEAST**
-- _nav_rth_altitude_ defines the minimum RTH altitude above launch point. 
+## At least predefined altitude above launch point 
+- `nav_rth_alt_mode` = **AT_LEAST**
+- `nav_rth_altitude` - defines the minimum RTH altitude above launch point. 
 
-If the aircraft is below _nav_rth_altitude_ it will climb to desired altitude prior to flying back home. If the model is above the desired altitude, it will turn and fly home at the current altitude. This defines the **Actual RTH Altitude**.
+If the aircraft is below `nav_rth_altitude` it will climb to desired altitude prior to flying back home. If the model is above the desired altitude, it will fly home at the current altitude. This will define the altitude until `nav_rth_home_altitude` is reached.
 
-![](images/NAV_RTH_AT_LEAST_ALT.jpg)
+![AT_LEAST](https://github.com/user-attachments/assets/d01d3ea0-c3a7-4136-af7f-afb0356b092f)
 
-## Predefined altitude linear descent (NAV_RTH_AT_LEAST_ALT_LINEAR_DESCENT)
+## Predefined altitude linear descent 
 _pre-INAV 7.0_
-- _nav_rth_alt_mode_ = **AT_LEAST_LINEAR_DESCENT**
-- _nav_rth_altitude_ defines minimum RTH altitude above launch point. 
+- `nav_rth_alt_mode` = **AT_LEAST_LINEAR_DESCENT**
+- `nav_rth_altitude` - defines minimum RTH altitude above launch point. 
 
-If the aircraft is below _nav_rth_altitude_ it will climb to desired altitude prior to flying back home. If the model is above the desired altitude, it will turn and fly home, and descend on the way (on a linear straight line). This defines the **Actual RTH Altitude**. Aircraft will descend in a way that it'll reach the _nav_rth_altitude_ altitude only when it reaches the home point. So aircraft can save energy by doing an easy descend on it's way back home.
+If the aircraft is below `nav_rth_altitude` it will climb to desired altitude prior to flying back home. If the model is above the desired altitude, it will turn and fly home, and descend on the way (on a linear straight line). This defines the **Actual RTH Altitude**. Aircraft will descend in a way that it'll reach the `nav_rth_altitude` altitude only when it reaches the home point. So aircraft can save energy by doing an easy descend on it's way back home.
 
-![](https://i.imgur.com/CPgKb4w.png)
+![LINEAR_DESCENT](https://github.com/user-attachments/assets/36def1cf-9db1-47cf-82ec-f2cd8c7f0bf8)
 
-# Linear Descent
+# Linear Descent (NAV_RTH_USE_LINEAR_DESCENT)
 _INAV 7.0 Onwards_
 
 Before INAV 7.0; linear descent was an extended version of the **AT_LEAST** return to home method. From INAV 7.0 onwards, linear descent can be used with all RTH methods. It has also been extended to give the pilot more control. Because all RTH methods can now use linear descent; there needs to be a target altitude to descend to, that works with all RTH methods. To do this, the target altitude of the linear descent is now the `nav_rth_home_altitude`. You will need to set this parameter in order for linear descent to work.
 
 If Linear Descent is enabled, and the RTH Home Altitude is less than 10m. A warning is shown around the RTH Home Altitude input box. You can enter whatever values you want, including 0. It is your responsibility to make sure the value is safe for your flight environment. If the RTH Home Altitude is not set, Linear Descent is not used in flight.
-![image](https://user-images.githubusercontent.com/17590174/219960451-626acd82-c885-4b92-a836-30f3cfc81a41.png)
+
+![linear set](https://github.com/user-attachments/assets/058da62d-c2c1-4f7b-915d-186a0903f872)
 
 An option has also been added to decide how far away the linear descent starts. This is via the `nav_rth_linear_descent_start_distance` parameter. Current behaviour can be maintained by setting this to 0 [default]. When set to 0, the linear descent starts immediately upon entering RTH. You can also specify a distance from home when the linear descent begins. This is in metres and be up to 10km (10,000m). In all cases, the linear descent aims to reach the `nav_rth_home_altitude` as it arrives home, if possible.
 
