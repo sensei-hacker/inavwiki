@@ -88,6 +88,8 @@ When you press SAVE they are transferred to the Flight Controller.
 
 NOTE
 
+For prop sizes from 10 inches and up, it is likely that you will need to reduce Response and increase Damping to achieve maximum stability.
+
 You can make use of EZ-TUNE to generate settings for quad sizes other than those listed on EZ-TUNE by using the graph. You do of course have to test them and modify as necessary. There are no guarantees. You are responsible for the outcome. I suggested using this technique to assist you in your search for a stable tune for other quad sizes.
 
 FEEDBACK
