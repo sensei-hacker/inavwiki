@@ -62,7 +62,7 @@ The **Max Throw Angle** setting is the maximum angle that the aircraft can be at
 
 ### Minimum Launch Time
 
-The **Minimum Launch Time** setting dictates a time period where the sticks on your transmitter will not respond. This is particularly useful if you have to pick up your transmitter or it's hanging on a neck strap. Setting this to 2 seconds can stop the launch being aborted unintentionally, because you have bumped a stick on your transmitter.
+The **Minimum Launch Time** setting dictates a time period where the sticks on your transmitter will not respond. This is particularly useful if you have to pick up your transmitter or it's hanging on a neck strap. Setting this to 2 seconds can stop the launch being aborted unintentionally, because you have bumped a stick on your transmitter. Increasing `nav_fw_launch_land_abort_deadband` can also reduce the chances of unintentionally aborting launch mode.
 
 ### Motor Spinup Time
 
@@ -81,11 +81,14 @@ Is the base attitude of the model for the climb. The **Climb Angle** should be s
 
 ### Launch Timeout
 
-The **Launch Timeout** is the maximum time that the launch climb phase  will take. Once this timeout has been exceeded. The launch will progress to the end transition.
+The **Launch Timeout** is the maximum time you provide, for the climb phase to occur. The timer will commence once the plane is thrown and launch is detected. Then once timeout has been exceeded. The launch will progress to the end transition. 
 
 ### Maximum Altitude
 
-Is the **Maximum Altitude** that the airplane will climb to. Once this altitude is reached. The launch will progress to the end transition.
+This is the **Maximum Altitude** that the airplane will climb to.. Once this altitude is reached. The launch will progress to the end transition.
+
+> [!NOTE] 
+> **Launch Timeout** and **Maximum Altitude** operate together. Which ever condition is met first, will lead to the End transition.
 
 ### End Transition Time
 
