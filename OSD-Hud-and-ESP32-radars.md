@@ -9,7 +9,7 @@ The HUD is a feature that displays various points of interest (POI) on the OSD, 
 # Later updates
 
   - INAV 6.0 - Seen an update in the way the Craft radar information is display on the OSD. [Craft radar layout](#craft-radar-layout)
-  - INAV 8.0 - Provides the ability to display the Craft radar in a fix location on the OSD. Without using the HUD (which is still an option).
+  - INAV 8.0 - Provides the ability to display the Craft radar in a fix location on the OSD. Without using the HUD, which is still an option.
   - [FormationFlight](#formation-flight) project.
 
 # Video Resources 
@@ -35,37 +35,37 @@ In the CMS/OSD menu, go to OSD > HUD >...
 To choose between 7 different types of crosshairs.
 
 **CLI :**
-`set osd_crosshairs_style = DEFAULT`
+`osd_crosshairs_style = DEFAULT`
 
-**Available Values:** `"DEFAULT", "AIRCRAFT", "TYPE3", "TYPE4", "TYPE5", "TYPE6", "TYPE7"`
+**Available Values:** `DEFAULT`, `AIRCRAFT`, `TYPE3`, `TYPE4`, `TYPE5`, `TYPE6`, `TYPE7`
 
 ### Camera Uptilt
 
 Set the camera uptilt for the FPV camera. That's the angle in degres between the horizontal of the aircraft and the line of sight of the camera. For a multirotor with a camera usually pointing up it's a positive value, most often between 5 and 30°. For a plane with the camera pointing down it should be a negative value, often between -5 and -10°.
 
 **CLI :**
-`set osd_camera_uptilt = 0`
+`osd_camera_uptilt = 0`
 
 ### Camera FOV horizontal + vertical
 The FOV for the FPV camera, the default values are ok for a 2.8mm lens. If your camera is a 2.5mm or 2.1mm or lower focal, try to raise both the horizontal and vertical FOVs by 5 or 10° by steps (the smaller the focal length, the larger the field of view). If the FOV is too far off, the tracking won't work well near the borders of the screen.
 
 **CLI :**
-`set osd_camera_fov_h = 135`
-`set osd_camera_fov_v = 85`
+`osd_camera_fov_h = 135`
+`osd_camera_fov_v = 85`
 
 ### Hud Margin horizontal + vertical
 
 How far from the border of the screen the hud ends, so it does not overwrite the rest of your OSD datas.
 
 **CLI :**
-`set osd_hud_margin_h = 3`
-`set osd_hud_margin_v = 3`
+`osd_hud_margin_h = 3`
+`osd_hud_margin_v = 3`
 
 ### Horizon offset
 To vertically adjust, between -2 and +2, the whole OSD and AHI and scrolling bars, it's recommended to leave it at 0.
 
 **CLI :**
-`set osd_horizon_offset = 0`
+`osd_horizon_offset = 0`
 
 ## Displayed items:
 This sub menu will let you select what is displayed on the Hud :
@@ -74,31 +74,31 @@ This sub menu will let you select what is displayed on the Hud :
 To display little arrows around the crossair showing where the home point is.
 
 **CLI :**
-`set osd_hud_homing = ON`
+`osd_hud_homing = ON`
 
 ### Home point
 To 3D-display the home point location (H)
 
 **CLI :**
-`set osd_hud_homepoint = ON`
+`osd_hud_homepoint = ON`
 
 ### Radar max aircraft
 Maximum count of nearby aircrafts or POIs to display, as sent from an ESP32 LoRa  module. Set to 0 to disable (show nothing), up to 4. The nearby aircrafts will appear as markers A, B, C, D
 
 **CLI :**
-`set osd_hud_radar_disp= 3`
+`osd_hud_radar_disp= 3`
 
 ### Radar min range
 In meters, by default 10 meters, radar aircrafts closer than this will not be displayed. This setting exists mostly to unclutter the OSD view during close range pursuits.
 
 **CLI :**
-`set osd_hud_radar_range_min = 10`
+`osd_hud_radar_range_min = 10`
 
 ### Radar max range
 In meters, by default 4000, radar aircrafts further away than this will not be displayed. 
 
 **CLI :**
-`set osd_hud_radar_range_max = 4000`
+`osd_hud_radar_range_max = 4000`
 
 ### Next waypoints
 How many waypoint are displayed, from 0 to 3. Set to 0 (zero) to disable. As sample, if set to 2, and you just passed the 3rd waypoint of the mission, you'll see markers for the 4th and waypoints (marked "4' and '5')
@@ -106,7 +106,7 @@ How many waypoint are displayed, from 0 to 3. Set to 0 (zero) to disable. As sam
 [This is a video demonstrating the display of the waypoints live during an autonomous mission](https://www.youtube.com/watch?v=CqKNGY4pogU).
 
 **CLI :**
-`set osd_hud_wp_disp= 2`
+`osd_hud_wp_disp= 2`
 
 # CLI commands
 
