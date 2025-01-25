@@ -173,7 +173,7 @@ Please see this [discussion at RCGroups](https://www.rcgroups.com/forums/showthr
 The [FormationFlight](https://formationflight.org/) project is separate to INAV ESP32 Radar. Both firmware's provide a means of RF communication between multiple aircraft.. But its more versatile, using the same hardware as the ELRS project. And has many advantages over the original Lora ESP32 boards. Being that the hardware is smaller, lighter and cheaper.
 The INAV project supports the use of both types of hardware and software for OSD craft radar display. It depends on your choice.
 
-If you require assistance with setting up FormationFlight. You can ask on its [Discord](https://discord.gg/SbJcK3Ee)
+If you require assistance with setting up FormationFlight. You can ask on its [Discord server](https://discord.com/invite/npaX3VxQjh)
 
 ## What's displayed exactly ?
 
