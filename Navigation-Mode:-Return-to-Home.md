@@ -43,17 +43,17 @@ If the model is below `nav_rth_altitude` it will climb to desired altitude prior
 ![FIXED](https://github.com/user-attachments/assets/5f2cb22f-0f3b-42c6-bbce-d19e549509e6)
 
 ## Maximum altitude since launch 
-- _nav_rth_alt_mode_ = **MAX**
+- `nav_rth_alt_mode` = **MAX**
 
 _pre-INAV 4.1_
-- _nav_rth_altitude_ ignored
+- `nav_rth_altitude` - ignored
 
 _INAV 4.1 onwards_
-- `nav_rth_altitude` defines the minimum RTH altitude above launch point. If the maximum altitude within the flight is below the `nav_rth_altitude` setting. Its altitude value is used. If the maximum altitude of the flight is above `nav_rth_altitude`, the MAX altitude within the flight is used. If `nav_rth_altitude = 0`, the function is disabled.
 
 The aircraft will fly home at the highest altitude since launch. Or at the `nav_rth_altitude` if its value is not exceeded within the flight.
+If `nav_rth_altitude = 0`, its function is disabled.
 
-![MAX](https://github.com/user-attachments/assets/3e4e0fe7-76c9-4697-96d8-1b3193da33da)
+![MAX](https://github.com/user-attachments/assets/e9cc01b1-4e71-41e2-83ab-ecf4bb869b92)
 
 ## At least predefined altitude above launch point 
 - `nav_rth_alt_mode` = **AT_LEAST**
@@ -68,7 +68,7 @@ _pre-INAV 7.0_
 - `nav_rth_alt_mode` = **AT_LEAST_LINEAR_DESCENT**
 - `nav_rth_altitude` - defines minimum RTH altitude above launch point. 
 
-If the aircraft is below `nav_rth_altitude` it will climb to desired altitude prior to flying back home. If the model is above the desired altitude, it will turn and fly home, and descend on the way (on a linear straight line). This defines the **Actual RTH Altitude**. Aircraft will descend in a way that it'll reach the `nav_rth_altitude` altitude only when it reaches the home point. So aircraft can save energy by doing an easy descend on it's way back home.
+If the aircraft is below `nav_rth_altitude` it will climb to desired altitude prior to flying back home. If the aircraft is above the desired altitude, it will turn and fly home, and descend on the way (on a linear straight line). This defines the **Actual RTH Altitude**. Aircraft will descend in a way that it'll reach the `nav_rth_altitude` only when it reaches the home point. So aircraft can save energy by doing an easy descend on it's way back home.
 
 ![LINEAR_DESCENT](https://github.com/user-attachments/assets/36def1cf-9db1-47cf-82ec-f2cd8c7f0bf8)
 
@@ -91,8 +91,8 @@ The _nav_rth_climb_first_ option sets how the model will initiate the **RTH**.
 
 ## Climb first with Multirotors
 
-- If _nav_rth_climb_first_ = **OFF**, the multirotor will turn to home, and immediately fly towards it, climbing on the way to the **Actual RTH Altitude**.
-- If _nav_rth_climb_first_ = **ON**, the multirotor will immediately commence a vertical climb, turning towards home at the same time. When it reaches the **Actual RTH altitude**, it will start flying home.
+- If `nav_rth_climb_first = OFF`, the multirotor will turn and immediately fly towards home, climbing on the way to the `nav_rth_altitude`.
+- If `nav_rth_climb_first = ON` , the multirotor will immediately commence a vertical climb, rotating towards home at the same time. When it reaches the `nav_rth_altitude`, it will start flying home.
 
 ## Climb first with Fixed Wing
 ### _nav_rth_climb_first_ = **OFF**
