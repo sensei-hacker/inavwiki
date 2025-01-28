@@ -7,11 +7,12 @@ INAV is similar in architecture to Betaflight and runs on a subset of Betaflight
 
 | MCU | Flash Size | Remarks |
 | ---- | ---- | --- |
-| STM32F405 | 1M | Requires extra hardware for SBUS port |
-| STM32F722 | 512K | Reduced feature set. Not recommended for new designs. First in line for deprecation. |
-| STM32F7x4 | 1M-2M |
 | STM32H743 | 2M | 
+| STM32F7x4 | 1M-2M |
+| STM32F405 | 1M | Requires extra hardware for SBUS port |
 | AT32F435  | 1M | Requires extra hardware for SBUS port |
+| STM32F722 | 512K | Reduced feature set. Not recommended for new designs. First in line for deprecation. |
+
 
 # Recommended sensors and ports
 
