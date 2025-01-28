@@ -1,7 +1,7 @@
 # Introduction
-INAV is similar in architecture to Betaflight and runs on a subset of Betaflight supported MCUs.
+This document aims at documenting the INAV's team recommendations for hardware manufacturers when creating a new Flight Control board to run INAV.
 
-The [Betaflight Manufacturer Design Guidelines](https://betaflight.com/docs/development/manufacturer/manufacturer-design-guidelines) and the [Betaflight Connector Standard](https://betaflight.com/docs/development/manufacturer/connector-standard) are good starting points for new INAV designs as well, this document will highlight a few points where INAV differs from their recommendations and provide some background on the reasons. 
+INAV is similar in architecture to Betaflight and runs on a subset of Betaflight supported MCUs, so a lot of the [Betaflight Manufacturer Design Guidelines](https://betaflight.com/docs/development/manufacturer/manufacturer-design-guidelines) and the [Betaflight Connector Standard](https://betaflight.com/docs/development/manufacturer/connector-standard) also apply to INAV designs and we will highlight a few points where INAV differs from their recommendations.
 
 # Supported MCUs
 
