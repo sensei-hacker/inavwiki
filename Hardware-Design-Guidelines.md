@@ -23,6 +23,7 @@ All INAV flight controllers should include:
   * If the FC supports, we recommend using a separate I2C bus for the onboard peripherals and the external port.
 * At least 3 UARTS broken out. (2 is acceptable, if the flight controller includes an onboard serial RX)
 * USB Powered 4v5 lines for RX and GPS
+* Digital VTX port
 
 # Timer allocation recommendations
 
