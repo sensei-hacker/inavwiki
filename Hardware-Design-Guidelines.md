@@ -8,7 +8,7 @@ The [Betaflight Manufacturer Design Guidelines](https://betaflight.com/docs/deve
 | MCU | Flash Size | Remarks |
 | ---- | ---- | --- |
 | STM32F405 | 1M | Requires extra hardware for SBUS port |
-| STM32F722 | 512K | Reduced feature set. Not recommended for new designs. Next in line for deprecation |
+| STM32F722 | 512K | Reduced feature set. Not recommended for new designs. Next in line for deprecation. |
 | STM32F7x4 | 1M-2M |
 | STM32H743 | 2M | 
 | AT32F435  | 1M | Requires extra hardware for SBUS port |
