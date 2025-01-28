@@ -13,6 +13,17 @@ The [Betaflight Manufacturer Design Guidelines](https://betaflight.com/docs/deve
 | STM32H743 | 2M | 
 | AT32F435  | 1M | Requires extra hardware for SBUS port |
 
+# Recommended sensors and ports
+
+All INAV flight controllers should include:
+
+* Supported IMU
+* Supported Barometer
+* I2C pads (used for magnetometer, pitot tubes, temperatur sensors, etc...)
+  * If the FC supports, we recommend using a separate I2C bus for the onboard peripherals and the external port.
+* At least 3 UARTS broken out. (2 is acceptable, if the flight controller includes an onboard serial RX)
+* USB Powered 4v5 lines for RX and GPS
+
 # Timer allocation recommendations
 
 The supported MCU architectures timers group multiple pins on the same timer (up to 4 pins on one timer), and different protocols require different timer settings (Servo PWM, DShot, Addressable LEDs, etc...), so the different functionas can't share the same timer.
