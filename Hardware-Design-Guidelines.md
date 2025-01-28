@@ -20,7 +20,7 @@ All INAV flight controllers should include:
 
 * Supported IMU
 * Supported Barometer
-* I2C pads (used for magnetometer, pitot tubes, temperatur sensors, etc...)
+* I2C pads (used for magnetometer, pitot tubes, temperature sensors, etc...)
   * If the FC supports, we recommend using a separate I2C bus for the onboard peripherals and the external port.
 * At least 3 UARTS broken out. (RX, Digital VTX and GPS)
 * USB Powered 4v5 lines for RX and GPS
