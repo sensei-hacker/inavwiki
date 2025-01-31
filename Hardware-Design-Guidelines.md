@@ -1,5 +1,5 @@
 # Introduction
-This document aims at documenting the INAV's team recommendations for hardware manufacturers lookikng to create a new Flight Control board to run INAV.
+This document aims at documenting the INAV's team recommendations for hardware manufacturers looking to create a new Flight Control board to run INAV.
 
 INAV is similar in architecture to Betaflight and runs on a subset of Betaflight supported MCUs, so a lot of the [Betaflight Manufacturer Design Guidelines](https://betaflight.com/docs/development/manufacturer/manufacturer-design-guidelines) and the [Betaflight Connector Standard](https://betaflight.com/docs/development/manufacturer/connector-standard) also apply to INAV designs and we will highlight a few points where INAV differs from their recommendations.
 
@@ -11,7 +11,7 @@ INAV is similar in architecture to Betaflight and runs on a subset of Betaflight
 | STM32F7x5 | 1M-2M |
 | STM32F405 | 1M | Requires extra hardware for SBUS port |
 | AT32F435  | 1M | Requires extra hardware for SBUS port |
-| STM32F722 | 512K | Reduced feature set. Not recommended for new designs. First in line for deprecation. |
+| STM32F7x2 | 512K | Reduced feature set. Not recommended for new designs. First in line for deprecation. |
 
 
 # Recommended sensors and ports
@@ -29,7 +29,7 @@ All INAV flight controllers should include:
 
 # Timer allocation recommendations
 
-The supported MCU architectures timers group multiple pins on the same timer (up to 4 pins on one timer), and different protocols require different timer settings (Servo PWM, DShot, Addressable LEDs, etc...), so the different functionas can't share the same timer.
+The supported MCU architectures timers group multiple pins on the same timer (up to 4 pins on one timer), and different protocols require different timer settings (Servo PWM, DShot, Addressable LEDs, etc...), so the different functions can't share the same timer.
 Based on this limitation, INAV mixer resource allocation algorithm will assign timers for motor usage in the order they appear on your ```target.c``` file, so having consecutive timer assignments is preferred over reusing the same timer a few outputs down the line.
 
 ## Avoid what was done in TIMER2 in this example
