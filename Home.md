@@ -1,6 +1,6 @@
 ![](http://static.rcgroups.net/forums/attachments/6/1/0/3/7/6/a9088858-102-inav.png)
 
-INAV is a Free and Open Source Flight Controller and Autopilot Software System that is **actively developed** with feature releases every 4-8 months. INAV has two primary components, the [firmware](https://github.com/iNavFlight/inav/releases/) that runs on the flight controller board, and the [GUI configuration tool](https://github.com/iNavFlight/inav-configurator/releases/) that runs on your PC. Some INAV features include:
+INAV is a Free and Open Source Flight Controller and Autopilot Software System that is **actively developed** with major releases annually, and feature releases as needed. INAV has two primary components, the [firmware](https://github.com/iNavFlight/inav/releases/) that runs on the flight controller board, and the [GUI configuration tool](https://github.com/iNavFlight/inav-configurator/releases/) that runs on your computer (Linux, MacOS, and Windows are supported). Some INAV features include:
 
 - Support for a large variety and quantity of inexpensive flight controller (FC) boards and sensors. Many FC's are built specifically for INAV with board layouts intended for easy connection of motors, sensors, servos, etc. intended for use in RC vehicles.
 - Support for a wide variety of flying vehicles including airplanes, gliders, multi-rotors, quadcopters, etc. as well as ground vehicles (cars, tanks) and water vehicles (boats).
@@ -36,3 +36,22 @@ Check out our [Hardware-Design-Guidelines](https://github.com/iNavFlight/inav/wi
 - If you have experience with BetaFlight, see the wiki page [INAV for BetaFlight users](https://github.com/iNavFlight/inav/wiki/INAV-for-BetaFlight-users) to get started.
 - See our [YouTube video guides](https://github.com/iNavFlight/inav/wiki/YouTube-video-guides) for some of the many great tutorials on YouTube. YouTube has hundreds and hundreds of great guides on all features of INAV.
 - Find and Join an INAV user group on your social media platform of choice. INAV users are happy to help get you started.
+
+## INAV versions and compatibility
+
+Since INAV 4.0.0, the SemVer system has been used for deciding when the different parts of the version number changes. This system makes it easy to see which versions of INAV are compatible. The version number is made up of 3 sections, separated by dots. These are major.minor.patch.
+
+So with **INAV 7.1.2**:
+- **7** is the major version number
+- **1** is the minor version number
+- **2** is the patch version number
+
+Both the firmware and Configurator follow the same versioning scheme. The major version numbers match.
+
+**Major** version numbers are increased when a change is made that breaks backwards compatibility. This does not have to be a big change or new feature. It can be something as simple as adding a new symbol on the OSD (due to the font update) or changing or removing a CLI parameter. When the major version number is increased, the minor and patch version numbers are reset to 0.
+
+**Minor** version numbers are increased when a a feature is added or updated that does not break backwards compatibility. This can be complete new features, even new CLI parameters. When the minor version number is increased, the patch version number is reset to 0.
+
+**Patch** version numbers are increased when the release contains only bug fixes or new targets.
+
+With INAV you must match the major version number of the [firmware](https://github.com/iNavFlight/inav) and [Configurator](https://github.com/iNavFlight/inav-configurator). This has been the case for a long time. Even pre-SemVer. In fact, before SemVer you had to match the major and minor version numbers. Now, it is recommended to use the latest version of Configurator that has the same major version number of your firmware. For example with firmware 7.0.0 it is recommended to use Configurator 7.1.2.
