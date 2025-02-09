@@ -8,7 +8,7 @@ INAV's auto launch is intended to provide assistance for launching the fixed-win
 
 It's safe to keep `NAV LAUNCH` activated during flight, after the launch has being completed. But, keep in mind that if you accidentally disarm while flying. You need to disable `NAV LAUNCH` mode to being able to control the model again.
 
-Gliders have different needs than motorised planes. See [below](#glidersloper-setup) for advice on a glider launch setup.
+Gliders have different needs than motorised planes. See [below](#glider-and-slope-soarer-setup) for advice on a glider launch setup.
 
 See INAV CLI for all available adjustable parameters, they start with `nav_fw_launch_`.
 
