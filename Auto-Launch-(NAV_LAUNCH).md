@@ -10,7 +10,7 @@ It's safe to keep `NAV LAUNCH` activated during flight, after the launch has bei
 
 Gliders have different needs than motorised planes. See [below](#glider-and-slope-soarer-setup) for advice on a glider launch setup.
 
-See INAV CLI for all available adjustable parameters, they start with `nav_fw_launch_`.
+See the INAV CLI [Settings document](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md) for all available parameters, they start with `nav_fw_launch_`.
 
 ## Launch sequence
 The sequence for launching an airplane using `NAV LAUNCH` mode looks like this:
@@ -20,11 +20,11 @@ The sequence for launching an airplane using `NAV LAUNCH` mode looks like this:
 3. ARM the plane.
 4. Set the flight mode to the **exit** flight mode. This will be used after the launch has completed. **Loiter** is a great choice for the exit flight mode.
 5. Put throttle stick to desired throttle value to be used **after** launch is finished.
-    - If `nav_fw_launch_idle_thr` is set. The motor could start spinning at this point. Verify that motor doesn't respond to throttle stick motion. Don't touch the pitch/roll stick! 
-    - From version 3.0 `nav_fw_launch_idle_motor_delay` can be set to delay the motor starting at idle (useful for launching large aircraft). When idle motor delay is used the launch beep sound changes a few seconds before the motor is about to start as a warning to the pilot (beep becomes more rapid).
-    - From version 8.0 `nav_fw_launch_wiggle_to_wake_idle` can be used to activate the idle throttle. It can be used in addition to, or instead of, `nav_fw_launch_idle_motor_delay`.
+    - If [`nav_fw_launch_idle_thr`](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_launch_thr) is set. The motor could start spinning at this point. Verify that motor doesn't respond to throttle stick motion. Don't touch the pitch/roll stick! 
+    - From version 3.0 [`nav_fw_launch_idle_motor_delay`](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_launch_idle_motor_delay) can be set to delay the motor starting at idle (useful for launching large aircraft). When idle motor delay is used the launch beep sound changes a few seconds before the motor is about to start as a warning to the pilot (beep becomes more rapid).
+    - From version 8.0 [`nav_fw_launch_wiggle_to_wake_idle`](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_launch_wiggle_to_wake_idle) can be used to activate the idle throttle. It can be used in addition to, or instead of, [`nav_fw_launch_idle_motor_delay`](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_launch_idle_motor_delay).
 6. Launch the airplane.
-7. Motors will start at the pre-configured `nav_fw_launch_thr` (default 1700) after `nav_fw_launch_motor_delay` (500ms).
+7. Motors will start at the pre-configured [`nav_fw_launch_idle_thr`](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_launch_thr) (default 1700) after [`nav_fw_launch_motor_delay`](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_launch_motor_delay) (500ms).
 8. The launch sequence will finish when pilot switch off the `NAV LAUNCH` mode or moves the sticks, or the exit criteria has been met (timeout or altitude).
 
 > [!CAUTION]
@@ -54,13 +54,14 @@ Setup launch parameters appropriately:
 
 `set nav_fw_launch_climb_angle = XX` 45?
 
-This is the climb angle for launch sequence (degrees), is also restrained by global `max_angle_inclination_pit`.
+['nav_fw_launch_climb_angle'](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_launch_climb_angle) is the climb angle for launch sequence (degrees), is also restrained by global [`max_angle_inclination_pit`](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#max_angle_inclination_pit).
 
 `set nav_fw_launch_thr = 1700`
 
-The `nav_fw_launch_thr` parameter can be problematic for a glider. Not obvious, since Airplanes change PID values for throttle based on `set tpa_rate = XX`X and `set tpa_breakpoint = XXXX` (adjust accordingly). Also, not well documented but PIDs are boosted at low throttles by 1.5X!! Can cause unexplained behaviour at launch. For some gliders - having PID gains reduced for toss is beneficial (DLG launch may be fastest speed the glider travels).
+The [`nav_fw_launch_idle_thr`](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_launch_thr) parameter can be problematic for a glider. Not obvious, since Airplanes change PID values for throttle based on [`set tpa_rate = XXX`](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#tpa_rate) and [`set tpa_breakpoint = XXXX`](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#tpa_breakpoint) (adjust accordingly). Also, not well documented but PIDs are boosted at low throttles by 1.5X!! Can cause unexplained behaviour at launch. For some gliders - having PID gains reduced for toss is beneficial (DLG launch may be fastest speed the glider travels).
 
 `set nav_fw_launch_velocity = XXX` 300?
-This is the forward velocity threshold for swing-launch detection [cm/s].
+
+['nav_fw_launch_velocity'](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_launch_velocity) is the forward velocity threshold for swing-launch detection [cm/s].
 
 One option is to add Horizon mode at very top end of throttle, to enable acro flying with ability to drop back to angle mode for emergency recovery.
