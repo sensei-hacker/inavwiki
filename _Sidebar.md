@@ -98,6 +98,7 @@ DevDocs [Servo.md](https://github.com/iNavFlight/inav/blob/master/docs/Servo.md)
 [Modes](https://github.com/iNavFlight/inav/wiki/Modes)\
 [Navigation modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes)\
 [Navigation Mode: Return to Home](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)\
+[FW Launch Mode](https://github.com/iNavFlight/inav/wiki/Auto-Launch-(NAV_LAUNCH))\
 DevDocs [Controls.md](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md)\
 DevDocs [INAV_Modes.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Modes.pdf)\
 DevDocs [Navigation.md](https://github.com/iNavFlight/inav/blob/master/docs/Navigation.md)
