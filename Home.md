@@ -1,6 +1,6 @@
 ![](http://static.rcgroups.net/forums/attachments/6/1/0/3/7/6/a9088858-102-inav.png)
 
-INAV is a Free and Open Source Flight Controller and Autopilot Software System that is **actively developed** with major releases annually, and feature releases as needed. INAV has two primary components, the [firmware](https://github.com/iNavFlight/inav/releases/) that runs on the flight controller board, and the [GUI configuration tool](https://github.com/iNavFlight/inav-configurator/releases/) that runs on your computer (Linux, MacOS, and Windows are supported). Some INAV features include:
+INAV is a Free and Open Source Flight Controller and Autopilot Software System that is **actively developed** with large releases annually, and support releases as needed. INAV has two primary components, the [firmware](https://github.com/iNavFlight/inav/releases/) that runs on the flight controller board, and the [GUI configuration tool](https://github.com/iNavFlight/inav-configurator/releases/) that runs on your computer (Linux, MacOS, and Windows are supported). Some INAV features include:
 
 - Support for a large variety and quantity of inexpensive flight controller (FC) boards and sensors. Many FC's are built specifically for INAV with board layouts intended for easy connection of motors, sensors, servos, etc. intended for use in RC vehicles.
 - Support for a wide variety of flying vehicles including airplanes, gliders, multi-rotors, quadcopters, etc. as well as ground vehicles (cars, tanks) and water vehicles (boats).
