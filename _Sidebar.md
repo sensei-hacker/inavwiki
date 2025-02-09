@@ -5,6 +5,7 @@
 <details>
 <summary>INAV Version Release Notes</summary>
 
+[8.0.0 Release Notes](https://github.com/iNavFlight/inav/wiki/8.0.0-Release-Notes)\
 [7.1.0 Release Notes](https://github.com/iNavFlight/inav/wiki/7.1.0-Release-Notes)\
 [7.0.0 Release Notes](https://github.com/iNavFlight/inav/wiki/7.0.0-Release-Notes)\
 [6.0.0 Release Notes](https://github.com/iNavFlight/inav/wiki/6.0.0-Release-Notes)\
