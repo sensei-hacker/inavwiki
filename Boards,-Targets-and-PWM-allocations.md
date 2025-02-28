@@ -24,7 +24,7 @@ Note that the following tables only document PWM outputs that have at least a MO
 
 See project [Cli](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md) and [ESC and servo outputs](https://github.com/iNavFlight/inav/blob/master/docs/ESC%20and%20servo%20outputs.md) documentation.
 
-*List generated 2024-11-18 from the [INAV 8.0.0-RC1 branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
+*List generated 2025-02-28 from the [INAV 8.0.0 branch](https://github.com/iNavFlight/inav/) by [`parse_targets.rb`](assets/parse_targets.rb). Some targets may not be available in official or prior releases.* **E&OE.**
 
 You are strongly advised to check the board documentation as to the suitability of any particular board.
 
@@ -33,6 +33,27 @@ In particular, even though a board is marked as 'DSHOT enabled', there is no gua
 The configurations listed above are those supported by the INAV developers; other configurations may be possible with a custom target. The source tree contains other, unofficial targets that may (or not) work. A full report, including non-release targets may be generated with `parse_targets.rb --all`.
 
 Note also that due to the complexity of output options available in INAV, dynamic resource allocation is not available. Paweł Spychalski has published a [video](https://www.youtube.com/watch?v=v4R-pnO4srU) explaining why resource allocation is not supported by INAV; [see also #1154](https://github.com/iNavFlight/inav/issues/1145)
+
+## Board: AETH743Basic
+
+Board is DSHOT enabled.
+
+### Target: AETH743Basic
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
+| 5 | AUTO TIMER 5 |
+| 6 | AUTO TIMER 5 |
+| 7 | AUTO TIMER 4 |
+| 8 | AUTO TIMER 4 |
+| 9 | AUTO TIMER 4 |
+| 10 | AUTO TIMER 4 |
+| 11 | AUTO TIMER 15 |
+| 12 | AUTO TIMER 15 |
 
 ## Board: AIRBOTF4
 
@@ -919,6 +940,23 @@ Board is DSHOT enabled.
 | 3 | MOTOR |
 | 4 | MOTOR |
 
+## Board: GEPRC_TAKER_H743
+
+Board is DSHOT enabled.
+
+### Target: GEPRC_TAKER_H743
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 4 |
+| 7 | AUTO TIMER 8 |
+| 8 | AUTO TIMER 8 |
+
 ## Board: HAKRCF405D
 
 Board is DSHOT enabled.
@@ -984,6 +1022,23 @@ Board is DSHOT enabled.
 | 6 | AUTO TIMER 2 |
 | 7 | AUTO TIMER 4 |
 | 8 | AUTO TIMER 4 |
+
+## Board: HGLRCF405V2
+
+Board is DSHOT enabled.
+
+### Target: HGLRCF405V2
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 8 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 8 |
+| 5 | AUTO TIMER 2 |
+| 6 | AUTO TIMER 1 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
 
 ## Board: HGLRCF722
 
@@ -2190,6 +2245,23 @@ Board is DSHOT enabled.
 | 9 | AUTO TIMER 4 |
 | 10 | AUTO TIMER 4 |
 
+## Board: RADIOLINKF722
+
+Board is DSHOT enabled.
+
+### Target: RADIOLINKF722
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 2 |
+| 2 | AUTO TIMER 2 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 4 |
+| 5 | AUTO TIMER 4 |
+| 6 | AUTO TIMER 3 |
+| 7 | AUTO TIMER 3 |
+| 8 | AUTO TIMER 3 |
+
 ## Board: REVO
 
 Board is DSHOT enabled.
@@ -2273,6 +2345,36 @@ Board is DSHOT enabled.
 | 7 | AUTO TIMER 8 |
 | 8 | AUTO TIMER 8 |
 
+## Board: SEQUREH7
+
+Board is DSHOT enabled.
+
+### Target: SEQUREH7
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 16 |
+| 6 | AUTO TIMER 17 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+
+### Target: SEQUREH7V2
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 3 |
+| 2 | AUTO TIMER 3 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 3 |
+| 5 | AUTO TIMER 16 |
+| 6 | AUTO TIMER 17 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+
 ## Board: SKYSTARSF405HD
 
 Board is DSHOT enabled.
@@ -2296,6 +2398,37 @@ Board is DSHOT enabled.
 | 4 | AUTO TIMER 2 |
 | 5 | AUTO TIMER 3 |
 | 6 | AUTO TIMER 3 |
+
+### Target: SKYSTARSF405AIO
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 4 |
+| 2 | AUTO TIMER 4 |
+| 3 | AUTO TIMER 3 |
+| 4 | AUTO TIMER 2 |
+| 5 | AUTO TIMER 3 |
+| 6 | AUTO TIMER 3 |
+
+## Board: SKYSTARSF405WING
+
+Board is DSHOT enabled.
+
+### Target: SKYSTARSF405WING
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 1 |
+| 2 | AUTO TIMER 8 |
+| 3 | AUTO TIMER 8 |
+| 4 | AUTO TIMER 1 |
+| 5 | AUTO TIMER 1 |
+| 6 | AUTO TIMER 2 |
+| 7 | AUTO TIMER 2 |
+| 8 | AUTO TIMER 2 |
+| 9 | AUTO TIMER 12 |
+| 10 | AUTO TIMER 13 |
+| 11 | AUTO TIMER 4 |
 
 ## Board: SKYSTARSF722HD
 
@@ -2418,6 +2551,19 @@ Board is DSHOT enabled.
 | 5 | AUTO TIMER 2 |
 | 6 | AUTO TIMER 1 |
 | 7 | AUTO TIMER 4 |
+
+## Board: SPEEDYBEEF405AIO
+
+Board is DSHOT enabled.
+
+### Target: SPEEDYBEEF405AIO
+
+| PWM | Usage |
+| --- | ----- |
+| 1 | AUTO TIMER 2 |
+| 2 | AUTO TIMER 2 |
+| 3 | AUTO TIMER 5 |
+| 4 | AUTO TIMER 5 |
 
 ## Board: SPEEDYBEEF405MINI
 
