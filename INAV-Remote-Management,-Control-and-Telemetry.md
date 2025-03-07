@@ -239,6 +239,10 @@ Prior to arming the craft, an automation application can be made "target agnosti
 
 Note. These may not be comprehensive lists, but they are a start.
 
+#### Settings
+
+Various settings will affect navigation responses, for example `nav_wp_enforce_altitude` where waypoints are used and a 3D location is required.
+
 ### Notional Usage
 
 The following may cover a number of "home work" / "undergraduate project" use cases:
