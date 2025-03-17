@@ -136,7 +136,7 @@ INAV’s parameters for fixed wing:
 
 ## NAV POSHOLD - Position hold
 
-MULTIROTOR
+**MULTIROTOR**
 
 For multirotors it will hold 3D position. Altitude is controlled as ALTHOLD mode above - leaving the throttle stick centered will maintain the current altitude.
 You can use your roll and pitch stick to move around. The POSHOLD will be resumed when you center the roll/pitch stick again. HEADING HOLD is now included automatically to achieve 3D stability and it is therefore unwise to add it yourself as well. It is adjustable in the CLI via the parameter 'heading_hold_rate_limit'. The default at the time of writing is heading_hold_rate_limit = 90.
@@ -145,9 +145,9 @@ POSHOLD permits smooth controlled flight and can be modified via the ADVANCED TU
 
  The User Control Mode can be either ATTI or CRUISE:
  
--  ATTI - When the Pitch/Roll sticks are moved, autopilot position control is disengaged. So the multirotor behaves with the freedom of ANGLE mode.
--  CRUISE - The autopilot position control always remains active. So when the Pitch/Roll sticks are moved, the input is transformed from a command 
-   to speed and merged with the current position. To provide more precise 3D position control over the craft. But will feel less fluid than ATTI.
+-  **ATTITUDE** - When the Pitch/Roll sticks are moved, autopilot position control is disengaged. So the multirotor behaves with the freedom of ANGLE mode.
+-  **CRUISE** - The autopilot position control always remains active. So when the Pitch/Roll sticks are moved, the input is transformed from a command 
+   to speed and merged with the current position. To provide more precise 3D position control over the craft. But will feel less fluid than Attitude mode.
 
 A number of other parameters can also be set:
 
@@ -159,7 +159,7 @@ A number of other parameters can also be set:
 - Hover throttle
 
 
-FIXED WING
+**FIXED WING**
 
 For fixed wing it will loiter in circles which radius is defined by the `nav_fw_loiter_radius` variable. The throttle is automatic. The altitude is controlled with the pitch stick (AH).
 
@@ -219,6 +219,16 @@ Turn Smoothing helps to smooth turns during WP missions by switching to a loiter
 (Available from INAV 6.0)
 
 ![](https://user-images.githubusercontent.com/56191411/216628721-034b4864-212d-47c7-89dd-c0f4c012cb0f.png)
+
+> [!NOTE]
+>Besides the waypoint _track angle_ and _accuracy_ settings, there are other setting that will influence the turn accuracy of a fixedwing aircraft in a _Waypoint mission_, _RTH Trackback_ or _Loiter_. It may also be beneficial to adjust these setting for windy conditions or for flying a tighter mission course. These setting can be found in the _Advanced Tuning Tab_ or the _CLI_.
+
+* `nav_wp_radius` [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_wp_radius) - A lower value can be beneficial, however a value around 600 (6m) will allow the plane to commence the turn earlier on a tail wind leg. With less likelihood of it being pushed past or overshooting the turn.
+* `nav_fw_bank_angle` [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_bank_angle) - A higher bank angle will allow a sharper turn. Helping the plane to pull through the corner faster. Practical responsive values are between 45 and 55 degrees.
+* `nav_fw_control_smoothness` [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_control_smoothness) - Lower values can produce a move abrupt banking motion. But will also allow the plane to react faster to the navigation heading commands.
+* `nav_use_fw_yaw_control` [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) - If your plane has a form of yaw control **e.g. Rudder or Differential Thrust**. This setting allows the plane to yaw as well as bank when making a turn. Therefore a lower `nav_fw_bank_angle` should be used, for a more controlled flatter level turn.
+* `nav_fw_cruise_thr` [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_cruise_thr) - Waypoint overshoot is more likely to occur if the plane is holding a higher velocity, especially if it is traveling on a down-wind or lateral leg before the turn. Tuning this setting so your plane will hold an airspeeds between 50 - 70km/h is ideal.
+
 
 ### Multi-Missions
 Multi-missions allows up to 9 missions to be stored in the FC at the same time. It works with missions saved to and loaded from EEPROM rather than missions loaded into the FC by other means. It requires the OSD `MISSION INFO` field be enabled in order to select loaded missions.
