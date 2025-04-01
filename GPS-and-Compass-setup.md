@@ -35,7 +35,7 @@ If your flight controller has an internal magnetometer on the FC, using it will 
 * Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
  Always enable the maximum number of GNSS constellations your hardware will allow. Poor EPV and EPH (Standard deviation of position error) will greatly effect navigation precision. Regardless of having a 3D fix, or what you consider an acceptable number of satellites.
 
-If you decide to omit the use of a compass on a multirotor or VTOL platform, due to space limitations or magnetic interference that can not be overcome. **Be mindful that none of the navigation modes** (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will become operational until a GPS based heading is obtained**.  To accomplish this, start flying the copter in a straight line until -
+**Be mindful that NONE of the navigation modes** (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will become operational until a GPS based heading is obtained**.  To accomplish this, start flying the copter in a straight line until -
 * the OSD Home arrow appears, showing a valid home direction.
 * both the OSD _Heading_ and _Course over Ground_ indicators show a valid heading.
 * keeping both headings closely aligned for a short time.
@@ -44,8 +44,10 @@ As seen in this [video](https://www.youtube.com/watch?v=iopZfH-DdTI)
 
 Only then can the IMU heading data be trusted for _fixed position_ or slow speed navigation. Do not omit any of the above steps or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly when you first setup a multirotor without a compass, just as you would with a compass.
 
-* **Note** : Presently multirotor navigation flight modes (RTH, POSHOLD etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. You can select magnetometer type FAKE if no device is installed. Then proceed to alter your navigation modes. Once done, set Magnetometer type back to NONE for compass-less navigation. **This will be fixed in 7.1.1**..  The same will apply if your flight controller doesn't have a barometer. In this case you will be required to enter `inav_use_gps_no_baro = ON ` in the CLI, and select Barometer type FAKE. Then you can alter the navigation modes. Once done, set the barometer type back to NONE.
-**Be aware. If you don't use a barometer as well as a magnetometer. And your satellite HDOP is greater than 1.3, the copters altitude and position accuracy will be greatly reduced.** 
+>[!NOTE]
+> Prior to 7.1.1, multirotor navigation flight modes (RTH, POSHOLD, WP etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. You can select magnetometer type FAKE if no device is installed. Then proceed to alter your navigation modes. Once done, set magnetometer type back to NONE for compass-less navigation.  
+The same will apply if your flight controller doesn't have a barometer. In this case you will be required to enter `inav_use_gps_no_baro = ON ` in the CLI, prior to 8.0.0. But on later firmware versions, if you chose not to use a barometer as well as a magnetometer. The navigation modes will only appear if magnetometer type = FAKE is set. 
+**This is due to INAV not recommending multirotor navigation without a barometer. Be aware. If you don't use a barometer as well as a magnetometer, and your satellite HDOP is greater than 1.3, the copters altitude and heading accuracy will be greatly reduced. Which can lead to the altitude, heading and position moving around considerably more in Poshold** 
 
 INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
@@ -143,7 +145,8 @@ To acquire the best 3 axis calibration results, **your arm and wrist should move
 * Use a long USB extension lead if its done via connection to the configurator.
 
 The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 as possible. While `magzero_x`  `magzero_y` `magzero_z` can vary. But should never exceed +- 1000 on any axis.  Any dramatic difference indicates a poor calibration. Or too much localized magnetic or electromagnetic interference.
-**Note**: A good calibration may take several attempts. So use the above information as a reference if you attempt to obtain a more precise calibration.
+>[!NOTE] 
+>A good calibration may take several attempts. So use the above information as a reference if you attempt to obtain a more precise calibration.
 
 
 * Perform any tests away of sources of magnetic interference. Domestic appliances or even audio speakers can cause erroneous affects.  Computer monitors may also interfere.
@@ -289,7 +292,7 @@ The M9 can run up to 25 Hz with all four constellations enabled. The M10 is more
 ![update rate](https://github.com/iNavFlight/inav/assets/47995726/a541d4bb-3dca-4813-a3ce-60a067ae67a1)
 
 
-If it is the first time you have connected the GNSS unit, then it can take several minutes for a satellite fix to be obtained. This is the time required to download the Almanac and Ephemeris data. This is perfectly normal. But if it takes longer than 10 minutes. You likely have GNSS RF band interference coming from a hardware source in your model.
+If it is the first time you have connected the GNSS unit, then it can take several minutes for a satellite fix to be obtained. This is the time required to download the Almanac and Ephemeris data. This is perfectly normal. But if it takes longer than 13 minutes. You likely have GNSS RF band interference coming from a hardware source in your model.
 
 **Note:** For the GPS unit to work & pick up satellites it needs an unobstructed view to the sky (so if using indoors, don't expect any satellites to be picked up!)
 
