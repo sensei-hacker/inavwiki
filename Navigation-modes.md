@@ -1,9 +1,9 @@
-**This Wiki page needs updating in regards to renamed CLI variables.**
+**This Wiki page needs updating in regards to renamed CLI variables.** Getting there slowly :)
 
 This page lists and explains all the different navigational flight modes of INAV:
 
 - [NAV ALTHOLD - Altitude hold](#althold---altitude-hold)
-- [NAV POSHOLD - Horizontal position hold](#nav-poshold---Position-hold)
+- [NAV POSHOLD - 3D Position hold](#nav-Poshold---Position-hold)
 - [NAV COURSE HOLD - Course Hold](#nav-course-hold---course-hold)
 - [NAV CRUISE - Course Hold + Altitude Hold](#nav-cruise---course-hold--altitude-hold)
 - [NAV RTH - Return to home](#rth---return-to-home)
@@ -18,20 +18,29 @@ For safety reasons, INAV’s navigation modes can be activated only if:
 - the FC is armed
 
 This applies to enabling the navigation modes in the Configurator as well as at the flying field.
-(For bench tests without(!) propellers you may change “set nav_extra_arming_safety = ON” to “ALLOW_BYPASS” in CLI. Then use yaw right when arming to bypass the checks.)
+(For bench tests without(!) propellers you may change `set nav_extra_arming_safety = ALLOW_BYPASS` in CLI. Then use the RC sticks to [bypass arming checks](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/)
 
-- Flightmodes are self contained. For example: with RTH and WP (Waypoints) it's not necessary to enable angle, althold or mag, it enables what it needs. Read more below in POSHOLD section.
+- Flight modes are self contained. For example: In RTH and WP modes, it is not necessary to enable Angle, Althold or Heading control. It enables what is require for that mode to work correctly. Read more below in POSHOLD section.
 - On fixed wing aircraft, enabling CRUISE, RTH, WP or POSHOLD also enables TURN ASSIST. TURN ASSIST applies elevator and rudder input when the airplane is banked to obtain a coordinated turn.
 
-|             | COURSE HOLD | CRUISE | POSHOLD | WAYPOINT | RTH  | ALTHOLD |
-| ----        | ----        | ----   | ----    | ----     | ---- | ----    |
-| ANGLE       | X           | X      | X       | X        | X    |         |
-| ALTHOLD     |             | X      | X       | X        | X    |         |
-| TURN ASSIST | X           | X      | X       | X        | X    |         |
-| MAG         |             |        |         | X        | X    |         |
-| BARO        |             |        |         | X        | X    | X       |
+In later releases there is some flexibility in what sensors can be used for multicopter and fixedwing navigation. But as a general rule. The more sensors you have enabled, the more precision you will have for navigation.
 
-**Prior to version 2.6 on a fixed wing the motor will stop in all Nav modes except Nav RTH and Nav WP if the throttle is reduced below the Min_Check setting. From version 2.6 this behaviour is controlled using the nav_overrides_motor_stop setting which by default keeps the motor running in all Nav modes.**
+**Legend** :
+
+* **Default** (`X`)
+* **Optional** (`O`) - _Default for Copters, but can be disabled for convenience, with loss of precision. Or Magnetometer can be enable on a fixedwing for greater heading precision._
+
+
+| Active Modifier/Sensor | COURSE HOLD        | CRUISE | POSHOLD | WAYPOINT | RTH  | ALTHOLD | 
+| ----                   | ----               | ----   | ----    | ----     | ---- | ----    |
+| ANGLE                  | X                  | X      | X       | X        | X    |         |
+| ALTHOLD                |                    | X      | X       | X        | X    | X       |
+| TURN ASSIST  - FW      | X                  | X      | X       | X        | X    |         |
+| MAG  -  MC/FW `O`      |                    | X      | X       | X        | X    |         |
+| BARO -  MC/FW `O`      |                    | X      | X       | X        | X    | X       |
+| GNSS                   | X                  | X      | X       | X        | X    |         |
+
+**Prior to version 2.6 on a fixed wing the motor will stop in all Nav modes except Nav RTH and Nav WP if the throttle is reduced below the Min_Check setting. From version 2.6 this behavior is controlled using the setting `nav_overrides_motor_stop`, which by default keeps the motor running in all navigation modes. Specifically, all that can hold altitude.**
 
 - There is a companion [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
 
@@ -121,29 +130,32 @@ for vertical velocity. Too high “inav_w_z_baro_p” will make ALTHOLD nervous,
 ### b) Using ALTHOLD with an airplane (fixed wing, FW):
 **With Fixed Wing models, INAV is not intended to use ALTHOLD controller in anything but ANGLE mode. It should not be used on it's own, or with other modes.**
 
-INAV controls pitch angle and throttle. It assumes that altitude is held (roughly) when pitch angle is zero. If plane has to climb, INAV will also increase throttle. If plane has to dive, INAV will reduce throttle and glide. The strength of this mixing is controlled by “nav_fw_pitch2thr”.
-Trim the aircraft and set Fixed Wing Level Trim in such a way that your plane is flying level both in "MANUAL" and in "ANGLE", when you don't touch the sticks.
+INAV controls pitch angle and throttle. It assumes that altitude is held (roughly) when pitch angle is zero. If plane has to climb, INAV will also increase throttle. If plane has to dive, INAV will reduce throttle and glide. The strength of this mixing is controlled by `nav_fw_pitch2thr`.
+Trim the aircraft and set _Fixed Wing Level Trim_ in such a way that your plane is flying level both in "MANUAL" and in "ANGLE", when not touching the sticks.
 
-INAV’s parameters for fixed wing:
-- set nav_fw_cruise_thr = 1400  # cruise throttle
-- set nav_fw_min_thr = 1200  # minimum throttle
-- set nav_fw_max_thr = 1700  # maximum throttle
-- set nav_fw_bank_angle = 20
-- set nav_fw_climb_angle = 20
-- set nav_fw_dive_angle = 15
-- set nav_fw_pitch2thr = 10  # pitch to throttle
+Parameters for fixed wing:
+- set nav_fw_cruise_thr = 1450  - cruise throttle
+- set nav_fw_min_thr = 1200  - minimum throttle
+- set nav_fw_max_thr = 1750  - maximum throttle
+- set nav_fw_bank_angle = 45
+- set nav_fw_climb_angle = 25
+- set nav_fw_dive_angle = 18
+- set nav_fw_pitch2thr = 11  - pitch to throttle
 - set nav_fw_loiter_radius = 5000
 
 ## NAV POSHOLD - Position hold
 
 **MULTIROTOR**
 
-For multirotors it will hold 3D position. Altitude is controlled as ALTHOLD mode above - leaving the throttle stick centered will maintain the current altitude.
-You can use your roll and pitch stick to move around. The POSHOLD will be resumed when you center the roll/pitch stick again. HEADING HOLD is now included automatically to achieve 3D stability and it is therefore unwise to add it yourself as well. It is adjustable in the CLI via the parameter 'heading_hold_rate_limit'. The default at the time of writing is heading_hold_rate_limit = 90.
+A Multirotor will hold 3D position. Altitude is controlled by the ALTHOLD mode, which uses the Barometer, GNSS altitude and the Accelerometer. And that together with the gyro based HEADING HOLD that is updated from the magnetometer or GNSS Course over Ground (no compass), to achieve full 3D position control. 
 
-POSHOLD permits smooth controlled flight and can be modified via the ADVANCED TUNING TAB under the heading Multirotor Navigation Settings
+If the throttle stick is increased or decreased, the copters altitude will either climb or descend until you center the throttle stick, then it will hold the current altitude. This should be tuned for your hardware, by the settings `nav_mc_hover_thr` -  `nav_mc_althold_throttle` - `nav_manual_climb_rate`.
 
- The `User Control Mode` can be either **ATTI** or **CRUISE**:
+You can also use the roll or pitch sticks to move the copters location in POSHOLD. Then once you center the roll/pitch sticks again, it will stop and hold the new position. You can also use the Yaw stick to rotate the copter. The speed that rotation occurs, is based on the setting `heading_hold_rate_limit`.
+
+POSHOLD permits smooth controlled flight and can be modified via the _Advanced Tuning Tab_ under the _Multirotor Navigation_ settings.
+
+ The `Nav_User_Control_Mode` can be either **ATTI** or **CRUISE**:
  
 -  **ATTITUDE** - When the Pitch/Roll sticks are moved, autopilot position control is disengaged. So the multirotor behaves with the freedom of ANGLE mode.
 -  **CRUISE** - The autopilot position control always remains active. So when the Pitch/Roll sticks are moved, the input is transformed from a command 
@@ -155,11 +167,10 @@ A number of other parameters can also be set:
 - Max. navigation speed
 - Max. CRUISE speed
 - Multirotor max. banking angle
-- Use mid. throttle for ALTHOLD
-- Hover throttle
 
 
-**FIXED WING** - aka LOITER
+
+**FIXED WING** -  aka **LOITER**
 
 A fixed wing will loiter in a circle, holding altitude, with the throttle automatically controlled. The circles radius is defined by the setting `nav_fw_loiter_radius`. The altitude can be adjusted via the pitch stick if required.
 
@@ -177,22 +188,29 @@ When enabled the craft will try to maintain the current course and compensate fo
 
 **Fixed wing**  
 The flight direction is controlled directly with ROLL stick as usual or with the YAW stick which provides a smoother way to adjust the flight direction.
+The setting `nav_cruise_yaw_rate` adjusts the yaw rate at full stick deflection.
 
 **Multirotor**  
 The heading is adjusted using the YAW stick or the ROLL stick (ROLL stick behaves exactly the same as the YAW stick). Cruise speed is increased by raising the pitch stick with the speed set in proportion to stick deflection up to a maximum limit of `nav_manual_speed`. This speed is maintained after the stick returns to centre. If the multirotor is already moving when Course Hold is selected the current speed will be maintained up to the `nav_manual_speed` limit. Speed is decreased by lowering the pitch stick with the rate of reduction proportional to stick position such that at maximum deflection it should take around 2s to slow to a stop. Position is held when the speed drops below 0.5m/s.
 
-`nav_cruise_yaw_rate` sets the yaw rate at full stick deflection (only applicable for YAW stick control on fixed wing).
 
-If the mode is enabled in conjunction with NAV ALTHOLD the current altitude will also be maintained (CRUISE). Altitude can be adjusted, as usual, via the pitch stick for fixed wing or the throttle stick for multirotor. ANGLE mode is active so the craft will auto level and heading hold is active on a multirotor.
+
+If the mode is enabled in conjunction with NAV ALTHOLD the current altitude will also be maintained, essentially making it CRUISE mode. Altitude can be adjusted as usual, via the pitch stick for a fixed wing or the throttle stick for a multirotor. ANGLE mode is active so the craft will auto level and the heading will also be held on a multirotor.
 
 ## NAV CRUISE - Course Hold + Altitude Hold
 
 Equivalent to the combination of NAV COURSE HOLD and NAV ALTHOLD described above.
 
 ## RTH - Return to home
-RTH will attempt to bring copter/plane to launch position. Launch position is defined as a point where aircraft was armed. RTH will control both position and altitude. You will have to manually control altitude if your aircraft does not have an altitude sensor (barometer).
+RTH will attempt to bring the copter/airplane back to the arming or launch location. RTH will control both position and altitude. 
 
-With default settings RTH will land immediately if you are closer than 5 meters from launch position. If further away it will make sure to have at least 10 meters of altitude, then start going home at 3m/s, and land. It will disarm itself if so configured, otherwise you will have to manually disarm once on the ground.
+**MultiCopter**
+
+With the default settings, if the Copter is farther than 10 meters from the arming location or a Safehome. The copter will climb according to the setting `nav_rth_climb_first` and then fly home. Once it is within 1 meters of the arming location or Safehome. The copter will attempt to land, according to the setting `nav_rth_allow_landing = ALWAYS`. And control the descent speed via the `nav_land` settings. Once on the ground, landing will be detected and the copter will disarm.
+
+**FixedWing**
+
+ A fixedwing uses the same setting to return to home as a copter. But it may be advisable to set `nav_rth_allow_landing = NEVER or FS` instead, if you do not have _fixedwing auto land_ configured. This will allow the airplane to loiter around the arming location until you exit the RTH mode and take-over control again.
 
 There are many different modes for Altitude, see the [RTH mode page](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home#rth-altitude-control-modes) for details.
 
