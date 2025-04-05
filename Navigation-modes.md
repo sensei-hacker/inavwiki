@@ -1,4 +1,4 @@
-**This Wiki page needs updating in regards to renamed CLI variables.** Getting there slowly :)
+**This Wiki page needs updating in regards to renamed CLI variables**
 
 This page lists and explains all the different navigational flight modes of INAV:
 
@@ -11,17 +11,20 @@ This page lists and explains all the different navigational flight modes of INAV
 - [WP PLANNER - On the fly waypoint mission planner](#wp-planner---on-the-fly-waypoint-mission-planner)
 - [GCS NAV - Ground control station](#gcs_nav---ground-control-station)
 
-For safety reasons, INAV’s navigation modes can be activated only if:
-- ACC and MAG (multirotor only) are [calibrated](https://github.com/iNavFlight/inav/wiki/Sensor-calibration) properly
-- a valid 3D GPS fix is available
+For safety reasons, initial setup requires the conditions below to be met before navigation modes will appear in the Configurator modes tab:
+- ACC and MAG are [calibrated](https://github.com/iNavFlight/inav/wiki/Sensor-calibration) properly. Also note other [specifics](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#inav-71-changes) 
+- _GPS for navigation and telemetry_ must be enabled. Along with the GNSS module being allocated to a serial port
 - a valid altitude source is available
-- the FC is armed
 
-This applies to enabling the navigation modes in the Configurator as well as at the flying field.
-(For bench tests without(!) propellers you may change `set nav_extra_arming_safety = ALLOW_BYPASS` in CLI. Then use the RC sticks to [bypass arming checks](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/)
+>[!Note]
+>After the initial setup. Navigation modes will remain viewable in the modes tab for the sake of some flight controllers that do not provide USB power to drive the barometer. This requirement was added to prevent navigation modes from being left out of the DIFF file, if the users saves a DIFF without the flight battery being connected. 
 
-- Flight modes are self contained. For example: In RTH and WP modes, it is not necessary to enable Angle, Althold or Heading control. It enables what is require for that mode to work correctly. Read more below in POSHOLD section.
-- On fixed wing aircraft, enabling CRUISE, RTH, WP or POSHOLD also enables TURN ASSIST. TURN ASSIST applies elevator and rudder input when the airplane is banked to obtain a coordinated turn.
+When it comes to Arming at the flying field or for bench testing. Its not good enough to just meet the requirement of 6 satellites, for what is considered a **valid 3D fix**. This also includes an acceptable level of satellite precision. HDOP or EPH/EPV must be low enough so the software can use it for reliable navigation.
+
+`nav_extra_arming_safety = ALLOW_BYPASS` in active by default. So you can use the RC sticks command to [bypass arming checks](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/). But when doing so, remember your home location will not be saved. So RTH will not work correctly!
+
+- **All multicopter navigation flight modes are self contained**. For example: In RTH, POSHOLD, CRUISE and WP modes, it is not necessary to enable ANGLE, ALTHOLD or Heading control along with the mode you select. The software will enable what is required for that mode to work as it was designed too. 
+- The same applies to fixed wing aircraft. But enabling RTH, LOITER, CRUISE or WP modes, will also enables TURN ASSIST. TURN ASSIST applies elevator and rudder input when the airplane is banked to obtain a coordinated turn.
 
 In later releases there is some flexibility in what sensors can be used for multicopter and fixedwing navigation. But as a general rule. The more sensors you have enabled, the more precision you will have for navigation.
 
@@ -147,7 +150,7 @@ Parameters for fixed wing:
 
 **MULTIROTOR**
 
-A Multirotor will hold 3D position. Altitude is controlled by the ALTHOLD mode, which uses the Barometer, GNSS altitude and the Accelerometer. And that together with the gyro based HEADING HOLD that is updated from the magnetometer or GNSS Course over Ground (no compass), to achieve full 3D position control. 
+The Multirotor will hold 3D position. Altitude is controlled by the ALTHOLD mode, which uses the Barometer, GNSS altitude and the Accelerometer. Together with gyro based HEADING HOLD that is updated from the magnetometer or GNSS Course over Ground (no compass), to achieve **full 3D position** control. 
 
 If the throttle stick is increased or decreased, the copters altitude will either climb or descend until you center the throttle stick, then it will hold the current altitude. This should be tuned for your hardware, by the settings `nav_mc_hover_thr` -  `nav_mc_althold_throttle` - `nav_manual_climb_rate`.
 
