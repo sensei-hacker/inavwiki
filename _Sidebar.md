@@ -121,11 +121,11 @@ DevDocs [Failsafe.md](https://github.com/iNavFlight/inav/blob/master/docs/Failsa
 <details>
 <summary>PID Tuning</summary>
 
+[Navigation PID tuning (MC)](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(MC))\
 [EZ-Tune](https://github.com/iNavFlight/inav/wiki/EZ%E2%80%90TUNE)\
 [PID Attenuation and scaling](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling)\
 [Fixed Wing Tuning for INAV 3.0](https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Tuning-for-INAV-3.0)\
 [Tune INAV PIFF controller for fixedwing](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing)\
-[Navigation PID tuning (MC)](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(MC)\
 DevDocs [Autotune - fixedwing.md](https://github.com/iNavFlight/inav/blob/master/docs/Autotune%20-%20fixedwing.md)\
 DevDocs [INAV PID Controller.md](https://github.com/iNavFlight/inav/blob/master/docs/INAV%20PID%20Controller.md)\
 DevDocs [INAV_Wing_Tuning_Masterclass.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Wing_Tuning_Masterclass.pdf)\
