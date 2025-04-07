@@ -121,6 +121,7 @@ DevDocs [Failsafe.md](https://github.com/iNavFlight/inav/blob/master/docs/Failsa
 <details>
 <summary>PID Tuning</summary>
 
+[Navigation PID tuning (FW)](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(FW))\
 [Navigation PID tuning (MC)](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(MC))\
 [EZ-Tune](https://github.com/iNavFlight/inav/wiki/EZ%E2%80%90TUNE)\
 [PID Attenuation and scaling](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling)\
