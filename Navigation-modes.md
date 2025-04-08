@@ -24,7 +24,7 @@ When it comes to Arming at the flying field or for bench testing. Its not good e
 `nav_extra_arming_safety = ALLOW_BYPASS` in active by default. So you can use the RC sticks command to [bypass arming checks](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/). But when doing so, remember your home location will not be saved. So RTH will not work correctly!
 
 - **All multicopter navigation flight modes are self contained**. For example: In RTH, POSHOLD, CRUISE and WP modes, it is not necessary to enable ANGLE, ALTHOLD or Heading control along with the mode you select. The software will enable what is required for that mode to work as it was designed to. 
-- The same applies to fixed wing aircraft. But enabling RTH, LOITER, CRUISE or WP modes, will also enables TURN ASSIST. TURN ASSIST applies elevator and rudder input when the airplane is banked to obtain a coordinated turn.
+- The same applies to fixed wing aircraft. But enabling RTH, LOITER, CRUISE or WP modes, will also enable TURN ASSIST. TURN ASSIST applies elevator and rudder input when the airplane is banked, to obtain a coordinated turn. [fw_turn_assist_pitch_gain](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_turn_assist_pitch_gain) and [fw_turn_assist_yaw_gain](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_turn_assist_yaw_gain)
 
 In later releases there is some flexibility in what sensors can be used for multicopter and fixedwing navigation. But as a general rule. The more sensors you have enabled, the more precision you will have for navigation.
 
@@ -44,7 +44,7 @@ In later releases there is some flexibility in what sensors can be used for mult
 | GNSS                       | X                  | X      | X       | X        | X    |         
 
 
-**Note:** All INAV parameters for distance, velocity, and acceleration are input in cm, cm/s and cm/s^2.
+
 
 - There is a companion [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
 
@@ -60,7 +60,7 @@ ALTHOLD is not a flight mode in it's own right. It is a modifier which when acti
 >[!Caution]
 >**It is not advisable to use ALTHOLD combine with ACRO or HORIZON modes, on either a multicopter or fixedwing plateform.** 
 ALTHOLD doesn't account for bank angles greater than 90° or inverted maneuvers. The only _independent_ flight mode you should apply ALTHOLD with is ANGLE mode. 
-_However I will go on to say. ALTHOLD can be used by advanced multicopter users, together with ACRO mode. But ONLY if the user understands the importance of maintaining smooth control over the copters attitude._
+_However I will go on to say. ALTHOLD can be used by **advanced multicopter** users, together with ACRO mode. But ONLY if the user understands the importance of maintaining smooth control over the copters attitude._
 
 Altitude is calculated by INAV's vertical position estimator, and is derived from up to four sensors. It is logged to BLACKBOX as `navPos[2]`.
 
@@ -142,7 +142,7 @@ POSHOLD permits smooth controlled flight and can be modified via the _Advanced T
 
 A fixed wing will loiter in a circle, holding altitude, with the throttle automatically controlled. The circles radius is defined by the setting `nav_fw_loiter_radius`. The altitude can be adjusted via the pitch stick if required.
  
-**Please see other factors that will also effect the loiter radius** [below](https://github.com/iNavFlight/inav/wiki/Navigation-modes/_edit#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing)
+**Please see other factors that will also effect the loiter radius** [below](https://github.com/iNavFlight/inav/wiki/Navigation-modes#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing)
 
 ## MC Braking mode - PosHold modifier
  
