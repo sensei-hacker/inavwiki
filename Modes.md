@@ -35,7 +35,7 @@ Scroll down to the [AUXILIARY CONFIGURATION](#AUXILIARY-CONFIGURATION) section f
 - [KILLSWITCH](#killswitch)
 - [LEDLOW](#ledlow)
 - [LOITER CHANGE](#loiter-change-fw) **FW**
-- [MANUAL](#manual-fw) **FW** (PASSTHROUGH v1.8.1 & earlier)
+- [MANUAL](#manual-fw) **FW** 
 - [MC BRAKING](#mc-braking-mc) **MC**
 - [MIXER PROFILE 2](#mixer-profile-2)
 - [MIXER TRANSITION](#mixer-transition)
@@ -49,7 +49,7 @@ Scroll down to the [AUXILIARY CONFIGURATION](#AUXILIARY-CONFIGURATION) section f
 - [SOARING](#soaring-fw) **FW**
 - [SURFACE](#surface)
 - [TELEMETRY](#telemetry)
-- [TURN ASSIST](#turn-assist)
+- [TURN ASSIST](#turn-assist) **FW**
 - [TURTLE](#turtle-mc) **MC**
 - [USER1 & USER2 & USER3 & USER4](#USER)  (aka PinIO)
 - [WAYPOINT PLANNER](#WP-Planner)
@@ -238,6 +238,7 @@ What FC does in MANUAL mode is: Motor mixing, Servo Mixing, Expo settings, Throw
 Used with POSHOLD mode, this mode provides faster manual braking when the pitch stick is released. 
 For this mode to work, it requires `nav_user_control_mode = CRUISE` to be enabled.
 **Use with caution**. This mode can cause temporary runaway with some settings and under some conditions.
+[more details](https://github.com/iNavFlight/inav/wiki/Navigation-modes#mc-braking-mode---poshold-modifier)
 
 ### MIXER PROFILE 2
 
