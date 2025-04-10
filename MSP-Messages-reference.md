@@ -1116,6 +1116,19 @@ These commands originated in Baseflight or were added later in similar ranges.
 
 These are commands originating from the MultiWii project.
 
+### `MSP_STATUS` (100 / 0x64)
+
+*   **Direction:** Out
+*   **Description:** Provides basic flight controller identity information. Not implemented in modern INAV, but used by legacy versions and MultiWii..
+*   **Payload:**
+    | Field | C Type | Size (Bytes) | Units | Description |
+    |---|---|---|---|---|
+	| MultiWii version | uint8_t | 1 | n/a | Scaled version major*100+minor |
+	| Mixer Mode |  uint8_t | 1 | Enumeration | Mixer type |
+	| MSP Version | uint8_t | 1 | n/a | Scaled version major*100+minor |
+	| Platform Capability | uint32_t | | Bitmask of MW capabilities |
+* **Notes:** Obsolete. Listed for legacy compatibility only.
+
 ### `MSP_STATUS` (101 / 0x65)
 
 *   **Direction:** Out
@@ -1302,7 +1315,7 @@ These are commands originating from the MultiWii project.
     | Field | C Type | Size (Bytes) | Description |
     |---|---|---|---|
     | `boxNamesString` | `char[]` | Variable | String containing mode names separated by ';'. Null termination not guaranteed by MSP, relies on payload size. (`serializeBoxNamesReply()`). |
-*   **Notes:** The exact set of names depends on compiled features and configuration.
+*   **Notes:** The exact set of names depends on compiled features and configuration. Due to the size of the payload, it is recommended that [`MSP_BOXIDS`](#msp_boxids-119--0x77) is used instead.
 
 ### `MSP_PIDNAMES` (117 / 0x75)
 
@@ -1799,7 +1812,7 @@ These commands are sent *to* the FC.
 *   **Payload:**
     | Field | C Type | Size (Bytes) | Description |
     |---|---|---|---|
-    | `debug-message` | `char[]` | Variable | `NUL` terminated [debug message](https://github.com/iNavFlight/inav/blob/master/docs/development/serial_printf_debugging.md) text. |
+    | Message Text | `char[]` | Variable | `NUL` terminated [debug message](https://github.com/iNavFlight/inav/blob/master/docs/development/serial_printf_debugging.md) text. |
 
 ### `MSP_DEBUG` (254 / 0xFE)
 
