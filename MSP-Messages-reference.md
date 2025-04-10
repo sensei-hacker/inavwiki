@@ -1795,8 +1795,11 @@ These commands are sent *to* the FC.
 ### `MSP_DEBUGMSG` (253 / 0xFD)
 
 *   **Direction:** Out
-*   **Description:** Retrieves debug messages from the firmware.
-*   **Notes:** Not implemented in INAV `fc_msp.c`.
+*   **Description:** Retrieves debug ("serial printf") messages from the firmware.
+*   **Payload:**
+    | Field | C Type | Size (Bytes) | Description |
+    |---|---|---|---|
+    | `debug-message` | `char[]` | Variable | `NUL` terminated [debug message](https://github.com/iNavFlight/inav/blob/master/docs/development/serial_printf_debugging.md) text. |
 
 ### `MSP_DEBUG` (254 / 0xFE)
 
