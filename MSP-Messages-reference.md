@@ -1112,14 +1112,14 @@ These commands originated in Baseflight or were added later in similar ranges.
 
 ---
 
-## MSPv1 MultiWii Original Commands (101-127, 130)
+## MSPv1 MultiWii Original Commands (100-127, 130)
 
 These are commands originating from the MultiWii project.
 
 ### `MSP_STATUS` (100 / 0x64)
 
 *   **Direction:** Out
-*   **Description:** Provides basic flight controller identity information. Not implemented in modern INAV, but used by legacy versions and MultiWii..
+*   **Description:** Provides basic flight controller identity information. Not implemented in modern INAV, but used by legacy versions and MultiWii.
 *   **Payload:**
     | Field | C Type | Size (Bytes) | Units | Description |
     |---|---|---|---|---|
