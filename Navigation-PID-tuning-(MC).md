@@ -2,7 +2,7 @@
 
 The aim of this page is to separate the tuning of the MC Navigation PIDs from the [Navigation modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes) page. Its goal is also to have MC Nav PID tuning separate from FW Nav PID tuning. To de-clutter and make for easier reading.
 
->[!Note]
+>[!Tip]
 >There is also a companion wiki page [GPS and Compass setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup), that is essential reading beforehand. The _Installation location_, _Setup_ and _Calibration_ of the GNSS/Magnetometer module, to providing the best navigation performance achievable, is of absolute importance.
 Accounting for this detail can make your build a great success, or a disappointment if not done correctly.
 
@@ -39,7 +39,7 @@ _The following settings can be accessed using the Configurator CLI or **Tuning t
 - ALT I `nav_mc_auto_climb_rate` - defines how fast copter will accelerate to reach desired climb rate 
 - VEL P `nav_mc_vel_z_p` - defines how much throttle the copter will add to achieve desired acceleration
 - VEL I  `nav_mc_vel_z_i` - controls compensation for hover throttle (and vertical air movement, thermals). This can essentially be zero if hover throttle is precisely 1500us. Too much VEL I will lead to vertical oscillations, too low VEL I will cause drops or jumps when ALTHOLD is switched on.
-- VEL D `nav_mc_vel_z_d` - acts as a dampener for VEL P and VEL I, will slower the response and reduce oscillations from too high VEL P and VEL I
+- VEL D `nav_mc_vel_z_d` - Acts as a dampener for VEL P and VEL I, to smooth their response and reduce oscillations caused by sensor variations.
 
 If ALT P `nav_mc_pos_z_p` and ALT I `nav_mc_auto_climb_rate` have been set to zero (0) during the PID adjustments, setting ALT P `nav_mc_pos_z_p` to a non-zero value (>100), will have the effect of changing the ALTHOLD altitude using the throttle.   
 The easiest trial and error testing method is done through the INAV OSD while in the field. Or by the _Adjustments_ inflight tuning while in the air.
@@ -81,7 +81,7 @@ These weights should only be adjusted if you have a firm grasp of their relation
 - Poor GNSS satellite accuracy and EPH position data - _Ensure you have a HDOP less than 1.2 for best precision. And never above 1.8._
 - Main stabilization **PID_CD** and **LEVEL** is poorly tuned. Or the Copter has a low thrust to weight ratio - _Tune main PID's first._
 - Poorly Installed, Aligned or Calibrated magnetometer (compass) - _If a magnetometer is used, read [here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#setting-up-the-compass-alignment) to provide the best results._
-- Insufficient POS_P and/or VEL_P, VEL_I, VEL_D- _Only if all the previous conditions are satisfied._
+- Insufficient POS_P and/or VEL_P, VEL_I, VEL_D - _Only if all the previous conditions are satisfied._
 - Multicopters velocity or bank angle is too high - _Lowering the `nav_mc_bank_angle` and `nav_auto_speed` will help to acquire the target position, especially when windy._
 
 **Keep in mind that tuning cannot fix:**
@@ -195,9 +195,9 @@ You can however use POSHOLD at lower altitudes, together with the rangefinder su
 
 ![modes-](https://github.com/user-attachments/assets/6ccdfa2d-c049-4839-9213-26a2a1292876)
 
-Only enable `inav_allow_dead_reckoning` if you do not have a GNSS module, for outside flight. Of if you do have one, and are flying indoors, when obtaining a GNSS 3D fix is highly unlikely,
+Only enable `inav_allow_dead_reckoning` if you do not have a GNSS module, for outside flight. Of if you do have one, and are flying indoors, with a slim chance of obtaining a GNSS 3D fix.
 
-_The most important thing to keep in mind. Is do not arm with rangefinder surface mode active. It can have undesirable effects. Always arm in ANGLE mode._
+_Do not arm the FC with rangefinder surface mode active. It can have undesirable results. Always arm in ANGLE mode._
 
 **Angle limits:**
 
@@ -205,7 +205,7 @@ The copters bank angle in Surface mode is limited by -
 - `max_angle_inclination_rll`
 - `max_angle_inclination_pit`  
 
-It is not advisable to increase these setting beyond 35 degrees, due to limit FOV both these sensors have.  
+It is not advisable to increase these setting beyond 38 degrees, due to the limited FOV both these sensors have.  
 
 This also applies to -
 - `nav_mc_bank_angle`  
@@ -229,8 +229,7 @@ _The Rangefinder (surface) and Optical-flow (flow) gains should only be tuned af
 - `inav_w_xy_flow_v`- Optical flow sensor weight measurement for XY velocity. Also effected by light intensity and the texture of the terrain.
 - `inav_allow_dead_reckoning` - Defines if INAV will dead-reckon over short GPS outages. May also be useful for indoor Optical Flow navigation
 
-Both terrain following altitude and optical flow offer more precise altiude and position accuracy compared to GNSS and
-Barometer. So it is possible to tune PosXY, VelXY, PosZ and VelZ PIDs higher than defaults.
+Both Lidar and optical flow offer more precise altitude and position accuracy, when comparing to a GNSS module and Barometer. So it's possible to tune Pos_XY, Vel_XY, Pos_Z and Vel_Z PIDs higher than defaults.
 Here are PID settings that were tested with success:
 - `nav_mc_vel_z_p = 150`
 - `nav_mc_vel_z_i = 240`
@@ -240,10 +239,10 @@ Here are PID settings that were tested with success:
 - `nav_mc_vel_xy_i = 40`
 - `nav_mc_vel_xy_d = 60`
 
-However keep in mind these setting should be tuned to optimally support all available sensors, unless you only intend to use Rangefinder / Optical-flow, and not a GNSS / Barometer.
+**However keep in mind these setting should be tuned to optimally support all available sensors, unless you only intend to use Rangefinder / Optical-flow, and not GNSS / Barometer.**
 
 >[!Note]
-> The manufacture specification for their rangefinder modules, should always be taken into account.  
+> The manufacturer specifications for their rangefinder modules should always be taken into account.  
 Optical flow sensors have a greater range limitation, than the Lidar altitude sensor they are coupled with. And most have a limited speed of operation around 7m/s max. With a required light intensity for reliable operation, greater than 60 Lux.  
-So you will often find the copters ability to hold position is lost before the Lidar sensors ability to hold altitude is.
+So you will often find the copters ability to hold position is lost before the Lidar sensors looses its ability to hold altitude.
 
