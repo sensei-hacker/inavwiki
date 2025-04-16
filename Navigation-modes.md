@@ -14,7 +14,7 @@ This page lists and explains all the different navigational flight modes of INAV
 For safety reasons, initial setup requires the conditions below to be met before navigation modes will appear in the Configurator modes tab:
 - ACC and MAG are [calibrated](https://github.com/iNavFlight/inav/wiki/Sensor-calibration) properly. Also note other [specifics](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#inav-71-changes) 
 - _GPS for navigation and telemetry_ must be enabled. Along with the GNSS module being allocated to a serial port
-- a valid altitude source is available
+- A valid altitude source is available
 
 >[!Note]
 >After the initial setup. Navigation modes will remain viewable in the modes tab for the sake of some flight controllers that do not provide USB power to drive the barometer. This requirement was added to prevent navigation modes from being left out of the DIFF file, if the users saves a DIFF without the flight battery being connected. 
@@ -30,20 +30,18 @@ In later releases there is some flexibility in what sensors can be used for mult
 
 ### Navigation mode assistance:
 
-* **Default** (`X`)
+* **Default** (`✓`)
 * **Optional** (`O`) - _Default for Copters, but can be disabled for convenience, with loss of precision. Or a Magnetometer can be enable on a fixedwing to provide greater heading precision._
 
 
-|  Active Modifier/Sensor    | COURSE HOLD        | CRUISE | POSHOLD | WAYPOINT | RTH  |  
-| ----                       | ----               | ----   | ----    | ----     | ---- | 
-| ANGLE                      | X                  | X      | X       | X        | X    |         
-| ALTHOLD                    |                    | X      | X       | X        | X    |        
-| TURN ASSIST  - FW          | X                  | X      | X       | X        | X    |         
-| MAG  - MC `X O`/ FW `O`    |                    | X      | X       | X        | X    |         
-| BARO - MC/FW `X`/ MC/FW `O`|                    | X      | X       | X        | X    | 
-| GNSS                       | X                  | X      | X       | X        | X    |         
-
-
+|  Active Modifier/Sensor     | COURSE HOLD | CRUISE | POSHOLD | WAYPOINT | RTH  |  
+| ----                        | ----        | ----   | ----    | ----     | ---- | 
+| ANGLE                       | ✓           | ✓      | ✓      | ✓        | ✓   |         
+| ALTHOLD                     |             | ✓      | ✓      | ✓        | ✓   |        
+| TURN ASSIST  - FW only      | ✓           | ✓      | ✓      | ✓        | ✓   |         
+| MAG  - MC `✓ O`/ FW `O`     |             | ✓      | ✓      | ✓        | ✓   |         
+| BARO - MC/FW `✓`/ MC/FW `O` |             | ✓      | ✓      | ✓        | ✓   | 
+| GNSS                        | ✓           | ✓      | ✓      | ✓        | ✓   |         
 
 
 - There is a companion [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
@@ -59,7 +57,7 @@ ALTHOLD is not a flight mode in it's own right. It is a modifier which when acti
 
 >[!Caution]
 >**It is not advisable to use ALTHOLD combine with ACRO or HORIZON modes, on either a multicopter or fixedwing plateform.** 
-ALTHOLD doesn't account for bank angles greater than 90° or inverted maneuvers. The only _independent_ flight mode you should apply ALTHOLD with is ANGLE mode. 
+ALTHOLD doesn't account for bank angles greater than 90° or inverted maneuvers. The only _independent_ flight mode you should apply ALTHOLD with is ANGLE mode.   
 _However I will go on to say. ALTHOLD can be used by **advanced multicopter** users, together with ACRO mode. But ONLY if the user understands the importance of maintaining smooth control over the copters attitude._
 
 Altitude is calculated by INAV's vertical position estimator, and is derived from up to four sensors. It is logged to BLACKBOX as `navPos[2]`.
@@ -70,7 +68,7 @@ Altitude is calculated by INAV's vertical position estimator, and is derived fro
 
 When just using ALTHOLD on a multicopter, it requires a barometer at minimum, to maintain a fixed altitude.
 
-Activating AIRMODE along with ANGLE mode can provide extra stability for a multicopter in a fast descent. But it's advisable to disable AIRMODE before landing, if your copter has a very high thrust to weight ratio. Otherwise it may flip-over from i-term windup.
+Activating AIRMODE along with ANGLE mode can provide extra stability for a multicopter in a fast descent. But it's advisable to disable AIRMODE before landing, if your copter has a very high thrust to weight ratio. Otherwise it may flip-over from i-term windup, as it touches down.
 
 **Climb rate in ALTHOLD mode:**
 The throttle stick can be used to alter the climb or sink up to a predetermined maximum [nav_mc_manual_climb_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_manual_climb_rate).
@@ -82,10 +80,10 @@ This setting provides three means for the ALTHOLD throttle stick position to be 
 
 When you enable ALTHOLD, INAV sends the [nav_mc_hover_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_hover_thr) value to the motors as the starting point for the altitude control loop. You should configure this setting to your copter's hover throttle value, if it doesn't hover close to the default value of 1500us. Otherwise it will begin to ascend or descend.
 
-`nav_mc_hover_thr` should be set to an approximate value within 2% of what the copter requires to maintain a fixed hover. The altitude controller can only account for small drift. The primary reason for this setting is to provide the software with a general baseline for hover. Determined by your builds thrust to weight ratio.
+`nav_mc_hover_thr` should be set to an approximate value within 2% of what the copter requires to maintain a fixed hover. The altitude controller can only account for small drift. The primary reason for this setting is to provide the software with a general baseline for hover. Determined by your builds thrust to weight ratio.   
 To acquire your copters hover throttle value. You should do your best to hold a fixed hover position while in ANGLE mode. Then reference that throttle value from a log or the OSD. Or even the LUA telemetry on your radio's display. Once you have landed, enter that value into `nav_mc_hover_thr`.
 
-Because battery voltage reduces throughout the flight; it is beneficial to enable `feature THR_VBAT_COMP`. Which can help compensate for the thrust reduction, and assist altitude control. 
+Because battery voltage reduces throughout the flight; it is beneficial to enable [feature THR_VBAT_COMP](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md#automatic-throttle-compensation-based-on-battery-voltage). Which can help compensate for the thrust reduction, and assist altitude control. 
 
 The [alt_hold_deadband](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#alt_hold_deadband) provides a deadband region either side of `nav_mc_althold_throttle` hover stick position, like an expo, to prevent unwanted altitude change occurring. 
 If ALTHOLD is activated at zero throttle INAV will account for deadband and move the neutral "zero climb rate" position a little bit up to make sure you are able to descend.
@@ -163,8 +161,8 @@ The `Nav_User_Control_Mode` can be either **ATTI** or **CRUISE**:
 -  **CRUISE** - The autopilot position control **always** remains active. So when the Pitch/Roll sticks are moved, the input is transformed from a command to speed and merged with the current position. To provide more precise 3D position control over the craft. But it may feel a little more vague than Attitude mode, if the satellite precision is poor. **i.e.** Low Sat count and Higher HDOP
 
 This makes CRUISE ideal for monitoring the stick release velocity of the copter, as well peak braking, slowdown and stopping positions.
-However it isn't always possible to a have precise GNSS heading, position and velocity. Especially when the copter is tilting to travel/brake or banking to turn. Due to this issue, CRUISE mode can be a bit jerky in its motion, or even temporally run away for a few meters, when it should be braking. So if you want smoother consistent flight in POSHOLD. ATTITUDE should be chosen over CRUISE.
-**ATTITUDE and CRUISE only use `nav_mc_bank_angle` as the standard deceleration angle in all other NAV modes.**
+However it isn't always possible to a have precise GNSS heading, position and velocity. Especially when the copter is tilting to travel/brake or banking to turn. Due to this issue, CRUISE mode can be a bit jerky in its motion, or even temporally run away for a few meters, when it should be braking. So if you want smoother consistent flight in POSHOLD. ATTITUDE should be chosen over CRUISE.   
+**ATTITUDE and CRUISE only use `nav_mc_bank_angle` as the standard deceleration angle and [nav_mc_pos_deceleration_time](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_pos_deceleration_time) in all other NAV modes.**
 
 
 ## NAV COURSE HOLD - Course Hold
@@ -225,11 +223,11 @@ Turn Smoothing helps to smooth turns during WP missions by switching to a loiter
 > [!NOTE]
 >Besides the waypoint _track angle_ and _accuracy_ settings, there are other setting that will influence the turn accuracy of a fixedwing aircraft in a _Waypoint mission_, _RTH Trackback_ or _Loiter_. It may also be beneficial to adjust these setting for windy conditions or for flying a tighter mission course. These setting can be found in the _Advanced Tuning Tab_ or the _CLI_.
 
-* `nav_wp_radius` [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_wp_radius) - A lower value can be beneficial, however a value around 600 (6m) will allow the plane to commence the turn earlier on a tail wind leg. With less likelihood of it being pushed past or overshooting the turn.
-* `nav_fw_bank_angle` [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_bank_angle) - A higher bank angle will allow a sharper turn. Helping the plane to pull through the corner faster. Practical responsive values are between 45 and 55 degrees.
-* `nav_fw_control_smoothness` [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_control_smoothness) - Lower values can produce a more abrupt banking motion. But will also allow the plane to react faster to navigation heading controller commands.
-* `nav_use_fw_yaw_control` [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) - If your plane has a form of yaw control **e.g. Rudder or Differential Thrust**. This setting allows the plane to yaw as well as bank when making a turn. Therefore a lower `nav_fw_bank_angle` should be used, for a more controlled flatter level turn.
-* `nav_fw_cruise_thr` [CLI](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_cruise_thr) - Waypoint overshoot is more likely to occur if the plane is holding a higher velocity, especially if it is traveling on a down-wind or lateral leg before the turn. Tuning this setting so your plane will hold an airspeeds between 50 - 70km/h is ideal.
+* [nav_wp_radius](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_wp_radius) - A lower value can be beneficial, however a value around 600 (6m) will allow the plane to commence the turn earlier on a tail wind leg. With less likelihood of it being pushed past or overshooting the turn.
+* [nav_fw_bank_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_bank_angle) - A higher bank angle will allow a sharper turn. Helping the plane to pull through the corner faster. Practical responsive values are between 45° to 55°.
+* [nav_fw_control_smoothness](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_control_smoothness) - Lower values can produce a more abrupt banking motion. But will also allow the plane to react faster to navigation heading controller commands.
+* [nav_use_fw_yaw_control](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) - If your plane has a form of yaw control **e.g. Rudder or Differential Thrust**. This setting allows the plane to yaw as well as bank when making a turn. Therefore a lower `nav_fw_bank_angle` (35°) should be used, for a flatter turn.
+* [nav_fw_cruise_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_cruise_thr) - Waypoint overshoot is more likely to occur if the plane is holding a higher velocity, especially if it is traveling on a down-wind or lateral leg before the turn. Tuning this setting so your plane will hold an airspeeds between 50 - 70km/h is ideal.
 
 
 ### Multi-Missions
