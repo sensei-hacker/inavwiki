@@ -29,7 +29,7 @@ If you want to use an external magnetometer other than the one on your GNSS modu
 
 If your flight controller has an internal magnetometer on the FC, using it will likely to have poor results due to magnetic interference (not recommended).
 
- ## INAV 7.1 changes
+ ## Multi-rotor without a compass
 
 **From the release of INAV 7.1 the use of a compass is no longer mandatory for multirotor navigation as it once was. BUT it is still recommended for the best navigation performance, when it comes to maintaining a fixed position for an _extended period of time_, without heading drift.** e.g. in Poshold. Or taking off and immediately starting a Waypoint mission.
 * Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
