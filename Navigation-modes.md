@@ -12,7 +12,7 @@ This page lists and explains all the different navigational flight modes of INAV
 - [GCS NAV - Ground control station](#gcs_nav---ground-control-station)
 
 For safety reasons, initial setup requires the conditions below to be met before navigation modes will appear in the Configurator modes tab:
-- ACC and MAG are [calibrated](https://github.com/iNavFlight/inav/wiki/Sensor-calibration) properly. Also note other [specifics](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#inav-71-changes) 
+- ACC and MAG are [calibrated](https://github.com/iNavFlight/inav/wiki/Sensor-calibration) properly. Also note other [specifics](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#multi-rotor-without-a-compass) 
 - _GPS for navigation and telemetry_ must be enabled. Along with the GNSS module being allocated to a serial port
 - A valid altitude source is available
 
@@ -225,7 +225,7 @@ Turn Smoothing helps to smooth turns during WP missions by switching to a loiter
 
 * [nav_wp_radius](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_wp_radius) - A lower value can be beneficial, however a value around 600 (6m) will allow the plane to commence the turn earlier on a tail wind leg. With less likelihood of it being pushed past or overshooting the turn.
 * [nav_fw_bank_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_bank_angle) - A higher bank angle will allow a sharper turn. Helping the plane to pull through the corner faster. Practical responsive values are between 45° to 55°.
-* [nav_fw_control_smoothness](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_control_smoothness) - Lower values can produce a more abrupt banking motion. But will also allow the plane to react faster to navigation heading controller commands.
+* [nav_fw_control_smoothness](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_control_smoothness) - Lower values can produce a more abrupt banking motion. But will also allow the plane to react faster to navigation course and heading commands.
 * [nav_use_fw_yaw_control](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) - If your plane has a form of yaw control **e.g. Rudder or Differential Thrust**. This setting allows the plane to yaw as well as bank when making a turn. Therefore a lower `nav_fw_bank_angle` (35°) should be used, for a flatter turn.
 * [nav_fw_cruise_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_cruise_thr) - Waypoint overshoot is more likely to occur if the plane is holding a higher velocity, especially if it is traveling on a down-wind or lateral leg before the turn. Tuning this setting so your plane will hold an airspeeds between 50 - 70km/h is ideal.
 
