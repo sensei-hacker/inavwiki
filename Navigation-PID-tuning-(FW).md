@@ -11,7 +11,8 @@ Accounting for this detail can make your build a greater success, especially whe
 - [RANGE-FINDER TUNING](#Tuning-Rangefinder)
 
 >[!Caution] 
->**The Main Stabilization _PID_FF_ and _LEVEL_ controllers MUST be tuned well before attempting to tune the navigation controllers. This is because the output from the navigation controllers are place into action through the main stabilization PID controllers. With incorrect or over-tuned FeedForward, noticeable impacting navigation performance.**
+>**The Main Stabilization _PID_FF_ and _LEVEL_ controllers MUST be tuned well before attempting to tune the navigation controllers. This is because the output from the navigation controllers are place into action through the main stabilization PID controllers. With incorrect or over-tuned FeedForward, noticeable impacting navigation performance.   
+Take note of how the Rate/FF [Auto-tune](https://github.com/iNavFlight/inav/wiki/Modes#autotune-fw) process is performed.**
 
 
 ## Tuning Altitude Controller - Z axis:
@@ -58,33 +59,38 @@ _The following settings can be accessed using the Configurator **Tuning tab** an
 - Main stabilization **PID_FF** and **LEVEL** is poorly tuned. Or incorrectly set control surface throws or C.G.- _Setup hardware and Tune main PID's first._
 - Poorly Installed, Aligned or Calibrated magnetometer (compass) - _If a magnetometer is used, read [here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#setting-up-the-compass-alignment) to provide the best results._
 - Insufficient POS_XY_P, POS_XY_I or POS_HDG_P if [nav_use_fw_yaw_control ](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) = ON - _Only if all the previous conditions are satisfied._
-- These [settings](https://github.com/iNavFlight/inav/wiki/Navigation-modes#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing) can also influence fixed position tracking.
 - High accelerometer vibrations from the motor(s) or prop(s). - _Can lead to attitude and heading reference drift._
 
 **Make sure these hardware conditions are addressed first, before you even attempt to tune the navigation POS, VEL and HEADING PID's.**
 
+### Horizontal POS + HEADING PID Tuning: 
+
 Tuning of an airplanes XY axis controllers should be done on a day no colder than 5°C, for the best outcome. This is due to the effect temperature has on the IMU.
 
-### Horizontal POS + HEADING PID Tuning: 
+_When tuning the Nav XY controllers, you require a means to reference the WP markers, to _real-time_ heading and turning positions.    
+This is best done by logging flight controller data. And gauging the changes with one or all of the following software: [MWP Tools](https://github.com/stronnag/mwptools/releases) , [INAV Blackbox Explorer](https://github.com/iNavFlight/blackbox-log-viewer/releases) or [Blackbox Tools](https://github.com/iNavFlight/blackbox-tools/releases/tag/v8.0.0)_
+
  _The following settings can be accessed using the Configurator **Tuning tab** and **Advanced Tuning tab**. Or the CLI and CMS OSD stick menu's._
 
 
 **Position XY gains:**
-- `nav_fw_pos_xy_p` - Controls how fast the airplane will attempt to use the roll and yaw axis to align its trajectory with the target position. 
-- `nav_fw_pos_xy_i` - Increasing this gain can compensation for trajectory drift, caused by the wind. But should be used sparingly.
-- `nav_fw_pos_xy_d` - Increasing this gain can help smooth the P gain response. But if increased too much, it can cause over-shooting of the position trajectory alignment. 
-- `nav_fw_cruise_thr` - Should be set to the airplanes optimal cruise speed. While keeping the average airspeed less than 75km/h, to obtain the highest target position accuracy. 
+- `nav_fw_pos_xy_p` - Controls how fast the airplane will attempt to use the roll and yaw axis to align its trajectory with the target position. This includes the strength it will apply to turning and re-aligning with the track after a turn.
+- `nav_fw_pos_xy_i` - Increasing this gain can compensation for trajectory drift, caused by the wind. But should be used sparingly on elevon aircraft.
+- `nav_fw_pos_xy_d` - Increasing this gain can help smooth the P gain response. But if increased too much, it can cause over-shooting of the target trajectory alignment. 
+- `nav_fw_cruise_thr` - Should be set to the airplanes optimal cruise speed. Keeping the average airspeed less than 75km/h, will obtain the highest target position accuracy. 
 
 
 **Heading gains:**
-- `nav_use_fw_yaw_control`- When enabled, it allows the use of the heading controller settings below, for a fixedwing.
-- `nav_fw_pos_hdg_p` - Sets the strength that the heading trajectory target is tracked.
+- `nav_fw_heading_p` - Sets the strength the IMU heading target will be held. Heading data is updated from the GNSS course and/or mag bearing. 
+- `nav_use_fw_yaw_control`- When enabled, it allows the use of the yaw heading controller settings below, for a fixedwing. It can be used with elevon aircraft via turn assist, but will not experience the full benefits of an airplane that has yaw control.
+- `nav_fw_pos_hdg_p` - Sets the strength that the heading trajectory target is tracking. 
 - `nav_fw_pos_hdg_i` - When used sparingly, it can filter-out heading target drift.
 - `nav_fw_pos_hdg_d` - Can smooth abrupt heading irregularity. But better suited to aircraft that have a means of yaw control.
 - `heading_hold_rate_limit` - Limits the yaw induced rotation rate that HEADING_HOLD controller can request from PID controller inner
 loop. It's independent from manual yaw rate and used only when HEADING_HOLD NAV flight modes are in use.
+- These [settings](https://github.com/iNavFlight/inav/wiki/Navigation-modes#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing) can also influence WP tracking accuracy.
 
-_In my experience. Enabling the above heading controller combined with an airplane that has yaw control. i.e. A Rudder, Differential thrust or Vectored thrust, **when those yaw gains are tuned**. Will always provide the smoothest and most accurate turn response in a waypoint mission._
+_In my experience. Enabling the `nav_fw_pos_hdg` controller combined with an airplane that has yaw control. i.e. A Rudder, Differential thrust or Vectored thrust, **when those yaw gains are tuned**. Always provides the most accurate turn response in a waypoint mission or RTH Trackback._
 
 ## Tuning Rangefinder:
 
