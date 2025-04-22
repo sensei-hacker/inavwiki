@@ -115,24 +115,34 @@ The new value isn't saved to EEPROM, you have to save it manually using either t
 Pre INAV 7.0, this tuning mode was called AUTO LEVEL
 
 ### AUTOTUNE (FW)
-_Tuning mode_
 
-For detailed description go to https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing
+AUTOTUNE will only attempt to tune the Roll and Pitch **FeedForward** and **Rates** on a fixed-wing airplane.
 
-AUTOTUNE will attempt to tune the Roll and Pitch FeedForward and Rates on a fixed-wing airplane.
+Autotune will monitor the behavior of the airplane when you're flying, and attempt to set the FeedForward gain and Rate of rotation on each axis. To provide the optimal stabilization and navigation performance for your aircraft.
 
-Autotune will monitor the behavior of the airplane when your flying, and attempt to set the FeedForward gain and Rate of rotation on each axis, to provide the optimal performance for your aircraft.
+>[!Note] 
+>Auto Tune should ideally be performed at the approximate airspeed the airplane will cruise at.  
+I know this isn't always and easy thing to accomplish, especially when performing pitch climb maneuvers. But getting this correct can make a considerable difference to overall flight performance.
 
-How to use:
+**How to use:**
 
-Take off. Any non-navigation flight mode will do, ACRO is the best option. Enable AUTOTUNE mode. Do hard maneuvers on each axis separately. **For roll -** bank hard left/hard right or allow the aircraft to complete a roll at full stick deflection, both left and right. 
-**For pitch -** fast climb, steep dive or perform a forward and inverted loop. Initially you probably will notice very soft response - make sure your flying field is big enough for slow turns.
+Enable AUTOTUNE mode in any non-navigation flight mode. ACRO is the best option.  
+Do hard maneuvers on each axis separately. Applying **full stick** deflection in the process. _The more maneuvers you do, the better results AUTOTUNE will provide, up to a point._
+Make sure you provide yourself enough altitude and flight area to perform he task.
 
-The more maneuvers you will do - the better results AUTOTUNE will be able to reach.
+- **For ROLL -** From level, bank **hard** left, then **hard** right as far as you feel confident, then repeat. _The farther and faster you bank, the better_. Initially you may notice a soft/slow response, if the Rates and Feedforward where far from correct.   
+`Or for an even better tune snap-shot in ACRO. If you and your airplane are capable of completing a full 360° roll at full stick deflection, both left and right. This should complete the auto tune process in only one, or at the most two attempts.`
+
+- **For PITCH -** When flying level, pull back full stick, so the airplanes nose climbs rapidly for a moment. Then do the same for down, applying full pitch down stick for a moment, then repeat. Initially you may notice a soft/slow response, if the Rates and Feedforward where far from correct.      
+`Or for an even better tune snap-shot in ACRO. If you and your airplane are capable of completing a full 360° loop. By applying higher throttle at the moment just before you pull full up elevator stick. This should complete the auto tune process in only one, or at the most two attempts.`
+  
 
 AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable, AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse - FF gains and Rates won't be changed.
 
 Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
+
+For detailed description go to https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing
+
 
 ### BEEPER
 
