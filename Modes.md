@@ -1,7 +1,7 @@
 # Introduction
 Flight Modes in INAV can be categorized into two groups:
-* **Navigation-Modes** which involve GPS and other positional sensors. Refer to the [Navigation-Modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes) page for more information.
-* **Non-Navigation-Modes** perform actions that may rely on a sensor like the gyro or no sensor at all. See the mode descriptions below.
+* **Navigation-Modes** which involve GNSS and other positional sensors. Refer to the [Navigation-Modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes) page for more information.
+* **Non-Navigation-Modes** perform actions that may only rely on the accelerometer and gyro, or no sensor at all. See the mode descriptions below.
 
 Some modes are only available to certain craft types. This is indicated by:
 * **FW** = Fixed Wing
@@ -103,7 +103,8 @@ Activates the flight controller to be ready for flight.
 
 ### ALTHOLD
 
-Maintain the altitude of the aircraft a the moment you activate this mode is fixed. Find more information [here](https://github.com/iNavFlight/inav/wiki/Navigation-modes#althold---altitude-hold).
+Will maintain the altitude of the aircraft the moment you activate this Modifier with a _non navigation_ mode - ANGLE.  
+All navigation modes already have ALTHOLD enabled by default. For more information see [here](https://github.com/iNavFlight/inav/wiki/Navigation-modes#navigation-mode-assistance).
 
 ### AUTO LEVEL TRIM (FW)
 _Tuning mode_
@@ -130,11 +131,14 @@ Enable AUTOTUNE mode in any non-navigation flight mode. ACRO is the best option.
 Do hard maneuvers on each axis separately. Applying **full stick** deflection in the process. _The more maneuvers you do, the better results AUTOTUNE will provide, up to a point._  
 Make sure you provide yourself enough altitude and flight area to perform the task.
 
-- **For ROLL -** From level, bank **hard** left, then **hard** right as far as you feel confident, then repeat. _The farther and faster you bank, the better_. Initially you may notice a soft/slow response, if the Rates and Feedforward where far from correct.   
-`Or for an even better tune snap-shot in ACRO. If you and your airplane are capable of completing a full 360° roll at full stick deflection, both left and right. This should complete the auto tune process in only one, or at the most two attempts.`
+- **For ROLL -** From level, bank **hard** left, then **hard** right as far as you feel confident, then repeat several times. Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct.   
 
-- **For PITCH -** When flying level, pull back full stick, so the airplanes nose climbs rapidly for a moment. Then do the same for down, applying full pitch down stick for a moment, then repeat. Initially you may notice a soft/slow response, if the Rates and Feedforward where far from correct.      
-`Or for an even better tune snap-shot in ACRO. If you and your airplane are capable of completing a full 360° loop. By applying higher throttle at the moment just before you pull full up elevator stick. This should complete the auto tune process in only one, or at the most two attempts.`
+- **For PITCH -** When flying level, pull back full stick, so the airplane climbs rapidly to an angle you're comfortable with. Then do the same for down, pushing full pitch stick so the plane dives at an angle you're comfortable with, then repeat the process again several times. Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct.      
+
+- **Advanced ROLL** - IF you and your airplane are ACRO capable of completing a full 360° roll at full stick deflection, both left and right. This should complete the auto tune process in only one or two attempts.
+
+- **Advanced PITCH** - IF you and your airplane are ACRO capable of completing a full 360° forward and inverted loop.    
+Apply higher throttle at the moment just before you pull full up elevator stick to complete the loop. Then with some good altitude, push full down elevator and perform an inverted loop. _Remember to start applying more throttle at the bottom half of the loop to pull vertical again_. This should complete the auto tune process in only one or two attempts.
   
 
 AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable, AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse - FF gains and Rates won't be changed.
