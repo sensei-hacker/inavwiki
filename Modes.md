@@ -127,8 +127,8 @@ I know this isn't always and easy thing to accomplish, especially when performin
 **How to use:**
 
 Enable AUTOTUNE mode in any non-navigation flight mode. ACRO is the best option.  
-Do hard maneuvers on each axis separately. Applying **full stick** deflection in the process. _The more maneuvers you do, the better results AUTOTUNE will provide, up to a point._
-Make sure you provide yourself enough altitude and flight area to perform he task.
+Do hard maneuvers on each axis separately. Applying **full stick** deflection in the process. _The more maneuvers you do, the better results AUTOTUNE will provide, up to a point._  
+Make sure you provide yourself enough altitude and flight area to perform the task.
 
 - **For ROLL -** From level, bank **hard** left, then **hard** right as far as you feel confident, then repeat. _The farther and faster you bank, the better_. Initially you may notice a soft/slow response, if the Rates and Feedforward where far from correct.   
 `Or for an even better tune snap-shot in ACRO. If you and your airplane are capable of completing a full 360° roll at full stick deflection, both left and right. This should complete the auto tune process in only one, or at the most two attempts.`
