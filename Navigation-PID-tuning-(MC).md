@@ -89,7 +89,10 @@ This is best done by logging flight controller data. And gauging the changes wit
 ### Horizontal POS + VEL + HEADING PID Tuning: 
  _The following settings can be accessed using the Configurator CLI or **Tuning tab** under **Additional PID Gains**. Or by the CMS OSD stick menu's._
 
+**Setting that can influence position accuracy:**
 - If the multicopters bank angle or speed is too high - _Lowering the `nav_mc_bank_angle` and `nav_auto_speed` will help to acquire the target position, especially when windy._
+
+- Waypoint interception and turning action, can also be altered by [nav_mc_wp_slowdown](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_wp_slowdown).
 
 **Position XY:**
 - `nav_mc_pos_xy_p` - Controls how fast the copter will fly towards the target position. This is a multiplier to convert the distance to the target velocity.
@@ -99,11 +102,11 @@ This is best done by logging flight controller data. And gauging the changes wit
 - `nav_mc_vel_xy_i` - Increasing this gain can compensation for position drift, caused by the wind. 
 - `nav_mc_vel_xy_d` - Increasing this gain can help smooth the P gain response, and lower the chance of target overshoot, up to a point.
 - `nav_mc_vel_xy_ff` - Attempts to predict velocity to acceleration disturbances via sensory input, to actively reduce the controllers response time.
-- `nav_mc_vel_xy_dterm_attenuation` - Attenuation of VEL_XY_D controller in %. Providing a smoother control response when the copter is navigating at speed. VEL_XY_D  is not attenuated at low speeds, braking or accelerating. Some copters may react smoother with less attenuation applied.
+- `nav_mc_vel_xy_dterm_attenuation` - Attenuation of VEL_XY_D controller in %. Providing a smoother control response when the copter is navigating at speed. VEL_XY_D  is not attenuated at low speeds, braking or accelerating. Some copters may react smoother with lower attenuation applied.
 - `nav_mc_vel_xy_dterm_attenuation_start` - A point in percentage between the current horizontal velocity and the target, when VEL_XY_D attenuation begins.
 - `nav_mc_vel_xy_dterm_attenuation_end`- A point in percentage between the current horizontal velocity and the target, when VEL_XY_D attenuation reaches the `nav_mc_vel_xy_dterm_attenuation` value.
 - `nav_mc_vel_xy_dterm_lpf_hz` - 
-Low pass filter cutoff frequency for the VEL_XY_D controller. To allow for a smoother target response when traveling at `nav_auto_speed` or `nav_max_auto_speed`. The default cutoff is already low. However, even lowering it to 1, can still help on highly reactive copters.
+Low pass filter cutoff frequency for the VEL_XY_D controller attenuation. To allow for a smoother target response when traveling at `nav_auto_speed` or `nav_max_auto_speed`. The default cutoff is already low. However, lowering it to 1, can still help on copters that pitch/roll bounce, as a result of rolling velocity deceleration.
 
 **Heading:**
 - `nav_mc_heading_p` - Controls the strength that the yaw axis will track the IMU's Compass derived heading target. 
@@ -190,7 +193,10 @@ You can however use POSHOLD at lower altitudes, together with the rangefinder su
 
 ![modes-](https://github.com/user-attachments/assets/6ccdfa2d-c049-4839-9213-26a2a1292876)
 
-Only enable `inav_allow_dead_reckoning` if you do not have a GNSS module, for outside flight. Of if you do have one, and are flying indoors, with a slim chance of obtaining a GNSS 3D fix.
+Only enable `inav_allow_dead_reckoning` for Optical-flow, if you also have an **active** GNSS module and are flying outside at a location when the satellite data may be lost for a time. Like under tree's or near buildings etc.  
+Or if your copter has an **active** GNSS module, and you're flying indoors, with the possibility of a 3D fix appearing intermittently.  
+
+Optical-flow can use GNSS data to help update its position coordinates. But if the GNSS data becomes un-trusted. Dead Reckoning uses a previously determined position, and known speeds over a measured time period to assist.
 
 _Do not arm the FC with rangefinder surface mode active. It can have undesirable results. Always arm in ANGLE mode._
 
