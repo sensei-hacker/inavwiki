@@ -106,7 +106,7 @@ Once the throttle stick is centered again to hold the new altitude position, the
 - [nav_mc_pos_deceleration_time](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_pos_deceleration_time)
 
 
-[Multicopter navigation PID tuning](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(MC))
+**More related setup and tuning information found here:** [Multicopter navigation PID tuning](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(MC))
 
 ## Using ALTHOLD with a FixedWing (FW):
 
@@ -124,7 +124,7 @@ Trim the aircraft via the **Auto Level Trim** mode [fw_level_pitch_trim](https:/
 - [nav_fw_loiter_radius](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_loiter_radius) = 5000
 
 
-[Fixedwing navigation PID tuning](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(FW))
+**More related setup and tuning information found here:** [Fixedwing navigation PID tuning](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(FW))
 
 ## NAV POSHOLD - Position hold
 
@@ -132,9 +132,9 @@ Trim the aircraft via the **Auto Level Trim** mode [fw_level_pitch_trim](https:/
 
 The Multirotor will hold 3D position.   
 ALTHOLD is already active by default, and uses the Barometer, GNSS altitude and the Accelerometer.   
-Together with gyro based HEADING HOLD that is updated from the Mag bearing or GNSS course, to achieve **full 3D position** control. 
+And that together with gyro based HEADING HOLD which is updated from the Mag bearing or GNSS course, to achieve **full 3D position** control. 
 
-If the throttle stick is increased or decreased, the copters altitude will either climb or descend until you center the throttle stick, then it will hold the current altitude. This should be tuned for your hardware by settings mentioned [earlier](https://github.com/iNavFlight/inav/wiki/Navigation-modes/_edit#using-althold-with-a-multicopter-mc).
+If the throttle stick is increased or decreased, the copters altitude will either climb or descend until you center the throttle stick, then it will hold the current altitude. This should be tuned for your hardware by settings mentioned [earlier](https://github.com/iNavFlight/inav/wiki/Navigation-modes#using-althold-with-a-multicopter-mc).
 
 You can also use the roll or pitch sticks to move the copters location in POSHOLD. Then once you center the roll/pitch sticks again, it will stop and hold the new position. You can also use the Yaw stick to rotate the copter. The speed that rotation occurs, is based on the setting `heading_hold_rate_limit`.
 
@@ -144,7 +144,7 @@ POSHOLD can be modified via the _Advanced Tuning Tab_ under the _Multirotor Navi
 **FIXED WING** -  aka **LOITER**
 
 A fixed wing will loiter in a circle, holding altitude, with the throttle automatically controlled. The circles radius is defined by the setting `nav_fw_loiter_radius`. The altitude can be adjusted via the pitch stick if required.  
-Loiter direction can be selected by `fw_loiter_direction`. So it can be altered in flight by the Yaw stick or by the LOITER CHANGE mode, via a switch. .
+Loiter direction can be selected by `fw_loiter_direction`. It can be altered in flight by the Yaw stick or by the LOITER CHANGE mode, via a switch. .
  
 **Please see other factors that will also effect the loiter radius** [below](https://github.com/iNavFlight/inav/wiki/Navigation-modes#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing)
 
@@ -169,7 +169,7 @@ The `Nav_User_Control_Mode` can be either **ATTI** or **CRUISE**:
 This makes CRUISE ideal for monitoring the stick release velocity of the copter, as well peak braking, slowdown and stopping positions.
 However it isn't always possible to a have precise GNSS heading, position and velocity. Especially when the copter is tilting to travel/brake or banking to turn. Due to this issue, CRUISE mode can be a bit jerky in its motion, or even temporally run away for a few meters, when it should be braking. So if you want smoother consistent flight in POSHOLD. ATTITUDE should be chosen over CRUISE.     
 
-ATTITUDE and CRUISE is only relevant to POSHOLD. Except in the case of MC CRUISE and COURSE-HOLD flight modes. They use the same underlying control code as CRUISE, regardless of whether you have ATTITUDE or CRUISE selected.  
+ATTITUDE and CRUISE is only relevant for POSHOLD mode. Except in the case of MC CRUISE and COURSE-HOLD flight modes. They use the same underlying control code as CRUISE, regardless of whether you have ATTITUDE or CRUISE selected.  
 While all other navigation modes use `nav_mc_bank_angle` as the deceleration pitch angle and [nav_mc_pos_deceleration_time](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_pos_deceleration_time).
 
 
@@ -235,7 +235,7 @@ Turn Smoothing helps to smooth turns during WP missions by switching to a loiter
 * [nav_fw_bank_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_bank_angle) - A higher bank angle will allow a sharper turn. Helping the plane to pull through the corner faster. Practical responsive values are between 45° to 55°.
 * [nav_fw_control_smoothness](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_control_smoothness) - Lower values can produce a more abrupt banking motion. But will also allow the plane to react faster to navigation course and heading commands.
 * [nav_use_fw_yaw_control](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) - If your plane has a form of yaw control **e.g. Rudder or Differential Thrust**. This setting allows the plane to yaw as well as bank when making a turn. Therefore a lower `nav_fw_bank_angle` (35°) should be used, for a flatter turn.
-* [nav_fw_cruise_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_cruise_thr) - Waypoint overshoot is more likely to occur if the plane is holding a higher velocity, especially if it is traveling on a down-wind or lateral leg before the turn. Tuning this setting so your plane will hold an airspeeds between 50 - 70km/h is ideal.
+* [nav_fw_cruise_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_cruise_thr) - Waypoint overshoot is more likely to occur if the plane is holding a higher velocity, especially if it is traveling on a down-wind or lateral leg before the turn. Tuning this setting so your plane will hold an airspeed between 50 - 70km/h, is ideal.
 
 
 ### Multi-Missions
