@@ -23,12 +23,14 @@ When it comes to Arming at the flying field or for bench testing its not good en
 
 `nav_extra_arming_safety = ALLOW_BYPASS` in active by default. So you can use the RC sticks command to [bypass arming checks](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/). But when doing so, remember your home location will not be saved so RTH will not work correctly!
 
-- **All multicopter navigation flight modes are self contained**. For example: In RTH, POSHOLD, CRUISE and WP modes, it is not necessary to enable ANGLE, ALTHOLD or Heading control along with the mode you select. The software will enable what is required for that mode to work as it was designed to. 
-- The same applies to fixed wing aircraft. But enabling RTH, LOITER, CRUISE or WP modes, will also enable TURN ASSIST. TURN ASSIST applies elevator and rudder input when the airplane is banked, to obtain a coordinated turn. [fw_turn_assist_pitch_gain](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_turn_assist_pitch_gain) and [fw_turn_assist_yaw_gain](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_turn_assist_yaw_gain)
-
-In later releases there is some flexibility in what sensors can be used for multicopter and fixedwing navigation. But as a general rule. The more sensors you have enabled, the more precision you will have for navigation.
 
 ### Navigation mode assistance:
+
+- **All multicopter navigation flight modes are self contained**. For example: In RTH, POSHOLD, CRUISE and WP modes, it is NOT necessary to enable ANGLE, ALTHOLD or Heading control along with the mode you select. The software will enable what is required for that mode to work as it was designed to. 
+- **The same applies to fixed wing aircraft**. But enabling RTH, LOITER, CRUISE or WP modes, will also enable TURN ASSIST.   
+TURN ASSISTANCE applies elevator and rudder input when the airplane is banked, to obtain a coordinated turn. [fw_turn_assist_pitch_gain](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_turn_assist_pitch_gain) and [fw_turn_assist_yaw_gain](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_turn_assist_yaw_gain)
+
+In later releases there is some flexibility in what sensors can be used for multicopter and fixedwing navigation. But as a general rule. The more sensors you have enabled, the more precise navigation will be.
 
 * **Default** (`✓`)
 * **Optional** (`O`) - _Default for Copters, but can be disabled for convenience, with loss of precision. Or a Magnetometer can be enable on a fixedwing to provide greater heading precision._
@@ -38,7 +40,7 @@ In later releases there is some flexibility in what sensors can be used for mult
 | ----                        | ----        | ----   | ----    | ----     | ---- | 
 | ANGLE                       | ✓           | ✓      | ✓      | ✓        | ✓   |         
 | ALTHOLD                     |             | ✓      | ✓      | ✓        | ✓   |        
-| TURN ASSIST  - FW only      | ✓           | ✓      | ✓      | ✓        | ✓   |         
+| TURN ASSIST  - FW `only`      | ✓           | ✓      | ✓      | ✓        | ✓   |         
 | MAG  - MC `✓ O`/ FW `O`     |             | ✓      | ✓      | ✓        | ✓   |         
 | BARO - MC/FW `✓`/ MC/FW `O` |             | ✓      | ✓      | ✓        | ✓   | 
 | GNSS                        | ✓           | ✓      | ✓      | ✓        | ✓   |         
@@ -89,7 +91,8 @@ The [alt_hold_deadband](https://github.com/iNavFlight/inav/blob/master/docs/Sett
 If ALTHOLD is activated at zero throttle INAV will account for deadband and move the neutral "zero climb rate" position a little bit up to make sure you are able to descend.
 
 ### OSD altitude adjustment alert:
-For visual awareness, the OSD altitude element has a symbol that will appear to the left side of the altitude value. This symbol can be used to inform the pilot of when they're making a change via the throttle stick to adjust the copters altitude. Then once the throttle stick is centered again to hold the new altitude position. That symbol will disappear.
+For visual awareness, the OSD altitude element has a symbol that will appear to the left side of the altitude value. This symbol can be used to inform the pilot of when they're making a change via the throttle stick to adjust the copters altitude.  
+Once the throttle stick is centered again to hold the new altitude position, the symbol will disappear.
 
 **Related setting parameters for multicopter:** These setting are also found in the Configurators _Advanced Tuning tab_
 - [nav_auto_speed](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_auto_speed)
@@ -127,18 +130,21 @@ Trim the aircraft via the **Auto Level Trim** mode [fw_level_pitch_trim](https:/
 
 **MULTIROTOR**
 
-The Multirotor will hold 3D position. Altitude is controlled by the ALTHOLD mode, which uses the Barometer, GNSS altitude and the Accelerometer. Together with gyro based HEADING HOLD that is updated from the magnetometer or GNSS Course over Ground (no compass), to achieve **full 3D position** control. 
+The Multirotor will hold 3D position.   
+ALTHOLD is already active by default, and uses the Barometer, GNSS altitude and the Accelerometer.   
+Together with gyro based HEADING HOLD that is updated from the Mag bearing or GNSS course, to achieve **full 3D position** control. 
 
-If the throttle stick is increased or decreased, the copters altitude will either climb or descend until you center the throttle stick, then it will hold the current altitude. This should be tuned for your hardware by settings mentioned earlier for Althold.
+If the throttle stick is increased or decreased, the copters altitude will either climb or descend until you center the throttle stick, then it will hold the current altitude. This should be tuned for your hardware by settings mentioned [earlier](https://github.com/iNavFlight/inav/wiki/Navigation-modes/_edit#using-althold-with-a-multicopter-mc).
 
 You can also use the roll or pitch sticks to move the copters location in POSHOLD. Then once you center the roll/pitch sticks again, it will stop and hold the new position. You can also use the Yaw stick to rotate the copter. The speed that rotation occurs, is based on the setting `heading_hold_rate_limit`.
 
-POSHOLD permits smooth controlled flight and can be modified via the _Advanced Tuning Tab_ under the _Multirotor Navigation_ settings.
+POSHOLD can be modified via the _Advanced Tuning Tab_ under the _Multirotor Navigation_ settings.
 
 
 **FIXED WING** -  aka **LOITER**
 
-A fixed wing will loiter in a circle, holding altitude, with the throttle automatically controlled. The circles radius is defined by the setting `nav_fw_loiter_radius`. The altitude can be adjusted via the pitch stick if required.
+A fixed wing will loiter in a circle, holding altitude, with the throttle automatically controlled. The circles radius is defined by the setting `nav_fw_loiter_radius`. The altitude can be adjusted via the pitch stick if required.  
+Loiter direction can be selected by `fw_loiter_direction`. So it can be altered in flight by the Yaw stick or by the LOITER CHANGE mode, via a switch. .
  
 **Please see other factors that will also effect the loiter radius** [below](https://github.com/iNavFlight/inav/wiki/Navigation-modes#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing)
 
@@ -161,8 +167,10 @@ The `Nav_User_Control_Mode` can be either **ATTI** or **CRUISE**:
 -  **CRUISE** - The autopilot position control **always** remains active. So when the Pitch/Roll sticks are moved, the input is transformed from a command to speed and merged with the current position. To provide more precise 3D position control over the craft. But it may feel a little more vague than Attitude mode, if the satellite precision is poor. **i.e.** Low Sat count and Higher HDOP
 
 This makes CRUISE ideal for monitoring the stick release velocity of the copter, as well peak braking, slowdown and stopping positions.
-However it isn't always possible to a have precise GNSS heading, position and velocity. Especially when the copter is tilting to travel/brake or banking to turn. Due to this issue, CRUISE mode can be a bit jerky in its motion, or even temporally run away for a few meters, when it should be braking. So if you want smoother consistent flight in POSHOLD. ATTITUDE should be chosen over CRUISE.   
-**ATTITUDE and CRUISE only use `nav_mc_bank_angle` as the standard deceleration angle and [nav_mc_pos_deceleration_time](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_pos_deceleration_time) in all other NAV modes.**
+However it isn't always possible to a have precise GNSS heading, position and velocity. Especially when the copter is tilting to travel/brake or banking to turn. Due to this issue, CRUISE mode can be a bit jerky in its motion, or even temporally run away for a few meters, when it should be braking. So if you want smoother consistent flight in POSHOLD. ATTITUDE should be chosen over CRUISE.     
+
+ATTITUDE and CRUISE is only relevant to POSHOLD. Except in the case of MC CRUISE and COURSE-HOLD flight modes. They use the same underlying control code as CRUISE, regardless of whether you have ATTITUDE or CRUISE selected.  
+While all other navigation modes use `nav_mc_bank_angle` as the deceleration pitch angle and [nav_mc_pos_deceleration_time](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_pos_deceleration_time).
 
 
 ## NAV COURSE HOLD - Course Hold
@@ -250,7 +258,10 @@ The only limitation with multi missions relates to single WP RTH missions. There
 ## WP PLANNER - On the fly waypoint mission planner
 WP PLANNER mode allows a mission to be planned "on the fly" simply by moving the craft to a required location and saving a waypoint at that point then repeating for further waypoints until the mission is complete.
 
-The OSD `MISSION INFO` field must be enabled and WP mode must be off before WP PLANNER mode can be used. With the mode selected the `MISSION INFO` field will display SAVE. To save a waypoint at the current location just operate the WP Mode switch. `MISSION INFO` will display OK if the waypoint was saved and the WP count will increment up. WP Mode must be selected off before another waypoint can be saved (OK will change back to SAVE). `MISSION INFO` will show WAIT if position data isn't valid, e.g. no GPS lock, or FULL if all available waypoints have been used.
+The OSD `MISSION INFO` field must be enabled and WP mode must be off before WP PLANNER mode can be used.  
+When WP PLANNER mode is selected the `MISSION INFO` field will display SAVE.  
+To save a waypoint at the current location, just operate the WP Mode switch. The `MISSION INFO` will display OK if the waypoint was saved and the WP count will increment.   
+WP Mode must be set to off before another waypoint can be saved (OK will change back to SAVE). `MISSION INFO` will show WAIT if position data isn't valid. e.g. no GPS lock, or FULL if all available waypoints have been used.
 
 The mission can be run at any time by turning WP PLANNER mode off and selecting WP mode as usual. In this case the `MISSION INFO` field will display PLAN indicating a WP PLANNER mission is currently active.
 
