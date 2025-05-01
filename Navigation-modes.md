@@ -85,6 +85,10 @@ When you enable ALTHOLD, INAV sends the [nav_mc_hover_thr](https://github.com/iN
 `nav_mc_hover_thr` should be set to an approximate value within 2% of what the copter requires to maintain a fixed hover. The altitude controller can only account for small drift. The primary reason for this setting is to provide the software with a general baseline for hover. Determined by your builds thrust to weight ratio.   
 To acquire your copters hover throttle value. You should do your best to hold a fixed hover position while in ANGLE mode. Then reference that throttle value from a log or the OSD. Or even the LUA telemetry on your radio's display. Once you have landed, enter that value into `nav_mc_hover_thr`.
 
+**Cine-Load lifting :**
+
+In cases when the copter maybe used to carry different weight loads. **e.g.** camera rigs. It is still important that hover throttle be tuned for each load, for POSHOLD to work correctly.  
+
 Because battery voltage reduces throughout the flight; it is beneficial to enable [feature THR_VBAT_COMP](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md#automatic-throttle-compensation-based-on-battery-voltage). Which can help compensate for the thrust reduction, and assist altitude control. 
 
 The [alt_hold_deadband](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#alt_hold_deadband) provides a deadband region either side of `nav_mc_althold_throttle` hover stick position, like an expo, to prevent unwanted altitude change occurring. 
@@ -94,7 +98,8 @@ If ALTHOLD is activated at zero throttle INAV will account for deadband and move
 For visual awareness, the OSD altitude element has a symbol that will appear to the left side of the altitude value. This symbol can be used to inform the pilot of when they're making a change via the throttle stick to adjust the copters altitude.  
 Once the throttle stick is centered again to hold the new altitude position, the symbol will disappear.
 
-**Related setting parameters for multicopter:** These setting are also found in the Configurators _Advanced Tuning tab_
+Related setting parameters for multicopters: These setting are also found in the Configurators _Advanced Tuning tab_
+
 - [nav_auto_speed](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_auto_speed)
 - [nav_max_auto_speed](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_max_auto_speed)
 - [nav_manual_speed](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_manual_speed)
@@ -106,14 +111,15 @@ Once the throttle stick is centered again to hold the new altitude position, the
 - [nav_mc_pos_deceleration_time](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_pos_deceleration_time)
 
 
-**More related setup and tuning information found here:** [Multicopter navigation PID tuning](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(MC))
+**More related setup and tuning information can be found here:** [Multicopter navigation PID tuning](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(MC))
 
 ## Using ALTHOLD with a FixedWing (FW):
 
 INAV controls pitch angle and throttle. It assumes that altitude is held (roughly) when pitch angle is zero. If the airplane has to climb, INAV will also increase throttle. If plane has to dive, INAV will reduce throttle and glide. The strength of this function is controlled by `nav_fw_pitch2thr`.
 Trim the aircraft via the **Auto Level Trim** mode [fw_level_pitch_trim](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_level_pitch_trim) in such a way that your airplane is flying level both in "MANUAL" and in "ANGLE", when not touching the sticks.
 
-**Related setting parameters for fixed wing:** These setting are also found in the Configurators _Advanced Tuning tab_ 
+Related setting parameters for fixed wings: These setting are also found in the Configurators _Advanced Tuning tab_ 
+
 - [nav_fw_min_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_min_thr) = 1200  
 - [nav_fw_cruise_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_cruise_thr) = 1450
 - [nav_fw_max_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_max_thr) = 1750 
@@ -124,7 +130,7 @@ Trim the aircraft via the **Auto Level Trim** mode [fw_level_pitch_trim](https:/
 - [nav_fw_loiter_radius](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_loiter_radius) = 5000
 
 
-**More related setup and tuning information found here:** [Fixedwing navigation PID tuning](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(FW))
+**More related setup and tuning information can be found here:** [Fixedwing navigation PID tuning](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(FW))
 
 ## NAV POSHOLD - Position hold
 
@@ -144,11 +150,11 @@ POSHOLD can be modified via the _Advanced Tuning Tab_ under the _Multirotor Navi
 **FIXED WING** -  aka **LOITER**
 
 A fixed wing will loiter in a circle, holding altitude, with the throttle automatically controlled. The circles radius is defined by the setting `nav_fw_loiter_radius`. The altitude can be adjusted via the pitch stick if required.  
-Loiter direction can be selected by `fw_loiter_direction`. It can be altered in flight by the Yaw stick or by the LOITER CHANGE mode, via a switch. .
+Loiter direction can be selected by `fw_loiter_direction`. It can be altered in flight by the Yaw stick or by the LOITER CHANGE mode, via a switch.
  
 **Please see other factors that will also effect the loiter radius** [below](https://github.com/iNavFlight/inav/wiki/Navigation-modes#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing)
 
-## MC Braking mode - PosHold modifier
+## MC Braking mode - POSHOLD modifier
  
 MC Braking mode is a subset of POSHOLD. Its purpose is to allow faster braking when the pitch stick is released back to center. It also provides the advantage of setting the stopping position where the copter finishes braking. Opposed to it backing-up to the point you released the stick, when Braking mode isn't active.
 
@@ -198,7 +204,8 @@ RTH will attempt to bring the copter/airplane back to the arming or launch locat
 
 **MultiCopter**
 
-With the default settings, if the Copter is farther than 10 meters from the arming location or a Safehome. The copter will climb according to the setting `nav_rth_climb_first` and then fly home. Once it is within 1 meters of the arming location or Safehome. The copter will attempt to land, according to the setting `nav_rth_allow_landing = ALWAYS`. And control the descent speed via the `nav_land` settings. Once on the ground, landing will be detected and the copter will disarm.
+With the default settings, if the Copter is farther than 10 meters from the arming location or a Safehome, it will climb according to the setting `nav_rth_climb_first` and then fly home.  
+Once within 1 meters of the arming location or Safehome. The copter will attempt to land, according to the setting `nav_rth_allow_landing = ALWAYS`. And control the descent speed via the `nav_land` settings. Once on the ground, landing will be detected and it will disarm.
 
 **FixedWing**
 
