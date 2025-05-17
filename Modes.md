@@ -119,16 +119,16 @@ Pre INAV 7.0, this tuning mode was called AUTO LEVEL
 
 AUTOTUNE will only attempt to tune the Roll and Pitch **FeedForward** and **Rates** on a fixed-wing airplane.
 
-Autotune will monitor the behavior of the airplane when you're flying, and attempt to set the FeedForward gain, for the maximum Rate of rotation on each axis. To provide the optimal stabilization and navigation performance for your aircraft.
+Autotune will monitor the behavior of the airplane and attempt to tune the FeedForward gains, for the maximum Rate of rotation on each axis. This will provide optimal stabilization and navigation performance for your aircraft.
 
 >[!Note] 
->Auto Tune should ideally be performed at the approximate airspeed the airplane will cruise at.  
-This isn't always and easy thing to accomplish, especially when performing pitch climb maneuvers. But getting this correct can make a considerable difference to overall flight performance.  
+>Autotune should ideally be performed at the approximate airspeed the airplane will cruise at.  
+This isn't always an easy thing to accomplish, especially when performing pitch climb maneuvers. But getting this correct can make a considerable difference to overall flight performance.  
 
 **How to use:**
 
 Enable AUTOTUNE mode in any non-navigation flight mode. ACRO is the best option.  
-Do hard maneuvers on each axis separately. **Full stick** deflection must be applied at some point in the process. Otherwise the controller will not be tuned to provide the maximum axis rotation rate.   
+**Full stick** deflection must be applied at some point in the process. Otherwise the controller will not be tuned to provide the maximum axis rotation rate.   
  _The more maneuvers you do, the better results AUTOTUNE will provide, up to a point._  
 
 Make sure you provide yourself enough altitude and flight area to perform the task.
@@ -141,15 +141,15 @@ Then do the same for DOWN, pushing full pitch stick for a moment so the plane di
 Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct.      
 
 - **Advanced ROLL** - IF you and your airplane are **capable** of completing a full 360° roll at full stick deflection, both left and right.   
-This should complete the auto tune process in only one or two attempts.
+This should complete the autotune process in only one or two attempts.
 
-- **Advanced PITCH** - IF you and your airplane are **capable** of completing a full 360° forward and/or inverted loop. **Not recommend on larger aircraft, or those that have a lower thrust to weight ratio.**   
+- **Advanced PITCH** - IF you and your airplane are **capable** of completing a full 360° forward and/or inverted loop. **Not recommended on larger aircraft, or those that have a lower thrust to weight ratio.**   
 Increase the throttle just before you apply enough UP elevator stick to start the loop. Once at the top of the loop, start applying full elevator stick. Then as you are about to exit the bottom half of the loop, back off the elevator and throttle.  
 For an inverted loop. Gain some good altitude, and push full DOWN elevator. _Remember to start applying full throttle at the bottom half of the inverted loop, as you simultaneously back off the DOWN elevator stick enough to prevent a stall, when the plane is commencing the vertical climb-out half of the loop_.   
-This should complete the auto tune process in only one or two attempts.
+This should complete the autotune process in only one or two attempts.
   
 
-AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable, AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse - FF gains and Rates won't be changed.
+AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable it, the AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse; the FF gains and Rates won't be changed.
 
 Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
 
