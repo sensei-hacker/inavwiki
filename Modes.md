@@ -119,26 +119,34 @@ Pre INAV 7.0, this tuning mode was called AUTO LEVEL
 
 AUTOTUNE will only attempt to tune the Roll and Pitch **FeedForward** and **Rates** on a fixed-wing airplane.
 
-Autotune will monitor the behavior of the airplane when you're flying, and attempt to set the FeedForward gain and Rate of rotation on each axis. To provide the optimal stabilization and navigation performance for your aircraft.
+Autotune will monitor the behavior of the airplane when you're flying, and attempt to set the FeedForward gain, for the maximum Rate of rotation on each axis. To provide the optimal stabilization and navigation performance for your aircraft.
 
 >[!Note] 
 >Auto Tune should ideally be performed at the approximate airspeed the airplane will cruise at.  
-I know this isn't always and easy thing to accomplish, especially when performing pitch climb maneuvers. But getting this correct can make a considerable difference to overall flight performance.
+This isn't always and easy thing to accomplish, especially when performing pitch climb maneuvers. But getting this correct can make a considerable difference to overall flight performance.  
 
 **How to use:**
 
 Enable AUTOTUNE mode in any non-navigation flight mode. ACRO is the best option.  
-Do hard maneuvers on each axis separately. Applying **full stick** deflection in the process. _The more maneuvers you do, the better results AUTOTUNE will provide, up to a point._  
+Do hard maneuvers on each axis separately. **Full stick** deflection must be applied at some point in the process. Otherwise the controller will not be tuned to provide the maximum axis rotation rate.   
+ _The more maneuvers you do, the better results AUTOTUNE will provide, up to a point._  
+
 Make sure you provide yourself enough altitude and flight area to perform the task.
 
-- **For ROLL -** From level, bank **hard** left, then **hard** right as far as you feel confident, then repeat several times. Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct.   
+- **For ROLL -** From level, bank **hard** left, then **hard** right as far as you feel confident, then repeat several times.   
+Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct.   
 
-- **For PITCH -** When flying level, pull back full stick, so the airplane climbs rapidly to an angle you're comfortable with. Then do the same for down, pushing full pitch stick so the plane dives at an angle you're comfortable with, then repeat the process again several times. Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct.      
+- **For PITCH -** When flying level, quickly pull UP full stick for a moment, so the airplane climbs rapidly to an angle you're comfortable with, and then bring the airplane back to level flight, to regain its airspeed.    
+Then do the same for DOWN, pushing full pitch stick for a moment so the plane dives at an angle you're comfortable with, and then bring the airplane back to level flight; repeating the process again several times.
+Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct.      
 
-- **Advanced ROLL** - IF you and your airplane are ACRO capable of completing a full 360° roll at full stick deflection, both left and right. This should complete the auto tune process in only one or two attempts.
+- **Advanced ROLL** - IF you and your airplane are **capable** of completing a full 360° roll at full stick deflection, both left and right.   
+This should complete the auto tune process in only one or two attempts.
 
-- **Advanced PITCH** - IF you and your airplane are ACRO capable of completing a full 360° forward and inverted loop.    
-Apply higher throttle at the moment just before you pull full up elevator stick to complete the loop. Then with some good altitude, push full down elevator and perform an inverted loop. _Remember to start applying more throttle at the bottom half of the loop to pull vertical again_. This should complete the auto tune process in only one or two attempts.
+- **Advanced PITCH** - IF you and your airplane are **capable** of completing a full 360° forward and/or inverted loop. **Not recommend on larger aircraft, or those that have a lower thrust to weight ratio.**   
+Increase the throttle just before you apply enough UP elevator stick to start the loop. Once at the top of the loop, start applying full elevator stick. Then as you are about to exit the bottom half of the loop, back off the elevator and throttle.  
+For an inverted loop. Gain some good altitude, and push full DOWN elevator. _Remember to start applying full throttle at the bottom half of the inverted loop, as you simultaneously back off the DOWN elevator stick enough to prevent a stall, when the plane is commencing the vertical climb-out half of the loop_.   
+This should complete the auto tune process in only one or two attempts.
   
 
 AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable, AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse - FF gains and Rates won't be changed.
