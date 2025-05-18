@@ -21,7 +21,7 @@ For safety reasons, initial setup requires the conditions below to be met before
 
 When it comes to Arming at the flying field or for bench testing its not good enough to just meet the requirement of 6 satellites, for what is considered a **valid 3D fix**. This also includes an acceptable level of satellite precision. HDOP or EPH/EPV must be low enough so the software can use it for reliable navigation.
 
-`nav_extra_arming_safety = ALLOW_BYPASS` in active by default. So you can use the RC sticks command to [bypass arming checks](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/). But when doing so, remember your home location will not be saved so RTH will not work correctly!
+`nav_extra_arming_safety = ALLOW_BYPASS` in active by default. So you can use the RC sticks command to [bypass arming checks](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/). But when doing so, remember your home location will not be saved, so RTH will not work correctly!
 
 
 ### Navigation mode assistance:
@@ -45,10 +45,6 @@ In later releases there is some flexibility in what sensors can be used for mult
 | BARO - MC/FW `✓`/ MC/FW `O` |             | ✓      | ✓      | ✓        | ✓   | 
 | GNSS                        | ✓           | ✓      | ✓      | ✓        | ✓   |         
 
-
-- There is a companion [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
-
-Let's have a look at each mode of operation in detail.
 
 ## ALTHOLD - Altitude hold
 ALTHOLD is not a flight mode in it's own right. It is a modifier which when activated in combination with a flight mode, will maintains the aircraft's altitude.
@@ -85,14 +81,13 @@ When you enable ALTHOLD, INAV sends the [nav_mc_hover_thr](https://github.com/iN
 `nav_mc_hover_thr` should be set to an approximate value within 2% of what the copter requires to maintain a fixed hover. The altitude controller can only account for small drift. The primary reason for this setting is to provide the software with a general baseline for hover. Determined by your builds thrust to weight ratio.   
 To acquire your copters hover throttle value. You should do your best to hold a fixed hover position while in ANGLE mode. Then reference that throttle value from a log or the OSD. Or even the LUA telemetry on your radio's display. Once you have landed, enter that value into `nav_mc_hover_thr`.
 
-**Cine-Load lifting :**
-
-In cases when the copter maybe used to carry different weight loads. **e.g.** camera rigs. It is still important that hover throttle be tuned for each load, for POSHOLD to work correctly.  
-
 Because battery voltage reduces throughout the flight; it is beneficial to enable [feature THR_VBAT_COMP](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md#automatic-throttle-compensation-based-on-battery-voltage). Which can help compensate for the thrust reduction, and assist altitude control. 
 
 The [alt_hold_deadband](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#alt_hold_deadband) provides a deadband region either side of `nav_mc_althold_throttle` hover stick position, like an expo, to prevent unwanted altitude change occurring. 
 If ALTHOLD is activated at zero throttle INAV will account for deadband and move the neutral "zero climb rate" position a little bit up to make sure you are able to descend.
+
+**Cine-Load lifting :**
+In cases when the copter maybe used to carry different weight loads. **e.g.** camera rigs. It is still important that hover throttle be tuned for each load, for POSHOLD to work correctly. 
 
 ### OSD altitude adjustment alert:
 For visual awareness, the OSD altitude element has a symbol that will appear to the left side of the altitude value. This symbol can be used to inform the pilot of when they're making a change via the throttle stick to adjust the copters altitude.  
@@ -170,10 +165,11 @@ Braking mode can be tuned by its setting in the Configurator _Advance Tuning tab
 The `Nav_User_Control_Mode` can be either **ATTI** or **CRUISE**:
  
 -  **ATTITUDE** - When the Pitch/Roll sticks are moved, autopilot position control is disengaged. So the multicopter behaves with the freedom of ANGLE mode, until the sticks are released back to center.
+
 -  **CRUISE** - The autopilot position control **always** remains active. So when the Pitch/Roll sticks are moved, the input is transformed from a command to speed and merged with the current position. To provide more precise 3D position control over the craft. But it may feel a little more vague than Attitude mode, if the satellite precision is poor. **i.e.** Low Sat count and Higher HDOP
 
 This makes CRUISE ideal for monitoring the stick release velocity of the copter, as well peak braking, slowdown and stopping positions.
-However it isn't always possible to a have precise GNSS heading, position and velocity. Especially when the copter is tilting to travel/brake or banking to turn. Due to this issue, CRUISE mode can be a bit jerky in its motion, or even temporally run away for a few meters, when it should be braking. So if you want smoother consistent flight in POSHOLD. ATTITUDE should be chosen over CRUISE.     
+However it isn't always possible to have precise GNSS heading, position and velocity data. Especially when the copter is tilting to travel/brake or banking to turn. Due to this issue, CRUISE mode can be a bit jerky in its motion, or even temporally run away for a few meters, when it should be braking. So if you want smoother consistent flight in POSHOLD; ATTITUDE should be chosen over CRUISE.     
 
 ATTITUDE and CRUISE is only relevant for POSHOLD mode. Except in the case of MC CRUISE and COURSE-HOLD flight modes. They use the same underlying control code as CRUISE, regardless of whether you have ATTITUDE or CRUISE selected.  
 While all other navigation modes use `nav_mc_bank_angle` as the deceleration pitch angle and [nav_mc_pos_deceleration_time](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_pos_deceleration_time).
@@ -200,7 +196,10 @@ If the mode is enabled in conjunction with NAV ALTHOLD the current altitude will
 Equivalent to the combination of NAV COURSE HOLD and NAV ALTHOLD described above.
 
 ## RTH - Return to home
-RTH will attempt to bring the copter/airplane back to the arming or launch location. RTH will control both position and altitude. It is activated by **RTH** flight mode.
+RTH will attempt to bring your model back to the arming or Safehome location. RTH will control both position and altitude. It is activated by **RTH** flight mode.
+
+>[!Note]
+> Even though the FAILSAFE flight mode will also bring your aircraft back to the home location. It is NOT recommended to use it for this purpose, and can cause undesirable results under some conditions. FAILSAFE mode is only designed to simulate whether return to home will work correctly, if your radio signal is lost.
 
 **MultiCopter**
 
@@ -210,6 +209,12 @@ Once within 1 meters of the arming location or Safehome. The copter will attempt
 **FixedWing**
 
  A fixedwing uses the same setting to return to home as a copter. But it may be advisable to set `nav_rth_allow_landing = NEVER or FS` instead, if you do not have [fixed wing auto land](https://github.com/iNavFlight/inav/blob/master/docs/Fixed%20Wing%20Landing.md) configured. This will allow the airplane to loiter around the arming or safehome location until you exit the RTH mode and take-over control again.
+
+**Landing detector settings**    
+
+[nav_disarm_on_landing](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_disarm_on_landing)    
+[nav_land_detect_sensitivity](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_land_detect_sensitivity)   
+[nav_landing_bump_detection](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_landing_bump_detection) - Multicopter only
 
 There are many different RTH fly-home altitude modes, see the [RTH mode page](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home#rth-altitude-control-modes) for details.
 
@@ -282,7 +287,9 @@ So it's not a flight mode itself, and needs to be combined with other flight mod
 
 In order to let the GCS have full control over the aircraft, e.g. 'follow me', the following modes must be activated: `NAV POSHOLD` with `GCS_NAV`. In order to update the home position, no other mode is required.
 
-For more [detail](https://github.com/iNavFlight/inav/wiki/INAV-Remote-Management,-Control-and-Telemetry#follow-me-gcs-nav).
+- For more [details](https://github.com/iNavFlight/inav/wiki/INAV-Remote-Management,-Control-and-Telemetry#follow-me-gcs-nav).
+
+- There is a companion wiki page further describing way point missions, tools and telemetry options [here](https://github.com/iNavFlight/inav/wiki/iNav-Missions).
 
 ## GPS loss during navigation
 Loss of GPS during navigation will have the following affect on the different modes:
