@@ -52,13 +52,15 @@ The I-Term Lock aims to solve the I-term accumulation and bounce-back on Fixedwi
    
 When pilot moves the sticks, the following happens:
 * P-term and D-term are attenuated with a bell curve. With no attenuation at stick-center and full attenuation at the `fw_iterm_lock_rate_threshold` percentage of the maximum axis rotation rate.
+
 * When error becomes greater than `fw_iterm_lock_engage_threshold` 10% (default) and `fw_iterm_lock_rate_threshold` 40% (default) is reached. The I-Term is completely attenuated until the Gyro rate error drops below `fw_iterm_lock_engage_threshold` percentage again, and the `fw_iterm_lock_time_max_ms` timer has expired.
+
 * FF-term is never attenuated. As a result, the airplane feels fully stabilized near stick center, and performs like Manual mode when executing fast maneuvers.   
 
 The default settings work fine.  
 But if you require less attenuate at a higher rate of axis rotation, [fw_iterm_lock_rate_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_rate_threshold) can be increased. For example, in the case of 3D airplanes that uses the I-term to help hold axis attitude. 
 
-On larger air frames that carry more axis angular momentum once in motion, [fw_iterm_lock_engage_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_engage_threshold) can also be increased. Or you could add more time to [fw_iterm_lock_time_max_ms](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_time_max_ms).
+On air frames that carry more axis angular momentum once in motion, like those with a very high rotation rate [fw_iterm_lock_engage_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_engage_threshold) can also be decreased. Or you could add more time to [fw_iterm_lock_time_max_ms](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_time_max_ms).
 
 ### Tune Angle / Horizon mode:
 
@@ -67,7 +69,7 @@ However you can also tune manually if desired, by entering `Angle` mode. If your
 You'll need to trim your board's alignment via `align_board_roll`, `align_board_pitch`, `align_board_yaw` accordingly. After each adjustment fly again and check if the behavior has improved.
 
 * If you are unhappy with the value of maximum bank/pitch angles, you can adjust them via the `max_angle_inclination_rll` and `max_angle_inclination_pit`. This will provide greater authority on both axis's, within the full stick deflection range.   
- Be aware that if you want the same bank angle in navigation modes, you will also need to increase their values via `nav_fw_bank_angle`, `nav_fw_climb_angle`, `nav_fw_dive_angle`.
+ Be aware that if you want the same bank angle in navigation modes, you will also need to increase their values via `nav_fw_bank_angle`, `nav_fw_climb_angle`, `nav_fw_dive_angle`. However, keep in mind `nav_fw_bank` angles are constrained by `max_angle_inclination`.
 
 * If you are unhappy with the strength of the Angle mode. If it's levels out too quickly or abruptly. You can reduce the P-gain of the LEVEL controller via `fw_p_level`.   
 While `fw_i_level` only works as a Low Pass cutoff frequency for the LEVEL controller. Any value greater than 5, is generally faster than a fixedwing can respond to attitude level correction. Reducing it can help, depending on the feel you are after.
