@@ -50,6 +50,8 @@ Loss of GNSS during Failsafe RTH will result in an emergency landing. So make su
 - [failsafe_off_delay](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#failsafe_off_delay) - default will disarm after 20s. Increase or decrease to suit the estimated time required, for the general altitude you fly at.
 - [failsafe_throttle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#failsafe_throttle) - The default setting of 1000uS will cause a copter to revert to the DROP procedure if not increased to slightly below hover throttle.
 
+For more information on the way Failsafe operates if GNSS data is lost, see [here](https://github.com/iNavFlight/inav/wiki/GPS-Failsafe-and-Glitch-Protection#emergency-landing).
+
 ## Verifying that failsafe works as intended
 
 **Verify that your failsafe works without props:**
@@ -81,8 +83,6 @@ ______________________________________________________
 
 [failsafe_throttle_low_delay](failsafe_min_distance_procedure) (Time throttle level must have be low before auto disarm)  
 This setting could ruin your day with a mid-air disarm. But conversely save you from personal injury if it is forgotten to disarm the craft (not using motor stop also goes a long way to making the craft safer as the spinning propellers are a visible sign the craft is armed and dangerous).
-
-Handling with and without GNSS data loss - https://github.com/iNavFlight/inav/wiki/GPS-Failsafe-and-Glitch-Protection#emergency-landing
 
 Further reading and settable parameters are available here -
 https://github.com/iNavFlight/inav/blob/master/docs/Failsafe.md#failsafe_throttle
