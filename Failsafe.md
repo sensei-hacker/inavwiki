@@ -1,89 +1,90 @@
 # Setting up Failsafe for RTH
 
----
-Warning: one can assign a RC switch to simulate a FAILSAFE condition. Bear in mind that while the mode is activated, the FC will behave as if radio link is lost. This means that disarming the model will not work. To regain control one will have to 1) cancel the FAILSAFE with the RC assigned switch 2) move the roll / pitch sticks 3) possibly DISARM. Not to say that in case of emergency this procedure has to be well known. Therefore, it is wise to not assign FAILSAFE to a switch, but rather assign RTH.
----
+>[!Warning]
+>You can assign an RC mode switch to _simulate_ how a FAILSAFE condition will respond, if the RX signal is actually lost in flight.  
+**FAILSAFE mode** will return the aircraft to the home location. But it should not be used in place of **RTH mode** for manual activation. Functionally, FAILSAFE mode does not work the same as RTH mode in all cases.   
+So bear in mind, that while the FAILSAFE mode is activated, the FC will behave as if the radio link is lost. This means you will **not** be able to Disarm.    
+To regain control, either -   
+>- Cancel the FAILSAFE mode with your assigned RC switch.    
+>- Move the roll or pitch stick. [failsafe_stick_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#failsafe_stick_threshold)  
 
 
 ## Foreword
 
 The goal is to configure both your flight controller and radio receiver so that failsafe does as you expect in every situation.
 
-For failsafe to work optimally INAV needs to know it's in a failsafe event and not just doing regular RTH. This is necessary for example to correctly handle loss of GPS while returning to home.
+For failsafe to work optimally INAV needs to know it's in a failsafe event and not just doing regular RTH. This is necessary for it to correctly handle loss of GNSS signal while returning to home. Or to handle functions that can be operated by stick command in RTH mode. e.g. [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override)
 
-This assumes you have regular GPS modes like `RTH` working **already**.
+This assumes you have regular GNSS navigation modes like `RTH` working **already**.
 
 ## Configuration of receiver
 
-You have several options on how to configure receiver:
+You have several options on how to configure your receiver:
 
 ### Option one
 
-Set receiver to send out `NO PULSES` or `HOLD` on a failsafe event. This is perfectly fine for FrSky Radios.
+Set your receiver to `NO PULSES`/ `CUT` in the case of radio signal loss.    
+`NO PULSES` / `CUT` is generally best used for modern RX links. The RX will send data via the serial connection, to inform the FC of a Failsafe condition. Or a loss of that data by hardware failure also triggers a failsafe.
 
 ### Option two
 
-1. Set up INAV "Failsafe" mode on an RC channel.
+Set your receiver to `FS POS`. Also set one of the receiver channels to output a value to activate INAV FAILSAFE mode when the radio link is lost.  
+Set up INAV FAILSAFE mode on that RC channel.   
 
-2. Set up the radio receiver failsafe so the RC channel used in 1. outputs a value that activates INAV "Failsafe" mode on RC link loss.
-
-The above is fine on FlySky radio.
 
 ### Option three
 
-Set up  the radio receiver failsafe so the throttle channel outputs a value below the `rx_min_usec` setting. This will trigger INAV Failsafe when the radio receiver goes into failsafe.
-
-The throttle channel lower endpoint may need to be temporarily set to the lowest setting allowing the failsafe value to be set low also (around 800us should be possible). Once the receiver failsafe setting has been saved the throttle endpoint can be reset to the normal value.
-
-Works well with Flysky radios without the need to set Failsafe mode (option 2).
+Set up `FS POS` so the radio receivers throttle channel outputs a value below the [rx_min_usec](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#rx_min_usec) setting in an RX Failsafe condition. This will trigger INAV FAILSAFE when the RX link is lost.   
+_The throttle channel lower endpoint may need to be temporarily set to the lowest setting allowing the failsafe value to be set low also. Once the receiver failsafe setting has been saved the throttle endpoint can be returned to the normal value._
 
 ## Configuration of INAV
 
-Go to `Failsafe` tab, and enable `RTH` as Stage 2 failsafe.
+Go to the Configurator `Failsafe` tab, and enable `RTH` as Stage 2 failsafe.
 
-For fixed wing set `failsafe_throttle_low_delay = 0` or else it will disarm the fixed wing in the air when Failsafe triggers and you have had low throttle for the default time period.
+For fixed wing set [failsafe_throttle_low_delay](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#failsafe_throttle_low_delay) = 0 or else it will disarm the airplane in flight when Failsafe triggers, if you have the throttle low for the default time period.
 
-The behavior of `RTH` can also be configured.
+The behavior of `RTH` can also be configured in [Navigation: RTH mode](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home) 
 
- - [INAV Flight modes / Navigation Modes](/iNavFlight/inav/wiki/Navigation-modes#rth-altitude-control-modes)
-
-Loss of GPS during Failsafe RTH will result in an emergency landing so make sure the following are set to avoid surprises:
-- `nav_emerg_landing_speed` - default is 5 m/s. Reduce for a fixed wing.
-- `failsafe_off_delay` - default will disarm after 20s. Increase or disable if more time required.
-- `failsafe_throttle` - default setting is 1000 which will cause a multicopter to drop if not increased to slightly below hover throttle.
+Loss of GNSS during Failsafe RTH will result in an emergency landing. So make sure the following are set to avoid surprises:
+- [nav_emerg_landing_speed](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_emerg_landing_speed) - default is 5 m/s. Alter for a fixed wing.
+- [failsafe_off_delay](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#failsafe_off_delay) - default will disarm after 20s. Increase or decrease to suit the estimated time required, for the general altitude you fly at.
+- [failsafe_throttle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#failsafe_throttle) - The default setting of 1000uS will cause a copter to revert to the DROP procedure if not increased to slightly below hover throttle.
 
 ## Verifying that failsafe works as intended
 
-Verify that your failsafe works without props:
+**Verify that your failsafe works without props:**
 
 1. Remove all props
 
-1. Go outside, arm and apply throttle, run with it 50meter away from home (normally the place where you armed it) and then turn off transmitter. The aircraft should now try to climb (increase throttle). Also verify that you're able to regain control by turning on transmitter again, and move the ROLL/PITCH stick more than `failsafe_stick_threshold`
+2. Go outside, Arm and apply throttle. Walk/run more than 10 meters away from the arming location and then turn off the radio transmitter.     
+The aircraft should now try to climb. This can be seen by the motor/s increasing in speed. And in the case of a fixedwing. The elevator will deflect upwards, as if to climb. And the ailerons will also deflect, as if it's turning back towards home.  
+_Also verify that you're able to regain control by turning on transmitter again, and move the ROLL/PITCH stick more than `failsafe_stick_threshold`_
 
-Now, verify that failsafe works while in flight:
+
+>[!Note] 
+>If you are using a fixed wing without a magnetometer enabled, you will need to run with the airplane before the test. This is because GNSS speed needs to be above a certain threshold to acquire a valid heading. Without a valid heading failsafe will not initiate. 
+
+**Now, verify that failsafe works while in flight:**
 
 1. Put the props on again
 
-1. Take off, fly at least 50 meters from home, and turn off transmitter. Tip: Do this over soft grass. If it's an airplane it's better to have some altitude
+2. Take off, fly at least 50 meters from the home arming location. Then turn off the radio transmitter.   
+ 
+>[!Tip] 
+>Do this over soft grass if its a multicopter. While if it's an airplane, it's better to have some altitude.  
+>To regain control after a failsafe event, you must move the roll/pitch sticks more than `failsafe_stick_threshold` in order to regain control. 
+______________________________________________________
 
-Note: If you are using a fixed wing without a magnetometer enabled you will need to run with the airplane before turning off the transmitter to test failsafe. This is because GPS speed needs to be above a certain threshold to acquire a valid heading. Without a valid heading failsafe will not initiate.
+### INAV offers additional failsafe safety features ###
 
-Note: To regain control after a failsafe event, you must move the roll/pitch sticks more than `failsafe_stick_threshold` in order to regain control.
+[failsafe_min_distance](failsafe_min_distance) and the action you wish to invoke [failsafe_min_distance_procedure](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#failsafe_min_distance_procedure)  
 
-**INAV offers additional failsafe safety features**
+[failsafe_throttle_low_delay](failsafe_min_distance_procedure) (Time throttle level must have be low before auto disarm)  
+This setting could ruin your day with a mid-air disarm. But conversely save you from personal injury if it is forgotten to disarm the craft (not using motor stop also goes a long way to making the craft safer as the spinning propellers are a visible sign the craft is armed and dangerous).
 
-**failsafe_min_distance** and the action you wish to invoke (_failsafe_min_distance_procedure_)
+Handling with and without GNSS data loss - https://github.com/iNavFlight/inav/wiki/GPS-Failsafe-and-Glitch-Protection#emergency-landing
 
-****failsafe_throttle_low_delay**** (Time throttle level must have been closed  to Auto disarm)
-
-The first setting could avoid injury as it will prevent the possibility of the craft blasting off to its RTH height within chosen safety distance of the set home point. It could also work against you if a failsafe event occurred while flying close with a setting of (just land) and you were flying from a very small safe landing area.
-All options are available to best suit your needs.
-
-The second setting could just ruin your day with a mid-air disarm but conversely save you from personal injury if it is forgotten to disarm the craft (not using motor stop also goes a long way to making the craft safer as the spinning propellers are a visible sign the craft is armed and dangerous).
-
-Further reading and settable parameters are available here :-
+Further reading and settable parameters are available here -
 https://github.com/iNavFlight/inav/blob/master/docs/Failsafe.md#failsafe_throttle
 
-And here :-
-https://github.com/iNavFlight/inav/blob/master/docs/Cli.md
 
