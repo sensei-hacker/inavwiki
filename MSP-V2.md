@@ -156,10 +156,10 @@ Suggested approach is to allocate blocks of MSPv2 messages to certain firmwares 
 
 | Function ID | Usage | Supports flags | FCs implementing | Documentation Link |
 | ----- | ---------- | ---- | ---- | ---- |
-| 0x0000-0x00FE | Legacy     |  ✘   | INAV, MultiWii, BetaFlight, Cleanflight, BaseFlight    |   http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol   |
-| 0x1000-0x1EFF | Common messages   | ✔   | INAV    |      |
-| 0x1F00-0x1FFF | Sensors connected via MSP  |  ✔   | INAV    |      |
-| 0x2000-0x2FFF | INAV-specific     |  ✔   | INAV    |      |
+| 0x0000-0x00FE | Legacy     |  ✘   | INAV, MultiWii, BetaFlight, Cleanflight, BaseFlight    | [Legacy](http://www.multiwii.com/wiki/index.php?title=Multiwii_Serial_Protocol) and [INAV Wiki](https://github.com/iNavFlight/inav/wiki/MSP-Messages-reference) |
+| 0x1000-0x1EFF | Common messages   | ✔   | INAV    | [INAV Wiki](https://github.com/iNavFlight/inav/wiki/MSP-Messages-reference) |
+| 0x1F00-0x1FFF | Sensors connected via MSP  |  ✔   | INAV    |  [INAV Wiki](https://github.com/iNavFlight/inav/wiki/MSP-Messages-reference)  |
+| 0x2000-0x2FFF | INAV-specific     |  ✔   | INAV    | [INAV Wiki](https://github.com/iNavFlight/inav/wiki/MSP-Messages-reference) |
 | 0x3000-0x3FFF | Betaflight-specific, Cleanflight-specific | ? | Betaflight, Cleanflight   |    |
 
 # Legacy and compatibility
