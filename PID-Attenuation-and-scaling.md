@@ -22,7 +22,7 @@ It may need to be increase even more on powerful freestyle or race quads.
 
 ## Airplanes
 
-For airplanes **TPA_Rate** works in a different way - It not only attenuates PID gains at higher throttle, but also boosts them at lower throttle, allowing better control when flying or gliding at low speeds with minimal or no throttle.  
+For airplanes **TPA_Rate** works in a different way - It not only attenuates PID gains at higher throttle, but also boosts them at lower throttle, allowing for better control when flying or gliding at low speeds with minimal or no throttle.  
 **TPA** is expressed as a curve that boosts PIDs below the **TPA Breakpoint** and attenuates them above the breakpoint.
 
 **TPA_Rate** = amount of attenuation apply to the PIDs. 100% TPA allows PIDs to be scaled by a factor of `[2x boost]` `[0.4 reduction]`.
@@ -48,4 +48,4 @@ Airplanes with low thrust/weight ratio generally need higher time constant for l
 
 > [!NOTE]
 > The present airplane implementation has limits. 
-Until airspeed support is introduced, INAV only uses the throttle for attenuation, which is relatively proportional to airspeed. But it can not attenuate the PIDs at _lower_ throttle values if the airplane is placed into a dive, causing the airspeed increases.
+Until air-speed support is introduced, INAV only uses the throttle for attenuation, which is relatively proportional to air-speed. But it can not attenuate the PIDs at _lower_ throttle values if the airplane is placed into a dive, causing the air-speed to increase.
