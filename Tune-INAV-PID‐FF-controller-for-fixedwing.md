@@ -44,7 +44,7 @@ You can also use a [Python script](https://gist.github.com/nmaggioni/e42d3f4eb24
 
 * If the airplane drifts slightly from center on an axis, once all the other tuning is done. Increasing the I-gain on that given axis, can reduce the effect.   
 After Feedforward, allowing I-gain to do more of the work than P-gain. Can actually make the Roll axis response smoother from an FPV perspective, than fighting a loosing battle, by applying too much P-gain, in hopes of removing roll axis wobbles.   
-Be cautious. Too much I-gain can also cause oscillation. Values should be limited to maximum of 22. Accounting for [pid_iterm_limit_percent](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#pid_iterm_limit_percent). And the use of [FW I-term Lock](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID-FF-controller-for-fixedwing/_edit#fixedwing-i-term-lock) in INAV version 8.0 and later.
+Be cautious. Too much I-gain can also cause oscillation. Values should be limited to maximum of 22. Accounting for [pid_iterm_limit_percent](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#pid_iterm_limit_percent). And the use of **Fixedwing I-term Lock** mentioned below, in INAV version 8.0 and later.
 
 * If you want more stabilization against hard buffeting from the wind, try increasing the P-gain. But only up to a point.   
 Too much P-gain can cause oscillations as the airspeed increases. This is when you want to apply some [Fixedwing TPA](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling#airplanes).  
