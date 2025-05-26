@@ -201,7 +201,7 @@ It is possible to combine manual control with some channel automation.
 * Ensure the channel(s) are refreshed at a minimum of 5Hz to avoid fail-safe.
 
 
-_Note: The `USE_MSP_RC_OVERRIDE` flag had to be manually defined (e.g. in `src/main/target/common.h`) to enable MSP_RC_OVERRIDE as a safety feature, however this is now included by default_
+_Note: The `USE_MSP_RC_OVERRIDE` flag had to be manually defined (e.g. in `src/main/target/common.h`) to enable MSP_RC_OVERRIDE, however this is now included by default_
 
 ### Control by stick commands
 
