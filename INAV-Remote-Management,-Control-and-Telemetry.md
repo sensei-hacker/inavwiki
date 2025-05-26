@@ -197,9 +197,11 @@ Potentially a less complex solution, as the piloting of the vehicle is done by t
 
 It is possible to combine manual control with some channel automation.
 
-* Compile the firmware with `USE_MSP_RC_OVERRIDE` defined (e.g. in `src/main/target/common.h`).
 * Use the CLI `msp_override_channels` to define the channels to be automated.
 * Ensure the channel(s) are refreshed at a minimum of 5Hz to avoid fail-safe.
+
+
+_Note: The `USE_MSP_RC_OVERRIDE` flag had to be manually defined (e.g. in `src/main/target/common.h`) to enable MSP_RC_OVERRIDE as a safety feature, however this is now included by default_
 
 ### Control by stick commands
 
