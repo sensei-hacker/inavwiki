@@ -326,7 +326,7 @@ How to use:
 
 You may want to inspect your new midpoints after landing, if the servo offset is a lot you may alter your linkage mechanically and redo servo midpoint.
 
-This is not to be confused with tuning your aircraft for leveled flight in `ANGLE` mode, to do this you need to adjust your board alignment so straight flight for that aircraft is show the board being level ( 0 pitch and 0 roll ).
+This is not to be confused with tuning your aircraft for leveled flight in `ANGLE` and other attitude-conteolled modes. to do this use auto LEVEL trim.
 
 ### SOARING (FW)
 
