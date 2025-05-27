@@ -2,11 +2,11 @@
 
 When tuned correctly, the FF-gain should do most of the work of turning the airplane. Which leaves Proportional, Integral and Derivative to make up for slight target error and drift caused by turbulence.  
 
-- [Manually tuning Rates and Feedforward - How it works](###)
-- [General ACRO PID tuning](###)
-- [Tuning ANGLE mode](###)
-- [LEVEL controller](###)
-- [Fixedwing I-term Lock](###)
+- [Manually tuning Rates and Feedforward - How it works](#Manually-tuning-Rates-and-Feedforward---How-it-works)
+- [General ACRO PID tuning](#General-ACRO-PID-tuning)
+- [Tuning ANGLE mode](#Tuning-ANGLE-mode)
+- [LEVEL controller](#LEVEL-controller)
+- [Fixedwing I-term Lock](#Fixedwing-I-term-Lock)
 
 Tuning of the Rates and Feedforwards can be done more easily via [AutoTune](https://github.com/iNavFlight/inav/wiki/Modes#autotune-fw), provided it's performed correctly.   
 However, tuning can also be done manually as explained below.
@@ -49,22 +49,22 @@ You can also use a [Python script](https://gist.github.com/nmaggioni/e42d3f4eb24
     
 ### General ACRO PID tuning
 
-_This topic includes some non conventional means of tuning. However, things don't always work as theory dictates for fixedwing operation when the system still has missng components. e.g. true air speed based PIDFF attenuation._
+_This topic includes some non conventional means of tuning. However, things don't always work as theory dictates for fixedwing operation when the system still has missing components. e.g. true air speed based PIDFF attenuation._
 
 **I-term:**   
 If the airplane drifts slightly from center on an axis, once _Autotune_, _AutoLevel_ and _Servo_Autotrim_ are complete. Increasing the I-gain on that given axis, can reduce the effect.   
 After Feedforward, allowing I-gain to do more of the work than P-gain. Can actually make the Roll axis response smoother from an FPV perspective, than fighting a loosing battle, by applying too much P-gain, in hopes of removing roll axis wobbles.   
-Be cautious. Too much I-gain can also cause oscillation. Values should be limited to maximum of 22. Accounting for the use of [pid_iterm_limit_percent](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#pid_iterm_limit_percent) and [Fixedwing I-term Lock](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#fixedwing-i-term-lock) mentioned below, in INAV version 8.0 and later.
+Be cautious. Too much I-gain can also cause oscillation. Values should be limited to maximum in the low twenties. Accounting for the use of [pid_iterm_limit_percent](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#pid_iterm_limit_percent) and [Fixedwing I-term Lock](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#fixedwing-i-term-lock) mentioned below, in INAV version 8.0 and later.
 
 **P-term:**    
  If you want more stabilization against hard buffeting from the wind, try increasing the P-gain. But only up to a point.   
-Too much P-gain can cause oscillations as the airspeed increases. This is when you want to apply some [Fixedwing TPA](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling#airplanes).  
+Too much P-gain can cause oscillations as the air-speed increases. This is when you want to apply some [Fixedwing TPA](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling#airplanes).  
 P-term will never be able to fully correct for fixedwing roll axis instability at lower airspeeds, due to processing and SERVO reaction lag. And there not being enough air flow over the control surfaces for it to work with. It can often be a case of what you prefer on the Roll axis. **i.e.** Faster jittering from higher P-gain. Or Slower wallowing movements from higher I-gain.
 
 **D-term:**   
  Once the P-gain it tuned to about 80% of its optimal, at a given air speed. Then start applying some D-gain in small amounts, to add axis damping.
 
-After manually tuning your Rates and Gains. You can reduce them from their limit, to what suits your stick feel and flight requirements.  
+After **manually** tuning your Rates and Gains. You can reduce them from their limit, to what suits your stick feel and flight requirements.  
 It's normal to see reduced servo throw's when reducing rates at this point. If you have full servo throw at this stages you would likely overshoot the target deg/s as well, leaving the P-term to do the rest.
 
 ### Tuning ANGLE mode:
