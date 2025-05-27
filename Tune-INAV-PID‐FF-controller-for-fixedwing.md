@@ -98,8 +98,8 @@ When the pilot moves the sticks, the following happens:
 * FF-term is never attenuated. As a result, the airplane feels fully stabilized near stick center, and performs like Manual mode when executing fast maneuvers.   
 
 The default settings work fine.  
-But if you require less attenuation at a higher rate of axis rotation; [fw_iterm_lock_rate_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_rate_threshold) can be increased. For example, in the case of 3D airplanes that uses the I-term to help hold axis attitude. 
-Or on air frames that carry more axis angular momentum, like those with a very high rotation rate or higher wing mass. [fw_iterm_lock_engage_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_engage_threshold) can be decreased. Or you could add more time to [fw_iterm_lock_time_max_ms](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_time_max_ms).
+But if you require less attenuation at a higher rate of axis rotation; [fw_iterm_lock_rate_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_rate_threshold) can be increased. For example, in the case of 3D airplanes that uses the I-term to help hold axis attitude.   
+Or on air frames that carry more axis angular momentum, like those with a very high rotation rate or higher wing mass, [fw_iterm_lock_engage_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_engage_threshold) can be decreased, or you could add more time to [fw_iterm_lock_time_max_ms](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_iterm_lock_time_max_ms).
 
 ______________________
 
