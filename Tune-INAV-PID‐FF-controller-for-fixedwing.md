@@ -79,7 +79,7 @@ Adjusting the board's alignment via `align_board_roll`, `align_board_pitch` can 
 If you want the same amount of bank angle in navigation modes, you will also need to increase their values via `nav_fw_bank_angle`, `nav_fw_climb_angle`, `nav_fw_dive_angle`. However, keep in mind `nav_fw_bank` angles can not be set greater than `max_angle_inclination`.
 
 ### LEVEL controller:  
-* If you're unhappy with the strength ANGLE based modes return back to level, after the stick is released. You can adjust the P-gain via `fw_p_level`. The default value of 20 is optimal. However reducing it can't provide a smoother feel.  
+* If you're unhappy with the strength ANGLE based modes return back to level, after the stick is released. You can adjust the P-gain via `fw_p_level`. The default value of 20 is optimal. However reducing it can provide a smoother feel.  
 While increasing this value beyond 30 on a fixedwing; generally makes the corresponding axis more jittery when trying to maintain a level attitude in turbulent conditions.   
 * `fw_i_level` works as a Low Pass Filter for the LEVEL controllers update rate. Any value greater than 5, is faster than most fixedwings can respond to attitude level correction. Reducing it in some cases, to 3 or 2, can help provide a smoother feel.  
 * `fw_d_level` uses the present rate target and the calculated angle rate target. Which allows for transition between ANGLE (level) and ACRO (rate), to provide HORIZON mode.   
