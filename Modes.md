@@ -57,25 +57,36 @@ Scroll down to the [AUXILIARY CONFIGURATION](#AUXILIARY-CONFIGURATION) section f
 ### ACRO MODE
 NOTE: This is **default** flight mode. It is only active when no other mode is active. There is no mode selection for ACRO in the configurator, only an ACRO box that highlights when no other mode is active.
 
-This default flight mode does not self level the aircraft around the roll and the pitch axes. That is, the aircraft does not level on its own if you center the pitch and roll sticks on the radio. Rather, they work just like the yaw axis: the rate of rotation of each axis is controlled directly by the related stick on the radio, and by leaving them centered the flight controller will just try to keep the aircraft in whatever orientation it's in. This default mode is called "Acro" mode (from "acrobatic", shown in the OSD as `ACRO`). It is also sometimes called "rate" mode because the sticks control the rates of rotation of the aircraft around each of the three axes. "Acro" mode is active whenever auto-leveled mode is enabled.
+This default flight mode does not self level the aircraft around the roll and the pitch axes. That is, the aircraft does not level on its own if you center the pitch and roll sticks on the radio. Rather, they work just like the yaw axis: the rate of rotation of each axis is controlled directly by the related stick on the radio, and by leaving them centered the flight controller will just try to keep the aircraft in whatever orientation it's in. This default mode is called "Acro" mode (from "acrobatic", shown in the OSD as `ACRO`). It is also sometimes called "rate" mode because the sticks control the rates of rotation of the aircraft around each of the three axes. "Acro" mode is active whenever an auto-leveled mode is not enabled.
 
 ### AIR MODE
+**Multicopter:**  
+In the motor control mixer, when the Roll, Pitch and Yaw are calculated, if a motor output becomes saturated, all motors
+will be reduced equally. Or when a motor goes below minimum, its output gets clipped off.    
+**Example:** You have the throttle just above minimum and tried to pull a quick roll - since two motors can't go any lower, you essentially get half the power (half of your PID gain). If your input command calls for more than 100% difference between the high and low motors, the low motors will get clipped, breaking the symmetry of the motor balance by unevenly reducing the gain.  
 
-In the standard mixer / mode, when the roll, pitch and yaw gets calculated and saturates a motor, all motors
-will be reduced equally. When motor goes below minimum it gets clipped off.
-Say you had your throttle just above minimum and tried to pull a quick roll - since two motors can't go
-any lower, you essentially get half the power (half of your PID gain).
-If your inputs would asked for more than 100% difference between the high and low motors, the low motors
-would get clipped, breaking the symmetry of the motor balance by unevenly reducing the gain.
-Airmode will enable full PID correction during zero throttle and give you ability for nice zero throttle
-gliding and aerobatics. But also the cornering / turns will be much tighter now as there is always maximum
-possible correction performed. Airmode can also be enabled to work at all times by always putting it on the
-same switch like your arm switch or you can enable/disable it in air. Additional things and benefits: Airmode
-will additionally fully enable Iterm at zero throttle. Note that there is still some protection on the ground
-when throttle zeroed (below min_check) and roll/pitch sticks centered. This is a basic protection to limit
-motors spooling up on the ground. Also the Iterm will be reset above 70% of stick input in acro mode to prevent
-quick i-term windups during finishes of rolls and flips, which will provide much cleaner and more natural stops
-of flips and rolls what again opens the ability to have higher I gains for some.
+This is when MC Airmode will allow full PID correction during zero throttle maneuvers, providing for inverted hang-time aerobatics.  
+It will also make cornering and turns much tighter, now that full stabilization correction is active.     
+You can set Airmode to be always active via `feature PERMANENTLY_ENABLE_AIRMODE`. Or ONLY by enabling it together with ACRO mode in the modes tab.  
+Airmode will keep I-term fully enabled at zero throttle, once [airmode_throttle_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#airmode_throttle_threshold) is exceeded the first time, until you disarmed. This adds protection on the ground when the throttle is below `min_check`, to prevent I-term windup before takeoff. Which could flip-over more powerful models. 
+
+>[!Tip] 
+>[Motorstop_on_low](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#motorstop_on_low) is _not_ normally recommended for aerobatic quads, when Airmode is active. However it can have some advantages for larger multicopters. And even quads that have a very high thrust to weight ratio. In both these cases it is beneficial to ONLY have Airmode enabled in the modes tab together with ACRO mode. And NOT permanently enabled with all flight modes.   The reasons being are:
+> * It is better to land larger copters in ANGLE mode for added level stability. So you don't require Airmode to be active keeping the motors idling, which can potentially lead to I-term windup instability once on the ground. It is generally safer for the multicopter to have `motorstop_on_low`, shutoff the motors as soon as you lower the throttle at touchdown. However this would not occur in ANGLE mode if `feature PERMANENTLY_ENABLE_AIRMODE` was active. Because `airmode_throttle_threshold` would override `motorstop_on_low` in all flight modes in this case. 
+> * The second reason to use the above method, is for light weight high power 6 cell quads. These copters generally produce so much thrust, that the model will hover at less than 10% throttle. This can lead to I-term windup immediately after a _less than smooth_ touchdown. Often causing the copter to instantly flip-over.   
+>**CAUTION:** ALWAYS manually Disarm after touchdown, or watch for the landing detector to automatically disarm within a few seconds. 
+
+
+**Additional benefits:** 
+MC Airmode I-term functionality can be adjust in the Configurator _Tuning tab_, under _I-term Mechanics_. With features like _I-term relax_ and _Anti-gravity_.
+
+**Fixedwing:**   
+Airmode works slightly different for fixedwings. It uses different settings for [airmode_type](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#airmode_type) - `STICK_CENTER` and `STICK_CENTER_ONCE`.  
+The link explains how `STICK_CENTER` works. While `STICK_CENTER_ONCE` operates by the same method when `airmode_throttle_threshold` is exceeded and the control sticks are moved from center. _But it will always keep Airmode active until you disarm_. This is more beneficial for fixedwing platforms like powered gliders. So they maintains Airmode stabilization at zero throttle.  
+Both setting prevent I-term windup before launch, if you don't throw the airplane immediately after arming.    
+
+Airmode works via the servo's for a fixedwing. It enables a higher stabilization response from Rate mode. Even providing a more lock-in attitude control if the I-term gain is increased on that given axis.   
+Also see [here](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing) for additional information on this topic related to Fixedwings.
 
 ### ANGLE
 
@@ -123,12 +134,12 @@ Autotune will monitor the behavior of the airplane and attempt to tune the FeedF
 
 >[!Note] 
 >Autotune should ideally be performed at the approximate airspeed the airplane will cruise at.  
-This isn't always an easy thing to accomplish, especially when performing pitch climb maneuvers. But getting this correct can make a considerable difference to overall flight performance.  
+This isn't always an easy thing to accomplish, especially when performing pitch climb maneuvers. But getting this correct can make a considerable difference to overall flight performance.    
+>**Full stick** deflection must be applied at some point in the process. Otherwise the controller will not be tuned to provide the maximum axis rotation rate. 
 
 **How to use:**
 
-Enable AUTOTUNE mode in any non-navigation flight mode. ACRO is the best option.  
-**Full stick** deflection must be applied at some point in the process. Otherwise the controller will not be tuned to provide the maximum axis rotation rate.   
+Enable AUTOTUNE mode in any non-navigation flight mode. ACRO is the best option.    
  _The more maneuvers you do, the better results AUTOTUNE will provide, up to a point._  
 
 Make sure you provide yourself enough altitude and flight area to perform the task.
@@ -144,7 +155,7 @@ Initially you may notice a soft/slow response if the Rates and Feedforward where
 This should complete the autotune process in only one or two attempts.
 
 - **Advanced PITCH** - IF you and your airplane are **capable** of completing a full 360° forward and/or inverted loop. **Not recommended on larger aircraft, or those that have a lower thrust to weight ratio.**   
-Increase the throttle just before you apply enough UP elevator stick to start the loop. Once at the top of the loop, start applying full elevator stick. Then as you are about to exit the bottom half of the loop, back off the elevator and throttle.  
+Increase the throttle just before you apply enough UP elevator stick to start the loop. Once at the top of the loop, start applying full elevator stick. Then as you are about to exit the bottom half of the loop, back off the elevator and throttle.      
 For an inverted loop. Gain some good altitude, and push full DOWN elevator. _Remember to start applying full throttle at the bottom half of the inverted loop, as you simultaneously back off the DOWN elevator stick enough to prevent a stall, when the plane is commencing the vertical climb-out half of the loop_.   
 This should complete the autotune process in only one or two attempts.
   
