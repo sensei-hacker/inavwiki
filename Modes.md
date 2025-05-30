@@ -14,7 +14,7 @@ Scroll down to the [AUXILIARY CONFIGURATION](#AUXILIARY-CONFIGURATION) section f
 - [ACRO MODE](#acro-mode) (default mode)
 - [AIR MODE](#air-mode)
 - [ANGLE](#angle)
-- [ANGLE HOLD](#angle-hold-fw) **FW** (7.1 and later)
+- [ANGLE HOLD](#angle-hold-fw) **FW** 
 - [ARM](#arm)
 - [ALTHOLD](#althold)
 - [AUTO LEVEL TRIM](#auto-level-trim-fw) **FW**
@@ -55,7 +55,7 @@ Scroll down to the [AUXILIARY CONFIGURATION](#AUXILIARY-CONFIGURATION) section f
 - [WAYPOINT PLANNER](#WP-Planner)
 
 ### ACRO MODE
-NOTE: This is **default** flight mode. It is only active when no other mode is active. There is no mode selection for ACRO in the configurator, only an ACRO box that highlights when no other mode is active.
+NOTE: This is **default** flight mode. It's only active when no other flight mode is active. There is no mode selection for ACRO in the Configurator, only an ACRO box that highlights when no other mode is active.
 
 This default flight mode does not self level the aircraft around the roll and the pitch axes. That is, the aircraft does not level on its own if you center the pitch and roll sticks on the radio. Rather, they work just like the yaw axis: the rate of rotation of each axis is controlled directly by the related stick on the radio, and by leaving them centered the flight controller will just try to keep the aircraft in whatever orientation it's in. This default mode is called "Acro" mode (from "acrobatic", shown in the OSD as `ACRO`). It is also sometimes called "rate" mode because the sticks control the rates of rotation of the aircraft around each of the three axes. "Acro" mode is active whenever an auto-leveled mode is not enabled.
 
@@ -73,7 +73,7 @@ Airmode will keep I-term fully enabled at zero throttle, once [airmode_throttle_
 >[!Tip] 
 >[Motorstop_on_low](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#motorstop_on_low) is _not_ normally recommended for aerobatic quads, when Airmode is active. However it can have some advantages for larger multicopters. And even quads that have a very high thrust to weight ratio. In both these cases it is beneficial to ONLY have Airmode enabled in the modes tab together with ACRO mode. And NOT permanently enabled with all flight modes.   The reasons being are:
 > * It is better to land larger copters in ANGLE mode for added level stability. So you don't require Airmode to be active keeping the motors idling, which can potentially lead to I-term windup instability once on the ground. It is generally safer for the multicopter to have `motorstop_on_low`, shutoff the motors as soon as you lower the throttle at touchdown. However this would not occur in ANGLE mode if `feature PERMANENTLY_ENABLE_AIRMODE` was active. Because `airmode_throttle_threshold` would override `motorstop_on_low` in all flight modes in this case. 
-> * The second reason to use the above method, is for light weight high power 6 cell quads. These copters generally produce so much thrust, that the model will hover at less than 10% throttle. This can lead to I-term windup immediately after a _less than smooth_ touchdown. Often causing the copter to instantly flip-over.   
+> * The second reason to use the above method, is for light weight 6 cell race quads. These copters generally produce so much thrust, that the model will hover at less than 10% throttle. This can lead to I-term windup immediately after a _less than smooth_ touchdown. Often causing the copter to instantly flip-over.   
 >**CAUTION:** ALWAYS manually Disarm after touchdown, or watch for the landing detector to automatically disarm within a few seconds. 
 
 
@@ -83,9 +83,9 @@ MC Airmode I-term functionality can be adjust in the Configurator _Tuning tab_, 
 **Fixedwing:**   
 Airmode works slightly different for fixedwings. It uses different settings for [airmode_type](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#airmode_type) - `STICK_CENTER` and `STICK_CENTER_ONCE`.  
 The link explains how `STICK_CENTER` works. While `STICK_CENTER_ONCE` operates by the same method when `airmode_throttle_threshold` is exceeded and the control sticks are moved from center. _But it will always keep Airmode active until you disarm_. This is more beneficial for fixedwing platforms like powered gliders. So they maintains Airmode stabilization at zero throttle.  
-Both setting prevent I-term windup before launch, if you don't throw the airplane immediately after arming.    
+Both settings prevent I-term windup before launch, if you don't throw the airplane immediately after arming.    
 
-Airmode works via the servo's for a fixedwing. It enables a higher stabilization response from Rate mode. Even providing a more lock-in attitude control if the I-term gain is increased on that given axis.   
+Airmode uses the servo's for stabilization on a fixedwing, instead of motors as with a multicopter. It enables a higher stabilization response from ACRO mode. Even providing a more locked-in attitude control if the I-gain is increased on that axis. With no benefit to having it enabled with other flight modes.  
 Also see [here](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing) for additional information on this topic related to Fixedwings.
 
 ### ANGLE
@@ -95,13 +95,13 @@ Maximum banking angle is limited by `max_angle_inclination_rll` and `max_angle_i
 
 ### ANGLE HOLD (FW)
 
-This mode is a simple version of an attitude lock stabilizer. But its not designed for 3D aerobatic use.
-It behaves more like Acro mode, in the way the desired flight attitude is achieved by stick deflection, and you release the stick to center. But the difference is, ANGLE HOLD will attempt to _hold or lock_ the pitch or roll attitude the airplane was commanded, when the stick is released back to center. Thus resisting any long term change to the flight attitude caused by the effects of wind...
+This mode works as an attitude hold stabilizer. But its not designed for 3D aerobatic use.
+It behaves more like Acro mode, in the way the desired flight attitude is achieved by stick deflection, and you release the stick to center. But the difference is, ANGLE HOLD will attempt to _hold or lock_ the pitch or roll attitude the airplane was commanded, when the stick is released back to center. Thus resisting any long term change to the flight attitude caused by the effects of wind.   
 Returning the airplane to level flight is done the same as when flying in Acro or Manual modes.
 
-This flight mode has angle constraints set by the navigation angle limits - `nav_fw_climb_angle`, `nav_fw_dive_angle` and `nav_fw_bank_angle`. Which may also make it feel a little like ANGLE mode, with its bank limits.
+This flight mode has angle constraints set by the navigation angle limits - `nav_fw_climb_angle`, `nav_fw_dive_angle` and `nav_fw_bank_angle`. 
 
-It was designed to work with a flight mode and a modifier - `COURSE HOLD` or `ALT HOLD`. Although both **can not** be selected for use with ANGLE HOLD at the same time.
+It was designed so it can also be used with - `COURSE HOLD` or `ALT HOLD`. Although both **can not** be selected for use with ANGLE HOLD at the same time.
  
 * ANGLE HOLD + COURSE HOLD - Will maintain a constant heading and climb angle over a long distance. e.g. Up or Down the side of a long mountain range.
 * ANGLE HOLD + ALT HOLD - Will allow the airplane to make a long banking turn, without losing altitude in the turn.
@@ -110,7 +110,16 @@ It was designed to work with a flight mode and a modifier - `COURSE HOLD` or `AL
 **Use caution! - If the pilot requests the airplane to hold a high climb angle. The pilot MUST provide adequate throttle (motor thrust) to maintain airspeed or the airplane will stall.**
 
 ### ARM
-Activates the flight controller to be ready for flight.
+Activates numerous conditions for flight. And allows the motor/s to become active for propulsion.  
+Some of these conditions are -
+* Starts flight logging. Including Blackbox and flight stats  
+* Records the RTH location and altitude
+* Can load WP mission from eeprom to FC memory
+* Can enable FW auto launch
+* Starts the flight timer    
+
+When DISARMING occurs, it disables some of the above functions and saves certain in-flight changes.
+
 
 ### ALTHOLD
 
@@ -233,7 +242,9 @@ Heading hold only uses yaw control (rudder) so it won't work on a flying wing wh
 
 ### HOME RESET
 
-This mode provides a means to reset the home location or arming coordinates the model will return to. This is beneficial if you choose to launch or takeoff before the model has a GPS fix.. By using this mode, you can fly past your launch site later in the flight, once a GPS fix is established.  And momentarily activate the feature.. **Ideally, it is better to place this mode on a Pot or multi-position button, so it doesn't get unintentionally activated.**
+This mode provides a means to reset the home location or arming coordinates the model will return to. This is beneficial if you choose to launch or takeoff before the model has a GPS fix.   
+By using this mode, you can fly past your launch site later in the flight, once a GPS fix is established.  And momentarily activate the feature.  
+**Ideally, it is better to place this mode on a Pot or multi-position button, so it doesn't get unintentionally activated.**
 
 ### HORIZON
 
