@@ -177,7 +177,9 @@ AUTOTUNE will adjust gains constantly but it will take a snapshot of current gai
 
 Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
 
-For detailed description go to https://github.com/iNavFlight/inav/wiki/Tune-INAV-PIFF-controller-for-fixedwing
+For detailed description go to 
+https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing
+
 
 
 ### BEEPER
