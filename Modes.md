@@ -144,29 +144,33 @@ Autotune will monitor the behavior of the airplane and attempt to tune the FeedF
 >[!Note] 
 >Autotune should ideally be performed at the approximate airspeed the airplane will cruise at.  
 This isn't always an easy thing to accomplish, especially when performing pitch climb maneuvers. But getting this correct can make a considerable difference to overall flight performance.    
->**Full stick** deflection must be applied at some point in the process. Otherwise the controller will not be tuned to provide the maximum axis rotation rate. 
+>**Full stick** deflection MUST be applied for a reasonable duration in the tuning process. Otherwise the controller will not be tuned to provide the maximum axis rotation rate. 
 
 **How to use:**
 
-Enable AUTOTUNE mode in any non-navigation flight mode. ACRO is the best option.    
- _The more maneuvers you do, the better results AUTOTUNE will provide, up to a point._  
+Enable AUTOTUNE mode in any non-navigation flight mode. ACRO is the best option, and should be chosen over Angle or Horizon modes.  
+ **NOTE:** _The **Advanced** ROLL/PITCH method MUST be performed in ACRO mode !_    
 
-Make sure you provide yourself enough altitude and flight area to perform the task.
+ _The more maneuvers you do via the **Standard** method, the better results AUTOTUNE will provide, up to a point._  
+ While the **Advanced** method will provide a more sustained snap shot of you airplanes maximum axis rotation rate. Meaning it will complete the tuning process faster and generally provide a more accurate tune.
 
-- **For ROLL -** From level, bank **hard** left, then **hard** right as far as you feel confident, then repeat several times.   
-Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct.   
+**Make sure you provide yourself enough altitude and flight area to perform the task.**
 
-- **For PITCH -** When flying level, quickly pull UP full stick for a moment, so the airplane climbs rapidly to an angle you're comfortable with, and then bring the airplane back to level flight, to regain its airspeed.    
-Then do the same for DOWN, pushing full pitch stick for a moment so the plane dives at an angle you're comfortable with, and then bring the airplane back to level flight; repeating the process again several times.
-Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct.      
+- **Standard ROLL -** From level, bank **hard** left, then **hard** right as far as you feel confident, then repeat several times.   
+_Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct._   
+
+- **Standard PITCH -** When flying level, quickly pull UP full stick for a moment, so the airplane climbs rapidly to an angle you're comfortable with, and then bring the airplane back to level flight, to regain its airspeed.    
+Then do the same for DOWN, pushing full pitch stick for a moment so the plane dives at an angle you're comfortable with, and then bring the airplane back to level flight; repeating the process again several times.  
+_Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct._    
 
 - **Advanced ROLL** - IF you and your airplane are **capable** of completing a full 360° roll at full stick deflection, both left and right.   
-This should complete the autotune process in only one or two attempts.
+_This should complete the autotune process in only one or two attempts._
 
-- **Advanced PITCH** - IF you and your airplane are **capable** of completing a full 360° forward and/or inverted loop. **Not recommended on larger aircraft, or those that have a lower thrust to weight ratio.**   
-Increase the throttle just before you apply enough UP elevator stick to start the loop. Once at the top of the loop, start applying full elevator stick. Then as you are about to exit the bottom half of the loop, back off the elevator and throttle.      
-For an inverted loop. Gain some good altitude, and push full DOWN elevator. _Remember to start applying full throttle at the bottom half of the inverted loop, as you simultaneously back off the DOWN elevator stick enough to prevent a stall, when the plane is commencing the vertical climb-out half of the loop_.   
-This should complete the autotune process in only one or two attempts.
+- **Advanced PITCH** - IF you and your airplane are **capable** of completing a full 360° forward and/or inverted loop.   
+**Not recommended on larger aircraft, or those that have a lower thrust to weight ratio.**       
+Increase the throttle just before you apply enough UP elevator stick to start the loop. Once at the top of the loop, start applying full elevator stick. Then as you are about to exit the bottom half of the loop, start backing off the elevator a little and the throttle.        
+For an inverted loop. Gain some good altitude, and push full DOWN elevator. Remember to start applying full throttle at the bottom half of the inverted loop, as you simultaneously back off the DOWN elevator stick enough to prevent a stall, when the plane is commencing the vertical climb-out half of the loop.   
+_This should complete the autotune process in only one or two attempts._
   
 
 AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable it, the AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse; the FF gains and Rates won't be changed.
@@ -194,15 +198,15 @@ See [`BLACKBOX`](/iNavFlight/inav/blob/master/docs/Blackbox.md) for more informa
 
 ### CAMERA CONTROL
 
-Camera control 1, 2 & 3 are used to adjust settings from your RC transmitter, when analogue/HD camera's like the _Runcam Hybrid_ or _Split_ are used.
+Camera control 1, 2 & 3 are used to adjust settings from your RC transmitter, when Analog/HD record camera's like the _Runcam Hybrid_ or _Split_ are used.  
 Available function control is -
 1) WiFi - App connection
 2) Power - Start/Stop record
-3) Mode change - Alter analogue and HD image settings.
+3) Mode change - Alter analog and HD record image settings.
 
 ### CAMSTAB
 
-Allows a Pan, Tilt or Roll servo's to be used as an actively stabilized gimbal. The dedicated axis for each servo is selected in the mixer tab.
+Allows Tilt or Roll servo's to be used as an actively stabilized gimbal. The dedicated axis for each servo is selected in the Mixer tab.
 
 ### FAILSAFE
 
