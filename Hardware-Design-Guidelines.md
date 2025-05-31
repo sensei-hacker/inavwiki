@@ -78,8 +78,8 @@ We understand there are often space constraints on selecting what MCU pins gets 
 * It can be helpful to put your company name or somewhere on the board, to indicate your company and which model it is (For example: OrbitF435v1)
 
 
-
-
+## See also
+[New Hardware Policy](https://github.com/iNavFlight/inav/blob/master/docs/policies/NEW_HARDWARE_POLICY.md)
 
 
 
