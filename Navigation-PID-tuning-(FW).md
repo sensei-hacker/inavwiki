@@ -7,6 +7,7 @@ The aim of this page is to separate the tuning of the FW Navigation PIDs from th
 Accounting for this detail can make your build a greater success, especially when using a magnetometer.
 
 - [ALTITUDE PID TUNING](#Tuning-Altitude-Controller---Z-axis)
+- [PITCH2THROTTLE TUNING](#Pitch2throttle-Tuning)
 - [POSITION PID TUNING](#Tuning-Position-Controller---XY-axis)
 - [RANGE-FINDER TUNING](#Tuning-Rangefinder)
 
@@ -33,24 +34,33 @@ Tuning of an airplanes Z axis controller should be done on a day no colder than 
 _The following settings can be accessed using the Configurator **Tuning tab** and **Advanced Tuning tab**. Or the CLI and CMS OSD stick menu's._
 - `nav_fw_pos_z_p` - Controls velocity to acceleration. Increasing the gain will provide a stronger elevator/pitch2throttle response to reach the required altitude target.
 - `nav_fw_pos_z_i` - Attempts to compensate for climb rate fluctuations cause by turbulence, thermals etc. Use sparingly. It can only do so much on a fixedwing platform.
-- `nav_fw_pos_z_d` - Attempts to smooth the POS(`VEL`)_Z_P and POS(`VEL`)_Z_I rate of response. Too much damping can weaken the response, leading to oscillations around the altitude target. Even becoming more exaggerated by an incorrectly tuned `fw_ff_pitch` response.
-- `nav_fw_pos_z_ff` - Attempts to provide a faster control response to meet the require target, based on altitude and gyro rate data. Depending on the aircraft's build specifics, lowering POS_Z_D and increasing POS_Z_FF can help.
+- `nav_fw_pos_z_d` - Attempts to anticipate the magnitude of the error and dampen the POS(`VEL`)_Z_P and POS(`VEL`)_Z_I response. Too much damping can push the climb-rate error past the setpoint, leading to oscillations when the initial climb is commanded, or when holding the target altitude. Even becoming more exaggerated by an incorrectly tuned `fw_ff_pitch` response.
+- `nav_fw_pos_z_ff` - Attempts to provide a faster control response to meet the require target, based on altitude and gyro rate data. Depending on the aircraft's build specifics, lowering POS_Z_D and increasing POS_Z_FF may help.
 - `nav_fw_alt_control_response` - Alters the altitude control response as the airplane gets closer to reaching the altitude target.
 - `fw_ff_pitch` - Passes the angular rate target directly to the servo mixer, bypassing the gyro PID loop stabilization.
 - `nav_fw_auto_climb_rate`- Maximum climb/descent rate in [cm/s], the airplane is allowed to reach in modes that control altitude.
 
-**These settings should also be configured or tweaked to suit your aircraft. This will assist the Velocity Z controller.** 
+## Pitch2Throttle Tuning
 
-- [nav_fw_climb_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_climb_angle)
-- [nav_fw_dive_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_dive_angle)
-- [nav_fw_pitch2thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_pitch2thr)
-- [nav_fw_pitch2thr_smoothing](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_pitch2thr_smoothing)
-- [nav_fw_pitch2thr_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_pitch2thr_threshold)
-- [nav_fw_manual_climb_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_manual_climb_rate)
-- [nav_fw_min_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_min_thr) 
-- [nav_fw_cruise_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_cruise_thr)
-- [nav_fw_max_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_max_thr) 
+All the settings below work in conjunction with the [nav_fw_pitch2thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_pitch2thr) command. And effect fixedwing altitude control response.
+
+It basically multiplies the `nav_fw_pitch2thr` by [nav_fw_climb_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_climb_angle) or [nav_fw_dive_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_dive_angle). To provide how many microSeconds **Auto-Throttle** will _increase_, as a result of each degree of _positive pitch angle_. Or _decrease_, as a result of each degree of _negative pitch angle_.  
+
+[nav_fw_cruise_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_cruise_thr) is the throttle value used when the airplane is flying level, when no `nav_fw_pitch2thr` is being applied.  
+`nav_fw_pitch2thr` should be tuned to works within the uS throttle constraints of [nav_fw_min_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_min_thr) and [nav_fw_max_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_max_thr).
+
+**e.g.** If `nav_fw_pitch2thr` = 12uS **x** `nav_fw_climb_angle` = 25° = 300uS. (The same will apply to `nav_fw_dive_angle` degrees.)  
+So if you have `nav_fw_cruise_thr` = 1450uS. Then you add 300uS to 1450uS = 1750uS. This means 1750uS is the maximum value `nav_fw_max_thr` will output to the motor, at a pitch climb angle of 25°.  
+However, in the above example, if `nav_fw_pitch2thr` was set lower. Auto-Throttle would fall short of reaching `nav_fw_max_thr`. This is why it has to be adjusted to suit your required Dive / Climb angle and Min / Max cruise throttle range.
+
+To reduce the likelihood of pitch bobbing or porpoising, while in modes that hold altitude. [nav_fw_pitch2thr_smoothing](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_pitch2thr_smoothing) reduces harsh Auto-Throttle response, when flying close to level.  
+While [nav_fw_pitch2thr_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_pitch2thr_threshold) sets a deadband region this many decidegrees above or below level flight, for the `nav_fw_pitch2thr_smoothing` to work within.
+
+
+**These settings below should also be configured or tweaked to suit your aircraft. This will assist the Velocity Z controller.** 
+
 - [fw_level_pitch_trim](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_level_pitch_trim)
+- [nav_fw_manual_climb_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_manual_climb_rate)
 
 ## Tuning Position Controller - XY axis:
 
