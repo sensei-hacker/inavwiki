@@ -5,11 +5,11 @@ Blackbox is a valuable tool for analyzing the flight dynamics of our airborne ve
 In INAV we use a set of specific variables, each variable may contain multiple arrays, for example - navPos[0-2].
 
 **navPos**, **navVel**, **navTgtPos** and **navTgtVel** each hold arrays [0-2], which represent distances due North [0], due East [1] and straight Up [2], all relative to the "point of origin".
-North and East are fused from accelerometer and GPS data, while Up is fused from accelerometer + barometer for multicopters and accelerometer + gps for airplanes if no barometer is available. Read the [[Inertial position estimator|Inertial-position-estimator-(INAV)]] page for detailed explanation.
+North and East are fused from accelerometer and GPS data, while Up is fused from accelerometer + barometer for multicopters and accelerometer + gps for airplanes if no barometer is available. Read the Inertial position estimator|Inertial-position-estimator-(INAV) section in the [[Developer info]] page for detailed explanation.
 
 "Point of origin" might be different from "Home". "Home" is defined as position at the time of arming. While "Point of origin" is recorded after a valid GPS fix is aquired.
 
-For further information about the coordinate system used please read the [[Coordinate systems|Coordinate-systems]] page.
+For further information about the coordinate system used please read the Coordinate systems|Coordinate-systems section on the [[Developer info]] page.
 
 #INAV Variables
 
