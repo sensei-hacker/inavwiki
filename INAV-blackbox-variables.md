@@ -121,15 +121,15 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 |  navFlags 	|   	|  navigation data trusted 	|   	|   |
 |  navEPH 	|   	|  Std deviation horizontal position error 	|   	| meters  |
 |  navEPV 	|   	|  Std deviation of vertical position error	|   	| meters  |
-|  navPos[0] 	|   navPos[0] 	|  position of copter 	|  north 	|  cm |
-|  navPos[1] 	|   navPos[1] 	|  position of copter 	|  east 	|  cm |
-|  navPos[2] 	|   navPos[2] 	|  position of copter 	|  vertical 	|  cm |
-|  navVel[0] 	|   navVel[0] 	|  velocity of copter 	|  north 	|  cm/s |
-|  navVel[1] 	|   navVel[1] 	|  velocity of copter 	|  east 	|  cm/s |
-|  navVel[2] 	|   navVel[2] 	|  velocity of copter 	|  vertical 	|  cm/s |
-|  navAcc[0] 	|   navAcc[0] 	|  acceleration of copter 	|  north 	|  cm/s/s |
-|  navAcc[1] 	|   navAcc[1] 	|  acceleration of copter 	|  east 	|  cm/s/s |
-|  navAcc[2] 	|   navAcc[2] 	|  acceleration of copter 	|  vertical 	|  cm/s/s |
+|  navPos[0] 	|   navPos[0] 	|  position of vehicle 	|  north 	|  cm |
+|  navPos[1] 	|   navPos[1] 	|  position of vehicle 	|  east 	|  cm |
+|  navPos[2] 	|   navPos[2] 	|  position of vehicle 	|  vertical 	|  cm |
+|  navVel[0] 	|   navVel[0] 	|  velocity of vehicle 	|  north 	|  cm/s |
+|  navVel[1] 	|   navVel[1] 	|  velocity of vehicle 	|  east 	|  cm/s |
+|  navVel[2] 	|   navVel[2] 	|  velocity of vehicle 	|  vertical 	|  cm/s |
+|  navAcc[0] 	|   navAcc[0] 	|  acceleration of vehicle 	|  north 	|  cm/s/s |
+|  navAcc[1] 	|   navAcc[1] 	|  acceleration of vehicle 	|  east 	|  cm/s/s |
+|  navAcc[2] 	|   navAcc[2] 	|  acceleration of vehicle 	|  vertical 	|  cm/s/s |
 |  navTgtVel[0] 	|   navTgtVel[0] 	|  target value: velocity 	|  north 	|  cm/s |
 |  navTgtVel[1] 	|   navTgtVel[1] 	|  target value: velocity 	|  east 	|  cm/s |
 |  navTgtVel[2] 	|   navTgtVel[2] 	|  target value: velocity 	|  vertical 	|  cm/s |
