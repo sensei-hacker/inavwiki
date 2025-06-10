@@ -63,7 +63,7 @@ If the aircraft is below `nav_rth_altitude` it will climb to desired altitude pr
 
 ![AT_LEAST](https://github.com/user-attachments/assets/ba2e869e-cf5b-4511-8821-04e161cbdc1f)
 
-## Predefined altitude linear descent 
+## At least predefined altitude with linear descent 
 _pre-INAV 7.0_
 - `nav_rth_alt_mode` = **AT_LEAST_LINEAR_DESCENT**
 - `nav_rth_altitude` - defines minimum RTH altitude above launch point. 
