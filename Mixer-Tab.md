@@ -22,17 +22,7 @@ Bear in mind:
 * In some rare cases, output assignment might be different than in INAV 6. **This makes it even more important to remove your props and double check your outputs before you power your flight controller with batteries for the first time after applying your old settings or enabling outputs.**
 * It is not possible to assign function to individual outputs. It's a hardware, not software limitation.
 
-## Mixer profiles and VTOL support
-
-This has been a frequent request since PNP VTOL models started becoming more common.
-
-Read more in [Mixer Profile INAV docs](https://github.com/iNavFlight/inav/blob/master/docs/MixerProfile.md) and [VTOL INAV docs](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
-
-
-
-
-
-##Mixer Preset
+## Mixer Presets
 
 This is the portion where you tell INAV what type of plane it’s going into. The flight controller will do the mixing for you. Simply select the right plane type from the pulldown menu and click save and reboot. Most of the heavy lifting has been done for you with this move.
 
@@ -41,3 +31,11 @@ Normally, you shouldn’t need to change anything here since the “Default Valu
 If you want to run [reverse motor direction (props out)](https://oscarliang.com/reversed-motor-prop-rotation-quadcopter/), select “Reversed motor direction / Props-out configuration”.
 
 Click Save and Reboot.
+
+## Advanced
+
+There are several advanced applications of the mixer.
+* [Mixer Documentation](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md) to find detailed descriptions of all components of the Mixer
+* [Mixer Profiles](https://github.com/iNavFlight/inav/blob/master/docs/MixerProfile.md) used to define more than one mix and to allow the transition from one mix to another mix during flight. A common use of this would be in a VTOL.
+* [VTOL Configuration](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md) specific walkthrough of the steps needed to setup a VTOL
+* [Custom Mixes for Exotic Setups](Custom-mixes-for-exotic-setups) gives you a starting point for less common setups like a Hexa Y6 multi-rotor.
