@@ -89,7 +89,7 @@ Set ESC Protocol and Servo Parameters
 
 [Modes](Modes)\
 [Navigation modes](Navigation-modes)\
-[Navigation Mode: Return to Home](Navigation-Mode:-Return-to-Home)\
+[Navigation Mode: Return to Home](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)\
 [FW Launch Mode](Auto-Launch-(NAV_LAUNCH))\
 DevDocs [Controls.md](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md)\
 DevDocs [INAV_Modes.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Modes.pdf)\
