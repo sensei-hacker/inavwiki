@@ -81,12 +81,8 @@ Set protocol and channel mapping
 [**Mixer Tab**](Mixer-Tab)\
 Set aircraft type and how its controlled
 
-<details>
-<summary>Outputs</summary>
-
-DevDocs [ESC and servo outputs.md](https://github.com/iNavFlight/inav/blob/master/docs/ESC%20and%20servo%20outputs.md)\
-DevDocs [Servo.md](https://github.com/iNavFlight/inav/blob/master/docs/Servo.md)
-</details>
+[**Outputs Tab**](Outputs-Tab)\
+Set ESC Protocol and Servo Parameters
 
 <details>
 <summary>Modes</summary>
