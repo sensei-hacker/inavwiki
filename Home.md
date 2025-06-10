@@ -34,7 +34,7 @@ Check out our [Hardware-Design-Guidelines](https://github.com/iNavFlight/inav/wi
 - When buying a flight controller board, INAV support is usually listed in the product's description.
 - To connect and configure INAV on a flight controller, use the [INAV Configurator](https://github.com/iNavFlight/inav-configurator/releases/latest).
 - If you have experience with BetaFlight, see the wiki page [INAV for BetaFlight users](https://github.com/iNavFlight/inav/wiki/INAV-for-BetaFlight-users) to get started.
-- See our [YouTube video guides](https://github.com/iNavFlight/inav/wiki/YouTube-video-guides) for some of the many great tutorials on YouTube. YouTube has hundreds and hundreds of great guides on all features of INAV.
+- See our [YouTube video guides](YouTube-video-guides) for some of the many great tutorials on YouTube. YouTube has hundreds and hundreds of great guides on all features of INAV.
 - Find and Join an INAV user group on your social media platform of choice. INAV users are happy to help get you started.
 
 ## INAV versions and compatibility
