@@ -16,6 +16,8 @@ INAV now was a function that allows to flexibly assign functions to PWM outputs 
 Specific function `AUTO`, `MOTORS` or `SERVOS` can be assigned to each Timer Group. Then, all outputs from this group will perform this function.
 Thanks to this, it's possible to use servos and motors in ways that previously required building a custom targets.
 
+Note: INAV does not approach resource remapping like BetaFlight, instead, you adjust mix to change motor order.
+
 ![INAV output assignment](https://quadmeup.com/assets/inav/inav_output_assignment.png)
 
 Bear in mind:
