@@ -1,47 +1,47 @@
 ### WIKI TOPICS
 
-[**Wiki Home Page**](https://github.com/iNavFlight/inav/wiki/Home)
+[**Wiki Home Page**](Home)
 
 <details>
 <summary>INAV Version Release Notes</summary>
 
-[8.0.0 Release Notes](https://github.com/iNavFlight/inav/wiki/8.0.0-Release-Notes)\
-[7.1.0 Release Notes](https://github.com/iNavFlight/inav/wiki/7.1.0-Release-Notes)\
-[7.0.0 Release Notes](https://github.com/iNavFlight/inav/wiki/7.0.0-Release-Notes)\
-[6.0.0 Release Notes](https://github.com/iNavFlight/inav/wiki/6.0.0-Release-Notes)\
-[5.1 Release notes](https://github.com/iNavFlight/inav/wiki/5.1-Release-notes)\
-[5.0.0 Release Notes](https://github.com/iNavFlight/inav/wiki/5.0.0-Release-Notes)\
-[4.1.0 Release Notes](https://github.com/iNavFlight/inav/wiki/4.1.0-Release-Notes)\
-[4.0.0 Release Notes](https://github.com/iNavFlight/inav/wiki/4.0.0-Release-Notes)\
-[3.0.0 Release Notes](https://github.com/iNavFlight/inav/wiki/3.0.0-Release-Notes)\
-[2.6.0 Release Notes](https://github.com/iNavFlight/inav/wiki/2.6.0-Release-Notes)\
-[2.5.1 Release notes](https://github.com/iNavFlight/inav/wiki/2.5.1-Release-notes)\
-[2.5.0 Release Notes](https://github.com/iNavFlight/inav/wiki/2.5.0-Release-Notes)\
-[2.4.0 Release Notes](https://github.com/iNavFlight/inav/wiki/2.4.0-Release-Notes)\
-[2.3.0 Release Notes](https://github.com/iNavFlight/inav/wiki/2.3.0-Release-Notes)\
-[2.2.1 Release Notes](https://github.com/iNavFlight/inav/wiki/2.2.1-Release-Notes)\
-[2.2.0 Release Notes](https://github.com/iNavFlight/inav/wiki/2.2.0-Release-Notes)\
-[2.1.0 Release Notes](https://github.com/iNavFlight/inav/wiki/2.1.0-Release-Notes)\
-[2.0.0 Release Notes](https://github.com/iNavFlight/inav/wiki/2.0.0-Release-Notes)\
-[1.9.1 Release notes](https://github.com/iNavFlight/inav/wiki/1.9.1-Release-notes)\
-[1.9.0 Release notes](https://github.com/iNavFlight/inav/wiki/1.9.0-Release-notes)\
-[1.8.0 Release notes](https://github.com/iNavFlight/inav/wiki/1.8.0-Release-notes)\
-[1.7.3 Release notes](https://github.com/iNavFlight/inav/wiki/1.7.3-Release-notes)\
-[Older Release Notes](https://github.com/iNavFlight/inav/wiki/Older-Release-Notes)
+[8.0.0 Release Notes](8.0.0-Release-Notes)\
+[7.1.0 Release Notes](7.1.0-Release-Notes)\
+[7.0.0 Release Notes](7.0.0-Release-Notes)\
+[6.0.0 Release Notes](6.0.0-Release-Notes)\
+[5.1 Release notes](5.1-Release-notes)\
+[5.0.0 Release Notes](5.0.0-Release-Notes)\
+[4.1.0 Release Notes](4.1.0-Release-Notes)\
+[4.0.0 Release Notes](4.0.0-Release-Notes)\
+[3.0.0 Release Notes](3.0.0-Release-Notes)\
+[2.6.0 Release Notes](2.6.0-Release-Notes)\
+[2.5.1 Release notes](2.5.1-Release-notes)\
+[2.5.0 Release Notes](2.5.0-Release-Notes)\
+[2.4.0 Release Notes](2.4.0-Release-Notes)\
+[2.3.0 Release Notes](2.3.0-Release-Notes)\
+[2.2.1 Release Notes](2.2.1-Release-Notes)\
+[2.2.0 Release Notes](2.2.0-Release-Notes)\
+[2.1.0 Release Notes](2.1.0-Release-Notes)\
+[2.0.0 Release Notes](2.0.0-Release-Notes)\
+[1.9.1 Release notes](1.9.1-Release-notes)\
+[1.9.0 Release notes](1.9.0-Release-notes)\
+[1.8.0 Release notes](1.8.0-Release-notes)\
+[1.7.3 Release notes](1.7.3-Release-notes)\
+[Older Release Notes](Older-Release-Notes)
 
 </details>
 
 <details>
 <summary>QUICK START GUIDES</summary>
 
-[Getting started with iNav](https://github.com/iNavFlight/inav/wiki/Getting-started-with-iNav)\
-[Fixed Wing Guide](https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Guide)\
-[Howto: CC3D flight controller, minimOSD , telemetry and GPS for fixed wing](https://github.com/iNavFlight/inav/wiki/Howto:-CC3D-flight-controller,-minimOSD-,-telemetry-and-GPS-for-fixed-wing)\
-[Howto: CC3D flight controller, minimOSD, GPS and LTM telemetry for fixed wing](https://github.com/iNavFlight/inav/wiki/Howto:-CC3D-flight-controller,-minimOSD,-GPS-and-LTM-telemetry-for-fixed-wing)\
-[INAV for BetaFlight users](https://github.com/iNavFlight/inav/wiki/INAV-for-BetaFlight-users)\
-[launch mode](https://github.com/iNavFlight/inav/wiki/launch-mode)\
-[Multirotor guide](https://github.com/iNavFlight/inav/wiki/Multirotor-guide)\
-[YouTube video guides](https://github.com/iNavFlight/inav/wiki/YouTube-video-guides)\
+[Getting started with iNav](Getting-started-with-iNav)\
+[Fixed Wing Guide](Fixed-Wing-Guide)\
+[Howto: CC3D flight controller, minimOSD , telemetry and GPS for fixed wing](Howto:-CC3D-flight-controller,-minimOSD-,-telemetry-and-GPS-for-fixed-wing)\
+[Howto: CC3D flight controller, minimOSD, GPS and LTM telemetry for fixed wing](Howto:-CC3D-flight-controller,-minimOSD,-GPS-and-LTM-telemetry-for-fixed-wing)\
+[INAV for BetaFlight users](INAV-for-BetaFlight-users)\
+[launch mode](launch-mode)\
+[Multirotor guide](Multirotor-guide)\
+[YouTube video guides](YouTube-video-guides)\
 DevDocs [Getting Started.md](https://github.com/iNavFlight/inav/blob/master/docs/Getting%20Started.md)\
 DevDocs [INAV_Fixed_Wing_Setup_Guide.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Fixed_Wing_Setup_Guide.pdf)\
 DevDocs [Safety.md](https://github.com/iNavFlight/inav/blob/master/docs/Safety.md)
@@ -50,41 +50,36 @@ DevDocs [Safety.md](https://github.com/iNavFlight/inav/blob/master/docs/Safety.m
 <details>
 <summary>Connecting to INAV</summary>
 
-[Bluetooth setup to configure your flight controller](https://github.com/iNavFlight/inav/wiki/Bluetooth-setup-to-configure-your-flight-controller)\
+[Bluetooth setup to configure your flight controller](Bluetooth-setup-to-configure-your-flight-controller)\
 DevDocs [Wireless Connections (BLE, TCP and UDP).md](https://github.com/iNavFlight/inav/blob/master/docs/Wireless%20Connections%20(BLE%2C%20TCP%20and%20UDP).md)\
 </details>
 
 <details>
 <summary>Flashing and Upgrading</summary>
 
-[Boards, Targets and PWM allocations](https://github.com/iNavFlight/inav/wiki/Boards,-Targets-and-PWM-allocations)\
-[Upgrading from an older version of INAV to the current version](https://github.com/iNavFlight/inav/wiki/Upgrading-from-an-older-version-of-INAV-to-the-current-version)\
+[Boards, Targets and PWM allocations](Boards,-Targets-and-PWM-allocations)\
+[Upgrading from an older version of INAV to the current version](Upgrading-from-an-older-version-of-INAV-to-the-current-version)\
 DevDocs [Installation.md](https://github.com/iNavFlight/inav/blob/master/docs/Installation.md)\
 DevDocs [USB Flashing.md](https://github.com/iNavFlight/inav/blob/master/docs/USB%20Flashing.md)
 </details>
 
-[**Setup Tab**](https://github.com/iNavFlight/inav/wiki/Setup-Tab)\
+[**Setup Tab**](Setup-Tab)\
 Live 3D Graphic & Pre-Arming Checks
 
-[**Calibration Tab**](https://github.com/iNavFlight/inav/wiki/Calibration-Tab)\
+[**Calibration Tab**](Calibration-Tab)\
 Accelerometer, Compass, & Optic Flow Calibration
 
-[**Alignment Tool Tab**](https://github.com/iNavFlight/inav/wiki/Alignment-Tool-Tab)\
+[**Alignment Tool Tab**](Alignment-Tool-Tab)\
 Adjust mount angle of FC & Compass
 
-[**Ports Tab**](https://github.com/iNavFlight/inav/wiki/Ports-Tab)\
+[**Ports Tab**](Ports-Tab)\
 Map Devices to UART Serial Ports</summary>
 
-[**Receiver Tab**](https://github.com/iNavFlight/inav/wiki/Receiver-Tab)\
+[**Receiver Tab**](Receiver-Tab)\
 Set protocol and channel mapping
 
-<details>
-<summary>Mixer</summary>
-
-[Mixer Tab](https://github.com/iNavFlight/inav/wiki/Mixer-Tab)\
-[Custom mixes for exotic setups](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups)\
-DevDocs [Mixer.md](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md)
-</details>
+[**Mixer Tab**](Mixer-Tab)\
+Set aircraft type and how its controlled
 
 <details>
 <summary>Outputs</summary>
@@ -96,10 +91,10 @@ DevDocs [Servo.md](https://github.com/iNavFlight/inav/blob/master/docs/Servo.md)
 <details>
 <summary>Modes</summary>
 
-[Modes](https://github.com/iNavFlight/inav/wiki/Modes)\
-[Navigation modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes)\
-[Navigation Mode: Return to Home](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)\
-[FW Launch Mode](https://github.com/iNavFlight/inav/wiki/Auto-Launch-(NAV_LAUNCH))\
+[Modes](Modes)\
+[Navigation modes](Navigation-modes)\
+[Navigation Mode: Return to Home](Navigation-Mode:-Return-to-Home)\
+[FW Launch Mode](Auto-Launch-(NAV_LAUNCH))\
 DevDocs [Controls.md](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md)\
 DevDocs [INAV_Modes.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Modes.pdf)\
 DevDocs [Navigation.md](https://github.com/iNavFlight/inav/blob/master/docs/Navigation.md)
@@ -108,25 +103,25 @@ DevDocs [Navigation.md](https://github.com/iNavFlight/inav/blob/master/docs/Navi
 <details>
 <summary>Configuration</summary>
 
-[Sensor auto detect and hardware failure detection](https://github.com/iNavFlight/inav/wiki/Sensor-auto-detect-and-hardware-failure-detection)
+[Sensor auto detect and hardware failure detection](Sensor-auto-detect-and-hardware-failure-detection)
 </details>
 
 <details>
 <summary>Failsafe</summary>
 
-[Failsafe](https://github.com/iNavFlight/inav/wiki/Failsafe)\
+[Failsafe](Failsafe)\
 DevDocs [Failsafe.md](https://github.com/iNavFlight/inav/blob/master/docs/Failsafe.md)
 </details>
 
 <details>
 <summary>PID Tuning</summary>
 
-[Navigation PID tuning (FW)](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(FW))\
-[Navigation PID tuning (MC)](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(MC))\
-[EZ-Tune](https://github.com/iNavFlight/inav/wiki/EZ%E2%80%90TUNE)\
-[PID Attenuation and scaling](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling)\
-[Fixed Wing Tuning for INAV 3.0](https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Tuning-for-INAV-3.0)\
-[Tune INAV PID-FF controller for fixedwing](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing)\
+[Navigation PID tuning (FW)](Navigation-PID-tuning-(FW))\
+[Navigation PID tuning (MC)](Navigation-PID-tuning-(MC))\
+[EZ-Tune](EZ%E2%80%90TUNE)\
+[PID Attenuation and scaling](PID-Attenuation-and-scaling)\
+[Fixed Wing Tuning for INAV 3.0](Fixed-Wing-Tuning-for-INAV-3.0)\
+[Tune INAV PID-FF controller for fixedwing](Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing)\
 DevDocs [Autotune - fixedwing.md](https://github.com/iNavFlight/inav/blob/master/docs/Autotune%20-%20fixedwing.md)\
 DevDocs [INAV PID Controller.md](https://github.com/iNavFlight/inav/blob/master/docs/INAV%20PID%20Controller.md)\
 DevDocs [INAV_Wing_Tuning_Masterclass.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Wing_Tuning_Masterclass.pdf)\
@@ -137,16 +132,16 @@ DevDocs [Profiles.md](https://github.com/iNavFlight/inav/blob/master/docs/Profil
 <details>
 <summary>GPS</summary>
 
-[GPS and Compass setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup)\
-[GPS Failsafe and Glitch Protection](https://github.com/iNavFlight/inav/wiki/GPS-Failsafe-and-Glitch-Protection)
+[GPS and Compass setup](GPS-and-Compass-setup)\
+[GPS Failsafe and Glitch Protection](GPS-Failsafe-and-Glitch-Protection)
 </details>
 
 <details>
 <summary>OSD and VTx</summary>
 
 DevDocs [Betaflight 4.3 compatible OSD.md](https://github.com/iNavFlight/inav/blob/master/docs/Betaflight%204.3%20compatible%20OSD.md)\
-[OSD custom messages](https://github.com/iNavFlight/inav/wiki/OSD-custom-messages)\
-[OSD Hud and ESP32 radars](https://github.com/iNavFlight/inav/wiki/OSD-Hud-and-ESP32-radars)\
+[OSD custom messages](OSD-custom-messages)\
+[OSD Hud and ESP32 radars](OSD-Hud-and-ESP32-radars)\
 DevDocs [OSD.md](https://github.com/iNavFlight/inav/blob/master/docs/OSD.md)\
 DevDocs [VTx.md](https://github.com/iNavFlight/inav/blob/master/docs/VTx.md)
 </details>
@@ -162,7 +157,7 @@ DevDocs [LedStrip.md](https://github.com/iNavFlight/inav/blob/master/docs/LedStr
 <details>
 <summary>Advanced Tuning</summary>
 
-[Fixed Wing Autolaunch](https://github.com/iNavFlight/inav/wiki/Fixed-Wing-Autolaunch)\
+[Fixed Wing Autolaunch](Fixed-Wing-Autolaunch)\
 DevDocs [INAV_Autolaunch.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Autolaunch.pdf)
 </details>
 
@@ -181,7 +176,7 @@ DevDocs [Inflight Adjustments.md](https://github.com/iNavFlight/inav/blob/master
 <details>
 <summary>Mission Control</summary>
 
-[iNavFlight Missions](https://github.com/iNavFlight/inav/wiki/iNav-Missions)\
+[iNavFlight Missions](iNav-Missions)\
 DevDocs [Safehomes.md](https://github.com/iNavFlight/inav/blob/master/docs/Safehomes.md)
 </details>
 
@@ -195,14 +190,14 @@ Log when FC is connected via USB
 <summary>Blackbox</summary>
 
 DevDocs [Blackbox.md](https://github.com/iNavFlight/inav/blob/master/docs/Blackbox.md)\
-[INAV blackbox variables](https://github.com/iNavFlight/inav/wiki/INAV-blackbox-variables)\
+[INAV blackbox variables](INAV-blackbox-variables)\
 DevDocs [USB_Mass_Storage_(MSC)_mode.md](https://github.com/iNavFlight/inav/blob/master/docs/USB_Mass_Storage_(MSC)_mode.md)
 </details>
 
 <details>
 <summary>CLI</summary>
 
-[iNav CLI variables](https://github.com/iNavFlight/inav/wiki/iNav-CLI-variables)\
+[iNav CLI variables](iNav-CLI-variables)\
 DevDocs [Cli.md](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md)\
 DevDocs [Settings.md](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md)
 </details>
@@ -217,32 +212,32 @@ DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
 <details>
 <summary>TROUBLESHOOTING</summary>
 
-["Something" is disabled Reasons](https://github.com/iNavFlight/inav/wiki/%22Something%22-is-disabled----Reasons)\
-[Blinkenlights](https://github.com/iNavFlight/inav/wiki/Blinkenlights)\
-[Pixel OSD FAQs](https://github.com/iNavFlight/inav/wiki/Pixel-OSD-FAQs)\
-[TROUBLESHOOTING](https://github.com/iNavFlight/inav/wiki/TROUBLESHOOTING)\
-[Why do I have limited servo throw in my airplane](https://github.com/iNavFlight/inav/wiki/Why-do-I-have-limited-servo-throw-in-my-airplane)
+["Something" is disabled Reasons](%22Something%22-is-disabled----Reasons)\
+[Blinkenlights](Blinkenlights)\
+[Pixel OSD FAQs](Pixel-OSD-FAQs)\
+[TROUBLESHOOTING](TROUBLESHOOTING)\
+[Why do I have limited servo throw in my airplane](Why-do-I-have-limited-servo-throw-in-my-airplane)
 </details>
 
 <details>
 <summary>ADTL TOPICS, FEATURES, DEV INFO</summary>
 
-[AAT Automatic Antenna Tracker](https://github.com/iNavFlight/inav/wiki/AAT-Automatic-Antenna-Tracker)\
-[Building custom firmware](https://github.com/iNavFlight/inav/wiki/Building-custom-firmware)\
-[Default values for different type of aircrafts](https://github.com/iNavFlight/inav/wiki/Default-values-for-different-type-of-aircrafts)\
-[Features safe to add and remove to fit your needs.](https://github.com/iNavFlight/inav/wiki/Features-safe-to-add-and-remove-to-fit-your-needs.)\
-[Developer info](https://github.com/iNavFlight/inav/wiki/Developer-info)\
-[INAV MSP frames changelog](https://github.com/iNavFlight/inav/wiki/INAV-MSP-frames-changelog)\
-[INAV Remote Management, Control and Telemetry](https://github.com/iNavFlight/inav/wiki/INAV-Remote-Management,-Control-and-Telemetry)\
-[Lightweight Telemetry (LTM)](https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM))\
-[Making a new Virtualbox to make your own INAV](https://github.com/iNavFlight/inav/wiki/Making-a-new-Virtualbox-to-make-your-own-INAV)\
-[MSP Navigation Messages](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages)\
-[MSP V2](https://github.com/iNavFlight/inav/wiki/MSP-V2)\
-[OrangeRX LRS RX and OMNIBUS F4](https://github.com/iNavFlight/inav/wiki/OrangeRX-LRS-RX-and-OMNIBUS-F4)\
-[Rate Dynamics](https://github.com/iNavFlight/inav/wiki/Rate-Dynamics)\
-[Target and Sensor support](https://github.com/iNavFlight/inav/wiki/Target-and-Sensor-support)\
-[UAV Interconnect Bus](https://github.com/iNavFlight/inav/wiki/UAV-Interconnect-Bus)\
-[Ublox 3.01 firmware and Galileo](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo)\
+[AAT Automatic Antenna Tracker](AAT-Automatic-Antenna-Tracker)\
+[Building custom firmware](Building-custom-firmware)\
+[Default values for different type of aircrafts](Default-values-for-different-type-of-aircrafts)\
+[Features safe to add and remove to fit your needs.](Features-safe-to-add-and-remove-to-fit-your-needs.)\
+[Developer info](Developer-info)\
+[INAV MSP frames changelog](INAV-MSP-frames-changelog)\
+[INAV Remote Management, Control and Telemetry](INAV-Remote-Management,-Control-and-Telemetry)\
+[Lightweight Telemetry (LTM)](Lightweight-Telemetry-(LTM))\
+[Making a new Virtualbox to make your own INAV](Making-a-new-Virtualbox-to-make-your-own-INAV)\
+[MSP Navigation Messages](MSP-Navigation-Messages)\
+[MSP V2](MSP-V2)\
+[OrangeRX LRS RX and OMNIBUS F4](OrangeRX-LRS-RX-and-OMNIBUS-F4)\
+[Rate Dynamics](Rate-Dynamics)\
+[Target and Sensor support](Target-and-Sensor-support)\
+[UAV Interconnect Bus](UAV-Interconnect-Bus)\
+[Ublox 3.01 firmware and Galileo](Ublox-3.01-firmware-and-Galileo)\
 DevDocs [1wire.md](https://github.com/iNavFlight/inav/blob/master/docs/1wire.md)\
 DevDocs [ADSB.md](https://github.com/iNavFlight/inav/blob/master/docs/ADSB.md)\
 DevDocs [Battery.md](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md)\
@@ -261,24 +256,24 @@ DevDocs [Temperature sensors.md](https://github.com/iNavFlight/inav/blob/master/
 <details>
 <summary>OLD LEGACY INFO</summary>
 
-[Supported boards](https://github.com/iNavFlight/inav/wiki/Supported-boards)\
+[Supported boards](Supported-boards)\
 DevDocs [Boards.md](https://github.com/iNavFlight/inav/blob/master/docs/Boards.md)\
-[Legacy Mixers](https://github.com/iNavFlight/inav/wiki/Legacy-Mixers)\
-[Legacy target ChebuzzF3](https://github.com/iNavFlight/inav/wiki/Legacy-target----ChebuzzF3)\
-[Legacy target Colibri RACE](https://github.com/iNavFlight/inav/wiki/Legacy-target-Colibri-RACE)\
-[Legacy target Motolab](https://github.com/iNavFlight/inav/wiki/Legacy-target-Motolab)\
-[Legacy target Omnibus F3](https://github.com/iNavFlight/inav/wiki/Legacy-target-Omnibus-F3)\
-[Legacy target Paris Air Hero 32](https://github.com/iNavFlight/inav/wiki/Legacy-target-Paris-Air-Hero-32)\
-[Legacy target Paris Air Hero 32 F3](https://github.com/iNavFlight/inav/wiki/Legacy-target-Paris-Air-Hero-32-F3)\
-[Legacy target Sparky](https://github.com/iNavFlight/inav/wiki/Legacy-target-Sparky)\
-[Legacy target SPRacingF3](https://github.com/iNavFlight/inav/wiki/Legacy-target-SPRacingF3)\
-[Legacy target SPRacingF3EVO](https://github.com/iNavFlight/inav/wiki/Legacy-target-SPRacingF3EVO)\
-[Legacy target SPRacingF3EVO_1SS](https://github.com/iNavFlight/inav/wiki/Legacy-target-SPRacingF3EVO_1SS)\
+[Legacy Mixers](Legacy-Mixers)\
+[Legacy target ChebuzzF3](Legacy-target----ChebuzzF3)\
+[Legacy target Colibri RACE](Legacy-target-Colibri-RACE)\
+[Legacy target Motolab](Legacy-target-Motolab)\
+[Legacy target Omnibus F3](Legacy-target-Omnibus-F3)\
+[Legacy target Paris Air Hero 32](Legacy-target-Paris-Air-Hero-32)\
+[Legacy target Paris Air Hero 32 F3](Legacy-target-Paris-Air-Hero-32-F3)\
+[Legacy target Sparky](Legacy-target-Sparky)\
+[Legacy target SPRacingF3](Legacy-target-SPRacingF3)\
+[Legacy target SPRacingF3EVO](Legacy-target-SPRacingF3EVO)\
+[Legacy target SPRacingF3EVO_1SS](Legacy-target-SPRacingF3EVO_1SS)\
 DevDocs [Configuration.md](https://github.com/iNavFlight/inav/blob/master/docs/Configuration.md)\
-[Request form new PRESET](https://github.com/iNavFlight/inav/wiki/Request-form-new-PRESET)\
+[Request form new PRESET](Request-form-new-PRESET)\
 DevDocs [Introduction.md](https://github.com/iNavFlight/inav/blob/master/docs/Introduction.md)\
-[Welcome to INAV, useful links and products](https://github.com/iNavFlight/inav/wiki/Welcome-to-INAV,-useful-links-and-products)\
-[iNav Telemetry](https://github.com/iNavFlight/inav/wiki/iNav-Telemetry)\
+[Welcome to INAV, useful links and products](Welcome-to-INAV,-useful-links-and-products)\
+[iNav Telemetry](iNav-Telemetry)\
 DevDocs [Rangefinder.md](https://github.com/iNavFlight/inav/blob/master/docs/Rangefinder.md)\
 DevDocs [Rssi.md](https://github.com/iNavFlight/inav/blob/master/docs/Rssi.md)\
 DevDocs [Runcam device.md](https://github.com/iNavFlight/inav/blob/master/docs/Runcam%20device.md)\
