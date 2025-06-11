@@ -91,15 +91,11 @@ Assign flight modes to transmitter switches\
 [Return to Home](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)\
 [Auto Launch](Auto-Launch-(NAV_LAUNCH))
 
-**Configuration Tab**
+**Configuration Tab**\
 No wiki page currently
 
-<details>
-<summary>Failsafe</summary>
-
-[Failsafe](Failsafe)\
-DevDocs [Failsafe.md](https://github.com/iNavFlight/inav/blob/master/docs/Failsafe.md)
-</details>
+[**Failsafe Tab**](Failsafe)\
+Set expected behavior of aircraft upon failsafe
 
 <details>
 <summary>PID Tuning</summary>
