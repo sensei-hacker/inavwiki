@@ -91,11 +91,8 @@ Assign flight modes to transmitter switches\
 [Return to Home](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)\
 [Auto Launch](Auto-Launch-(NAV_LAUNCH))
 
-<details>
-<summary>Configuration</summary>
-
-[Sensor auto detect and hardware failure detection](Sensor-auto-detect-and-hardware-failure-detection)
-</details>
+**Configuration Tab**
+No wiki page currently
 
 <details>
 <summary>Failsafe</summary>
@@ -205,6 +202,7 @@ DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
 
 ["Something" is disabled Reasons](%22Something%22-is-disabled----Reasons)\
 [Blinkenlights](Blinkenlights)\
+[Sensor auto detect and hardware failure detection](Sensor-auto-detect-and-hardware-failure-detection)
 [Pixel OSD FAQs](Pixel-OSD-FAQs)\
 [TROUBLESHOOTING](TROUBLESHOOTING)\
 [Why do I have limited servo throw in my airplane](Why-do-I-have-limited-servo-throw-in-my-airplane)
