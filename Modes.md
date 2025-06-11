@@ -503,3 +503,6 @@ You can display the AUX configuration by using the `aux` command with no argumen
 *  "AUTO LEVEL"	54
 *  "WP PLANNER"	55
 *  "SOARING"	56
+
+## Advanced Topics
+You can find explanations of stick commands, and other features in the [Controls Dev Doc](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md)
