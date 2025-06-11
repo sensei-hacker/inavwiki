@@ -309,3 +309,7 @@ It is also possible to manually trigger an emergency landing at any time using [
 A diagram to indicate flight modes relation to navigation modes and illustrate sensor requirements:
 
 ![](images/nav_modes_diagram.jpg)
+
+## Advanced CLI Commands
+
+See the [Navigation Dev Docs](https://github.com/iNavFlight/inav/blob/master/docs/Navigation.md) for advanced CLI Commands.
