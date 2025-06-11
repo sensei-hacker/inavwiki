@@ -89,6 +89,7 @@ Assign flight modes to transmitter switches\
 [Standard Modes](Modes)\
 [Navigation Modes](Navigation-modes)\
 [Return to Home](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)\
+[Fixed Wing Autolaunch](Fixed-Wing-Autolaunch)\
 [Auto Launch](Auto-Launch-(NAV_LAUNCH))
 
 **Configuration Tab**\
@@ -137,13 +138,6 @@ DevDocs [LedStrip.md](https://github.com/iNavFlight/inav/blob/master/docs/LedStr
 </details>
 
 ### ADVANCED
-
-<details>
-<summary>Advanced Tuning</summary>
-
-[Fixed Wing Autolaunch](Fixed-Wing-Autolaunch)\
-DevDocs [INAV_Autolaunch.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Autolaunch.pdf)
-</details>
 
 <details>
 <summary>Programming</summary>
@@ -223,6 +217,7 @@ DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
 [Target and Sensor support](Target-and-Sensor-support)\
 [UAV Interconnect Bus](UAV-Interconnect-Bus)\
 [Ublox 3.01 firmware and Galileo](Ublox-3.01-firmware-and-Galileo)\
+DevDocs [Controls](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md)\
 DevDocs [1wire.md](https://github.com/iNavFlight/inav/blob/master/docs/1wire.md)\
 DevDocs [ADSB.md](https://github.com/iNavFlight/inav/blob/master/docs/ADSB.md)\
 DevDocs [Battery.md](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md)\
@@ -265,5 +260,6 @@ DevDocs [Runcam device.md](https://github.com/iNavFlight/inav/blob/master/docs/R
 DevDocs [Serial.md](https://github.com/iNavFlight/inav/blob/master/docs/Serial.md)\
 DevDocs [Telemetry.md](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md)\
 DevDocs [Rx.md](https://github.com/iNavFlight/inav/blob/master/docs/Rx.md)\
-DevDocs [Spektrum bind.md](https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md)
+DevDocs [Spektrum bind.md](https://github.com/iNavFlight/inav/blob/master/docs/Spektrum%20bind.md)\
+DevDocs [INAV_Autolaunch.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Autolaunch.pdf)
 </details>
