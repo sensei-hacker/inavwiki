@@ -84,17 +84,12 @@ Set aircraft type and how its controlled
 [**Outputs Tab**](Outputs-Tab)\
 Set ESC Protocol and Servo Parameters
 
-<details>
-<summary>Modes</summary>
-
-[Modes](Modes)\
-[Navigation modes](Navigation-modes)\
-[Navigation Mode: Return to Home](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)\
-[FW Launch Mode](Auto-Launch-(NAV_LAUNCH))\
-DevDocs [Controls.md](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md)\
-DevDocs [INAV_Modes.pdf](https://github.com/iNavFlight/inav/blob/master/docs/INAV_Modes.pdf)\
-DevDocs [Navigation.md](https://github.com/iNavFlight/inav/blob/master/docs/Navigation.md)
-</details>
+**Modes Tab**\
+Assign flight modes to transmitter switches\
+[Standard Modes](Modes)\
+[Navigation Modes](Navigation-modes)\
+[Return to Home](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home)\
+[Auto Launch](Auto-Launch-(NAV_LAUNCH))
 
 <details>
 <summary>Configuration</summary>
