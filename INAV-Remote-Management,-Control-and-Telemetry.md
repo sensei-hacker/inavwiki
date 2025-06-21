@@ -81,6 +81,8 @@ INAV supports the following variations:
 
 [INAV Wiki MSPV2 definition](https://github.com/iNavFlight/inav/wiki/MSP-V2).
 
+[INAV MSP Message Catalogue](https://github.com/iNavFlight/inav/wiki/MSP-Messages-reference).
+
 [INAV Wiki MSP Navigation Messages](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages). Detailed explanation of the usage of INAV / MSP Way point definitions.
 
 For INAV the normative reference for MSP is the source code:
@@ -145,7 +147,7 @@ Note:
 
 ### Remote Control using MSP / MAVLink
 
-The MSP messages `MSP_SET_RAW_RC` / `MSP_RC` can be used to implement remote control via MSP (i.e. 16 channel control, stick commands). These commands can come from a co-processor / flight computer , a ground station, or other source.
+The MSP messages `MSP_SET_RAW_RC` / `MSP_RC` can be used to implement remote control via MSP (i.e. control channels and stick commands). These commands can come from a co-processor / flight computer , a ground station, or other source.
 
 There is a [sample application](https://github.com/stronnag/msp_set_rx) that describes the requirements / restrictions / idiosyncrasies involved using the MSP interface.
 
@@ -195,17 +197,19 @@ Potentially a less complex solution, as the piloting of the vehicle is done by t
 
 ### Partial Automation
 
-It is possible to combine manual control with some channel automation.
+It is possible to combine manual control with some channel automation, using `MSP_SET_RAW_RC` and ` MSP_RC_OVERRIDE`.
 
 * Use the CLI `msp_override_channels` to define the channels to be automated.
-* Ensure the channel(s) are refreshed at a minimum of 5Hz to avoid fail-safe.
+* Ensure the channel(s) are refreshed at a minimum of 5Hz to avoid fail-safe / fall back to RX values..
 
+Notes:
 
-_Note: The `USE_MSP_RC_OVERRIDE` flag had to be manually defined (e.g. in `src/main/target/common.h`) to enable MSP_RC_OVERRIDE, however this is now included by default_
+* In INAV 8.0.1 and earlier, the `USE_MSP_RC_OVERRIDE` flag had to be manually defined (e.g. in `src/main/target/common.h`) to enable MSP_RC_OVERRIDE; this is included by default in later versions.
+* Prior to INAV 9.0.0, the mask defined by  `msp_override_channels` is limited to the first 16 channels. In INAV 9.0.0 and later, the mask is 32 channels wide.
 
 ### Control by stick commands
 
-In a cruise mode (e.g. POSHOLD/CRUISE for multi-rotor), it will be possible to fly the craft using A,E,R stick emulation, with minimal concern for flight physics.
+In a cruise mode (e.g. POSHOLD/CRUISE for multi-rotor), it will be possible to fly the craft using A,E,R stick emulation, with minimal "application concern" for flight physics.
 
 ### Useful / relevant MSP stanzas and application
 
@@ -240,6 +244,10 @@ Prior to arming the craft, an automation application can be made "target agnosti
 * `MSP_NAV_STATUS` : Navigation status
 
 Note. These may not be comprehensive lists, but they are a start.
+
+Note: A large majority of these MSP messages are requesting information from the FC, so it is necessary to receive the reply. For  `MSP_SET_RAW_RC` you may not care to receive a reply. In this case, setting the [MSPv2 "no reply"](https://github.com/iNavFlight/inav/wiki/MSP-V2#message-flags) flag will reduce latency. If you choose to mix timed `MSP_SET_RAW_RC` and other polled / response driven messages your application:
+* Needs to ensure that outgoing requests are safely queued and do not corrupt other outgoing messages (i.e. checking for `EAGAIN` on POSIX systems).
+* Your application can handle the case where only some messages solicit a response and it will not hang awaiting a response for "no reply" messages.
 
 #### Settings
 
