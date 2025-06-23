@@ -11,6 +11,8 @@ This page lists and explains all the different navigational flight modes of INAV
 - [WP PLANNER - On the fly waypoint mission planner](#wp-planner---on-the-fly-waypoint-mission-planner)
 - [GCS NAV - Ground control station](#gcs_nav---ground-control-station)
 
+See also [non-navigation modes](Modes)
+
 For safety reasons, initial setup requires the conditions below to be met before navigation modes will appear in the Configurator modes tab:
 - ACC and MAG are [calibrated](https://github.com/iNavFlight/inav/wiki/Sensor-calibration) properly. Also note other [specifics](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#multi-rotor-without-a-compass) 
 - _GPS for navigation and telemetry_ must be enabled. Along with the GNSS module being allocated to a serial port
