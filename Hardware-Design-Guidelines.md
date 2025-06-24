@@ -75,7 +75,7 @@ We understand there are often space constraints on selecting what MCU pins gets 
 * Don't push the limit of your silk screen resolution. Too small or blurry silkscreen labels will be unreadable.
 * Label your connectors
 * Label your solder pads / configuration jumpers
-* It can be helpful to put your company name or somewhere on the board, to indicate your company and which model it is (For example: OrbitF435v1)
+* It can be helpful to put your company name somewhere on the board, to indicate your company and which model it is (For example: OrbitF435v1)
 
 
 ## See also
