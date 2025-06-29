@@ -228,7 +228,7 @@ When waypoint mode is activated (using a switch as other modes), the quad/plane 
 
 Up to 30 waypoints can be set on F1 boards. On F3 boards and better 60 waypoints are available. This is increased to 120 waypoints from INAV 4.0.
 
-There is an additional [[wiki page further describing way point missions, tools and telemetry options|iNavFlight Missions]].
+There is an additional [[wiki page further describing way point missions, tools and telemetry options|INAV-Missions]].
 
 The [MSP navigation message protocol documentation](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages) describes optional parameters affecting WP behaviour.
 
