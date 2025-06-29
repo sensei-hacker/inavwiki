@@ -281,8 +281,8 @@ Using the MSP outlined above:
 * Determine vehicle characteristics. Stop now if not capable of mission.
 * Monitor status and location until arming is possible (e.g. GPS fix).
 * Using the 'magic' sensor / AI etc., determine a safe loiter location.
-* Generate and upload a 1 WP mission to the safe location (the craft will automatically loiter there when completed). Ideally elevation will be double vertical range to avoid tip over on take off.
-* Arm the craft, (optionally) apply a little throttle, and immediately engage WP mode. The craft will take off and start the mission.
+* Generate and upload a 1 WP mission to the safe location (the craft will automatically loiter there when completed). Ideally elevation will be double vertical range to avoid tip over on take off (or use `NAV_GCS` and set WP#255)
+* Arm the craft, (optionally) apply a little throttle, and immediately engage WP (or `POSHOLD` for WP#255) mode. The craft will take off and start the mission / "followme".
 * Continually monitor location, battery and status.
 * Once the craft reaches the loiter location, engage POSHOLD and disengage WP mode.
 * Using the `magic` sensor, determine the target location. Assuming this is available as range and bearing (absolute or relative), calculate the geographic location of the target. Enable `GCS NAV` mode and update `WP#255` to fly the craft to the target.
