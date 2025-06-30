@@ -8,7 +8,7 @@ INAV will refuse to arm for the following reasons (e.g. from cli `status`):
 
 | Reason  (CLI Mnemonic) | Bit Mask (Hex) | Explanation |
 | ------ | ----- | ----------- |
-| `GEOZONE` | `00000040` | Geozone is blocking armed [documentation](https://github.com/iNavFlight/inav/blob/master/docs/Geozones.md#functions-and-behaviors)  | 
+| `GEOZONE` | `00000040` | Geozone is blocking armed [documentation](https://github.com/iNavFlight/inav/blob/master/docs/Geozones.md#functions-and-behaviors)  |
 | `FS` | `00000080` | The RX is not recognised as providing a valid signal |
 | `ANGLE` | `00000100` |  The vehicle is not level as defined by the CLI `small_angle` setting |
 | `CAL` |  `00000200` | The pre-arm sensor calibration has not completed. The barometer is somewhat susceptible to lengthy calibration, which may be mitigated by the CLI setting `baro_cal_tolerance`, e.g. `set baro_cal_tolerance = 500` (find a suitable value by experimentation). |
@@ -39,7 +39,7 @@ Note: On older processors, just the bitmask is shown, which can be decoded by th
 ```
 0x184000 = 00100000 + 00080000 + 00004000 (CLI active, throttle not at minimum, arm engaged)
 ```
-The values are correct for INAV 6.1.0 as of 2023-04.
+The values are correct for INAV 8.0.1 (from `src/main/fc/runtime_config.h`)
 
 ### Navigation Unsafe reasons
 
