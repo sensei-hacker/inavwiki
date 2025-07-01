@@ -50,12 +50,17 @@ You can also use a [Python script](https://gist.github.com/nmaggioni/e42d3f4eb24
     
 ### General ACRO PID tuning
 
-_This topic includes some non conventional means of tuning. However, things don't always work as theory dictates for fixedwing operation when the system still has missing components. e.g. true air speed based PIDFF attenuation._
+_This topic includes some non conventional means of tuning. However, things don't always work as theory dictates for fixedwing operation when the system still has missing components. e.g. true air speed based PIDFF attenuation._  
+
+_Other settings which can influence the tune are -_
+* [Looptime](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#looptime) will influence how fast the I-term error accumulates and unwinds. Higher looptime will allow the I-term to work faster. 
+* [Gyro_main_lpf_hz](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#gyro_main_lpf_hz) can reduce axis jitter if set lower, by reducing the update rate.
 
 **I-term:**   
 If the airplane drifts slightly from center on an axis, once _Autotune_, _AutoLevel_ and _Servo_Autotrim_ are complete. Increasing the I-gain on that given axis, can reduce the effect.   
-After Feedforward, allowing I-gain to do more of the work than P-gain. Can actually make the Roll axis response smoother from an FPV perspective, than fighting a loosing battle, by applying too much P-gain, in hopes of removing roll axis wobbles.   
-Be cautious. Too much I-gain can also cause oscillation. Values should be limited to a maximum in the low twenties. Accounting for the use of [pid_iterm_limit_percent](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#pid_iterm_limit_percent) and [Fixedwing I-term Lock](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#fixedwing-i-term-lock) mentioned below.
+After Feedforward, allowing I-gain to do more of the work than P-gain. Can actually make the Roll axis response smoother from an FPV perspective; than fighting a loosing battle by applying too much P-gain, in hopes of removing roll axis wobbles.   
+Be cautious. Too much I-gain can also cause oscillation. Values should be limited to a maximum in the low twenties. Accounting for the use of [pid_iterm_limit_percent](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#pid_iterm_limit_percent) and [Fixedwing I-term Lock](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#fixedwing-i-term-lock) mentioned below.   
+
 
 **P-term:**    
  If you want more stabilization against hard buffeting from the wind, try increasing the P-gain. But only up to a point.   
@@ -67,6 +72,7 @@ P-term will never be able to fully correct for fixedwing roll axis instability a
 
 After **manually** tuning your Rates and Gains. You can reduce them from their limit, to what suits your stick feel and flight requirements.  
 It's normal to see reduced servo throw's when reducing rates at this point. If you have full servo throw at this stages you would likely overshoot the target deg/s as well, leaving the P-term to do the rest.
+
 
 ### Tuning ANGLE mode:
 
