@@ -53,7 +53,8 @@ You can also use a [Python script](https://gist.github.com/nmaggioni/e42d3f4eb24
 _This topic includes some non conventional means of tuning. However, things don't always work as theory dictates for fixedwing operation when the system still has missing components. e.g. true air speed based PIDFF attenuation._  
 
 _Other settings which can influence the tune are -_
-* [Looptime](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#looptime) will influence how fast the I-term error accumulates and unwinds. Higher looptime will allow the I-term to work faster. 
+* [Looptime](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#looptime) can influence PID tuning. It is recommended to tune with the specific loop rate you choose, and not change once tuned. Higher looptime will allow the I-term to respond faster to the error, both in accumulating it (windup) and in correcting for overshoot of the error (unwind).
+
 * [Gyro_main_lpf_hz](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#gyro_main_lpf_hz) can reduce axis jitter if set lower, by reducing the update rate.
 
 **I-term:**   
@@ -65,7 +66,7 @@ Be cautious. Too much I-gain can also cause oscillation. Values should be limite
 **P-term:**    
  If you want more stabilization against hard buffeting from the wind, try increasing the P-gain. But only up to a point.   
 Too much P-gain can cause oscillations as the air-speed increases. This is when you want to apply some [Fixedwing TPA](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling#airplanes).  
-P-term will never be able to fully correct for fixedwing roll axis instability at lower airspeeds, due to processing and SERVO reaction lag. And there won't be enough air flow over the surfaces to provide optimal control. It can often be a case of what you prefer on the Roll axis. **i.e.** Faster jittering from higher P-gain. Or Slower wallowing movements from higher I-gain.
+P-term will never be able to fully correct for fixedwing roll axis instability at lower airspeeds, due to processing and SERVO reaction lag. And there won't be enough air flow over the surfaces to provide the optimal stabilization response required. It can often be a case of what you prefer on the Roll axis. **i.e.** Faster jittering from higher P-gain. Or slower mellow movements from higher I-gain.
 
 **D-term:**   
  Once the P-gain it tuned to about 80% of its optimal, at a given air speed. Then start applying some D-gain in small amounts, to add axis damping.
