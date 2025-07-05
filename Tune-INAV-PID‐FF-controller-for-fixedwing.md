@@ -60,7 +60,7 @@ _Other settings which can influence the tune are -_
 **I-term:**   
 If the airplane drifts slightly from center on an axis, once _Autotune_, _AutoLevel_ and _Servo_Autotrim_ are complete. Increasing the I-gain on that given axis, can reduce the effect.   
 After Feedforward, allowing I-gain to do more of the work than P-gain. Can actually make the Roll axis response smoother from an FPV perspective; than fighting a loosing battle by applying too much P-gain, in hopes of removing roll axis wobbles.   
-Be cautious. Too much I-gain can also cause oscillation. Values should be limited to a maximum in the low twenties. Accounting for the use of [pid_iterm_limit_percent](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#pid_iterm_limit_percent) and [Fixedwing I-term Lock](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#fixedwing-i-term-lock) mentioned below.   
+Be cautious. Too much I-gain can also cause oscillation. Values should be limited in the mid teens. Accounting for the use of [pid_iterm_limit_percent](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#pid_iterm_limit_percent) and [Fixedwing I-term Lock](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#fixedwing-i-term-lock) mentioned below.   
 
 
 **P-term:**    
