@@ -4,11 +4,16 @@ This document describes MSP navigation messages, their usage and implementation 
 
 Note that all binary values are little endian (MSP standard).
 
+Note also that this article refers to getting / setting WPs for **missions** (WP#1 to mission maximum WPs). While the special WPs (#0, #254, #255) share the WP data structure, they exhibit some simplifications in behaviour, in particular:
+
+* Altitudes are always relative to the origin / home;
+* P2 and P3 are ignored.
+
 # Implementation and versions
 
 This document should match the INAV 1.2 (and later) and Multiwii 2.5 flight controller firmware.
 
-Prior to INAV 3.0, the [inav-configurator](https://github.com/iNavFlight/inav-configurator) supported a subset of  MSP Waypoint (WP) types; for INAV 3.0 it supports all WP types. In addition to the inav configurator, the messages described are implemented in [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows (Cygwin,WSL)), ezgui (Android) mission planners / ground station applications and "drone helper" (Windows 10) mission planner. mwp and ezgui support both INAV and Multiwii; WinGui is a legacy Windows / Multiwii only mission planner that also supports this message set.
+Prior to INAV 3.0, the [inav-configurator](https://github.com/iNavFlight/inav-configurator) supported a subset of  MSP Waypoint (WP) types; for INAV 3.0 it supports all WP types. In addition to the inav configurator, the messages described are implemented in [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows, ezgui (Android) mission planners / ground station applications and "drone helper" (Windows 10) mission planner. mwp and ezgui support both INAV and Multiwii; WinGui is a legacy Windows / Multiwii only mission planner that also supports this message set.
 
 # WayPoint and Action Attributes
 
