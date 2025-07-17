@@ -204,7 +204,11 @@ If the compass is tilted at an odd angle, use a piece of tape or similar to temp
 
 First ensure the FC alignment is correct. In the Setup tab it must move the correct direction in all three axis.
 
-Point the aircraft north. Look at the heading in the Setup tab. Quickly turn the aircraft 90°, so it points east, and set it down.  Watch the heading reading over the next five seconds.  Does it remain stable, or does it slowly change, by more than 10°?
+Then, move the aircraft away from computer monitors and speakers - as far as your USB cable will allow.
+
+Point the aircraft north. Look at the heading in the Setup tab
+
+Quickly turn the aircraft 90°, so it points east, and set it down.  Watch the heading reading over the next five seconds.  Does it remain stable, or does it slowly change, by more than 10°?
 
 If the heading slowly catches up over a few seconds, the compass alignment is upside-down.  If it remains stable, it's right-side up. If needed, add/subtract 180° to the roll to flip it.
 
