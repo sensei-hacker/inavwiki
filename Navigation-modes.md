@@ -89,7 +89,9 @@ The [alt_hold_deadband](https://github.com/iNavFlight/inav/blob/master/docs/Sett
 If ALTHOLD is activated at zero throttle INAV will account for deadband and move the neutral "zero climb rate" position a little bit up to make sure you are able to descend.
 
 **Cine-Load lifting :**
-In cases when the copter maybe used to carry different weight loads. **e.g.** camera rigs. It is still important that hover throttle be tuned for each load, for POSHOLD to work correctly. 
+In cases when the copter maybe used to carry different weight loads. **e.g.** camera rigs. It is still important that hover throttle be tuned for each load, so POSHOLD altitude control will operate correctly.   
+The `nav_mc_hover_thr` setting is located in the CLI `battery_profile`. So it is possible to setup three predefined hover throttle settings (_one in each battery profile_), based on the known weights your copter will carry.   
+Before takeoff, you can enter the [CMS OSD stick menu](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/) and selected the relevant `battery_profile` containing the preset hover throttle you require to carry the known weight.  
 
 ### OSD altitude adjustment alert:
 For visual awareness, the OSD altitude element has a symbol that will appear to the left side of the altitude value. This symbol can be used to inform the pilot of when they're making a change via the throttle stick to adjust the copters altitude.  
