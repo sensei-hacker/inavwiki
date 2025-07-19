@@ -2046,7 +2046,9 @@ These commands are part of the MSPv2 specification and are intended for general 
     | `profileCount` | `uint8_t` | 1 | Total number of profiles (if applicable, else 0). |
     | `lookupNames` | `char[]` | Variable | (If `mode == MODE_LOOKUP`) Series of null-terminated strings for each possible value from min to max. |
     | `settingValue` | `uint8_t[]` | Variable | Current raw byte value of the setting. |
-*   **Notes:** Very useful for configurators to dynamically build interfaces. Returns error if setting not found.
+*   **Notes:**
+    o Very useful for configurators to dynamically build interfaces. Returns error if setting not found.
+	o This is a variable length message, depending on the `mode`.
 
 ### `MSP2_COMMON_PG_LIST` (0x1008 / 4104)
 
