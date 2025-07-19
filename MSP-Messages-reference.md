@@ -2049,7 +2049,7 @@ These commands are part of the MSPv2 specification and are intended for general 
 *   **Notes:**
 
     * Very useful for configurators to dynamically build interfaces. Returns error if setting not found.
-	* This is a variable length message, depending on the `mode`.
+	* This is a variable length message, depending on the name length, `mode`, and `type`.
 
 ### `MSP2_COMMON_PG_LIST` (0x1008 / 4104)
 
