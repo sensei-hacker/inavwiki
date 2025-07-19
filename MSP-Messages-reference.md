@@ -2048,8 +2048,8 @@ These commands are part of the MSPv2 specification and are intended for general 
     | `settingValue` | `uint8_t[]` | Variable | Current raw byte value of the setting. |
 *   **Notes:**
 
-    o Very useful for configurators to dynamically build interfaces. Returns error if setting not found.
-	o This is a variable length message, depending on the `mode`.
+    * Very useful for configurators to dynamically build interfaces. Returns error if setting not found.
+	* This is a variable length message, depending on the `mode`.
 
 ### `MSP2_COMMON_PG_LIST` (0x1008 / 4104)
 
