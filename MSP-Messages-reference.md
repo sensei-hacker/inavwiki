@@ -1236,9 +1236,9 @@ These are commands originating from the MultiWii project.
 *   **Payload:**
     | Field | C Type | Size (Bytes) | Units | Description |
     |---|---|---|---|---|
-    | `estimatedAltitude` | `uint32_t` | 4 | cm | Estimated altitude above home/sea level (`getEstimatedActualPosition(Z)`). |
+    | `estimatedAltitude` | `int32_t` | 4 | cm | Estimated altitude above home/sea level (`getEstimatedActualPosition(Z)`). |
     | `variometer` | `int16_t` | 2 | cm/s | Estimated vertical speed (`getEstimatedActualVelocity(Z)`). |
-    | `baroAltitude` | `uint32_t` | 4 | cm | Latest raw altitude from barometer (`baroGetLatestAltitude()`). 0 if `USE_BARO` disabled. |
+    | `baroAltitude` | `int32_t` | 4 | cm | Latest raw altitude from barometer (`baroGetLatestAltitude()`). 0 if `USE_BARO` disabled. |
 
 ### `MSP_ANALOG` (110 / 0x6E)
 
@@ -1339,9 +1339,9 @@ These are commands originating from the MultiWii project.
     |---|---|---|---|---|
     | `waypointIndex` | `uint8_t` | 1 | Index | Index of the returned waypoint. |
     | `action` | `uint8_t` | 1 | Enum | Waypoint action type (`navWaypointAction_e`). |
-    | `latitude` | `uint32_t` | 4 | deg * 1e7 | Latitude coordinate. |
-    | `longitude` | `uint32_t` | 4 | deg * 1e7 | Longitude coordinate. |
-    | `altitude` | `uint32_t` | 4 | cm | Altitude coordinate (relative to home or sea level, see flag). |
+    | `latitude` | `int32_t` | 4 | deg * 1e7 | Latitude coordinate. |
+    | `longitude` | `int32_t` | 4 | deg * 1e7 | Longitude coordinate. |
+    | `altitude` | `int32_t` | 4 | cm | Altitude coordinate (relative to home or sea level, see flag). |
     | `param1` | `uint16_t` | 2 | Varies | Parameter 1 (meaning depends on action). |
     | `param2` | `uint16_t` | 2 | Varies | Parameter 2 (meaning depends on action). |
     | `param3` | `uint16_t` | 2 | Varies | Parameter 3 (meaning depends on action). |
@@ -1387,7 +1387,7 @@ These are commands originating from the MultiWii project.
     | `activeWpAction` | `uint8_t` | 1 | Enum (`navWaypointAction_e`): Action of the currently executing waypoint (`NAV_Status.activeWpAction`). |
     | `activeWpNumber` | `uint8_t` | 1 | Index: Index of the currently executing waypoint (`NAV_Status.activeWpNumber`). |
     | `navError` | `uint8_t` | 1 | Enum (`NAV_ERROR_*`): Current navigation error code (`NAV_Status.error`). |
-    | `targetHeading` | `uint16_t` | 2 | degrees: Target heading for heading controller (`getHeadingHoldTarget()`). |
+    | `targetHeading` | `int16_t` | 2 | degrees: Target heading for heading controller (`getHeadingHoldTarget()`). |
 *   **Notes:** Requires `USE_GPS`.
 
 ### `MSP_NAV_CONFIG` (122 / 0x7A)
@@ -1507,9 +1507,9 @@ These commands are sent *to* the FC.
     |---|---|---|---|---|
     | `fixType` | `uint8_t` | 1 | Enum | GPS fix type. |
     | `numSat` | `uint8_t` | 1 | Count | Number of satellites. |
-    | `latitude` | `uint32_t` | 4 | deg * 1e7 | Latitude. |
-    | `longitude` | `uint32_t` | 4 | deg * 1e7 | Longitude. |
-    | `altitude` | `uint16_t` | 2 | meters | Altitude (converted to cm internally). |
+    | `latitude` | `int32_t` | 4 | deg * 1e7 | Latitude. |
+    | `longitude` | `int32_t` | 4 | deg * 1e7 | Longitude. |
+    | `altitude` | `int16_t` | 2 | meters | Altitude (converted to cm internally). |
     | `speed` | `uint16_t` | 2 | cm/s | Ground speed. |
     | `groundCourse` | `uint16_t` | 2 | ??? | Ground course (units unclear from code, likely degrees or deci-degrees, ignored in current code). |
 *   **Notes:** Requires `USE_GPS`. Expects 14 bytes. Updates `gpsSol` structure and calls `onNewGPSData()`. Note the altitude unit mismatch (meters in MSP, cm internal). Does not provide velocity components.
@@ -1594,9 +1594,9 @@ These commands are sent *to* the FC.
     |---|---|---|---|---|
     | `waypointIndex` | `uint8_t` | 1 | Index | Index of the waypoint to set (0 to `NAV_MAX_WAYPOINTS - 1`). |
     | `action` | `uint8_t` | 1 | Enum | Waypoint action type. |
-    | `latitude` | `uint32_t` | 4 | deg * 1e7 | Latitude coordinate. |
-    | `longitude` | `uint32_t` | 4 | deg * 1e7 | Longitude coordinate. |
-    | `altitude` | `uint32_t` | 4 | cm | Altitude coordinate. |
+    | `latitude` | `int32_t` | 4 | deg * 1e7 | Latitude coordinate. |
+    | `longitude` | `int32_t` | 4 | deg * 1e7 | Longitude coordinate. |
+    | `altitude` | `int32_t` | 4 | cm | Altitude coordinate. |
     | `param1` | `uint16_t` | 2 | Varies | Parameter 1. |
     | `param2` | `uint16_t` | 2 | Varies | Parameter 2. |
     | `param3` | `uint16_t` | 2 | Varies | Parameter 3. |
@@ -1620,7 +1620,7 @@ These commands are sent *to* the FC.
 *   **Payload:**
     | Field | C Type | Size (Bytes) | Units | Description |
     |---|---|---|---|---|
-    | `heading` | `uint16_t` | 2 | degrees | Target heading (0-359). |
+    | `heading` | `int16_t` | 2 | degrees | Target heading (0-359). |
 *   **Notes:** Expects 2 bytes. Calls `updateHeadingHoldTarget()`.
 
 ### `MSP_SET_SERVO_CONFIGURATION` (212 / 0xD4)
@@ -2106,10 +2106,10 @@ These commands are part of the MSPv2 specification and are intended for general 
     |---|---|---|---|---|
     | `poiIndex` | `uint8_t` | 1 | Index | Index of the POI slot (0 to `RADAR_MAX_POIS - 1`). |
     | `state` | `uint8_t` | 1 | Enum | Status of the POI (0=undefined, 1=armed, 2=lost). |
-    | `latitude` | `uint32_t` | 4 | deg * 1e7 | Latitude of the POI. |
-    | `longitude` | `uint32_t` | 4 | deg * 1e7 | Longitude of the POI. |
-    | `altitude` | `uint32_t` | 4 | cm | Altitude of the POI. |
-    | `heading` | `uint16_t` | 2 | degrees | Heading of the POI (0-359). |
+    | `latitude` | `int32_t` | 4 | deg * 1e7 | Latitude of the POI. |
+    | `longitude` | `int32_t` | 4 | deg * 1e7 | Longitude of the POI. |
+    | `altitude` | `int32_t` | 4 | cm | Altitude of the POI. |
+    | `heading` | `int16_t` | 2 | degrees | Heading of the POI. |
     | `speed` | `uint16_t` | 2 | cm/s | Speed of the POI. |
     | `linkQuality` | `uint8_t` | 1 | 0-4 | Link quality indicator. |
 *   **Notes:** Expects 19 bytes. Updates the `radar_pois` array.
@@ -2995,8 +2995,8 @@ These commands are specific extensions added by the INAV project.
     |---|---|---|---|
     | `safehomeIndex` | `uint8_t` | 1 | Index requested. |
     | `enabled` | `uint8_t` | 1 | Boolean: 1 if this safe home is enabled. |
-    | `latitude` | `uint32_t` | 4 | Latitude (1e7 deg). |
-    | `longitude` | `uint32_t` | 4 | Longitude (1e7 deg). |
+    | `latitude` | `int32_t` | 4 | Latitude (1e7 deg). |
+    | `longitude` | `int32_t` | 4 | Longitude (1e7 deg). |
 *   **Notes:** Requires `USE_SAFE_HOME`. Used by `mspFcSafeHomeOutCommand`. See `MSP2_INAV_SET_SAFEHOME` for setting.
 
 ### `MSP2_INAV_SET_SAFEHOME` (0x2039 / 8249)
@@ -3008,8 +3008,8 @@ These commands are specific extensions added by the INAV project.
     |---|---|---|---|
     | `safehomeIndex` | `uint8_t` | 1 | Index of the safe home location (0 to `MAX_SAFE_HOMES - 1`). |
     | `enabled` | `uint8_t` | 1 | Boolean: 1 to enable this safe home. |
-    | `latitude` | `uint32_t` | 4 | Latitude (1e7 deg). |
-    | `longitude` | `uint32_t` | 4 | Longitude (1e7 deg). |
+    | `latitude` | `int32_t` | 4 | Latitude (1e7 deg). |
+    | `longitude` | `int32_t` | 4 | Longitude (1e7 deg). |
 *   **Notes:** Requires `USE_SAFE_HOME`. Expects 10 bytes. Returns error if index invalid. Resets corresponding FW autoland approach if `USE_FW_AUTOLAND` is enabled.
 
 ### `MSP2_INAV_MISC2` (0x203A / 8250)
@@ -3225,10 +3225,10 @@ These commands are specific extensions added by the INAV project.
     | **Vehicle Data (Repeated `maxVehicles` times):** | | | |
     | `callsign` | `char[ADSB_CALL_SIGN_MAX_LENGTH]` | `ADSB_CALL_SIGN_MAX_LENGTH` | Vehicle callsign (padded with nulls). |
     | `icao` | `uint32_t` | 4 | ICAO 24-bit address. |
-    | `latitude` | `uint32_t` | 4 | Latitude (1e7 deg). |
-    | `longitude` | `uint32_t` | 4 | Longitude (1e7 deg). |
-    | `altitude` | `uint32_t` | 4 | Altitude (cm). |
-    | `heading` | `uint16_t` | 2 | Heading (degrees). |
+    | `latitude` | `int32_t` | 4 | Latitude (1e7 deg). |
+    | `longitude` | `int32_t` | 4 | Longitude (1e7 deg). |
+    | `altitude` | `int32_t` | 4 | Altitude (cm). |
+    | `heading` | `int16_t` | 2 | Heading (degrees). |
     | `tslc` | `uint8_t` | 1 | Time Since Last Communication (seconds). |
     | `emitterType` | `uint8_t` | 1 | Enum: Type of ADSB emitter. |
     | `ttl` | `uint8_t` | 1 | Time-to-live counter for this entry. |
@@ -3363,15 +3363,15 @@ These commands are specific extensions added by the INAV project.
     |---|---|---|---|---|
     | `geozoneIndex` | `uint8_t` | 1 | Index | Geozone index requested. |
     | `vertexId` | `uint8_t` | 1 | Index | Vertex index requested. |
-    | `latitude` | `uint32_t` | 4 | deg * 1e7 | Vertex latitude. |
-    | `longitude` | `uint32_t` | 4 | deg * 1e7 | Vertex longitude. |
+    | `latitude` | `int32_t` | 4 | deg * 1e7 | Vertex latitude. |
+    | `longitude` | `int32_t` | 4 | deg * 1e7 | Vertex longitude. |
 *   **Reply Payload (Get - Circular):**
     | Field | C Type | Size (Bytes) | Units | Description |
     |---|---|---|---|---|
     | `geozoneIndex` | `uint8_t` | 1 | Index | Geozone index requested. |
     | `vertexId` | `uint8_t` | 1 | Index | Vertex index requested (always 0 for center). |
-    | `centerLatitude` | `uint32_t` | 4 | deg * 1e7 | Center latitude. |
-    | `centerLongitude` | `uint32_t` | 4 | deg * 1e7 | Center longitude. |
+    | `centerLatitude` | `int32_t` | 4 | deg * 1e7 | Center latitude. |
+    | `centerLongitude` | `int32_t` | 4 | deg * 1e7 | Center longitude. |
     | `radius` | `uint32_t` | 4 | cm | Radius of the circular zone. |
 *   **Notes:** Requires `USE_GEOZONE`. Returns error if indexes are invalid or vertex doesn't exist. For circular zones, the radius is stored internally as the 'latitude' of the vertex with index 1.
 
@@ -3384,15 +3384,15 @@ These commands are specific extensions added by the INAV project.
     |---|---|---|---|---|
     | `geozoneIndex` | `uint8_t` | 1 | Index | Geozone index. |
     | `vertexId` | `uint8_t` | 1 | Index | Vertex index (0-based). |
-    | `latitude` | `uint32_t` | 4 | deg * 1e7 | Vertex latitude. |
-    | `longitude` | `uint32_t` | 4 | deg * 1e7 | Vertex longitude. |
+    | `latitude` | `int32_t` | 4 | deg * 1e7 | Vertex latitude. |
+    | `longitude` | `int32_t` | 4 | deg * 1e7 | Vertex longitude. |
 *   **Payload (Circular):**
     | Field | C Type | Size (Bytes) | Units | Description |
     |---|---|---|---|---|
     | `geozoneIndex` | `uint8_t` | 1 | Index | Geozone index. |
     | `vertexId` | `uint8_t` | 1 | Index | Vertex index (must be 0 for center). |
-    | `centerLatitude` | `uint32_t` | 4 | deg * 1e7 | Center latitude. |
-    | `centerLongitude` | `uint32_t` | 4 | deg * 1e7 | Center longitude. |
+    | `centerLatitude` | `int32_t` | 4 | deg * 1e7 | Center latitude. |
+    | `centerLongitude` | `int32_t` | 4 | deg * 1e7 | Center longitude. |
     | `radius` | `uint32_t` | 4 | cm | Radius of the circular zone. |
 *   **Notes:** Requires `USE_GEOZONE`. Expects 10 bytes (Polygon) or 14 bytes (Circular). Returns error if indexes invalid or if trying to set vertex beyond `vertexCount` defined in `MSP2_INAV_SET_GEOZONE`. Calls `geozoneSetVertex()`. For circular zones, sets center (vertex 0) and radius (vertex 1's latitude).
 
