@@ -1197,8 +1197,8 @@ These are commands originating from the MultiWii project.
     |---|---|---|---|---|
     | `fixType` | `uint8_t` | 1 | Enum | GPS fix type (`gpsSol.fixType`). |
     | `numSat` | `uint8_t` | 1 | Count | Number of satellites used in solution (`gpsSol.numSat`). |
-    | `latitude` | `uint32_t` | 4 | deg * 1e7 | Latitude (`gpsSol.llh.lat`). |
-    | `longitude` | `uint32_t` | 4 | deg * 1e7 | Longitude (`gpsSol.llh.lon`). |
+    | `latitude` | `int32_t` | 4 | deg * 1e7 | Latitude (`gpsSol.llh.lat`). |
+    | `longitude` | `int32_t` | 4 | deg * 1e7 | Longitude (`gpsSol.llh.lon`). |
     | `altitude` | `uint16_t` | 2 | meters | Altitude above MSL (`gpsSol.llh.alt / 100`). |
     | `speed` | `uint16_t` | 2 | cm/s | Ground speed (`gpsSol.groundSpeed`). |
     | `groundCourse` | `uint16_t` | 2 | deci-degrees | Ground course (`gpsSol.groundCourse`). |
