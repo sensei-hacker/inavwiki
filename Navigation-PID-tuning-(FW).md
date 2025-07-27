@@ -34,7 +34,8 @@ Tuning of an airplanes Z axis controller should be done on a day no colder than 
 _The following settings can be accessed using the Configurator **Tuning tab** and **Advanced Tuning tab**. Or the CLI and CMS OSD stick menu's._
 - `nav_fw_pos_z_p` - Controls velocity to acceleration. Increasing the gain will provide a stronger elevator/pitch2throttle response to reach the required altitude target.
 - `nav_fw_pos_z_i` - Attempts to compensate for climb rate fluctuations cause by turbulence, thermals etc. Use sparingly. It can only do so much on a fixedwing platform.
-- `nav_fw_pos_z_d` - Attempts to anticipate the magnitude of the error and dampen the POS(`VEL`)_Z_P and POS(`VEL`)_Z_I response. Too much damping can push the climb-rate error past the setpoint, leading to oscillations when the initial climb is commanded, or when holding the target altitude. Even becoming more exaggerated by an incorrectly tuned `fw_ff_pitch` response.
+- `nav_fw_pos_z_d` - Attempts to anticipate the magnitude of the error and dampen the ALT_Z_P and ALT_Z_I response to the process variables rate of change. Too much damping can lead to the climb rate error becoming incorrectly predicted, causing oscillations when the initial climb is commanded, or when holding the target altitude. Even becoming more exaggerated by an incorrectly tuned `fw_ff_pitch` response.  
+**NOTE**: _This has been [altered](https://github.com/iNavFlight/inav/pull/10903) for INAV 9.0. To use a measurement snap-shoot of the process variable, instead of the variables rate of change. Which smooths the operation of the altitude Velocity and Position controllers, over a broader range of air-frames and setups._
 - `nav_fw_pos_z_ff` - Attempts to provide a faster control response to meet the require target, based on altitude and gyro rate data. Depending on the aircraft's build specifics, lowering POS_Z_D and increasing POS_Z_FF may help.
 - `nav_fw_alt_control_response` - Alters the altitude control response as the airplane gets closer to reaching the altitude target.
 - `fw_ff_pitch` - Passes the angular rate target directly to the servo mixer, bypassing the gyro PID loop stabilization.
@@ -85,7 +86,7 @@ This is best done by logging flight controller data. And gauging the changes wit
 
 **Position XY gains:**
 - `nav_fw_pos_xy_p` - Controls how fast the airplane will attempt to use the roll and yaw axis to align its trajectory with the target position. This includes the strength it will apply to turning and re-aligning with the track after a turn.
-- `nav_fw_pos_xy_i` - Increasing this gain can compensation for trajectory drift caused by the wind. But should be used sparingly on elevon aircraft.
+- `nav_fw_pos_xy_i` - Increasing this gain can compensate for trajectory drift caused by the wind. But should be used sparingly on elevon aircraft.
 - `nav_fw_pos_xy_d` - Increasing this gain can help smooth the P gain response. But if increased too much, it can cause over-shooting of the target trajectory alignment. 
 - `nav_fw_cruise_thr` - Should be set to the airplanes optimal cruise speed. Keeping the average airspeed less than 75km/h, will obtain the highest target position accuracy. 
 
@@ -101,6 +102,8 @@ loop. It's independent from manual yaw rate and only active when HEADING_HOLD NA
 - These [settings](https://github.com/iNavFlight/inav/wiki/Navigation-modes#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing) can also influence WP tracking accuracy.
 
 _In my experience. Enabling the `nav_fw_pos_hdg` controller combined with an airplane that has yaw control. i.e. A Rudder, Differential thrust or Vectored thrust, **when those yaw gains are tuned**. Always provides the most accurate turn response in a waypoint mission or RTH Trackback._
+
+_The use of a magnetometer can help argument the GNSS heading and wind estimation, to provide faster correction in turns. But it must be [setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#note-) and calibrated correctly. Or it will make performance even worse._
 
 ## Tuning Rangefinder:
 
