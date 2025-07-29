@@ -35,7 +35,7 @@ _The following settings can be accessed using the Configurator **Tuning tab** an
 - `nav_fw_pos_z_p` - Controls velocity to acceleration. Increasing the gain will provide a stronger elevator/pitch2throttle response to reach the required altitude target.
 - `nav_fw_pos_z_i` - Attempts to compensate for climb rate fluctuations cause by turbulence, thermals etc. Use sparingly. It can only do so much on a fixedwing platform.
 - `nav_fw_pos_z_d` - Attempts to anticipate the magnitude of the error and dampen the ALT_Z_P and ALT_Z_I response to the process variables rate of change. Too much damping can lead to the climb rate error becoming incorrectly predicted, causing oscillations when the initial climb is commanded, or when holding the target altitude. Even becoming more exaggerated by an incorrectly tuned `fw_ff_pitch` response.  
-**NOTE**: _This has been [altered](https://github.com/iNavFlight/inav/pull/10903) for INAV 9.0. To use a measurement snap-shoot of the process variable, instead of the variables rate of change. Which smooths the operation of the altitude Velocity and Position controllers, over a broader range of air-frames and setups._
+**NOTE**: _This has been [altered](https://github.com/iNavFlight/inav/pull/10903) for INAV 9.0. To use a measurement snap-shot of the process variable, instead of the variables rate of change. Which smooths the operation of the altitude Velocity and Position controllers, over a broader range of air-frames and setups._
 - `nav_fw_pos_z_ff` - Attempts to provide a faster control response to meet the require target, based on altitude and gyro rate data. Depending on the aircraft's build specifics, lowering POS_Z_D and increasing POS_Z_FF may help.
 - `nav_fw_alt_control_response` - Alters the altitude control response as the airplane gets closer to reaching the altitude target.
 - `fw_ff_pitch` - Passes the angular rate target directly to the servo mixer, bypassing the gyro PID loop stabilization.
@@ -116,6 +116,7 @@ _The use of a magnetometer can help argument the GNSS heading and wind estimatio
 - `inav_w_z_surface_p` - Weight applied to the Rangefinders estimated _altitude_. When a rangefinder is present, within its operational distance above the ground. 
 - `inav_w_z_surface_v` - Weight applied to the Rangefinders estimated _climb rate_. When a rangefinder is present, within its operational distance above the ground.
 
+>[!Tip]
+> When choosing a Lidar rangefinder for fixedwing landing assistance. Ensure you do not purchased a cheaper unit with minimal range. e.g. 2meters or less. These Lidar sensors have great difficulty even working at a quarter of their recommended range in direct sun light. Always select a higher quality unit with a stronger laser and more operational range.
+
 **Optical-flow is not available for fixedwing use, due to the speed airplanes travel across the ground. And the inherent inaccuracy of Optical Flow under such conditions.**
-
-
