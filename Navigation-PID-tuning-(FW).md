@@ -100,7 +100,7 @@ When the preset is selected, it will either add a Servo (**smix**)- `Stabilized 
 Fixedwing stabilization uses the [TURN ASSIST](https://github.com/iNavFlight/inav/wiki/Modes#turn-assist) feature to help maintain control over the aircraft. It is active in all navigation modes. But can be disabled in the modes tab if desired.
 
 Fixedwing AutoTune does not operate on the yaw axis. This means the tuning has to be done [manually](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#manually-tuning-rates-and-feedforward---how-it-works).  
-The gains you derive when tuning the PID Yaw controller will differ from Rudder control to Differential thrust. Due to a rudder inducing yaw from control surface deflection. While Differential thrust or Vectored thrust does so actively. However a large rudder on an aerobatic 3D style airplane can also produce considerable yaw rotation rate.
+The gains you derive when tuning the PID Yaw controller will differ from Rudder control to Differential thrust. Due to a rudder inducing yaw from control surface deflection. While Differential thrust or Vectored thrust does so actively. However a large rudder on an aerobatic 3D style airplane can also produce a considerable yaw rotation rate.
 
 The default `fw_p_yaw`, `fw_i_yaw`, `fw_d_yaw`, `fw_ff_yaw` and `yaw_rate` are safe values to start tuning from.  
 Keep in mind that the **smix** weight and/or Servo min/max output travels will work with `fw_ff_yaw` to achieve the desired yaw rate from the Rudder.  
@@ -116,9 +116,8 @@ Once the tuning in those modes is completed. It is important to test its operati
  `nav_fw_control_smoothness = 9`    
  `heading_hold_rate_limit = 60`          
  `nav_use_fw_yaw_control = ON`  
-
-The [settings](https://github.com/iNavFlight/inav/wiki/Navigation-modes#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing) in the lower part of this link can also help explain the interaction.   
-Once tuned, these values may be increase incrementally if you find the airplane turns smoothly with no undesirable results.
+  
+Once tuned, these values may be increased incrementally if you find the airplane turns smoothly with no undesirable results.
 
 
 **Heading and related gains:**
