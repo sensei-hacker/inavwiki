@@ -9,6 +9,7 @@ Accounting for this detail can make your build a greater success, especially whe
 - [ALTITUDE PID TUNING](#Tuning-Altitude-Controller---Z-axis)
 - [PITCH2THROTTLE TUNING](#Pitch2throttle-Tuning)
 - [POSITION PID TUNING](#Tuning-Position-Controller---XY-axis)
+- [HEADING YAW](#Heading-Yaw-Tuning---XY-axis)
 - [RANGE-FINDER TUNING](#Tuning-Rangefinder)
 
 >[!Caution] 
@@ -74,7 +75,7 @@ While [nav_fw_pitch2thr_threshold](https://github.com/iNavFlight/inav/blob/maste
 
 **Make sure these hardware conditions are addressed first, before you even attempt to tune the navigation POS, VEL and HEADING PID's.**
 
-### Horizontal POS + HEADING PID Tuning: 
+### Horizontal POS PID Tuning: 
 
 Tuning of an airplanes XY axis controllers should be done on a day no colder than 5°C, for the best outcome. This is due to the effect temperature has on the IMU.
 
@@ -91,15 +92,46 @@ This is best done by logging flight controller data. And gauging the changes wit
 - `nav_fw_cruise_thr` - Should be set to the airplanes optimal cruise speed. Keeping the average airspeed less than 75km/h, will obtain the highest target position accuracy. 
 
 
-**Heading gains:**
+## Heading Yaw Tuning - XY axis:
+
+The first step towards the use of fixedwing yaw control is to load the appropriate Servo or Motor mixer, to suit your airframes yaw stabilization and control method. This can be found in the MIXER Tab under MIXER PRESETS.   
+When the preset is selected, it will either add a Servo (**smix**)- `Stabilized Yaw` for rudder control. Or it will add two Motor (**mmix**) for differential thrust yaw control.
+
+Fixedwing stabilization uses the [TURN ASSIST](https://github.com/iNavFlight/inav/wiki/Modes#turn-assist) feature to help maintain control over the aircraft. It is active in all navigation modes. But can be disabled in the modes tab if desired.
+
+Fixedwing AutoTune does not operate on the yaw axis. This means the tuning has to be done [manually](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#manually-tuning-rates-and-feedforward---how-it-works).  
+The gains you derive when tuning the PID Yaw controller will differ from Rudder control to Differential thrust. Due to a rudder inducing yaw from control surface deflection. While Differential thrust or Vectored thrust does so actively. However a large rudder on an aerobatic 3D style airplane can also produce considerable yaw rotation rate.
+
+The default `fw_p_yaw`, `fw_i_yaw`, `fw_d_yaw`, `fw_ff_yaw` and `yaw_rate` are safe values to start tuning from.  
+Keep in mind that the **smix** weight and/or Servo min/max output travels will work with `fw_ff_yaw` to achieve the desired yaw rate from the Rudder.  
+While the **mmix** motor yaw weight works together with `fw_ff_yaw` to achieve the desired yaw rate from Differential thrust. The default motor mixer weight on the yaw is [`0.3 -0.3`]. When increasing the yaw motor mixer weight, it should be done in unity with the setting mentioned hereafter.   
+More mixer related information can be found [here](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md).
+
+_Yaw axis tuning should only be attempted after you have first successfully tuned the airplane on the roll and pitch axis._ 
+
+Tuning the yaw axis in ANGLE or ACRO can be made easier if you setup [inflight tuning](https://www.youtube.com/watch?v=A5i0gs9LfE8).  
+Once the tuning in those modes is completed. It is important to test its operation in Navigation modes, which includes RTH. The navigation controllers can cause undesirable yaw-roll coupling if too much yaw and roll are called for at the same time. For this reason it is important to tone-down the way navigation yaw and roll work together in turns, by altering the settings below for safer tuning -   
+
+ `nav_fw_bank_angle = 30`  
+ `nav_fw_control_smoothness = 9`    
+ `heading_hold_rate_limit = 60`          
+ `nav_use_fw_yaw_control = ON`  
+
+The [settings](https://github.com/iNavFlight/inav/wiki/Navigation-modes#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing) in the lower part of this link can also help explain the interaction.   
+Once tuned, these values may be increase incrementally if you find the airplane turns smoothly with no undesirable results.
+
+
+**Heading and related gains:**
 - `nav_fw_heading_p` - Sets the strength the IMU heading target will hold. Heading data is updated from the GNSS course and/or mag bearing. 
-- `nav_use_fw_yaw_control`- When enabled, it allows the use of the yaw heading controller settings below, for a fixedwing. It can be used with elevon aircraft via turn assist, but will not experience the full benefits of an airplane that has yaw control.
+- `nav_use_fw_yaw_control`- When enabled, it will activate the fixedwing _yaw heading controller_ settings below. TURN ASSIST will allow it to be used with elevon aircraft. But it will not experience the full benefits of an airplane that has yaw control.
 - `nav_fw_pos_hdg_p` - Sets the strength the heading trajectory target is tracking. 
 - `nav_fw_pos_hdg_i` - When used sparingly, it can filter-out heading target drift.
 - `nav_fw_pos_hdg_d` - Can smooth abrupt heading irregularity. But better suited to aircraft that have a means of yaw control.
 - `heading_hold_rate_limit` - Limits the yaw induced rotation rate the HEADING_HOLD controller can request from PID controller inner
-loop. It's independent from manual yaw rate and only active when HEADING_HOLD NAV flight modes are in use.
-- These [settings](https://github.com/iNavFlight/inav/wiki/Navigation-modes#fixed-wing-waypoint-tracking-accuracy-and-turn-smoothing) can also influence WP tracking accuracy.
+loop. It's independent from manual yaw rate and only active when HEADING_HOLD NAV flight modes are in use. _The default value is more suited to copters, and should be used very cautiously if `nav_fw_control_smoothness` is set below 7._
+- `nav_cruise_yaw_rate` - Sets the yaw rotation rate in degrees that the airplane can be commanded via stick input, while in _Cruise/CourseHold_ modes.
+- `fw_yaw_iterm_freeze_bank_angle` - When enabled, it can help reduce the effect of the rudder counteracting aileron bank turns, by reducing yaw i-term error accumulation. It is only used for ANGLE, HORIZON or ACRO modes. Can not be enabled in navigation modes, unless TURN ASSIST is disabled. 
+
 
 _In my experience. Enabling the `nav_fw_pos_hdg` controller combined with an airplane that has yaw control. i.e. A Rudder, Differential thrust or Vectored thrust, **when those yaw gains are tuned**. Always provides the most accurate turn response in a waypoint mission or RTH Trackback._
 
