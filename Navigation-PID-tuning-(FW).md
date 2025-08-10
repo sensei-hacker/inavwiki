@@ -3,8 +3,8 @@
 The aim of this page is to separate the tuning of the FW Navigation PIDs from the [Navigation modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes) page. Its goal is also to have FW Nav PID tuning separate from MC Nav PID tuning. To de-clutter and make for easier reading.
 
 >[!Tip]
->There is also a companion wiki page [GPS and Compass setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup), that is essential reading beforehand. The _Installation location_, _Setup_ and _Calibration_ of the GNSS/Magnetometer module, to provide the best navigation performance achievable, is of absolute importance.
-Accounting for this detail can make your build a greater success, especially when using a magnetometer.
+>There is also a companion wiki page [GPS and Compass setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup), that is essential reading beforehand. The _Installation location_, _Setup_ and _Calibration_ of the GNSS/Magnetometer module, to provide the best navigation performance achievable, is of absolute importance.  
+Accounting for this detail can make your build a greater success. 
 
 - [ALTITUDE PID TUNING](#Tuning-Altitude-Controller---Z-axis)
 - [PITCH2THROTTLE TUNING](#Pitch2throttle-Tuning)
@@ -13,19 +13,20 @@ Accounting for this detail can make your build a greater success, especially whe
 - [RANGE-FINDER TUNING](#Tuning-Rangefinder)
 
 >[!Caution] 
->**The Main Stabilization _PID_FF_, _RATES_ and _LEVEL_ controller MUST be tuned well before attempting to tune the navigation controllers. This is because the output from the navigation controllers are place into action through the main stabilization PID controllers. With incorrectly tuned FeedForward, noticeable impacting navigation performance.   
+>**The Main Stabilization _PID_FF_, _RATES_ and _LEVEL_ controller MUST be tuned well before attempting to tune the navigation controllers.   
+With incorrectly tuned FeedForward, noticeable impacting navigation performance.   
 Take note of how the Rate/FF [Auto-tune](https://github.com/iNavFlight/inav/wiki/Modes#autotune-fw) process is performed.**
 
 
 ## Tuning Altitude Controller - Z axis:
 **Inability to obtain an accurate target altitude or climb rate can be caused by a number of reasons:**
 - Poor GNSS satellite accuracy and EPV position data - _Ensure you have a HDOP less than 1.2 for best precision. And never above 1.8. [See here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#installing-the-gnss-unit---antenna-orientation)_ 
-- Main stabilization **PID_FF**, **RATES** and **LEVEL** is poorly tuned. Or incorrectly setup control surface throws and/or C.G. - _Setup hardware and Tune main PID's first._
+- Main stabilization **PID_FF**, **RATES** and **LEVEL** is poorly tuned. Or you have incorrectly setup control surface throws and/or C.G. - _Setup hardware and Tune main PID's first._
 - Insufficient motor thrust - _The airplanes thrust to weight ratio is too low._
 - High accelerometer vibrations from the motor(s) or prop(s).
-- Insufficient POS_Z_P, POS_Z_I or too much POS_Z_D and/or FW_FF_PITCH - _Only if all the previous conditions are satisfied._
+- If all the previous conditions are satisfied - Incorrectly tuned POS_Z_P, POS_Z_I or too much POS_Z_D and/or FW_FF_PITCH / PITCH_RATE. 
 
-**Make sure these hardware conditions are addressed first, before you even attempt to tune the navigation VEL PID's and climb rate settings.**
+**Make sure these hardware conditions are addressed first, before you attempt to tune the navigation VEL PID's and climb rate settings.**
 
 ### ALTITUDE POS(`VEL`) PID Tuning:
 **Altitude is always referred too as the vertical or (Z) axis.**
@@ -35,8 +36,8 @@ Tuning of an airplanes Z axis controller should be done on a day no colder than 
 _The following settings can be accessed using the Configurator **Tuning tab** and **Advanced Tuning tab**. Or the CLI and CMS OSD stick menu's._
 - `nav_fw_pos_z_p` - Controls velocity to acceleration. Increasing the gain will provide a stronger elevator/pitch2throttle response to reach the required altitude target.
 - `nav_fw_pos_z_i` - Attempts to compensate for climb rate fluctuations cause by turbulence, thermals etc. Use sparingly. It can only do so much on a fixedwing platform.
-- `nav_fw_pos_z_d` - Attempts to anticipate the magnitude of the error and dampen the ALT_Z_P and ALT_Z_I response to the process variables rate of change. Too much damping can lead to the climb rate error becoming incorrectly predicted, causing oscillations when the initial climb is commanded, or when holding the target altitude. Even becoming more exaggerated by an incorrectly tuned `fw_ff_pitch` response.  
-**NOTE**: _This has been [altered](https://github.com/iNavFlight/inav/pull/10903) for INAV 9.0. To use a measurement snap-shot of the process variable, instead of the variables rate of change. Which smooths the operation of the altitude Velocity and Position controllers, over a broader range of air-frames and setups._
+- `nav_fw_pos_z_d` - Attempts to anticipate the magnitude of the error and dampen the POS_Z_P and POS_Z_I response to the process variables rate of change. Too much damping can lead to the climb rate error becoming incorrectly predicted, causing oscillations when the initial climb is commanded, or when holding the target altitude. Even becoming more exaggerated by an incorrectly tuned `fw_ff_pitch` response.  
+**NOTE**: _This has been [altered](https://github.com/iNavFlight/inav/pull/10903) for INAV 9.0. To use a measurement snap-shot of the process variable, instead of the variables rate of change. Which smooths the operation of the altitude Velocity and Position controllers, on a broader range of airframes and setups._
 - `nav_fw_pos_z_ff` - Attempts to provide a faster control response to meet the require target, based on altitude and gyro rate data. Depending on the aircraft's build specifics, lowering POS_Z_D and increasing POS_Z_FF may help.
 - `nav_fw_alt_control_response` - Alters the altitude control response as the airplane gets closer to reaching the altitude target.
 - `fw_ff_pitch` - Passes the angular rate target directly to the servo mixer, bypassing the gyro PID loop stabilization.
@@ -62,6 +63,7 @@ While [nav_fw_pitch2thr_threshold](https://github.com/iNavFlight/inav/blob/maste
 **These settings below should also be configured or tweaked to suit your aircraft. This will assist the Velocity Z controller.** 
 
 - [fw_level_pitch_trim](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_level_pitch_trim)
+- [nav_fw_auto_climb_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_auto_climb_rate)
 - [nav_fw_manual_climb_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_manual_climb_rate)
 
 ## Tuning Position Controller - XY axis:
@@ -70,10 +72,10 @@ While [nav_fw_pitch2thr_threshold](https://github.com/iNavFlight/inav/blob/maste
 - Poor GNSS satellite accuracy and EPH position data - _Ensure you have a HDOP less than 1.2 for best precision. And never above 1.8._  [See here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#installing-the-gnss-unit---antenna-orientation) 
 - Main stabilization **PID_FF**, **RATES** and **LEVEL** is poorly tuned. Or incorrectly setup control surface throws and/or C.G.- _Setup hardware and Tune main PID's first._
 - Poorly Installed, Aligned or Calibrated magnetometer (compass) - _If a magnetometer is used, read [here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#setting-up-the-compass-alignment) to provide the best results._
-- Insufficient POS_XY_P, POS_XY_I or POS_HDG_P if [nav_use_fw_yaw_control ](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) = ON - _Only if all the previous conditions are satisfied._
-- High accelerometer vibrations from the motor(s) or prop(s). - _Can lead to attitude and heading reference drift._
+- If all the previous conditions are satisfied - _Incorrect tuned POS_XY_P, POS_XY_I or POS_HDG_P if [nav_use_fw_yaw_control ](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) = ON_
+- High accelerometer vibrations from the motor(s) or prop(s). - _Can lead to attitude and heading inaccuracy causing drift._
 
-**Make sure these hardware conditions are addressed first, before you even attempt to tune the navigation POS, VEL and HEADING PID's.**
+**Make sure these hardware conditions are addressed first, before you attempt to tune the navigation POS, VEL and HEADING PID's.**
 
 ### Horizontal POS PID Tuning: 
 
@@ -95,22 +97,22 @@ This is best done by logging flight controller data. And gauging the changes wit
 ## Heading Yaw Tuning - XY axis:
 
 The first step towards the use of fixedwing yaw control is to load the appropriate Servo or Motor mixer, to suit your airframes yaw stabilization and control method. This can be found in the MIXER Tab under MIXER PRESETS.   
-When the preset is selected, it will either add a Servo (**smix**)- `Stabilized Yaw` for rudder control. Or it will add two Motor (**mmix**) for differential thrust yaw control.
+When the preset is selected, it will either add a Servo (**smix**)- `Stabilized Yaw` for rudder control. Or it will add two Motors (**mmix**) for differential thrust yaw control.
 
 Fixedwing stabilization uses the [TURN ASSIST](https://github.com/iNavFlight/inav/wiki/Modes#turn-assist) feature to help maintain control over the aircraft. It is active in all navigation modes. But can be disabled in the modes tab if desired.
 
 Fixedwing AutoTune does not operate on the yaw axis. This means the tuning has to be done [manually](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#manually-tuning-rates-and-feedforward---how-it-works).  
-The gains you derive when tuning the PID Yaw controller will differ from Rudder control to Differential thrust. Due to a rudder inducing yaw from control surface deflection. While Differential thrust or Vectored thrust does so actively. However a large rudder on an aerobatic 3D style airplane can also produce a considerable yaw rotation rate.
+The gains you derive when tuning the PID Yaw controller will differ, depending on the control method. With a Rudder inducing yaw rotation from control surface area and deflection. While Differential thrust or Vectored thrust does so actively. However a large rudder on an aerobatic 3D style airplane can also produce a considerable rotation rate.
 
 The default `fw_p_yaw`, `fw_i_yaw`, `fw_d_yaw`, `fw_ff_yaw` and `yaw_rate` are safe values to start tuning from.  
-Keep in mind that the **smix** weight and/or Servo min/max output travels will work with `fw_ff_yaw` to achieve the desired yaw rate from the Rudder.  
-While the **mmix** motor yaw weight works together with `fw_ff_yaw` to achieve the desired yaw rate from Differential thrust. The default motor mixer weight on the yaw is [`0.3 -0.3`]. When increasing the yaw motor mixer weight, it should be done in unity with the setting mentioned hereafter.   
+Keep in mind that the **smix** weight and/or Servo min/max output travels will work with `fw_ff_yaw` to achieve the desired yaw rate from a Rudder.  
+While the **mmix** motor yaw weight works together with `fw_ff_yaw` to achieve the desired yaw rate from Differential thrust. The default motor mixer weight for yaw is [`0.3 -0.3`]. When increasing the yaw motor mixer weight, it should be done in harmony with the setting mentioned hereafter.   
 More mixer related information can be found [here](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md).
 
 _Yaw axis tuning should only be attempted after you have first successfully tuned the airplane on the roll and pitch axis._ 
 
 Tuning the yaw axis in ANGLE or ACRO can be made easier if you setup [inflight tuning](https://www.youtube.com/watch?v=A5i0gs9LfE8).  
-Once the tuning in those modes is completed. It is important to test its operation in Navigation modes, which includes RTH. The navigation controllers can cause undesirable yaw-roll coupling if too much yaw and roll are called for at the same time. For this reason it is important to tone-down the way navigation yaw and roll work together in turns, by altering the settings below for safer tuning -   
+Once the tuning in those modes is completed. It is important to test its operation in Navigation modes, which includes RTH. The navigation controllers can cause undesirable yaw-roll coupling if too much yaw and roll are called for at the same time. For this reason it is important to tone-down the way yaw and roll work together in turns, by altering the settings below for safer tuning -   
 
  `nav_fw_bank_angle = 30`  
  `nav_fw_control_smoothness = 9`    
@@ -121,7 +123,7 @@ Once tuned, these values may be increased incrementally if you find the airplane
 
 
 **Heading and related gains:**
-- `nav_fw_heading_p` - Sets the strength the IMU heading target will hold. Heading data is updated from the GNSS course and/or mag bearing. 
+- `nav_fw_heading_p` - Sets the strength the IMU heading target will be held. Heading data is updated from the GNSS course and/or mag bearing. 
 - `nav_use_fw_yaw_control`- When enabled, it will activate the fixedwing _yaw heading controller_ settings below. TURN ASSIST will allow it to be used with elevon aircraft. But it will not experience the full benefits of an airplane that has yaw control.
 - `nav_fw_pos_hdg_p` - Sets the strength the heading trajectory target is tracking. 
 - `nav_fw_pos_hdg_i` - When used sparingly, it can filter-out heading target drift.
@@ -132,7 +134,7 @@ loop. It's independent from manual yaw rate and only active when HEADING_HOLD NA
 - `fw_yaw_iterm_freeze_bank_angle` - When enabled, it can help reduce the effect of the rudder counteracting aileron bank turns, by reducing yaw i-term error accumulation. It is only used for ANGLE, HORIZON or ACRO modes. Can not be enabled in navigation modes, unless TURN ASSIST is disabled. 
 
 
-_In my experience. Enabling the `nav_fw_pos_hdg` controller combined with an airplane that has yaw control. i.e. A Rudder, Differential thrust or Vectored thrust, **when those yaw gains are tuned**. Always provides the most accurate turn response in a waypoint mission or RTH Trackback._
+_In my experience. Enabling the `nav_fw_pos_hdg` controller combined with an airplane that has yaw control. i.e. A Rudder, Differential thrust or Vectored thrust, **when those yaw gains are tuned**. Will provide the most accurate turn/track response in a waypoint mission or RTH Trackback._
 
 _The use of a magnetometer can help argument the GNSS heading and wind estimation, to provide faster correction in turns. But it must be [setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#note-) and calibrated correctly. Or it will make performance even worse._
 
