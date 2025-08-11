@@ -105,7 +105,6 @@ Set expected behavior of aircraft upon failsafe
 [Navigation PID tuning (MC)](Navigation-PID-tuning-(MC))\
 [EZ-Tune](EZ%E2%80%90TUNE)\
 [PID Attenuation and scaling](PID-Attenuation-and-scaling)\
-[Fixed Wing Tuning for INAV 3.0](Fixed-Wing-Tuning-for-INAV-3.0)\
 [Tune INAV PID-FF controller for fixedwing](Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing)\
 DevDocs [Autotune - fixedwing.md](https://github.com/iNavFlight/inav/blob/master/docs/Autotune%20-%20fixedwing.md)\
 DevDocs [INAV PID Controller.md](https://github.com/iNavFlight/inav/blob/master/docs/INAV%20PID%20Controller.md)\
