@@ -12,13 +12,13 @@ Accounting for this detail can make your build a great success, or a disappointm
 
 >[!Caution]
 > When tuning all navigation PID's. Bear in mind, over-tuning their gains will not always react in the same way as over-tuning the main stabilization PID's, which will lead to oscillations on that axis. Instead, over-tune and saturating **some** navigation PID gain terms, will in effect provide a poorer control response, equivalent to under-tuning those same gains. Log data must be used as reference.   
->**The Main Stabilization _PID_CD_ and _LEVEL_ controllers MUST be tuned before attempting to tune the navigation controllers. This is because the output from the navigation controllers are place into action through the main stabilization PID controllers.**
+>**The Main Stabilization _PID_CD_ and _LEVEL_ controllers MUST be tuned before attempting to tune the navigation controllers. This is because the output from the navigation controllers are place into action through the stabilization PID controllers.**
 
 
 ## Tuning Altitude Controller - Z axis:
 
 **Inability to maintain altitude can be caused by a number of reasons:**
-- Insufficient ALT_P, ALT_I and/or VEL_P, VEL_I - _The default multicopter Altitude PID gains are set conservative for safety._
+- Insufficient POS_P, POS_I and/or VEL_P, VEL_I - _The default multicopter Altitude PID gains are set conservative for safety._
 - Non-functional barometer - _Go to the Configurator "_Sensors tab_" and verify that barometer graph changes as you move the copter up and down._
 - Poor GNSS satellite accuracy and EPV altitude data - _Ensure you have a HDOP less than 1.2 for best precision. And never above 1.8. [Possible causes](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#installing-the-gnss-unit---antenna-orientation)_
 - Seriously under-powered copter - _ALTHOLD is only able to compensate to some degree. If your copter hovers at 1700 linear throttle without any expo, ALTHOLD might fail to compensate._
@@ -31,9 +31,9 @@ _The following settings can be accessed using the Configurator CLI or **Tuning t
 
 **Altitude is referred too as the vertical or (Z) axis.**
 
-- ALT P `nav_mc_pos_z_p` - defines how fast copter will attempt to compensate for altitude error (converts alt error to desired climb rate)
-- ALT I `nav_mc_auto_climb_rate` - defines how fast copter will accelerate to reach desired climb rate 
-- VEL P `nav_mc_vel_z_p` - defines how much throttle the copter will add to achieve the desired acceleration/deceleration required to meet the ALT_P and ALT_I targets.
+- POS P `nav_mc_pos_z_p` - defines how fast copter will attempt to compensate for altitude error (converts alt error to desired climb rate)
+- POS I `nav_mc_auto_climb_rate` - defines how fast copter will accelerate to reach desired climb rate 
+- VEL P `nav_mc_vel_z_p` - defines how much throttle the copter will add to achieve the desired acceleration/deceleration required to meet the POS_P and POS_I targets.
 - VEL I  `nav_mc_vel_z_i` - controls compensation for hover throttle, based on vertical air movement, thermals or ground-effect. Too much VEL I will lead to vertical oscillations, too low VEL I will cause drops or jumps when ALTHOLD is enabled.
 - VEL D `nav_mc_vel_z_d` - Acts as a dampener for VEL P and VEL I, to smooth their response and reduce oscillations caused by sensor variations.
 
@@ -44,18 +44,17 @@ Try a small experiment: Make sure the barometer is well isolated. You may also w
 
 Tuning of copter z axis is **best** performed on a day no colder than 10°C. Due to the effect temperature has on the Baro and IMU.
 
-- set `inav_w_z_baro_p = 0.5` and  ALT P `nav_mc_pos_z_p = 0` and try flying. This way the controller will attempt to keep zero climb rate without any reference to altitude. The quad should slowly drift either up or down. If it would be jumping up and down, your VEL `nav_mc_vel_z` gains are too high.
+- set `inav_w_z_baro_p = 0.5` and  POS P `nav_mc_pos_z_p = 0` and try flying. The controller will attempt to keep zero climb rate without any reference to altitude. The quad should slowly drift either up or down. If you see it jumping up and down slightly, your VEL `nav_mc_vel_z` gains are too high.
 
 - As a second step you can try zeroing out VEL P `nav_mc_vel_z_p` and VEL I `nav_mc_vel_z_i` and set VEL D `nav_mc_vel_z_d = 100`. Now the quad should be drifting up/down even slower. Raise VEL D `nav_mc_vel_z_d` to the edge of oscillations.
 
-- Now raise VEL P `nav_mc_vel_z_p` to the edge of oscillations. Now ALTHOLD should be almost perfect. But if the copter is buzzing or slightly oscillating while ALTHOLD is active. You have the ALT_P `nav_mc_pos_z_p` set too high and/or VEL P `nav_mc_vel_z_p` is pushing too hard to reach the altitude target, which is causing some over-shoot. Start lower VEL P `nav_mc_vel_z_p` first. Then lower ALT_P if there is no change after a reduction of 20 points.
+- Now raise VEL P `nav_mc_vel_z_p` to the edge of oscillations. Now ALTHOLD should be almost perfect. But if the copter is buzzing or slightly oscillating while ALTHOLD is active. This means you have the POS P `nav_mc_pos_z_p` set too high and/or VEL P `nav_mc_vel_z_p` is pushing too hard to reach the altitude target, which is causing some over-shoot. Start lower VEL P `nav_mc_vel_z_p` first. Then lower POS P if there is no change after a reduction of 20 points.
 
 - And finally set `nav_mc_hover_thr` slightly higher/lower (50 - 100uS) than your actual hover throttle and tune VEL I `nav_mc_vel_z_i`. The copter should be able to compensate. 
 
-
 What is the trick with VEL I `nav_mc_vel_z_i` ?
-It is used to compensate for `nav_mc_hover_thr` (hover throttle) being set to a slightly incorrect value. You can't set hover throttle to an exact value, there is always influence from thermals, battery charge level etc. Too much VEL I `nav_mc_vel_z_i` will lead to vertical oscillations.   
-If its too low it can cause the copter to drop or jump when ALTHOLD is enabled. Very low VEL I `nav_mc_vel_z_i` can result in total inability to maintain altitude.
+It is used to compensate for HOVER THROTTLE `nav_mc_hover_thr` being a slightly incorrect value. It's difficult to set hover throttle to an exact value; there is always influence from thermals, battery charge level etc. Too much VEL I `nav_mc_vel_z_i` will lead to vertical oscillations.   
+If it's too low it can cause the copter to drop or jump when ALTHOLD is enabled. Very low VEL I `nav_mc_vel_z_i` can result in total inability to maintain altitude.
 
 The easiest trial and error testing method is done through the INAV OSD while in the field. Or by the _Adjustments_ [inflight tuning](https://www.youtube.com/watch?v=A5i0gs9LfE8) while in the air.
 
@@ -68,6 +67,8 @@ Climb rate is calculated using sensor data from the Accelerometer, Barometer and
 
 Too high `inav_w_z_baro_p` will make ALTHOLD nervous, and setting it too low will make it drift, so you risk running into the ground when cruising around. Using GNSS data for vertical velocity can allow you to lower the barometer weight to make ALTHOLD smoother without making it less accurate. But ONLY if your build consistently provides high GNSS sensor accuracy on every power-up.
 These weights should only be adjusted if you have a firm grasp of their relationship. Small adjustments can make a significant difference, and has the potential to make things worse, if not tested under different atmospheric conditions.
+
+In cases when the barometer may be providing poor altitude data. Altitude estimation sensor priority can be selected [inav_default_alt_sensor](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#inav_default_alt_sensor).
 
 
 ## Tuning Position Controller - XY axis:
@@ -246,5 +247,6 @@ Here are PID settings that were tested with success:
 >[!Note]
 > The manufacturer specifications for their rangefinder modules should always be taken into account.  
 Optical flow sensors have a greater range limitation, than the Lidar altitude sensor they are coupled with. And most have a limited speed of operation around 7m/s max. With a required light intensity for reliable operation, greater than 60 Lux.  
-So you will often find the copters ability to hold position is lost before the Lidar sensors looses its ability to hold altitude.
+So you will often find the copters ability to hold position is lost before the Lidar sensors looses its ability to hold altitude.  
+_Don't skimp on cheap lidar sensors! Units that provide higher altitude range, will also work better in direct sun light, or over darker surfaces._
 
