@@ -24,7 +24,7 @@ You have several options on how to configure your receiver:
 ### Option one
 
 Set your receiver to `NO PULSES`/ `CUT` in the case of radio signal loss.    
-`NO PULSES` / `CUT` is generally best used for modern RX links. The RX will send data via the serial connection, to inform the FC of a Failsafe condition. Or a loss of that data by hardware failure also triggers a failsafe.
+`NO PULSES` / `CUT` is generally best used for modern RX links. Depending on the protocol, the RX can send a flag via the serial connection, to inform the FC of a Failsafe condition. Or the loss of RX serial data to the FC `failsafe_delay`, will constitute a Failsafe condition. Indicating RC link loss or hardware failure.
 
 ### Option two
 
