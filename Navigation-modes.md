@@ -303,6 +303,8 @@ Loss of GPS during navigation will have the following affect on the different mo
 - POSHOLD: Falls back to forced ANGLE mode.
 - ALTHOLD mode should still work normally if a barometer is available.
 
+However a Fixedwing can continue to run a WP mission or RTH, if the GNSS fix is lost. Setup requirements and limitations of operation are found here [GPS Fix estimation - Dead Reckoning](https://github.com/iNavFlight/inav/blob/master/docs/GPS_fix_estimation.md#gps-fix-estimation-dead-reconing-rth-without-gps-for-fixed-wing).
+
 ## Emergency Landing
 An emergency landing will be triggered during WP and RTH modes if navigation sensors fail or in the case of RTH if the craft heads off in the wrong direction.
 
