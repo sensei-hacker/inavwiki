@@ -1,3 +1,6 @@
+# OBSOLETE: This feature was not implemented
+***
+
 INAV implements universal interconnect bus for various types of sensors and executable devices.
 
 It's compatible with all existing controllers that have a spare UART and designed to be able to connect multiple sensors to one shared bus. Devices on the bus can be daisy-chained together for neater wiring.
