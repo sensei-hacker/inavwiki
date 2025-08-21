@@ -214,7 +214,6 @@ DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
 [OrangeRX LRS RX and OMNIBUS F4](OrangeRX-LRS-RX-and-OMNIBUS-F4)\
 [Rate Dynamics](Rate-Dynamics)\
 [Target and Sensor support](Target-and-Sensor-support)\
-[UAV Interconnect Bus](UAV-Interconnect-Bus)\
 [Ublox 3.01 firmware and Galileo](Ublox-3.01-firmware-and-Galileo)\
 DevDocs [Controls](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md)\
 DevDocs [1wire.md](https://github.com/iNavFlight/inav/blob/master/docs/1wire.md)\
@@ -253,6 +252,7 @@ DevDocs [Configuration.md](https://github.com/iNavFlight/inav/blob/master/docs/C
 DevDocs [Introduction.md](https://github.com/iNavFlight/inav/blob/master/docs/Introduction.md)\
 [Welcome to INAV, useful links and products](Welcome-to-INAV,-useful-links-and-products)\
 [iNav Telemetry](iNav-Telemetry)\
+[UAV Interconnect Bus](UAV-Interconnect-Bus)\
 DevDocs [Rangefinder.md](https://github.com/iNavFlight/inav/blob/master/docs/Rangefinder.md)\
 DevDocs [Rssi.md](https://github.com/iNavFlight/inav/blob/master/docs/Rssi.md)\
 DevDocs [Runcam device.md](https://github.com/iNavFlight/inav/blob/master/docs/Runcam%20device.md)\
