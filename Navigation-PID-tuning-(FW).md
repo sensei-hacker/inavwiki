@@ -37,13 +37,39 @@ _The following settings can be accessed using the Configurator **Tuning tab** an
 - `nav_fw_pos_z_p` - Controls velocity to acceleration. Increasing the gain will provide a stronger elevator/pitch2throttle response to reach the required altitude target.
 - `nav_fw_pos_z_i` - Attempts to compensate for climb rate fluctuations cause by turbulence, thermals etc. Use sparingly. It can only do so much on a fixedwing platform.
 - `nav_fw_pos_z_d` - Attempts to anticipate the magnitude of the error and dampen the POS_Z_P and POS_Z_I response to the process variables rate of change. Too much damping can lead to the climb rate error becoming incorrectly predicted, causing oscillations when the initial climb is commanded, or when holding the target altitude. Even becoming more exaggerated by an incorrectly tuned `fw_ff_pitch` response.  
-**NOTE**: _This has been [altered](https://github.com/iNavFlight/inav/pull/10903) for INAV 9.0. To use a measurement snap-shot of the process variable, instead of the variables rate of change. Which smooths the operation of the altitude Velocity and Position controllers, on a broader range of airframes and setups._
-- `nav_fw_pos_z_ff` - Attempts to provide a faster control response to meet the require target, based on altitude and gyro rate data. Depending on the aircraft's build specifics, lowering POS_Z_D and increasing POS_Z_FF may help.
-- `nav_fw_alt_control_response` - Alters the altitude control response as the airplane gets closer to reaching the altitude target.
+**NOTE**: _This has been altered for INAV 9.0. To use a measurement snap-shot of the process variable, instead of the variables rate of change. Which smooths the operation of the altitude Velocity and Position controllers, on a broader range of airframes and setups._
+- `nav_fw_pos_z_ff` - Attempts to provide a faster control response to meet the require target, based on altitude and gyro rate data. Depending on the aircraft's build specifics, lowering POS_Z_D and increasing POS_Z_FF may help. _* Not used with the INAV 9.0 altitude POSITION controller._
+- `nav_fw_alt_control_response` - Alters the altitude control response as the airplane gets closer to reaching the altitude target. Should be tuned together with POS_Z_D to get the best performance and trouble free use.
 - `fw_ff_pitch` - Passes the angular rate target directly to the servo mixer, bypassing the gyro PID loop stabilization.
 - `nav_fw_auto_climb_rate`- Maximum climb/descent rate in [cm/s], the airplane is allowed to reach in modes that control altitude.
 
-## Pitch2Throttle Tuning
+### Altitude controller method:
+
+The setting for both altitude control methods where derived from multiple testers.
+This first group of setting should also work reasonably well with the 8.0 implementation of the altitude VELOCITY controller.     
+When used in 9.0. The altitude VELOCITY controller is active by default. i.e. `nav_fw_alt_use_position = OFF`.   
+The accuracy of both control methods is similar. With little deviation observed from a fixed altitude target.
+
+_Functionally, the altitude VELOCITY controller is more responsive. It will push the throttle and elevator considerably harder to reach the altitude target. Making it less power efficient. However this method can be desirable if your airplane is flying a tight WP mission or RTH trackback. When it is important to reach the altitude target quickly to clear an object._
+
+**VELOCITY:**  
+`nav_fw_pos_z_p = 22`  
+`nav_fw_pos_z_i = 6`  
+`nav_fw_pos_z_d = 2`  
+`nav_fw_pos_z_ff = 25`   
+`nav_fw_alt_control_response = 45`  
+
+When setting `nav_fw_alt_use_position = ON` in 9.0 and later. It enables a more refined version of the old altitude POSITION controller, which was used in versions of INAV before 8.0.   
+
+_Functionally, the altitude POSITION controller is little less responsive than the altitude velocity control method. This makes it more efficient when a climb is commanded. This may be beneficial if flight time power management is of importance._
+
+**POSITION:**  
+`nav_fw_pos_z_p = 30`  
+`nav_fw_pos_z_i = 5`  
+`nav_fw_pos_z_d = 11`  
+`nav_fw_alt_control_response = 40`  
+
+## Pitch2Throttle Tuning:
 
 All the settings below work in conjunction with the [nav_fw_pitch2thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_pitch2thr) command. And effect fixedwing altitude control response.
 
