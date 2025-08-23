@@ -86,9 +86,8 @@ To reduce the likelihood of pitch bobbing or porpoising, while in modes that hol
 While [nav_fw_pitch2thr_threshold](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_pitch2thr_threshold) sets a deadband region this many decidegrees above or below level flight, for the `nav_fw_pitch2thr_smoothing` to work within.
 
 
-**These settings below should also be configured or tweaked to suit your aircraft. This will assist the Velocity Z controller.** 
+**The settings below can also be tweaked to suit your desired rate of climb or dive. They too will alter the altitude controllers responsiveness.** 
 
-- [fw_level_pitch_trim](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_level_pitch_trim)
 - [nav_fw_auto_climb_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_auto_climb_rate)
 - [nav_fw_manual_climb_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_manual_climb_rate)
 
@@ -96,10 +95,10 @@ While [nav_fw_pitch2thr_threshold](https://github.com/iNavFlight/inav/blob/maste
 
 **Inability to obtain an accurate horizontal position can be caused by a number of reasons:**
 - Poor GNSS satellite accuracy and EPH position data - _Ensure you have a HDOP less than 1.2 for best precision. And never above 1.8._  [See here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#installing-the-gnss-unit---antenna-orientation) 
-- Main stabilization **PID_FF**, **RATES** and **LEVEL** is poorly tuned. Or incorrectly setup control surface throws and/or C.G.- _Setup hardware and Tune main PID's first._
+- Main stabilization **PID_FF** and **RATES** are poorly tuned. Or incorrectly setup control surface throws and/or C.G.
 - Poorly Installed, Aligned or Calibrated magnetometer (compass) - _If a magnetometer is used, read [here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#setting-up-the-compass-alignment) to provide the best results._
-- If all the previous conditions are satisfied - _Incorrect tuned POS_XY_P, POS_XY_I or POS_HDG_P if [nav_use_fw_yaw_control ](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) = ON_
-- High accelerometer vibrations from the motor(s) or prop(s). - _Can lead to attitude and heading inaccuracy causing drift._
+- High accelerometer vibrations from the motor(s) or prop(s). - _Can lead to attitude and heading inaccuracy or drift._
+- If all the previous conditions are satisfied - _Incorrectly tuned POS_XY_P, POS_XY_I or POS_HDG_P if [nav_use_fw_yaw_control ](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) = ON_
 
 **Make sure these hardware conditions are addressed first, before you attempt to tune the navigation POS, VEL and HEADING PID's.**
 
@@ -108,7 +107,7 @@ While [nav_fw_pitch2thr_threshold](https://github.com/iNavFlight/inav/blob/maste
 Tuning of an airplanes XY axis controllers should be done on a day no colder than 5°C, for the best outcome. This is due to the effect temperature has on the IMU.
 
 _When tuning the Nav XY controllers, you require a means to reference the WP markers, to _real-time_ heading and turning positions.    
-This is best done by logging flight controller data. And gauging the changes with one or all of the following software: [MWP Tools](https://github.com/stronnag/mwptools/releases) , [INAV Blackbox Explorer](https://github.com/iNavFlight/blackbox-log-viewer/releases) or [Blackbox Tools](https://github.com/iNavFlight/blackbox-tools/releases/tag/v8.0.0)_
+This is best done by logging the flight data. And gauging the changes with one or all of the following software's: [MWP Tools](https://github.com/stronnag/mwptools/releases) , [INAV Blackbox Explorer](https://github.com/iNavFlight/blackbox-log-viewer/releases) or [Blackbox Tools](https://github.com/iNavFlight/blackbox-tools/releases/tag/v8.0.0)_
 
  _The following settings can be accessed using the Configurator **Tuning tab** and **Advanced Tuning tab**. Or the CLI and CMS OSD stick menu's._
 
@@ -117,7 +116,7 @@ This is best done by logging flight controller data. And gauging the changes wit
 - `nav_fw_pos_xy_p` - Controls how fast the airplane will attempt to use the roll and yaw axis to align its trajectory with the target position. This includes the strength it will apply to turning and re-aligning with the track after a turn.
 - `nav_fw_pos_xy_i` - Increasing this gain can compensate for trajectory drift caused by the wind. But should be used sparingly on elevon aircraft.
 - `nav_fw_pos_xy_d` - Increasing this gain can help smooth the P gain response. But if increased too much, it can cause over-shooting of the target trajectory alignment. 
-- `nav_fw_cruise_thr` - Should be set to the airplanes optimal cruise speed. Keeping the average airspeed less than 75km/h, will obtain the highest target position accuracy. 
+- `nav_fw_cruise_thr` - Should be set to the airplanes optimal cruise speed. Keeping the average airspeed less than 75km/h, will obtain the highest accuracy. 
 
 
 ## Heading Yaw Tuning - XY axis:
@@ -155,9 +154,9 @@ Once tuned, these values may be increased incrementally if you find the airplane
 - `nav_fw_pos_hdg_i` - When used sparingly, it can filter-out heading target drift.
 - `nav_fw_pos_hdg_d` - Can smooth abrupt heading irregularity. But better suited to aircraft that have a means of yaw control.
 - `heading_hold_rate_limit` - Limits the yaw induced rotation rate the HEADING_HOLD controller can request from PID controller inner
-loop. It's independent from manual yaw rate and only active when HEADING_HOLD NAV flight modes are in use. _The default value is more suited to copters, and should be used very cautiously if `nav_fw_control_smoothness` is set below 7._
+loop. It's independent from manual yaw rate and only active when HEADING_HOLD NAV flight modes are in use. _The default value is more suited to copters, and should be used cautiously on planes that have yaw control, if `nav_fw_control_smoothness` is default or set below 7._
 - `nav_cruise_yaw_rate` - Sets the yaw rotation rate in degrees that the airplane can be commanded via stick input, while in _Cruise/CourseHold_ modes.
-- `fw_yaw_iterm_freeze_bank_angle` - When enabled, it can help reduce the effect of the rudder counteracting aileron bank turns, by reducing yaw i-term error accumulation. It is only used for ANGLE, HORIZON or ACRO modes. Can not be enabled in navigation modes, unless TURN ASSIST is disabled. 
+- `fw_yaw_iterm_freeze_bank_angle` - When enabled, it can help reduce the effect of the rudder counteracting aileron bank turns, by reducing yaw i-term error accumulation. It is only used for ANGLE, HORIZON or ACRO modes. It is not active in navigation modes, unless TURN ASSIST is disabled. 
 
 
 _In my experience. Enabling the `nav_fw_pos_hdg` controller combined with an airplane that has yaw control. i.e. A Rudder, Differential thrust or Vectored thrust, **when those yaw gains are tuned**. Will provide the most accurate turn/track response in a waypoint mission or RTH Trackback._
@@ -166,7 +165,11 @@ _The use of a magnetometer can help argument the GNSS heading and wind estimatio
 
 ## Tuning Rangefinder:
 
-**The Rangefinder (surface) gains should only be tuned after the XYZ navigation PID's are optimally tuned.**
+**The Rangefinder (surface) gains should only be tuned after the Z navigation PID's are optimally tuned.**
+
+_When a Lidar/Sonar sensor is selected via its Type or MSP. That sensor will actively feed the altitude estimator, regardless of the sensors operational range._
+_However, over certain types of terrain, the sensor can occasionally read a false altitude spike. This has been known to cause a temporary ghost climbing action. If you experience this, it may be beneficial to disable the sensor in the Configuration tab._  
+_**NOTE:** This issue has been resolved for INAV 9.0._
 
 **Rangefinder** - Lidar or Sonar altitude terrain settings and sensor weights:
 - `rangefinder_median_filter` - Enables a 3-point median filter to helps smooth out altitude variations in the readout.
@@ -176,6 +179,6 @@ _The use of a magnetometer can help argument the GNSS heading and wind estimatio
 - `inav_w_z_surface_v` - Weight applied to the Rangefinders estimated _climb rate_. When a rangefinder is present, within its operational distance above the ground.
 
 >[!Tip]
-> When choosing a Lidar rangefinder for fixedwing landing assistance. Ensure you do not purchased a cheaper unit with minimal range. e.g. 2meters or less. These Lidar sensors have great difficulty even working at a quarter of their recommended range in direct sun light. Always select a higher quality unit with a stronger laser and more operational range.
+> When choosing a [Lidar rangefinder](https://github.com/iNavFlight/inav/blob/master/docs/Rangefinder.md) for fixedwing landing assistance. Ensure you do not purchased a cheaper unit with minimal range. e.g. 2meters or less. Such Lidar sensors have great difficulty working at even one quarter of their recommended range in direct sun light. Always select a higher quality unit with a stronger laser diode and lens, to provide more operational range.
 
-**Optical-flow is not available for fixedwing use, due to the speed airplanes travel across the ground. And the inherent inaccuracy of Optical Flow under such conditions.**
+**Optical-flow is not available for fixedwing use, due to the speed airplanes travel across the ground. And the inherent range limitation of these sensors.**
