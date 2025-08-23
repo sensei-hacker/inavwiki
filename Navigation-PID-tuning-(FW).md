@@ -19,14 +19,17 @@ Take note of how the Rate/FF [Auto-tune](https://github.com/iNavFlight/inav/wiki
 
 
 ## Tuning Altitude Controller - Z axis:
-**Inability to obtain an accurate target altitude or climb rate can be caused by a number of reasons:**
+**Inability to maintain altitude accuracy or reach a commanded climb rate can be due to a number of reasons:**
 - Poor GNSS satellite accuracy and EPV position data - _Ensure you have a HDOP less than 1.2 for best precision. And never above 1.8. [See here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#installing-the-gnss-unit---antenna-orientation)_ 
-- Main stabilization **PID_FF**, **RATES** and **LEVEL** is poorly tuned. Or you have incorrectly setup control surface throws and/or C.G. - _Setup hardware and Tune main PID's first._
+- Main stabilization **PID_FF**, **RATES**, [AUTO LEVEL TRIM](https://github.com/iNavFlight/inav/wiki/Modes#auto-level-trim-fw) or [SERVO AUTOTRIM](https://github.com/iNavFlight/inav/wiki/Modes#servo-autotrim-fw) are poorly tuned. 
+- The fuselage air _inlet_ cooling hole is _larger_ than the _outlet_, causing it to become pressurized. Leading to an incorrect barometric altitude read. 
+- The control surface throws are too great or too little. Or its C.G. with respect to the aerofoils Center of Lift/Pressure is incorrect.
+- The motor thrust angle is incorrect.
 - Insufficient motor thrust - _The airplanes thrust to weight ratio is too low._
-- High accelerometer vibrations from the motor(s) or prop(s).
-- If all the previous conditions are satisfied - Incorrectly tuned POS_Z_P, POS_Z_I or too much POS_Z_D and/or FW_FF_PITCH / PITCH_RATE. 
+- High accelerometer vibrations from the prop(s) or motor(s) - Balance the propeller(s) and/or motor(s) if required, then apply software filters.
+- If all the previous conditions are satisfied - Incorrectly tuned POS_Z_D and/or FW_FF_PITCH or POS_Z_P, POS_Z_I.
 
-**Make sure these hardware conditions are addressed first, before you attempt to tune the navigation VEL PID's and climb rate settings.**
+**Make sure those conditions are addressed first, before you attempt to tune the altitude PID's and climb rate settings.**
 
 ### ALTITUDE POS(`VEL`) PID Tuning:
 **Altitude is always referred too as the vertical or (Z) axis.**
@@ -47,10 +50,10 @@ _The following settings can be accessed using the Configurator **Tuning tab** an
 
 The settings for both altitude control methods where derived from multiple testers.
 This first group of settings should also work reasonably well with the 8.0 implementation of the altitude VELOCITY controller.     
-When used in 9.0. The altitude VELOCITY controller is active by default. i.e. `nav_fw_alt_use_position = OFF`.   
-The accuracy of both controllers are similar. With little deviation observed from a fixed altitude target.
+When used in INAV 9.0 release. The altitude VELOCITY controller is active by default. i.e. `nav_fw_alt_use_position = OFF`.   
+The accuracy of both controllers are similar. With little deviation observed when holding a fixed altitude.
 
-_Functionally, the altitude VELOCITY controller is more responsive. It will push the throttle and elevator considerably harder to reach the altitude target. This makes it less power efficient. However this method can be desirable if your airplane is flying a tight WP mission or RTH trackback. When it is important to reach the altitude target quickly to clear an object._
+_Functionally, the altitude VELOCITY controller is more responsive. It will push the throttle and elevator considerably harder to reach the altitude target. This can make it less power efficient. However this maybe desirable if your airplane is flying a tight WP mission or RTH trackback, that has considerable altitude swings, and it is important to reach the altitude target quickly to clear an object in your flight path._
 
 **VELOCITY:**  
 `nav_fw_pos_z_p = 22`  
@@ -61,7 +64,7 @@ _Functionally, the altitude VELOCITY controller is more responsive. It will push
 
 When setting `nav_fw_alt_use_position = ON` in 9.0 and later. It provides a slightly more refined version of the old altitude POSITION controller used before INAV 8.0.   
 
-_Functionally, the altitude POSITION controller is little less responsive than the altitude Velocity controller. Which makes it more efficient when a climb is commanded. This maybe beneficial if extended flight time and power management is of importance to you._
+_Functionally, the altitude POSITION controller is little less responsive than the altitude Velocity controller. Which makes it more power efficient when a climb is commanded. This maybe beneficial if extended flight time and power management is of importance to you._
 
 **POSITION:**  
 `nav_fw_pos_z_p = 30`  
@@ -76,9 +79,10 @@ All the settings below work in conjunction with the [nav_fw_pitch2thr](https://g
 It basically multiplies the `nav_fw_pitch2thr` by [nav_fw_climb_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_climb_angle) or [nav_fw_dive_angle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_dive_angle). To provide how many microSeconds **Auto-Throttle** will _increase_, as a result of each degree of _positive pitch angle_. Or _decrease_, as a result of each degree of _negative pitch angle_.  
 
 [nav_fw_cruise_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_cruise_thr) is the throttle value used when the airplane is flying level, when no `nav_fw_pitch2thr` is being applied.  
-`nav_fw_pitch2thr` should be tuned to works within the uS throttle constraints of [nav_fw_min_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_min_thr) and [nav_fw_max_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_max_thr).
+`nav_fw_pitch2thr` should be tuned to work within the uS throttle constraints of [nav_fw_min_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_min_thr) and [nav_fw_max_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_fw_max_thr).
 
-**e.g.** If `nav_fw_pitch2thr` = 12uS **x** `nav_fw_climb_angle` = 25° = 300uS. (The same will apply to `nav_fw_dive_angle` degrees.)  
+**Example:**  
+If `nav_fw_pitch2thr` = 12uS **x** `nav_fw_climb_angle` = 25° = 300uS. (The same will apply to `nav_fw_dive_angle` degrees.)  
 So if you have `nav_fw_cruise_thr` = 1450uS. Then you add 300uS to 1450uS = 1750uS. This means 1750uS is the maximum value `nav_fw_max_thr` will output to the motor, at a pitch climb angle of 25°.  
 However, in the above example, if `nav_fw_pitch2thr` was set lower. Auto-Throttle would fall short of reaching `nav_fw_max_thr`. This is why it has to be adjusted to suit your required Dive / Climb angle and Min / Max cruise throttle range.
 
@@ -95,7 +99,9 @@ While [nav_fw_pitch2thr_threshold](https://github.com/iNavFlight/inav/blob/maste
 
 **Inability to obtain an accurate horizontal position can be caused by a number of reasons:**
 - Poor GNSS satellite accuracy and EPH position data - _Ensure you have a HDOP less than 1.2 for best precision. And never above 1.8._  [See here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#installing-the-gnss-unit---antenna-orientation) 
-- Main stabilization **PID_FF** and **RATES** are poorly tuned. Or incorrectly setup control surface throws and/or C.G.
+- Main stabilization **PID_FF** and **RATES** are poorly tuned. 
+- [SERVO AUTOTRIM](https://github.com/iNavFlight/inav/wiki/Modes#servo-autotrim-fw) is not tuned correctly. 
+- The control surface throws are too great or too little. Or its C.G. with respect to the aerofoils Center of Lift/Pressure is incorrect.
 - Poorly Installed, Aligned or Calibrated magnetometer (compass) - _If a magnetometer is used, read [here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#setting-up-the-compass-alignment) to provide the best results._
 - High accelerometer vibrations from the motor(s) or prop(s). - _Can lead to attitude and heading inaccuracy or drift._
 - If all the previous conditions are satisfied - _Incorrectly tuned POS_XY_P, POS_XY_I or POS_HDG_P if [nav_use_fw_yaw_control ](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_use_fw_yaw_control) = ON_
