@@ -52,6 +52,8 @@ For INAV 1.6 and later, the I-frame interval is set dynamically at 1/32, 1/64, 1
 
 For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the I-frame interval, meaning c. 1/32 actual logging rate.
 
+Some fields that are logged, are not yet accessible with Blackbox Explorer. Instead try using [MWPtools](https://github.com/stronnag/mwptools/releases).
+
 
 ### Explanation of all the parameters
 
@@ -104,12 +106,16 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 |  magADC[1] 	|   magADC[1] 	|  compass 	|  pitch 	|   |
 |  magADC[2] 	|   magADC[2] 	|  compass 	|  yaw 	|   |
 |  BaroAlt (cm) 	|   BaroAlt (cm) 	|  altitude(barometer) 	|   	|  cm |
-|  gyroADC[0] 	|   gyroADC[0] 	|  rotation(gyro) 	|  roll 	|  deg/sec |
-|  gyroADC[1] 	|   gyroADC[1] 	|  rotation(gyro) 	|  pitch 	|  deg/sec |
-|  gyroADC[2] 	|   gyroADC[2] 	|  rotation(gyro) 	|  yaw 	|  deg/sec |
-|  accSmooth[0] 	|  acc[x] 	|  acceleration  	|  north 	|  ADC * normalised 1g |
-|  accSmooth[1] 	|  acc[y] 	|  acceleration  	|  east 	|  ADC * normalised 1g |
-|  accSmooth[2] 	|  acc[z] 	|  acceleration  	|  vertical 	|  ADC * normalised 1g |
+|  gyroADC[0] 	|   gyro[0] 	|  rotation(gyro) 	|  roll 	|  deg/sec |
+|  gyroADC[1] 	|   gyro[1] 	|  rotation(gyro) 	|  pitch 	|  deg/sec |
+|  gyroADC[2] 	|   gyro[2] 	|  rotation(gyro) 	|  yaw 	|  deg/sec |
+|  gyroRaw[0] 	|   gyroRaw[0] 	|  rotation(gyro before filtering)|  roll 	|  deg/sec |
+|  gyroRaw[1] 	|   gyroRaw[1] 	|  rotation(gyro before filtering)|  pitch 	|  deg/sec |
+|  gyroRaw[2] 	|   gyroRaw[2] 	|  rotation(gyro before filtering)|  yaw 	|  deg/sec |
+|  accSmooth[0] |  acc[x] 	|  acceleration  	|  north 	|  ADC * normalised 1g |
+|  accSmooth[1] |  acc[y] 	|  acceleration  	|  east 	|  ADC * normalised 1g |
+|  accSmooth[2] |  acc[z] 	|  acceleration  	|  vertical 	|  ADC * normalised 1g |
+|  accVib       |  accVib 	|  accelerometer vibration level|  frequency	|  Hz |
 |  attitude[0] 	|   attitude[0] 	|  heading  	|  roll 	|  0-3600 deg/10 |
 |  attitude[1] 	|   attitude[1] 	|  heading  	|  pitch 	|  0-3600 deg/10 |
 |  attitude[2] 	|   attitude[2] 	|  heading  	|  yaw 	|  0-3600 deg/10 |
@@ -140,17 +146,17 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 |  navSurf[0] 	|   navSurf[0] 	|   	|   	|   |
 |  flightModeFlags (flags) 	|   	| active modes  	|   	|   |
 |  stateFlags (flags) 	|   	| active control states  	|  	|   |
-|  failsafePhase (flags) 	|   	|   	|   	|   |
-|  rxSignalReceived 	|   	|   	|   	|   |
+|  failsafePhase (flags) 	|failsafePhase   	| idle/active (RTH/Land)|boolean |0/1   |
+|  rxSignalReceived 	|   	| active RX link|boolean   	| 0/1  |
 |  rxFlightChannelsValid 	|   	|   	|   	|   |
 |  hwHealthStatus 	|   	| active sensor communication  	|   	|   |
 |  powerSupplyImpedance 	|   	| flight battery internal resistance  	|   	|mΩ   |
 |  sagCompensatedVBat 	|   	| load compensated battery voltage  	|   	| volts  |
-|  wind[0] 	|   	|wind force X axis   	| north  	| m/s  |
-|  wind[1] 	|   	|wind force Y axis  	| east  	| m/s  |
-|  wind[2] 	|   	|wind force Z axis   	| vertical  	| m/s  |
-|  windHeading |        |                            |           |degrees|
-| windVelocity |        |                      |                |    m/s |
+|                       |windHeading    |direction  	|      	| degrees |
+|                       |windVelocity   |speed  	|      	| m/s |
+|  wind[0] 	|windVelocity   |wind X axis velocity   | north 	| m/s |
+|  wind[1] 	|windVelocity   |wind Y axis velocity 	| east  	| m/s |
+|  wind[2] 	|windVelocity 	|wind Z axis velocity  	| vertical  	| m/s |
 |  GPS_home[0] 	|   	|  latitude 	|   	| degrees  |
 |  GPS_home[1] 	|   	|  longitude 	|   	| degrees  |
 |  GPS_fixType 	|   	|  GPS_fixType 	|   	|   |
