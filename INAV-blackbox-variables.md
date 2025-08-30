@@ -92,19 +92,27 @@ Some fields that are logged, are not yet accessible with Blackbox Explorer. Inst
 |  mcSurfaceI 	|   mcSurfaceI 	|  multicopter surface mode 	|   	|  I |
 |  mcSurfaceD 	|   mcSurfaceD 	|  multicopter surface mode 	|   	|  D |
 |  mcSurfaceOut 	|   mcSurfaceOut 	|  multicopter surface mode 	|   	|   |
+|  fwAltP       |   fwAltP      |  fixedwing altitude position |  | P |
+|  fwAltI       |   fwAltI      |  fixedwing altitude position |  | I |
+|  fwAltD       |   fwAltD      |  fixedwing altitude position |  | D |
+|  fwAltOut     |   fwAltOut    |  fixedwing altitude position output  | |
+|  fwPosP       |   fwPosP      |  fixedwing horizontal position | | P |
+|  fwPosI       |   fwPosI      |  fixedwing horizontal position | | I |
+|  fwPosD       |   fwPosD      |  fixedwing horizontal position | | D |
+|  fwPosOut     |   fwPosOut    |  fixedwing horizontal position output |||
 |  rcData[0] 	|   rcData[0] 	|  received rc signal 	|  roll 	|  1000-2000  µs |
 |  rcData[1] 	|   rcData[1] 	|  received rc signal 	|  pitch 	|  1000-2000  µs |
 |  rcData[2] 	|   rcData[2] 	|  received rc signal 	|  yaw 	|  1000-2000  µs |
 |  rcData[3] 	|   rcData[3] 	|  received rc signal 	|  throttle 	|  1000-2000  µs |
-|  rcCommand[0] 	|   rcCommand[0] 	|  stabilized control command 	|  roll 	|  1000-2000  µs |
-|  rcCommand[1] 	|   rcCommand[1] 	|  stabilized control command 	|  pitch 	|  1000-2000  µs |
-|  rcCommand[2] 	|   rcCommand[2] 	|  stabilized control command 	|  yaw 	|  1000-2000  µs |
-|  rcCommand[3] 	|   rcCommand[3] 	|  stabilized control command 	|  throttle 	|  1000-2000  µs |
+|  rcCommand[0] 	|   rcCommand[0] 	|  stabilization controller command |  roll 	|  1000-2000  µs |
+|  rcCommand[1] 	|   rcCommand[1] 	|  stabilization controller command |  pitch 	|  1000-2000  µs |
+|  rcCommand[2] 	|   rcCommand[2] 	|  stabilization controller command |  yaw 	|  1000-2000  µs |
+|  rcCommand[3] 	|   rcCommand[3] 	|  stabilization controller command |  throttle |  1000-2000  µs |
 |  vbat 	|   vbat 	|  voltage of flight battery 	|   	|  volts |
 |  amperage 	|   	|system current drain   	|   	| amps  |
-|  magADC[0] 	|   magADC[0] 	|  compass 	|  roll 	|   |
-|  magADC[1] 	|   magADC[1] 	|  compass 	|  pitch 	|   |
-|  magADC[2] 	|   magADC[2] 	|  compass 	|  yaw 	|   |
+|  magADC[0] 	|   mag[x] 	|  compass 	|  north    |   |
+|  magADC[1] 	|   mag[y] 	|  compass 	|  east     |   |
+|  magADC[2] 	|   mag[z] 	|  compass 	|  vertical |   |
 |  BaroAlt (cm) 	|   BaroAlt (cm) 	|  altitude(barometer) 	|   	|  cm |
 |  gyroADC[0] 	|   gyro[0] 	|  rotation(gyro) 	|  roll 	|  deg/sec |
 |  gyroADC[1] 	|   gyro[1] 	|  rotation(gyro) 	|  pitch 	|  deg/sec |
@@ -123,10 +131,10 @@ Some fields that are logged, are not yet accessible with Blackbox Explorer. Inst
 |  motor[1] 	|   motor[1] 	|  output to motor ESC 	|  1 	|  1000-2000  µs |
 |  motor[2] 	|   motor[2] 	|  output to motor ESC 	|  2 	|  1000-2000  µs |
 |  motor[3] 	|   motor[3] 	|  output to motor ESC 	|  3 	|  1000-2000  µs |
-|  navState 	|   	|  navigation control state 	|   	|   |
+|  navState 	|   	|  navigation control mode state |   	|   |
 |  navFlags 	|   	|  navigation data trusted 	|   	|   |
-|  navEPH 	|   	|  Std deviation horizontal position error 	|   	| meters  |
-|  navEPV 	|   	|  Std deviation of vertical position error	|   	| meters  |
+|  navEPH 	|   	|  Std deviation horizontal position error 	|   	| meters |
+|  navEPV 	|   	|  Std deviation vertical position error	|   	| meters |
 |  navPos[0] 	|   navPos[0] 	|  position of vehicle 	|  north 	|  cm |
 |  navPos[1] 	|   navPos[1] 	|  position of vehicle 	|  east 	|  cm |
 |  navPos[2] 	|   navPos[2] 	|  position of vehicle 	|  vertical 	|  cm |
@@ -150,20 +158,30 @@ Some fields that are logged, are not yet accessible with Blackbox Explorer. Inst
 |  rxSignalReceived 	|   	| active RX link|boolean   	| 0/1  |
 |  rxFlightChannelsValid 	|   	|   	|   	|   |
 |  hwHealthStatus 	|   	| active sensor communication  	|   	|   |
+|  waypoint             |  activeWPNumber   | current waypoint  | | decimal |
 |  powerSupplyImpedance 	|   	| flight battery internal resistance  	|   	|mΩ   |
 |  sagCompensatedVBat 	|   	| load compensated battery voltage  	|   	| volts  |
+|  rpm                  | escRPM | ESC telemetry motor revolutions|   |RPM | 
+|  escTemperature 	|  escTemperature 	| ESC telemetry temperature|   	| decidegrees C| 
+|  IMUTemperature       |  IMUTemperature       | Gyro/Acc device temperature  |      | degrees C |
+|  baroTemperature      |  baroTemperature      | barometric device temperature  |    | degrees C |
+|   sensTemp            |   Sens 0-7 Temp       | user dedicated temperature sensors | | degrees C |
 |                       |windHeading    |direction  	|      	| degrees |
 |                       |windVelocity   |speed  	|      	| m/s |
 |  wind[0] 	|windVelocity   |wind X axis velocity   | north 	| m/s |
 |  wind[1] 	|windVelocity   |wind Y axis velocity 	| east  	| m/s |
 |  wind[2] 	|windVelocity 	|wind Z axis velocity  	| vertical  	| m/s |
+|  GPS_velned[0] 	|   	|  north 	|   	| m/s |
+|  GPS_velned[1] 	|   	|  east 	|   	| m/s |
+|  GPS_velned[1] 	|   	|  down 	|   	| m/s |
+|  airSpeed             |       | Pitot or Virtual      |       | cm/s |
 |  GPS_home[0] 	|   	|  latitude 	|   	| degrees  |
 |  GPS_home[1] 	|   	|  longitude 	|   	| degrees  |
-|  GPS_fixType 	|   	|  GPS_fixType 	|   	|   |
-|  GPS_numSat 	|   	|  number of sats 	|   	|   |
-|  GPS_coord[0] 	|   	|  latitude 	|   	| degrees |
-|  GPS_coord[1] 	|   	|  longitude	|   	| degrees |
+|  GPS_fixType 	|   	|  GPS_fixType 	|   	| 3D |
+|  GPS_numSat 	|   	|  number of sats 	|   	| decimal |
+|  GPS_coord[0] 	|   	|  latitude 	|   	| deg : min : sec |
+|  GPS_coord[1] 	|   	|  longitude	|   	| deg : min : sec |
 |  GPS_altitude 	|   	|  GPS_altitude 	|   	| m |
-|  GPS_speed 	|   	|  velocity 	|   	| m/s  |
+|  GPS_speed 	        |   	|  velocity 	|   	| cm/s  |
 |  GPS ground course 	|   	|  ground course heading 	|   	| degrees |
-|  GPS_hdop 	|   	|  quality of GPS fix 	|   	|   |
+|  GPS_hdop 	        |   	|  quality of GPS fix 	|   	| 10 down to 0.5 |
