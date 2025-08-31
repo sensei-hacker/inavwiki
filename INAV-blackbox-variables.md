@@ -52,6 +52,9 @@ For INAV 1.6 and later, the I-frame interval is set dynamically at 1/32, 1/64, 1
 
 For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the I-frame interval, meaning c. 1/32 actual logging rate.
 
+>[!Note]
+> Due to the complexity of the tasks being performed in later INAV releases. e.g. _2K_looptime, lower Dshot values, Control Profiles, Programming framework, OSD_ etc. It is advisable to run _blackbox_rate_denom_ at the lowest value (32 - 3%) to start with. Otherwise higher rates may cause breaks in the log, or inability to record any log data. This will vary based on the hardware logging type (FLASH, SDCARD, SDIO)
+
 Some fields that are logged, are not yet accessible with Blackbox Explorer. Instead try using [MWPtools](https://github.com/stronnag/mwptools/releases).
 
 
@@ -109,11 +112,13 @@ Some fields that are logged, are not yet accessible with Blackbox Explorer. Inst
 |  rcCommand[2] 	|   rcCommand[2] 	|  stabilization controller command |  yaw 	|  1000-2000  µs |
 |  rcCommand[3] 	|   rcCommand[3] 	|  stabilization controller command |  throttle |  1000-2000  µs |
 |  vbat 	|   vbat 	|  voltage of flight battery 	|   	|  volts |
+|  sagCompensatedVBat 	|   	| load compensated battery voltage  	|   	| volts  |
+|  powerSupplyImpedance 	|   	| flight battery internal resistance  	|   	|mΩ   |
 |  amperage 	|   	|system current drain   	|   	| amps  |
 |  magADC[0] 	|   mag[x] 	|  compass 	|  north    |   |
 |  magADC[1] 	|   mag[y] 	|  compass 	|  east     |   |
 |  magADC[2] 	|   mag[z] 	|  compass 	|  vertical |   |
-|  BaroAlt (cm) 	|   BaroAlt (cm) 	|  altitude(barometer) 	|   	|  cm |
+|  BaroAlt  	|   Baro  	|  altitude(barometric) 	|   	| m |
 |  gyroADC[0] 	|   gyro[0] 	|  rotation(gyro) 	|  roll 	|  deg/sec |
 |  gyroADC[1] 	|   gyro[1] 	|  rotation(gyro) 	|  pitch 	|  deg/sec |
 |  gyroADC[2] 	|   gyro[2] 	|  rotation(gyro) 	|  yaw 	|  deg/sec |
@@ -127,14 +132,13 @@ Some fields that are logged, are not yet accessible with Blackbox Explorer. Inst
 |  attitude[0] 	|   attitude[0] 	|  heading  	|  roll 	|  0-3600 deg/10 |
 |  attitude[1] 	|   attitude[1] 	|  heading  	|  pitch 	|  0-3600 deg/10 |
 |  attitude[2] 	|   attitude[2] 	|  heading  	|  yaw 	|  0-3600 deg/10 |
+|  debug[0-7]       |  debug[0-7]   | CLI `debug_mode` | |0 - 7 |
 |  motor[0] 	|   motor[0] 	|  output to motor ESC 	|  0 	|  1000-2000  µs |
 |  motor[1] 	|   motor[1] 	|  output to motor ESC 	|  1 	|  1000-2000  µs |
 |  motor[2] 	|   motor[2] 	|  output to motor ESC 	|  2 	|  1000-2000  µs |
 |  motor[3] 	|   motor[3] 	|  output to motor ESC 	|  3 	|  1000-2000  µs |
 |  navState 	|   	|  navigation control mode state |   	|   |
 |  navFlags 	|   	|  navigation data trusted 	|   	|   |
-|  navEPH 	|   	|  Std deviation horizontal position error 	|   	| meters |
-|  navEPV 	|   	|  Std deviation vertical position error	|   	| meters |
 |  navPos[0] 	|   navPos[0] 	|  position of vehicle 	|  north 	|  cm |
 |  navPos[1] 	|   navPos[1] 	|  position of vehicle 	|  east 	|  cm |
 |  navPos[2] 	|   navPos[2] 	|  position of vehicle 	|  vertical 	|  cm |
@@ -151,37 +155,37 @@ Some fields that are logged, are not yet accessible with Blackbox Explorer. Inst
 |  navTgtPos[1] 	|   navTgtPos[1] 	|  target value: position 	|  east 	|  cm |
 |  navTgtPos[2] 	|   navTgtPos[2] 	|  target value: position 	|  vertical 	|  cm |
 |  navTgtHdg           |                        |  active heading computation   | horizontal    |     |
-|  navSurf[0] 	|   navSurf[0] 	|   	|   	|   |
+|  navSurf[0] 	|   navSurf[0] 	|  requires surface mode  	|   	|   |
 |  flightModeFlags (flags) 	|   	| active modes  	|   	|   |
 |  stateFlags (flags) 	|   	| active control states  	|  	|   |
 |  failsafePhase (flags) 	|failsafePhase   	| idle/active (RTH/Land)|boolean |0/1   |
 |  rxSignalReceived 	|   	| active RX link|boolean   	| 0/1  |
 |  rxFlightChannelsValid 	|   	|   	|   	|   |
 |  hwHealthStatus 	|   	| active sensor communication  	|   	|   |
-|  waypoint             |  activeWPNumber   | current waypoint  | | decimal |
-|  powerSupplyImpedance 	|   	| flight battery internal resistance  	|   	|mΩ   |
-|  sagCompensatedVBat 	|   	| load compensated battery voltage  	|   	| volts  |
-|  rpm                  | escRPM | ESC telemetry motor revolutions|   |RPM | 
+|  waypoint             |  activeWPNumber   | current flight waypoint  | | decimal |
+|  rpm                  | escRPM | ESC telemetry motor revolutions/min|   |RPM | 
 |  escTemperature 	|  escTemperature 	| ESC telemetry temperature|   	| decidegrees C| 
 |  IMUTemperature       |  IMUTemperature       | Gyro/Acc device temperature  |      | degrees C |
-|  baroTemperature      |  baroTemperature      | barometric device temperature  |    | degrees C |
-|   sensTemp            |   Sens 0-7 Temp       | user dedicated temperature sensors | | degrees C |
+|  baroTemperature      |  baroTemperature      | barometer device temperature  |    | degrees C |
+|   sensTemp            |   Sens 0-7 Temp       | user dedicated temperature sensors |0-7| degrees C |
 |                       |windHeading    |direction  	|      	| degrees |
 |                       |windVelocity   |speed  	|      	| m/s |
 |  wind[0] 	|windVelocity   |wind X axis velocity   | north 	| m/s |
 |  wind[1] 	|windVelocity   |wind Y axis velocity 	| east  	| m/s |
 |  wind[2] 	|windVelocity 	|wind Z axis velocity  	| vertical  	| m/s |
-|  GPS_velned[0] 	|   	|  north 	|   	| m/s |
-|  GPS_velned[1] 	|   	|  east 	|   	| m/s |
-|  GPS_velned[1] 	|   	|  down 	|   	| m/s |
-|  airSpeed             |       | Pitot or Virtual      |       | cm/s |
+|  AirSpeed     | AirSpeed | Pitot or Virtual      |       | cm/s |
 |  GPS_home[0] 	|   	|  latitude 	|   	| degrees  |
 |  GPS_home[1] 	|   	|  longitude 	|   	| degrees  |
-|  GPS_fixType 	|   	|  GPS_fixType 	|   	| 3D |
-|  GPS_numSat 	|   	|  number of sats 	|   	| decimal |
+|  GPS_fixType 	|   	|  positional lock accuracy |   	|None - 2D - 3D |
+|  GPS_numSat 	|   	|  number of satellites acquired |   	| decimal |
 |  GPS_coord[0] 	|   	|  latitude 	|   	| deg : min : sec |
 |  GPS_coord[1] 	|   	|  longitude	|   	| deg : min : sec |
 |  GPS_altitude 	|   	|  GPS_altitude 	|   	| m |
 |  GPS_speed 	        |   	|  velocity 	|   	| cm/s  |
 |  GPS ground course 	|   	|  ground course heading 	|   	| degrees |
 |  GPS_hdop 	        |   	|  quality of GPS fix 	|   	| 10 down to 0.5 |
+|  navEPH 	|   	|  Std deviation horizontal position error 	|   	| meters |
+|  navEPV 	|   	|  Std deviation of vertical position error	|   	| meters |
+|  GPS_velned[0] 	|   	| CoG X axis velocity 	|  north | m/s |
+|  GPS_velned[1] 	|   	| CoG Y axis velocity	|  east | m/s |
+|  GPS_velned[2] 	|   	| CoG Z axis velocity 	|  down	| m/s |
