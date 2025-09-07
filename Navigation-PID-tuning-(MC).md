@@ -90,10 +90,13 @@ This is best done by logging flight controller data. And gauging the changes wit
 ### Horizontal POS + VEL + HEADING PID Tuning: 
  _The following settings can be accessed using the Configurator CLI or **Tuning tab** under **Additional PID Gains**. Or by the CMS OSD stick menu's._
 
-**Setting that can influence position accuracy:**
-- If the multicopters bank angle or speed is too high - _Lowering the `nav_mc_bank_angle` and `nav_auto_speed` will help to acquire the target position, especially when windy._
+**Settings that can influence position accuracy:**
+- If you have increased the navigation bank angle or speed too high, when the distance between WP's is short - _Lowering the `nav_mc_bank_angle` and `nav_auto_speed` will help to acquire the target position, especially when windy._
 
-- Waypoint interception and turning action, can also be altered by [nav_mc_wp_slowdown](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_wp_slowdown).
+- Waypoint approach speed can be altered by [nav_mc_wp_slowdown](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_wp_slowdown).     This setting generally works better in lower wind conditions. Due to speed reduction braking also effecting heading and target acquisition if the copter is experiencing a frontal cross wind as its approaching the WP marker.
+
+- Waypoint interception and turning action can be altered by [nav_wp_radius](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_wp_radius).  It can be useful to increase this setting if `nav_mc_bank_angle` and `nav_auto_speed` are also increase for higher navigation speed. This can prevent overshoot of the WP marker, and allow turning to commence earlier on a downwind leg.    
+A value between 6 - 8 meters is useful if  `nav_auto_speed = 2000` (maximum allowable nav speed).
 
 **Position XY:**
 - `nav_mc_pos_xy_p` - Controls how fast the copter will fly towards the target position. This is a multiplier to convert the distance to the target velocity.
