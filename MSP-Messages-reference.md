@@ -1338,7 +1338,7 @@ These are commands originating from the MultiWii project.
     | Field | C Type | Size (Bytes) | Units | Description |
     |---|---|---|---|---|
     | `waypointIndex` | `uint8_t` | 1 | Index | Index of the returned waypoint. |
-    | `action` | `uint8_t` | 1 | Enum | Waypoint action type (`navWaypointAction_e`). |
+    | `action` | `uint8_t` | 1 | Enum | Waypoint action type (`navWaypointActions_e`). |
     | `latitude` | `int32_t` | 4 | deg * 1e7 | Latitude coordinate. |
     | `longitude` | `int32_t` | 4 | deg * 1e7 | Longitude coordinate. |
     | `altitude` | `int32_t` | 4 | cm | Altitude coordinate (relative to home or sea level, see flag). |
@@ -1346,7 +1346,7 @@ These are commands originating from the MultiWii project.
     | `param2` | `uint16_t` | 2 | Varies | Parameter 2 (meaning depends on action). |
     | `param3` | `uint16_t` | 2 | Varies | Parameter 3 (meaning depends on action). |
     | `flag` | `uint8_t` | 1 | Bitmask | Waypoint flags (`NAV_WP_FLAG_*`). |
-*   **Notes:** See `navWaypoint_t` and `navWaypointAction_e`.
+*   **Notes:** See `navWaypoint_t` and `navWaypointActions_e`.
 
 ### `MSP_BOXIDS` (119 / 0x77)
 
@@ -1384,7 +1384,7 @@ These are commands originating from the MultiWii project.
     |---|---|---|---|
     | `navMode` | `uint8_t` | 1 | Enum (`NAV_MODE_*`): Current navigation mode (None, RTH, WP, Hold, etc.) (`NAV_Status.mode`). |
     | `navState` | `uint8_t` | 1 | Enum (`NAV_STATE_*`): Current navigation state (`NAV_Status.state`). |
-    | `activeWpAction` | `uint8_t` | 1 | Enum (`navWaypointAction_e`): Action of the currently executing waypoint (`NAV_Status.activeWpAction`). |
+    | `activeWpAction` | `uint8_t` | 1 | Enum (`navWaypointActions_e`): Action of the currently executing waypoint (`NAV_Status.activeWpAction`). |
     | `activeWpNumber` | `uint8_t` | 1 | Index: Index of the currently executing waypoint (`NAV_Status.activeWpNumber`). |
     | `navError` | `uint8_t` | 1 | Enum (`NAV_ERROR_*`): Current navigation error code (`NAV_Status.error`). |
     | `targetHeading` | `int16_t` | 2 | degrees: Target heading for heading controller (`getHeadingHoldTarget()`). |
