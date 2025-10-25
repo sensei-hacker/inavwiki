@@ -135,7 +135,9 @@ Fixedwing stabilization uses the [TURN ASSIST](https://github.com/iNavFlight/ina
 Fixedwing AutoTune does not operate on the yaw axis. This means the tuning has to be done [manually](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#manually-tuning-rates-and-feedforward---how-it-works).  
 The gains you derive when tuning the PID Yaw controller will differ, depending on the control method. With a Rudder inducing yaw rotation from control surface area and deflection. While Differential thrust or Vectored thrust does so actively. However a large rudder on an aerobatic 3D style airplane can also produce a considerable rotation rate.
 
-The default `fw_p_yaw`, `fw_i_yaw`, `fw_d_yaw`, `fw_ff_yaw` and `yaw_rate` are safe values to start tuning from.  
+The default `fw_i_yaw` and `fw_d_yaw` are safe values to start tuning from. But `fw_p_yaw` should not be set higher than 20. And `fw_ff_yaw` should not be set higher than 70 when you commence tuning.  
+`fw_i_yaw` should never be taking higher than 5. It can cause i-term error accumulation under some yaw induced aerobatic flight conditions.  
+
 Keep in mind that the **smix** weight and/or Servo min/max output travels will work with `fw_ff_yaw` to achieve the desired yaw rate from a Rudder.  
 While the **mmix** motor yaw weight works together with `fw_ff_yaw` to achieve the desired yaw rate from Differential thrust. The default motor mixer weight for yaw is [`0.3 -0.3`]. When increasing the yaw motor mixer weight, it should be done in harmony with the setting mentioned hereafter.   
 More mixer related information can be found [here](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md).
@@ -149,6 +151,8 @@ Once the tuning in those modes is completed. It is important to test its operati
  `nav_fw_control_smoothness = 9`    
  `heading_hold_rate_limit = 60`          
  `nav_use_fw_yaw_control = ON`  
+ `fw_p_yaw = 15`   
+ `fw_ff_yaw = 50`
   
 Once tuned, these values may be increased incrementally if you find the airplane turns smoothly with no undesirable results.
 
