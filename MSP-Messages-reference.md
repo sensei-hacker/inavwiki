@@ -5,15 +5,15 @@
 
 For details on the structure of MSP, see [The wiki page](https://github.com/iNavFlight/inav/wiki/MSP-V2)
 
-For list of enums, see [Enum documentation page](https://github.com/iNavFlight/inav/wiki/Enums-reference)
+For list of enums, see [Enum documentation page](https://github.com/xznhj8129/msp_documentation/blob/master/docs/inav_enums_ref.md)
 
 For current generation code, see [documentation project](https://github.com/xznhj8129/msp_documentation) (temporary until official implementation)  
 
 
 
-**Warning: Verification needed, exercise caution until completely verified for accuracy and cleared, Refer to source for absolute certainty** 
+**Warning: Verification needed, exercise caution until completely verified for accuracy and cleared, especially for integer signs. Source-based generation/validation is forthcoming. Refer to source for absolute certainty** 
 
-**Note: A handful of complex, variable-payload messages have not been fully parsed, their documentation is temporary (MSP_SET_VTX_CONFIG, MSP2_INAV_SET_GEOZONE_VERTEX, MSP2_COMMON_SET_SETTING, MSP2_SENSOR_HEADTRACKER)**  
+**Note: A handful of complex, variable-payload messages have not been fully parsed, their documentation is temporary.**  
 
 **Guide:**
 
@@ -427,7 +427,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `maxManualSpeed` | `uint16_t` | 2 | cm/s | Max speed in manual modes with GPS aiding (`navConfig()->general.max_manual_speed`) |
 | `maxManualClimbRate` | `uint16_t` | 2 | cm/s | Max climb rate in manual modes with GPS aiding (uses `fw.max_manual_climb_rate` or `mc.max_manual_climb_rate`) |
 | `mcMaxBankAngle` | `uint8_t` | 1 | degrees | Max bank angle for multirotor position hold (`navConfig()->mc.max_bank_angle`) |
-| `mcAltHoldThrottleType` | `uint8_t` | 1 | [navMcAltHoldThrottle_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-navmcaltholdthrottle_e) | Enum `navMcAltHoldThrottle_e` Sets 'navConfigMutable()->mc.althold_throttle_type' |
+| `mcAltHoldThrottleType` | `uint8_t` | 1 | [navMcAltHoldThrottle_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-navmcaltholdthrottle_e) | Enum `navMcAltHoldThrottle_e` Sets 'navConfigMutable()->mc.althold_throttle_type' |
 | `mcHoverThrottle` | `uint16_t` | 2 | PWM | Multirotor hover throttle (`currentBatteryProfile->nav.mc.hover_throttle`) |
 
 ## <a id="msp_set_nav_poshold"></a>`MSP_SET_NAV_POSHOLD (13 / 0xd)`
@@ -442,7 +442,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `maxManualSpeed` | `uint16_t` | 2 | cm/s | Sets `navConfigMutable()->general.max_manual_speed |
 | `maxManualClimbRate` | `uint16_t` | 2 | cm/s | Sets `fw.max_manual_climb_rate` or `mc.max_manual_climb_rate |
 | `mcMaxBankAngle` | `uint8_t` | 1 | degrees | Sets `navConfigMutable()->mc.max_bank_angle |
-| `mcAltHoldThrottleType` | `uint8_t` | 1 | [navMcAltHoldThrottle_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-navmcaltholdthrottle_e) | Enum `navMcAltHoldThrottle_e` Sets 'navConfigMutable()->mc.althold_throttle_type' |
+| `mcAltHoldThrottleType` | `uint8_t` | 1 | [navMcAltHoldThrottle_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-navmcaltholdthrottle_e) | Enum `navMcAltHoldThrottle_e` Sets 'navConfigMutable()->mc.althold_throttle_type' |
 | `mcHoverThrottle` | `uint16_t` | 2 | PWM | Sets `currentBatteryProfileMutable->nav.mc.hover_throttle |
 
 **Reply Payload:** **None**  
@@ -742,7 +742,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 |---|---|---|---|---|
 | `scale` | `uint16_t` | 2 | mV/10A or similar | Current sensor scale factor (`batteryMetersConfig()->current.scale`). Units depend on sensor type |
 | `offset` | `uint16_t` | 2 | mV | Current sensor offset (`batteryMetersConfig()->current.offset`) |
-| `type` | `uint8_t` | 1 | [currentSensor_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-currentsensor_e) | Enum `currentSensor_e` Type of current sensor hardware |
+| `type` | `uint8_t` | 1 | [currentSensor_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-currentsensor_e) | Enum `currentSensor_e` Type of current sensor hardware |
 | `capacity` | `uint16_t` | 2 | mAh (legacy) | Battery capacity (constrained 0-65535) (`currentBatteryProfile->capacity.value`). Note: This is legacy, use `MSP2_INAV_BATTERY_CONFIG` for full 32-bit capacity |
 
 ## <a id="msp_set_current_meter_config"></a>`MSP_SET_CURRENT_METER_CONFIG (41 / 0x29)`
@@ -753,7 +753,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 |---|---|---|---|---|
 | `scale` | `uint16_t` | 2 | mV/10A or similar | Sets `batteryMetersConfigMutable()->current.scale |
 | `offset` | `uint16_t` | 2 | mV | Sets `batteryMetersConfigMutable()->current.offset |
-| `type` | `uint8_t` | 1 | [currentSensor_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-currentsensor_e) | Enum `currentSensor_e` Sets 'batteryMetersConfigMutable()->current.type' |
+| `type` | `uint8_t` | 1 | [currentSensor_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-currentsensor_e) | Enum `currentSensor_e` Sets 'batteryMetersConfigMutable()->current.type' |
 | `capacity` | `uint16_t` | 2 | mAh (legacy) | Sets `currentBatteryProfileMutable->capacity.value` (truncated to 16 bits) |
 
 **Reply Payload:** **None**  
@@ -792,7 +792,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `serialRxProvider` | `uint8_t` | 1 | [rxSerialReceiverType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-rxserialreceivertype_e) | Enum `rxSerialReceiverType_e` sets Serial RX provider type ('rxConfig()->serialrx_provider') |
+| `serialRxProvider` | `uint8_t` | 1 | [rxSerialReceiverType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-rxserialreceivertype_e) | Enum `rxSerialReceiverType_e` sets Serial RX provider type ('rxConfig()->serialrx_provider') |
 | `maxCheck` | `uint16_t` | 2 | PWM | Upper channel value threshold for stick commands (`rxConfig()->maxcheck`) |
 | `midRc` | `uint16_t` | 2 | PWM | Center channel value (`PWM_RANGE_MIDDLE`, typically 1500) |
 | `minCheck` | `uint16_t` | 2 | PWM | Lower channel value threshold for stick commands (`rxConfig()->mincheck`) |
@@ -806,7 +806,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `reserved2` | `uint32_t` | 4 | - | Reserved/Padding. Always 0 |
 | `reserved3` | `uint8_t` | 1 | - | Reserved/Padding. Always 0 |
 | `bfCompatFpvCamAngle` | `uint8_t` | 1 | - | BF compatibility. Always 0 |
-| `receiverType` | `uint8_t` | 1 | [rxReceiverType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-rxreceivertype_e) | Enum `rxReceiverType_e` Receiver type (Parallel PWM, PPM, Serial) ('rxConfig()->receiverType') |
+| `receiverType` | `uint8_t` | 1 | [rxReceiverType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-rxreceivertype_e) | Enum `rxReceiverType_e` Receiver type (Parallel PWM, PPM, Serial) ('rxConfig()->receiverType') |
 
 ## <a id="msp_set_rx_config"></a>`MSP_SET_RX_CONFIG (45 / 0x2d)`
 **Description:** Sets receiver configuration settings.  
@@ -814,7 +814,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Request Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `serialRxProvider` | `uint8_t` | 1 | [rxSerialReceiverType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-rxserialreceivertype_e) | Enum `rxSerialReceiverType_e` Serial RX provider type ('rxConfig()->serialrx_provider') |
+| `serialRxProvider` | `uint8_t` | 1 | [rxSerialReceiverType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-rxserialreceivertype_e) | Enum `rxSerialReceiverType_e` Serial RX provider type ('rxConfig()->serialrx_provider') |
 | `maxCheck` | `uint16_t` | 2 | PWM | Sets `rxConfigMutable()->maxcheck |
 | `midRc` | `uint16_t` | 2 | PWM | Ignored (`PWM_RANGE_MIDDLE` is used) |
 | `minCheck` | `uint16_t` | 2 | PWM | Sets `rxConfigMutable()->mincheck |
@@ -828,7 +828,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `reserved2` | `uint32_t` | 4 | - | Ignored |
 | `reserved3` | `uint8_t` | 1 | - | Ignored |
 | `bfCompatFpvCamAngle` | `uint8_t` | 1 | - | Ignored |
-| `receiverType` | `uint8_t` | 1 | [rxReceiverType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-rxreceivertype_e) | Enum `rxReceiverType_e` Sets 'rxConfigMutable()->receiverType' |
+| `receiverType` | `uint8_t` | 1 | [rxReceiverType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-rxreceivertype_e) | Enum `rxReceiverType_e` Sets 'rxConfigMutable()->receiverType' |
 
 **Reply Payload:** **None**  
 
@@ -1113,14 +1113,14 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `failsafeThrottle` | `uint16_t` | 2 | PWM | Throttle level during failsafe stage 2 (`currentBatteryProfile->failsafe_throttle`) |
 | `legacyKillSwitch` | `uint8_t` | 1 | - | Legacy flag, always 0 |
 | `failsafeThrottleLowDelay` | `uint16_t` | 2 | ms | Delay for throttle-based failsafe detection (`failsafeConfig()->failsafe_throttle_low_delay`) |
-| `failsafeProcedure` | `uint8_t` | 1 | [failsafeProcedure_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-failsafeprocedure_e) | Enum `failsafeProcedure_e` Failsafe procedure (Drop, RTH, Land, etc.) ('failsafeConfig()->failsafe_procedure') |
+| `failsafeProcedure` | `uint8_t` | 1 | [failsafeProcedure_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-failsafeprocedure_e) | Enum `failsafeProcedure_e` Failsafe procedure (Drop, RTH, Land, etc.) ('failsafeConfig()->failsafe_procedure') |
 | `failsafeRecoveryDelay` | `uint8_t` | 1 | 0.1s | Delay after RTH finishes before attempting recovery (`failsafeConfig()->failsafe_recovery_delay`) |
 | `failsafeFWRollAngle` | `uint16_t` | 2 | deci-degrees | Fixed wing failsafe roll angle (`failsafeConfig()->failsafe_fw_roll_angle`) |
 | `failsafeFWPitchAngle` | `uint16_t` | 2 | deci-degrees | Fixed wing failsafe pitch angle (`failsafeConfig()->failsafe_fw_pitch_angle`) |
 | `failsafeFWYawRate` | `uint16_t` | 2 | deg/s | Fixed wing failsafe yaw rate (`failsafeConfig()->failsafe_fw_yaw_rate`) |
 | `failsafeStickThreshold` | `uint16_t` | 2 | PWM units | Stick movement threshold to exit failsafe (`failsafeConfig()->failsafe_stick_motion_threshold`) |
 | `failsafeMinDistance` | `uint16_t` | 2 | meters | Minimum distance from home for RTH failsafe (`failsafeConfig()->failsafe_min_distance`) |
-| `failsafeMinDistanceProc` | `uint8_t` | 1 | [failsafeProcedure_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-failsafeprocedure_e) | Enum `failsafeProcedure_e` Failsafe procedure if below min distance ('failsafeConfig()->failsafe_min_distance_procedure') |
+| `failsafeMinDistanceProc` | `uint8_t` | 1 | [failsafeProcedure_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-failsafeprocedure_e) | Enum `failsafeProcedure_e` Failsafe procedure if below min distance ('failsafeConfig()->failsafe_min_distance_procedure') |
 
 ## <a id="msp_set_failsafe_config"></a>`MSP_SET_FAILSAFE_CONFIG (76 / 0x4c)`
 **Description:** Sets the failsafe configuration settings.  
@@ -1133,14 +1133,14 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `failsafeThrottle` | `uint16_t` | 2 | PWM | Sets `currentBatteryProfileMutable->failsafe_throttle |
 | `legacyKillSwitch` | `uint8_t` | 1 | - | Ignored |
 | `failsafeThrottleLowDelay` | `uint16_t` | 2 | ms | Sets `failsafeConfigMutable()->failsafe_throttle_low_delay |
-| `failsafeProcedure` | `uint8_t` | 1 | [failsafeProcedure_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-failsafeprocedure_e) | Enum `failsafeProcedure_e` Sets 'failsafeConfigMutable()->failsafe_procedure' |
+| `failsafeProcedure` | `uint8_t` | 1 | [failsafeProcedure_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-failsafeprocedure_e) | Enum `failsafeProcedure_e` Sets 'failsafeConfigMutable()->failsafe_procedure' |
 | `failsafeRecoveryDelay` | `uint8_t` | 1 | 0.1s | Sets `failsafeConfigMutable()->failsafe_recovery_delay |
 | `failsafeFWRollAngle` | `uint16_t` | 2 | deci-degrees | Sets `failsafeConfigMutable()->failsafe_fw_roll_angle` (casted to `int16_t`) |
 | `failsafeFWPitchAngle` | `uint16_t` | 2 | deci-degrees | Sets `failsafeConfigMutable()->failsafe_fw_pitch_angle` (casted to `int16_t`) |
 | `failsafeFWYawRate` | `uint16_t` | 2 | deg/s | Sets `failsafeConfigMutable()->failsafe_fw_yaw_rate` (casted to `int16_t`) |
 | `failsafeStickThreshold` | `uint16_t` | 2 | PWM units | Sets `failsafeConfigMutable()->failsafe_stick_motion_threshold |
 | `failsafeMinDistance` | `uint16_t` | 2 | meters | Sets `failsafeConfigMutable()->failsafe_min_distance |
-| `failsafeMinDistanceProc` | `uint8_t` | 1 | [failsafeProcedure_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-failsafeprocedure_e) | Enum `failsafeProcedure_e` Sets 'failsafeConfigMutable()->failsafe_min_distance_procedure' |
+| `failsafeMinDistanceProc` | `uint8_t` | 1 | [failsafeProcedure_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-failsafeprocedure_e) | Enum `failsafeProcedure_e` Sets 'failsafeConfigMutable()->failsafe_min_distance_procedure' |
 
 **Reply Payload:** **None**  
 
@@ -1155,7 +1155,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `sdCardSupported` | `uint8_t` | 1 | - | Bitmask: Bit 0 = 1 if SD card support compiled in (`USE_SDCARD`) |
-| `sdCardState` | `uint8_t` | 1 | [mspSDCardState_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-mspsdcardstate_e) | Enum (`mspSDCardState_e`): Current state (Not Present, Fatal, Card Init, FS Init, Ready). 0 if `USE_SDCARD` disabled |
+| `sdCardState` | `uint8_t` | 1 | [mspSDCardState_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-mspsdcardstate_e) | Enum (`mspSDCardState_e`): Current state (Not Present, Fatal, Card Init, FS Init, Ready). 0 if `USE_SDCARD` disabled |
 | `fsError` | `uint8_t` | 1 | - | Last filesystem error code (`afatfs_getLastError()`). 0 if `USE_SDCARD` disabled |
 | `freeSpaceKB` | `uint32_t` | 4 | - | Free space in KiB (`afatfs_getContiguousFreeSpace() / 1024`). 0 if `USE_SDCARD` disabled |
 | `totalSpaceKB` | `uint32_t` | 4 | - | Total space in KiB (`sdcard_getMetadata()->numBlocks / 2`). 0 if `USE_SDCARD` disabled |
@@ -1212,9 +1212,9 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `osdDriverType` | `uint8_t` | 1 | [OSD_DRIVER_MAX7456](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-osd_driver_max7456) | Enum `OSD_DRIVER_MAX7456` if `USE_OSD`, else `OSD_DRIVER_NONE |
-| `videoSystem` | `uint8_t` | 1 | [videoSystem_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-videosystem_e) | Enum `videoSystem_e`: Video system (Auto/PAL/NTSC) (`osdConfig()->video_system`). Sent even if OSD disabled |
-| `units` | `uint8_t` | 1 | [osd_unit_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-osd_unit_e) | Enum `osd_unit_e` Measurement units (Metric/Imperial) (`osdConfig()->units`). Sent even if OSD disabled |
+| `osdDriverType` | `uint8_t` | 1 | [OSD_DRIVER_MAX7456](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-osd_driver_max7456) | Enum `OSD_DRIVER_MAX7456` if `USE_OSD`, else `OSD_DRIVER_NONE |
+| `videoSystem` | `uint8_t` | 1 | [videoSystem_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-videosystem_e) | Enum `videoSystem_e`: Video system (Auto/PAL/NTSC) (`osdConfig()->video_system`). Sent even if OSD disabled |
+| `units` | `uint8_t` | 1 | [osd_unit_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-osd_unit_e) | Enum `osd_unit_e` Measurement units (Metric/Imperial) (`osdConfig()->units`). Sent even if OSD disabled |
 | `rssiAlarm` | `uint8_t` | 1 | % | RSSI alarm threshold (`osdConfig()->rssi_alarm`). Sent even if OSD disabled |
 | `capAlarm` | `uint16_t` | 2 | mAh/mWh | Capacity alarm threshold (`currentBatteryProfile->capacity.warning`). Sent even if OSD disabled |
 | `timerAlarm` | `uint16_t` | 2 | seconds | Timer alarm threshold (`osdConfig()->time_alarm`). Sent even if OSD disabled |
@@ -1227,10 +1227,25 @@ For current generation code, see [documentation project](https://github.com/xznh
 
 ## <a id="msp_set_osd_config"></a>`MSP_SET_OSD_CONFIG (85 / 0x55)`
 **Description:** Sets OSD configuration or a single item's position on screen 0.  
+#### Variant: `dataSize >= 10`
+
+**Description:** dataSize >= 10  
 
 **Request Payload:** **None**  
 
 **Reply Payload:** **None**  
+
+#### Variant: `dataSize == 3`
+
+**Description:** dataSize == 3  
+  
+**Request Payload:**
+| Field | C Type | Size (Bytes) | Units | Description |
+|---|---|---|---|---|
+| `itemPositions` | `uint16_t[OSD_ITEM_COUNT]` | OSD_ITEM_COUNT * 2 | Coordinates | Packed X/Y position for each OSD item on screen 0 (`osdLayoutsConfig()->item_pos[0][i]`). Sent even if OSD disabled |
+
+**Reply Payload:** **None**  
+
 
 **Notes:** Requires `USE_OSD`. Distinguishes formats based on the first byte. Format 1 requires at least 10 bytes. Format 2 requires 3 bytes. Triggers an OSD redraw. See `MSP2_INAV_OSD_SET_*` for more advanced control.
 
@@ -1245,14 +1260,54 @@ For current generation code, see [documentation project](https://github.com/xznh
 
 ## <a id="msp_osd_char_write"></a>`MSP_OSD_CHAR_WRITE (87 / 0x57)`
 **Description:** Writes character data to the OSD font memory.  
+#### Variant: `dataSize >= OSD_CHAR_BYTES + 2`
+
+**Description:** dataSize >= OSD_CHAR_BYTES + 2  
   
 **Request Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `address` | `uint8_t` or `uint16_t` | - | - | Starting address in font memory. Size depends on total payload size |
-| `charData` | `uint8_t[]` | - | - | Character bitmap data (54 or 64 bytes per char, depending on format) |
+| `address` | `uint16_t` | 2 | - | 16-bit character address |
+| `charData` | `uint8_t[OSD_CHAR_BYTES]` | OSD_CHAR_BYTES * 1 | - | Full character bytes (with metadata) |
 
 **Reply Payload:** **None**  
+
+#### Variant: `dataSize >= OSD_CHAR_BYTES + 1`
+
+**Description:** dataSize >= OSD_CHAR_BYTES + 1  
+  
+**Request Payload:**
+| Field | C Type | Size (Bytes) | Units | Description |
+|---|---|---|---|---|
+| `address` | `uint8_t` | 1 | - | 8-bit character address |
+| `charData` | `uint8_t[OSD_CHAR_BYTES]` | OSD_CHAR_BYTES * 1 | - | Full character bytes (with metadata) |
+
+**Reply Payload:** **None**  
+
+#### Variant: `dataSize >= OSD_CHAR_VISIBLE_BYTES + 2`
+
+**Description:** dataSize >= OSD_CHAR_VISIBLE_BYTES + 2  
+  
+**Request Payload:**
+| Field | C Type | Size (Bytes) | Units | Description |
+|---|---|---|---|---|
+| `address` | `uint16_t` | 2 | - | 16-bit character address |
+| `charData` | `uint8_t[OSD_CHAR_VISIBLE_BYTES]` | OSD_CHAR_VISIBLE_BYTES * 1 | - | Only visible character bytes (no metadata) |
+
+**Reply Payload:** **None**  
+
+#### Variant: `dataSize >= OSD_CHAR_VISIBLE_BYTES + 1`
+
+**Description:** dataSize >= OSD_CHAR_VISIBLE_BYTES + 1  
+  
+**Request Payload:**
+| Field | C Type | Size (Bytes) | Units | Description |
+|---|---|---|---|---|
+| `address` | `uint8_t` | 1 | - | 8-bit character address |
+| `charData` | `uint8_t[OSD_CHAR_VISIBLE_BYTES]` | OSD_CHAR_VISIBLE_BYTES * 1 | - | Only visible character bytes (no metadata) |
+
+**Reply Payload:** **None**  
+
 
 **Notes:** Requires `USE_OSD`. Payload size determines address size (8/16 bit) and character data size (visible bytes only or full char with metadata). Uses `displayWriteFontCharacter()`. Requires OSD hardware (like MAX7456) to be present and functional.
 
@@ -1264,7 +1319,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `vtxDeviceType` | `uint8_t` | 1 | [vtxDevType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-vtxdevtype_e) | Enum (`vtxDevType_e`): Type of VTX device detected/configured. `VTXDEV_UNKNOWN` if none |
+| `vtxDeviceType` | `uint8_t` | 1 | [vtxDevType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-vtxdevtype_e) | Enum (`vtxDevType_e`): Type of VTX device detected/configured. `VTXDEV_UNKNOWN` if none |
 | `band` | `uint8_t` | 1 | - | VTX band number (from `vtxSettingsConfig`) |
 | `channel` | `uint8_t` | 1 | - | VTX channel number (from `vtxSettingsConfig`) |
 | `power` | `uint8_t` | 1 | - | VTX power level index (from `vtxSettingsConfig`) |
@@ -1432,12 +1487,12 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `accHardware` | `uint8_t` | 1 | [accHardware_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-acchardware_e) | Enum (`accHardware_e`): Accelerometer hardware type (`accelerometerConfig()->acc_hardware`) |
-| `baroHardware` | `uint8_t` | 1 | [baroHardware_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-barohardware_e) | Enum (`baroHardware_e`): Barometer hardware type (`barometerConfig()->baro_hardware`). 0 if `USE_BARO` disabled |
-| `magHardware` | `uint8_t` | 1 | [magHardware_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-maghardware_e) | Enum (`magHardware_e`): Magnetometer hardware type (`compassConfig()->mag_hardware`). 0 if `USE_MAG` disabled |
-| `pitotHardware` | `uint8_t` | 1 | [pitotHardware_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-pitothardware_e) | Enum (`pitotHardware_e`): Pitot tube hardware type (`pitotmeterConfig()->pitot_hardware`). 0 if `USE_PITOT` disabled |
-| `rangefinderHardware` | `uint8_t` | 1 | [rangefinderHardware_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-rangefinderhardware_e) | Enum (`rangefinderHardware_e`): Rangefinder hardware type (`rangefinderConfig()->rangefinder_hardware`). 0 if `USE_RANGEFINDER` disabled |
-| `opflowHardware` | `uint8_t` | 1 | [opticalFlowHardware_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-opticalflowhardware_e) | Enum (`opticalFlowHardware_e`): Optical flow hardware type (`opticalFlowConfig()->opflow_hardware`). 0 if `USE_OPFLOW` disabled |
+| `accHardware` | `uint8_t` | 1 | [accHardware_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-acchardware_e) | Enum (`accHardware_e`): Accelerometer hardware type (`accelerometerConfig()->acc_hardware`) |
+| `baroHardware` | `uint8_t` | 1 | [baroHardware_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-barohardware_e) | Enum (`baroHardware_e`): Barometer hardware type (`barometerConfig()->baro_hardware`). 0 if `USE_BARO` disabled |
+| `magHardware` | `uint8_t` | 1 | [magHardware_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-maghardware_e) | Enum (`magHardware_e`): Magnetometer hardware type (`compassConfig()->mag_hardware`). 0 if `USE_MAG` disabled |
+| `pitotHardware` | `uint8_t` | 1 | [pitotHardware_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-pitothardware_e) | Enum (`pitotHardware_e`): Pitot tube hardware type (`pitotmeterConfig()->pitot_hardware`). 0 if `USE_PITOT` disabled |
+| `rangefinderHardware` | `uint8_t` | 1 | [rangefinderHardware_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-rangefinderhardware_e) | Enum (`rangefinderHardware_e`): Rangefinder hardware type (`rangefinderConfig()->rangefinder_hardware`). 0 if `USE_RANGEFINDER` disabled |
+| `opflowHardware` | `uint8_t` | 1 | [opticalFlowHardware_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-opticalflowhardware_e) | Enum (`opticalFlowHardware_e`): Optical flow hardware type (`opticalFlowConfig()->opflow_hardware`). 0 if `USE_OPFLOW` disabled |
 
 ## <a id="msp_set_sensor_config"></a>`MSP_SET_SENSOR_CONFIG (97 / 0x61)`
 **Description:** Sets the configured hardware type for various sensors.  
@@ -1563,7 +1618,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `fixType` | `uint8_t` | 1 | [gpsFixType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-gpsfixtype_e) | Enum `gpsFixType_e` GPS fix type (`gpsSol.fixType`) |
+| `fixType` | `uint8_t` | 1 | [gpsFixType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-gpsfixtype_e) | Enum `gpsFixType_e` GPS fix type (`gpsSol.fixType`) |
 | `numSat` | `uint8_t` | 1 | Count | Number of satellites used in solution (`gpsSol.numSat`) |
 | `latitude` | `int32_t` | 4 | deg * 1e7 | Latitude (`gpsSol.llh.lat`) |
 | `longitude` | `int32_t` | 4 | deg * 1e7 | Longitude (`gpsSol.llh.lon`) |
@@ -1675,9 +1730,9 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `maxThrottle` | `uint16_t` | 2 | PWM | Maximum throttle command (`getMaxThrottle()`) |
 | `minCommand` | `uint16_t` | 2 | PWM | Minimum motor command when disarmed (`motorConfig()->mincommand`) |
 | `failsafeThrottle` | `uint16_t` | 2 | PWM | Failsafe throttle level (`currentBatteryProfile->failsafe_throttle`) |
-| `gpsType` | `uint8_t` | 1 | [gpsProvider_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-gpsprovider_e) | Enum `gpsProvider_e` GPS provider type (`gpsConfig()->provider`). 0 if `USE_GPS` disabled |
+| `gpsType` | `uint8_t` | 1 | [gpsProvider_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-gpsprovider_e) | Enum `gpsProvider_e` GPS provider type (`gpsConfig()->provider`). 0 if `USE_GPS` disabled |
 | `legacyGpsBaud` | `uint8_t` | 1 | - | Always 0 (Legacy) |
-| `gpsSbasMode` | `uint8_t` | 1 | [sbasMode_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-sbasmode_e) | Enum `sbasMode_e` GPS SBAS mode (`gpsConfig()->sbasMode`). 0 if `USE_GPS` disabled |
+| `gpsSbasMode` | `uint8_t` | 1 | [sbasMode_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-sbasmode_e) | Enum `sbasMode_e` GPS SBAS mode (`gpsConfig()->sbasMode`). 0 if `USE_GPS` disabled |
 | `legacyMwCurrentOut` | `uint8_t` | 1 | - | Always 0 (Legacy) |
 | `rssiChannel` | `uint8_t` | 1 | Index | RSSI channel index (1-based) (`rxConfig()->rssi_channel`) |
 | `reserved1` | `uint8_t` | 1 | - | Always 0 |
@@ -1723,7 +1778,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `waypointIndex` | `uint8_t` | 1 | Index | Index of the returned waypoint |
-| `action` | `uint8_t` | 1 | [navWaypointActions_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-navwaypointactions_e) | Enum `navWaypointActions_e` Waypoint action type |
+| `action` | `uint8_t` | 1 | [navWaypointActions_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-navwaypointactions_e) | Enum `navWaypointActions_e` Waypoint action type |
 | `latitude` | `int32_t` | 4 | deg * 1e7 | Latitude coordinate |
 | `longitude` | `int32_t` | 4 | deg * 1e7 | Longitude coordinate |
 | `altitude` | `int32_t` | 4 | cm | Altitude coordinate (relative to home or sea level, see flag) |
@@ -1773,11 +1828,11 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `navMode` | `uint8_t` | 1 | [NAV_MODE_*](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-nav_mode_*) | Enum (`NAV_MODE_*`): Current navigation mode (None, RTH, WP, Hold, etc.) (`NAV_Status.mode`) |
-| `navState` | `uint8_t` | 1 | [NAV_STATE_*](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-nav_state_*) | Enum (`NAV_STATE_*`): Current navigation state (`NAV_Status.state`) |
-| `activeWpAction` | `uint8_t` | 1 | [navWaypointActions_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-navwaypointactions_e) | Enum (`navWaypointActions_e`): Action of the currently executing waypoint (`NAV_Status.activeWpAction`) |
+| `navMode` | `uint8_t` | 1 | [NAV_MODE_*](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-nav_mode_*) | Enum (`NAV_MODE_*`): Current navigation mode (None, RTH, WP, Hold, etc.) (`NAV_Status.mode`) |
+| `navState` | `uint8_t` | 1 | [NAV_STATE_*](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-nav_state_*) | Enum (`NAV_STATE_*`): Current navigation state (`NAV_Status.state`) |
+| `activeWpAction` | `uint8_t` | 1 | [navWaypointActions_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-navwaypointactions_e) | Enum (`navWaypointActions_e`): Action of the currently executing waypoint (`NAV_Status.activeWpAction`) |
 | `activeWpNumber` | `uint8_t` | 1 | - | Index: Index of the currently executing waypoint (`NAV_Status.activeWpNumber`) |
-| `navError` | `uint8_t` | 1 | [NAV_ERROR_*](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-nav_error_*) | Enum (`NAV_ERROR_*`): Current navigation error code (`NAV_Status.error`) |
+| `navError` | `uint8_t` | 1 | [NAV_ERROR_*](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-nav_error_*) | Enum (`NAV_ERROR_*`): Current navigation error code (`NAV_Status.error`) |
 | `targetHeading` | `int16_t` | 2 | - | degrees: Target heading for heading controller (`getHeadingHoldTarget()`) |
 
 **Notes:** Requires `USE_GPS`.
@@ -1838,8 +1893,8 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `modeIndex` | `uint8_t` | 1 | [ledModeIndex_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-ledmodeindex_e) | Index of the LED mode Enum (`ledModeIndex_e`). `LED_MODE_COUNT` for special colors |
-| `directionOrSpecialIndex` | `uint8_t` | 1 | [ledDirection_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-leddirection_e) | Index of the direction Enum (`ledDirection_e`) or special color (`ledSpecialColor_e`) |
+| `modeIndex` | `uint8_t` | 1 | [ledModeIndex_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-ledmodeindex_e) | Index of the LED mode Enum (`ledModeIndex_e`). `LED_MODE_COUNT` for special colors |
+| `directionOrSpecialIndex` | `uint8_t` | 1 | [ledDirection_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-leddirection_e) | Index of the direction Enum (`ledDirection_e`) or special color (`ledSpecialColor_e`) |
 | `colorIndex` | `uint8_t` | 1 | - | Index of the color assigned from `ledStripConfig()->colors |
 
 **Notes:** Only available if `USE_LED_STRIP` is defined. Allows mapping modes/directions/specials to configured colors.
@@ -1857,7 +1912,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `vbatScaled` | `uint8_t` | 1 | 0.1V | Battery voltage / 10 (`getBatteryVoltage() / 10`) |
 | `mAhDrawn` | `uint16_t` | 2 | mAh | Consumed capacity (`getMAhDrawn()`) |
 | `amperage` | `int16_t` | 2 | 0.01A | Current draw (`getAmperage()`) |
-| `batteryState` | `uint8_t` | 1 | [batteryState_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-batterystate_e) | Enum `batteryState_e` Current battery state (`getBatteryState()`, see `BATTERY_STATE_*`) |
+| `batteryState` | `uint8_t` | 1 | [batteryState_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-batterystate_e) | Enum `batteryState_e` Current battery state (`getBatteryState()`, see `BATTERY_STATE_*`) |
 | `vbatActual` | `uint16_t` | 2 | 0.01V | Actual battery voltage (`getBatteryVoltage()`) |
 
 **Notes:** Only available if `USE_DJI_HD_OSD` or `USE_MSP_DISPLAYPORT` is defined. Some values are duplicated from `MSP_ANALOG` / `MSP2_INAV_ANALOG` but potentially with different scaling/types.
@@ -1917,14 +1972,14 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `overallHealth` | `uint8_t` | 1 | Boolean | 1 if all essential hardware is healthy, 0 otherwise (`isHardwareHealthy()`) |
-| `gyroStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Gyro hardware status (`getHwGyroStatus()`) |
-| `accStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Accelerometer hardware status (`getHwAccelerometerStatus()`) |
-| `magStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Compass hardware status (`getHwCompassStatus()`) |
-| `baroStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Barometer hardware status (`getHwBarometerStatus()`) |
-| `gpsStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` GPS hardware status (`getHwGPSStatus()`) |
-| `rangefinderStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Rangefinder hardware status (`getHwRangefinderStatus()`) |
-| `pitotStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Pitot hardware status (`getHwPitotmeterStatus()`) |
-| `opflowStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Optical Flow hardware status (`getHwOpticalFlowStatus()`) |
+| `gyroStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Gyro hardware status (`getHwGyroStatus()`) |
+| `accStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Accelerometer hardware status (`getHwAccelerometerStatus()`) |
+| `magStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Compass hardware status (`getHwCompassStatus()`) |
+| `baroStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Barometer hardware status (`getHwBarometerStatus()`) |
+| `gpsStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` GPS hardware status (`getHwGPSStatus()`) |
+| `rangefinderStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Rangefinder hardware status (`getHwRangefinderStatus()`) |
+| `pitotStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Pitot hardware status (`getHwPitotmeterStatus()`) |
+| `opflowStatus` | `uint8_t` | 1 | [hardwareSensorStatus_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-hardwaresensorstatus_e) | Enum `hardwareSensorStatus_e` Optical Flow hardware status (`getHwOpticalFlowStatus()`) |
 
 **Notes:** Status values likely correspond to `SENSOR_STATUS_*` enums (e.g., OK, Unhealthy, Not Present).
 
@@ -2013,7 +2068,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `rssiSource` | `uint8_t` | 1 | [getRSSISource()](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-getrssisource()) | Enum: Source of the RSSI value (`getRSSISource()`) |
+| `rssiSource` | `uint8_t` | 1 | [getRSSISource()](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-getrssisource()) | Enum: Source of the RSSI value (`getRSSISource()`) |
 | `rtcDateTimeIsSet` | `uint8_t` | 1 | - | Boolean: 1 if the RTC has been set, 0 otherwise |
 
 **Notes:** See `rssiSource_e`.
@@ -2036,7 +2091,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Request Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `fixType` | `uint8_t` | 1 | [gpsFixType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-gpsfixtype_e) | Enum `gpsFixType_e` GPS fix type |
+| `fixType` | `uint8_t` | 1 | [gpsFixType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-gpsfixtype_e) | Enum `gpsFixType_e` GPS fix type |
 | `numSat` | `uint8_t` | 1 | Count | Number of satellites |
 | `latitude` | `int32_t` | 4 | deg * 1e7 | Latitude |
 | `longitude` | `int32_t` | 4 | deg * 1e7 | Longitude |
@@ -2107,9 +2162,9 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `legacyMaxThrottle` | `uint16_t` | 2 | - | Ignored |
 | `minCommand` | `uint16_t` | 2 | PWM | Sets `motorConfigMutable()->mincommand` (constrained 0-PWM_RANGE_MAX) |
 | `failsafeThrottle` | `uint16_t` | 2 | PWM | Sets `currentBatteryProfileMutable->failsafe_throttle` (constrained PWM_RANGE_MIN/MAX) |
-| `gpsType` | `uint8_t` | 1 | [gpsProvider_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-gpsprovider_e) | Enum `gpsProvider_e` (Sets `gpsConfigMutable()->provider`) |
+| `gpsType` | `uint8_t` | 1 | [gpsProvider_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-gpsprovider_e) | Enum `gpsProvider_e` (Sets `gpsConfigMutable()->provider`) |
 | `legacyGpsBaud` | `uint8_t` | 1 | - | Ignored |
-| `gpsSbasMode` | `uint8_t` | 1 | [sbasMode_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-sbasmode_e) | Enum `sbasMode_e` (Sets `gpsConfigMutable()->sbasMode`) |
+| `gpsSbasMode` | `uint8_t` | 1 | [sbasMode_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-sbasmode_e) | Enum `sbasMode_e` (Sets `gpsConfigMutable()->sbasMode`) |
 | `legacyMwCurrentOut` | `uint8_t` | 1 | - | Ignored |
 | `rssiChannel` | `uint8_t` | 1 | Index | Sets `rxConfigMutable()->rssi_channel` (constrained 0-MAX_SUPPORTED_RC_CHANNEL_COUNT). Updates source |
 | `reserved1` | `uint8_t` | 1 | - | Ignored |
@@ -2139,7 +2194,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `waypointIndex` | `uint8_t` | 1 | Index | Index of the waypoint to set (0 to `NAV_MAX_WAYPOINTS - 1`) |
-| `action` | `uint8_t` | 1 | [navWaypointActions_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-navwaypointactions_e) | Enum `navWaypointActions_e` Waypoint action type |
+| `action` | `uint8_t` | 1 | [navWaypointActions_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-navwaypointactions_e) | Enum `navWaypointActions_e` Waypoint action type |
 | `latitude` | `int32_t` | 4 | deg * 1e7 | Latitude coordinate |
 | `longitude` | `int32_t` | 4 | deg * 1e7 | Longitude coordinate |
 | `altitude` | `int32_t` | 4 | cm | Altitude coordinate |
@@ -2308,7 +2363,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `targetChannel` | `uint8_t` | 1 | Index | Servo output channel index (0-based) |
-| `inputSource` | `uint8_t` | 1 | [inputSource_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-inputsource_e) | Enum `inputSource_e` Input source for the mix (RC chan, Roll, Pitch...) |
+| `inputSource` | `uint8_t` | 1 | [inputSource_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-inputsource_e) | Enum `inputSource_e` Input source for the mix (RC chan, Roll, Pitch...) |
 | `rate` | `uint16_t` | 2 | % * 100? | Mixing rate/weight. Needs scaling check |
 | `speed` | `uint8_t` | 1 | 0-100 | Speed/Slew rate limit |
 | `reserved1` | `uint8_t` | 1 | - | Always 0 |
@@ -2325,7 +2380,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 |---|---|---|---|---|
 | `ruleIndex` | `uint8_t` | 1 | Index | Index of the rule to set (0 to `MAX_SERVO_RULES - 1`) |
 | `targetChannel` | `uint8_t` | 1 | Index | Servo output channel index |
-| `inputSource` | `uint8_t` | 1 | [inputSource_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-inputsource_e) | Enum `inputSource_e` Input source for the mix |
+| `inputSource` | `uint8_t` | 1 | [inputSource_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-inputsource_e) | Enum `inputSource_e` Input source for the mix |
 | `rate` | `uint16_t` | 2 | % * 100? | Mixing rate/weight |
 | `speed` | `uint8_t` | 1 | 0-100 | Speed/Slew rate limit |
 | `legacyMinMax` | `uint16_t` | 2 | - | Ignored |
@@ -2438,10 +2493,29 @@ For current generation code, see [documentation project](https://github.com/xznh
 
 ## <a id="msp2_common_set_tz"></a>`MSP2_COMMON_SET_TZ (4098 / 0x1002)`
 **Description:** Sets the time zone offset configuration.  
+#### Variant: `dataSize == 2`
 
-**Request Payload:** **None**  
+**Description:** dataSize == 2  
+  
+**Request Payload:**
+| Field | C Type | Size (Bytes) | Units | Description |
+|---|---|---|---|---|
+| `tz_offset` | `int16_t` | 2 | minutes | Timezone offset from UTC. |
 
 **Reply Payload:** **None**  
+
+#### Variant: `dataSize == 3`
+
+**Description:** dataSize == 3  
+  
+**Request Payload:**
+| Field | C Type | Size (Bytes) | Units | Description |
+|---|---|---|---|---|
+| `tz_offset` | `int16_t` | 2 | minutes | Timezone offset from UTC. |
+| `tz_automatic_dst` | `uint8_t` | 1 | bool | Automatic DST enable (0/1). |
+
+**Reply Payload:** **None**  
+
 
 **Notes:** Accepts 2 or 3 bytes.
 
@@ -2553,7 +2627,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `identifier` | `uint8_t` | 1 | [serialPortIdentifier_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-serialportidentifier_e) | Port identifier Enum (`serialPortIdentifier_e`) |
+| `identifier` | `uint8_t` | 1 | [serialPortIdentifier_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-serialportidentifier_e) | Port identifier Enum (`serialPortIdentifier_e`) |
 | `functionMask` | `uint32_t` | 4 | - | Bitmask of enabled functions (`FUNCTION_*`) |
 | `mspBaudIndex` | `uint8_t` | 1 | - | Baud rate index for MSP function |
 | `gpsBaudIndex` | `uint8_t` | 1 | - | Baud rate index for GPS function |
@@ -2568,7 +2642,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Request Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `identifier` | `uint8_t` | 1 | [serialPortIdentifier_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-serialportidentifier_e) | Port identifier Enum (`serialPortIdentifier_e`) |
+| `identifier` | `uint8_t` | 1 | [serialPortIdentifier_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-serialportidentifier_e) | Port identifier Enum (`serialPortIdentifier_e`) |
 | `functionMask` | `uint32_t` | 4 | - | Bitmask of functions to enable |
 | `mspBaudIndex` | `uint8_t` | 1 | - | Baud rate index for MSP |
 | `gpsBaudIndex` | `uint8_t` | 1 | - | Baud rate index for GPS |
@@ -2683,7 +2757,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `instance` | `uint8_t` | 1 | - | Sensor instance number (for multi-GPS) |
 | `gpsWeek` | `uint16_t` | 2 | - | GPS week number (0xFFFF if unavailable) |
 | `msTOW` | `uint32_t` | 4 | ms | Milliseconds Time of Week |
-| `fixType` | `uint8_t` | 1 | [gpsFixType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-gpsfixtype_e) | Enum `gpsFixType_e` Type of GPS fix |
+| `fixType` | `uint8_t` | 1 | [gpsFixType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-gpsfixtype_e) | Enum `gpsFixType_e` Type of GPS fix |
 | `satellitesInView` | `uint8_t` | 1 | Count | Number of satellites used in solution |
 | `hPosAccuracy` | `uint16_t` | 2 | cm | Horizontal position accuracy estimate |
 | `vPosAccuracy` | `uint16_t` | 2 | cm | Vertical position accuracy estimate |
@@ -2756,7 +2830,6 @@ For current generation code, see [documentation project](https://github.com/xznh
 
 ## <a id="msp2_sensor_headtracker"></a>`MSP2_SENSOR_HEADTRACKER (7943 / 0x1f07)`
 **Temporary definition**
-*   **Direction:** In
 *   **Description:** Provides head tracker orientation data.
 *   **Payload:** (Structure not defined in provided headers, but likely Roll, Pitch, Yaw angles)
     | Field | C Type | Size (Bytes) | Units | Description |
@@ -2806,7 +2879,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `batteryFlags` | `uint8_t` | 1 | [getBatteryState()](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-getbatterystate()) | Battery status flags: Bit 0=Full on plug-in, Bit 1=Use capacity threshold, Bit 2-3=Battery State enum (`getBatteryState()`), Bit 4-7=Cell Count (`getBatteryCellCount()`) |
+| `batteryFlags` | `uint8_t` | 1 | [getBatteryState()](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-getbatterystate()) | Battery status flags: Bit 0=Full on plug-in, Bit 1=Use capacity threshold, Bit 2-3=Battery State enum (`getBatteryState()`), Bit 4-7=Cell Count (`getBatteryCellCount()`) |
 | `vbat` | `uint16_t` | 2 | 0.01V | Battery voltage (`getBatteryVoltage()`) |
 | `amperage` | `uint16_t` | 2 | 0.01A | Current draw (`getAmperage()`) |
 | `powerDraw` | `uint32_t` | 4 | mW | Power draw (`getPower()`) |
@@ -2829,13 +2902,13 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `maxThrottle` | `uint16_t` | 2 | PWM | Maximum throttle command (`getMaxThrottle()`) |
 | `minCommand` | `uint16_t` | 2 | PWM | Minimum motor command (`motorConfig()->mincommand`) |
 | `failsafeThrottle` | `uint16_t` | 2 | PWM | Failsafe throttle level (`currentBatteryProfile->failsafe_throttle`) |
-| `gpsType` | `uint8_t` | 1 | [gpsProvider_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-gpsprovider_e) | Enum `gpsProvider_e` GPS provider type (`gpsConfig()->provider`). 0 if `USE_GPS` disabled |
+| `gpsType` | `uint8_t` | 1 | [gpsProvider_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-gpsprovider_e) | Enum `gpsProvider_e` GPS provider type (`gpsConfig()->provider`). 0 if `USE_GPS` disabled |
 | `legacyGpsBaud` | `uint8_t` | 1 | - | Always 0 (Legacy) |
-| `gpsSbasMode` | `uint8_t` | 1 | [sbasMode_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-sbasmode_e) | Enum `sbasMode_e` GPS SBAS mode (`gpsConfig()->sbasMode`). 0 if `USE_GPS` disabled |
+| `gpsSbasMode` | `uint8_t` | 1 | [sbasMode_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-sbasmode_e) | Enum `sbasMode_e` GPS SBAS mode (`gpsConfig()->sbasMode`). 0 if `USE_GPS` disabled |
 | `rssiChannel` | `uint8_t` | 1 | Index | RSSI channel index (1-based) (`rxConfig()->rssi_channel`) |
 | `magDeclination` | `uint16_t` | 2 | 0.1 degrees | Magnetic declination / 10 (`compassConfig()->mag_declination / 10`). 0 if `USE_MAG` disabled |
 | `vbatScale` | `uint16_t` | 2 | Scale | Voltage scale (`batteryMetersConfig()->voltage.scale`). 0 if `USE_ADC` disabled |
-| `vbatSource` | `uint8_t` | 1 | [batVoltageSource_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-batvoltagesource_e) | Enum `batVoltageSource_e` Voltage source (`batteryMetersConfig()->voltageSource`). 0 if `USE_ADC` disabled |
+| `vbatSource` | `uint8_t` | 1 | [batVoltageSource_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-batvoltagesource_e) | Enum `batVoltageSource_e` Voltage source (`batteryMetersConfig()->voltageSource`). 0 if `USE_ADC` disabled |
 | `cellCount` | `uint8_t` | 1 | Count | Configured cell count (`currentBatteryProfile->cells`). 0 if `USE_ADC` disabled |
 | `vbatCellDetect` | `uint16_t` | 2 | 0.01V | Cell detection voltage (`currentBatteryProfile->voltage.cellDetect`). 0 if `USE_ADC` disabled |
 | `vbatMinCell` | `uint16_t` | 2 | 0.01V | Min cell voltage (`currentBatteryProfile->voltage.cellMin`). 0 if `USE_ADC` disabled |
@@ -2844,7 +2917,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `capacityValue` | `uint32_t` | 4 | mAh/mWh | Battery capacity (`currentBatteryProfile->capacity.value`) |
 | `capacityWarning` | `uint32_t` | 4 | mAh/mWh | Capacity warning threshold (`currentBatteryProfile->capacity.warning`) |
 | `capacityCritical` | `uint32_t` | 4 | mAh/mWh | Capacity critical threshold (`currentBatteryProfile->capacity.critical`) |
-| `capacityUnit` | `uint8_t` | 1 | [batCapacityUnit_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-batcapacityunit_e) | Enum `batCapacityUnit_e` Capacity unit ('batteryMetersConfig()->capacity_unit') |
+| `capacityUnit` | `uint8_t` | 1 | [batCapacityUnit_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-batcapacityunit_e) | Enum `batCapacityUnit_e` Capacity unit ('batteryMetersConfig()->capacity_unit') |
 
 ## <a id="msp2_inav_set_misc"></a>`MSP2_INAV_SET_MISC (8196 / 0x2004)`
 **Description:** Sets miscellaneous configuration settings, superseding `MSP_SET_MISC`.  
@@ -2857,13 +2930,13 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `legacyMaxThrottle` | `uint16_t` | 2 | - | Ignored |
 | `minCommand` | `uint16_t` | 2 | PWM | Sets `motorConfigMutable()->mincommand` (constrained) |
 | `failsafeThrottle` | `uint16_t` | 2 | PWM | Sets `currentBatteryProfileMutable->failsafe_throttle` (constrained) |
-| `gpsType` | `uint8_t` | 1 | [gpsProvider_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-gpsprovider_e) | Enum `gpsProvider_e` Sets `gpsConfigMutable()->provider` (if `USE_GPS`) |
+| `gpsType` | `uint8_t` | 1 | [gpsProvider_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-gpsprovider_e) | Enum `gpsProvider_e` Sets `gpsConfigMutable()->provider` (if `USE_GPS`) |
 | `legacyGpsBaud` | `uint8_t` | 1 | - | Ignored |
-| `gpsSbasMode` | `uint8_t` | 1 | [sbasMode_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-sbasmode_e) | Enum `sbasMode_e` Sets `gpsConfigMutable()->sbasMode` (if `USE_GPS`) |
+| `gpsSbasMode` | `uint8_t` | 1 | [sbasMode_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-sbasmode_e) | Enum `sbasMode_e` Sets `gpsConfigMutable()->sbasMode` (if `USE_GPS`) |
 | `rssiChannel` | `uint8_t` | 1 | Index | Sets `rxConfigMutable()->rssi_channel` (constrained). Updates source |
 | `magDeclination` | `uint16_t` | 2 | 0.1 degrees | Sets `compassConfigMutable()->mag_declination = value * 10` (if `USE_MAG`) |
 | `vbatScale` | `uint16_t` | 2 | Scale | Sets `batteryMetersConfigMutable()->voltage.scale` (if `USE_ADC`) |
-| `vbatSource` | `uint8_t` | 1 | [batVoltageSource_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-batvoltagesource_e) | Enum `batVoltageSource_e` Sets `batteryMetersConfigMutable()->voltageSource` (if `USE_ADC`, validated) |
+| `vbatSource` | `uint8_t` | 1 | [batVoltageSource_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-batvoltagesource_e) | Enum `batVoltageSource_e` Sets `batteryMetersConfigMutable()->voltageSource` (if `USE_ADC`, validated) |
 | `cellCount` | `uint8_t` | 1 | Count | Sets `currentBatteryProfileMutable->cells` (if `USE_ADC`) |
 | `vbatCellDetect` | `uint16_t` | 2 | 0.01V | Sets `currentBatteryProfileMutable->voltage.cellDetect` (if `USE_ADC`) |
 | `vbatMinCell` | `uint16_t` | 2 | 0.01V | Sets `currentBatteryProfileMutable->voltage.cellMin` (if `USE_ADC`) |
@@ -2872,7 +2945,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `capacityValue` | `uint32_t` | 4 | mAh/mWh | Sets `currentBatteryProfileMutable->capacity.value |
 | `capacityWarning` | `uint32_t` | 4 | mAh/mWh | Sets `currentBatteryProfileMutable->capacity.warning |
 | `capacityCritical` | `uint32_t` | 4 | mAh/mWh | Sets `currentBatteryProfileMutable->capacity.critical |
-| `capacityUnit` | `uint8_t` | 1 | [batCapacityUnit_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-batcapacityunit_e) | Enum `batCapacityUnit_e` sets Capacity unit ('batteryMetersConfig()->capacity_unit'). Updates OSD energy unit if changed |
+| `capacityUnit` | `uint8_t` | 1 | [batCapacityUnit_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-batcapacityunit_e) | Enum `batCapacityUnit_e` sets Capacity unit ('batteryMetersConfig()->capacity_unit'). Updates OSD energy unit if changed |
 
 **Reply Payload:** **None**  
 
@@ -2887,7 +2960,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `vbatScale` | `uint16_t` | 2 | Scale | Voltage scale (`batteryMetersConfig()->voltage.scale`) |
-| `vbatSource` | `uint8_t` | 1 | [batVoltageSource_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-batvoltagesource_e) | Enum `batVoltageSource_e` Voltage source (`batteryMetersConfig()->voltageSource`) |
+| `vbatSource` | `uint8_t` | 1 | [batVoltageSource_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-batvoltagesource_e) | Enum `batVoltageSource_e` Voltage source (`batteryMetersConfig()->voltageSource`) |
 | `cellCount` | `uint8_t` | 1 | Count | Configured cell count (`currentBatteryProfile->cells`) |
 | `vbatCellDetect` | `uint16_t` | 2 | 0.01V | Cell detection voltage (`currentBatteryProfile->voltage.cellDetect`) |
 | `vbatMinCell` | `uint16_t` | 2 | 0.01V | Min cell voltage (`currentBatteryProfile->voltage.cellMin`) |
@@ -2898,7 +2971,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `capacityValue` | `uint32_t` | 4 | mAh/mWh | Battery capacity (`currentBatteryProfile->capacity.value`) |
 | `capacityWarning` | `uint32_t` | 4 | mAh/mWh | Capacity warning threshold (`currentBatteryProfile->capacity.warning`) |
 | `capacityCritical` | `uint32_t` | 4 | mAh/mWh | Capacity critical threshold (`currentBatteryProfile->capacity.critical`) |
-| `capacityUnit` | `uint8_t` | 1 | [batCapacityUnit_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-batcapacityunit_e) | Enum `batCapacityUnit_e` Capacity unit ('batteryMetersConfig()->capacity_unit') |
+| `capacityUnit` | `uint8_t` | 1 | [batCapacityUnit_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-batcapacityunit_e) | Enum `batCapacityUnit_e` Capacity unit ('batteryMetersConfig()->capacity_unit') |
 
 **Notes:** Fields are 0 if `USE_ADC` is not defined.
 
@@ -2909,7 +2982,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `vbatScale` | `uint16_t` | 2 | Scale | Sets `batteryMetersConfigMutable()->voltage.scale` (if `USE_ADC`) |
-| `vbatSource` | `uint8_t` | 1 | [batVoltageSource_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-batvoltagesource_e) | Enum `batVoltageSource_e` Sets `batteryMetersConfigMutable()->voltageSource` (if `USE_ADC`, validated) |
+| `vbatSource` | `uint8_t` | 1 | [batVoltageSource_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-batvoltagesource_e) | Enum `batVoltageSource_e` Sets `batteryMetersConfigMutable()->voltageSource` (if `USE_ADC`, validated) |
 | `cellCount` | `uint8_t` | 1 | Count | Sets `currentBatteryProfileMutable->cells` (if `USE_ADC`) |
 | `vbatCellDetect` | `uint16_t` | 2 | 0.01V | Sets `currentBatteryProfileMutable->voltage.cellDetect` (if `USE_ADC`) |
 | `vbatMinCell` | `uint16_t` | 2 | 0.01V | Sets `currentBatteryProfileMutable->voltage.cellMin` (if `USE_ADC`) |
@@ -2920,7 +2993,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `capacityValue` | `uint32_t` | 4 | mAh/mWh | Sets `currentBatteryProfileMutable->capacity.value |
 | `capacityWarning` | `uint32_t` | 4 | mAh/mWh | Sets `currentBatteryProfileMutable->capacity.warning |
 | `capacityCritical` | `uint32_t` | 4 | mAh/mWh | Sets `currentBatteryProfileMutable->capacity.critical |
-| `capacityUnit` | `uint8_t` | 1 | [batCapacityUnit_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-batcapacityunit_e) | Enum `batCapacityUnit_e` sets Capacity unit ('batteryMetersConfig()->capacity_unit') Updates OSD energy unit if changed |
+| `capacityUnit` | `uint8_t` | 1 | [batCapacityUnit_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-batcapacityunit_e) | Enum `batCapacityUnit_e` sets Capacity unit ('batteryMetersConfig()->capacity_unit') Updates OSD energy unit if changed |
 
 **Reply Payload:** **None**  
 
@@ -3058,7 +3131,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `timerIndex` | `uint8_t` | 1 | - | Timer index |
-| `outputMode` | `uint8_t` | 1 | [TIMER_OUTPUT_MODE_*](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-timer_output_mode_*) | Output mode override (`TIMER_OUTPUT_MODE_*` enum) |
+| `outputMode` | `uint8_t` | 1 | [TIMER_OUTPUT_MODE_*](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-timer_output_mode_*) | Output mode override (`TIMER_OUTPUT_MODE_*` enum) |
 
 **Notes:** Only available on non-SITL builds. `HARDWARE_TIMER_DEFINITION_COUNT` varies by target.
 
@@ -3069,7 +3142,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `timerIndex` | `uint8_t` | 1 | - | Index of the hardware timer definition |
-| `outputMode` | `uint8_t` | 1 | [TIMER_OUTPUT_MODE_*](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-timer_output_mode_*) | Output mode override (`TIMER_OUTPUT_MODE_*` enum) to set |
+| `outputMode` | `uint8_t` | 1 | [TIMER_OUTPUT_MODE_*](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-timer_output_mode_*) | Output mode override (`TIMER_OUTPUT_MODE_*` enum) to set |
 
 **Reply Payload:** **None**  
 
@@ -3086,9 +3159,9 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `motorDirectionInverted` | `uint8_t` | 1 | - | Boolean: 1 if motor direction is reversed globally (`mixerConfig()->motorDirectionInverted`) |
 | `reserved1` | `uint8_t` | 1 | - | Always 0 (Was yaw jump prevention limit) |
 | `motorStopOnLow` | `uint8_t` | 1 | - | Boolean: 1 if motors stop at minimum throttle (`mixerConfig()->motorstopOnLow`) |
-| `platformType` | `uint8_t` | 1 | [platformType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-platformtype_e) | Enum (`platformType_e`): Vehicle platform type (Multirotor, Airplane, etc.) (`mixerConfig()->platformType`) |
+| `platformType` | `uint8_t` | 1 | [platformType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-platformtype_e) | Enum (`platformType_e`): Vehicle platform type (Multirotor, Airplane, etc.) (`mixerConfig()->platformType`) |
 | `hasFlaps` | `uint8_t` | 1 | - | Boolean: 1 if the current mixer configuration includes flaps (`mixerConfig()->hasFlaps`) |
-| `appliedMixerPreset` | `uint16_t` | 2 | [mixerPreset_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-mixerpreset_e) | Enum (`mixerPreset_e`): Mixer preset currently applied (`mixerConfig()->appliedMixerPreset`) |
+| `appliedMixerPreset` | `uint16_t` | 2 | [mixerPreset_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-mixerpreset_e) | Enum (`mixerPreset_e`): Mixer preset currently applied (`mixerConfig()->appliedMixerPreset`) |
 | `maxMotors` | `uint8_t` | 1 | - | Constant: Maximum motors supported (`MAX_SUPPORTED_MOTORS`) |
 | `maxServos` | `uint8_t` | 1 | - | Constant: Maximum servos supported (`MAX_SUPPORTED_SERVOS`) |
 
@@ -3131,7 +3204,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `layoutIndex` | `uint8_t` | 1 | Index | Index of the OSD layout (0 to `OSD_LAYOUT_COUNT - 1`) |
-| `itemIndex` | `uint8_t` | 1 | [OSD_ITEM_*](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-osd_item_*) | Index of the OSD item (`OSD_ITEM_*` enum) |
+| `itemIndex` | `uint8_t` | 1 | [OSD_ITEM_*](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-osd_item_*) | Index of the OSD item (`OSD_ITEM_*` enum) |
 | `itemPosition` | `uint16_t` | 2 | Coordinates | Packed X/Y position (`(Y << 8) |
 
 **Reply Payload:** **None**  
@@ -3196,15 +3269,15 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `videoSystem` | `uint8_t` | 1 | [osdConfig()->video_system](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-osdconfig()->video_system) | Enum: Video system (Auto/PAL/NTSC) (`osdConfig()->video_system`) |
+| `videoSystem` | `uint8_t` | 1 | [osdConfig()->video_system](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-osdconfig()->video_system) | Enum: Video system (Auto/PAL/NTSC) (`osdConfig()->video_system`) |
 | `mainVoltageDecimals` | `uint8_t` | 1 | - | Count: Decimal places for main voltage display (`osdConfig()->main_voltage_decimals`) |
 | `ahiReverseRoll` | `uint8_t` | 1 | - | Boolean: Reverse roll direction on Artificial Horizon (`osdConfig()->ahi_reverse_roll`) |
-| `crosshairsStyle` | `uint8_t` | 1 | [osdConfig()->crosshairs_style](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-osdconfig()->crosshairs_style) | Enum: Style of the center crosshairs (`osdConfig()->crosshairs_style`) |
+| `crosshairsStyle` | `uint8_t` | 1 | [osdConfig()->crosshairs_style](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-osdconfig()->crosshairs_style) | Enum: Style of the center crosshairs (`osdConfig()->crosshairs_style`) |
 | `leftSidebarScroll` | `uint8_t` | 1 | - | Boolean: Enable scrolling for left sidebar (`osdConfig()->left_sidebar_scroll`) |
 | `rightSidebarScroll` | `uint8_t` | 1 | - | Boolean: Enable scrolling for right sidebar (`osdConfig()->right_sidebar_scroll`) |
 | `sidebarScrollArrows` | `uint8_t` | 1 | - | Boolean: Show arrows for scrollable sidebars (`osdConfig()->sidebar_scroll_arrows`) |
-| `units` | `uint8_t` | 1 | [osd_unit_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-osd_unit_e) | Enum: `osd_unit_e` Measurement units (Metric/Imperial) (`osdConfig()->units`) |
-| `statsEnergyUnit` | `uint8_t` | 1 | [osdConfig()->stats_energy_unit](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-osdconfig()->stats_energy_unit) | Enum: Unit for energy display in post-flight stats (`osdConfig()->stats_energy_unit`) |
+| `units` | `uint8_t` | 1 | [osd_unit_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-osd_unit_e) | Enum: `osd_unit_e` Measurement units (Metric/Imperial) (`osdConfig()->units`) |
+| `statsEnergyUnit` | `uint8_t` | 1 | [osdConfig()->stats_energy_unit](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-osdconfig()->stats_energy_unit) | Enum: Unit for energy display in post-flight stats (`osdConfig()->stats_energy_unit`) |
 
 **Notes:** Requires `USE_OSD`.
 
@@ -3221,7 +3294,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `leftSidebarScroll` | `uint8_t` | 1 | - | Sets `osdConfigMutable()->left_sidebar_scroll |
 | `rightSidebarScroll` | `uint8_t` | 1 | - | Sets `osdConfigMutable()->right_sidebar_scroll |
 | `sidebarScrollArrows` | `uint8_t` | 1 | - | Sets `osdConfigMutable()->sidebar_scroll_arrows |
-| `units` | `uint8_t` | 1 | [osd_unit_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-osd_unit_e) | Enum `osd_unit_e` Sets `osdConfigMutable()->units |
+| `units` | `uint8_t` | 1 | [osd_unit_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-osd_unit_e) | Enum `osd_unit_e` Sets `osdConfigMutable()->units |
 | `statsEnergyUnit` | `uint8_t` | 1 | - | Sets `osdConfigMutable()->stats_energy_unit |
 
 **Reply Payload:** **None**  
@@ -3261,7 +3334,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `blackboxSupported` | `uint8_t` | 1 | - | Boolean: 1 if Blackbox is supported (`USE_BLACKBOX`), 0 otherwise |
-| `blackboxDevice` | `uint8_t` | 1 | [blackboxDevice_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-blackboxdevice_e) | Enum (`blackboxDevice_e`): Target device for logging (`blackboxConfig()->device`). 0 if not supported |
+| `blackboxDevice` | `uint8_t` | 1 | [blackboxDevice_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-blackboxdevice_e) | Enum (`blackboxDevice_e`): Target device for logging (`blackboxConfig()->device`). 0 if not supported |
 | `blackboxRateNum` | `uint16_t` | 2 | - | Numerator for logging rate divider (`blackboxConfig()->rate_num`). 0 if not supported |
 | `blackboxRateDenom` | `uint16_t` | 2 | - | Denominator for logging rate divider (`blackboxConfig()->rate_denom`). 0 if not supported |
 | `blackboxIncludeFlags` | `uint32_t` | 4 | - | Bitmask: Flags for fields included/excluded from logging (`blackboxConfig()->includeFlags`) |
@@ -3291,7 +3364,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Reply Payload:**
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
-| `type` | `uint8_t` | 1 | [tempSensorType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-tempsensortype_e) | Enum (`tempSensorType_e`): Type of the temperature sensor |
+| `type` | `uint8_t` | 1 | [tempSensorType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-tempsensortype_e) | Enum (`tempSensorType_e`): Type of the temperature sensor |
 | `address` | `uint64_t` | 8 | - | Sensor address/ID (e.g., for 1-Wire sensors) |
 | `alarmMin` | `uint16_t` | 2 | - | Min temperature alarm threshold (degrees C) |
 | `alarmMax` | `uint16_t` | 2 | - | Max temperature alarm threshold (degrees C) |
@@ -3394,12 +3467,12 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `targetChannel` | `uint8_t` | 1 | - | Servo output channel index (0-based) |
-| `inputSource` | `uint8_t` | 1 | [inputSource_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-inputsource_e) | Enum `inputSource_e` Input source |
+| `inputSource` | `uint8_t` | 1 | [inputSource_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-inputsource_e) | Enum `inputSource_e` Input source |
 | `rate` | `uint16_t` | 2 | - | Mixing rate/weight |
 | `speed` | `uint8_t` | 1 | - | Speed/Slew rate limit (0-100) |
 | `conditionId` | `uint8_t` | 1 | - | Logic Condition ID (0 to `MAX_LOGIC_CONDITIONS - 1`, or 255/-1 if none/disabled) |
 | `targetChannel` | `uint8_t` | 1 | - | (Optional) Profile 2 Target channel |
-| `inputSource` | `uint8_t` | 1 | [inputSource_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-inputsource_e) | (Optional) Profile 2 Enum `inputSource_e` Input source |
+| `inputSource` | `uint8_t` | 1 | [inputSource_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-inputsource_e) | (Optional) Profile 2 Enum `inputSource_e` Input source |
 | `rate` | `uint16_t` | 2 | - | (Optional) Profile 2 Rate |
 | `speed` | `uint8_t` | 1 | - | (Optional) Profile 2 Speed |
 | `conditionId` | `uint8_t` | 1 | - | (Optional) Profile 2 Logic Condition ID |
@@ -3414,7 +3487,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 |---|---|---|---|---|
 | `ruleIndex` | `uint8_t` | 1 | - | Index of the rule to set (0 to `MAX_SERVO_RULES - 1`) |
 | `targetChannel` | `uint8_t` | 1 | - | Servo output channel index |
-| `inputSource` | `uint8_t` | 1 | [inputSource_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-inputsource_e) | Enum `inputSource_e` Input source |
+| `inputSource` | `uint8_t` | 1 | [inputSource_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-inputsource_e) | Enum `inputSource_e` Input source |
 | `rate` | `uint16_t` | 2 | - | Mixing rate/weight |
 | `speed` | `uint8_t` | 1 | - | Speed/Slew rate limit (0-100) |
 | `conditionId` | `uint8_t` | 1 | - | Logic Condition ID (255/-1 if none). Ignored if `USE_PROGRAMMING_FRAMEWORK` is disabled |
@@ -3433,10 +3506,10 @@ For current generation code, see [documentation project](https://github.com/xznh
 |---|---|---|---|---|
 | `enabled` | `uint8_t` | 1 | - | Boolean: 1 if the condition is enabled |
 | `activatorId` | `uint8_t` | 1 | - | ID of the activator condition (if any, 255 if none) |
-| `operation` | `uint8_t` | 1 | [logicConditionOp_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicconditionop_e) | Enum `logicConditionOp_e` Logical operation (AND, OR, XOR, etc.) |
-| `operandAType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicoperandtype_e) | Enum `logicOperandType_e` Type of the first operand (Flight Mode, GVAR, etc.) |
+| `operation` | `uint8_t` | 1 | [logicConditionOp_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicconditionop_e) | Enum `logicConditionOp_e` Logical operation (AND, OR, XOR, etc.) |
+| `operandAType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicoperandtype_e) | Enum `logicOperandType_e` Type of the first operand (Flight Mode, GVAR, etc.) |
 | `operandAValue` | `uint32_t` | 4 | - | Value/ID of the first operand |
-| `operandBType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicoperandtype_e) | Enum `logicOperandType_e`: Type of the second operand |
+| `operandBType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicoperandtype_e) | Enum `logicOperandType_e`: Type of the second operand |
 | `operandBValue` | `uint32_t` | 4 | - | Value/ID of the second operand |
 | `flags` | `uint8_t` | 1 | - | Bitmask: Condition flags (e.g., `LC_FLAG_FIRST_TIME_TRUE`) |
 
@@ -3451,10 +3524,10 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `conditionIndex` | `uint8_t` | 1 | - | Index of the condition to set (0 to `MAX_LOGIC_CONDITIONS - 1`) |
 | `enabled` | `uint8_t` | 1 | - | Boolean: 1 to enable the condition |
 | `activatorId` | `uint8_t` | 1 | - | Activator condition ID |
-| `operation` | `uint8_t` | 1 | [logicConditionOp_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicconditionop_e) | Enum `logicConditionOp_e` Logical operation |
-| `operandAType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicoperandtype_e) | Enum `logicOperandType_e` Type of operand A |
+| `operation` | `uint8_t` | 1 | [logicConditionOp_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicconditionop_e) | Enum `logicConditionOp_e` Logical operation |
+| `operandAType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicoperandtype_e) | Enum `logicOperandType_e` Type of operand A |
 | `operandAValue` | `uint32_t` | 4 | - | Value/ID of operand A |
-| `operandBType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicoperandtype_e) | Enum `logicOperandType_e` Type of operand B |
+| `operandBType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicoperandtype_e) | Enum `logicOperandType_e` Type of operand B |
 | `operandBValue` | `uint32_t` | 4 | - | Value/ID of operand B |
 | `flags` | `uint8_t` | 1 | - | Bitmask: Condition flags |
 
@@ -3507,9 +3580,9 @@ For current generation code, see [documentation project](https://github.com/xznh
 | Field | C Type | Size (Bytes) | Units | Description |
 |---|---|---|---|---|
 | `enabled` | `uint8_t` | 1 | - | Boolean: 1 if the PID is enabled |
-| `setpointType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicoperandtype_e) | Enum (`logicOperandType_e`) Type of the setpoint source |
+| `setpointType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicoperandtype_e) | Enum (`logicOperandType_e`) Type of the setpoint source |
 | `setpointValue` | `uint32_t` | 4 | - | Value/ID of the setpoint source |
-| `measurementType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicoperandtype_e) | Enum (`logicOperandType_e`) Type of the measurement source |
+| `measurementType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicoperandtype_e) | Enum (`logicOperandType_e`) Type of the measurement source |
 | `measurementValue` | `uint32_t` | 4 | - | Value/ID of the measurement source |
 | `gainP` | `uint16_t` | 2 | - | Proportional gain |
 | `gainI` | `uint16_t` | 2 | - | Integral gain |
@@ -3526,9 +3599,9 @@ For current generation code, see [documentation project](https://github.com/xznh
 |---|---|---|---|---|
 | `pidIndex` | `uint8_t` | 1 | - | Index of the Programming PID to set (0 to `MAX_PROGRAMMING_PID_COUNT - 1`) |
 | `enabled` | `uint8_t` | 1 | - | Boolean: 1 to enable the PID |
-| `setpointType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicoperandtype_e) | Enum (`logicOperandType_e`) Type of the setpoint source |
+| `setpointType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicoperandtype_e) | Enum (`logicOperandType_e`) Type of the setpoint source |
 | `setpointValue` | `uint32_t` | 4 | - | Value/ID of the setpoint source |
-| `measurementType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicoperandtype_e) | Enum (`logicOperandType_e`) Type of the measurement source |
+| `measurementType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicoperandtype_e) | Enum (`logicOperandType_e`) Type of the measurement source |
 | `measurementValue` | `uint32_t` | 4 | - | Value/ID of the measurement source |
 | `gainP` | `uint16_t` | 2 | - | Proportional gain |
 | `gainI` | `uint16_t` | 2 | - | Integral gain |
@@ -3703,10 +3776,10 @@ For current generation code, see [documentation project](https://github.com/xznh
 |---|---|---|---|---|
 | `enabled` | `uint8_t` | 1 | - | Boolean: 1 if enabled |
 | `activatorId` | `uint8_t` | 1 | - | Activator ID |
-| `operation` | `uint8_t` | 1 | [logicConditionOp_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicconditionop_e) | Enum `logicConditionOp_e` Logical operation |
-| `operandAType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicoperandtype_e) | Enum `logicOperandType_e` Type of operand A |
+| `operation` | `uint8_t` | 1 | [logicConditionOp_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicconditionop_e) | Enum `logicConditionOp_e` Logical operation |
+| `operandAType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicoperandtype_e) | Enum `logicOperandType_e` Type of operand A |
 | `operandAValue` | `uint32_t` | 4 | - | Value/ID of operand A |
-| `operandBType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-logicoperandtype_e) | Enum `logicOperandType_e` Type of operand B |
+| `operandBType` | `uint8_t` | 1 | [logicOperandType_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-logicoperandtype_e) | Enum `logicOperandType_e` Type of operand B |
 | `operandBValue` | `uint32_t` | 4 | - | Value/ID of operand B |
 | `flags` | `uint8_t` | 1 | - | Bitmask: Condition flags |
 
@@ -3776,7 +3849,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `approachIndex` | `uint8_t` | 1 | Index | Index requested |
 | `approachAlt` | `uint32_t` | 4 | cm | Altitude for the approach phase |
 | `landAlt` | `uint32_t` | 4 | cm | Altitude for the final landing phase |
-| `approachDirection` | `uint8_t` | 1 | [fwAutolandApproachDirection_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-fwautolandapproachdirection_e) | Enum `fwAutolandApproachDirection_e`: Direction of approach (From WP, Specific Heading) |
+| `approachDirection` | `uint8_t` | 1 | [fwAutolandApproachDirection_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-fwautolandapproachdirection_e) | Enum `fwAutolandApproachDirection_e`: Direction of approach (From WP, Specific Heading) |
 | `landHeading1` | `int16_t` | 2 | degrees | Primary landing heading (if approachDirection requires it) |
 | `landHeading2` | `int16_t` | 2 | degrees | Secondary landing heading (if approachDirection requires it) |
 | `isSeaLevelRef` | `uint8_t` | 1 | Boolean | 1 if altitudes are relative to sea level, 0 if relative to home |
@@ -3792,7 +3865,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `approachIndex` | `uint8_t` | 1 | Index | Index of the approach setting (0 to `MAX_FW_LAND_APPOACH_SETTINGS - 1`) |
 | `approachAlt` | `uint32_t` | 4 | cm | Sets approach altitude |
 | `landAlt` | `uint32_t` | 4 | cm | Sets landing altitude |
-| `approachDirection` | `uint8_t` | 1 | [fwAutolandApproachDirection_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-fwautolandapproachdirection_e) | Enum `fwAutolandApproachDirection_e` Sets approach direction |
+| `approachDirection` | `uint8_t` | 1 | [fwAutolandApproachDirection_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-fwautolandapproachdirection_e) | Enum `fwAutolandApproachDirection_e` Sets approach direction |
 | `landHeading1` | `int16_t` | 2 | degrees | Sets primary landing heading |
 | `landHeading2` | `int16_t` | 2 | degrees | Sets secondary landing heading |
 | `isSeaLevelRef` | `uint8_t` | 1 | Boolean | Sets altitude reference |
@@ -3902,11 +3975,18 @@ For current generation code, see [documentation project](https://github.com/xznh
 **Notes:** Expects 1 byte. Will fail if armed. Calls `setConfigMixerProfileAndWriteEEPROM()`. Only applicable if `MAX_MIXER_PROFILE_COUNT` > 1.
 
 ## <a id="msp2_adsb_vehicle_list"></a>`MSP2_ADSB_VEHICLE_LIST (8336 / 0x2090)`
-**Description:** Retrieves the list of currently tracked ADSB (Automatic Dependent Surveillance–Broadcast) vehicles.  
+**Description:** Retrieves the list of currently tracked ADSB (Automatic Dependent Surveillance–Broadcast) vehicles. See `adsbVehicle_t` and `adsbVehicleValues_t` in `io/adsb.h` for the exact structure fields.  
 
 **Request Payload:** **None**  
-
-**Reply Payload:** **None**  
+  
+**Reply Payload:**
+| Field | C Type | Size (Bytes) | Units | Description |
+|---|---|---|---|---|
+| `maxVehicles` | `uint8_t` | 1 | - | Maximum number of vehicles tracked (`MAX_ADSB_VEHICLES`). 0 if `USE_ADSB` disabled |
+| `callsignLength` | `uint8_t` | 1 | - | Maximum length of callsign string (`ADSB_CALL_SIGN_MAX_LENGTH`). 0 if `USE_ADSB` disabled |
+| `totalVehicleMsgs` | `uint32_t` | 4 | - | Total vehicle messages received (`getAdsbStatus()->vehiclesMessagesTotal`). 0 if `USE_ADSB` disabled |
+| `totalHeartbeatMsgs` | `uint32_t` | 4 | - | Total heartbeat messages received (`getAdsbStatus()->heartbeatMessagesTotal`). 0 if `USE_ADSB` disabled |
+| `adsbVehicle` | `adsbVehicle_t[]` | - | - | Array of `adsbVehicle_t` Repeated `maxVehicles` times |
 
 **Notes:** Requires `USE_ADSB`.
 
@@ -3962,6 +4042,7 @@ For current generation code, see [documentation project](https://github.com/xznh
     | `elementText` | `char[OSD_CUSTOM_ELEMENT_TEXT_SIZE - 1]` | `OSD_CUSTOM_ELEMENT_TEXT_SIZE - 1` | Static text part of the element |
 *   **Notes:** Requires `USE_PROGRAMMING_FRAMEWORK`. Expects `1 + (CUSTOM_ELEMENTS_PARTS * 3) + 3 + (OSD_CUSTOM_ELEMENT_TEXT_SIZE - 1)` bytes. Returns error if index or part type is invalid. Null-terminates the text internally.
 
+
 ## <a id="msp2_inav_output_mapping_ext2"></a>`MSP2_INAV_OUTPUT_MAPPING_EXT2 (8461 / 0x210d)`
 **Description:** Retrieves the full extended output mapping configuration (timer ID, full 32-bit usage flags, and pin label). Supersedes `MSP2_INAV_OUTPUT_MAPPING_EXT`.  
 
@@ -3972,7 +4053,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 |---|---|---|---|---|
 | `timerId` | `uint8_t` | 1 | - | Hardware timer identifier (e.g., `TIM1`, `TIM2`). SITL uses index |
 | `usageFlags` | `uint32_t` | 4 | - | Full 32-bit timer usage flags (`TIM_USE_*`) |
-| `pinLabel` | `uint8_t` | 1 | [PIN_LABEL_*](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-pin_label_*) | Label for special pin usage (`PIN_LABEL_*` enum, e.g., `PIN_LABEL_LED`). 0 (`PIN_LABEL_NONE`) otherwise |
+| `pinLabel` | `uint8_t` | 1 | [PIN_LABEL_*](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-pin_label_*) | Label for special pin usage (`PIN_LABEL_*` enum, e.g., `PIN_LABEL_LED`). 0 (`PIN_LABEL_NONE`) otherwise |
 
 **Notes:** Provides complete usage flags and helps identify pins repurposed for functions like LED strip.
 
@@ -4022,7 +4103,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `minAltitude` | `uint32_t` | 4 | - | Minimum allowed altitude within the zone (cm) |
 | `maxAltitude` | `uint32_t` | 4 | - | Maximum allowed altitude within the zone (cm) |
 | `isSeaLevelRef` | `uint8_t` | 1 | - | Boolean: 1 if altitudes are relative to sea level, 0 if relative to home |
-| `fenceAction` | `uint8_t` | 1 | [geozoneActionState_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-geozoneactionstate_e) | Enum (`geozoneActionState_e`): Action to take upon boundary violation |
+| `fenceAction` | `uint8_t` | 1 | [geozoneActionState_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-geozoneactionstate_e) | Enum (`geozoneActionState_e`): Action to take upon boundary violation |
 | `vertexCount` | `uint8_t` | 1 | - | Number of vertices defined for this zone |
 
 **Notes:** Requires `USE_GEOZONE`. Used by `mspFcGeozoneOutCommand`.
@@ -4039,7 +4120,7 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `minAltitude` | `uint32_t` | 4 | - | Minimum allowed altitude (cm) |
 | `maxAltitude` | `uint32_t` | 4 | - | Maximum allowed altitude (cm) |
 | `isSeaLevelRef` | `uint8_t` | 1 | - | Boolean: Altitude reference |
-| `fenceAction` | `uint8_t` | 1 | [geozoneActionState_e](https://github.com/iNavFlight/inav/wiki/Enums-reference#enum-geozoneactionstate_e) | Enum (`geozoneActionState_e`): Action to take upon boundary violation |
+| `fenceAction` | `uint8_t` | 1 | [geozoneActionState_e](https://github.com/iNavFlight/inav/wiki/inav_enums_ref.md#enum-geozoneactionstate_e) | Enum (`geozoneActionState_e`): Action to take upon boundary violation |
 | `vertexCount` | `uint8_t` | 1 | - | Number of vertices to be defined (used for validation later) |
 
 **Reply Payload:** **None**  
@@ -4062,25 +4143,43 @@ For current generation code, see [documentation project](https://github.com/xznh
 | `vertexId` | `uint8_t` | 1 | Index | Vertex index requested |
 | `latitude` | `int32_t` | 4 | deg * 1e7 | Vertex latitude |
 | `longitude` | `int32_t` | 4 | deg * 1e7 | Vertex longitude |
+| `radius` | `uint32_t` | 4 | cm | If vertex is circle, Radius of the circular zone |
 
 **Notes:** Requires `USE_GEOZONE`. Returns error if indexes are invalid or vertex doesn't exist. For circular zones, the radius is stored internally as the 'latitude' of the vertex with index 1.
 
 ## <a id="msp2_inav_set_geozone_vertex"></a>`MSP2_INAV_SET_GEOZONE_VERTEX (8723 / 0x2213)`
-**Temporary definition**
-*   **Direction:** In
-*   **Description:** Sets the main configuration for a specific Geozone (type, shape, altitude, action). **This command resets (clears) all vertices associated with the zone.**
-*   **Payload:**
-    | Field | C Type | Size (Bytes) | Description |
-    |---|---|---|---|
-    | `geozoneIndex` | `uint8_t` | 1 | Index of the geozone (0 to `MAX_GEOZONES_IN_CONFIG - 1`) |
-    | `type` | `uint8_t` | 1 | Define (`GEOZONE_TYPE_EXCLUSIVE/INCLUSIVE`): Zone type (Inclusion/Exclusion) |
-    | `shape` | `uint8_t` | 1 | Define (`GEOZONE_SHAPE_CIRCULAR/POLYGHON`): Zone shape (Polygon/Circular) |
-    | `minAltitude` | `uint32_t` | 4 | Minimum allowed altitude (cm) |
-    | `maxAltitude` | `uint32_t` | 4 | Maximum allowed altitude (cm) |
-    | `isSeaLevelRef` | `uint8_t` | 1 | Boolean: Altitude reference |
-    | `fenceAction` | `uint8_t` | 1 | Enum (`geozoneActionState_e`): Action to take upon boundary violation |
-    | `vertexCount` | `uint8_t` | 1 | Number of vertices to be defined (used for validation later) |
-*   **Notes:** Requires `USE_GEOZONE`. Expects 14 bytes. Returns error if index invalid. Calls `geozoneResetVertices()`. Vertices must be set subsequently using `MSP2_INAV_SET_GEOZONE_VERTEX`.
+**Description:** Sets a specific vertex (or center+radius for circular zones) for a Geozone.  
+#### Variant: `polygon`
+
+**Description:** Polygonal Geozone  
+  
+**Request Payload:**
+| Field | C Type | Size (Bytes) | Units | Description |
+|---|---|---|---|---|
+| `geozoneIndex` | `uint8_t` | 1 | Index | Geozone index requested |
+| `vertexId` | `uint8_t` | 1 | Index | Vertex index requested |
+| `latitude` | `int32_t` | 4 | deg * 1e7 | Vertex latitude |
+| `longitude` | `int32_t` | 4 | deg * 1e7 | Vertex longitude |
+
+**Reply Payload:** **None**  
+
+#### Variant: `circle`
+
+**Description:** Circular Geozone  
+  
+**Request Payload:**
+| Field | C Type | Size (Bytes) | Units | Description |
+|---|---|---|---|---|
+| `geozoneIndex` | `uint8_t` | 1 | Index | Geozone index requested |
+| `vertexId` | `uint8_t` | 1 | Index | Vertex index requested |
+| `latitude` | `int32_t` | 4 | deg * 1e7 | Vertex/Center latitude |
+| `longitude` | `int32_t` | 4 | deg * 1e7 | Vertex/Center longitude |
+| `radius` | `uint32_t` | 4 | cm | Radius of the circular zone |
+
+**Reply Payload:** **None**  
+
+
+**Notes:** Requires `USE_GEOZONE`. Expects 10 bytes (Polygon) or 14 bytes (Circular). Returns error if indexes invalid or if trying to set vertex beyond `vertexCount` defined in `MSP2_INAV_SET_GEOZONE`. Calls `geozoneSetVertex()`. For circular zones, sets center (vertex 0) and radius (vertex 1's latitude).
 
 ## <a id="msp2_betaflight_bind"></a>`MSP2_BETAFLIGHT_BIND (12288 / 0x3000)`
 **Description:** Initiates the receiver binding procedure for supported serial protocols (CRSF, SRXL2).  
