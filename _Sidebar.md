@@ -209,6 +209,7 @@ DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
 [INAV Remote Management, Control and Telemetry](INAV-Remote-Management,-Control-and-Telemetry)\
 [Lightweight Telemetry (LTM)](Lightweight-Telemetry-(LTM))\
 [Making a new Virtualbox to make your own INAV](Making-a-new-Virtualbox-to-make-your-own-INAV)\
+[MSP Messages reference guide](MSP-Messages-reference)\
 [MSP Navigation Messages](MSP-Navigation-Messages)\
 [MSP V2](MSP-V2)\
 [OrangeRX LRS RX and OMNIBUS F4](OrangeRX-LRS-RX-and-OMNIBUS-F4)\
