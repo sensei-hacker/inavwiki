@@ -93,7 +93,7 @@ This is best done by logging flight controller data. And gauging the changes wit
 **Settings that can influence position accuracy:**
 - If you have increased the navigation bank angle or speed too high, when the distance between WP's is short - _Lowering the `nav_mc_bank_angle` and `nav_auto_speed` will help to acquire the target position, especially when windy._
 
-- Waypoint approach speed can be altered by [nav_mc_wp_slowdown](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_wp_slowdown).     This setting generally works better in lower wind conditions. Due to speed reduction braking also effecting heading and target acquisition if the copter is experiencing a frontal cross wind as its approaching the WP marker.
+- Waypoint approach speed can be altered by [nav_mc_wp_slowdown](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_wp_slowdown).     _In general, this setting only works better in lower wind conditions._ Due to speed reduction braking also effecting heading and target acquisition if the copter is experiencing a frontal cross wind, as it's approaching the WP marker.
 
 - Waypoint interception and turning action can be altered by [nav_wp_radius](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_wp_radius).  It can be useful to increase this setting if `nav_mc_bank_angle` and `nav_auto_speed` are also increase for higher navigation speed. This can prevent overshoot of the WP marker, and allow turning to commence earlier on a downwind leg.    
 A value between 6 - 8 meters is useful if  `nav_auto_speed = 2000` (maximum allowable nav speed).
@@ -110,7 +110,7 @@ A value between 6 - 8 meters is useful if  `nav_auto_speed = 2000` (maximum allo
 - `nav_mc_vel_xy_dterm_attenuation_start` - A point in percentage between the current horizontal velocity and the target, when VEL_XY_D attenuation begins.
 - `nav_mc_vel_xy_dterm_attenuation_end`- A point in percentage between the current horizontal velocity and the target, when VEL_XY_D attenuation reaches the `nav_mc_vel_xy_dterm_attenuation` value.
 - `nav_mc_vel_xy_dterm_lpf_hz` - 
-Low pass filter cutoff frequency for the VEL_XY_D controller attenuation. To allow for a smoother target response when traveling at `nav_auto_speed` or `nav_max_auto_speed`. The default cutoff is already low. However, lowering it to 1, can still help on copters that pitch/roll bounce, as a result of rolling velocity deceleration.
+Low pass filter cutoff frequency for the VEL_XY_D controller attenuation. To allow for a smoother target response when traveling at `nav_auto_speed` or `nav_max_auto_speed`. The default cutoff is already low. However, lowering it to 1, can still help on copters that pitch/roll bounce, as a result of over compensating to meet the rolling velocity target speed. 
 
 **Heading:**
 - `nav_mc_heading_p` - Controls the strength that the yaw axis will track the IMU's Compass derived heading target. 
