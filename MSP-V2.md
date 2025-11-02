@@ -166,6 +166,10 @@ Suggested approach is to allocate blocks of MSPv2 messages to certain firmwares 
 
 For new developments targeting modern INAV, MSPV2 is the recommended message format. Applications seeking compatibility with MultiWii, INAV prior to INAV 2.0 or other, older FCs may wish to also implement MSPV1.
 
+## Adding new MSP messages
+
+New INAV messages should be defined as MSPv2. This will avoid un-managed contention between Cleanflight derivative FCs in the legacy V1 space.
+
 ## V1 Structure
 
 | Offset | Usage | CRC | Comment |
