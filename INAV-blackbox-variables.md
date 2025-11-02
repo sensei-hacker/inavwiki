@@ -55,7 +55,7 @@ For example, if a blackbox_rate_denom of 50 is used, INav will select 64 as the 
 >[!Note]
 > Due to the complexity of the tasks being performed in later INAV releases. e.g. _2K_looptime, lower Dshot values, Control Profiles, Programming framework, OSD_ etc. It is advisable to run _blackbox_rate_denom_ at the lowest value (32 - 3%) to start with. Otherwise higher rates may cause breaks in the log, or inability to record any log data. This will vary based on the hardware logging type (FLASH, SDCARD, SDIO)
 
-Some fields that are logged, are not yet accessible with Blackbox Explorer. Instead try using [MWPtools](https://github.com/stronnag/mwptools/releases).
+Some fields that are logged, are not yet accessible with Blackbox Explorer. Instead try using [MWPtools](https://codeberg.org/stronnag/mwptools/releases).
 
 
 ### Explanation of all the parameters

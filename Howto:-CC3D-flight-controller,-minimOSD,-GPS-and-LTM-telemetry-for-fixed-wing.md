@@ -126,7 +126,7 @@ Set the desired Failsafe behavior. I prefer RTH.
 
 ###Telemetry
 
-Connect your TX line and configure FC as explained above. Nowadays you can use several telemetry systems as [mwptools](https://github.com/stronnag/mwptools), [EZGUI](http://ez-gui.com/), [LTM Telemetry OLED](https://github.com/sppnk/LTM-Telemetry-OLED) and possibly others. The USART port can be shared with a OSD or used only for one of both features. For example, you can fly FPV w/o telemetry (just in your googles) or fly thermal soaring 3rd view w/o OSD. Or have both. Amazing you can do this with a simple cc3d, isnt it?.
+Connect your TX line and configure FC as explained above. Nowadays you can use several telemetry systems as [mwptools](https://codeberg.org/stronnag/mwptools), [EZGUI](http://ez-gui.com/), [LTM Telemetry OLED](https://github.com/sppnk/LTM-Telemetry-OLED) and possibly others. The USART port can be shared with a OSD or used only for one of both features. For example, you can fly FPV w/o telemetry (just in your googles) or fly thermal soaring 3rd view w/o OSD. Or have both. Amazing you can do this with a simple cc3d, isnt it?.
 
 ###Transmitter setup
 

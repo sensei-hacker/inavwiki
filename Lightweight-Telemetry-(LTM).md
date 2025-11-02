@@ -18,7 +18,7 @@ The LTM protocol starts with "$T", followed by a function byte, the payload and 
 |   3..n   | n bytes payload |
 |   n + 3  | CRC |
 
-LTM telemetry can be read by [Ghettostation](https://github.com/KipK/Ghettostation),  [LTM Telemetry OLED ](https://github.com/sppnk/LTM-Telemetry-OLED) , [EZGUI](http://ez-gui.com/) , [MwpTools](https://github.com/stronnag/mwptools) and others.
+LTM telemetry can be read by [Ghettostation](https://github.com/KipK/Ghettostation),  [LTM Telemetry OLED ](https://github.com/sppnk/LTM-Telemetry-OLED) , [EZGUI](http://ez-gui.com/) , [MwpTools](https://codeberg.org/stronnag/mwptools) and others.
 
 LTM can provide good telemetry down to 2400 (5Hz attitude updates). Due to restrictions in INAV 1.2 and earlier, 9600 was the lowest baud rate supported, which gives 10Hz attitude and 5Hz GPS data. More recently (INAV 1.7.0), LTM is available from 1200 baud and higher; the data transmission frequency is automatically determined from the baud rate, but can be overridden by the user where the baud rate can support the required update frequency. See the  [INAV Telemetry documentation](https://github.com/iNavFlight/inav/blob/master/docs/Telemetry.md#lighttelemetry-ltm) and [below](#inav-cli-support) for CLI settings.
 
@@ -227,7 +227,7 @@ For many telemetry devices, there is direction correlation between the air-speed
 
 # Sample Data
 
-A couple of data samples are available from the [mwptools](https://github.com/stronnag/mwptools) project. [Sample1](https://raw.githubusercontent.com/wiki/stronnag/mwptools/data/ltm_2015-11-08.tar.gz) and [Sample2](https://raw.githubusercontent.com/wiki/stronnag/mwptools/data/mwp_2015-12-12-LTM.tar.gz) include raw dumps, structured data logs and READMEs explaining usage. 
+A couple of data samples are available from the [mwptools](https://codeberg.org/stronnag/mwptools) project. [Sample1](https://raw.githubusercontent.com/wiki/stronnag/mwptools/data/ltm_2015-11-08.tar.gz) and [Sample2](https://raw.githubusercontent.com/wiki/stronnag/mwptools/data/mwp_2015-12-12-LTM.tar.gz) include raw dumps, structured data logs and READMEs explaining usage. 
 
 # Other
 

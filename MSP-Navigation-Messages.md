@@ -13,7 +13,7 @@ Note also that this article refers to getting / setting WPs for **missions** (WP
 
 This document should match the INAV 1.2 (and later) and Multiwii 2.5 flight controller firmware.
 
-Prior to INAV 3.0, the [inav-configurator](https://github.com/iNavFlight/inav-configurator) supported a subset of  MSP Waypoint (WP) types; for INAV 3.0 it supports all WP types. In addition to the inav configurator, the messages described are implemented in [mwp](https://github.com/stronnag/mwptools) (Linux / FreeBSD / Windows, ezgui (Android) mission planners / ground station applications and "drone helper" (Windows 10) mission planner. mwp and ezgui support both INAV and Multiwii; WinGui is a legacy Windows / Multiwii only mission planner that also supports this message set.
+Prior to INAV 3.0, the [inav-configurator](https://github.com/iNavFlight/inav-configurator) supported a subset of  MSP Waypoint (WP) types; for INAV 3.0 it supports all WP types. In addition to the inav configurator, the messages described are implemented in [mwp](https://codeberg.org/stronnag/mwptools) (Linux / FreeBSD / Windows, ezgui (Android) mission planners / ground station applications and "drone helper" (Windows 10) mission planner. mwp and ezgui support both INAV and Multiwii; WinGui is a legacy Windows / Multiwii only mission planner that also supports this message set.
 
 # WayPoint and Action Attributes
 
@@ -440,11 +440,11 @@ Note that 32bit flight controllers (baseflight, cleanflight) use capability == 1
 
 # Implementations
 
-The MSP NAV message set is implemented by [mwptools](https://github.com/stronnag/mwptools) (Linux, Windows, FreeBSD), ezgui / mission planner for INAV (Android), WinGUI (MS Windows) and the [inav-configurator](https://github.com/iNavFlight/inav-configurator).
+The MSP NAV message set is implemented by [mwptools](https://codeberg.org/stronnag/mwptools) (Linux, Windows, FreeBSD), ezgui / mission planner for INAV (Android), WinGUI (MS Windows) and the [inav-configurator](https://github.com/iNavFlight/inav-configurator).
 
 # XML Mission Files
 
-[inav-configurator](https://github.com/iNavFlight/inav-configurator), [mwptools](https://github.com/stronnag/mwptools), ezgui / mp4i (and WinGUI) share a common, interoperable, XML mission file format. A XSD can be found in the [inav developer documenation](
+[inav-configurator](https://github.com/iNavFlight/inav-configurator), [mwptools](https://codeberg.org/stronnag/mwptools), ezgui / mp4i (and WinGUI) share a common, interoperable, XML mission file format. A XSD can be found in the [inav developer documenation](
 https://github.com/iNavFlight/inav/tree/master/docs/development/wp_mission_schema).
 
 # Encoding MSP Messages

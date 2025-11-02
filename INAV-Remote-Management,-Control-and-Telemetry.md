@@ -104,7 +104,7 @@ Note that the INAV developers take backwards compatibility seriously; changing a
 ### MAVLink
 
 * [MAVlink developer info](https://mavlink.io/en/). Note that INAV supports a subset of the MAVLink message set (some unsolicited telemetry and remote control). INAV supports MAVLink V1 and V2.
-* There is a application in the [mwptools repository, mavtest](https://github.com/stronnag/mwptools/tree/master/src/samples/mavtest) that summarises / validates the MAVLink messages supported by INAV.
+* There is a application in the [mwptools repository, mavtest](https://codeberg.org/stronnag/mwptools/tree/master/src/samples/mavtest) that summarises / validates the MAVLink messages supported by INAV.
 * INAV source code.
   - [Telemetry](https://github.com/iNavFlight/inav/blob/master/src/main/telemetry/mavlink.c)
   - [RC Control](https://github.com/iNavFlight/inav/blob/master/src/main/rx/mavlink.c)
@@ -116,7 +116,7 @@ Since its introduction to INAV, a number of extension have been added; these, an
 
 * INAV source code. [Telemetry](https://github.com/iNavFlight/inav/blob/master/src/main/telemetry/ltm.c).
 
-INAV compatible LTM is implemented by [Ghettostation](https://github.com/KipK/Ghettostation), [LTM Telemetry OLED ](https://github.com/sppnk/LTM-Telemetry-OLED) , [EZGUI](http://ez-gui.com/) and [mwptools](https://github.com/stronnag/mwptools) at least.
+INAV compatible LTM is implemented by [Ghettostation](https://github.com/KipK/Ghettostation), [LTM Telemetry OLED ](https://github.com/sppnk/LTM-Telemetry-OLED) , [EZGUI](http://ez-gui.com/) and [mwptools](https://codeberg.org/stronnag/mwptools) at least.
 
 ### RC Protocols
 
@@ -129,17 +129,17 @@ Note:
 #### Smartport
 
 * INAV source code. [Telemetry](https://github.com/iNavFlight/inav/blob/master/src/main/telemetry/smartport.c).
-* Other Example. Parser / decoder / replay tools. [mwptools example](https://github.com/stronnag/mwptools/tree/master/src/samples/frsky).
+* Other Example. Parser / decoder / replay tools. [mwptools example](https://codeberg.org/stronnag/mwptools/tree/master/src/samples/frsky).
 
 #### Crossfire
 
 * INAV source code. [Telemetry](https://github.com/iNavFlight/inav/blob/master/src/main/telemetry/crsf.c)
-* Other Example. [mwptools example](https://github.com/stronnag/mwptools/tree/master/src/samples/crsf). Protocol description, example parser, links to other information sources.
+* Other Example. [mwptools example](https://codeberg.org/stronnag/mwptools/tree/master/src/samples/crsf). Protocol description, example parser, links to other information sources.
 
 #### Flysky / IBUS
 
 * INAV source code. [Telemetry](https://github.com/iNavFlight/inav/blob/master/src/main/telemetry/ibus.c).
-* Other Example. [mwptools example](https://github.com/stronnag/mwptools/tree/master/src/samples/mpm-telemetry). This example uses the OpenTX/EdgeTX MPM (Multi-Protocol Module) to access IBUS / Flysky AA telemetry data and provides a link to the original MPM definition and requires the INAV CLI setting `set ibus_telemetry_type = 0`
+* Other Example. [mwptools example](https://codeberg.org/stronnag/mwptools/tree/master/src/samples/mpm-telemetry). This example uses the OpenTX/EdgeTX MPM (Multi-Protocol Module) to access IBUS / Flysky AA telemetry data and provides a link to the original MPM definition and requires the INAV CLI setting `set ibus_telemetry_type = 0`
 
 ## Specific Use Cases
 
@@ -155,7 +155,7 @@ Likewise, the MAVLink `RC_CHANNELS_OVERRIDE`, `RC_CHANNELS_OVERRIDE_RAW`, `RC_CH
 
 ### Follow Me (`GCS NAV`).
 
-INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). This allows the user to direct the vehicle to fly to a specific location. This was intended for mobile ground station (specifically the obsolete Android application "EZGUI") to instruct the vehicle to follow a GPS equipped target (often the pilot). [mwp](https://github.com/stronnag/mwptools) supports `GCS NAV`, allowing in flight selection of a "follow me" point on the map, which is then transmitted to the vehicle. The is also a [follow me gadget/wand](https://github.com/stronnag/inav-follow-me) project, using a RPi Pico MCU.
+INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). This allows the user to direct the vehicle to fly to a specific location. This was intended for mobile ground station (specifically the obsolete Android application "EZGUI") to instruct the vehicle to follow a GPS equipped target (often the pilot). [mwp](https://codeberg.org/stronnag/mwptools) supports `GCS NAV`, allowing in flight selection of a "follow me" point on the map, which is then transmitted to the vehicle. The is also a [follow me gadget/wand](https://github.com/stronnag/inav-follow-me) project, using a RPi Pico MCU.
 
 * The FC is placed in `POSHOLD` and `GCS NAV` modes.
 * The consumer updates 'special' `WP#255` (holds the requested `POSHOLD` location) using `MSP_SET_WP` messages.

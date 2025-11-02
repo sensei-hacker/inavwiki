@@ -83,7 +83,7 @@ In cases when the barometer may be providing poor altitude data. Altitude estima
 Tuning of copter XY axis is **best** performed on a day no colder than 10°C. This is due to the effect temperature has on the IMU.
 
 _When tuning the Nav XY controllers, you require a means to reference the copters target position, to its _real-time_ turning or stopping position. Otherwise you are just guessing.   
-This is best done by logging flight controller data. And gauging the changes with one or all of the following software: [MWP Tools](https://github.com/stronnag/mwptools/releases) , [INAV Blackbox Explorer](https://github.com/iNavFlight/blackbox-log-viewer/releases) or [Blackbox Tools](https://github.com/iNavFlight/blackbox-tools/releases/tag/v8.0.0)._
+This is best done by logging flight controller data. And gauging the changes with one or all of the following software: [MWP Tools](https://codeberg.org/stronnag/mwptools/releases) , [INAV Blackbox Explorer](https://github.com/iNavFlight/blackbox-log-viewer/releases) or [Blackbox Tools](https://github.com/iNavFlight/blackbox-tools/releases/tag/v8.0.0)._
 
 
 
