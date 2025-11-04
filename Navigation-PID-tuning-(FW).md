@@ -137,27 +137,29 @@ When the preset is selected, it will either add a Servo (**smix**)- `Stabilized 
 
 >[!note]
 > It is possible to only apply yaw control via your stick input. Without providing yaw stabilization. This can be done by selecting `RC yaw` in the mixer drop-down. In place of `Stabilized Yaw`.
-The advantage of this, is you won't need to tune the PID gains. You can leave them a zero. However you may still need to adjust `fw_ff_yaw` and `yaw_rate` to suit the stick and control feel you require.
+The advantage of this, is you won't need to tune the PID gains. You can leave them at zero. However you may still need to adjust `fw_ff_yaw` and `yaw_rate` to suit the stick and control feel you require.  
 
 Fixedwing stabilization uses the [TURN ASSIST](https://github.com/iNavFlight/inav/wiki/Modes#turn-assist) feature to help maintain control over the aircraft. It is active in all navigation modes. But can be disabled in the modes tab if desired.
 
 Fixedwing AutoTune does not operate on the yaw axis. This means the tuning has to be done [manually](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#manually-tuning-rates-and-feedforward---how-it-works).  
 The gains you derive when tuning the Yaw PID controller will differ, depending on the control method used.   
-With a Rudder inducing yaw rotation from control surface area and deflection. While Differential thrust or Vectored thrust does so actively. Meaning the _Gains_ , _Feedforward_ and _Mixers_ adjustments will be more sensitive to change if using the latter on more powerful models.
+A Rudder induces yaw rotation from control surface area and deflection. While Differential thrust or Vectored thrust does so actively. Meaning the _Gains_ , _Feedforward_ and _Mixers_ adjustments will be more sensitive to change if using the latter on more powerful models.  
+_Differential thrust yaw stabilization strength is also dependent on how much throttle stick you have applied._ 
 
 The default `fw_i_yaw` and `fw_d_yaw` are safe values to start tuning from. But `fw_p_yaw` should not be set higher than 20. And `fw_ff_yaw` should not be set higher than 70 when you **commence** tuning.  
-`fw_i_yaw` should not be taking higher than 5. It can cause i-term error accumulation under some flight conditions. Whether during sustained turns or aerobatic flight conditions. However this can be elevated by the use of `fw_yaw_iterm_freeze_bank_angle`.
+`fw_i_yaw` should not be taking higher than 5. It can cause i-term error accumulation under some flight conditions. Whether during sustained turns or aerobatic flight conditions. However this can be alleviate by the use of `fw_yaw_iterm_freeze_bank_angle`.
 
 Keep in mind that the **smix** weight and/or Servo min/max output travels will work with `fw_ff_yaw` to achieve the desired yaw rate from a Rudder.  
 While the **mmix** motor yaw weight works together with `fw_ff_yaw` to achieve the desired yaw rate from Differential thrust.   
-The default motor mixer weight for yaw is [`0.3 -0.3`]. When increasing the yaw motor mixer weight, it MUST be done in **harmony** with the first three navigation setting mentioned hereafter.   
-Under normal flight conditions, the default motor mixer weight is adequate. While it maybe acceptable to go as high as [`0.7 -0.7`] on highly aerobatic airplanes. But it should be noted that this WILL affect yaw based navigation if those first three settings are increased too far beyond their recommended values.  
+The default motor mixer weight for yaw is [`0.3 -0.3`]. When increasing the yaw motor mixer weight, it MUST be done in **harmony** with the first three navigation setting mentioned hereafter.           
+Under normal flight conditions, the default motor mixer weight is adequate. While it maybe acceptable to go as high as [`0.7 -0.7`] on highly aerobatic airplanes. But it should be noted that this WILL affect yaw based navigation if those first three settings are increased too far beyond their recommended values.   
+
 More mixer related information can be found [here](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md).
 
 _Yaw axis tuning should only be attempted after you have first successfully tuned the airplane on the roll and pitch axis._ 
 
 Tuning the yaw axis in ANGLE or ACRO can be made easier if you setup [inflight tuning](https://www.youtube.com/watch?v=A5i0gs9LfE8).  
-Once the tuning in those modes is completed. It is important to test its operation in Navigation modes, which includes RTH. The navigation controllers can cause undesirable yaw-roll coupling if too much roll is called for at the same time as yaw. Or it's called for too abruptly. For this reason it is important to tone-down the way yaw and roll work together in turns, by altering the settings below for safer yaw based navigation control -   
+Once the tuning in those modes is completed. It is important to test its operation in Navigation modes, which includes RTH. The navigation controllers can cause undesirable yaw-roll coupling if too much roll is called for at the same time as yaw; or it's called for too abruptly. For this reason it is important to tone-down the way yaw and roll work together in turns, by altering the settings below for safer coordinated turns when under navigation control -   
 
  `nav_fw_bank_angle = 30`  
  `nav_fw_control_smoothness = 9`    
@@ -167,7 +169,7 @@ Once the tuning in those modes is completed. It is important to test its operati
  `fw_ff_yaw = 70`
   
 _Once navigation is tested, and it shows no undesirable results, like over correction or dropping the wing in a turn (under the worst case). The first three setting may be adjusted **incrementally** to provide even tighter performance.   
-Navigation testing **should** also be done in windier conditions, to ensure yaw stabilization operates correctly when being pushed by sustained wind gusts._
+Navigation testing should **also** be done in windier conditions, to ensure yaw stabilization operates correctly when being pushed by sustained wind gusts._
 
 
 **Heading and related gains:**
