@@ -2,14 +2,14 @@
 
 The HUD is a feature that displays various points of interest (POI) on the OSD, in "3D", by showing a marker where the location is on the screen. For now it's capable to display : 
 
-- The home point 
-- Nearby aircrafts as sent by an ESP32 LoRa modem
-- Next waypoints during a mission.
+- The home location. 
+- Nearby aircraft's with Lora hardware support.
+- The next waypoints during a mission.
 
 # Later updates
 
   - INAV 6.0 - Seen an update in the way the Craft radar information is display on the OSD. [Craft radar layout](#craft-radar-layout)
-  - INAV 8.0 - Provides the ability to display the Craft radar in a fix location on the OSD. Without using the HUD, which is still an option.
+  - INAV 8.0 - Provides the ability to display the Craft radar information in a fix location on the OSD. Without using the HUD, which is still an option.
   - [FormationFlight](#formation-flight) project.
 
 # Video Resources 
@@ -19,12 +19,12 @@ The HUD is a feature that displays various points of interest (POI) on the OSD, 
 
 # Configuration
 
-The HUD must be set from the CMS menu of the OSD or from the CLI in the Configurator.
+The HUD can be setup in the Configurator OSD tab, CLI or the CMS menu of the OSD.
 
 **Important!** The HUD is a sub-set of the crosshair, it's designed this way because the crosshair is the origin/reference for anything hud-related.
 
 - So make sure you enable the Crosshair in the configurator OSD tab, if you wish to display any HUD related information, including the Craft Radar.
-- You are NOT required to select the Crosshair if you use the `INAV radar fixed` element. Its selected in the OSD tab under **Maps & Radar**. It     can be beneficial when using the Craft Radar on multicopter platforms.
+- You are NOT required to select the Crosshair if you use the `INAV radar fixed` element. It's selected in the OSD tab under **Maps & Radar**. It can be beneficial when using the Craft Radar on multicopter platforms.
 
 It is not recommended to have any of the legacy map or 2D-view items displayed in your OSD, as this could cause overlaps on the screen.
 In order for the HUD to display in "3D" where the POI is, it needs to know few things about your FPV camera :
@@ -127,11 +127,13 @@ set osd_hud_radar_range_max = 4000
 set osd_hud_wp_disp = 2
 ```
 ### Craft radar layout
- The radar layout is the same for both Analog and Digital. However digital can be in color and requires a video system that fully supports the INAV font set. Which DJI does not provide at the time of writing this. Meaning it **will not** have a full compliment of OSD elements, as in the image below.
+ The radar layout is the same for both Analog and Digital. However digital can be in color and requires a video system that fully supports the INAV font set. Which the DJI 04 did not support unit INAV 8.0.1. Meaning it **did not** have a full compliment of OSD elements, as in the image below. The DJI V1 and V2 were only supported using WTFOS firmware.
 
 ![Inav craft radar](https://github.com/user-attachments/assets/9ff09053-2f8b-43fa-a02f-9ff726e60935)
 
-There can be some confusion concerning the use of **(1) The peer aircraft's heading arrow**. You may know the direction the peer aircraft is located by **(5) The Cardinal pointer** e.g. 2 O'clock. But without the heading arrow, you will not know whether that aircraft is traveling towards you, away from you, or across your aircraft's line of flight. So by using both the Cardinal pointer and the Heading arrow reference of the other aircraft, you can set a heading that will help you intersect the other aircraft more quickly.
+There can be some confusion concerning the use of **(1) The arrow indicating the peer aircraft's heading**.   
+You may know the direction the peer aircraft is located by **(5) The Cardinal pointer** e.g. 2 O'clock. But without knowing its heading, you do not know whether that aircraft is traveling _towards_ you, _away_ from you, or _across_ your aircraft's line of flight.   
+So by using both the _Cardinal pointer_ and the _Heading arrow reference_ of the other aircraft, you can set a course that will help you intersect the other aircraft faster and more accurately.
 
 
 
@@ -194,8 +196,8 @@ Check that all 4 wires 5V GND TX RX are connected, and check that the port/UART 
 
 The H marker and/or the A, B, C ... markers will appear on the OSD view only if the position and heading of your aircraft are known. So it needs a valid GPS lock. The home marker will show only when the home point is recorded, so once the flight controller is armed. The home lock is not required to display nearby radar POIs.
 
-Since the 3D markers will only show when the heading of the plane is known, on a flying wing with no compass (no magnetometer) the 3D markers will only appear when the plane is flying/moving, so the GPS can compute the direction.
+Since the 3D HUD markers will only appear on the OSD when the heading of the model is known. So if it's not using a magnetometer, you must first attain forward flight with a valid GNSS fix. This is the same for Plane, Copter and even Rovers and Boats.
 
-* **Some characters are missing in the OSD/Hud**
+* **Some characters are missing in the OSD/Hud ?**
 
 Upload a compatible OSD font with the latest version of the Configurator, from the OSD tab.
