@@ -32,7 +32,7 @@ _It may require increasing even more on powerful freestyle or race quads._
 ![](images/tpa_multirotor.png)
 
   
-> [!note]
+> [!note]   
 >Fixedwing dynamic PIDFF adjustment is broken into multiple methods, based on changes made in INAV 9.0.   
 
 # Fixedwing TPA and Pitch Angle   
@@ -45,23 +45,24 @@ _This method uses the throttle position, combine with the airplanes climb or div
 
 * `TPA_Rate` - the amount of scaling apply to the PIDs. 100% `TPA_Rate` allows the base PID tune to be scaled by a factor of `[2x boost]` _200% gain increase_ - `[0.5 attenuation]` 50% gain reduction.
 
-* `TPA_breakpoint` -  the point in the throttle curve that the base PID tune is not boosted or attenuated. 
+* `TPA_breakpoint` -  is the point in the throttle curve when the base PID tune is not boosted or attenuated. 
 
-* `nav_fw_pitch2thr` - Is used to calculate the collective effect throttle and pitch will exert to dynamically adjust the PIDFF gains.   
-The ideal value required for the calculation of this function is **10** or **11**. With 10 being the default value. Adjusting too far outside this range may significantly reduce or increase _TPA/pitch angle_ effectiveness.   
+* `nav_fw_pitch2thr` - is used to calculate the collective effect throttle and pitch will exert to dynamically adjust the PIDFF gains.   
+The ideal value required for the calculation of this function is **10** or **11**. With 10 being the default value. Adjusting it too far outside this range may significantly reduce or increase _TPA/pitch angle_ effectiveness.   
 **NOTE :** This setting also influences the navigation [climb throttle](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(FW)#pitch2throttle-tuning). _So only adjust it in small amounts either side of the default._
 
 * `fw_tpa_time_constant` - is a smoothing and time delay constant, reflecting the non-instantaneous response of the airplane, based on drag, inertia and thrust. This filter works upon forward speed and pitch based gravity induced speed changes.
 
 **FUNCTION :**   
 
-The Throttle position and Climb/Dive angle are used to maintain a balance between attenuating or boosting the gains above or below the `TPA_breakpoint`. This strength is determined by how high you set `TPA_rate`.    
-Because this method can account for the pitch angle. It can override the conventional throttle based gain adjustments, according to the effect gravity has on the airplane in a climb or a dive. i.e. The airplane either speeding up in a fall, or slowing down in a climb; which throttle alone can not determine.
+The Throttle position and Climb/Dive angle are used together to provide more accurate attenuation or boost control over the gains.   
+The attenuation/boost strength is determined by how high you set `TPA_rate`.    
+Because this method can account for the pitch angle. It can override the conventional throttle based gain adjustments, according to the effect gravity has on the airplane in a climb or a dive. **i.e.** The airplane will either speed up in a fall, or slow down in a climb; which throttle position alone can not account for.
 
 **Example :**   
- If you have the airplane flying level at 80% throttle, the gains will have some attenuation applied, so not to experience oscillations at higher flight speeds.  
-But if you then pull back on the elevator stick, so the airplane starts climbing vertically at 90°. The speed will now start to wash-off. This in turn will start _reducing_ the gain attenuation, even when at high throttle. Which may even lead to the gains being boosted all the way up to full (200% increase); if the airplane slows enough and comes to a stop while climbing, because it ran out of thrust.     
-The same applies if the airplane is placed in a 90° downward dive. When using the old method, having the throttle low in this case, would cause the gains to boost. But because this method knows that the airplane is in a dive, it will start attenuating the gains up to full (50% reduction), because the free-fall speed is increasing, irrespective of the throttle.
+If your airplane is flying level at 80% throttle, the gains will have some attenuation applied to them at that airspeed to prevent control oscillations.
+But if you then pull back on the elevator stick, so the airplane starts climbing vertically at 90°. The vertical airspeed will generally start to wash-off on airplanes that aren't over powered. Leading to a _reduction_ the gain attenuation, even at high throttle. Which can even cause the gains to be boosted all the way up to full (200% increase); if you have the `TPA_rate` set too high.         
+The same applies if the airplane is placed in a 90° downward dive. When using the old method, having the throttle low in this case, would cause the gains to boost. But because this method knows that the airplane is in a dive, it will start attenuating the gains, because its free-fall speed is increasing, irrespective of the throttle.
 
 
 ### How to use this?
@@ -70,12 +71,17 @@ The same applies if the airplane is placed in a 90° downward dive. When using t
 
 * If you haven't already tuned your airplane. Make sure you complete an AutoTune with the default PID gains. Otherwise you can use the tune you already have.
 
-* Now you can start increasing the P and D gains around the general throttle value you have `TPA_breakpoint` set. This should be done before altering the `TPA_Rate` from default. 
+* Now you can start increasing the P and D gains around the throttle value you have `TPA_breakpoint` set. You should also increase the `TPA_Rate` from the default, to a conservative value of 40% when you're tuning the base gains. So it allows _some_ dynamic PID adjustment to occur. Otherwise a tight base gain tune around the TPA_breakpoint will instantly cause oscillation if you increase the throttle/speed by too much.
  
-* Now you may notice when flying at lower throttle, your airplane handles more loosely. And when flying at higher throttle (up to full throttle), the control surfaces may begin to oscillate a little.     
-You can now start increasing the `TPA_Rate` value until those oscillations are gone in the higher throttle/speed range. This will also translate to tighter handling at lower throttle/speeds, by boosting the PIDFF gains.
+* Now when your flying at lower throttle, your airplane should feel a bit tighter in its stabilization response. And when flying at higher throttle (up to full throttle), the control surfaces should not oscillate.     
+Once you have the base PID gains at the TPA_breakpoint throttle value tuned as tight as you are comfortable with. Push the throttle up toward full and let the speed increase. If oscillations start to occur. Incrementally increase the `TPA_rate` until they are gone.  
+> [!caution] 
+>Be cautious when increasing the `TPA_rate` on airplanes that have a thrust to weight ratio greater than 1.3 : 1. Such airplanes can climb vertically at a high speed. Which means high gain boost will occur under this condition. Make sure you run a vertical climb test, to look for control oscillations when increasing the `TPA_rate` during the tuning process.
 
 * Due to drag also effecting how fast a given airplane will gain or lose speed. `fw_tpa_time_constant` may require adjustment to account for the time it takes for the speed to ramp up or ramp down, based on climb or dive pitch angle. 
+
+> [!note]   
+> Even if you prefer to use APA. It is strongly advisable to at least attempt to tune the _TPA/Pitch angle_ method, because it's a fall back if your airspeed hardware source fails.
 
 
 # Fixedwing APA
@@ -125,7 +131,7 @@ But if your airplane is very draggy and can't make it past 120km in a full throt
 
 * `TPA_Rate` - the amount of scaling apply to the PIDs. 100% **TPA_Rate** allows the base PID tune to be scaled by a limiting factor of `[2x boost]` 200% - `[0.5 attenuation]` 50%.
 
-* `TPA_breakpoint` - the point in the throttle curve that the base PID tune is not boosted or attenuated. 
+* `TPA_breakpoint` - is the point in the throttle curve when the base PID tune is not boosted or attenuated. 
 
 * `fw_tpa_time_constant` - is a smoothing and time delay constant, reflecting the non-instantaneous speed/throttle response of an airplane, based on drag and inertia. 
 
