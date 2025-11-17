@@ -27,11 +27,7 @@ _It may require increasing even more on powerful freestyle or race quads._
 
 **Note** - On reverse motor 3D installs, TPA is not recommended.
 
-### Example of MultiCopter TPA curve
-
-![](images/tpa_multicopter.png)
-
-
+![](images/tpa_multirotor.png)
 
 # Fixedwing TPA and Pitch Angle   
   
@@ -120,8 +116,6 @@ But if your airplane is very draggy and can't make it past 120km in a full throt
 * `fw_tpa_time_constant` is better set low or to zero when using this method. To make dynamic PID gain changes more rapid, based on airspeed data alone.
 
 
-![](images/tpa_airplane.png)
-
 # Fixedwing TPA 
 **Pre INAV 9.0**
 
@@ -150,3 +144,5 @@ You can now start increasing the `TPA_Rate` value until those oscillations are g
 
 
 ### Example of airplane TPA curve
+
+<img width="527" height="381" alt="tpa_airplane" src="https://github.com/user-attachments/assets/13615703-e8e5-4738-9351-a9c448275077" />
