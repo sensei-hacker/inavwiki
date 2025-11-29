@@ -19,10 +19,15 @@ The JavaScript transpiler converts JavaScript code into INAV logic conditions, e
 
 ### Modern Development Experience
 
-![IntelliSense Autocomplete](images/javascript_programming_intellisense.png)
+![IntelliSense Autocomplete]
+<img width="843" height="222" alt="javascript_programming_intellisense" src="https://github.com/user-attachments/assets/efb31ba4-33db-4114-9344-f5201de4e025" />
+
 *Real-time autocomplete with type information and documentation*
 
-![Helpful Warnings](images/javascript_programming_warnings.png)
+![Helpful Warnings]
+<img width="633" height="552" alt="javascript_programming_warnings" src="https://github.com/user-attachments/assets/b8fec9e5-9f95-4e07-a306-3eb88805ab6e" />
+
+
 *Clear error messages with line numbers and suggestions*
 
 ### Basic Example
@@ -36,7 +41,9 @@ if (flight.homeDistance > 500) {
 }
 ```
 
-![VTX Power Control Example](images/javascript_programming_vtx_example.png)
+![VTX Power Control Example]
+<img width="1190" height="844" alt="javascript_programming_vtx_example" src="https://github.com/user-attachments/assets/b081edc7-a489-4fa0-91b0-e88ab216297c" />
+
 *Complete example showing VTX power control based on distance*
 
 ---
@@ -369,7 +376,9 @@ edge(() => flight.rssi < 30, { duration: 100 }, () => {
 
 ### VTX Power Based on Distance
 
-![RC Override Example](images/javascript_programming_rc_example.png)
+![RC Override Example]<img width="892" height="580" alt="javascript_programming_rc_example" src="https://github.com/user-attachments/assets/bd8af129-85a3-46e8-a8fc-b26db00febfa" />
+
+
 
 ```javascript
 const { flight, override } = inav;
