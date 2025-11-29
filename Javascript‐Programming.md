@@ -243,18 +243,18 @@ const servoAngle = mapOutput(normalized, 180);
 
 ```javascript
 // RC channel value (1000-2000us)
-if (rc[0].value > 1500) {
+if (rc[1].value > 1500) {
   gvar[0] = 1;
 }
 
 // RC channel state detection
-if (rc[0].low) {      // < 1333us
+if (rc[1].low) {      // < 1333us
   gvar[1] = 1;
 }
 if (rc[1].mid) {      // 1333-1666us
   gvar[2] = 1;
 }
-if (rc[2].high) {     // > 1666us
+if (rc[1].high) {     // > 1666us
   gvar[3] = 1;
 }
 ```
@@ -431,7 +431,7 @@ edge(() => flight.rssi < 30, { duration: 500 }, () => {
 const { rc, gvar } = inav;
 
 // Detect specific stick position combination
-if (rc[0].low && rc[1].mid && rc[2].high) {
+if (rc[1].low && rc[2].mid && rc[3].high) {
   gvar[0] = 1;  // Special mode activated
 }
 ```
@@ -444,7 +444,7 @@ if (rc[0].low && rc[1].mid && rc[2].high) {
 const {
   flight,      // Flight telemetry (altitude, speed, GPS, battery, etc.)
   override,    // Override flight parameters (VTX, throttle, arming)
-  rc,          // RC channels (rc[0-17].value, .low, .mid, .high)
+  rc,          // RC channels (rc[1-18].value, .low, .mid, .high)
   gvar,        // Global variables (gvar[0-7])
   waypoint,    // Waypoint navigation info
   edge,        // Edge detection function
