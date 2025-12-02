@@ -158,6 +158,15 @@ DevDocs [Safehomes.md](https://github.com/iNavFlight/inav/blob/master/docs/Safeh
 </details>
 
 <details>
+<summary>MultiWii Serial Protocol</summary>
+
+[MSP V2](MSP-V2)\
+[MSP Messages reference guide](MSP-Messages-reference)\
+[MSP Navigation Messages](MSP-Navigation-Messages)\
+[INAV MSP frames changelog](INAV-MSP-frames-changelog)
+</details>
+
+<details>
 <summary>Tethered Logging</summary>
 
 Log when FC is connected via USB
@@ -203,16 +212,12 @@ DevDocs [VTOL.md](https://github.com/iNavFlight/inav/blob/master/docs/VTOL.md)
 [AAT Automatic Antenna Tracker](AAT-Automatic-Antenna-Tracker)\
 [Building custom firmware](Building-custom-firmware)\
 [Default values for different type of aircrafts](Default-values-for-different-type-of-aircrafts)\
+[Source Enumerations.md](Enums-reference)\
 [Features safe to add and remove to fit your needs.](Features-safe-to-add-and-remove-to-fit-your-needs.)\
 [Developer info](Developer-info)\
-[INAV MSP frames changelog](INAV-MSP-frames-changelog)\
 [INAV Remote Management, Control and Telemetry](INAV-Remote-Management,-Control-and-Telemetry)\
 [Lightweight Telemetry (LTM)](Lightweight-Telemetry-(LTM))\
-[Making a new Virtualbox to make your own INAV](Making-a-new-Virtualbox-to-make-your-own-INAV)\
-[MSP Messages reference guide](MSP-Messages-reference)\
-[MSP Navigation Messages](MSP-Navigation-Messages)\
-[MSP V2](MSP-V2)\
-[OrangeRX LRS RX and OMNIBUS F4](OrangeRX-LRS-RX-and-OMNIBUS-F4)\
+[Making a new Virtualbox to make your own INAV](Making-a-new-Virtualbox-to-make-your-own-INAV)\[OrangeRX LRS RX and OMNIBUS F4](OrangeRX-LRS-RX-and-OMNIBUS-F4)\
 [Rate Dynamics](Rate-Dynamics)\
 [Target and Sensor support](Target-and-Sensor-support)\
 [Ublox 3.01 firmware and Galileo](Ublox-3.01-firmware-and-Galileo)\
