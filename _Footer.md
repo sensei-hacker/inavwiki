@@ -1,1 +1,2 @@
-Custom footer by atomicbbq
+Bonjour comme je débutes dans INAV CONFIGURATION, en flashant le model ATOMRC carte de vol F405 NAVI DELUX, j'ai commis 12 erreurs et étant bloquer par l'ajout du GPS, je demande de l'aide pour un effacement afin de poursuivre la configuration de cette carte de vol
+dans l'attente d'une réponse favorable' recevez mes sincères salutations  
