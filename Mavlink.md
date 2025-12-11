@@ -19,7 +19,6 @@ INAV has a partial implementation of MAVLink that is intended primarily for simp
 - Stream rates (Hz): `mavlink_ext_status_rate`, `mavlink_rc_chan_rate`, `mavlink_pos_rate`, `mavlink_extra1_rate`, `mavlink_extra2_rate`, `mavlink_extra3_rate`. Each group is polled up to 50 Hz; a rate of 0 disables the group.
 - `mavlink_min_txbuffer` – minimum remote TX buffer level before sending when `RADIO_STATUS` provides flow control.
 - `mavlink_radio_type` – scales `RADIO_STATUS` RSSI/SNR for **generic**, **ELRS**, or **SiK** links.
-- `mavlink_high_latency` – force the MAVLink port into high-latency mode (suppresses all datastreams/heartbeat and emits `HIGH_LATENCY2` once every few seconds). Can also be switched at runtime via `MAV_CMD_CONTROL_HIGH_LATENCY`.
 
 ## Supported Outgoing Messages
 
