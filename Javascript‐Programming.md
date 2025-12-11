@@ -72,6 +72,8 @@ if (flight.homeDistance > 500) {
 - Variable management (`gvar[0-7]`, `let`, `var`)
 - RC channel access and state detection (`rc[n].value`, `rc[n].low`, `rc[n].mid`, `rc[n].high`)
 - Flight parameter overrides (`override.vtx.*`, `override.throttle`, etc.)
+- Flight mode detection (`flight.mode.poshold`, `flight.mode.rth`, etc.)
+- PID controller outputs (`pid[0-3].output`)
 - Waypoint navigation
 
 **JavaScript Features:**
@@ -127,19 +129,38 @@ edge(() => flight.armTimer > 1000, { duration: 0 }, () => {
 
 ### Latching Conditions (sticky)
 
-Use `sticky()` for conditions that latch ON and stay ON until reset:
+Use `sticky()` for conditions that latch ON and stay ON until reset. Assign the result to a variable to use in conditions:
 
 ```javascript
-const { flight, override, sticky } = inav;
+const { flight, override, gvar, sticky } = inav;
 
-// Latches ON when RSSI < 30, stays ON until RSSI > 70
-sticky(
-  () => flight.rssi < 30,  // ON condition
-  () => flight.rssi > 70,  // OFF condition
-  () => {
-    override.vtx.power = 4;  // Executes while latched
-  }
-);
+// Create a latch that turns ON when RSSI < 30, OFF when RSSI > 70
+var rssiWarning = sticky({
+  on: () => flight.rssi < 30,
+  off: () => flight.rssi > 70
+});
+
+// Use the latch variable to control actions
+if (rssiWarning) {
+  override.vtx.power = 4;  // Max power while latched
+}
+```
+
+The latch variable can be referenced multiple times:
+
+```javascript
+const { flight, override, gvar, sticky } = inav;
+
+var lowBatteryLatch = sticky({
+  on: () => flight.cellVoltage < 330,
+  off: () => flight.cellVoltage > 350
+});
+
+// Use the latch variable to control multiple actions
+if (lowBatteryLatch) {
+  override.throttleScale = 50;
+  gvar[0] = 1;  // Warning flag
+}
 ```
 
 **Use when:**
@@ -298,6 +319,66 @@ override.throttleScale = 75;      // Scale percentage (0-100)
 override.armSafety = 1;           // Override arming checks
 ```
 
+### Flight Mode Detection
+
+Check which flight modes are currently active:
+
+```javascript
+const { flight, gvar, override } = inav;
+
+// Check specific flight modes
+if (flight.mode.poshold === 1) {
+  gvar[0] = 1;  // Flag: in position hold
+}
+
+if (flight.mode.rth === 1) {
+  override.vtx.power = 4;  // Max power during RTH
+}
+
+if (flight.mode.failsafe === 1) {
+  gvar[7] = 1;  // Emergency flag
+}
+```
+
+**Available flight modes:**
+- `flight.mode.failsafe` - Failsafe mode
+- `flight.mode.manual` - Manual/passthrough mode
+- `flight.mode.rth` - Return to home
+- `flight.mode.poshold` - Position hold
+- `flight.mode.cruise` - Cruise mode
+- `flight.mode.althold` - Altitude hold
+- `flight.mode.angle` - Angle/self-level mode
+- `flight.mode.horizon` - Horizon mode
+- `flight.mode.air` - Air mode
+- `flight.mode.acro` - Acro mode
+- `flight.mode.courseHold` - Course hold
+- `flight.mode.waypointMission` - Waypoint mission active
+- `flight.mode.user1` through `flight.mode.user4` - User-defined modes
+
+### PID Controller Outputs
+
+INAV has 4 programming PID controllers (configured in the Programming PID tab). You can read their output values in JavaScript:
+
+```javascript
+const { pid, gvar, override } = inav;
+
+// Read PID controller outputs
+if (pid[0].output > 500) {
+  override.throttle = 1600;
+}
+
+// Store PID output for OSD display
+gvar[0] = pid[0].output;
+
+// Combine multiple PID outputs
+gvar[1] = pid[0].output + pid[1].output;
+```
+
+**PID controllers:**
+- `pid[0].output` through `pid[3].output` - Output values from the 4 programming PID controllers
+
+Note: PID controller parameters (setpoint, measurement, gains) are configured in the Programming PID tab, not in JavaScript. The JavaScript code can only read the output values.
+
 ---
 
 ## Common Questions
@@ -401,17 +482,18 @@ if (flight.homeDistance <= 200) {
 ### Low Voltage Warning with Hysteresis
 
 ```javascript
-const { flight, gvar, sticky } = inav;
+const { flight, gvar, sticky, override } = inav;
 
 // Latch warning at 3.3V/cell, clear at 3.5V/cell
-sticky(
-  () => flight.cellVoltage < 330,  // Warning threshold
-  () => flight.cellVoltage > 350,  // Recovery threshold
-  () => {
-    override.throttleScale = 50;   // Reduce throttle
-    gvar[0] = 1;                   // Warning flag
-  }
-);
+var lowVoltageWarning = sticky({
+  on: () => flight.cellVoltage < 330,   // Warning threshold
+  off: () => flight.cellVoltage > 350   // Recovery threshold
+});
+
+if (lowVoltageWarning) {
+  override.throttleScale = 50;   // Reduce throttle
+  gvar[0] = 1;                   // Warning flag
+}
 ```
 
 ### Debounce Noisy Signal
@@ -446,6 +528,7 @@ const {
   override,    // Override flight parameters (VTX, throttle, arming)
   rc,          // RC channels (rc[1-18].value, .low, .mid, .high)
   gvar,        // Global variables (gvar[0-7])
+  pid,         // Programming PID controller outputs (pid[0-3].output)
   waypoint,    // Waypoint navigation info
   edge,        // Edge detection function
   sticky,      // Latching condition function
@@ -454,6 +537,9 @@ const {
   whenChanged  // Change detection function
 } = inav;
 ```
+
+The `flight` object includes a `mode` sub-object for checking active flight modes:
+- `flight.mode.poshold`, `flight.mode.rth`, `flight.mode.althold`, etc.
 
 ---
 
@@ -473,13 +559,16 @@ const {
 
 ## Version History
 
-**INAV 8.0**: Complete JavaScript programming implementation
+**INAV 9.0**: JavaScript programming introduced
 - All INAV logic condition operations supported
 - RC channel state detection (LOW/MID/HIGH)
 - XOR/NAND/NOR logical operations
 - Approximate equality with tolerance
 - MAP_INPUT/MAP_OUTPUT scaling functions
 - Timer and change detection functions
+- Flight mode detection (`flight.mode.poshold`, `flight.mode.rth`, etc.)
+- PID controller output access (`pid[0-3].output`)
+- Named parameter syntax for sticky with variable assignment
 - IntelliSense and real-time validation
 
 ---
@@ -488,4 +577,4 @@ const {
 - [Programming Tab](Programming-tab.md) - How to use the Programming tab
 - [Logic Conditions](Logic-Conditions.md) - Traditional logic condition programming
 
-**Last Updated**: 2025-11-25
+**Last Updated**: 2025-12-10
