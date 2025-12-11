@@ -166,6 +166,7 @@ DevDocs [Safehomes.md](https://github.com/iNavFlight/inav/blob/master/docs/Safeh
 [INAV MSP frames changelog](INAV-MSP-frames-changelog)
 </details>
 
+<details>
 <summary>Telemetry</summary>
 
 [INAV Remote Management, Control and Telemetry](INAV-Remote-Management,-Control-and-Telemetry)\
