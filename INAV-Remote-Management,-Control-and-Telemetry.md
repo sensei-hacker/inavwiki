@@ -102,8 +102,8 @@ There is also a long abandoned (alas) [changelog](https://github.com/iNavFlight/
 Note that the INAV developers take backwards compatibility seriously; changing a payload is usually not permitted (however, extending it is OK); this is why there are a number of variations on the same basic request (`MSP_STATUS`, `MSP_STATUS_EX`, `MSP2_INAV_STATUS`) as the size of the internal status structure has changed.
 
 ### MAVLink
-
-* [MAVlink developer info](https://mavlink.io/en/). Note that INAV supports a subset of the MAVLink message set (some unsolicited telemetry and remote control). INAV supports MAVLink V1 and V2.
+See [the INAV MAVLink documentation](https://github.com/iNavFlight/inav/wiki/Mavlink) for a more in depth description of the implementation, which is not 100% compatible with the Ardupilot/PX4 but supports some important features for telemetry, missions and navigation.
+* [MAVlink developer info](https://mavlink.io/en/). 
 * There is a application in the [mwptools repository, mavtest](https://codeberg.org/stronnag/mwptools/tree/master/src/samples/mavtest) that summarises / validates the MAVLink messages supported by INAV.
 * INAV source code.
   - [Telemetry](https://github.com/iNavFlight/inav/blob/master/src/main/telemetry/mavlink.c)
