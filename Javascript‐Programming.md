@@ -299,24 +299,79 @@ if (rc[1].high) {     // > 1666us
 
 ### Variables
 
+#### Global Variables (gvar)
+
+Runtime state that persists across logic condition evaluations:
+
 ```javascript
-// Global variables (persisted, 8 slots)
+// Global variables (runtime state, 8 slots)
 gvar[0] = 100;
-gvar[1] = gvar[1] + 1;
+gvar[1] = gvar[1] + 1;  // Counter
+```
 
-// Let variables (compile-time constants)
-let maxAlt = 500;
-if (flight.altitude > maxAlt) {
-  gvar[0] = 1;
+#### Let/Const Variables
+
+Compile-time named expressions that make code more readable:
+
+```javascript
+const { flight, override } = inav;
+
+// Define reusable calculations with meaningful names
+let distanceThreshold = 500;
+let altitudeLimit = 100;
+let combinedCheck = flight.homeDistance > distanceThreshold && flight.altitude > altitudeLimit;
+
+if (combinedCheck) {
+  override.vtx.power = 4;
 }
+```
 
+**Benefits:**
+- Makes code self-documenting with meaningful names
+- Compiler automatically optimizes duplicate expressions
+- Variable names preserve through compile/decompile cycles
+
+**Important:** `let`/`const` are **compile-time substituted**, not runtime variables. For runtime state, use `gvar[]`.
+
+#### Var Variables
+
+Allocated to gvar slots automatically:
+
+```javascript
 // Var variables (allocated to gvar slots)
 var counter = 0;
 counter = counter + 1;
 ```
 
-Note that variable *names* are stored in Configurator. Loading from the FC to a different computer will use default variable names.
-It is recommended to save your scripts in Notepad or your favorite editor when upgrading to a new version of INAV.
+
+**Note:** Variable *names* are stored in Configurator. Loading from FC to a different computer will use default names.
+Save your scripts in a text editor when upgrading INAV or switching computers.
+
+Variables can also be renamed by right-click on the variable.
+
+
+#### Ternary Operator
+
+Conditional value assignment in a single expression:
+
+```javascript
+const { flight, override } = inav;
+
+// Choose value based on condition
+let throttleLimit = flight.cellVoltage < 330 ? 25 : 50;
+
+if (flight.cellVoltage < 350) {
+  override.throttleScale = throttleLimit;
+}
+
+// Inline ternary
+override.vtx.power = flight.homeDistance > 500 ? 4 : 2;
+
+// Nested ternary for multiple conditions
+let powerLevel = flight.rssi < 30 ? 4 :
+                 flight.rssi < 50 ? 3 :
+                 flight.rssi < 70 ? 2 : 1;
+```
 
 ### Flight Parameter Overrides
 
