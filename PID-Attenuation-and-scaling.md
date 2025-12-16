@@ -73,7 +73,6 @@ Ideally you do not want to tune the PID gain super tight. Backing them off 15% f
 * Once this is complete. You will notice that the stabilization automatically becomes tighter when the airspeed reduces below the `fw_reference_airspeed`, and control surface oscillations are prevented as the airspeed increases above that point.  
 
 * However if you do encounter control surface oscillations at higher airspeeds, this is when you can increase the value of `apa_pow`. It will allow the gains to become more aggressively attenuated at higher speeds to prevent this occurrence. Only make adjustments of no more than 10 at a time.   
-Conversely, if you don't experience control surface oscillation at top speed. You can lower `apa_pow`  incrementally to boost the gains more at lower airspeeds.
 
 * Also keep in mind that control surface throws as well as higher airspeeds will influence the need to adjust `apa_pow`. If you have larger control surface throws, it may also require increasing.  
 But if your airplane is very draggy and can't make it past 120km in a full throttle dive. You can reduce `apa_pow` to provide a tighter stabilization response over the planes narrower speed range.
