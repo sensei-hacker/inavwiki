@@ -21,23 +21,20 @@ Multiple methods are used to accomplish this. Depending on whether it's a multic
 
 * Firstly, set `TPA_Rate = 15` as a starting point.  
 The PID's should be tuned in the throttle range your copter will comfortably cruise at - _e.g. _1300 - 1600uS_ based on thrust to weight ratio and bank angle_.   
-* But once the throttle is moved higher than this point, you may start seeing oscillations. So begin increasing the `TPA_breakpoint` to a throttle value just prior to the onset of those oscillations.   
+* Once the throttle is moved higher than this point, you may start experiencing oscillations. So begin increasing the `TPA_breakpoint` to a throttle value just prior to the onset of those oscillations.   
 * Then incrementally increase the `TPA_rate` value until the oscillations in the higher throttle range are gone.  
 _It may require increasing considerably higher on more powerful freestyle or race quads._  
 
 **Note** - TPA is not recommended for reverse motor 3D installs.
 
-### Example of multicopter TPA curve
-
-![](images/tpa_multirotor.png)
-
+# Fixedwing
   
 > [!Warning]   
 >Fixedwing dynamic PIDFF adjustment is broken into multiple methods, based on changes made in INAV 9.0.   
 >It is important to understand the operation of both new methods.   
 **_TPA and Pitch angle_ should also be tuned, due to it becoming a fall-back if the _APA_ speed source fails**.  
 
-# Fixedwing APA
+## Fixedwing APA
 
 _This method uses the planes airspeed to determine the optimal dynamic PIDFF gain adjustments required._ 
 
@@ -45,13 +42,13 @@ _This method uses the planes airspeed to determine the optimal dynamic PIDFF gai
 
 **Settings :**  
 
-* `Fw_reference_airspeed` - Is the Airspeed at which your _PIDs_, _Rates_ and _Feedforwards_ should be optimally tuned, to provide a strong stabilization response.
+* `Fw_reference_airspeed` - Is the cruise airspeed at which your _PIDs_, _Rates_ and _Feedforwards_ should be optimally tuned, to provide a strong stabilization response.
 
 * `apa_pow` - Sets how aggressively the gains will be dynamically adjusted from the base PIDFF tune.   
-Increasing its value from the default of 120, will boost the gains more aggressively below the `fw_reference_airspeed`, and attenuate them more aggressively above the `fw_reference_airspeed`.    
-While decreasing `apa_pow` will make the gain adjustments less aggressive. Meaning the PIDFF gain boost will be weaker, as will its attenuation strength, leaving the based gain tune less altered by airspeed changes.  
+Increasing its value from the default of 120, will boost the gains more aggressively below the `fw_reference_airspeed`, and attenuate them more aggressively above the `fw_reference_airspeed`. Which will also cause the gain scaling factor to reach its limit at a lower maximum airspeed.    
+While decreasing `apa_pow` will provide less aggressive gain scaling, allowing attenuation to occur over a broader speed range. _[See plot](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling/_edit#example-of-a-fixedwing-apa-curve)_ 
 
-> [!tip]  
+> [!Note]  
 > Setting `apa_pow = 0` will disable this function and revert to using the _TPA and Pitch Angle_ method instead.   
 > If either GNSS data or the Pitot sensor data becomes untrusted. It will also revert back to the _TPA and Pitch Angle_ method. 
 
@@ -63,26 +60,38 @@ As with the throttle `TPA_rate` setting, `APA_pow` also uses a similar scaling l
 
 ### How to use this?  
   
-* If you have not done so; firstly tune your airplanes rates and feedforwards with AutoTune, using the default PID gains. But if you already have a workable tune for your airplane, use that. 
+* If you have not done so; firstly tune your airplanes rates and feedforwards with AutoTune, using the default PID gains. But if you already have a workable tune for your airplane, start with that. 
 
 * Enter the airspeed value your airplane will comfortably cruise at, into the `fw_reference_airspeed` setting. `[cm/s]`  
  
 * Start incrementally increasing your PID gains, while holding the approximate cruise airspeed you entered above. Tuning can be done easier via [inflight tuning](https://www.youtube.com/watch?v=A5i0gs9LfE8).   
 Ideally you do not want to tune the PID gain super tight. Backing them off 15% from the point you experience oscillations is best. 
 
-* Once this is complete. You will notice that the stabilization automatically becomes tighter when the airspeed reduces below the `fw_reference_airspeed`, and control surface oscillations are prevented as the airspeed increases above that point.  
+* Once this is complete. You will notice that the stabilization automatically becomes tighter when the airspeed reduces below the `fw_reference_airspeed`. And control surface oscillations are prevented as the airspeed increases above that point.  
 
-* However if you do encounter control surface oscillations at higher airspeeds, this is when you can increase the value of `apa_pow`. It will allow the gains to become more aggressively attenuated at higher speeds to prevent this occurrence. Only make adjustments of no more than 10 at a time.   
+* However if you have a faster airplane that encounters control surface oscillations at much higher speeds. You can decrease the value of `apa_pow`. It will allow the dynamic gain attenuation to occur over a wider speed range.   
+Keep in mind. The strength or tightness of the base PID tune will also effect this. e.g. The tighter the tune, the more noticeable control surface oscillation may become if the speed rises above the point that the attenuation scaling limit is reached.  _[See plot](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling/_edit#example-of-a-fixedwing-apa-curve)_       
+**NOTE :** Only make adjustments of 10 at a time.   
 
-* Also keep in mind that control surface throws as well as higher airspeeds will influence the need to adjust `apa_pow`. If you have larger control surface throws, it may also require increasing.  
-But if your airplane is very draggy and can't make it past 120km in a full throttle dive. You can reduce `apa_pow` to provide a tighter stabilization response over the planes narrower speed range.
+* Also keep in mind that control surface throws as well as higher airspeed will influence the need to adjust `apa_pow`.  
+If you have larger control surface throws, it may also require decreasing.  
+But if your airplane is very draggy and can't make it past 125km in a full throttle dive. You can increase `apa_pow` to provide a tighter stabilization response over the planes narrow speed range.
 
 * `fw_tpa_time_constant` is not used for airspeed based dynamic PID adjustment.
 
 
+### Example of a Fixedwing APA curve
+
+This plot shows how adjusting `apa_pow` alters the scaling of the gains over an airplanes speed range.
+Take note of the maximum airspeed at which full gain attenuation will occur, depend on what you set `apa_pow`. This is important if your plane can exceed 190km/h, while using the default `apa_pow` value of 120. 
+
+<img width="1000" height="600" alt="Apa plot" src="https://github.com/user-attachments/assets/2d513a9c-9f85-4447-8d6c-ea1541173f62" />
 
 
-# Fixedwing TPA and Pitch Angle   
+
+
+
+## Fixedwing TPA and Pitch Angle   
 
 _This method uses the throttle position, combine with the airplanes climb or dive angle, to determine the optimal dynamic PIDFF gain adjustments required._   
 
@@ -91,14 +100,15 @@ _This method uses the throttle position, combine with the airplanes climb or div
 **Settings :**  
 
 * `TPA_rate` - is the amount of scaling apply to the dynamic PID adjustment.   
- 200% `TPA_rate` allows the base PID tune to be scaled by a factor of `[2x boost]` _200% gain increase_ - `[0.3 attenuation]` 70% gain reduction.
+ 200% `TPA_rate` allows the base PID tune to be scaled by a factor of `[2x boost]` _200% gain increase_ - `[0.4 attenuation]` 60% gain reduction. _[See plot](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling/_edit#example-of-a-fixedwing-tpa-curve)_
 
 * `TPA_breakpoint` -  is the throttle value when the base PID tune is not boosted or attenuated. This value should approximate the amount of throttle/thrust the airplane requires to hold its optimal cruise speed when flying in no wind, or a crosswind. Ideally you should aim for a throttle value that approximates the same speed as you have APA `fw_reference_airspeed` set.
 
 * `tpa_pitch_compensation` - is used to calculate the collective effect pitch will exert on-top of the raw throttle input, to _reverse_ the way gains are dynamically adjusted. _Put simply - Boost becomes Attenuation, and Attenuation becomes Boost under certain flight conditions._       
 The ideal value for this function is **8**, which is the default.    
-DECREASING its value will provide a weaker gravity induced pitch angle influence over the raw throttle, and therefor the gains.  While INCREASING it will provide a stronger pitch angle influence over the raw throttle.   
-> [!tip] 
+DECREASING its value will provide a weaker gravity induced pitch angle influence over the raw throttle, and therefor the gains.  While INCREASING it will provide a stronger pitch angle influence over the raw throttle.  _[See plot](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling/_edit#example-of-a-fixedwing-tpa--pitch-angle)_ 
+
+> [!Note] 
 >Setting `tpa_pitch_compensation = 0` allows it to work in way the old fixedwing TPA did. Which isn't really desirable.
 
 * `fw_tpa_time_constant` - is a smoothing and time delay constant, reflecting the non-instantaneous speed response of an airplane to throttle changes, based on relative drag, inertia and thrust.  
@@ -120,7 +130,7 @@ When using the old TPA method, having the throttle low in this case would cause 
 
 ### How to use this?
 
-* **You should increase the** `TPA_Rate` **from the default, to a conservative value of 70% when you're tuning the base gains**. So it allows _some_ dynamic PID adjustment to occur. Otherwise a tight base gain tune around the TPA_breakpoint will instantly cause oscillation if you increase the throttle/speed by too much.
+* **You should increase the** `TPA_Rate` **from the default, to a conservative value of 80% when you're tuning the base gains**. So it allows _some_ dynamic PID adjustment to occur. Otherwise a tight base gain tune around the TPA_breakpoint will instantly cause oscillation if you increase the throttle/speed by too much.
 
 * If you haven't already tuned your airplane. Make sure you complete an AutoTune with the default PID gains. Otherwise you can use the tune you already have.    
 
@@ -138,11 +148,24 @@ Now when your flying at lower throttle, your airplane should feel tighter in its
 
 * If your airplane has a high thrust to weight ratio and can climb at a high angle and at high speed. It can be beneficial to start **incrementally** decreasing `tpa_pitch_compensation`. This will reduce the effect pitch angle has over raw throttle. Thus preventing the gains for being boosted excessively at higher climb speeds, preventing control surface oscillations.  
 The same will apply in a lower throttle dive, if you feel the gains are being attenuated too much. You can also **incrementally** reduce `tpa_pitch_compensation`.   
-**NOTE :** I wouldn't recommend going lower than 4 in either case, unless your airplane is very fast and aerodynamic. Capable of climbing or diving at extreme speeds.
+**NOTE :** I wouldn't recommend going lower than 5 in either case, unless your airplane is very fast. Other wise it may reduce the effect gravity induced pitch angle scaling has over TPA in a high speed dive. _[See plot](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling/_edit#example-of-a-fixedwing-tpa--pitch-angle)_
+
+### Example of a Fixedwing TPA curve
+
+This plot shows how adjusting the `TPA_rate` will effect the scaling of the gains at different points in the throttle/speed range.  
+
+<img width="1000" height="600" alt="TPA curve" src="https://github.com/user-attachments/assets/11788db8-4a7a-4337-ac75-e4c927d2c5c5" />
+
+
+### Example of a Fixedwing TPA + pitch angle
+
+This plot shows the collective effect pitch angle and raw throttle have on PID scaling. And the influence which lowering `tpa_pitch_compensation` has on those gains, to prevent oscillations on powerful planes when in a sustained high speed climb. The plot also shows a slight increase in the gains while in a lower throttle dive. This is why reducing `tpa_pitch_compensation` below 5 is not recommend. Especially if your airplane is very aerodynamic.
+
+<img width="1000" height="600" alt="TPA+ pitch output vs pitch angle (full envelope)" src="https://github.com/user-attachments/assets/d238af2c-dab5-49e2-a2cf-5dbd1e9ed6c0" />
 
 
 
-# Fixedwing TPA 
+## Fixedwing TPA 
 **Pre INAV 9.0**
 
 **Settings :**  
@@ -168,7 +191,3 @@ You can now start increasing the `TPA_Rate` value until those oscillations are g
 > [!NOTE]
 > The above method had its limitations. It can not attenuate the PIDs at _lower_ throttle values if the airplane is placed into a dive, causing the air-speed to increase. This could lead to control surface oscillations.
 
-
-### Example of airplane TPA curve
-
-<img width="527" height="381" alt="tpa_airplane" src="https://github.com/user-attachments/assets/13615703-e8e5-4738-9351-a9c448275077" />
