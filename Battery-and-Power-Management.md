@@ -1,6 +1,7 @@
 # Battery and Power Management
 
 This guide covers battery monitoring, power limiting, and related features in INAV. For complete technical details, see the [official Battery documentation](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md).
+This wiki page is a draft - feel free to edit if you see anything incorrect or unclear.
 
 ## Quick Start Checklist
 
@@ -93,7 +94,7 @@ The OSD battery gauge will show remaining capacity. The battery must be full whe
 
 ## Power Limiting (Protect Your Battery!)
 
-**New in INAV 3.0**: Automatically limit throttle to protect your battery from over-current.
+Automatically limit throttle to protect your from over-current.
 
 ### Why Use It?
 
