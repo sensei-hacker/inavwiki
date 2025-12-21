@@ -105,6 +105,9 @@ Ensure the ceramic antenna (light brown or beige in color) faces skywards. To pr
 
 ## Setting up the compass alignment
 
+* `i2C_speed` can be altered to keep up with the magnetometers maximum data update rate on higher performance quads. The default is 400KHz. This speed works well for all tested magnetometer chips. However the `QMC5883` can run an `i2C_speed = 800KHz` if required.   
+While other magnetometer chips such as the `IST8310` **can not** function correctly beyond 400KHz due to its slightly lower maximum data output rate.
+
 INAV's default Orientation Preset is `CW270FLIP`. This value is based on the orientation of the magnetometer chip on its PCB, chosen by the manufacturer. With respect to the Arrow direction they provide facing the front of the aircraft. Or the plug facing the rear of the aircraft.
  
 * Circled in _Red_ at the base of the GNSS unit. Is the QMC5883 magnetometer chip **with its white DOT providing an axis magnetic bearing reference based on the internal coils**.
