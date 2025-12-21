@@ -622,40 +622,48 @@ if (inav.rc[1].low && inav.rc[2].mid && inav.rc[3].high) {
 
 ## Available Objects
 
-```javascript
-const {
-  flight,      // Flight telemetry (altitude, speed, GPS, battery, etc.)
-  override,    // Override flight parameters (VTX, throttle, arming)
-  rc,          // RC channels (inav.rc[1-18].value, .low, .mid, .high)
-  gvar,        // Global variables (inav.gvar[0-7])
-  pid,         // Programming PID controller outputs (inav.pid[0-3].output)
-  waypoint,    // Waypoint navigation info
-  edge,        // Edge detection function
-  sticky,      // Latching condition function
-  delay,       // Delayed execution function
-  timer,       // Periodic timer function
-  whenChanged  // Change detection function
-} = inav;
+The INAV JavaScript API is accessed through the `inav` namespace:
 
+**Flight Data:**
+- `inav.flight.*` - Flight telemetry (altitude, speed, GPS, battery, etc.)
+- `inav.flight.mode.*` - Active flight modes (poshold, rth, althold, etc.)
 
-```
+**Control & Override:**
+- `inav.override.*` - Override flight parameters (VTX, throttle, arming)
+- `inav.rc[1-18].*` - RC channels (.value, .low, .mid, .high)
 
-The `flight` object includes a `mode` sub-object for checking active flight modes:
-- `flight.mode.poshold`, `flight.mode.rth`, `flight.mode.althold`, etc.
+**Variables:**
+- `inav.gvar[0-7]` - Global variables (persistent state)
+
+**Navigation & Control:**
+- `inav.waypoint.*` - Waypoint navigation info
+- `inav.pid[0-3].*` - Programming PID controller outputs
+
+**Event Handlers:**
+- `inav.events.edge()` - Edge detection (executes once on condition change)
+- `inav.events.sticky()` - Latching condition (hysteresis)
+- `inav.events.delay()` - Delayed execution
+- `inav.events.timer()` - Periodic timer
+- `inav.events.whenChanged()` - Change detection
+
+**Helper Functions:**
+- `inav.helpers.xor()`, `inav.helpers.nand()`, `inav.helpers.nor()` - Logical operations
+- `inav.helpers.approxEqual()` - Approximate comparison
+- `inav.helpers.mapInput()`, `inav.helpers.mapOutput()` - Scaling functions
 
 ---
 
 ## Tips
 
-1. **Initialize variables on arm** using `edge()` with `flight.armTimer > 1000`
+1. **Initialize variables on arm** using `inav.events.edge()` with `inav.flight.armTimer > 1000`
 2. **Use gvars for state** - they persist between logic condition evaluations
 3. **edge() duration = 0** means instant trigger on condition becoming true
 4. **edge() duration > 0** adds debounce time
 5. **if statements are continuous** - they execute every cycle
 6. **sticky() provides hysteresis** - prevents rapid ON/OFF switching
 7. **All trig functions take degrees**, not radians
-8. **RC channels**: 0-17 (18 channels total)
-9. **Global variables**: -1,000,000 to 1,000,000 range
+8. **RC channels**: 1-18 (18 channels total, use `inav.rc[1]` through `inav.rc[18]`)
+9. **Global variables**: -1,000,000 to 1,000,000 range (use `inav.gvar[0]` through `inav.gvar[7]`)
 
 ---
 
