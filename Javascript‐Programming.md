@@ -32,12 +32,12 @@ The JavaScript transpiler converts JavaScript code into INAV logic conditions, e
 ### Basic Example
 
 ```javascript
-const { flight, override } = inav;
 
 // Increase VTX power when far from home
-if (flight.homeDistance > 500) {
-  override.vtx.power = 4;
+if (inav.flight.homeDistance > 500) {
+  inav.override.vtx.power = 4;
 }
+
 ```
 
 
@@ -92,12 +92,12 @@ if (flight.homeDistance > 500) {
 Use `if` statements for conditions that check and execute **every cycle**:
 
 ```javascript
-const { flight, override } = inav;
 
 // Checks every cycle - adjusts VTX power continuously
-if (flight.homeDistance > 100) {
-  override.vtx.power = 3;
+if (inav.flight.homeDistance > 100) {
+  inav.override.vtx.power = 3;
 }
+
 ```
 
 **Use when:** You want the action to happen continuously while the condition is true.
@@ -107,13 +107,13 @@ if (flight.homeDistance > 100) {
 Use `edge()` for actions that should execute **only once** when a condition becomes true:
 
 ```javascript
-const { flight, gvar, edge } = inav;
 
 // Executes ONCE when armTimer reaches 1000ms
-edge(() => flight.armTimer > 1000, { duration: 0 }, () => {
-  gvar[0] = flight.yaw;  // Save initial heading
-  gvar[1] = 0;           // Initialize counter
+inav.events.edge(() => inav.flight.armTimer > 1000, { duration: 0 }, () => {
+  inav.gvar[0] = inav.flight.yaw;  // Save initial heading
+  inav.gvar[1] = 0;           // Initialize counter
 });
+
 ```
 
 **Parameters:**
@@ -134,50 +134,50 @@ Use `sticky()` for conditions that latch ON and stay ON until reset.
 **Option 1: Variable assignment syntax** (recommended when you need to reference the latch state):
 
 ```javascript
-const { flight, override, gvar, sticky } = inav;
 
 // Create a latch that turns ON when RSSI < 30, OFF when RSSI > 70
-var rssiWarning = sticky({
-  on: () => flight.rssi < 30,
-  off: () => flight.rssi > 70
+var rssiWarning = inav.events.sticky({
+  on: () => inav.flight.rssi < 30,
+  off: () => inav.flight.rssi > 70
 });
 
 // Use the latch variable to control actions
 if (rssiWarning) {
-  override.vtx.power = 4;  // Max power while latched
+  inav.override.vtx.power = 4;  // Max power while latched
 }
+
 ```
 
 The latch variable can be referenced multiple times:
 
 ```javascript
-const { flight, override, gvar, sticky } = inav;
 
-var lowBatteryLatch = sticky({
-  on: () => flight.cellVoltage < 330,
-  off: () => flight.cellVoltage > 350
+var lowBatteryLatch = inav.events.sticky({
+  on: () => inav.flight.cellVoltage < 330,
+  off: () => inav.flight.cellVoltage > 350
 });
 
 // Use the latch variable to control multiple actions
 if (lowBatteryLatch) {
-  override.throttleScale = 50;
-  gvar[0] = 1;  // Warning flag
+  inav.override.throttleScale = 50;
+  inav.gvar[0] = 1;  // Warning flag
 }
+
 ```
 
 **Option 2: Callback syntax** (simpler when actions are self-contained):
 
 ```javascript
-const { flight, sticky, override } = inav;
 
 // Latch ON when RSSI < 30, OFF when RSSI > 70
-sticky(
-  () => flight.rssi < 30,  // ON condition
-  () => flight.rssi > 70,  // OFF condition
+inav.events.sticky(
+  () => inav.flight.rssi < 30,  // ON condition
+  () => inav.flight.rssi > 70,  // OFF condition
   () => {
-    override.vtx.power = 4;  // Executes while latched
+    inav.override.vtx.power = 4;  // Executes while latched
   }
 );
+
 ```
 
 **Use when:**
@@ -190,12 +190,12 @@ sticky(
 Use `delay()` to execute after a condition has been true for a duration:
 
 ```javascript
-const { flight, gvar, delay } = inav;
 
 // Executes only if RSSI < 30 for 2 seconds continuously
-delay(() => flight.rssi < 30, { duration: 2000 }, () => {
-  gvar[0] = 1;  // Set failsafe flag
+inav.events.delay(() => inav.flight.rssi < 30, { duration: 2000 }, () => {
+  inav.gvar[0] = 1;  // Set failsafe flag
 });
+
 ```
 
 **Use when:**
@@ -208,12 +208,12 @@ delay(() => flight.rssi < 30, { duration: 2000 }, () => {
 Use `timer()` for actions that toggle ON and OFF periodically:
 
 ```javascript
-const { gvar, timer } = inav;
 
-// Toggle gvar[0] every second: ON for 1000ms, OFF for 1000ms
-timer(1000, 1000, () => {
-  gvar[0] = 1;  // Active during ON phase
+// Toggle inav.gvar[0] every second: ON for 1000ms, OFF for 1000ms
+inav.events.timer(1000, 1000, () => {
+  inav.gvar[0] = 1;  // Active during ON phase
 });
+
 ```
 
 **Use when:**
@@ -226,12 +226,12 @@ timer(1000, 1000, () => {
 Use `whenChanged()` to detect when a value changes by a threshold:
 
 ```javascript
-const { flight, gvar, whenChanged } = inav;
 
 // Trigger when altitude changes by >= 10m within 100ms
-whenChanged(flight.altitude, 10, () => {
-  gvar[0] = gvar[0] + 1;  // Count altitude changes
+inav.events.whenChanged(inav.flight.altitude, 10, () => {
+  inav.gvar[0] = inav.gvar[0] + 1;  // Count altitude changes
 });
+
 ```
 
 **Use when:**
@@ -271,30 +271,32 @@ whenChanged(flight.altitude, 10, () => {
 Example:
 ```javascript
 // Scale RC throttle (1000-2000) to normalized (0-1000)
-const normalized = mapInput(rc[3].value - 1000, 1000);
+const normalized = mapInput(inav.rc[3].value - 1000, 1000);
 
 // Scale normalized (0-1000) to servo angle (0-180)
 const servoAngle = mapOutput(normalized, 180);
+
 ```
 
 ### RC Channel Access
 
 ```javascript
 // RC channel value (1000-2000us)
-if (rc[1].value > 1500) {
-  gvar[0] = 1;
+if (inav.rc[1].value > 1500) {
+  inav.gvar[0] = 1;
 }
 
 // RC channel state detection
-if (rc[1].low) {      // < 1333us
-  gvar[1] = 1;
+if (inav.rc[1].low) {      // < 1333us
+  inav.gvar[1] = 1;
 }
-if (rc[1].mid) {      // 1333-1666us
-  gvar[2] = 1;
+if (inav.rc[1].mid) {      // 1333-1666us
+  inav.gvar[2] = 1;
 }
-if (rc[1].high) {     // > 1666us
-  gvar[3] = 1;
+if (inav.rc[1].high) {     // > 1666us
+  inav.gvar[3] = 1;
 }
+
 ```
 
 ### Variables
@@ -305,8 +307,9 @@ Runtime state that persists across logic condition evaluations:
 
 ```javascript
 // Global variables (runtime state, 8 slots)
-gvar[0] = 100;
-gvar[1] = gvar[1] + 1;  // Counter
+inav.gvar[0] = 100;
+inav.gvar[1] = inav.gvar[1] + 1;  // Counter
+
 ```
 
 #### Let/Const Variables
@@ -314,16 +317,16 @@ gvar[1] = gvar[1] + 1;  // Counter
 Compile-time named expressions that make code more readable:
 
 ```javascript
-const { flight, override } = inav;
 
 // Define reusable calculations with meaningful names
 let distanceThreshold = 500;
 let altitudeLimit = 100;
-let combinedCheck = flight.homeDistance > distanceThreshold && flight.altitude > altitudeLimit;
+let combinedCheck = inav.flight.homeDistance > distanceThreshold && inav.flight.altitude > altitudeLimit;
 
 if (combinedCheck) {
-  override.vtx.power = 4;
+  inav.override.vtx.power = 4;
 }
+
 ```
 
 **Benefits:**
@@ -341,6 +344,7 @@ Allocated to gvar slots automatically:
 // Var variables (allocated to gvar slots)
 var counter = 0;
 counter = counter + 1;
+
 ```
 
 
@@ -355,40 +359,40 @@ Variables can also be renamed by right-click on the variable.
 Conditional value assignment in a single expression:
 
 ```javascript
-const { flight, override } = inav;
 
 // Choose value based on condition
-let throttleLimit = flight.cellVoltage < 330 ? 25 : 50;
+let throttleLimit = inav.flight.cellVoltage < 330 ? 25 : 50;
 
-if (flight.cellVoltage < 350) {
-  override.throttleScale = throttleLimit;
+if (inav.flight.cellVoltage < 350) {
+  inav.override.throttleScale = throttleLimit;
 }
 
 // Inline ternary
-override.vtx.power = flight.homeDistance > 500 ? 4 : 2;
+inav.override.vtx.power = inav.flight.homeDistance > 500 ? 4 : 2;
 
 // Nested ternary for multiple conditions
-let powerLevel = flight.rssi < 30 ? 4 :
-                 flight.rssi < 50 ? 3 :
-                 flight.rssi < 70 ? 2 : 1;
+let powerLevel = inav.flight.rssi < 30 ? 4 :
+                 inav.flight.rssi < 50 ? 3 :
+                 inav.flight.rssi < 70 ? 2 : 1;
+
 ```
 
 ### Flight Parameter Overrides
 
 ```javascript
-const { override } = inav;
 
 // VTX control
-override.vtx.power = 4;      // Power level (0-4)
-override.vtx.band = 5;       // Band (0-5)
-override.vtx.channel = 7;    // Channel (0-8)
+inav.override.vtx.power = 4;      // Power level (0-4)
+inav.override.vtx.band = 5;       // Band (0-5)
+inav.override.vtx.channel = 7;    // Channel (0-8)
 
 // Throttle control
-override.throttle = 1500;         // Direct throttle (1000-2000)
-override.throttleScale = 75;      // Scale percentage (0-100)
+inav.override.throttle = 1500;         // Direct throttle (1000-2000)
+inav.override.throttleScale = 75;      // Scale percentage (0-100)
 
 // Arming safety
-override.armSafety = 1;           // Override arming checks
+inav.override.armSafety = 1;           // Override arming checks
+
 ```
 
 ### Flight Mode Detection
@@ -396,20 +400,20 @@ override.armSafety = 1;           // Override arming checks
 Check which flight modes are currently active:
 
 ```javascript
-const { flight, gvar, override } = inav;
 
 // Check specific flight modes
-if (flight.mode.poshold === 1) {
-  gvar[0] = 1;  // Flag: in position hold
+if (inav.flight.mode.poshold === 1) {
+  inav.gvar[0] = 1;  // Flag: in position hold
 }
 
-if (flight.mode.rth === 1) {
-  override.vtx.power = 4;  // Max power during RTH
+if (inav.flight.mode.rth === 1) {
+  inav.override.vtx.power = 4;  // Max power during RTH
 }
 
-if (flight.mode.failsafe === 1) {
-  gvar[7] = 1;  // Emergency flag
+if (inav.flight.mode.failsafe === 1) {
+  inav.gvar[7] = 1;  // Emergency flag
 }
+
 ```
 
 **Available flight modes:**
@@ -432,18 +436,18 @@ if (flight.mode.failsafe === 1) {
 INAV has 4 programming PID controllers (configured in the Programming PID tab). You can read their output values in JavaScript:
 
 ```javascript
-const { pid, gvar, override } = inav;
 
 // Read PID controller outputs
-if (pid[0].output > 500) {
-  override.throttle = 1600;
+if (inav.pid[0].output > 500) {
+  inav.override.throttle = 1600;
 }
 
 // Store PID output for OSD display
-gvar[0] = pid[0].output;
+inav.gvar[0] = inav.pid[0].output;
 
 // Combine multiple PID outputs
-gvar[1] = pid[0].output + pid[1].output;
+inav.gvar[1] = inav.pid[0].output + inav.pid[1].output;
+
 ```
 
 **PID controllers:**
@@ -467,19 +471,19 @@ Note: PID controller parameters (setpoint, measurement, gains) are configured in
 
 Use global variables to track state:
 ```javascript
-const { flight, gvar, edge } = inav;
 
 // Initialize debug counter
-edge(() => flight.armTimer > 1000, { duration: 0 }, () => {
-  gvar[7] = 0; // Use gvar[7] as debug counter
+inav.events.edge(() => inav.flight.armTimer > 1000, { duration: 0 }, () => {
+  inav.gvar[7] = 0; // Use inav.gvar[7] as debug counter
 });
 
 // Increment on each event
-edge(() => flight.rssi < 30, { duration: 0 }, () => {
-  gvar[7] = gvar[7] + 1;
+inav.events.edge(() => inav.flight.rssi < 30, { duration: 0 }, () => {
+  inav.gvar[7] = inav.gvar[7] + 1;
 });
 
-// Check gvar[7] value in OSD or Configurator
+// Check inav.gvar[7] value in OSD or Configurator
+
 ```
 
 **Q: What's the difference between let and var?**
@@ -501,29 +505,29 @@ specific INAV functions are supported (`edge()`, `sticky()`, `delay()`, `timer()
 ### Initialize Variables on Arm
 
 ```javascript
-const { flight, gvar, edge } = inav;
 
-edge(() => flight.armTimer > 1000, { duration: 0 }, () => {
-  gvar[0] = 0;              // Reset counter
-  gvar[1] = flight.yaw;     // Save heading
-  gvar[2] = flight.altitude; // Save starting altitude
+inav.events.edge(() => inav.flight.armTimer > 1000, { duration: 0 }, () => {
+  inav.gvar[0] = 0;              // Reset counter
+  inav.gvar[1] = inav.flight.yaw;     // Save heading
+  inav.gvar[2] = inav.flight.altitude; // Save starting altitude
 });
+
 ```
 
 ### Count Events
 
 ```javascript
-const { flight, gvar, edge } = inav;
 
 // Initialize counter on arm
-edge(() => flight.armTimer > 1000, { duration: 0 }, () => {
-  gvar[0] = 0;
+inav.events.edge(() => inav.flight.armTimer > 1000, { duration: 0 }, () => {
+  inav.gvar[0] = 0;
 });
 
 // Count each time RSSI drops below 30
-edge(() => flight.rssi < 30, { duration: 100 }, () => {
-  gvar[0] = gvar[0] + 1;
+inav.events.edge(() => inav.flight.rssi < 30, { duration: 100 }, () => {
+  inav.gvar[0] = inav.gvar[0] + 1;
 });
+
 ```
 
 ### VTX Power Based on Distance
@@ -533,61 +537,61 @@ edge(() => flight.rssi < 30, { duration: 100 }, () => {
 
 
 ```javascript
-const { flight, override } = inav;
 
 // Far away - maximum power
-if (flight.homeDistance > 500) {
-  override.vtx.power = 4;
+if (inav.flight.homeDistance > 500) {
+  inav.override.vtx.power = 4;
 }
 
 // Medium distance
-if (flight.homeDistance > 200 && flight.homeDistance <= 500) {
-  override.vtx.power = 3;
+if (inav.flight.homeDistance > 200 && inav.flight.homeDistance <= 500) {
+  inav.override.vtx.power = 3;
 }
 
 // Close to home - reduce power
-if (flight.homeDistance <= 200) {
-  override.vtx.power = 2;
+if (inav.flight.homeDistance <= 200) {
+  inav.override.vtx.power = 2;
 }
+
 ```
 
 ### Low Voltage Warning with Hysteresis
 
 ```javascript
-const { flight, gvar, sticky, override } = inav;
 
 // Latch warning at 3.3V/cell, clear at 3.5V/cell
-var lowVoltageWarning = sticky({
-  on: () => flight.cellVoltage < 330,   // Warning threshold
-  off: () => flight.cellVoltage > 350   // Recovery threshold
+var lowVoltageWarning = inav.events.sticky({
+  on: () => inav.flight.cellVoltage < 330,   // Warning threshold
+  off: () => inav.flight.cellVoltage > 350   // Recovery threshold
 });
 
 if (lowVoltageWarning) {
-  override.throttleScale = 50;   // Reduce throttle
-  gvar[0] = 1;                   // Warning flag
+  inav.override.throttleScale = 50;   // Reduce throttle
+  inav.gvar[0] = 1;                   // Warning flag
 }
+
 ```
 
 ### Debounce Noisy Signal
 
 ```javascript
-const { flight, override, edge } = inav;
 
 // Only trigger if RSSI < 30 for at least 500ms
-edge(() => flight.rssi < 30, { duration: 500 }, () => {
-  override.vtx.power = 4;
+inav.events.edge(() => inav.flight.rssi < 30, { duration: 500 }, () => {
+  inav.override.vtx.power = 4;
 });
+
 ```
 
 ### Stick Combination Detection
 
 ```javascript
-const { rc, gvar } = inav;
 
 // Detect specific stick position combination
-if (rc[1].low && rc[2].mid && rc[3].high) {
-  gvar[0] = 1;  // Special mode activated
+if (inav.rc[1].low && inav.rc[2].mid && inav.rc[3].high) {
+  inav.gvar[0] = 1;  // Special mode activated
 }
+
 ```
 
 ---
@@ -598,9 +602,9 @@ if (rc[1].low && rc[2].mid && rc[3].high) {
 const {
   flight,      // Flight telemetry (altitude, speed, GPS, battery, etc.)
   override,    // Override flight parameters (VTX, throttle, arming)
-  rc,          // RC channels (rc[1-18].value, .low, .mid, .high)
-  gvar,        // Global variables (gvar[0-7])
-  pid,         // Programming PID controller outputs (pid[0-3].output)
+  rc,          // RC channels (inav.rc[1-18].value, .low, .mid, .high)
+  gvar,        // Global variables (inav.gvar[0-7])
+  pid,         // Programming PID controller outputs (inav.pid[0-3].output)
   waypoint,    // Waypoint navigation info
   edge,        // Edge detection function
   sticky,      // Latching condition function
@@ -608,6 +612,7 @@ const {
   timer,       // Periodic timer function
   whenChanged  // Change detection function
 } = inav;
+
 ```
 
 The `flight` object includes a `mode` sub-object for checking active flight modes:
