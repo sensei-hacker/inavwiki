@@ -38,6 +38,7 @@ if (inav.flight.homeDistance > 500) {
   inav.override.vtx.power = 4;
 }
 
+
 ```
 
 
@@ -68,20 +69,19 @@ if (inav.flight.homeDistance > 500) {
 - Arithmetic operations (`+`, `-`, `*`, `/`, `%`)
 - Comparison and logical operations (`>`, `<`, `===`, `&&`, `||`, `!`)
 - Math functions (`Math.min()`, `Math.max()`, `Math.sin()`, `Math.cos()`, `Math.tan()`, `Math.abs()`)
-- Flow control (`edge()`, `sticky()`, `delay()`, `timer()`, `whenChanged()`)
-- Variable management (`gvar[0-7]`, `let`, `var`)
-- RC channel access and state detection (`rc[n].value`, `rc[n].low`, `rc[n].mid`, `rc[n].high`)
-- Flight parameter overrides (`override.vtx.*`, `override.throttle`, etc.)
-- Flight mode detection (`flight.mode.poshold`, `flight.mode.rth`, etc.)
-- PID controller outputs (`pid[0-3].output`)
+- Flow control (`inav.events.edge()`, `inav.events.sticky()`, `inav.events.delay()`, `inav.events.timer()`, `inav.events.whenChanged()`)
+- Variable management (`inav.gvar[0-7]`, `let`, `var`)
+- RC channel access and state detection (`inav.rc[n].value`, `inav.rc[n].low`, `inav.rc[n].mid`, `inav.rc[n].high`)
+- Flight parameter overrides (`inav.override.vtx.*`, `inav.override.throttle`, etc.)
+- Flight mode detection (`inav.flight.mode.poshold`, `inav.flight.mode.rth`, etc.)
+- PID controller outputs (`inav.pid[0-3].output`)
 - Waypoint navigation
 
 **JavaScript Features:**
-- `const` destructuring: `const { flight, override } = inav;`
 - `let` variables: variables with a lifetime of that loop only
 - `var` variables: allocated to global variables for long lifetime
 - Arrow functions: `() => condition`
-- Object property access: `flight.altitude`, `rc[0].value`
+- Object property access: `inav.flight.altitude`, `inav.rc[1].value`
 
 ---
 
@@ -98,6 +98,7 @@ if (inav.flight.homeDistance > 100) {
   inav.override.vtx.power = 3;
 }
 
+
 ```
 
 **Use when:** You want the action to happen continuously while the condition is true.
@@ -113,6 +114,7 @@ inav.events.edge(() => inav.flight.armTimer > 1000, { duration: 0 }, () => {
   inav.gvar[0] = inav.flight.yaw;  // Save initial heading
   inav.gvar[1] = 0;           // Initialize counter
 });
+
 
 ```
 
@@ -146,6 +148,7 @@ if (rssiWarning) {
   inav.override.vtx.power = 4;  // Max power while latched
 }
 
+
 ```
 
 The latch variable can be referenced multiple times:
@@ -163,6 +166,7 @@ if (lowBatteryLatch) {
   inav.gvar[0] = 1;  // Warning flag
 }
 
+
 ```
 
 **Option 2: Callback syntax** (simpler when actions are self-contained):
@@ -177,6 +181,7 @@ inav.events.sticky(
     inav.override.vtx.power = 4;  // Executes while latched
   }
 );
+
 
 ```
 
@@ -196,6 +201,7 @@ inav.events.delay(() => inav.flight.rssi < 30, { duration: 2000 }, () => {
   inav.gvar[0] = 1;  // Set failsafe flag
 });
 
+
 ```
 
 **Use when:**
@@ -213,6 +219,7 @@ Use `timer()` for actions that toggle ON and OFF periodically:
 inav.events.timer(1000, 1000, () => {
   inav.gvar[0] = 1;  // Active during ON phase
 });
+
 
 ```
 
@@ -232,6 +239,7 @@ inav.events.whenChanged(inav.flight.altitude, 10, () => {
   inav.gvar[0] = inav.gvar[0] + 1;  // Count altitude changes
 });
 
+
 ```
 
 **Use when:**
@@ -248,13 +256,13 @@ inav.events.whenChanged(inav.flight.altitude, 10, () => {
 
 ### Comparisons
 - `===`, `>`, `<` (standard comparisons)
-- `approxEqual(a, b, tolerance)` - approximate equality with tolerance
+- `inav.helpers.approxEqual(a, b, tolerance)` - approximate equality with tolerance
 
 ### Logical
 - `&&`, `||`, `!` (standard logical operators)
-- `xor(a, b)` - exclusive OR
-- `nand(a, b)` - NOT AND
-- `nor(a, b)` - NOT OR
+- `inav.helpers.xor(a, b)` - exclusive OR
+- `inav.helpers.nand(a, b)` - NOT AND
+- `inav.helpers.nor(a, b)` - NOT OR
 
 ### Math Functions
 - `Math.min(a, b)` - minimum of two values
@@ -265,16 +273,17 @@ inav.events.whenChanged(inav.flight.altitude, 10, () => {
 - `Math.abs(x)` - absolute value
 
 ### Scaling Functions
-- `mapInput(value, maxValue)` - scales from [0:maxValue] to [0:1000]
-- `mapOutput(value, maxValue)` - scales from [0:1000] to [0:maxValue]
+- `inav.helpers.mapInput(value, maxValue)` - scales from [0:maxValue] to [0:1000]
+- `inav.helpers.mapOutput(value, maxValue)` - scales from [0:1000] to [0:maxValue]
 
 Example:
 ```javascript
 // Scale RC throttle (1000-2000) to normalized (0-1000)
-const normalized = mapInput(inav.rc[3].value - 1000, 1000);
+const normalized = inav.helpers.mapInput(inav.rc[3].value - 1000, 1000);
 
 // Scale normalized (0-1000) to servo angle (0-180)
-const servoAngle = mapOutput(normalized, 180);
+const servoAngle = inav.helpers.mapOutput(normalized, 180);
+
 
 ```
 
@@ -297,6 +306,7 @@ if (inav.rc[1].high) {     // > 1666us
   inav.gvar[3] = 1;
 }
 
+
 ```
 
 ### Variables
@@ -309,6 +319,7 @@ Runtime state that persists across logic condition evaluations:
 // Global variables (runtime state, 8 slots)
 inav.gvar[0] = 100;
 inav.gvar[1] = inav.gvar[1] + 1;  // Counter
+
 
 ```
 
@@ -327,6 +338,7 @@ if (combinedCheck) {
   inav.override.vtx.power = 4;
 }
 
+
 ```
 
 **Benefits:**
@@ -344,6 +356,7 @@ Allocated to gvar slots automatically:
 // Var variables (allocated to gvar slots)
 var counter = 0;
 counter = counter + 1;
+
 
 ```
 
@@ -375,6 +388,7 @@ let powerLevel = inav.flight.rssi < 30 ? 4 :
                  inav.flight.rssi < 50 ? 3 :
                  inav.flight.rssi < 70 ? 2 : 1;
 
+
 ```
 
 ### Flight Parameter Overrides
@@ -392,6 +406,7 @@ inav.override.throttleScale = 75;      // Scale percentage (0-100)
 
 // Arming safety
 inav.override.armSafety = 1;           // Override arming checks
+
 
 ```
 
@@ -413,6 +428,7 @@ if (inav.flight.mode.rth === 1) {
 if (inav.flight.mode.failsafe === 1) {
   inav.gvar[7] = 1;  // Emergency flag
 }
+
 
 ```
 
@@ -447,6 +463,7 @@ inav.gvar[0] = inav.pid[0].output;
 
 // Combine multiple PID outputs
 inav.gvar[1] = inav.pid[0].output + inav.pid[1].output;
+
 
 ```
 
@@ -484,6 +501,7 @@ inav.events.edge(() => inav.flight.rssi < 30, { duration: 0 }, () => {
 
 // Check inav.gvar[7] value in OSD or Configurator
 
+
 ```
 
 **Q: What's the difference between let and var?**
@@ -512,6 +530,7 @@ inav.events.edge(() => inav.flight.armTimer > 1000, { duration: 0 }, () => {
   inav.gvar[2] = inav.flight.altitude; // Save starting altitude
 });
 
+
 ```
 
 ### Count Events
@@ -527,6 +546,7 @@ inav.events.edge(() => inav.flight.armTimer > 1000, { duration: 0 }, () => {
 inav.events.edge(() => inav.flight.rssi < 30, { duration: 100 }, () => {
   inav.gvar[0] = inav.gvar[0] + 1;
 });
+
 
 ```
 
@@ -553,6 +573,7 @@ if (inav.flight.homeDistance <= 200) {
   inav.override.vtx.power = 2;
 }
 
+
 ```
 
 ### Low Voltage Warning with Hysteresis
@@ -570,6 +591,7 @@ if (lowVoltageWarning) {
   inav.gvar[0] = 1;                   // Warning flag
 }
 
+
 ```
 
 ### Debounce Noisy Signal
@@ -581,6 +603,7 @@ inav.events.edge(() => inav.flight.rssi < 30, { duration: 500 }, () => {
   inav.override.vtx.power = 4;
 });
 
+
 ```
 
 ### Stick Combination Detection
@@ -591,6 +614,7 @@ inav.events.edge(() => inav.flight.rssi < 30, { duration: 500 }, () => {
 if (inav.rc[1].low && inav.rc[2].mid && inav.rc[3].high) {
   inav.gvar[0] = 1;  // Special mode activated
 }
+
 
 ```
 
@@ -612,6 +636,7 @@ const {
   timer,       // Periodic timer function
   whenChanged  // Change detection function
 } = inav;
+
 
 ```
 
