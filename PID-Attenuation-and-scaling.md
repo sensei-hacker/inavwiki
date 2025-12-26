@@ -177,7 +177,7 @@ This plot shows the collective effect pitch angle and raw throttle have on PID s
 
 **Settings :**  
 
-* `TPA_Rate` - the amount of scaling apply to the PIDs. 100% **TPA_Rate** allows the base PID tune to be scaled by a limiting factor of `[2x boost]` 200% - `[0.5 attenuation]` 50%.
+* `TPA_Rate` - the amount of scaling apply to the PIDs. 100% **TPA_Rate** allows the base PID tune to be scaled by a limiting factor of `[2x boost]` - `[0.5 attenuation]`.
 
 * `TPA_breakpoint` - is the point in the throttle curve when the base PID tune is not boosted or attenuated. 
 
@@ -197,6 +197,3 @@ You can now start increasing the `TPA_Rate` value until those oscillations are g
 
 > [!NOTE]
 > The above method had its limitations. It can not attenuate the PIDs at _lower_ throttle values if the airplane is placed into a dive, causing the air-speed to increase. This could lead to control surface oscillations.
-
-
-![](images/tpa_airplane.png)
