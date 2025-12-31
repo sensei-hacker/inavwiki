@@ -23,6 +23,20 @@ All other chips listed will support current and future releases of INAV. (flash 
 
 Check out our [Hardware-Design-Guidelines](https://github.com/iNavFlight/inav/wiki/Hardware-Design-Guidelines) if you want to design your own flight controller to run INAV.
 
+## Downloads
+
+### INAV Configurator
+
+**[Download INAV Configurator](https://github.com/iNavFlight/inav-configurator/releases/latest)** - Available for Windows, macOS, and Linux
+
+The INAV Configurator is the official desktop application for configuring your INAV flight controller. Select your platform from the Assets section.
+
+### INAV Firmware
+
+**[Download INAV Firmware](https://github.com/iNavFlight/inav/releases/latest)**
+
+Download the latest INAV flight controller firmware to flash to your FC board using the configurator.
+
 ## Using the wiki
 
 - The right sidebar lists Wiki Pages and DevDocs grouped under Topic Headings.
