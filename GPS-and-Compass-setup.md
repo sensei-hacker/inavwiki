@@ -22,7 +22,7 @@ Using default settings INAV will configure the GPS automatically, **there is no 
 
 For INAV before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites.
 
-With INAV 7.0 and later, `GPS`, `Galileo` and `BeiDou` or `Glonass`  can be enabled in the GPS configuration tab (the `GPS` constellation is enabled by default). **Always enable as many constellation as your hardware will allow.**
+With INAV 7.0 and later, `GPS`, `Galileo` and `BeiDou` or `Glonass`  can be enabled in the GPS configuration tab (the `GPS` constellation is enabled by default). See [here](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup/#gnss-ublox-update-rate) for the best performance when enabling concurrent satellite constellations.
 
 The magnetometer / compass is normally included as part of the GNSS (GPS) module. 
 If you want to use an external magnetometer other than the one on your GNSS module, do not use both together. You can't use two identical chips/magnetometers on the same I2C bus.
@@ -102,7 +102,6 @@ Ensure the ceramic antenna (light brown or beige in color) faces skywards. To pr
 ![M10Q-5883_4](https://github.com/iNavFlight/inav/assets/47995726/5fd7604b-986e-417f-b134-235b9c67c3dd)
 
 
-
 ## Setting up the compass alignment
 
 * `i2C_speed` can be altered to keep up with the magnetometers maximum data update rate on higher performance quads. The default is 400KHz. This speed works well for all tested magnetometer chips. However the `QMC5883` can run an `i2C_speed = 800KHz` if required.   
@@ -116,9 +115,10 @@ INAV's default Orientation Preset is `CW270FLIP`. This value is based on the ori
 
 ![Matek M10Q](https://github.com/iNavFlight/inav/assets/47995726/52d67080-b96c-47be-bf3a-e6db04f5d374)
 
-However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation. 
-In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation. 
-This chart is a reference to help gauge the hardware `Orientation Preset` of your magnetometer, based on the chips **Clockwise rotation**. And the power plug being a reference marker for the rear, if no forward arrow is provided. The Orientation Preset must first be established, based on the hardware reference marker, before making any alignment changes with the `align_mag_pitch`, `align_mag_roll`, `align_mag_yaw` settings in the CLI or alignment tool sliders.
+However, there are many manufactures that have released GNSS/compass modules onto the market without any thought of adding an orientation arrow to assist installation.    
+In this case you maybe required to work out the orientation preset required for your hardware based on the magnetometer chips position, on your specific installation.    
+This chart is a reference to help gauge the hardware `Orientation Preset` of your magnetometer, based on the chips **Clockwise rotation**. And the power plug being a reference marker for the rear, if no forward arrow is provided.     
+The Orientation Preset must first be established, based on the hardware reference marker, before making any alignment changes with the `align_mag_pitch`, `align_mag_roll`, `align_mag_yaw` settings in the CLI or alignment tool sliders.
 
 ![Clockwise Orientation reference chart](https://github.com/iNavFlight/inav/assets/47995726/c047fb0d-7b83-4a2d-9b2f-b1b986ecfc89)
 
@@ -132,9 +132,10 @@ The image below is an example of a module that does not use the default orientat
 ![Walksnail M181 GPS](https://github.com/iNavFlight/inav/assets/47995726/5146a1fd-8ea3-479f-abb4-45e1dbbe61df)
 
 
-## **NOTE :** 
-The compass must work in conjunction with the Flight controllers IMU. If you invert the flight controller or rotate it on the Yaw axis, this will effect the compass alignment settings.
-Before attempting to use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment. By using the Configurator SETUP/STATUS Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identically to your motions, without any axis drift.
+## Compass and Flight controller alignment
+
+The compass must work in conjunction with the Flight controllers IMU. If you invert the flight controller or rotate it on the Yaw axis, this will effect the compass alignment settings.   
+Before attempting to use any navigation modes, you should verify that the compass alignment is working in unity with the flight controllers alignment. By using the Configurator SETUP/STATUS Tab, and moving the model on all axis's with your hand, to ensure the graphical model moves identically to your motions, without any axis drift.  
 So be mindful of the complexity involved in getting the correct orientation settings if you do deciding to mount the flight controller or GNSS/compass unit on an axis different from the manufacturer recommendation arrow.
 
 
@@ -144,10 +145,11 @@ The general rule behind compass calibration is to ensure the magnetometer report
 
 Ideally, its not good enough to rotate the compass or aircraft, so that each axis faces skyward or towards the ground. Because this can leave areas where _complete_ calibration is missed. Which will provide poor results and navigation performance.
 
-To acquire the best 3 axis calibration results, **your arm and wrist should move the aircraft in a figure 8 or infinity [∞](https://www.google.com.au/search?sca_esv=c7d05ac6ad01166f&sca_upv=1&q=3D+compass++calibration+motion&tbm=vid&source=lnms&sa=X&ved=2ahUKEwiThc-btLGEAxVEa2wGHaZaAO8Q0pQJegQIDBAB&biw=1366&bih=615&dpr=1#fpstate=ive&vld=cid:8bdfdcb6,vid:J_cZnPcW-Yw,st:0) symbol motion in the air, while ensuring every axis faces skywards in the process**. Do this several times (not too quickly) within the allotted 30secs.
+To acquire the best 3 axis calibration results, **your arm and wrist should move the aircraft in a figure 8 or infinity [∞](https://youtu.be/-Uq7AmSAjt8?si=NzkxGHSrda4f4AUC&t=45) symbol motion in the air, while ensuring every axis faces skywards in the process**. Do this several times (not too quickly) within the allotted 30secs.
 * Use a long USB extension lead if its done via connection to the configurator.
 
-The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 as possible. While `magzero_x`  `magzero_y` `magzero_z` can vary. But should never exceed +- 1000 on any axis.  Any dramatic difference indicates a poor calibration. Or too much localized magnetic or electromagnetic interference.
+The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 or 500 as possible, depending on the magnetometer chip used.       
+While `magzero_x`  `magzero_y` `magzero_z` can vary. But should never exceed +- 1000 on any axis.  Any dramatic difference indicates a poor calibration. Or too much localized magnetic or electromagnetic interference.
 >[!NOTE] 
 >A good calibration may take several attempts. So use the above information as a reference if you attempt to obtain a more precise calibration.
 
@@ -256,22 +258,27 @@ Only when you're content that the compass reads correctly for all throttle setti
 
 - Activate GPS in the ports tab in INAV configurator and set it to `57600`, `115200` using UART. Or `19200` using softserial (on your chosen port)
 
-- The baud rate can be set to `230400` when using an M10 device. Which can be beneficial. BUT higher baud rates are also susceptible to interference if the GNSS UART leads run close to a source of RF/EM interference. If you choose to use a higher baud rate, be sure to twist the `TX/RX/5v/G` leads together. Especially if the cable length between the GNSS module and FC is more than 5cm or so.
+- The baud rate can be set to `230400` when using an M9 or M10 devices (dependent on the quality of the modules hardware) which can be beneficial. BUT higher baud rates are also susceptible to interference and data packet loss if the GNSS serial leads run close to a source of RF/EM interference.    
+If you choose to use a higher baud rate, be sure to twist the `TX/RX/5v/G` leads together. Especially if the cable length between the GNSS module and FC is more than 5cm or so.
 
-- Activate GPS in the configuration tab, set it to Ublox7.
+- Activate GPS in the configuration tab, set it to Ublox.
 
 - Using external compass:
 
- * Connect the magnetometer to I2C ports (SCL/SDA) Be aware that with SDA/SLC lines connected the flight battery must often be connected to access configurator and power up the magnetometer.
+ * Connect the magnetometer to i2C ports (SCL/SDA) Be aware that with SDA/SLC lines connected the flight battery must often be connected to access configurator and power up the magnetometer.
 
  * Select your newly connected magnetometer by using `mag_hardware` CLI command. Example `set mag_hardware = auto` if you only have one magnetometer connected.
 
 * Most built in magnetometers are on the underside and rotated 180 degrees, use example `set align_mag = CW180FLIP`. If compass is not working properly in all directions then either think and figure out the direction of your mag, or go through them all until it works as expected.
 
- * INAV does provide an automatic declination setting, based on GNSS coordinates, which is enabled by default `inav_auto_mag_decl = ON`. But if you want to change magnetic declination manually `set inav_auto_mag_decl = OFF`. You have to set correct declination of your specific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
+ * INAV provides an automatic declination setting, based on GNSS coordinates, which is enabled by default `inav_auto_mag_decl = ON`. But if you want to change magnetic declination manually `set inav_auto_mag_decl = OFF`. You have to set correct declination of your specific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
 
 * Calibrate your compass according to [compass calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#compass-calibration)
 
+* Calibrate your compass according to [compass calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#compass-calibration)
+
+* Inav since 1.5 version and newer uses default automatic magnetic declination, if your on old verion or want to change magnetic declination manually you have to set correct declination of your specific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
+ 
 
 Some FC boards may not provide 4.5V power on USB supply. In order to power the GPS it is necessary to connect the battery or use another power source (a 4.5V source may be powered by USB). The onboard 3.3V will be powered by USB, but may not provide adequate voltage, as the GPS regulator typically requires 3.6V minimum.
 
@@ -283,7 +290,7 @@ Once you have connected the GPS to your flight control board
 - Press "Save & Reboot"
 - Then go to the "Configuration" tab in the INAV Configurator
 - Enable GPS
-- Set the "Protocol" to UBLOX7
+- Set the "Protocol" to UBLOX
 - Set the "Ground Assistance Type" to "Auto Detect"
 - set MAG Alignment to CW270FLIP
 - Press "Set & Reboot"
@@ -291,21 +298,29 @@ Once you have connected the GPS to your flight control board
 
 ## GNSS Ublox update rate
 
-INAV 7.0 and later supports a higher GNSS update rate for Ublox receivers.  `gps_ublox_nav_hz`. With M9 and now M10 supporting up to 25Hz.
-If you wish to increase navigation precision. And you have a low noise build, good fix and with EPH/EPV data being acceptable. You may wish to alter this setting. But only do so according to the table below. Note how the maximum update rate can only be achieved with lower concurrent constellations.
-_And a trade off will also be noticed. The satellite count will generally be a little lower, the higher the update rate. But this isn't a draw back. Because higher precision can still be achieved._
+INAV 7.0 and later supports a higher GNSS update rate for Ublox receivers.  `gps_ublox_nav_hz`. With M9 and now M10 supporting up to 25Hz.  
+If you wish to increase navigation precision. And you have a low noise build and high quality GNSS receiver. You may wish to alter this setting. But ONLY do so according to the tables below.    
+Note how the maximum update rate can only be achieved with lower concurrent constellations.
 
 The M9 can run up to 25 Hz with all four constellations enabled. The M10 is more limited as shown here:
-![update rate](https://github.com/iNavFlight/inav/assets/47995726/a541d4bb-3dca-4813-a3ce-60a067ae67a1)
+
+
+<img width="865" height="147" alt="304644162-a541d4bb-3dca-4813-a3ce-60a067ae67a1" src="https://github.com/user-attachments/assets/6e848154-824d-4410-818b-c3ee3125e595" />   
+
+Ideally it is best to run `gps_ublox_nav_hz` at the highest rate your GNSS module will allow. This provides more precision at faster speeds.  
+However doing so can cause data to be lost by the module during processing. So it becomes a balancing act between maintaining a constantly high precision, or a higher update rate that can looses precision randomly.  
+This chart below shows update rates more typically required for flight. Not the theoretically possible values that only work on the best of the best RTK hardware.
+
+| Actual realist update rates                  | GPS only | GPS + Galileo | GPS + Galileo + Glonass | GPS + Galileo + Glonass + Beidou |   
+|----------------------------------------------|----------|---------------|-------------------------|----------------------------------|
+|    M8                                        |  12.5Hz  |     10Hz      |         5Hz             |             N/A                  |
+|    M9                                        |  25Hz    |     20Hz      |         10Hz            |             9Hz                  |
+|    M10                                       |  16Hz    |     12.5Hz    |         8Hz             |             6Hz                  |           
 
 
 If it is the first time you have connected the GNSS unit, then it can take several minutes for a satellite fix to be obtained. This is the time required to download the Almanac and Ephemeris data. This is perfectly normal. But if it takes longer than 13 minutes. You likely have GNSS RF band interference coming from a hardware source in your model.
 
 **Note:** For the GPS unit to work & pick up satellites it needs an unobstructed view to the sky (so if using indoors, don't expect any satellites to be picked up!)
-
-
- * Inav since 1.5 version and newer uses default automatic magnetic declination, if your on old verion or want to change magnetic declination manually you have to set correct declination of your specific location, which can be found here: www.magnetic-declination.com. If your magnetic declination readings are e.g. +3° 34' , the value entered in the INAV configurator is 3.34 (3,34 in some locales). In the CLI, the same effect would be `set mag_declination = 334`. For west declination, use a minus value, e.g. for 1° 32' W, `set mag_declination = -132`. In all cases (both CLI and GUI), the least significant digits are **minutes**, not decimal degrees.
- * Calibrate your compass according to [compass calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration#compass-calibration)
 
 
 ## SBAS
@@ -329,6 +344,8 @@ If you use a regional specific setting you may achieve a faster GPS lock than us
 This setting only works when `gps_auto_config= ON`
 
 ## AssistNow Online/Offline
+
+**Is now depreciated as of June 2025**
 
 INAV 8.0 adds support for AssitNow Online and AssistNow Offline GPS assistance services, which is a proprietary A-GNSS service that can reduce Time To First Fix (TTFF) but requires access to the internet to fetch data. AssistNow Online data is valid for a few hours, while AssistNow Offline data can be valid for weeks. It can be specially beneficial for new GPS units and for units without flash or battery backed ram (BBR).
 
