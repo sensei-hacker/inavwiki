@@ -304,7 +304,7 @@ Allows defined RC channels to be overridden by MSP `MSP_SET_RAW_RC` messages. Th
 
 ### MULTI FUNCTION 
 
-This function use a single mode to select between different functions based on feedback provided by the Multi Function OSD field. Functions are selected by briefly toggling the mode ON/OFF with this sequence, repeating until the required function is displayed in the OSD. The function is then triggered by activating the mode for > 3s. Deactivating the mode for > 3s resets everything leaving the OSD field blank. Ideally a momentary switch should be used to operate the mode although it should also work with a normal switch. Current functions include -
+This function use a single mode to select between different functions based on feedback provided by the Multi Function OSD field. Functions are selected by briefly toggling the mode ON/OFF with this sequence, repeating until the required function is displayed in the OSD. The function is then triggered by activating the mode for > 3s. Deactivating the mode for > 4s resets everything leaving the OSD field blank. Ideally a momentary switch should be used to operate the mode although it should also work with a normal switch. Current functions include -
 * Re-displaying any warnings
 * Emergency landing activation
 * Safehome suspend
