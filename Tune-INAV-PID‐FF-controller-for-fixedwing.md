@@ -55,26 +55,29 @@ You can also use a [Python script](https://gist.github.com/nmaggioni/e42d3f4eb24
     
 ### General ACRO PID tuning
 
-_This topic includes some non conventional means of tuning. However, things don't always work as theory dictates for fixedwing operation when the system still has missing components. e.g. true air speed based PIDFF attenuation._  
 
 _Other settings which can influence the tune are -_
 * [Looptime](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#looptime) can influence PID tuning. It is recommended to tune with the specific loop rate you choose, and not change once tuned. Higher looptime will allow the I-term to respond faster to the error, both in accumulating it (windup) and in correcting for overshoot of the error (unwind).
 
 * [Gyro_main_lpf_hz](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#gyro_main_lpf_hz) can reduce axis jitter if set lower, by reducing the update rate.
 
+* [Servo_lpf_hz](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#servo_lpf_hz) can be increased to provide less servo latency and a slightly faster reaction time for stabilization response. But it should also be noted that less filtering of the servo signal may cause the brushes in the servo motor to wear faster, leading to premature failure.   
+If `servo_lpf_hz` is increased. It must be done in sync with [servo_pwm_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#servo_pwm_rate). `servo_lpf_hz` should not be set higher than half the value of the `servo_pwm_rate`.
+
+
 **I-term:**   
-If the airplane drifts slightly from center on an axis, once _Autotune_, _AutoLevel_ and _Servo_Autotrim_ are complete. Increasing the I-gain on that given axis, can reduce the effect.   
-After Feedforward, allowing I-gain to do a little more work than the P-gain. Can actually make the Roll axis response smoother from an FPV perspective; than fighting a loosing battle by applying too much P-gain, in hopes of removing roll axis wobbles.   
-Be cautious. Too much I-gain can also cause oscillation. Values should be limited in the mid teens. Accounting for the use of [pid_iterm_limit_percent](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#pid_iterm_limit_percent) and [Fixedwing I-term Lock](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#fixedwing-i-term-lock) mentioned below.   
+If the airplane drifts slightly from center on an axis, once _Autotune_, _AutoLevel_ and _Servo_Autotrim_ are complete. Increasing the I-gain on that given axis, can reduce the effect.    
+Be cautious. Too much I-gain can also cause oscillations, because it's taking the accumulated integral error too long to unwind. Values should be limited in the mid teens. Accounting for the use of [pid_iterm_limit_percent](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#pid_iterm_limit_percent) and [Fixedwing I-term Lock](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing#fixedwing-i-term-lock) mentioned below.   
 
 
 **P-term:**    
  If you want more stabilization against hard buffeting from the wind, try increasing the P-gain. But only up to a point.   
-Too much P-gain can cause oscillations as the air-speed increases. This is when you want to apply some [Fixedwing TPA](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling#airplanes).  
-P-term will never be able to fully correct for fixedwing roll axis instability at lower airspeeds, due to processing and SERVO reaction lag. And there won't be enough air flow over the surfaces to provide the optimal stabilization response required. It can often be a case of what you prefer on the Roll axis. **i.e.** Faster jittering from higher P-gain. Or slower mellow movements from higher I-gain.
+Too much P-gain can cause oscillations as the air-speed increases. This is when you want to apply some [Fixedwing APA or TPA](https://github.com/iNavFlight/inav/wiki/PID-Attenuation-and-scaling#fixedwing) which is required tuning in INAV 9.0 and later.   
+P-term will not be able to **completely** correct for fixedwing roll axis motion in windy conditions at lower airspeeds, due to processing and SERVO reaction lag. Together with limited air flow over the control surfaces, not providing the best stabilization response. 
 
 **D-term:**   
  Once the P-gain it tuned to about 80% of its optimal, at a given air speed. Then start applying some D-gain in small amounts, to add axis damping.
+Adding D-term can help tighten the response once P-term is optimally tuned. But be cautious of how much you apply. For optimal servo motor life, 5 should be the limit. But if you don't mind a premature servo failure. You can push D-term higher, for a little extra benefit.
 
 After **manually** tuning your Rates and Gains. You can reduce them from their limit, to what suits your stick feel and flight requirements.  
 It's normal to see reduced servo throw's when reducing rates at this point. If you have full servo throw at this stages you would likely overshoot the target deg/s as well, leaving the P-term to do the rest.
@@ -85,7 +88,7 @@ It's normal to see reduced servo throw's when reducing rates at this point. If y
 * [Auto Level Trim](https://github.com/iNavFlight/inav/wiki/Modes#auto-level-trim-fw) should be used for the purpose of tuning the flight inclination level of the wing, comparing to the Flight Controller boards mounting angle.  
 However it can also be fine tuned manually if desired. Enter `ANGLE` mode. And check if your aircraft fly's straight and level, without climbing or diving slightly. If it doesn't fly level, your FC is probably not mounted flat relative to the aircraft's Angle of Incidence when flying.
 You can adjust it with [fw_level_pitch_trim](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#fw_level_pitch_trim).  
-Adjusting the board's alignment via `align_board_roll`, `align_board_pitch` can also work, but is not recommended.   
+Adjusting the board's alignment via `align_board_roll`, `align_board_pitch` can also work, but is not recommended unless its a VTOL build, when _board alignment_ can be used for the multicopter profile and _level trim_ for the fixedwing profile.
 
 * If the Roll/Pitch bank angles are too low for your taste, you can adjust them via the `max_angle_inclination_rll` and `max_angle_inclination_pit`. This will provide greater authority on both axis's, within the full stick deflection range.   
 If you want the same amount of bank angle in navigation modes, you will also need to increase their values via `nav_fw_bank_angle`, `nav_fw_climb_angle`, `nav_fw_dive_angle`. However, keep in mind `nav_fw_bank` angles can not be set greater than `max_angle_inclination`.
