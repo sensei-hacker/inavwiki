@@ -121,6 +121,13 @@ DevDocs [Profiles.md](https://github.com/iNavFlight/inav/blob/master/docs/Profil
 </details>
 
 <details>
+<summary>Rangefinder & Optic Flow</summary>
+
+[Optic Flow and Rangefinder Setup](Optic-Flow-and-Rangefinder)\
+Setup and usage for terrain following & GPS-free position hold
+</details>
+
+<details>
 <summary>OSD and VTx</summary>
 
 DevDocs [Betaflight 4.3 compatible OSD.md](https://github.com/iNavFlight/inav/blob/master/docs/Betaflight%204.3%20compatible%20OSD.md)\

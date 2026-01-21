@@ -86,7 +86,27 @@ Gyroscope calibration, or rather bias recording, is performed on every startup. 
 
 With most models, connecting batteries while keeping the craft still can be difficult, simply ensure the craft is placed on the ground (or somewhere solid and still) for 5 seconds as soon as possible after powering up. Gyro auto calibration will only run when no motion is detected 
   
-**Note:**  Under normal conditions there is no need for a manual calibration procedure, but if required this can be performed via stick commands. 
+**Note:**  Under normal conditions there is no need for a manual calibration procedure, but if required this can be performed via stick commands.
+
+## Optic Flow Calibration
+
+If you have an optical flow sensor installed (for GPS-free position hold or enhanced navigation), it should be calibrated in the Configurator.
+
+**Calibration Steps:**
+
+1. Connect your aircraft to INAV Configurator
+2. Go to the **Calibration** tab
+3. Place aircraft on a flat, stable surface
+4. Click "Calibrate Optic Flow"
+5. Keep aircraft completely stationary for ~30 seconds during auto-calibration
+6. Verify calibration succeeded by checking that CLI parameters are not at default values
+
+**Verification (CLI):**
+After calibration, verify these settings have changed from defaults:
+- `opflow_scale` should be adjusted from the default 10.5
+- Hardware-specific calibration values should be stored
+
+If calibration fails or optic flow isn't working correctly, see the [Optic Flow and Rangefinder Setup Guide](Optic-Flow-and-Rangefinder) for detailed configuration and troubleshooting.
 
 ## Backup and Restore the Settings
 

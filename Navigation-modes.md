@@ -53,7 +53,7 @@ ALTHOLD is not a flight mode in it's own right. It is a modifier which when acti
 
 **Please see the platform specific notes for ALTHOLD below.**
 
-**Lidar sensor**: When the hardware is configured, the ALTHOLD code will use the Lidar sensor automatically when it comes into range of the terrain. It can also be placed into operation on a multicopter platform by enabling _Surface Mode_.
+**Rangefinder (LIDAR/SONAR)**: When a rangefinder is configured, its data is automatically fused into altitude estimates. On multirotors, enabling _Surface Mode_ switches ALTHOLD to terrain-following mode, maintaining constant height above ground instead of absolute altitude. Surface mode is not available on fixed wings - they always use barometric/GPS altitude. See [Optic Flow and Rangefinder Setup](Optic-Flow-and-Rangefinder) for configuration details.
 
 >[!Caution]
 >**It is not advisable to use ALTHOLD combine with ACRO or HORIZON modes, on either a multicopter or fixedwing plateform.** 
