@@ -1,6 +1,6 @@
 # Optic Flow and Rangefinder Setup Guide
 
-# DRAFT - PLEASE REVIEW AND UPDATE. THIS DOCUMENT MAY CONTAIN ERRORS
+## DRAFT - PLEASE REVIEW AND UPDATE. THIS DOCUMENT MAY CONTAIN ERRORS
 
 This guide explains how to use optical flow sensors and rangefinders (LIDAR/SONAR) with INAV to enable terrain following and GPS-free position hold.
 
@@ -134,6 +134,9 @@ In INAV Configurator → **Calibration** tab:
 ## Using Surface Mode
 
 **Surface mode** enables **terrain following** - the aircraft maintains a constant altitude above ground instead of absolute altitude. This is the primary use case for rangefinders.
+<img width="640" height="351" alt="surface_mode" src="https://github.com/user-attachments/assets/26565df5-03f1-476a-a312-d3330d4dcd4e" />
+
+
 
 ### Platform Support
 
