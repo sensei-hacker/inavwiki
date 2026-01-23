@@ -373,6 +373,7 @@ set inav_w_xy_flow_v = 2.0      # Horizontal velocity weight
 
 ## Related Documentation
 
+- [Navigation PID tuning MC](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(MC)#setup-tuning-rangefinder-flow) - More Rangefinder and Optical flow related information
 - [Modes](Modes) - All flight modes including SURFACE
 - [Navigation Modes](Navigation-modes) - ALTHOLD, POSHOLD, CRUISE
 - [Calibration Tab](Calibration-Tab) - Sensor calibration procedures
