@@ -6,7 +6,9 @@ INAV's auto launch is intended to provide assistance for launching the fixed-win
 
 `NAV LAUNCH` is automatically aborted after a timeout in seconds (default of 5 seconds), by exceeding an altitude (default to off), or by any pilot input on PITCH/ROLL stick. When it has aborted it goes to whichever mode is selected. This can be Angle, Acro, Horizon, RTH or a waypoint mission (if no other mode is selected it will go to Acro mode).
 
-It's safe to keep `NAV LAUNCH` activated during flight, after the launch has being completed. But, keep in mind that if you accidentally disarm while flying. You need to disable `NAV LAUNCH` mode to being able to control the model again.
+It's safe to keep `NAV LAUNCH` activated during flight, after the launch has being completed.    
+But keep in mind, if you are using INAV firmware before 8.0. And you accidentally disarm while flying. You need to disable `NAV LAUNCH`. Otherwise it will reactivate after rearming. Requiring the sticks to be moved to cancel it and regain control.  
+However in later versions of INAV, `NAV LAUNCH` has a flight speed check. The user is also given 5 seconds to rearm before `NAV LAUNCH` becomes active again.
 
 Gliders have different needs than motorised planes. See [below](#glider-and-slope-soarer-setup) for advice on a glider launch setup.
 
@@ -69,7 +71,8 @@ The _wiggle_ needs to be a quick, deliberate action. This is so that there are n
 
 ### Permanently enabled launch mode
 
-From version 1.9 `NAV LAUNCH` can be permanently enabled via the configurator or the CLI using `feature FW_LAUNCH`. In this case `NAV LAUNCH` doesn't need to be enabled via a transmitter switch prior to arming. If you want to launch the plane manually just move pitch/roll stick after you have armed the plane and you have back throttle control. If you inadvertently disarm mid-air before raising the throttle again (you should lower the throttle to arm again) move pitch/roll stick and you will have throttle control back.
+From version 1.9 `NAV LAUNCH` can be permanently enabled via the configurator or the CLI using `feature FW_LAUNCH`. In this case `NAV LAUNCH` doesn't need to be enabled via a transmitter switch prior to arming. If you want to launch the plane manually just move pitch/roll stick after you have armed the plane and you will regain throttle control.     
+If using INAV firmware pre 8.0. And you inadvertently disarm in-flight. You should lower the throttle and move the pitch or roll stick. This will cancel `NAV LAUNCH` and give you back throttle control.
 
 ### Manual throttle launch
 
