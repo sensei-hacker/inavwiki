@@ -10,14 +10,14 @@ INAV is a Free and Open Source Flight Controller and Autopilot Software System t
 
    | Processor | Speed  | Flash |
    |:---------:|:------:|:-----:|
-   | STM-F405  | 168Mhz |  1Mb  |
-   | STM-F722  | 216Mhz | 512k  |
-   | STM-F745  | 216Mhz |  1Mb  |
-   | STM-F765  | 216Mhz |  2Mb  |
-   | STM-H743  | 480Mhz |  2Mb  |
-   | AT-F435   | 288Mhz |  1Mb  |
+   | STM-F405  | 168 MHz |  1 MB  |
+   | STM-F722  | 216 MHz | 512 KB  |
+   | STM-F745  | 216 MHz |  1 MB  |
+   | STM-F765  | 216 MHz |  2 MB  |
+   | STM-H743  | 480 MHz |  2 MB  |
+   | AT-F435   | 288 MHz |  1 MB  |
 
-General support for STM-F411 processors finished in 7.1.2. 
+General support for STM-F411 processors ended in 7.1.2. 
 All other chips listed will support current and future releases of INAV. (flash memory dependent)
 - Go to the [INAV Welcome Page](https://github.com/iNavFlight/inav?tab=readme-ov-file#readme) for a longer list of features.
 
