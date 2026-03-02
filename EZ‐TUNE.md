@@ -9,8 +9,8 @@ A simplified multirotor tuning tool for PIDs and more.
 For example instead of setting several filters with specified frequencies and types, you only need one slider to set them all.
 
 Where to Find It:
-- There is a tab in the CONFIGURATOR labelled EZ-Tune.
-- This tab contains all settings related to the Easy Tune framework, consolidated onto one page.
+- There is a tab in the CONFIGURATOR labelled Tuning. The first step is to enable EZ-Tune.
+- This contains all settings related to the Easy Tune framework, consolidated onto one page.
 - There is no need to use the CLI anymore.
 
 Features Available in EZ-Tune:
