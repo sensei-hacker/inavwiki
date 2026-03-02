@@ -32,6 +32,7 @@ _FPV Quadcopter with GPS mast_
 * INAV supports DShot ESC protocol, but not to the same level as BetaFlight. DShot 150, 300 or 600 is more than enough for a reliable flight. Faster protocols will reduce the reliability on larger copters, due to ESC signal interference on long wire runs.
 * INAV supports loop frequencies up to 4kHz without i2C devices. Although, for reliable navigation performance its should be limited to 2kHz with i2C devices. 
 * DShot telemetry and beeper is supported, but not Bi-directional. Only single-wire telemetry.
+* Some tips for stabilization PID tuning can be found [here](https://github.com/iNavFlight/inav/wiki/Multirotor-guide#2-tune-your-copters-pitchrollyawlevel-pids-and-other-values). This will provide gains to begin tuning from on more powerful builds.
 
 ### Most important settings you should take a look at before your first flight
 
