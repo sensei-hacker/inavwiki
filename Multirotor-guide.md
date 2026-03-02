@@ -1,44 +1,60 @@
-## 0. Setup hardware
+> [!NOTE]
+>This page provide a general guide for things specific to Multicopter setup.
+ It assumes you have already setup your `Ports`, `Modes`, `Navigation`, `Receiver`, `GPS`, `OSD` etc. They are outside the scope of this document.
 
-* Balance props and motors, install FC on a vibration-damping mount if possible. 
 
 ## 1. Getting your flight controller ready.
 
-* Download latest configurator from [here](https://github.com/iNavFlight/inav-configurator/releases)
-* Flash newest INAV with full chip erase option selected
-* Do the advanced 6-point [sensor calibration](https://github.com/iNavFlight/inav/wiki/Sensor-calibration)
-* Select your Mixer. Most common ones are already available as presets. For exotic setups, see [Custom mixes for exotic setups](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#setups-that-can-be-implemented-with-custom-mixer); if you don't do this, you will not see any motors in the motors tab. 
-* Be sure the model moves on the configurator as it is moving on the bench. If not, adjust board alignment from the Configuration tab
-* If you have a magnetometer, you may need to attach a battery for magnetometer calibration. Rotate the quadcopter 360 degrees on all 3 axes.
+* Download latest configurator from [here](https://github.com/iNavFlight/inav-configurator/releases). And the latest INAV firmware from [here](https://github.com/iNavFlight/inav/releases/tag/9.0.1).
 
-## 2. Configure your TX
+* Flash you flight controller with the full chip erase option selected.
 
-No special mixers have to be applied on the TX. Just bypass all the channels as they are to the FC.
-Set trim on your TX to zero. Use subtrim to adjust your TX midpoints to be precisely 1500 when Roll/Pitch/Yaw sticks are centered. You can check the input values in the Receiver tab in INAV configurator. All values should be in the range 1000-2000uS.
+* You will be asked to select a model preset type. Choosing one of these options will provide you a base setting to begin tuning from.
 
-## 3. Tune your copter's Pitch/Roll/Yaw/Level PIDs and other values
+* Go to the `Calibration Tab` and follow the instruction give, to perform an `Accelerometer Calibration`.
 
-Many presets are available on the specific configurator tab and they mostly represent a good starting point.
-Be sure to load the correct present and double check the applied configuration.
+* If the model type you required was not in the presets. Go to the `Mixer Tab` and select one of the `Mixer presets` in the drop-down menu. Many of the more common mixers are available. (Hex, Octo etc)   
+Press **Load and Apply** to make your choice.  
+For even less common mixer types, also see [Custom mixes for exotic setups](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#setups-that-can-be-implemented-with-custom-mixer).
+Other Mixer related information can be found [here](https://github.com/iNavFlight/inav/wiki/Mixer-Tab) and [here](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md). 
 
-[Default values for different type of aircrafts](https://github.com/iNavFlight/inav/wiki/Default-values-for-different-type-of-aircrafts)
+* If the motor output plug on your flight controller does not align with the input plug of the **4 in 1** ESC. e.g. **S1** to **S1** and **S2** to **S2** etc. But instead, they may be something like **S1** to **S4** and **S4** to **S1**. You can use the `Motor Mixer Wizard` in the `Mixer Tab`, to allocate a motor output from the flight Controller, to the corresponding position each motor is located, according to which of the 4 ESC's it is wired to.
 
-## 4. Trim copter to level flight
-DO NOT USE TRIM on your Transmitter to stop your copter drifting. Use board alignment settings or accelerometer trim stick combos.
-You can use RX stick combination to trim the quadcopter: [Controls](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md) 
+* Select motor direction if required. Depending on whether you want to run `Props IN` or `Props OUT`.
 
-## 5. Check your sensors
-* If any, be sure the baro readings are correct and be sure the barometer is shielded with some foam to avoid to be disturbed by the air pushed on it by the propellers.
-* If a magnetometer is in use, be sure to check it is providing the correct heading information. After having calibrated it (outside, far away from buildings and parking lots) be sure that when you point the multirotor nose to the north the heading is 0 and it still is around 0 even if you tilt the multirotor a bit on pitch and roll axis. Be also sure that the magnetometer is placed reasonably away from interference sources (such as power wires).
-Having a good compass reading is **crucial** for navigation function to work correctly.
+* Now go to the `Outputs Tab`, and **Enable Motor and Servo output**.
 
-## 6. Setup and verify failsafe on TX and INAV
-[Guide for setting up failsafe](https://github.com/iNavFlight/inav/wiki/Failsafe#setting-up-failsafe-with-return-to-home)
+* While in the `Outputs Tab`, select the **ESC protocol** of your choice.
 
-## 7. Determine and set hover throttle
-To let the altitude hold controller work correctly, you need to input your hover throttle (the throttle you need to apply to make the multirotor hover) into the **nav_mc_hover_thr** CLI variable or just set it via the configurator configuration tab.
-If your copter jumps/rises when you activate altitude hold, reduce your nav_mc_hover_thr a bit. If your copter falls, increase it a bit; fine tune until there is no jump or fall when activating altitude hold.
+* If you use a magnetometer (recommended), it will also require setup in the `Alignment Tool Tab` and `Calibration Tab`. More specific information with regards to Flight Controller / Magnetometer alignment and calibration can be under [GPS and Compass setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup).
+
+* Once the above is complete. Make sure the Copter moves identical to the virtual image in the `Status Tab`. It must do this on all 3 axis's. An deviation indicates incorrect alignment or calibration.
+
+## 2. Tune your copter's Pitch/Roll/Yaw/Level PIDs and other values
+
+INAV multicopter tuning can be made easier for new users with [EZ-Tune](https://github.com/iNavFlight/inav/wiki/EZ%E2%80%90TUNE).  
+When you load a platform preset after flashing your hardware. Multicopter EZ-Tune will be enabled by default in the Tuning Tab.  
+If you wish to run your own tune. Turn off the ENABLED button.
 
 
-## 8. Get to know the CLI values.
-INAV offers a lot of customization through CLI variables. It is strongly recommended to read through [INAV CLI variables](https://github.com/iNavFlight/inav/wiki/INAV-CLI-variables) and [available CLI variables](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md)
+> [!Tip]
+> The default presets many not always be correct. Due to the influence your selected hardware can have upon the PID tune.    
+>
+> **Example:** A lower powered 5" cruiser running on a 3 cell battery, will generally require a different tune to a 5" race quad running on a 6 cell battery.   
+> The reason being is because the 6s quad will provide far more thrust for the PID controller to work with. Actually making tuning easier. But often requiring the PID values to be lower, because the PID setpoint error can be dealt with much faster.
+
+The image below shows an example of the preset tune for a 7" multicopter.
+
+<img width="1113" height="354" alt="7 inch MC preset" src="https://github.com/user-attachments/assets/212b1b0e-a138-40b8-9826-94150834bc7c" />
+
+But in the case mentioned above under the `TIP`. Such a tune is better suited to a multicopter that is NOT running a stronger power train. Like a 6 cell install.    
+
+The tune below has the _Integral_ and _Derivative_ gains on the pitch and roll reduced, to better suit a multicopter that has a higher power to weight ratio.     
+If you have migrated from BetaFlight to INAV. These gains will provide a safer start point to begin tuning from. Whether it be a 3", 5" or 7" build.
+
+<img width="1112" height="349" alt="Higher performance quad starting tune" src="https://github.com/user-attachments/assets/0c5334df-9578-4f39-a9b5-b27e87c41217" />
+
+## 3. Selecting filters 
+
+## 4. Get to know the CLI values.
+INAV offers a lot of customization through CLI variables. It is strongly recommended to read through [CLI Variable reference](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md) and [available CLI variables](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md)
