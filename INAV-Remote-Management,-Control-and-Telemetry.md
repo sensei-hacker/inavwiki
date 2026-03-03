@@ -103,7 +103,7 @@ Note that the INAV developers take backwards compatibility seriously; changing a
 
 ### MAVLink
 See [the INAV MAVLink documentation](https://github.com/iNavFlight/inav/wiki/Mavlink) for a more in depth description of the implementation, which is not 100% compatible with the Ardupilot/PX4 but supports some important features for telemetry, missions and navigation.
-* [MAVlink developer info](https://mavlink.io/en/). 
+* [MAVlink developer info](https://mavlink.io/en/).
 * There is a application in the [mwptools repository, mavtest](https://codeberg.org/stronnag/mwptools/tree/master/src/samples/mavtest) that summarises / validates the MAVLink messages supported by INAV.
 * INAV source code.
   - [Telemetry](https://github.com/iNavFlight/inav/blob/master/src/main/telemetry/mavlink.c)
@@ -149,13 +149,13 @@ Note:
 
 The MSP messages `MSP_SET_RAW_RC` / `MSP_RC` can be used to implement remote control via MSP (i.e. control channels and stick commands). These commands can come from a co-processor / flight computer , a ground station, or other source.
 
-There is a [sample application](https://github.com/stronnag/msp_set_rx) that describes the requirements / restrictions / idiosyncrasies involved using the MSP interface.
+There is a [sample application](https://codeberg.org/stronnag/msp_set_rx) that describes the requirements / restrictions / idiosyncrasies involved using the MSP interface.
 
 Likewise, the MAVLink `RC_CHANNELS_OVERRIDE`, `RC_CHANNELS_OVERRIDE_RAW`, `RC_CHANNELS`. See, inter alia,  [INAV #8282](https://github.com/iNavFlight/inav/pull/8282) and [INAV #8132](https://github.com/iNavFlight/inav/issues/8132) and [INAV #8173](https://github.com/iNavFlight/inav/pull/8273) for limitation / caveats / current implementation status.
 
 ### Follow Me (`GCS NAV`).
 
-INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). This allows the user to direct the vehicle to fly to a specific location. This was intended for mobile ground station (specifically the obsolete Android application "EZGUI") to instruct the vehicle to follow a GPS equipped target (often the pilot). [mwp](https://codeberg.org/stronnag/mwptools) supports `GCS NAV`, allowing in flight selection of a "follow me" point on the map, which is then transmitted to the vehicle. The is also a [follow me gadget/wand](https://github.com/stronnag/inav-follow-me) project, using a RPi Pico MCU.
+INAV has provided a "follow me" implementation via MSP since v1.2/1.3  (2016). This allows the user to direct the vehicle to fly to a specific location. This was intended for mobile ground station (specifically the obsolete Android application "EZGUI") to instruct the vehicle to follow a GPS equipped target (often the pilot). [mwp](https://codeberg.org/stronnag/mwptools) supports `GCS NAV`, allowing in flight selection of a "follow me" point on the map, which is then transmitted to the vehicle. The is also a [follow me gadget/wand](https://codeberg.org/stronnag/inav-follow-me) project, using a RPi Pico MCU.
 
 * The FC is placed in `POSHOLD` and `GCS NAV` modes.
 * The consumer updates 'special' `WP#255` (holds the requested `POSHOLD` location) using `MSP_SET_WP` messages.
@@ -297,13 +297,13 @@ Note: you could do most or all of the above just with `MSP_SET_RAW_RC` rather th
 
 NOTE: If you have a better example (or additional examples), please augment or replace the following paragraphs.
 
-The [flightlog2kml](https://github.com/stronnag/bbl2kml) project contains a tool [fl2sitl](https://github.com/stronnag/bbl2kml/wiki/fl2sitl) that replays a blackbox log using the [INAV SITL](https://github.com/iNavFlight/inav/blob/master/docs/SITL/SITL.md). Specifically, this uses MSP and MSP_SET_RAW_RC to establish vehicle characteristics, monitor the vehicle status, arm the vehicle and set RC values for AETR and switches during log replay simulation to effectively "fly" the SITL for the recorded flight.
+The [flightlog2kml](https://codeberg.org/stronnag/bbl2kml) project contains a tool [fl2sitl](https://codeberg.org/stronnag/bbl2kml/wiki/fl2sitl) that replays a blackbox log using the [INAV SITL](https://github.com/iNavFlight/inav/blob/master/docs/SITL/SITL.md). Specifically, this uses MSP and MSP_SET_RAW_RC to establish vehicle characteristics, monitor the vehicle status, arm the vehicle and set RC values for AETR and switches during log replay simulation to effectively "fly" the SITL for the recorded flight.
 
-The MSP initialisation, MSP status monitoring and MSP RC management code is in [msp.go](https://github.com/stronnag/bbl2kml/blob/master/pkg/sitlgen/msp.go), specifically the `init()` and `run()` functions. Arming / disarming in [sitlgen.go](https://github.com/stronnag/bbl2kml/blob/master/pkg/sitlgen/sitlgen.go), `arm_action()` function.
+The MSP initialisation, MSP status monitoring and MSP RC management code is in [msp.go](https://codeberg.org/stronnag/bbl2kml/blob/master/pkg/sitlgen/msp.go), specifically the `init()` and `run()` functions. Arming / disarming in [sitlgen.go](https://codeberg.org/stronnag/bbl2kml/blob/master/pkg/sitlgen/sitlgen.go), `arm_action()` function.
 
-The [msp_set_rx](https://github.com/stronnag/msp_set_rx) project exercises `MSP_SET_RAW_RC`.
+The [msp_set_rx](https://codeberg.org/stronnag/msp_set_rx) project exercises `MSP_SET_RAW_RC`.
 
-The [inav-follow-me](https://github.com/stronnag/inav-follow-me) project provides a Raspberry Pi Pico based project implementing "follow-me" using `GCS NAV`.
+The [inav-follow-me](https://codeberg.org/stronnag/inav-follow-me) project provides a Raspberry Pi Pico based project implementing "follow-me" using `GCS NAV`.
 
 The [msp_override](https://codeberg.org/stronnag/msp_override) projects provides a simple example of using `MSP SET_RAW_RC` with `USE_MSP_RC_OVERRIDE` (and a physical RX/TX).
 
