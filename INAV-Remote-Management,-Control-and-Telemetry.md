@@ -79,9 +79,9 @@ INAV supports the following variations:
 
 #### MSP References
 
-[INAV Wiki MSPV2 definition](https://github.com/iNavFlight/inav/wiki/MSP-V2).
+[INAV Wiki MSPV2 definition](https://github.com/iNavFlight/inav/wiki/MSP-V2). Description of protocol and message fields.
 
-[INAV MSP Message Catalogue](https://github.com/iNavFlight/inav/wiki/MSP-Messages-reference).
+[MSP Message Catalogue](https://github.com/iNavFlight/inav/blob/master/docs/development/msp/README.md). Annotated catalogue of MSP messages.
 
 [INAV Wiki MSP Navigation Messages](https://github.com/iNavFlight/inav/wiki/MSP-Navigation-Messages). Detailed explanation of the usage of INAV / MSP Way point definitions.
 
@@ -311,3 +311,4 @@ The [msp_override](https://codeberg.org/stronnag/msp_override) projects provides
 
 * [Building custom INAV](https://github.com/iNavFlight/inav/wiki/Building-custom-firmware).
 * [Developer Info / Navigation internals](https://github.com/iNavFlight/inav/wiki/Developer-info)
+* [MSP Message Catalogue](https://github.com/iNavFlight/inav/blob/master/docs/development/msp/README.md)
