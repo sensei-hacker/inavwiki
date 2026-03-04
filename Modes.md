@@ -80,12 +80,23 @@ Airmode will keep I-term fully enabled at zero throttle, once [airmode_throttle_
 **Additional benefits:** 
 MC Airmode I-term functionality can be adjust in the Configurator _Tuning tab_, under _I-term Mechanics_. With features like _I-term relax_ and _Anti-gravity_.
 
-**Fixedwing:**   
-Airmode works slightly different for fixedwings. It uses different settings for [airmode_type](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#airmode_type) - `STICK_CENTER` and `STICK_CENTER_ONCE`.  
-The link explains how `STICK_CENTER` works. While `STICK_CENTER_ONCE` operates by the same method when `airmode_throttle_threshold` is exceeded and the control sticks are moved from center. _But it will always keep Airmode active until you disarm_. This is more beneficial for fixedwing platforms like powered gliders. So they maintains Airmode stabilization at zero throttle.  
-Both settings prevent I-term windup before launch, if you don't throw the airplane immediately after arming.    
+**Fixedwing:**  
+Fixedwing Airmode works differently.   
+When used in conjunction with ACRO mode, Airmode superimposes an Attitude hold type stabilizer over the Rate mode stabilizer.   
+But because permanently enabled Airmode is often selected. Most people overlook the difference between Rate and Attitude modes.  
 
-Airmode uses the servo's for stabilization on a fixedwing, instead of motors as with a multicopter. It enables a higher stabilization response from ACRO mode. Even providing a more locked-in attitude control if the I-gain is increased on that axis. With no benefit to having it enabled with other flight modes.  
+When ACRO or RATE mode is active by itself, and you move the airplane on an axis. You will see the control surface on that corresponding axis quickly deflect to apply correction against that motion, then return the control surface to the center position again.  
+
+But if Airmode is enabled with ACRO mode, and you have Airmode activated via `Airmode_throttle_threshold`. Then you run the same test as above, by moving the airplane on an axis. You will observe the control surfaces begin to deflect; and hold that deflection until the airplane is brought back to the attitude it started from.     
+The strength Airmode will apply to holding a specific flight attitude is determined by how much I-term you have applied to that axis.
+With little to no benefit to having Airmode enabled with other flight modes that are ANGLE based. Because they use the LEVEL controller.
+
+For Fixedwing Airmode to become active for flight. It requires `Airmode_throttle_threshold` to be met. Which uses different settings for [airmode_type](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#airmode_type) than for multicopter. They are - `STICK_CENTER` and `STICK_CENTER_ONCE`.    
+The link explains how `STICK_CENTER` works. While `STICK_CENTER_ONCE` is activated by the same method. But instead of disabling Airmode when the throttle is lowered below the `throttle_threshold`, it will keep Airmode active until you disarm. This is more beneficial for fixedwing platforms like powered gliders. So they maintain Airmode stabilization at zero throttle.    
+The requirement to also move the sticks from center to activate Airmode, prevents I-term windup before launch, if you don't throw the airplane immediately after raising the throttle.
+
+People often forget that an Attitude stabilizer which uses a passive means to implement control, like control surfaces, opposed to an active means like motors. Can only hold the attitude it is commanded, if it's provided enough airflow over the control surface to do the work.
+
 Also see [here](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing) for additional information on this topic related to Fixedwings.
 
 ### ANGLE
