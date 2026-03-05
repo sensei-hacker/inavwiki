@@ -54,7 +54,16 @@ If you have migrated from BetaFlight to INAV. These gains will provide a safer s
 
 <img width="1112" height="349" alt="Higher performance quad starting tune" src="https://github.com/user-attachments/assets/0c5334df-9578-4f39-a9b5-b27e87c41217" />
 
-## 3. Selecting filters 
+## 3. Navigation specific settings
 
-## 4. Get to know the CLI values.
+Adjusting these setting won't take long, but it is often over looked in setup. Leading to poor navigation performance or a crash landing in a Failsafe condition.
+
+`nav_mc_hover_thr` - Please read [here](https://github.com/iNavFlight/inav/wiki/Navigation-modes#using-althold-with-a-multicopter-mc) for a more detailed explaination of why it is important to adjust this setting.
+
+`failsafe_throttle` and `failsafe_of_delay` - Please read through this short expatiation [here](https://github.com/iNavFlight/inav/wiki/Failsafe#configuration-of-inav) to help understand why adjusting these settings is required.
+
+
+## 4. Selecting filters 
+
+## 5. Get to know the CLI values.
 INAV offers a lot of customization through CLI variables. It is strongly recommended to read through [CLI Variable reference](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md) and [available CLI variables](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md)
