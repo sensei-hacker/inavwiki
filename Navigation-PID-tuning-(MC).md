@@ -18,6 +18,7 @@ Accounting for this detail can make your build a great success, or a disappointm
 ## Tuning Altitude Controller - Z axis:
 
 **Inability to maintain altitude can be caused by a number of reasons:**
+- Incorrectly set [nav_mc_hover_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_hover_thr) - Adjust this setting to suit what your copter requires to hold a vertical stationary hover.
 - Insufficient POS_P, POS_I and/or VEL_P, VEL_I - _The default multicopter Altitude PID gains are set conservative for safety._
 - Non-functional barometer - _Go to the Configurator "_Sensors tab_" and verify that barometer graph changes as you move the copter up and down._
 - Poor GNSS satellite accuracy and EPV altitude data - _Ensure you have a HDOP less than 1.2 for best precision. And never above 1.8. [Possible causes](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#installing-the-gnss-unit---antenna-orientation)_
