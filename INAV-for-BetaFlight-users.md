@@ -7,12 +7,13 @@ In recent times Betaflight has gained basic support for more diverse multicopter
 **Muliticopter support -**
 * `Bi-copter`
 * `Tri-copter`
+* `Quad-copter`
 * `Hexa-copter`
 * `Octo-copter`
 
 **Fixedwing support -** 
 * `Airplanes with a conventional tail or V-tail`
-* `Flying wing elevon craft`
+* `Flying wing elevon aircraft`
 * `Gliders`
 
 **VTOL -**
@@ -23,7 +24,7 @@ In recent times Betaflight has gained basic support for more diverse multicopter
 **Ground based vehicles -**
 * `Rovers and cars `
 * `Track vehicles`
-* `Boats.`
+* `Boats`
 
 Besides these big differences, INAV and BetaFlight still share some common source code. With code occasionally being ported from one project to the another.  
 However just because the two have a common root. Don't assume that they will work the same when you find a feature in both that look similar. A lot has changed since the days of Cleanflight 10 years ago.
@@ -33,7 +34,7 @@ The INAV configurator and BetaFlight configurator have a similar layout. So you 
 To flash INAV on your Flight Controller board, the process is the same.  
 Go to the Firmware Flasher tab in the INAV Configurator and select your flight controller TARGET file.
 
-### Reviewing the differences:
+### Reviewing the differences :
 
 * Not all Flight Controller boards have a supported target for INAV. But the most common ones do.
 * After flashing, the first time you connect your FC board to INAV configurator, it'll ask you to load a preset. Doing so provides a basic starting point to begin tuning from. However, do not neglect looking through the Wiki and Docs to acquire more detailed setup information, which will absolutely be required.
@@ -49,25 +50,26 @@ This is not ideal for best satellite precision when `Braking`, `Turning` or `Hol
 
 * INAV does NOT have a complete resource mapping feature. But it does support timer output mapping for motors and servo's.
 * INAV supports DShot ESC protocol, but not at the same level as BetaFlight. DShot 150, 300 or 600 is more than enough for a reliable flight.   
-Faster protocols will reduce reliability on larger models, due to the possibility ESC signal interference on long wire runs.
+Faster protocols will reduce reliability on larger models, due to the possibility of ESC signal interference on long wire runs.
 * INAV supports loop frequencies up to 4kHz without i2C devices. Although, for reliable navigation performance its should be limited to a maximum of 2kHz.    
 Using 1Khz with later INAV builds, both fixedwing and multicopter can provide surprising good performance. With this becoming a safer default in future releases. This too will eventually become the case for Betaflight, if they start to peruse INAV in its path, while using current processor hardware.
 * DShot telemetry and beeper is supported, but not Bi-directional. Only single-wire telemetry.
 * Some tips for stabilization PID tuning can be found [here](https://github.com/iNavFlight/inav/wiki/Multirotor-guide#2-tune-your-copters-pitchrollyawlevel-pids-and-other-values). This will provide better gains to begin tuning from if using a more powerful build.
 
-### Most important settings you should take a look at before your first flight
+### Most important settings you should take a look at before your first flight :
 
 * `set nav_mc_hover_thr` # Is the base throttle value your copter will use for holding altitude while hovering. Must be set for best Poshold operation.
 * `set failsafe_throttle` # Is the multicopter landing fallback throttle, in a case if GNSS and baro data fails.
 * `set max_angle_inclination_rll = 900` # Maximum bank angle allowed in ANGLE mode, in decidegrees (for roll)
 * `set max_angle_inclination_pit = 700` # Maximum bank angle allowed in ANGLE mode, in decidegrees (for pitch)
-* `set nav_mc_bank_angle = 28` # Max bank angle that the aircraft will command in automated or position control modes, in degrees. (constrained by max_angle_inclination_rll and max_angle_inclination_pit)
-* `set throttle_idle =  5` # Set the minimal motor speed (in percent). The default is 15, which can be high for modern ESCs.
+* `set nav_mc_bank_angle = 28` # Max bank angle that the aircraft will command in automated or position control modes, in degrees. _Constrained by `max_angle_inclination_rll` and `max_angle_inclination_pit`_
+* `set throttle_idle =  5` # Set the minimum motor speed (in percent). The default of 15 is generally too high for copters 7" and below.
 * `set nav_extra_arming_safety = ALLOW_BYPASS` # Let aircraft arm without GPS 3D fix (Caution: RTH position will not be recorded)
-* `set nav_wp_safe_distance = 400` # If the first waypoint of a loaded mission is further than this value (in meters).
+* `nav_wp_load_on_boot` # When set to ON. It will automatically load a saved WP mission from the eeprom at bootup.
+* `set nav_wp_safe_distance = 400` # The mission will not load if the first waypoint is further than this distance (in meters).
 * `set nav_auto_speed = 2000` # Maximum copter ground speed in automated modes (in centimeters per second)
-* `set nav_rth_allow_landing = ALWAYS` # Allow copter to land by itself after RTH or FS.
-* `set nav_rth_altitude = 5000` # Altitude that aircraft will try to reach when doing RTH (in centimeters)
+* `set nav_rth_allow_landing = ALWAYS` # Allows the copter to land by itself after RTH, FS or a WP mission if set.
+* `set nav_rth_altitude = 5000` # Altitude that aircraft will try to reach when performing [RTH](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home).
 * `set blackbox_rate_denom = 32` # Is the logging rate. Lower logging denominators are best used as a safer option, without knowing what features are user selected.
 
 
