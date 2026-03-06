@@ -58,9 +58,9 @@ If you have migrated from BetaFlight to INAV. These gains will provide a safer s
 
 Adjusting these setting won't take long, but it is often over looked in setup. Leading to poor navigation performance or a crash landing in a Failsafe condition.
 
-`nav_mc_hover_thr` - Please read [here](https://github.com/iNavFlight/inav/wiki/Navigation-modes#using-althold-with-a-multicopter-mc) for a more detailed explaination of why it is important to adjust this setting.
+`nav_mc_hover_thr` - Please read [here](https://github.com/iNavFlight/inav/wiki/Navigation-modes#using-althold-with-a-multicopter-mc) for a more detailed explanation of why it is important to adjust this setting.
 
-`failsafe_throttle` and `failsafe_of_delay` - Please read through this short expatiation [here](https://github.com/iNavFlight/inav/wiki/Failsafe#configuration-of-inav) to help understand why adjusting these settings is required.
+`failsafe_throttle` and `failsafe_of_delay` - Please read through this short explanation [here](https://github.com/iNavFlight/inav/wiki/Failsafe#configuration-of-inav) to help understand why adjusting these settings is required.
 
 
 ## 4. Selecting filters 
