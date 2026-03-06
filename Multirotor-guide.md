@@ -1,5 +1,5 @@
 > [!NOTE]
->This page provide a general guide for things specific to Multicopter setup.
+>This page provides a general guide for things specific to Multicopter setup and tuning.  
  It assumes you have already setup your `Ports`, `Modes`, `Navigation`, `Receiver`, `GPS`, `OSD` etc. They are outside the scope of this document.
 
 
@@ -9,7 +9,7 @@
 
 * Flash you flight controller with the full chip erase option selected.
 
-* You will be asked to select a model preset type. Choosing one of these options will provide you a base setting to begin tuning from.
+* You will be asked to select a model preset type. Choosing one of these options will provide you base setting to begin tuning from.
 
 * Go to the `Calibration Tab` and follow the instructions given, to perform an `Accelerometer Calibration`.
 
@@ -64,6 +64,24 @@ Adjusting these setting won't take long, but it is often over looked in setup. L
 
 
 ## 4. Selecting filters 
+
+At the time of writing this. INAV has the following software filter methods. They are used to isolate and remove vibrations from the Gyro and Accelerometer data.
+* `gyro_filter_mode` - STATIC, DYNAMIC, ADAPTIVE
+* `dynamic_gyro_notch_enabled` (default ON - aka Matrix filter)
+* `rpm_gyro_filter_enabled` (default OFF - ESC telemetry, non bi-directional Dshot)
+* `gyro_anti_aliasing_lpf_hz` (default ON - zero = OFF)
+* `gyro_lulu_enabled` (default OFF)
+* `smith_predictor_delay` (zero = default OFF)
+* `setpoint_kalman_enabled` (default ON - aka Unicon filter) 
+
+Filters add control delay, and can only remove so much noise. For this reason it is always better to tune your hardware first, to eliminate as many vibrations as possible. By balancing the motors and the props.   
+Just because the hardware is new. Does not mean it is well balanced from factory.  
+Also provide good vibration damping on your flight controller. Do not set the stack bolts too tight, only firm to lite. 
+
+It's better to run a few good filters, than to run every filter available. Which will only add more delay and little benefit.  
+I have placed the filters in the order of the ones I would personally choose, from first to last.
+
+ 
 
 ## 5. Get to know the CLI values.
 INAV offers a lot of customization through CLI variables. It is strongly recommended to read through [CLI Variable reference](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md) and [available CLI variables](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md)
