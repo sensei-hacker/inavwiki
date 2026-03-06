@@ -11,9 +11,9 @@
 
 * You will be asked to select a model preset type. Choosing one of these options will provide you a base setting to begin tuning from.
 
-* Go to the `Calibration Tab` and follow the instruction give, to perform an `Accelerometer Calibration`.
+* Go to the `Calibration Tab` and follow the instructions given, to perform an `Accelerometer Calibration`.
 
-* If the model type you required was not in the presets. Go to the `Mixer Tab` and select one of the `Mixer presets` in the drop-down menu. Many of the more common mixers are available. (Hex, Octo etc)   
+* If the model type you required was not in the presets. Go to the `Mixer Tab` and select one of the `Mixer presets` in the drop-down menu. Many of the more common mixers are available. (Tri, Hex, Octo etc)   
 Press **Load and Apply** to make your choice.  
 For even less common mixer types, also see [Custom mixes for exotic setups](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#setups-that-can-be-implemented-with-custom-mixer).
 Other Mixer related information can be found [here](https://github.com/iNavFlight/inav/wiki/Mixer-Tab) and [here](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md). 
