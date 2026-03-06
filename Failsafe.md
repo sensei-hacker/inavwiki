@@ -2,7 +2,8 @@
 
 >[!Warning]
 >You can assign an RC mode switch to _simulate_ how a FAILSAFE condition will respond, if the RX signal is actually lost in flight.  
-**FAILSAFE mode** will return the aircraft to the home location. But it should not be used in place of **RTH mode** for manual activation. Functionally, FAILSAFE mode does not work the same as RTH mode in all cases.   
+**FAILSAFE mode** will return the aircraft to the home location. But it should not be used in place of **RTH mode** for manual activation.   
+Functionally, FAILSAFE mode does not work the same as RTH mode in all cases.   
 So bear in mind, that while the FAILSAFE mode is activated, the FC will behave as if the radio link is lost. This means you will **not** be able to Disarm.    
 To regain control, either -   
 >- Cancel the FAILSAFE mode with your assigned RC switch.    
@@ -23,8 +24,10 @@ You have several options on how to configure your receiver:
 
 ### Option one
 
-Set your receiver to `NO PULSES`/ `CUT` in the case of radio signal loss.    
-`NO PULSES` / `CUT` is generally best used for modern RX links. Depending on the protocol, the RX can send a flag via the serial connection, to inform the FC of a Failsafe condition. Or the loss of RX serial data to the FC `failsafe_delay`, will constitute a Failsafe condition. Indicating RC link loss or hardware failure.
+Set your receiver to `NO PULSES`/ `CUT` for when a radio signal loss occurs.      
+`NO PULSES` / `CUT` is generally best used for modern RX links.  
+Depending on the protocol, the RX will either send a flag via the serial connection, to inform the FC of a Failsafe condition.   
+Or the loss of RX serial data to the FC `failsafe_delay`, will constitute a Failsafe condition. Indicating RC link loss or hardware failure.
 
 ### Option two
 
@@ -54,13 +57,13 @@ For more information on the way Failsafe operates if GNSS data is lost, see [her
 
 ## Verifying that failsafe works as intended
 
-**Verify that your failsafe works without props:**
+**Verify in a ground test that failsafe works:**
 
 1. Remove all props
 
 2. Go outside, Arm and apply throttle. Walk/run more than 10 meters away from the arming location and then turn off the radio transmitter.     
 The aircraft should now try to climb. This can be seen by the motor/s increasing in speed. And in the case of a fixedwing. The elevator will deflect upwards, as if to climb. And the ailerons will also deflect, as if it's turning back towards home.  
-_Also verify that you're able to regain control by turning on transmitter again, and move the ROLL/PITCH stick more than `failsafe_stick_threshold`_
+_Also verify that you're able to regain control by turning on the transmitter again or exiting Failsafe mode. Then move the ROLL or PITCH stick more than `failsafe_stick_threshold`_
 
 
 >[!Note] 
@@ -70,19 +73,19 @@ _Also verify that you're able to regain control by turning on transmitter again,
 
 1. Put the props on again
 
-2. Take off, fly at least 50 meters from the home arming location. Then turn off the radio transmitter.   
+2. Take off, fly at least 50 meters from the home arming location. Then either turn off the radio transmitter or use Failsafe test mode.   
  
 >[!Tip] 
->Do this over soft grass if its a multicopter. While if it's an airplane, it's better to have some altitude.  
->To regain control after a failsafe event, you must move the roll/pitch sticks more than `failsafe_stick_threshold` in order to regain control. 
+>Do this over soft grass if it's a multicopter.   
+While if it's an airplane, it's better to have some altitude.  
+>When you have finished the failsafe test, move the roll/pitch sticks more than the `failsafe_stick_threshold` in order to regain control again. 
 ______________________________________________________
 
 ### INAV offers additional failsafe safety features ###
 
 [failsafe_min_distance](failsafe_min_distance) and the action you wish to invoke [failsafe_min_distance_procedure](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#failsafe_min_distance_procedure)  
 
-[failsafe_throttle_low_delay](failsafe_min_distance_procedure) (Time throttle level must have be low before auto disarm)  
-This setting could ruin your day with a mid-air disarm. But conversely save you from personal injury if it is forgotten to disarm the craft (not using motor stop also goes a long way to making the craft safer as the spinning propellers are a visible sign the craft is armed and dangerous).
+[failsafe_throttle_low_delay](failsafe_min_distance_procedure) (The time throttle level must have be low before auto disarm)  
 
 Further reading and settable parameters are available here -
 https://github.com/iNavFlight/inav/blob/master/docs/Failsafe.md#failsafe_throttle
