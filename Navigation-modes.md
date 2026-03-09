@@ -21,7 +21,7 @@ For safety reasons, initial setup requires the conditions below to be met before
 >[!Note]
 >After the initial setup. Navigation modes will remain viewable in the modes tab for the sake of some flight controllers that do not provide USB power to drive the barometer. This requirement was added to prevent navigation modes from being left out of the DIFF file, if the users saves a DIFF without the flight battery being connected. 
 
-When it comes to Arming at the flying field or for bench testing its not good enough to just meet the requirement of 6 satellites, for what is considered a **valid 3D fix**. This also includes an acceptable level of satellite precision. HDOP or EPH/EPV must be low enough so the software can use it for reliable navigation.
+When it comes to Arming at the flying field or for bench testing. It's not good enough to just meet the requirement of 6 satellites, for what is considered a **valid 3D fix**. This also includes an acceptable level of satellite precision. HDOP or EPH/EPV must be low enough so the software can use it for reliable navigation.
 
 `nav_extra_arming_safety = ALLOW_BYPASS` in active by default. So you can use the RC sticks command to [bypass arming checks](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/). But when doing so, remember your home location will not be saved, so RTH will not work correctly!
 
@@ -53,7 +53,8 @@ ALTHOLD is not a flight mode in it's own right. It is a modifier which when acti
 
 **Please see the platform specific notes for ALTHOLD below.**
 
-**Rangefinder (LIDAR/SONAR)**: When a rangefinder is configured, its data is automatically fused into altitude estimates. On multirotors, enabling _Surface Mode_ switches ALTHOLD to terrain-following mode, maintaining constant height above ground instead of absolute altitude. Surface mode is not available on fixed wings - they always use barometric/GPS altitude. See [Optic Flow and Rangefinder Setup](Optic-Flow-and-Rangefinder) for configuration details.
+**Rangefinder (LIDAR/SONAR)**: When a rangefinder is configured, its data is automatically fused into altitude estimates. On multirotors, enabling _Surface Mode_ switches ALTHOLD to terrain-following mode, maintaining constant height above ground instead of absolute altitude. Surface mode is not available on fixed wings - they always use barometric/GPS altitude.   
+See [Optic Flow and Rangefinder Setup](Optic-Flow-and-Rangefinder) and [Optic Flow and Rangefinder](https://github.com/iNavFlight/inav/wiki/Optic-Flow-and-Rangefinder) for configuration details.
 
 >[!Caution]
 >**It is not advisable to use ALTHOLD combine with ACRO or HORIZON modes, on either a multicopter or fixedwing plateform.** 
@@ -71,14 +72,15 @@ When just using ALTHOLD on a multicopter, it requires a barometer at minimum, to
 Activating AIRMODE along with ANGLE mode can provide extra stability for a multicopter in a fast descent. But it's advisable to disable AIRMODE before landing, if your copter has a very high thrust to weight ratio. Otherwise it may flip-over from i-term windup, as it touches down.
 
 **Climb rate in ALTHOLD mode:**
-The throttle stick can be used to alter the climb or sink up to a predetermined maximum [nav_mc_manual_climb_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_manual_climb_rate).
+The throttle stick can be used to manually alter Climb or Descent rate, based on your predetermined maximum [nav_mc_manual_climb_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_manual_climb_rate).
 
 The maximum climb and decent rate in **autonomous** flight modes is defined by [nav_mc_auto_climb_rate](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_auto_climb_rate)
 
 The neutral position of the throttle stick to hold current altitude is defined by [nav_mc_althold_throttle](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_althold_throttle).
-This setting provides three means for the ALTHOLD throttle stick position to be acquired. The default setting, `STICK`, is useful in most cases when activating a flight mode that holds altitude. But it may cause issues under some conditions. e.g. If switching from ACRO to an altitude holding mode, at high throttle in fast forward flight. In this case, the throttle/stick offset can be considerably higher than expected. Making it hard to alter altitude when the hover stick position is closer to `max_check`. Use `HOVER` or `MID_STICK` in this case.
+This setting provides three means for the ALTHOLD throttle stick position to be acquired. The default setting `STICK`, is smoother in most cases when transitioning to a flight mode that holds altitude, from one that did not.  
+But it may cause issues under some conditions. e.g. If switching from ACRO to an altitude holding mode, at high throttle in fast forward flight. In this case, the throttle/stick offset can be considerably higher than expected. Making it hard to alter altitude when the hover stick position is closer to `max_check`. Use `HOVER` or `MID_STICK` in this case.
 
-When you enable ALTHOLD, INAV sends the [nav_mc_hover_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_hover_thr) value to the motors as the starting point for the altitude control loop. You should configure this setting to your copter's hover throttle value, if it doesn't hover close to the default value of 1500us. Otherwise it will begin to ascend or descend.
+When you enable ALTHOLD, INAV sends the [nav_mc_hover_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_hover_thr) value to the motors as the starting point for the altitude control loop. You should configure this setting to your copter's hover throttle value, if it doesn't hover close to the default value of 1300us. Otherwise it may begin to ascend or descend.
 
 `nav_mc_hover_thr` should be set to an approximate value within 2% of what the copter requires to maintain a fixed hover. The altitude controller can only account for small drift. The primary reason for this setting is to provide the software with a general baseline for hover. Determined by your builds thrust to weight ratio.   
 To acquire your copters hover throttle value. You should do your best to hold a fixed hover position while in ANGLE mode. Then reference that throttle value from a log or the OSD. Or even the LUA telemetry on your radio's display. Once you have landed, enter that value into `nav_mc_hover_thr`.
@@ -88,7 +90,7 @@ Because battery voltage reduces throughout the flight; it is beneficial to enabl
 The [alt_hold_deadband](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#alt_hold_deadband) provides a deadband region either side of `nav_mc_althold_throttle` hover stick position, like an expo, to prevent unwanted altitude change occurring. 
 If ALTHOLD is activated at zero throttle INAV will account for deadband and move the neutral "zero climb rate" position a little bit up to make sure you are able to descend.
 
-**Cine-Load lifting :**
+### Cine-Load lifting : 
 In cases when the copter maybe used to carry different weight loads. **e.g.** camera rigs. It is still important that hover throttle be tuned for each load, so POSHOLD altitude control will operate correctly.   
 The `nav_mc_hover_thr` setting is located in the CLI `battery_profile`. So it is possible to setup three predefined hover throttle settings (_one in each battery profile_), based on the known weights your copter will carry.   
 Before takeoff, you can enter the [CMS OSD stick menu](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/) and selected the relevant `battery_profile` containing the preset hover throttle you require to carry the known weight.  
