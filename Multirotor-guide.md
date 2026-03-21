@@ -62,8 +62,23 @@ Adjusting these setting won't take long, but it is often over looked in setup. L
 
 `failsafe_throttle` and `failsafe_of_delay` - Please read through this short explanation [here](https://github.com/iNavFlight/inav/wiki/Failsafe#configuration-of-inav) to help understand why adjusting these settings is required.
 
+## 4. Battery settings
 
-## 4. Selecting filters 
+Adding your batteries specifics into the CLI, under `# battery_profile`. Or in the Configurator _Configuration Tab_ is a very important step.    
+Overlooking this step can leave you in a bad situation. Causing your battery to become unknowingly discharged during flight, leading to a crash. Which could be a safety hazard on a longer range flight.
+
+* `vbat_warning_cell_voltage` - _Pre-warning_. Set to 3.6v is good for a LiPo. 
+* `vbat_min_cell_voltage` - _Time to land_. Set to 3.4v is good for a LiPo.   
+* `battery_capacity` - Set to the rated `mAh` capacity of your battery pack.  
+* `battery_capacity_warning` - Generally set to 25%. Which is 25% of the batteries rated capacity. 
+* `battery_capacity_critical` - Set to 20%. 
+
+> [!Note] 
+> Continually discharging many lithium chemistry batteries below 20% or their capacity, under higher discharge loads can shorten the batteries life expectancy.
+
+More in depth battery related setup information can be found [here](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md).
+
+## 5. Selecting filters 
 
 At the time of writing this. INAV has the following software filter methods. They are used to isolate and remove vibrations from the Gyro and Accelerometer data.
 * `gyro_filter_mode` - STATIC, DYNAMIC, ADAPTIVE
