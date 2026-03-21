@@ -5,6 +5,7 @@
 <details>
 <summary>INAV Version Release Notes</summary>
 
+[9.0.0 Release Notes](9.0.0-Release-Notes)\
 [8.0.0 Release Notes](8.0.0-Release-Notes)\
 [7.1.0 Release Notes](7.1.0-Release-Notes)\
 [7.0.0 Release Notes](7.0.0-Release-Notes)\
