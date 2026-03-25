@@ -164,6 +164,6 @@ There was a big update from 1.9 to 2.0, there's a new mixer framework, a new OSD
 If you done everything right, now your aircraft should be flying ok.
 
 INAV adds lots of new features at every new version! This guide helped you to make your aircraft fly with the newer version as good as it was flying before, but now it's time learn all the new tricks that INAV can do! 
-Check [this page](/iNavFlight/inav/wiki/New-features-over-versions-log) to see everything that the newer versions of INAV can do!
+Check [this page](/iNavFlight/inav/wiki/Older-Release-Notes) to see everything that the newer versions of INAV can do!
 
 Enjoy!

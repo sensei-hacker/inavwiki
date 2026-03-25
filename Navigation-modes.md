@@ -14,7 +14,7 @@ This page lists and explains all the different navigational flight modes of INAV
 See also [non-navigation modes](Modes)
 
 For safety reasons, initial setup requires the conditions below to be met before navigation modes will appear in the Configurator modes tab:
-- ACC and MAG are [calibrated](https://github.com/iNavFlight/inav/wiki/Sensor-calibration) properly. Also note other [specifics](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#multi-rotor-without-a-compass) 
+- ACC and MAG are [calibrated](https://github.com/iNavFlight/inav/wiki/Calibration-Tab) properly. Also note other [specifics](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#multi-rotor-without-a-compass) 
 - _GPS for navigation and telemetry_ must be enabled. Along with the GNSS module being allocated to a serial port
 - A valid altitude source is available
 
@@ -221,7 +221,7 @@ Once within 1 meters of the arming location or Safehome. The copter will attempt
 [nav_land_detect_sensitivity](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_land_detect_sensitivity)   
 [nav_landing_bump_detection](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_landing_bump_detection) - Multicopter only
 
-There are many different RTH fly-home altitude modes, see the [RTH mode page](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home#rth-altitude-control-modes) for details.
+There are many different RTH fly-home altitude modes, see the [RTH mode page](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home) for details.
 
 
 ## WP - Autonomous waypoint mission
