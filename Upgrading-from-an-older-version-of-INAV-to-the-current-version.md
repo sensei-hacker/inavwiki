@@ -2,7 +2,7 @@
 
 This page is intended to make it easy for you to upgrade your INAV older version to the current INAV version. The process is straightforward as long as you follow the instructions detailed here.
 
-**This document is obsolete. The current version of INAV (march 2026) is 9.0.1. **
+**This document is obsolete. The current version of INAV (march 2026) is 9.0.1.**
 
 **This document refers to INAV is 2.6 (the version current at the time the document was last updated).**
 
