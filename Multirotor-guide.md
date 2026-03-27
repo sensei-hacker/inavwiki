@@ -87,6 +87,8 @@ More in-depth battery setup information can be found [here](https://github.com/i
 ## 5. Selecting filters 
 
 At the time of writing this. INAV has the following software filter methods. They are used to isolate and remove vibrations from the Gyro and Accelerometer data.
+
+**Gyro -**
 * `gyro_filter_mode` - STATIC, DYNAMIC, ADAPTIVE
 * `dynamic_gyro_notch_enabled` (default ON - aka Matrix filter)
 * `rpm_gyro_filter_enabled` (default OFF - ESC telemetry, non bi-directional Dshot)
@@ -95,10 +97,22 @@ At the time of writing this. INAV has the following software filter methods. The
 * `smith_predictor_delay` (zero = default OFF)
 * `setpoint_kalman_enabled` (default ON - aka Unicon filter) 
 
-_Filters add control delay_. And they can only remove so much noise before it begins to effect flight performance. For this reason it is always better to mechanically setup your hardware first, and eliminate as many vibrations as possible. By balancing the motors and the props. Just because the hardware is new. Does not mean it is well balanced from factory.  
+**Accelerometer -**
+* `acc_lpf_hz` (default of 15Hz is a good balance between performance and noise handling)
+* `acc_lpf_type` (filter type) - BIQUAD, PT1
+* `acc_notch_hz` (center frequency of the noise peak) - **Should only be used if the peak is narrow and known by log data**
+* `acc_notch_cutoff` (lowest practical frequency the notch should be set). **Only set if the above is used**
+> [!Tip] 
+> Accelerometer vibrations more often cause issues for navigation control, then Gyro induced vibrations.
+>
+> Lowering `acc_lpf_hz` below 7Hz in an attempt to filtering out vibrations, will begin to cause it's own problems. Making navigation control loose.
+
+_Filters add signal delay_. And they can only remove so much noise before it begins to effect flight performance. For this reason it is always better to mechanically setup your hardware first, and eliminate as many vibrations as possible. By balancing the motors and the props.   
+Just because the hardware is new. Does not mean it is well balanced from factory.   
+_If a motor isn't balanced correctly. You can generally hear it audibly, by REMOVING THE PROPS and running each motors individually through its rev range, using the motor sliders in the Outputs Tab._
 
 It's better to run a few good filters, than to run every filter available. Which will only add even more gyro delay, with little to no benefit.  
-I've placed the filters in the order of the ones I would personally choose from flight experience, from first to last.
+I've placed the gyro filters in the order of the ones I personally use from flight experience, from first to last.
 
 Use silicon vibration dampeners for your flight controller. Do not tighten the stack bolts too tight. This will crush the dampener, reducing their ability to adsorb vibrations. Only tighten them firm enough to stop movement. You may have to use thread lock to prevent the nuts coming loose.
 
