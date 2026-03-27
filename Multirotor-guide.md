@@ -5,39 +5,45 @@
 
 ## 1. Getting your flight controller ready.
 
-* Download latest configurator from [here](https://github.com/iNavFlight/inav-configurator/releases)
-* Flash newest INAV with full chip erase option selected
-* Do the advanced 6-point [sensor calibration](https://github.com/iNavFlight/inav/wiki/Calibration-Tab)
-* Select your Mixer. Most common ones are already available as presets. For exotic setups, see [Custom mixes for exotic setups](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#setups-that-can-be-implemented-with-custom-mixer); if you don't do this, you will not see any motors in the motors tab. 
-* Be sure the model moves on the configurator as it is moving on the bench. If not, adjust board alignment from the Configuration tab
-* If you have a magnetometer, you may need to attach a battery for magnetometer calibration. Rotate the quadcopter 360 degrees on all 3 axes.
+* Download latest configurator from [here](https://github.com/iNavFlight/inav-configurator/releases).
 
-* Flash you flight controller with the full chip erase option selected.
+* Flash newest INAV with the _full chip erase_ option selected.
 
-* You will be asked to select a model preset type. Choosing one of these options will provide you base setting to begin tuning from.
-
-* Go to the `Calibration Tab` and follow the instructions given, to perform an `Accelerometer Calibration`.
-
-* If the model type you required was not in the presets. Go to the `Mixer Tab` and select one of the `Mixer presets` in the drop-down menu. Many of the more common mixers are available. (Tri, Hex, Octo etc)   
+* When asked, select your model preset type.   
+If the type of model you have is not under the presets. Go to the `Mixer Tab` and select one of the `Mixer presets` in the drop-down menu. Many of the more common mixers are available here. (Tri, Hex, Octo etc)   
 Press **Load and Apply** to make your choice.  
 For even less common mixer types, also see [Custom mixes for exotic setups](https://github.com/iNavFlight/inav/wiki/Custom-mixes-for-exotic-setups#setups-that-can-be-implemented-with-custom-mixer).
-Other Mixer related information can be found [here](https://github.com/iNavFlight/inav/wiki/Mixer-Tab) and [here](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md). 
+Other Mixer related information can also be found [here](https://github.com/iNavFlight/inav/wiki/Mixer-Tab) and [here](https://github.com/iNavFlight/inav/blob/master/docs/Mixer.md). 
 
-* If the motor output plug on your flight controller does not align with the input plug of the **4 in 1** ESC. e.g. **S1** to **S1** and **S2** to **S2** etc. But instead, they may be something like **S1** to **S4** and **S4** to **S1**. You can use the `Motor Mixer Wizard` in the `Mixer Tab`, to allocate a motor output from the flight Controller, to the corresponding position each motor is located, according to which of the 4 ESC's it is wired to.
+* Go to the `Calibration Tab` and follow the instructions given to perform an `Accelerometer Calibration`. Run the advanced 6-point [sensor calibration](https://github.com/iNavFlight/inav/wiki/Calibration-Tab).
 
-* Select motor direction if required. Depending on whether you want to run `Props IN` or `Props OUT`.
+* If you use a magnetometer (recommended), it will also require setup in the `Alignment Tool Tab` and `Calibration Tab`. More specific information with regards to Flight Controller / Magnetometer alignment and calibration can be under [GPS and Compass setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup). You may need to attach a battery for magnetometer calibration if your GNSS/mag module is not powered by the FCs 4.5v USB pins. 
+
+* Once the above is complete. Make sure the Copter moves identical to the virtual image in the `Status Tab`. It must do this on all 3 axis's. An deviation indicates incorrect alignment or calibration.
 
 * Now go to the `Outputs Tab`, and **Enable Motor and Servo output**.
 
 * While in the `Outputs Tab`, select the **ESC protocol** of your choice.
-## Setup and verify failsafe on TX and INAV
+
+* If the motor output plug on your flight controller does not align with the input plug of the **4 in 1** ESC. **e.g.** **S1** to **S1** and **S2** to **S2** etc. But instead, they may be something like **S1** to **S4** and **S4** to **S1**. You can use the `Motor Mixer Wizard` in the `Mixer Tab`, to allocate a motor output from the flight Controller, to the corresponding position each motor is located, according to which of the 4 ESC's it is wired to.
+
+* Select motor direction if required. Depending on whether you want to run `Props IN` or `Props OUT`.
+
+
+## 2. Setup failsafe and a couple of important navigation settings
+
+Adjusting these setting won't take long, but they are often over looked in setup. Leading to poor navigation performance or a crash landing in a Failsafe condition.
+
+* `nav_mc_hover_thr` - Please read [here](https://github.com/iNavFlight/inav/wiki/Navigation-modes#using-althold-with-a-multicopter-mc) for a more detailed explanation of why it is important to adjust this setting.
+
+* `failsafe_throttle` and `failsafe_of_delay` - Please read through this short explanation [here](https://github.com/iNavFlight/inav/wiki/Failsafe#configuration-of-inav) to help understand why adjusting these settings is required.
+
 [Guide for setting up failsafe](https://github.com/iNavFlight/inav/wiki/Failsafe#setting-up-failsafe-for-rth)
 
-* If you use a magnetometer (recommended), it will also require setup in the `Alignment Tool Tab` and `Calibration Tab`. More specific information with regards to Flight Controller / Magnetometer alignment and calibration can be under [GPS and Compass setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup).
+More advanced MC operation and tuning information can be found under [Navigation modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes) and 
+[Navigation PID tuning (MC)](https://github.com/iNavFlight/inav/wiki/Navigation-PID-tuning-(MC)).
 
-* Once the above is complete. Make sure the Copter moves identical to the virtual image in the `Status Tab`. It must do this on all 3 axis's. An deviation indicates incorrect alignment or calibration.
-
-## 2. Tune your copter's Pitch/Roll/Yaw/Level PIDs and other values
+## 3. Tune your copter's Pitch/Roll/Yaw/Level PIDs and other values
 
 INAV multicopter tuning can be made easier for new users with [EZ-Tune](https://github.com/iNavFlight/inav/wiki/EZ%E2%80%90TUNE).  
 When you load a platform preset after flashing your hardware. Multicopter EZ-Tune will be enabled by default in the Tuning Tab.  
@@ -61,18 +67,11 @@ If you have migrated from BetaFlight to INAV. These gains will provide a safer s
 
 <img width="1112" height="349" alt="Higher performance quad starting tune" src="https://github.com/user-attachments/assets/0c5334df-9578-4f39-a9b5-b27e87c41217" />
 
-## 3. Navigation specific settings
-
-Adjusting these setting won't take long, but it is often over looked in setup. Leading to poor navigation performance or a crash landing in a Failsafe condition.
-
-`nav_mc_hover_thr` - Please read [here](https://github.com/iNavFlight/inav/wiki/Navigation-modes#using-althold-with-a-multicopter-mc) for a more detailed explanation of why it is important to adjust this setting.
-
-`failsafe_throttle` and `failsafe_of_delay` - Please read through this short explanation [here](https://github.com/iNavFlight/inav/wiki/Failsafe#configuration-of-inav) to help understand why adjusting these settings is required.
 
 ## 4. Battery settings
 
-Adding your batteries specifics into the CLI, under `# battery_profile`. Or in the Configurator _Configuration Tab_ is a very important step.    
-Overlooking this step can leave you in a bad situation. Causing your battery to become unknowingly discharged during flight, leading to a crash. Which could be a safety hazard on a longer range flight.
+Add your batteries specifications into the CLI, under `# battery_profile`. Or in the Configurator _Configuration Tab_. This is a very important step.    
+Overlooking this step can cause your battery to become over discharged during the flight, leading to a crash. 
 
 * `vbat_warning_cell_voltage` - _Pre-warning_. Set to 3.6v is good for a LiPo. 
 * `vbat_min_cell_voltage` - _Time to land_. Set to 3.4v is good for a LiPo.   
@@ -81,9 +80,9 @@ Overlooking this step can leave you in a bad situation. Causing your battery to 
 * `battery_capacity_critical` - Set to 20%. 
 
 > [!Note] 
-> Continually discharging many lithium chemistry batteries below 20% or their capacity, under higher discharge loads can shorten the batteries life expectancy.
+> Continually discharging many lithium chemistry batteries below 20% of their rated capacity under higher loads, can reduce its capacity, and also shorten the batteries life expectancy.
 
-More in depth battery related setup information can be found [here](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md).
+More in-depth battery setup information can be found [here](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md).
 
 ## 5. Selecting filters 
 
@@ -96,14 +95,13 @@ At the time of writing this. INAV has the following software filter methods. The
 * `smith_predictor_delay` (zero = default OFF)
 * `setpoint_kalman_enabled` (default ON - aka Unicon filter) 
 
-Filters add control delay, and can only remove so much noise. For this reason it is always better to tune your hardware first, to eliminate as many vibrations as possible. By balancing the motors and the props.   
-Just because the hardware is new. Does not mean it is well balanced from factory.  
-Also provide good vibration damping on your flight controller. Do not set the stack bolts too tight, only firm to lite. 
+_Filters add control delay_. And they can only remove so much noise before it begins to effect flight performance. For this reason it is always better to mechanically setup your hardware first, and eliminate as many vibrations as possible. By balancing the motors and the props. Just because the hardware is new. Does not mean it is well balanced from factory.  
 
-It's better to run a few good filters, than to run every filter available. Which will only add more delay and little benefit.  
-I have placed the filters in the order of the ones I would personally choose, from first to last.
+It's better to run a few good filters, than to run every filter available. Which will only add even more gyro delay, with little to no benefit.  
+I've placed the filters in the order of the ones I would personally choose from flight experience, from first to last.
 
- 
+Use silicon vibration dampeners for your flight controller. Do not tighten the stack bolts too tight. This will crush the dampener, reducing their ability to adsorb vibrations. Only tighten them firm enough to stop movement. You may have to use thread lock to prevent the nuts coming loose.
 
-## 5. Get to know the CLI values.
+
+## 6. Get to know the CLI values.
 INAV offers a lot of customization through CLI variables. It is strongly recommended to read through [CLI Variable reference](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md) and [available CLI variables](https://github.com/iNavFlight/inav/blob/master/docs/Cli.md)
