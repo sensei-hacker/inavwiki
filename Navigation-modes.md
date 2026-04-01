@@ -273,18 +273,17 @@ Only mission numbers 1 - 9 can be selected and "WP CNT" only appears if a missio
 The only limitation with multi missions relates to single WP RTH missions. There seems little purpose in such a mission but if used it must be saved as mission number 1 (if saved at any other position it will truncate loading of other missions beyond that number).
 
 ## WP PLANNER - On the fly waypoint mission planner
-WP PLANNER mode allows a mission to be planned "on the fly" simply by moving the craft to a required location and saving a waypoint at that point then repeating for further waypoints until the mission is complete.
+WP PLANNER mode allows a mission to be planned "on the fly" simply by moving the craft to a desired location and saving a waypoint at that point then repeating for further waypoints until the mission is complete.
 
-The OSD `MISSION INFO` field must be enabled and WP mode must be off before WP PLANNER mode can be used.  
-When WP PLANNER mode is selected the `MISSION INFO` field will display SAVE.  
-To save a waypoint at the current location, just operate the WP Mode switch. The `MISSION INFO` will display OK if the waypoint was saved and the WP count will increment.   
-WP Mode must be set to off before another waypoint can be saved (OK will change back to SAVE). `MISSION INFO` will show WAIT if position data isn't valid. e.g. no GPS lock, or FULL if all available waypoints have been used.
+The OSD `MISSION INFO` field must be enabled and WP mode must be off before WP PLANNER mode can be used. 
+ 
+When WP PLANNER mode is selected `MISSION INFO` will display `SAVE`. To save a waypoint at the current location, just operate the WP Mode switch. `MISSION INFO` will display `OK` if the waypoint was saved and the WP count will increment. WP Mode must be set to off before another waypoint can be saved (`OK` will change back to `SAVE`). `MISSION INFO` will show `WAIT` if position data isn't valid. e.g. no GPS lock, or `FULL` if all available waypoints have been used.
 
-The mission can be run at any time by turning WP PLANNER mode off and selecting WP mode as usual. In this case the `MISSION INFO` field will display PLAN indicating a WP PLANNER mission is currently active.
+The mission can be run at any time by turning WP PLANNER mode off and selecting WP mode as usual. In this case the `MISSION INFO` field will display `PLAN` indicating a WP PLANNER mission is currently active.
 
-The mission can be reset if `nav_mission_planner_reset` is ON and the WP PLANNER Mode switch toggled ON-OFF-ON (resets WP count to 0). It is possible to save the mission to the FC EEPROM on disarm in the usual way, e.g. by using the Save WP Mission stick command.
+The mission can be reset if setting `nav_mission_planner_reset` is `ON` and the WP PLANNER Mode switch toggled `ON-OFF-ON` (resets WP count to 0). It is possible to save the mission to the FC EEPROM on disarm in the usual way, e.g. by using the Save WP Mission stick command.
 
-It should be noted that unlike other Nav modes WP PLANNER will work when disarmed. It should also be noted that it saves the WP altitude using the sea level datum so if a WP is set with the craft on the ground it will use ground level as the WP altitude setting regardless of the subsequent takeoff location.
+It should be noted that unlike other Nav modes WP PLANNER will work when disarmed. It should also be noted that it saves the WP altitude using the sea level datum so if a WP is set with the craft on the ground it will use ground level as the WP altitude regardless of the subsequent takeoff location.
 
 ## GCS_NAV - Ground control station
 This mode is just an permission for GCS to change position hold coordinates and the altitude.
