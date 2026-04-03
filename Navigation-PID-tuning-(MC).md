@@ -8,6 +8,7 @@ Accounting for this detail can make your build a great success, or a disappointm
 
 - [ALTITUDE PID TUNING](#Tuning-Altitude-Controller---Z-axis)
 - [POSITION PID TUNING](#Tuning-Position-Controller---XY-axis)
+- [LEVEL PID TUNING](#Tuning-Level-Controller)
 - [SETUP and TUNING - RANGE FINDER - OPTICAL FLOW](#Setup-Tuning-Rangefinder-Flow)
 
 >[!Caution]
@@ -115,6 +116,19 @@ Low pass filter cutoff frequency for the VEL_XY_D controller attenuation. To all
 
 **Heading:**
 - `nav_mc_heading_p` - Controls the strength that the yaw axis will track the IMU's Compass derived heading target. 
+
+
+## Tuning Level Controller:
+
+ * `fw_p_level`  If you're unhappy with the strength ANGLE based flight modes return to level after the sticks are released. You can increase this setting from default.   
+Increasing its value beyond 30 can make the corresponding axis more jittery when trying to maintain a level attitude.  
+Its responsiveness will also be dependent on - **1)** Motor power **2)** ESC braking effect **3)** The tightness of the main stabilization PID tune.
+
+ * `fw_i_level` works as a Low Pass Filter for the LEVEL controllers update rate. The default value of 15 is optimal, and works in conjunction with `acc_lpf_hz`. This means that `fw_i_level` will add no benefit if set higher than the accelerometers low-pass cutoff frequency.   
+In some cases it may be better to lower it a few points. Because most larger multicopters can not adjust their level attitude at 15 times per second or greater.
+
+ * `fw_d_level` uses the present rate target and the calculated angle rate target. Which allows for transition between ANGLE (level) and ACRO (rate), to provide HORIZON mode.   
+When tuning this value. Increase or decrease the setting according to the stick position you want transition to occur. Generally it is better to have transition occur near full stick deflection. Meaning, it's your intent to perform an aerobatic maneuver.
 
 
 ## Setup Tuning Rangefinder Flow:
