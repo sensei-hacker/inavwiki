@@ -105,7 +105,8 @@ At this point everything should work as expected.
 
 * _If_ you need to arm your plane when it's nowhere near level, you can increase small angle (so INAV will let you arm in an unusual position) type this and save in CLI:
 ``set small_angle = 45`` 
- Note high angle allow the motor to spin up with you're carrying the plane - 90 would mean the plane may be entirely vertical, with the prop near your face.
+
+Note high angles allow the motor to spin up while you're carrying the plane if you accidentally bump the arm switch. 90 would mean the plane is vertical, with the prop near your face or leg.
 
 * If you wish for your fixed wing model to loiter instead of attempting a landing after RTH mode is selected & the model returning home, you can set the model to loiter by typing this and saving in CLI:
 ``set nav_rth_allow_landing = NEVER``
