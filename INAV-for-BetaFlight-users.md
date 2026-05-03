@@ -2,7 +2,7 @@ INAV and BetaFlight were forks from CleanFlight. But nowadays they are both very
 
 While BetaFlight evolved to provide a higher level of race and freestyle flight performance for multirotors in **ACRO** mode.    
 INAV evolved to provide navigation flight capabilities and more diverse multi-platform configuration.   
-In recent times Betaflight has gained basic support for more diverse multicopter and fixedwing platforms. But it does not provide the same level of features, tune-ability and easy of setup for these platforms that INAV does. 
+In recent times Betaflight has gained basic support for more diverse multicopter and fixedwing platforms. But it does not provide the same level of features, tune-ability and easy of setup for those platforms as INAV does. 
 
 **Muliticopter support -**
 * `Bi-copter`
@@ -14,11 +14,12 @@ In recent times Betaflight has gained basic support for more diverse multicopter
 **Fixedwing support -** 
 * `Airplanes with a conventional tail or V-tail`
 * `Flying wing elevon aircraft`
+* `Multi-motor configuration with differential thrust`
 * `Gliders`
 
 **VTOL -**
 * `Tiltrotor`
-* `Quadplane`
+* `Quadplane` - aka 4 + 1
 * `Tailsitter`
 
 **Ground based vehicles -**
@@ -26,33 +27,33 @@ In recent times Betaflight has gained basic support for more diverse multicopter
 * `Track vehicles`
 * `Boats`
 
-Besides these big differences, INAV and BetaFlight still share some common source code. With code occasionally being ported from one project to the another.  
-However just because the two have a common root. Don't assume that they will work the same when you find a feature in both that look similar. A lot has changed since the days of Cleanflight 10 years ago.
+Besides these differences, INAV and BetaFlight still share some common source code. With code occasionally being ported from one project to the another.  
+However just because the two have a common root. Don't assume that they will work the same when you find a similar feature in both. A lot has changed since the days of Cleanflight 10 years ago. And it's very rarely that the same contributor will write an identical features for both projects.
 
-If you already know how to setup a BetaFlight multirotor aircraft, you already know most of what you need to setup an INAV multirotor as well.   
-The INAV configurator and BetaFlight configurator have a similar layout. So you probably won’t have any problems understanding it.  
+If you already know how to setup a BetaFlight multirotor aircraft, you shouldn't find setting up an INAV multirotor too difficult.   
+The INAV configurator and BetaFlight configurator have a similar look and layout. So you probably won’t have any problems working it out.  
 To flash INAV on your Flight Controller board, the process is the same.  
 Go to the Firmware Flasher tab in the INAV Configurator and select your flight controller TARGET file.
 
 ### Reviewing the differences :
 
-* Not all Flight Controller boards have a supported target for INAV. But the most common ones do.
-* After flashing, the first time you connect your FC board to INAV configurator, it'll ask you to load a preset. Doing so provides a basic starting point to begin tuning from. However, do not neglect looking through the Wiki and Docs to acquire more detailed setup information, which will absolutely be required.
-* The accelerometer and gyroscope calibration is also mandatory in INAV.
-* For fully autonomous flight, in modes like `Loiter/Poshold`, `Cruise`, `Course Hold`, `WP Missions` and `RTH`. The Flight Controller board should have an onboard barometer sensor. INAV's altitude navigation precision will suffer without one. 
-* You should also cover the barometer sensor with a small piece of open-cell foam, to prevent the effects of wind altering the sensor readings.
+* Not all Flight Controller boards have INAV [target support](https://github.com/iNavFlight/inav/tree/master/src/main/target). But the most common ones do.
+* After flashing the first time you connect your FC board to INAV configurator, it will ask you to load a preset. Doing so will provide you with a basic starting point to begin tuning from. However, do not neglect looking through the Wiki and Docs to acquire more detailed setup information. Which will be absolutely required.
+* Accelerometer and gyroscope calibration is mandatory in setup for INAV operation.
+* For fully autonomous flight, in modes like `Loiter/Poshold`, `Cruise`, `WP Missions` and `RTH`. The Flight Controller board should have an onboard barometer sensor. INAV's altitude navigation precision will suffer without one. 
+* You should also cover the barometer sensor with a small piece of open-cell foam, to lessen the effects of wind and propeller tip-wash from altering the sensor reading.
 * Prior to the INAV 7.1 release. The GNSS module required an integrated magnetometer sensor for navigation. And still does for the best precision.  
 But GNSS modules without a mag sensor will work from 7.1 on-wards for copter navigation. [See requirements](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#multi-rotor-without-a-compass)
-* The GNSS module should be mounted with good separation from other devices that produce RF and EM interference. Ideally there should be a distance of at least 5cm for best navigation performance.    
-* A GNSS module with a magnetometer should not be mounted in-line with the bell of the motors. It produces the highest level of magnetic flux. The module should always be mounted above or below the motor bell.
+* The GNSS module should be mounted with good separation from other devices that produce RF and EM interference. Ideally there should be a minimum distance of 5cm for best navigation performance.    
+* A GNSS module with a magnetometer should **not** be mounted in-line with the bell of the motors. That location produces the highest level of magnetic flux. The module should always be mounted above or below the motor bell. Or at a distance greater than 12cm if it can't be avoided.
 * Many `ready to fly` quadcopters come with a GNSS module mounting location at the rear of the airframe. It is often mounted at rearward facing 45° angle.   
-This is not ideal for best satellite precision when `Braking`, `Turning` or `Holding position` during navigation. The module should be facing skyward when the copter is level.
+This location is not ideal for the best satellite precision when `Braking`, `Turning` or `Holding position` during navigation. The GNSS modules patch antenna should be facing skyward when the copter is level.
 
 * INAV does NOT have a complete resource mapping feature. But it does support timer output mapping for motors and servo's.
 * INAV supports DShot ESC protocol, but not at the same level as BetaFlight. DShot 150, 300 or 600 is more than enough for a reliable flight.   
-Faster protocols will reduce reliability on larger models, due to the possibility of ESC signal interference on long wire runs.
+Faster protocols will reduce reliability on larger models, due to the possibility of ESC signal interference on longer wire runs.
 * INAV supports loop frequencies up to 4kHz without i2C devices. Although, for reliable navigation performance its should be limited to a maximum of 2kHz.    
-Using 1Khz with later INAV builds, both fixedwing and multicopter can provide surprising good performance. With this becoming a safer default in future releases. This too will eventually become the case for Betaflight, if they start to peruse INAV in its path, while using current processor hardware.
+Using 1Khz with later INAV builds, both fixedwing and multicopter can provide surprising good performance. With this becoming a safer default in future releases. This too will eventually become the case for Betaflight, if they start to pursue INAV in its path, while using current processor hardware.
 * DShot telemetry and beeper is supported, but not Bi-directional. Only single-wire telemetry.
 * Some tips for stabilization PID tuning can be found [here](https://github.com/iNavFlight/inav/wiki/Multirotor-guide#2-tune-your-copters-pitchrollyawlevel-pids-and-other-values). This will provide better gains to begin tuning from if using a more powerful build.
 
@@ -64,12 +65,12 @@ Using 1Khz with later INAV builds, both fixedwing and multicopter can provide su
 * `set max_angle_inclination_pit = 700` # Maximum bank angle allowed in ANGLE mode, in decidegrees (for pitch)
 * `set nav_mc_bank_angle = 28` # Max bank angle that the aircraft will command in automated or position control modes, in degrees. _Constrained by `max_angle_inclination_rll` and `max_angle_inclination_pit`_
 * `set throttle_idle =  5` # Set the minimum motor speed (in percent). The default of 15 is generally too high for copters 7" and below.
-* `set nav_extra_arming_safety = ALLOW_BYPASS` # Let aircraft arm without GPS 3D fix (Caution: RTH position will not be recorded)
+* `set nav_extra_arming_safety = ALLOW_BYPASS` # Allows the aircraft to arm without GPS 3D fix (Caution: RTH location will not be recorded)
 * `nav_wp_load_on_boot` # When set to ON. It will automatically load a saved WP mission from the eeprom at bootup.
 * `set nav_wp_safe_distance = 400` # The mission will not load if the first waypoint is further than this distance (in meters).
 * `set nav_auto_speed = 2000` # Maximum copter ground speed in automated modes (in centimeters per second)
 * `set nav_rth_allow_landing = ALWAYS` # Allows the copter to land by itself after RTH, FS or a WP mission if set.
 * `set nav_rth_altitude = 5000` # Altitude that aircraft will try to reach when performing [RTH](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home).
-* `set blackbox_rate_denom = 32` # Is the logging rate. Lower logging denominators are best used as a safer option, without knowing what features are user selected.
+* `set blackbox_rate_denom = 32` # Is the logging rate. Lower logging denominators are best used as a safer option, without knowing what fields the user has selected.
 
 
