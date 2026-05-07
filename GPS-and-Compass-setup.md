@@ -1,7 +1,7 @@
-In the 7.0 release and later. INAV only supports Ublox and Ublox7 protocols.
-In the 8.0 release and later INAV Ublox GPS units with Ublox Protocol version < 15.00 are deprecated and from INAV 9.0 will no longer be supported.
+In the 9.0 release and later. INAV only supports Ublox protocols.
+Ublox Protocol versions < 15.00 are deprecated and from INAV 9.0 will no longer be supported.
 
-Recommended GNSS units are M8, M9 or M10 models for best navigation performance. While it is uncertain if there are M8 versions with Protocol version lower than 15.00, the majority of the units should be 15.00 or newer.
+Recommended GNSS units are M8, M9 or M10 models. While it is uncertain if there are M8 versions with Protocol version lower than 15.00, the majority of the units should be > 15.00 or newer.
 
 While older versions as M6N and M7N also work up to INAV 8.0. But later generation M8 and the newer M9/M10 versions are superior.
 Most GNSS modules have a built in magnetometer (compass), but there are also some available without e.g. [Matek M10Q](http://www.mateksys.com/?portfolio=sam-m10q) or [Beitian BN-220](https://inavflight.com/shop/p/BN220) which are perfect for planes and flying wings.
@@ -17,7 +17,6 @@ Modules known to work reasonably well:
 **Note** : Not all GNSS units are made equal. If you buy cheap, you are more likely to get cheap performance. Many GNSS units do not include a quality _front end LNA and SAW filter_. Without those components, the chances of poor performance is much greater if you have localized RF noise from a VTX or RX with telemetry.
 
 
-
 Using default settings INAV will configure the GPS automatically, **there is no need for configuring it manually** using software like `u-center`. Nevertheless you have to configure your FC with INAV to receive the GPS signals.
 
 For INAV before 1.9, it is also necessary to perform some [manual configuration of UBLOX 3.01 firmware GPS](https://github.com/iNavFlight/inav/wiki/Ublox-3.01-firmware-and-Galileo) to use Galileo satellites.
@@ -31,30 +30,34 @@ If your flight controller has an internal magnetometer on the FC, using it will 
 
  ## Multi-rotor without a compass
 
-**From the release of INAV 7.1 the use of a compass is no longer mandatory for multirotor navigation as it once was. BUT it is still recommended for the best navigation performance, when it comes to maintaining a fixed position for an _extended period of time_, without heading drift.** e.g. in Poshold. Or taking off and immediately starting a Waypoint mission.
+From the release of INAV 7.1 the use of a compass is no longer mandatory for multirotor navigation as it once was, but it has its limitations.  
+For this reason it is still recommended to use a well setup and calibrated magnetometer for the best navigation performance.
+
 * Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
  Always enable the maximum number of GNSS constellations your hardware will allow. Poor EPV and EPH (Standard deviation of position error) will greatly effect navigation precision. Regardless of having a 3D fix, or what you consider an acceptable number of satellites.
 
-**Be mindful that NONE of the navigation modes** (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) **will become operational until a GPS based heading is obtained**.  To accomplish this, start flying the copter in a straight line until -
-* the OSD Home arrow appears, showing a valid home direction.
-* both the OSD _Heading_ and _Course over Ground_ indicators show a valid heading.
-* keeping both headings closely aligned for a short time.
+>[!TIP]
+>Navigation modes (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) will not become operational until a GNSS heading is obtained.  
+To accomplish this, start flying the copter in a straight line until -
+* The OSD Home arrow appears, showing a valid home direction.
+* Both the OSD _Heading_ and _Course over Ground_ indicators show a valid heading. keep both headings closely aligned for a short time to acquire better precision.
 
 As seen in this [video](https://www.youtube.com/watch?v=iopZfH-DdTI)
 
-Only then can the IMU heading data be trusted for _fixed position_ or slow speed navigation. Do not omit any of the above steps or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.  Also conduct some tests to be sure everything is working correctly when you first setup a multirotor without a compass, just as you would with a compass.
+Only then can the IMU heading data be trusted for _fixed position_ or slow speed navigation. Do not omit any of the above steps or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.   
+Holding a fixed position without a magnetometer is generally limited to a few minutes before heading drift starts to occur. This can be seen when the copter begins to slowly toilet bowl. If this happens, start flying straight again for a time, until a heading refresh is obtained.
 
 >[!NOTE]
-> Prior to 7.1.1, multirotor navigation flight modes (RTH, POSHOLD, WP etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. You can select magnetometer type FAKE if no device is installed. Then proceed to alter your navigation modes. Once done, set magnetometer type back to NONE for compass-less navigation.  
-The same will apply if your flight controller doesn't have a barometer. In this case you will be required to enter `inav_use_gps_no_baro = ON ` in the CLI, prior to 8.0.0. But on later firmware versions, if you chose not to use a barometer as well as a magnetometer. The navigation modes will only appear if magnetometer type = FAKE is set. 
+>Prior to 7.1.1, multirotor navigation flight modes (RTH, POSHOLD, WP etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. You can select magnetometer type FAKE if no device is installed. Then proceed to alter your navigation modes. Once done, set magnetometer type back to NONE for compass-less navigation.    
+>    
+>The same will apply if your flight controller doesn't have a barometer. In this case you will be required to enter `inav_use_gps_no_baro = ON ` in the CLI, prior to 8.0.0. But on later firmware versions, if you chose not to use a barometer as well as a magnetometer. The navigation modes will only appear if magnetometer type = FAKE is set. 
 **This is due to INAV not recommending multirotor navigation without a barometer. Be aware. If you don't use a barometer as well as a magnetometer, and your satellite HDOP is greater than 1.3, the copters altitude and heading accuracy will be greatly reduced. Which can lead to the altitude, heading and position moving around considerably more in Poshold** 
 
-INAV 7.1 will also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
+INAV 9.0 also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
-INAV 7.1 and later will also benefit fixed-wing models by the use of a compass, in providing better heading estimation. While in previous releases a compass provided no extra benefit.
+The use of a compass on fixedwing models in INAV 8.0 and later, provides a faster update for the heading and wind estimation. And also provides for GNSS failure-dead reckoning estimation, during RTH and WP flight.
 
 ## INAV GPS Configuration
-
 INAV will attempt to provide GPS configuration. This is controlled by a number of CLI settings
 
 * `gps_auto_config`
@@ -309,18 +312,18 @@ The M9 can run up to 25 Hz with all four constellations enabled. The M10 is more
 
 Ideally it is best to run `gps_ublox_nav_hz` at the highest rate your GNSS module will allow. This provides more precision at faster speeds.  
 However doing so can cause data to be lost by the module during processing. So it becomes a balancing act between maintaining a constantly high precision, or a higher update rate that can looses precision randomly.  
-This chart below shows update rates more typically required for flight. Not the theoretically possible values that only work on the best of the best RTK hardware.
+The chart below shows the devices with realistic update rates for more typical hardware. Not the theoretically possible values that only work on the best high end devices.
 
-| Actual realist update rates                  | GPS only | GPS + Galileo | GPS + Galileo + Glonass | GPS + Galileo + Glonass + Beidou |   
-|----------------------------------------------|----------|---------------|-------------------------|----------------------------------|
-|    M8                                        |  12.5Hz  |     10Hz      |         5Hz             |             N/A                  |
-|    M9                                        |  25Hz    |     20Hz      |         10Hz            |             9Hz                  |
-|    M10                                       |  16Hz    |     12.5Hz    |         8Hz             |             6Hz                  |           
+| Device          | GPS only | GPS + Galileo | GPS + Galileo + Glonass | GPS + Galileo + Glonass + Beidou |   
+|-----------------|----------|---------------|-------------------------|----------------------------------|
+|    M8           |  12.5Hz  |     10Hz      |         5Hz             |             N/A                  |
+|    M9           |  25Hz    |     20Hz      |         10Hz            |             9Hz                  |
+|    M10          |  16Hz    |     12.5Hz    |         8Hz             |             6Hz                  |           
 
 
 If it is the first time you have connected the GNSS unit, then it can take several minutes for a satellite fix to be obtained. This is the time required to download the Almanac and Ephemeris data. This is perfectly normal. But if it takes longer than 13 minutes. You likely have GNSS RF band interference coming from a hardware source in your model.
 
-**Note:** For the GPS unit to work & pick up satellites it needs an unobstructed view to the sky (so if using indoors, don't expect any satellites to be picked up!)
+**Note:** For the GPS unit to work & pick up satellites it needs an unobstructed view to the sky (so if using indoors, and the module has a small antenna, don't expect any satellites to be picked up!)
 
 
 ## SBAS
@@ -345,7 +348,7 @@ This setting only works when `gps_auto_config= ON`
 
 ## AssistNow Online/Offline
 
-**Is now depreciated as of June 2025**
+**Free service is depreciated as of June 2025**
 
 INAV 8.0 adds support for AssitNow Online and AssistNow Offline GPS assistance services, which is a proprietary A-GNSS service that can reduce Time To First Fix (TTFF) but requires access to the internet to fetch data. AssistNow Online data is valid for a few hours, while AssistNow Offline data can be valid for weeks. It can be specially beneficial for new GPS units and for units without flash or battery backed ram (BBR).
 
