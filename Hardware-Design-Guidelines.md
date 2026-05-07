@@ -77,6 +77,12 @@ We understand there are often space constraints on selecting what MCU pins gets 
 * Label your solder pads / configuration jumpers
 * It can be helpful to put your company name somewhere on the board, to indicate your company and which model it is (For example: OrbitF435v1)
 
+# UART / Serial Ports
+
+The silkscreen and diagram should not tell the user to put GPS or receiver on UART1 or UART3.
+
+STM32 chips can be flashed via UART1, UART3, or USB. They will attempt to accept firmware updates from whichever of these ports first has activity. That means that activity on UART1 or UART3 will interfere with flashing the board. GPS and receiver are often powered by USB, meaning they will interfere with flashing if connected to UART1 or UART3. Silkscreen and diagrams mentioning GPS or receiver should use UART2, UART4, UART5, or UART6. Most commonly, uart2 is used for the receiver and UART6 for the GPS.
+
 
 ## See also
 [New Hardware Policy](https://github.com/iNavFlight/inav/blob/master/docs/policies/NEW_HARDWARE_POLICY.md)
