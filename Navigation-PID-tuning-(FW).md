@@ -1,4 +1,3 @@
-**This page is a work in progress until this message is removed**
 
 The aim of this page is to separate the tuning of the FW Navigation PIDs from the [Navigation modes](https://github.com/iNavFlight/inav/wiki/Navigation-modes) page. Its goal is also to have FW Nav PID tuning separate from MC Nav PID tuning. To de-clutter and make for easier reading.
 
@@ -186,7 +185,7 @@ loop. It's independent from manual yaw rate and only active when HEADING_HOLD NA
 
 _In my experience. Enabling the `nav_fw_pos_hdg` controller combined with an airplane that has yaw control. i.e. A Rudder, Differential thrust or Vectored thrust, **when those yaw gains are tuned**. Will provide the most accurate turn/track response in a waypoint mission or RTH Trackback._
 
-_The use of a magnetometer can help argument the GNSS heading and wind estimation, to provide faster correction in turns. But it must be [setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#note-) and calibrated correctly. Or it will make performance even worse._
+_The use of a magnetometer can help augment the GNSS heading and wind estimation, to provide faster correction in turns. But it must be [setup](https://github.com/iNavFlight/inav/wiki/GPS-and-Compass-setup#note-) and calibrated correctly. Or it will make performance even worse._
 
 ## Tuning Rangefinder:
 
