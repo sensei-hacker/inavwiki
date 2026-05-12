@@ -324,20 +324,49 @@ Allows defined RC channels to be overridden by MSP `MSP_SET_RAW_RC` messages. Th
 
 ### MULTI FUNCTION 
 
-This function use a single mode to select between different functions based on feedback provided by the Multi Function OSD field. Functions are selected by briefly toggling the mode ON/OFF with this sequence, repeating until the required function is displayed in the OSD. The function is then triggered by activating the mode for > 3s. Deactivating the mode for > 4s resets everything leaving the OSD field blank. Ideally a momentary switch should be used to operate the mode although it should also work with a normal switch. Current functions include -
+This feature uses a single mode to select between multiple functions based on feedback provided by the Multi Function OSD field (found in the OSD Tab).   
+  
+The general idea is to allow a number less used modes or functions to all be controlled by a single RC channel.   
+Ideally a ******momentary switch****** should be used to operate the mode for greater ease, although it can also work with a normal switch.  
+___The OSD side of this feature can be used separately from the Modes side, if you just want to use it as a diagnostic tool on your display.___
+
+******FUNCTION CONTROL SIDE******   
+
+******Pre 9.1 -******  
+Briefly toggling the mode switch ON/OFF, repeating the sequence until the required function is displayed in the OSD.   
+The function is then triggered by activating the mode for > 3s.   
+Deactivating the mode for > 4s resets everything, leaving the OSD field blank.   
+
+******9.1 onwards -******    
+Activating the mode is done by briefly toggling the switch for < 1s. This will begin displaying the available functions. They will continuously cycle through the list, displaying each function for 1.5s.    
+To use a function, activate the mode for > 3s when the function you require is being displayed. A message will show ```FUNC SET``` on the OSD when the function is enabled.  
+To cancel the functions. When the list is cycling through, activate the mode briefly for < 1s, then release the switch.
+ 
+Current functions include -
 * Re-displaying any warnings
 * Emergency landing activation
 * Safehome suspend
 * Trackback suspend 
-* Turtle mode activation 
+* Turtle mode activation - (must be disarmed and rearmed after activation, as Turtle mode requires)
 * Emergency arming function
+* Calibrate mag - ******INAV 9.1****** (also used to set known NORTH before takeoff, for MC mag-less operation)
 
-It also provides warnings that are displayed for 10s when first triggered after which the warning disappears to be replaced with an alert symbol with a number showing the active warning total. Active warnings are then re-displayed for 5s on a rolling 30s cycle. The field is blank if there are no warnings. Current Warnings are provided for -
-* Battery state
+******OSD DISPLAY SIDE******  
+
+******Pre 9.1 -******  
+It also provides warnings that are displayed for 10s when first triggered after which the warning disappears to be replaced with an alert symbol with a number showing the active warning total.   
+Active warnings are then re-displayed for 5s on a rolling 30s cycle. The field is blank if there are no warnings.   
+
+******9.1 onwards -******   
+The warnings now display constantly without blinking with the exception of new warnings, which are displayed individually for 10s with blinking to highlight the fact it's a new warning.   
+After the 10s all current warnings are displayed on a 1s cycle without blinking. 
+
+Current Warnings are provided for -
+* Battery state - (voltage and capacity)
 * Vibration level
 * GPS Fix or Failure
-* RTH Sanity (>200m heading in wrong direction)
-* Altitude Sanity (difference between estimated and GPS altitude > 20m)
+* RTH Sanity - (>200m heading in wrong direction)
+* Altitude Sanity - (difference between estimated and GPS altitude > 20m)
 * Compass failure 
 * Ground Test mode 
 
