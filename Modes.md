@@ -95,7 +95,7 @@ For Fixedwing Airmode to become active for flight. It requires `Airmode_throttle
 The link explains how `STICK_CENTER` works. While `STICK_CENTER_ONCE` is activated by the same method. But instead of disabling Airmode when the throttle is lowered below the `throttle_threshold`, it will keep Airmode active until you disarm. This is more beneficial for fixedwing platforms like powered gliders. So they maintain Airmode stabilization at zero throttle.    
 The requirement to also move the sticks from center to activate Airmode, prevents I-term windup before launch, if you don't throw the airplane immediately after raising the throttle.
 
-People often forget that an Attitude stabilizer which uses a passive means to implement control, like control surfaces, opposed to an active means like motors. Can only hold the attitude it is commanded, if it's provided enough airflow over the control surface to do the work.
+_People often forget that an Attitude stabilizer which uses a passive means to implement control, like control surfaces, opposed to an active means like motors. Can only hold the attitude it is commanded if it is provided enough airflow over the control surface to do the work._
 
 Also see [here](https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing) for additional information on this topic related to Fixedwings.
 
@@ -106,8 +106,9 @@ Maximum banking angle is limited by `max_angle_inclination_rll` and `max_angle_i
 
 ### ANGLE HOLD (FW)
 
-This mode works as an attitude hold stabilizer. But its not designed for 3D aerobatic use.
-It behaves more like Acro mode, in the way the desired flight attitude is achieved by stick deflection, and you release the stick to center. But the difference is, ANGLE HOLD will attempt to _hold or lock_ the pitch or roll attitude the airplane was commanded, when the stick is released back to center. Thus resisting any long term change to the flight attitude caused by the effects of wind.   
+This mode works as an attitude hold stabilizer. But it's not designed for 3D aerobatic use.  
+It behaves more like Acro mode, in the way the desired flight attitude is achieved by stick deflection, and you release the stick to center.   
+But the difference is, ANGLE HOLD will attempt to offset the earth-frame reference of the Level controller on the pitch or roll, to the angle commanded by your stick deflection, to hold that specific flight attitude.  
 Returning the airplane to level flight is done the same as when flying in Acro or Manual modes.
 
 This flight mode has angle constraints set by the navigation angle limits - `nav_fw_climb_angle`, `nav_fw_dive_angle` and `nav_fw_bank_angle`. 
@@ -183,10 +184,10 @@ Increase the throttle just before you apply enough UP elevator stick to start th
 For an inverted loop. Gain some good altitude, and push full DOWN elevator. Remember to start applying full throttle at the bottom half of the inverted loop, as you simultaneously back off the DOWN elevator stick enough to prevent a stall, when the plane is commencing the vertical climb-out half of the loop.   
 _This should complete the autotune process in only one or two attempts._
   
+AUTOTUNE will adjust the gains continuously throughout the flight, but it will take a snapshot of current gains every 5 seconds.  
+When you disable it, the AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before the 5 seconds elapse; the FF gains and Rates won't be changed.
 
-AUTOTUNE will adjust gains constantly but it will take a snapshot of current gains every 5 seconds. When you disable it, the AUTOTUNE gains from last snapshot will be restored. If you turn AUTOTUNE on and off before 5 seconds elapse; the FF gains and Rates won't be changed.
-
-Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
+Currently AUTOTUNE doesn't save gains to the EEPROM - you have to save it manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md) or by use it in combination with continuous servo auto trim or the Odometer Stats, which automatically saves settings to the eeprom at disarming.
 
 For detailed description go to 
 https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing
@@ -317,9 +318,9 @@ Allows defined RC channels to be overridden by MSP `MSP_SET_RAW_RC` messages. Th
 
 This feature uses a single mode to select between multiple functions based on feedback provided by the Multi Function OSD field (found in the OSD Tab).   
   
-The general idea is to allow a number less used modes or functions to all be controlled by a single RC channel.   
-Ideally a ******momentary switch****** should be used to operate the mode for greater ease, although it can also work with a normal switch.  
-___The OSD side of this feature can be used separately from the Modes side, if you just want to use it as a diagnostic tool on your display.___
+The general idea is to allow a number of less used modes and functions to all be controlled by a single RC channel.   
+Ideally a ******momentary switch****** should be used to operate the mode for greater ease, although it can still work with a normal toggle switch.  
+___The OSD side of this feature can be used separately from the Mode side, if you just want to use it as a diagnostic tool on your display.___
 
 ******FUNCTION CONTROL SIDE******   
 
@@ -328,7 +329,7 @@ Briefly toggling the mode switch ON/OFF, repeating the sequence until the requir
 The function is then triggered by activating the mode for > 3s.   
 Deactivating the mode for > 4s resets everything, leaving the OSD field blank.   
 
-******9.1 onwards -******    
+******9.1 onward -******    
 Activating the mode is done by briefly toggling the switch for < 1s. This will begin displaying the available functions. They will continuously cycle through the list, displaying each function for 1.5s.    
 To use a function, activate the mode for > 3s when the function you require is being displayed. A message will show ```FUNC SET``` on the OSD when the function is enabled.  
 To cancel the functions. When the list is cycling through, activate the mode briefly for < 1s, then release the switch.
@@ -340,7 +341,7 @@ Current functions include -
 * Trackback suspend 
 * Turtle mode activation - (must be disarmed and rearmed after activation, as Turtle mode requires)
 * Emergency arming function
-* Calibrate mag - ******INAV 9.1****** (also used to set known NORTH before takeoff, for MC mag-less operation)
+* Calibrate mag - ******INAV 9.1****** (also used to set known NORTH before takeoff, for MC magless operation)
 
 ******OSD DISPLAY SIDE******  
 
@@ -348,8 +349,8 @@ Current functions include -
 It also provides warnings that are displayed for 10s when first triggered after which the warning disappears to be replaced with an alert symbol with a number showing the active warning total.   
 Active warnings are then re-displayed for 5s on a rolling 30s cycle. The field is blank if there are no warnings.   
 
-******9.1 onwards -******   
-The warnings now display constantly without blinking with the exception of new warnings, which are displayed individually for 10s with blinking to highlight the fact it's a new warning.   
+******9.1 onward -******   
+The warnings now display constantly without blinking, with the exception of new warnings, which are displayed individually for 10s with blinking to highlight the fact it's a new warning.   
 After the 10s all current warnings are displayed on a 1s cycle without blinking. 
 
 Current Warnings are provided for -
