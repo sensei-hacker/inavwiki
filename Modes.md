@@ -322,45 +322,51 @@ The general idea is to allow a number of less used modes and functions to all be
 Ideally a ******momentary switch****** should be used to operate the mode for greater ease, although it can still work with a normal toggle switch.  
 ___The OSD side of this feature can be used separately from the Mode side, if you just want to use it as a diagnostic tool on your display.___
 
-******FUNCTION CONTROL SIDE******   
+******FUNCTION MODE SIDE******   
 
-******Pre 9.1 -******  
-Briefly toggling the mode switch ON/OFF, repeating the sequence until the required function is displayed in the OSD.   
-The function is then triggered by activating the mode for > 3s.   
-Deactivating the mode for > 4s resets everything, leaving the OSD field blank.   
+******Pre 9.1******  
+* Briefly toggling the mode switch ON/OFF, repeating the sequence until the required function is displayed in the OSD.   
+* The function is then triggered by activating the mode for > 3s.   
+* Deactivating the mode for > 4s resets everything, leaving the OSD field blank.   
 
-******9.1 onward -******    
-Activating the mode is done by briefly toggling the switch for < 1s. This will begin displaying the available functions. They will continuously cycle through the list, displaying each function for 1.5s.    
-To use a function, activate the mode for > 3s when the function you require is being displayed. A message will show ```FUNC SET``` on the OSD when the function is enabled.  
-To cancel the functions. When the list is cycling through, activate the mode briefly for < 1s, then release the switch.
+******9.1+******    
+* Activating the mode is done by briefly toggling the switch for < 1s. This will begin displaying the available functions. They will continuously cycle through the list, displaying each function for 1.5s.    
+* To use a function, activate the mode for > 3s when the function you require is being displayed. A message will show ```FUNC SET``` on the OSD when the function is enabled.  
+* To cancel the functions. When the list is cycling through, activate the mode briefly for < 1s, then release the switch.
  
 Current functions include -
-* Re-displaying any warnings
-* Emergency landing activation
-* Safehome suspend
-* Trackback suspend 
-* Turtle mode activation - (must be disarmed and rearmed after activation, as Turtle mode requires)
-* Emergency arming function
-* Calibrate mag - ******INAV 9.1****** (also used to set known NORTH before takeoff, for MC magless operation)
+
+|       Function               |        OSD message            |         Information                                                          |
+|       --------               |          --------             |           --------                                                           |
+| Re-displaying any warnings   |                               |                                                                              |
+| Emergency landing activation | `EMERG LAND` and `ABORT LAND` |                                                                              |
+| Safehome suspend             | `USE SFHOME` and `SUS SFHOME` |                                                                              |
+| Trackback suspend            | `USE TKBACK` and `SUS TKBACK` |                                                                              |
+| Turtle mode activation       | `USE TURTLE` and `END TURTLE` | Must be disarmed and rearmed after activation, as Turtle mode requires       |
+| Emergency arming function    | `EMERG ARM`                   |                                                                              |
+| Calibrate mag - **INAV 9.1** | `CAL COMPAS` and `SET HEADIN` | Also used to set known NORTH heading before takeoff, for MC magless operation|
 
 ******OSD DISPLAY SIDE******  
 
-******Pre 9.1 -******  
-It also provides warnings that are displayed for 10s when first triggered after which the warning disappears to be replaced with an alert symbol with a number showing the active warning total.   
+******Pre 9.1******  
+The warnings are displayed for 10s when first triggered, after which the warning disappears to be replaced with an alert symbol and a number showing the active warnings total.     
 Active warnings are then re-displayed for 5s on a rolling 30s cycle. The field is blank if there are no warnings.   
 
-******9.1 onward -******   
-The warnings now display constantly without blinking, with the exception of new warnings, which are displayed individually for 10s with blinking to highlight the fact it's a new warning.   
-After the 10s all current warnings are displayed on a 1s cycle without blinking. 
+******9.1+******   
+The warnings now display constantly without blinking. With the exception of new warnings, which are displayed individually for 10s with blinking to highlight the fact it's a new warning.     
+After the 10s, all current warnings are displayed on a 1s cycle without blinking. 
 
-Current Warnings are provided for -
-* Battery state - (voltage and capacity)
-* Vibration level
-* GPS Fix or Failure
-* RTH Sanity - (>200m heading in wrong direction)
-* Altitude Sanity - (difference between estimated and GPS altitude > 20m)
-* Compass failure 
-* Ground Test mode 
+Current Warnings are provided for -  
+| Warning                               |   OSD message   |       Information                                      |  
+| -------                               |       -------   |     --------                                           |  
+| Battery state                         | Voltage - `VBATT LAND` and `VBATT LOW`   |                               |
+| Battery state                         | Capacity - `BATT EMPTY` and `BATT DYING` |                               |                                   
+| GPS Fix or Failure                    | `GPS FAILED` and `NO GPS FIX`|                                           |    
+| RTH Sanity                            | `RTH SANITY`    |   >200m heading in wrong direction                     |  
+| Altitude Sanity                       | `ALT SANITY`    |   Difference between estimated and GPS altitude > 20m  |  
+| Compass failure                       | `MAG FAILED`    |                                                        |  
+| Airspeed failure                      | `PITOT FAIL`    |   Failure of sensor or blocked pitot tube hole         |  
+| Ground Test mode                      | `GRD TEST !`    |                                                        |
 
 ### OSD ALT
 
