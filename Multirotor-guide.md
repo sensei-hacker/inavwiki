@@ -53,17 +53,17 @@ If you wish to run your own tune. Turn off the ENABLED button.
 > [!Tip]
 > The default presets many not always be correct. Due to the influence your selected hardware can have upon the PID tune.    
 >
-> **Example:** A lower powered 5" cruiser running on a 3 cell battery, will generally require a different tune to a 5" race quad running on a 6 cell battery.   
-> The reason being is because the 6s quad will provide far more thrust for the PID controller to work with. Actually making tuning easier. But often requiring the PID values to be lower, because the PID setpoint error can be dealt with much faster.
+> **Example:** A lower powered 5" cruiser running on a 3 cell battery, will generally require a different tune from a 5" race quad running on a 6 cell battery.   
+> The reason being is because the 6s quad will provide far more impulse thrust per weight for the PID controller to work with. Actually making tuning easier. But often requires some of the gains to be lower from the default, because the PID setpoint error can be dealt with much faster.
 
 The image below shows an example of the preset tune for a 7" multicopter.
 
 <img width="1113" height="354" alt="7 inch MC preset" src="https://github.com/user-attachments/assets/212b1b0e-a138-40b8-9826-94150834bc7c" />
 
-But in the case mentioned above under the `TIP`. Such a tune is better suited to a multicopter that is NOT running a stronger power train. Like a 6 cell install.    
+But in the case mentioned above under the `TIP`. Such a tune is better suited to a multicopter that is NOT running a stronger power train.   
 
 The tune below has the _Integral_ and _Derivative_ gains on the pitch and roll reduced, to better suit a multicopter that has a higher power to weight ratio.     
-If you have migrated from BetaFlight to INAV. These gains will provide a safer start point to begin tuning from. Whether it be a 3", 5" or 7" build.
+If you have migrated from BetaFlight to INAV. These gains will provide a safer starting point to begin tuning from. Whether it be a 3", 5" or 7" build.
 
 <img width="1112" height="349" alt="Higher performance quad starting tune" src="https://github.com/user-attachments/assets/0c5334df-9578-4f39-a9b5-b27e87c41217" />
 
@@ -86,7 +86,7 @@ More in-depth battery setup information can be found [here](https://github.com/i
 
 ## 5. Selecting filters 
 
-At the time of writing this. INAV has the following software filter methods. They are used to isolate and remove vibrations from the Gyro and Accelerometer data.
+At the time of writing this. INAV has the following software filter methods. They are used to isolate and remove vibration induced noise from the Gyro and Accelerometer data.
 
 **Gyro -**
 * `gyro_filter_mode` - STATIC, DYNAMIC, ADAPTIVE
@@ -103,15 +103,15 @@ At the time of writing this. INAV has the following software filter methods. The
 * `acc_notch_hz` (center frequency of the noise peak) - **Should only be used if the peak is narrow and known by log data**
 * `acc_notch_cutoff` (lowest practical frequency the notch should be set). **Only set if the above is used**
 > [!Tip] 
-> Accelerometer vibrations more often cause issues for navigation control, then Gyro induced vibrations.
+> Accelerometer vibrations more often cause issues for navigation control, than Gyro induced vibrations.
 >
 > Lowering `acc_lpf_hz` below 7Hz in an attempt to filtering out vibrations, will begin to cause it's own problems. Making navigation control loose.
 
 _Filters add signal delay_. And they can only remove so much noise before it begins to effect flight performance. For this reason it is always better to mechanically setup your hardware first, and eliminate as many vibrations as possible. By balancing the motors and the props.   
 Just because the hardware is new. Does not mean it is well balanced from factory.   
-_If a motor isn't balanced correctly. You can generally hear it audibly, by REMOVING THE PROPS and running each motors individually through its rev range, using the motor sliders in the Outputs Tab._
+_If a motor isn't balanced correctly. You can generally hear it audibly, by REMOVING THE PROPS and running each of motors individually through their rev range, using the motor sliders in the Outputs Tab._
 
-It's better to run a few good filters, than to run every filter available. Which will only add even more gyro delay, with little to no benefit.  
+It's better to run a few good filters, than to run every filter available. Which will only add even more control latency, and often add no extra improvement.  
 I've placed the gyro filters in the order of the ones I personally use from flight experience, from first to last.
 
 Use silicon vibration dampeners for your flight controller. Do not tighten the stack bolts too tight. This will crush the dampener, reducing their ability to adsorb vibrations. Only tighten them firm enough to stop movement. You may have to use thread lock to prevent the nuts coming loose.
