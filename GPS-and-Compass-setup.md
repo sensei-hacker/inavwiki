@@ -28,24 +28,35 @@ If you want to use an external magnetometer other than the one on your GNSS modu
 
 If your flight controller has an internal magnetometer on the FC, using it will likely to have poor results due to magnetic interference (not recommended).
 
- ## Multi-rotor without a compass
+ ## Multicopter navigation without a compass
 
-From the release of INAV 7.1 the use of a compass is no longer mandatory for multirotor navigation as it once was, but it has its limitations.  
+From the release of INAV 7.1 the use of a compass is no longer mandatory for multicopter navigation as it once was, but it has its limitations.  
 For this reason it is still recommended to use a well setup and calibrated magnetometer for the best navigation performance.
 
-* Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise. It **will not** work correctly if your multirotor is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
- Always enable the maximum number of GNSS constellations your hardware will allow. Poor EPV and EPH (Standard deviation of position error) will greatly effect navigation precision. Regardless of having a 3D fix, or what you consider an acceptable number of satellites.
+* Compass-less navigation performance is heavily dependent on a clean build, that has minimal levels of Gyro/Acc noise. It **will not** work correctly if your multicopter is producing excessive vibrations, caused by unbalanced motors, propellers or frame resonance.
+Poor EPV and EPH (Standard deviation of position error) will greatly effect navigation precision. Regardless of having a 3D fix, or what you consider an acceptable number of satellites.
 
 >[!TIP]
->Navigation modes (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) will not become operational until a GNSS heading is obtained.  
+>Navigation modes (_RTH, Failsafe, Poshold, Cruise or a Waypoint mission_) will not become operational until a GNSS ground course heading is obtained.  
 To accomplish this, start flying the copter in a straight line until -
 * The OSD Home arrow appears, showing a valid home direction.
 * Both the OSD _Heading_ and _Course over Ground_ indicators show a valid heading. keep both headings closely aligned for a short time to acquire better precision.
 
 As seen in this [video](https://www.youtube.com/watch?v=iopZfH-DdTI)
 
-Only then can the IMU heading data be trusted for _fixed position_ or slow speed navigation. Do not omit any of the above steps or your multirotor can experience toilet bowling, just as surely as it would with a poorly setup compass.   
-Holding a fixed position without a magnetometer is generally limited to a few minutes before heading drift starts to occur. This can be seen when the copter begins to slowly toilet bowl. If this happens, start flying straight again for a time, until a heading refresh is obtained.
+### INAV 9.1 - A heading can also be set while your copter is on the ground.
+
+* This can be done by acquiring a 0° NORTH bearing with a compass app on your phone etc. Or basing it on known geographic markers at your location.  
+* Once you know were north is. Point the front of the MC or VTOL in that approximate direction. (the closer the better)    
+* Then use either the _Compass Calibration stick command_ or the [multifunction mode](https://github.com/iNavFlight/inav/wiki/Modes#multi-function) to save that heading.
+
+<img width="600" height="83" alt="Compass Cal or set heading north" src="https://github.com/user-attachments/assets/511bc4b3-507f-4c29-b2b1-8f9cb29a20da" />
+
+* You can then arm the copter and enter into Poshold or a WP mission as soon as you lift-off.
+
+Only after one of the above methods are completed, can the IMU heading data be trusted for _fixed position_ or slow speed navigation.   
+
+Holding a fixed position without a magnetometer is generally limited to a few minutes before heading drift starts to occur. This can be seen when the copter begins to slowly toilet bowl. If this happens, start flying straight again for a time, until the IMU heading is refreshed.
 
 >[!NOTE]
 >Prior to 7.1.1, multirotor navigation flight modes (RTH, POSHOLD, WP etc) are required to be set **before** the magnetometer is turned off in the Configuration tab. Otherwise the navigation modes will not appear in the modes tab. You can select magnetometer type FAKE if no device is installed. Then proceed to alter your navigation modes. Once done, set magnetometer type back to NONE for compass-less navigation.    
@@ -53,9 +64,9 @@ Holding a fixed position without a magnetometer is generally limited to a few mi
 >The same will apply if your flight controller doesn't have a barometer. In this case you will be required to enter `inav_use_gps_no_baro = ON ` in the CLI, prior to 8.0.0. But on later firmware versions, if you chose not to use a barometer as well as a magnetometer. The navigation modes will only appear if magnetometer type = FAKE is set. 
 **This is due to INAV not recommending multirotor navigation without a barometer. Be aware. If you don't use a barometer as well as a magnetometer, and your satellite HDOP is greater than 1.3, the copters altitude and heading accuracy will be greatly reduced. Which can lead to the altitude, heading and position moving around considerably more in Poshold** 
 
-INAV 9.0 also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
+INAV 9.x also offer better compass interference rejection. But this is not an excuse to be tardy on your install, or shortcut the calibration process.
 
-The use of a compass on fixedwing models in INAV 8.0 and later, provides a faster update for the heading and wind estimation. And also provides for GNSS failure-dead reckoning estimation, during RTH and WP flight.
+The use of a compass on fixedwing models in INAV 8.0 and later, provides a faster update for the heading and wind estimation. And also allows for GNSS failure dead-reckoning estimation, during RTH and WP flights.
 
 ## INAV GPS Configuration
 INAV will attempt to provide GPS configuration. This is controlled by a number of CLI settings
@@ -148,7 +159,7 @@ The general rule behind compass calibration is to ensure the magnetometer report
 
 Ideally, its not good enough to rotate the compass or aircraft, so that each axis faces skyward or towards the ground. Because this can leave areas where _complete_ calibration is missed. Which will provide poor results and navigation performance.
 
-To acquire the best 3 axis calibration results, **your arm and wrist should move the aircraft in a figure 8 or infinity [∞](https://youtu.be/-Uq7AmSAjt8?si=NzkxGHSrda4f4AUC&t=45) symbol motion in the air, while ensuring every axis faces skywards in the process**. Do this several times (not too quickly) within the allotted 30secs.
+To acquire the best 3 axis calibration results, **your arm and wrist should move the aircraft in a figure 8 or infinity [8](https://youtu.be/-Uq7AmSAjt8?si=NzkxGHSrda4f4AUC&t=45) symbol motion in the air, while ensuring every axis faces skywards in the process**. Do this several times (not too quickly) within the allotted 30secs.
 * Use a long USB extension lead if its done via connection to the configurator.
 
 The end result should be the `maggain_x` `maggain_y` `maggain_z` calibrated settings should not be greater that 100 points of each other, and as close to 1500 or 500 as possible, depending on the magnetometer chip used.       
