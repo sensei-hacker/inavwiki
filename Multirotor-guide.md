@@ -109,7 +109,7 @@ At the time of writing this. INAV has the following software filter methods. The
 
 _Filters add signal delay_. And they can only remove so much noise before it begins to effect flight performance. For this reason it is always better to mechanically setup your hardware first, and eliminate as many vibrations as possible. By balancing the motors and the props.   
 Just because the hardware is new. Does not mean it is well balanced from factory.   
-_If a motor isn't balanced correctly. You can generally hear it audibly, by REMOVING THE PROPS and running each of motors individually through their rev range, using the motor sliders in the Outputs Tab._
+_If a motor isn't balanced correctly. You can generally hear it audibly, by REMOVING THE PROPS and running each of the motors individually through their rev range, using the motor sliders in the Outputs Tab._
 
 It's better to run a few good filters, than to run every filter available. Which will only add even more control latency, and often add no extra improvement.  
 I've placed the gyro filters in the order of the ones I personally use from flight experience, from first to last.
