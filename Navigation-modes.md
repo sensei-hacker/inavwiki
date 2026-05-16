@@ -79,20 +79,30 @@ The neutral position of the throttle stick to hold current altitude is defined b
 This setting provides three means for the ALTHOLD throttle stick position to be acquired. The default setting `STICK`, is smoother in most cases when transitioning to a flight mode that holds altitude, from one that did not.  
 But it may cause issues under some conditions. e.g. If switching from ACRO to an altitude holding mode, at high throttle in fast forward flight. In this case, the throttle/stick offset can be considerably higher than expected. Making it hard to alter altitude when the hover stick position is closer to `max_check`. Use `HOVER` or `MID_STICK` in this case.
 
-When you enable ALTHOLD, INAV sends the [nav_mc_hover_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_hover_thr) value to the motors as the starting point for the altitude control loop. You should configure this setting to your copter's hover throttle value, if it doesn't hover close to the default value of 1300us. Otherwise it may begin to ascend or descend.
+When you enable ALTHOLD, INAV sends the [nav_mc_hover_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_hover_thr) value to the motors as the starting point for the altitude velocity controller to start work from.   
+You should configure this setting to your copter's approximate hover throttle value, if it doesn't hover close to the default value of 1300us. Otherwise it may begin to ascend or descend if the `nav_mc_vel_z_i` doesn't have enough working room provide by the copters power train.   
+`nav_mc_hover_thr` should be set to an approximate value within 5% of what the copter requires to maintain a fixed hover in ACRO or ANGLE mode.    
+The primary reason for this setting is to provide the software with a general baseline for hover. And prevent excessive `nav_mc_vel_z` i-term error from accumulating. Which in turn will make the copter become more sluggish, in response to altitude changes.   
 
-`nav_mc_hover_thr` should be set to an approximate value within 2% of what the copter requires to maintain a fixed hover. The altitude controller can only account for small drift. The primary reason for this setting is to provide the software with a general baseline for hover. Determined by your builds thrust to weight ratio.   
-To acquire your copters hover throttle value. You should do your best to hold a fixed hover position while in ANGLE mode. Then reference that throttle value from a log or the OSD. Or even the LUA telemetry on your radio's display. Once you have landed, enter that value into `nav_mc_hover_thr`.
+To acquire your copters hover throttle value. You should do your best to hold a fixed hover position while in ANGLE mode. Then reference that throttle value from a log, OSD or even the LUA telemetry on your radio's display. Once you have landed, enter that value into `nav_mc_hover_thr`.
 
 Because battery voltage reduces throughout the flight; it is beneficial to enable [feature THR_VBAT_COMP](https://github.com/iNavFlight/inav/blob/master/docs/Battery.md#automatic-throttle-compensation-based-on-battery-voltage). Which can help compensate for the thrust reduction, and assist altitude control. 
 
 The [alt_hold_deadband](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#alt_hold_deadband) provides a deadband region either side of `nav_mc_althold_throttle` hover stick position, like an expo, to prevent unwanted altitude change occurring. 
-If ALTHOLD is activated at zero throttle INAV will account for deadband and move the neutral "zero climb rate" position a little bit up to make sure you are able to descend.
+If ALTHOLD is activated at zero throttle below `min_check`, INAV will account for this by moving the neutral "zero climb rate" position a little higher to make sure you are able to descend.
 
-### Cine-Load lifting : 
-In cases when the copter maybe used to carry different weight loads. **e.g.** camera rigs. It is still important that hover throttle be tuned for each load, so POSHOLD altitude control will operate correctly.   
-The `nav_mc_hover_thr` setting is located in the CLI `battery_profile`. So it is possible to setup three predefined hover throttle settings (_one in each battery profile_), based on the known weights your copter will carry.   
-Before takeoff, you can enter the [CMS OSD stick menu](https://www.mrd-rc.com/tutorials-tools-and-testing/inav-flight/inav-stick-commands-for-all-transmitter-modes/) and selected the relevant `battery_profile` containing the preset hover throttle you require to carry the known weight.  
+### Load lifting : 
+In cases when a multicopter maybe used to carry different weight loads. **e.g.** Camera rigs, Fishing burley, Light construction etc.   
+It is still important that the hover throttle be set. An acceptable value in this case could be 5 - 10% higher than is required for a stable hover in POSHOLD, without the load applied. However this is highly dependent on what percentage of the copters weight is being lifted.
+
+>[!Tip]
+>Tests with different size machines (3" to 10") have shown the success can vary considerably depending on the size of the propeller disc area, and the power the motors can provide to do the work, more so than throttle or thrust to weight.
+A smaller 5" cine-lifter will find it much harder for the altitude velocity controller to adjust to altitude changes without saturating its i-term, than a larger 15" copter, which will allow it to work with more ease. Even if they are both carrying the same percentage of their weight in the load.
+
+In any case. The tuning of the `nav_mc_hover_thr` setting and the MC velocity controller to accomplish this task, should be done specifically for load lifting. i.e. I would not recommend you use the same tune for good altitude precision in WP mission. 
+
+Always ensure any lifted weight is placed as close to the copter C.G. as possible. This also includes the attachment point of a lifting tether.   
+INAV presently does not support Slung Payload Oscillation Suppression.
 
 ### OSD altitude adjustment alert:
 For visual awareness, the OSD altitude element has a symbol that will appear to the left side of the altitude value. This symbol can be used to inform the pilot of when they're making a change via the throttle stick to adjust the copters altitude.  
