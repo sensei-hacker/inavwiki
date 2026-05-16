@@ -79,10 +79,10 @@ The neutral position of the throttle stick to hold current altitude is defined b
 This setting provides three means for the ALTHOLD throttle stick position to be acquired. The default setting `STICK`, is smoother in most cases when transitioning to a flight mode that holds altitude, from one that did not.  
 But it may cause issues under some conditions. e.g. If switching from ACRO to an altitude holding mode, at high throttle in fast forward flight. In this case, the throttle/stick offset can be considerably higher than expected. Making it hard to alter altitude when the hover stick position is closer to `max_check`. Use `HOVER` or `MID_STICK` in this case.
 
-When you enable ALTHOLD, INAV sends the [nav_mc_hover_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_hover_thr) value to the motors as the starting point for the altitude velocity controller to start work from.   
-You should configure this setting to your copter's approximate hover throttle value, if it doesn't hover close to the default value of 1300us. Otherwise it may begin to ascend or descend if the `nav_mc_vel_z_i` doesn't have enough working room provide by the copters power train.   
+When you enable ALTHOLD, INAV sends the [nav_mc_hover_thr](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_hover_thr) value to the motors as the starting point for the altitude velocity controller to begin working from.   
+You should configure this setting to your copter's approximate hover throttle value if it doesn't hover close to the default value of 1300us. Otherwise it may begin to ascend or descend, depending on the thrust availability of the specific model.  
 `nav_mc_hover_thr` should be set to an approximate value within 5% of what the copter requires to maintain a fixed hover in ACRO or ANGLE mode.    
-The primary reason for this setting is to provide the software with a general baseline for hover. And prevent excessive `nav_mc_vel_z` i-term error from accumulating. Which in turn will make the copter become more sluggish, in response to altitude changes.   
+The primary reason for this setting is to provide the software with a general baseline for hover. And prevent excessive `nav_mc_vel_z` i-term error accumulation. Which in turn will make the copter become more sluggish, in response to altitude changes.   
 
 To acquire your copters hover throttle value. You should do your best to hold a fixed hover position while in ANGLE mode. Then reference that throttle value from a log, OSD or even the LUA telemetry on your radio's display. Once you have landed, enter that value into `nav_mc_hover_thr`.
 
@@ -92,7 +92,7 @@ The [alt_hold_deadband](https://github.com/iNavFlight/inav/blob/master/docs/Sett
 If ALTHOLD is activated at zero throttle below `min_check`, INAV will account for this by moving the neutral "zero climb rate" position a little higher to make sure you are able to descend.
 
 ### Load lifting : 
-In cases when a multicopter maybe used to carry different weight loads. **e.g.** Camera rigs, Fishing burley, Light construction etc.   
+In cases when a multicopter maybe used to carry different weight loads. **e.g.** Camera rigs, Fishing burley, Lite construction etc.   
 It is still important that the hover throttle be set. An acceptable value in this case could be 5 - 10% higher than is required for a stable hover in POSHOLD, without the load applied. However this is highly dependent on what percentage of the copters weight is being lifted.
 
 >[!Tip]
