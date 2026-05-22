@@ -1,5 +1,5 @@
-In the 9.0 release and later. INAV only supports Ublox protocols.
-Ublox Protocol versions < 15.00 are deprecated and from INAV 9.0 will no longer be supported.
+In 8.x release and later, INAV only supports Ublox protocols.  
+Ublox Protocol versions < 15.00 are deprecated, and from INAV 9.0 they will no longer be supported.
 
 Recommended GNSS units are M8, M9 or M10 models. While it is uncertain if there are M8 versions with Protocol version lower than 15.00, the majority of the units should be > 15.00 or newer.
 
@@ -44,15 +44,15 @@ To accomplish this, start flying the copter in a straight line until -
 
 As seen in this [video](https://www.youtube.com/watch?v=iopZfH-DdTI)
 
-### INAV 9.1 - A heading can also be set while your copter is on the ground.
+### INAV 9.1 - Heading can also be set while your multicopter is on the ground.
 
-* This can be done by acquiring a 0° NORTH bearing with a compass app on your phone etc. Or basing it on known geographic markers at your location.  
-* Once you know were north is. Point the front of the MC or VTOL in that approximate direction. (the closer the better)    
+* This can be done by acquiring a 0° NORTH heading with a compass app on your phone etc. Or basing the heading on known geographic markers at your flight location.  
+* Once you know where north is. Point the front of the MC or VTOL in that approximate direction. (the closer the better)    
 * Then use either the _Compass Calibration stick command_ or the [multifunction mode](https://github.com/iNavFlight/inav/wiki/Modes#multi-function) to save that heading.
 
 <img width="600" height="83" alt="Compass Cal or set heading north" src="https://github.com/user-attachments/assets/511bc4b3-507f-4c29-b2b1-8f9cb29a20da" />
 
-* You can then arm the copter and enter into Poshold or a WP mission as soon as you lift-off.
+* You can then arm the multicopter and enter into Poshold or a WP mission as soon as you lift-off.
 
 Only after one of the above methods are completed, can the IMU heading data be trusted for _fixed position_ or slow speed navigation.   
 
@@ -316,23 +316,23 @@ INAV 7.0 and later supports a higher GNSS update rate for Ublox receivers.  `gps
 If you wish to increase navigation precision. And you have a low noise build and high quality GNSS receiver. You may wish to alter this setting. But ONLY do so according to the tables below.    
 Note how the maximum update rate can only be achieved with lower concurrent constellations.
 
-The M9 can run up to 25 Hz with all four constellations enabled. The M10 is more limited as shown here:
+The M9 can _theoretically_ run up to 25 Hz with all four constellations enabled. The M10 is more limited as shown here:
 
 
 <img width="865" height="147" alt="304644162-a541d4bb-3dca-4813-a3ce-60a067ae67a1" src="https://github.com/user-attachments/assets/6e848154-824d-4410-818b-c3ee3125e595" />   
 
-Ideally it is best to run `gps_ublox_nav_hz` at the highest rate your GNSS module will allow. This provides more precision at faster speeds.  
-However doing so can cause data to be lost by the module during processing. So it becomes a balancing act between maintaining a constantly high precision, or a higher update rate that can looses precision randomly.  
+Ideally it is best to run `gps_ublox_nav_hz` at the highest rate your GNSS module will allow. This provides more precision at higher flight speeds.  
+**However** doing so can cause data to be lost randomly by the module during processing. Which can reduce precision, making the benefit of running more concurrent constellations on some modules not as worthwhile.          
 The chart below shows the devices with realistic update rates for more typical hardware. Not the theoretically possible values that only work on the best high end devices.
 
 | Device          | GPS only | GPS + Galileo | GPS + Galileo + Glonass | GPS + Galileo + Glonass + Beidou |   
 |-----------------|----------|---------------|-------------------------|----------------------------------|
 |    M8           |  12.5Hz  |     10Hz      |         5Hz             |             N/A                  |
 |    M9           |  25Hz    |     20Hz      |         10Hz            |             9Hz                  |
-|    M10          |  16Hz    |     12.5Hz    |         8Hz             |             6Hz                  |           
+|    M10          |  16Hz    |     12.5Hz    |         8Hz             | 6Hz (Some devices do not simultaneously support Glonass **and** Beidou |                    
 
 
-If it is the first time you have connected the GNSS unit, then it can take several minutes for a satellite fix to be obtained. This is the time required to download the Almanac and Ephemeris data. This is perfectly normal. But if it takes longer than 13 minutes. You likely have GNSS RF band interference coming from a hardware source in your model.
+If it is the first time you have connected the GNSS unit, then it can take several long minutes for a satellite fix to be obtained. This is the time required to download the Almanac and Ephemeris data. This is perfectly normal. But if it takes longer than 13 minutes. You likely have GNSS RF band interference coming from a hardware source in your model.
 
 **Note:** For the GPS unit to work & pick up satellites it needs an unobstructed view to the sky (so if using indoors, and the module has a small antenna, don't expect any satellites to be picked up!)
 
