@@ -5,25 +5,38 @@ The settings are found under the Configurator OSD tab. The layout has changed sl
 ![Custom elements GV](https://github.com/iNavFlight/inav/assets/47995726/26c8b12d-27da-4a10-9ce7-e8b42289623b) 
 ![elements](https://github.com/iNavFlight/inav/assets/47995726/33bb28e2-d090-4716-b01c-6a0aec59f9eb)
 
-Each custom OSD element has three configurable spaces (eight in INAV 8.0.0), with each having an activation condition. You're not required to use all the configuration custom spaces, if all elements are active. The custom configurable spaces can either be a character from the OSD font, data from the programming framework, or text. The character numbers can be found in [this document](https://github.com/iNavFlight/inav-configurator/blob/master/resources/osd/INAV%20Character%20Map.md). 
+Each custom OSD element has three configurable spaces (eight from INAV 8.0.0), with each having an activation condition. You're not required to use all the configuration custom spaces, if all elements are active. The custom configurable spaces can either be a character from the OSD font, data from the programming framework, or text. 
 
-These are the options available in each configurable space.
+### INAV 9.1 changes
+The UI layout has been changed to combine both Custom OSD boxes into one. It is located on the left side of the OSD preview.      
+   
+<img width="289" height="192" alt="INAV 9 1 UI" src="https://github.com/user-attachments/assets/abeb0feb-8483-4363-a18a-2eb72d203f6c" />
+
+Functionally it still works the same as it has since INAV 8.0. But it now includes quick access to the font table when selecting a Static ICON.
+ 
+<img width="529" height="551" alt="ICON static font table" src="https://github.com/user-attachments/assets/eb840e49-d707-4009-bf2a-f0534f69cc27" />
+
+> [!NOTE]
+> Currently, only the first 255 characters are supported by Static custom OSD elements.  
+_________________
+
+### These are the options available in each configurable field.
 
 |  Options       |        Description                                                                                            |
 | ------------   |  -----------------------------------------------------------------------------------------------------------  |
 | **None**       | Don't use any selection in the drop-down                                                                     |
 | **Text**       | Displays text. 0 - 15 characters which can include [`A-Z`] [`0-9`] [`^!.\*`] * Text can only be used once in a single element, due to memory limitations                                           |
-| **Icon Static**| User can select a [character](https://github.com/iNavFlight/inav-configurator/blob/master/resources/osd/INAV%20Character%20Map.md) number from the [INAV OSD](https://github.com/iNavFlight/inav-configurator/blob/master/resources/osd/analogue/impact.png) , they want to display as a descriptive reference                                                                      |
+| **Icon Static**| User can select a [character](https://github.com/iNavFlight/inav-configurator/blob/master/resources/osd/INAV%20Character%20Map.md) number from the INAV OSD, they want to display as a descriptive reference                                                                      |
 | **ICON from Global Variable**    | Displays the icon, driven from a global variable
 | **ICON from Logic Condition**    | Displays the icon, driven from a logic condition (Added in INAV 8.0.0)                                                  |                                                              
 | **Global Variable #**         | Data within the global variable can be displayed in these decimal format's [`00000` `0000` `000` `00` `0` `0000.0` `000.00` `000.0` `00.00` `00.0` `0.0`] (Some formats added in INAV 8.0.0) |
 | **Logic Condition #**         | Status of the logic condition can be displayed in these decimal format's [`00000` `0000` `000` `00` `0` `0000.0` `000.00` `000.0` `00.00` `00.0` `0.0`] (Added in INAV 8.0.0) |
 | **VISIBILITY** | Choose when to display custom message - **Always** or as the result of a **Global Variable** or **Logic Condition** being met        |
 
-> [!NOTE]
-> Currently, only the first 255 characters are supported by custom OSD elements.
 
 This [video](https://youtu.be/BqkDo-2O7js?si=_vOAHQn2N0MGbKdl&t=81) made by the features' developer. Shows an example of a custom element, which is the **!GROUND!** message, and a GV containing Lidar altitude above the surface. With a static altitude character beside it.
+
+_________________
 
 ### Working with numbers
 <img src="https://github.com/user-attachments/assets/5dba884b-2f27-4e80-878c-f72b7c08ba87" align="left" height="350px" />You may have noticed that there are plenty of different options for showing different formats of numbers. All numbers can be either positive or negative. Which is why you will see an empty space to the left of a positive number. The whole numbers are pretty self explanatory. Just choose the appropriate number of digits for the number you are displaying. But, the numbers with decimal places need a little more explanation. In the programming framework, there are no floating point numbers. So no decimal spaces. So how do we display a number with decimal spaces? We are simply faking it with maths.
