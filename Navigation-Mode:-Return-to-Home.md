@@ -134,15 +134,18 @@ To be honest, pretty much as you expect it to. Once you select RTH, the model wi
 
 [![RTH Climb modes - climb first = spiral with stage](https://i.imgur.com/7GMqN9Ql.png)](https://i.imgur.com/7GMqN9Q.png)
 
-## Other Settings
-### Trackback
-RTH Trackback records the recent track of the craft allowing it to return back along the track when RTH is triggered rather than returning directly back home. It's mainly intended to be used as a means of returning the craft to a position where the Rx signal can be recovered if it was lost due to a line of sight obstruction. This should improve the chances of recovering the Rx signal whilst reducing the risk of flying into the obstruction that caused the loss compared to normal RTH heading directly back home.
+
+## Trackback
+RTH Trackback records the recent track of the craft allowing it to return back along the track when RTH is triggered rather than returning directly back home.    
+It's mainly intended to be used as a means of returning the craft to a position where the Rx signal can be recovered if it was lost due to a line of sight obstruction. This should improve the chances of recovering the Rx signal whilst reducing the risk of flying into the obstruction that caused the loss compared to normal RTH heading directly back home.
 
 When triggered the craft returns along the trackback route until the end is reached at which point it reverts to normal RTH heading directly home. It doesn't perform the RTH climb phase at the start of the Trackback but instead uses the altitude recorded for each track point so long as that altitude is no lower than the altitude when Trackback was triggered (this is the minimum altitude used throughout the Trackback phase).
 
-Trackback currently allows 50 trackback points with a maximum potential trackback distance of 2000m if the recorded track allows within the track point limit. It should be noted that the distance is the straight line distance from the point Trackback was triggered to the current position rather than the accumulative distance along the track. It's mainly intended to be used to limit the distance travelled away from the start point before a normal RTH is initiated. It can be set using [nav_rth_trackback_distance](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_trackback_distance). Trackback usage is controlled by setting [nav_rth_trackback_mode](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_trackback_mode), OFF, ON and FS. ON works for normal and failsafe RTH, FS is for Failsafe RTH only.
+Trackback currently allows 50 trackback points with a maximum potential trackback distance of 2000m if the recorded track allows within the track point limit. It should be noted that the distance is the straight line distance from the point Trackback was triggered to the current position rather than the accumulative distance along the track. It's mainly intended to be used to limit the distance traveled away from the start point before a normal RTH is initiated. It can be set using [nav_rth_trackback_distance](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_trackback_distance). Trackback usage is controlled by setting [nav_rth_trackback_mode](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_trackback_mode), OFF, ON and FS. ON works for normal and failsafe RTH, FS is for Failsafe RTH only.
 
 Trackback RTH can be cancelled using the RTH Altitude Control Override `RIGHT ROLL` command at which point RTH will revert to a normal RTH heading directly back home. [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) needs to be ON for this to work.
+
+## Other Settings
 
 ### Altitude Control Override
 It is possible to override the default RTH Altitude and Climb First settings during the initial RTH climb phase using the [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) setting.
@@ -152,3 +155,40 @@ Allows an emergency landing to be triggered manually as required.
 Landing is started or ended by toggling the POSHOLD mode switch at least 5 times at a minimum rate of 1Hz.
 Provided sensor position data is available. The aircraft will commence descent, holding the target position above which it was activated.
 Failsafe is inhibited during manual emergency landing, to allow the landing to continue if the RX signal is lost. Under this condition, aborting  manual emergency landing must be done before a FS occurs. Manual emergency landing can also be triggered by use of the [multi-function utility](https://github.com/iNavFlight/inav/wiki/Modes#multi-function)
+
+### Landing detector    
+_Flight must first be detected for this function to operate._ 
+* **MC** = Throttle above `min_check`.   
+* **FW** = Speed, Heading, Throttle or Auto launch complete.
+
+
+When [nav_disarm_on_landing](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_disarm_on_landing) is set to ON (default). It checks for low horizontal and vertical velocities of less than 100cm/s. As well as low rotation rates on the pitch and roll of less than 4°/s.  
+The trigger sensitivity can be mildly adjusted by [nav_land_detect_sensitivity](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_land_detect_sensitivity).   
+If above states are stable for >2s, plus any [nav_auto_disarm_delay](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_auto_disarm_delay) time that is added. The aircraft will disarm.
+ 
+**Multicopter specific checks**   
+* If the vertical velocity is invalid, it adds an extra time check of 5s.
+* Checks for average low throttle during navigation descent. 
+* Check for low throttle during a manual landing.
+* Landing / Emergency landing or Failsafe is active.
+
+>[!Note]
+>**INAV 9.1**   
+>Landing detection is inhibited when Surface mode is active and the throttle is low, unless AGL altitude is `Trusted` and the sensor is reading less than 50cm Above Ground Level.
+
+
+### Landing bump detector - Multicopter only  
+
+When [nav_landing_bump_detection](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_landing_bump_detection) is set to ON. Disarm is instant if these conditions are met -
+
+* The Z axis touch-down rebound exceeds 2g, then falls back below 1g within 100mS. 
+* The XY (horizontal) velocity must be low. (requiring GNSS)
+* Throttle is below `hover_throttle`.
+
+### Failsafe inverted crash detection - Multicopter only    
+
+Becomes operational when [nav_mc_inverted_crash_detection](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_mc_inverted_crash_detection) is set greater than zero seconds.    
+If the multicopter has crash landed inverted. And by way of RX damage enters Failsafe, the flight controller will disarm.
+
+* Checks vertical velocity is low (<2 m/s) based on **Barometric sensor** altitude data. 
+* Disarm timer is based on the number you set in `nav_mc_inverted_crash_detection`.
