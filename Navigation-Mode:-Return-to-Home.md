@@ -4,7 +4,35 @@ With default settings RTH will land immediately if you are closer than 5 meters 
 
 Return to Home is activated by the NAV RTH flight mode.
 
-* RTH control modes work the same for Multicopters and for fixedwings. The difference is only seen in the way plane's climb or descend in a loitering spiral.
+_RTH control modes work the same for Multicopters and for fixedwings. The difference is only seen in the way plane's climb or descend in a loitering spiral._
+
+## This document contains the following information than can be quick referenced from the index below.
+
+**RTH altitude climb modes** 
+
+- [Current](#Maintain-current-altitude)
+- [Extra](#Maintain-current-altitude-plus-predefined-safety-margin)
+- [Fixed](#Predefined-altitude)
+- [Max](#Maximum-altitude-since-launch)
+- [Atleast](#At-least-predefined-altitude-above-launch-point)
+- [Altleast + Linear descent](#At-least-predefined-altitude-with-linear-descent)
+- [Linear (INAV 7.0+)](#Linear-Descent)
+
+
+**Climb first modes**
+- [Climb first MC](#Climb-first-with-Multicopter)
+- [Climb first FW](#Climb-first-with-Fixed-Wing)
+- [Two stage climb first](#Two-stage-climb-first)
+
+**RTH track method**
+- [RTH Trackback](#Trackback)
+- [Fixedwing dead reckoning](#Fixedwing-dead-reckoning)
+
+**Other settings**
+- [Altitude Control Override](#Altitude-Control-Override)
+- [Manual Emergency Landing](#Manual-Emergency-Landing)
+- [Landing detector](#Landing-detector)
+
 
 # RTH Altitudes
 
@@ -26,7 +54,7 @@ The **Altitude before RTH** is the altitude that the model will fly home at, dis
 
 ![CURRENT](https://github.com/user-attachments/assets/5290ae6a-76aa-4e9b-a1a0-cac04b7001d6)
 
-## Maintain current altitude + predefined safety margin 
+## Maintain current altitude _plus_ predefined safety margin 
 - `nav_rth_alt_mode` = **EXTRA**
 - `nav_rth_altitude` - defines extra altitude margin required
 
@@ -72,8 +100,10 @@ If the aircraft is below `nav_rth_altitude` it will climb to desired altitude pr
 
 ![LINEAR_DESCENT](https://github.com/user-attachments/assets/36def1cf-9db1-47cf-82ec-f2cd8c7f0bf8)
 
-# Linear Descent (NAV_RTH_USE_LINEAR_DESCENT)
-_INAV 7.0 Onwards_
+# Linear Descent 
+_INAV 7.0 Onwards_   
+
+`NAV_RTH_USE_LINEAR_DESCENT`   
 
 Before INAV 7.0; linear descent was an extended version of the **AT_LEAST** return to home method. From INAV 7.0 onwards, linear descent can be used with all RTH methods. It has also been extended to give the pilot more control. Because all RTH methods can now use linear descent; there needs to be a target altitude to descend to, that works with all RTH methods. To do this, the target altitude of the linear descent is now the `nav_rth_home_altitude`. You will need to set this parameter in order for linear descent to work.
 
@@ -85,11 +115,11 @@ An option has also been added to decide how far away the linear descent starts. 
 
 Though this feature is still called linear descent, due to consistency. In some cases, if flying below the home position, this can work as a linear ascent. Rising up to the `nav_rth_home_altitude`.
 
-# Climb first
+## Climb first
 
 The _nav_rth_climb_first_ option sets how the model will initiate the **RTH**.
 
-## Climb first with Multirotors
+## Climb first with Multicopter
 
 - If `nav_rth_climb_first = OFF`, the multirotor will turn and immediately fly towards home, climbing on the way to the `nav_rth_altitude`.
 - If `nav_rth_climb_first = ON` , the multirotor will immediately commence a vertical climb, rotating towards home at the same time. When it reaches the `nav_rth_altitude`, it will start flying home.
@@ -145,13 +175,18 @@ Trackback currently allows 50 trackback points with a maximum potential trackbac
 
 Trackback RTH can be cancelled using the RTH Altitude Control Override `RIGHT ROLL` command at which point RTH will revert to a normal RTH heading directly back home. [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) needs to be ON for this to work.
 
+
+## Fixedwing dead reckoning
+If your fixedwing model looses a GNSS fix during flight. The aircraft can estimate its return path back to home. Or it can continue a mission.     
+More details of setup, sensor **requirements** and **limitations** can be found here at [GPS Fix estimation dead reckoning, RTH without GPS](https://github.com/iNavFlight/inav/blob/master/docs/GPS_fix_estimation.md).
+
 ## Other Settings
 
 ### Altitude Control Override
 It is possible to override the default RTH Altitude and Climb First settings during the initial RTH climb phase using the [nav_rth_alt_control_override](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_rth_alt_control_override) setting.
 
-### Manual Emergency Landing (FW and MC)
-Allows an emergency landing to be triggered manually as required.
+### Manual Emergency Landing 
+Allows an emergency landing to be triggered manually as required, for both a fixedwing or a multicopter.
 Landing is started or ended by toggling the POSHOLD mode switch at least 5 times at a minimum rate of 1Hz.
 Provided sensor position data is available. The aircraft will commence descent, holding the target position above which it was activated.
 Failsafe is inhibited during manual emergency landing, to allow the landing to continue if the RX signal is lost. Under this condition, aborting  manual emergency landing must be done before a FS occurs. Manual emergency landing can also be triggered by use of the [multi-function utility](https://github.com/iNavFlight/inav/wiki/Modes#multi-function)
@@ -164,10 +199,10 @@ _Flight must first be detected for this function to operate._
 
 When [nav_disarm_on_landing](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_disarm_on_landing) is set to ON (default). It checks for low horizontal and vertical velocities of less than 100cm/s. As well as low rotation rates on the pitch and roll of less than 4°/s.  
 The trigger sensitivity can be mildly adjusted by [nav_land_detect_sensitivity](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_land_detect_sensitivity).   
-If above states are stable for >2s, plus any [nav_auto_disarm_delay](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_auto_disarm_delay) time that is added. The aircraft will disarm.
+If the above states are stable for >2s, plus any [nav_auto_disarm_delay](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_auto_disarm_delay) time that is added. The aircraft will disarm.
  
 **Multicopter specific checks**   
-* If the vertical velocity is invalid, it adds an extra time check of 5s.
+* If the vertical velocity is invalid, it adds an extra time check of 5s before disarming.
 * Checks for average low throttle during navigation descent. 
 * Check for low throttle during a manual landing.
 * Landing / Emergency landing or Failsafe is active.
@@ -182,7 +217,7 @@ If above states are stable for >2s, plus any [nav_auto_disarm_delay](https://git
 When [nav_landing_bump_detection](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_landing_bump_detection) is set to ON. Disarm is instant if these conditions are met -
 
 * The Z axis touch-down rebound exceeds 2g, then falls back below 1g within 100mS. 
-* The XY (horizontal) velocity must be low. (requiring GNSS)
+* The XY (horizontal) velocity must be low. (requiring GNSS fix)
 * Throttle is below `hover_throttle`.
 
 ### Failsafe inverted crash detection - Multicopter only    
