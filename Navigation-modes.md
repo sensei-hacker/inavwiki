@@ -101,7 +101,7 @@ A smaller 5" cine-lifter will find it much harder for the altitude velocity cont
 
 In any case. The tuning of the `nav_mc_hover_thr` setting and the MC velocity controller to accomplish this task, should be done specifically for load lifting. i.e. I would not recommend you use the same tune for good altitude precision in WP mission. 
 
-Always ensure any lifted weight is placed as close to the copter C.G. as possible. This also includes the attachment point of a lifting tether.   
+Always ensure any lifted weight is placed as close to the copters C.G. as possible. This also includes the attachment point of a lifting tether.   
 INAV presently does not support Slung Payload Oscillation Suppression.
 
 ### OSD altitude adjustment alert:
@@ -227,9 +227,7 @@ Once within 1 meters of the arming location or Safehome. The copter will attempt
 
 **Landing detector settings**    
 
-[nav_disarm_on_landing](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_disarm_on_landing)    
-[nav_land_detect_sensitivity](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_land_detect_sensitivity)   
-[nav_landing_bump_detection](https://github.com/iNavFlight/inav/blob/master/docs/Settings.md#nav_landing_bump_detection) - Multicopter only
+The operation of the landing detector disarming functions can be found [here](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home#landing-detector).
 
 There are many different RTH fly-home altitude modes, see the [RTH mode page](https://github.com/iNavFlight/inav/wiki/Navigation-Mode:-Return-to-Home) for details.
 
