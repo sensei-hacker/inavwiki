@@ -170,7 +170,7 @@ DevDocs [Safehomes.md](https://github.com/iNavFlight/inav/blob/master/docs/Safeh
 <summary>MultiWii Serial Protocol</summary>
 
 [MSP V2](MSP-V2)\
-[MSP Messages reference guide](https://github.com/iNavFlight/inav/blob/master/docs/development/msp/msp_ref.md)\
+[MSP Messages reference guide](https://github.com/iNavFlight/inav/blob/master/docs/development/msp)\
 [MSP Navigation Messages](MSP-Navigation-Messages)\
 [INAV MSP frames changelog](INAV-MSP-frames-changelog)
 </details>
