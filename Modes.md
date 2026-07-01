@@ -148,9 +148,17 @@ Pre INAV 7.0, this tuning mode was called AUTO LEVEL
 
 ### AUTOTUNE (FW)
 
-AUTOTUNE will only attempt to tune the Roll and Pitch **FeedForward** and **Rates** on a fixed-wing airplane.
+AUTOTUNE tunes the **FeedForward** gain for Roll, Pitch and Yaw on a fixed-wing airplane. **AUTOTUNE does not touch P or I gains on any axis** - tune those manually, before or after using AUTOTUNE.
 
-Autotune will monitor the behavior of the airplane and attempt to tune the FeedForward gains, for the maximum Rate of rotation on each axis. This will provide optimal stabilization and navigation performance for your aircraft.
+Whether AUTOTUNE also adjusts the **Rate** setting (`roll_rate`/`pitch_rate`/`yaw_rate`) for an axis depends on two independent things:
+
+1. **Which flight mode AUTOTUNE is applied to.** AUTOTUNE is a modifier you enable on top of ANGLE, HORIZON or ACRO. Rate learning is disabled while flying in ANGLE mode - only FeedForward is tuned there. It is active in ACRO and HORIZON, though ACRO is recommended (see below) and gives the cleanest results. AUTOTUNE has no effect at all in MANUAL mode - nothing is tuned, not even FeedForward, until you switch to ACRO, HORIZON, or ANGLE.
+2. **The `fw_autotune_rate_adjustment` setting**, which controls whether rate learning is allowed at all in a mode where it's otherwise possible:
+   * `AUTO` (default) - rates are increased or decreased to match what the airplane can actually achieve at full stick deflection
+   * `LIMIT` - rates can only be decreased, never raised above whatever they were set to when AUTOTUNE was enabled
+   * `FIXED` - rates are left exactly as you set them; only FeedForward is tuned
+
+Autotune monitors the behavior of the airplane and tunes FeedForward gain (and, where allowed above, Rate) toward the maximum rate of rotation it can sustain on each axis. This provides optimal stabilization and navigation performance for your aircraft. An axis you don't stress with hard stick input during the tune won't change much - if you only do hard rolls and pitches, your yaw FeedForward and rate will stay close to where they started, not because AUTOTUNE skips yaw but because it had no hard yaw maneuvers to learn from.
 
 >[!Note] 
 >Autotune should ideally be performed at the approximate airspeed the airplane will cruise at.  
@@ -174,6 +182,8 @@ _Initially you may notice a soft/slow response if the Rates and Feedforward wher
 Then do the same for DOWN, pushing full pitch stick for a moment so the plane dives at an angle you're comfortable with, and then bring the airplane back to level flight; repeating the process again several times.  
 _Initially you may notice a soft/slow response if the Rates and Feedforward where far from correct._    
 
+- **Standard YAW -** From level, hard-rudder full stick left, then full stick right, repeating several times. Yaw is easy to overlook since roll and pitch maneuvers dominate a typical autotune flight - if you skip hard yaw input, your yaw FeedForward and rate won't be tuned.
+
 - **Advanced ROLL** - IF you and your airplane are **capable** of completing a full 360° roll at full stick deflection, both left and right.   
 _This should complete the autotune process in only one or two attempts._
 
@@ -188,8 +198,7 @@ AUTOTUNE will adjust gains constantly but it will take a snapshot of current gai
 
 Currently AUTOTUNE don't save gains to EEPROM - you have to save manually, using a [stick combo](https://github.com/iNavFlight/inav/blob/master/docs/Controls.md).
 
-For detailed description go to 
-https://github.com/iNavFlight/inav/wiki/Tune-INAV-PID%E2%80%90FF-controller-for-fixedwing
+For a step-by-step walkthrough of flying AUTOTUNE, see [Airplane Autotune instructions](https://github.com/iNavFlight/inav/blob/master/docs/Autotune%20-%20fixedwing.md).
 
 
 
