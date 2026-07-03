@@ -71,10 +71,10 @@ You can also use a [Python script](https://gist.github.com/nmaggioni/e42d3f4eb24
 * Now set some PID gain as a starting point.      
    `fw_p_pitch = 15`    
    `fw_i_pitch = 8`   
-   `fwd_pitch = 2`  
+   `fw_d_pitch = 2`  
    `fw_p_roll = 15`      
    `fw_i_roll = 7`   
-   `fw_i_roll = 3`  
+   `fw_d_roll = 3`  
    `fw_p_yaw = 10`       
    `fw_i_yaw = 2`  
     
