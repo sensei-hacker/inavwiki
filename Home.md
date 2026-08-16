@@ -8,17 +8,17 @@ INAV is a Free and Open Source Flight Controller and Autopilot Software System t
 - Support for video transmission & receive systems for FPV (first person view) with On-Screen Display (OSD) of telemetry data.
 - Use of flight controller (FC) boards based on those below.
 
-   | Processor | Speed  | Flash |
-   |:---------:|:------:|:-----:|
-   | STM-F405  | 168 MHz |  1 MB  |
-   | STM-F722  | 216 MHz | 512 KB (feature limited) |
-   | STM-F745  | 216 MHz |  1 MB  |
-   | STM-F765  | 216 MHz |  2 MB  |
-   | STM-H743  | 480 MHz |  2 MB  |
-   | AT-F435   | 288 MHz |  1 MB  |
+   | Processor | Speed  | Flash |  SRAM  |
+   |:---------:|:------:|:-----:|------:|
+   | STM-F405  | 168 MHz |  1 MB  | 192 KB |
+   | STM-F722  | 216 MHz | 512 KB (feature limited) | 256 KB |
+   | STM-F745  | 216 MHz |  1 MB  | 320 KB |
+   | STM-F765  | 216 MHz |  2 MB  | 512 KB |
+   | AT-F435   | 288 MHz |  1 MB  | 512 KB |
+   | STM-H743  | 480 MHz |  2 MB  |  1 MB  |
 
 General support for STM-F411 processors ended in 7.1.2. 
-All other chips listed will support current releases of INAV. (flash memory dependent, F722 is limited to smaller set of features)
+All other chips listed will support current releases of INAV. (F722 is limited to a smaller features set due to flash memory limitations)
 - Go to the [INAV Welcome Page](https://github.com/iNavFlight/inav?tab=readme-ov-file#readme) for a longer list of features.
 
 Check out our [Hardware-Design-Guidelines](https://github.com/iNavFlight/inav/wiki/Hardware-Design-Guidelines) if you want to design your own flight controller to run INAV.
