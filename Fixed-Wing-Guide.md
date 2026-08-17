@@ -171,7 +171,7 @@ Note high angles allow the motor to spin up while you're carrying the plane if y
 
 * For GPS features
     * Test `NAV ALTHOLD` and see that it holds altitude.
-    * Test `NAV ALTHOLD` and `NAV POSHOLD` combined
+    * Test `NAV POSHOLD`
     * Test `RTH` flight mode
     * Test [failsafe](https://github.com/iNavFlight/inav/wiki/Failsafe)
 
