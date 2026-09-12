@@ -137,8 +137,9 @@ The Orientation Preset must first be established, based on the hardware referenc
 ![Clockwise Orientation reference chart](https://github.com/iNavFlight/inav/assets/47995726/c047fb0d-7b83-4a2d-9b2f-b1b986ecfc89)
 
 You may use the Alignment Tool in the configurator, for _basic_ compass/flight controller orientations until after 7.1.
-_But in future releases the alignment tool will cover more extensive hardware alignment._  Alternatively, you may
-instead choose the impercial method, outlined below.
+The Alignment Tool tab now also has an Auto Alignment Wizard that can determine board and (on supported boards) compass
+orientation automatically — see [Alignment Tool Tab](https://inavflight.github.io/docs/04-inav-configurator/alignment-tool-tab)
+on the INAV docs site. Alternatively, you may instead choose the impercial method, outlined below.
 
 The image below is an example of a module that does not use the default orientation preset, nor has a mounting direction arrow from factory. **The orange orientation arrow has been added to the image below to assist your installation if you have this unit. Its Orientation preset is CW180FLIP with the plug facing to the rear of the model.** _Beitian made the first GPS modules that included a compass for hobby use, back in 2014. And this is how we ended up the confusing default orientation preset of CW270 (flip)_
 

@@ -1,3 +1,5 @@
 # Introduction
 
 This tab lets you change the angle that you FC and compass are mounted on your aircraft. This is critical to setting up INAV. You may have mounted the FC upside-down or backwards and this is where you can save this new orientation. When you go back to the Setup Tab, you should see the 3D Graphic move the same as your actual aircraft.
+
+This tab also has an **Auto Alignment Wizard** that can determine your board's mounting orientation automatically, and — depending on your board's spare RAM — your compass's orientation too. For the full walkthrough, which order to do things in, and the no-magnetometer case, see [Alignment Tool Tab](https://inavflight.github.io/docs/04-inav-configurator/alignment-tool-tab) on the INAV docs site.
